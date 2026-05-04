@@ -1,34 +1,12 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import bg1 from "@/assets/hero-bg-1.jpg";
 import bg2 from "@/assets/hero-bg-2.jpg";
 import bg3 from "@/assets/hero-bg-3.jpg";
-
-// Turntable frames per obra (16 ángulos = 22.5° entre frames).
-// Si no existe la secuencia, hacemos fallback al frame único hero-N.png con rotación CSS.
-const frameModules = import.meta.glob("@/assets/hero-*-f*.png", {
-  eager: true,
-  import: "default",
-}) as Record<string, string>;
-
 import hero1 from "@/assets/hero-1.png";
 import hero2 from "@/assets/hero-2.png";
 import hero3 from "@/assets/hero-3.png";
-const fallback = [hero1, hero2, hero3];
 
-function buildSequence(name: string): string[] {
-  const entries = Object.entries(frameModules)
-    .filter(([k]) => k.includes(`/${name}-f`))
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([, v]) => v);
-  return entries;
-}
-
-const sequences = [
-  buildSequence("hero-1"),
-  buildSequence("hero-2"),
-  buildSequence("hero-3"),
-];
-
+const heroes = [hero1, hero2, hero3];
 const studios = [bg1, bg2, bg3];
 
 interface SculptureViewerProps {
@@ -37,38 +15,29 @@ interface SculptureViewerProps {
 }
 
 export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => {
-  const seq = sequences[obraIndex];
-  const hasTurntable = seq && seq.length > 1;
-  const frameCount = hasTurntable ? seq.length : 1;
-
-  // angle in degrees (continuous). For turntable we map to nearest frame.
   const [angle, setAngle] = useState(0);
   const [scale, setScale] = useState(1);
   const drag = useRef({ active: false, x: 0, interacted: false });
+  const angleRef = useRef(0);
 
-  // preload frames for snappier rotation
-  useEffect(() => {
-    if (!hasTurntable) return;
-    seq.forEach(src => {
-      const i = new Image();
-      i.src = src;
-    });
-  }, [seq, hasTurntable]);
-
+  // reset on obra change
   useEffect(() => {
     drag.current.interacted = false;
+    angleRef.current = 0;
     setAngle(0);
     setScale(1);
   }, [obraIndex]);
 
-  // idle gentle rotation (auto turntable) until user interacts
+  // continuous smooth auto-rotation (hologram turntable) until user interacts
   useEffect(() => {
     let raf = 0;
-    const start = performance.now();
+    let last = performance.now();
     const tick = (now: number) => {
+      const dt = (now - last) / 1000;
+      last = now;
       if (!drag.current.active && !drag.current.interacted) {
-        const t = (now - start) / 1000;
-        setAngle((t * 30) % 360); // 30°/s -> full turn ~12s
+        angleRef.current = (angleRef.current + dt * 25) % 360; // 25°/s ≈ 14.4s per turn
+        setAngle(angleRef.current);
       }
       raf = requestAnimationFrame(tick);
     };
@@ -81,10 +50,8 @@ export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => 
       if (!drag.current.active) return;
       const dx = e.clientX - drag.current.x;
       drag.current.x = e.clientX;
-      setAngle(a => {
-        const next = a + dx * 0.6;
-        return ((next % 360) + 360) % 360;
-      });
+      angleRef.current += dx * 0.5;
+      setAngle(angleRef.current);
     };
     const onUp = () => (drag.current.active = false);
     window.addEventListener("pointermove", onMove);
@@ -117,25 +84,13 @@ export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => 
           backgroundPosition: "center",
         };
 
-  const { frameA, frameB, blend } = useMemo(() => {
-    if (!hasTurntable) {
-      return { frameA: fallback[obraIndex], frameB: fallback[obraIndex], blend: 0 };
-    }
-    const pos = (angle / 360) * frameCount;
-    const i = Math.floor(pos) % frameCount;
-    const j = (i + 1) % frameCount;
-    const blend = pos - Math.floor(pos);
-    return { frameA: seq[i], frameB: seq[j], blend };
-  }, [angle, frameCount, hasTurntable, obraIndex, seq]);
-
-  const fallbackTransform = !hasTurntable
-    ? `perspective(1400px) rotateY(${Math.sin((angle * Math.PI) / 180) * 18}deg) scale(${scale})`
-    : `scale(${scale})`;
-
-  const dropShadow =
-    bgMode === "dark"
-      ? "drop-shadow(0 50px 90px rgba(0,0,0,0.85))"
-      : "drop-shadow(0 35px 70px rgba(0,0,0,0.28))";
+  // Hologram-style 3D rotation: rotateY for spin, slight rotateX for axis tilt.
+  // We compress horizontally based on |sin(angle)| to fake the silhouette
+  // narrowing as it turns 90° — gives true volumetric feel from a flat PNG.
+  const rad = (angle * Math.PI) / 180;
+  const compress = 0.45 + 0.55 * Math.abs(Math.cos(rad)); // 0.45 at 90°, 1 at 0°
+  const yaw = Math.sin(rad) * 28; // ±28° rotateY illusion
+  const tilt = -3; // subtle axis tilt for hologram feel
 
   return (
     <div
@@ -144,28 +99,27 @@ export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => 
       className="absolute inset-0 cursor-grab active:cursor-grabbing select-none touch-none"
       style={bg}
     >
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div
-          className="relative"
-          style={{ width: "min(60vw, 88vh)", height: "88vh", transform: fallbackTransform, willChange: "transform" }}
-        >
-          <img
-            src={frameA}
-            alt=""
-            draggable={false}
-            className="absolute inset-0 w-full h-full object-contain"
-            style={{ filter: dropShadow, opacity: 1 - blend }}
-          />
-          {hasTurntable && (
-            <img
-              src={frameB}
-              alt=""
-              draggable={false}
-              className="absolute inset-0 w-full h-full object-contain"
-              style={{ filter: dropShadow, opacity: blend }}
-            />
-          )}
-        </div>
+      <div
+        className="absolute inset-0 flex items-center justify-center"
+        style={{ perspective: "1800px" }}
+      >
+        <img
+          src={heroes[obraIndex]}
+          alt=""
+          draggable={false}
+          className="max-h-[88vh] max-w-[60vw] object-contain"
+          style={{
+            transform: `rotateX(${tilt}deg) rotateY(${yaw}deg) scale(${scale}) scaleX(${compress})`,
+            transformOrigin: "center center",
+            transition: "transform 60ms linear",
+            filter:
+              bgMode === "dark"
+                ? "drop-shadow(0 50px 90px rgba(0,0,0,0.85))"
+                : "drop-shadow(0 35px 70px rgba(0,0,0,0.28))",
+            willChange: "transform",
+            backfaceVisibility: "hidden",
+          }}
+        />
       </div>
     </div>
   );
