@@ -86,7 +86,7 @@ export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => 
           src={heroes[obraIndex]}
           alt=""
           draggable={false}
-          className="max-h-[88vh] max-w-[60vw] object-contain transition-transform duration-200 ease-out"
+          className="max-h-[88vh] max-w-[60vw] object-contain"
           style={{
             transform: `perspective(1200px) rotateY(${rot}deg) scale(${scale})`,
             filter: bgMode === "dark" ? "drop-shadow(0 40px 80px rgba(0,0,0,0.8))" : "drop-shadow(0 30px 60px rgba(0,0,0,0.25))",
