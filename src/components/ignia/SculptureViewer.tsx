@@ -11,8 +11,8 @@ interface SculptureViewerProps {
   bgMode: "studio" | "white" | "dark";
 }
 
-const heroes = [hero1, hero2, hero3];
-const studios = [bg1, bg2, bg3];
+const heroes = [hero2, hero1, hero3];
+const studios = [bg2, bg1, bg3];
 
 export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => {
   const ref = useRef<HTMLDivElement>(null);
