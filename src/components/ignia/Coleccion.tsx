@@ -1,12 +1,21 @@
+import obra1 from "@/assets/obra-1.jpg";
+import obra2 from "@/assets/obra-2.jpg";
+import obra3 from "@/assets/obra-3.jpg";
+import obra4 from "@/assets/obra-4.jpg";
+import obra5 from "@/assets/obra-5.jpg";
+import obra6 from "@/assets/obra-6.jpg";
+import obra7 from "@/assets/obra-7.jpg";
+import obra8 from "@/assets/obra-8.jpg";
+
 const obras = [
-  { img: "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?w=800&q=80", material: "Bronce", titulo: "Confluencia", artista: "Marcos Iriarte", precio: "€ 8.400" },
-  { img: "https://images.unsplash.com/photo-1594393984438-7a4e9eb2b8a8?w=800&q=80", material: "Mármol", titulo: "Pliegue III", artista: "Alba Costa", precio: "€ 12.200" },
-  { img: "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=800&q=80", material: "Acero corten", titulo: "Vértigo", artista: "Diego Lara", precio: "€ 6.700" },
-  { img: "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=800&q=80", material: "Madera de roble", titulo: "Raíz", artista: "Sofía Méndez", precio: "€ 3.900" },
-  { img: "https://images.unsplash.com/photo-1610375461369-d613b564f4c4?w=800&q=80", material: "Cerámica esmaltada", titulo: "Origen", artista: "Lucía Pardo", precio: "€ 1.200" },
-  { img: "https://images.unsplash.com/photo-1578926375605-eaf7559b1458?w=800&q=80", material: "Bronce", titulo: "Eco", artista: "Pablo Reyes", precio: "€ 9.600" },
-  { img: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=800&q=80", material: "Alabastro", titulo: "Quietud", artista: "Inés Ferrer", precio: "€ 5.300" },
-  { img: "https://images.unsplash.com/photo-1600692552930-fac21bbef5fd?w=800&q=80", material: "Vidrio soplado", titulo: "Luz interior", artista: "Tomás Vigo", precio: "€ 4.150" },
+  { img: obra1, material: "Bronce", titulo: "Confluencia", artista: "Marcos Iriarte", precio: "€ 8.400" },
+  { img: obra2, material: "Mármol", titulo: "Pliegue III", artista: "Alba Costa", precio: "€ 12.200" },
+  { img: obra3, material: "Acero corten", titulo: "Vértigo", artista: "Diego Lara", precio: "€ 6.700" },
+  { img: obra4, material: "Madera de roble", titulo: "Raíz", artista: "Sofía Méndez", precio: "€ 3.900" },
+  { img: obra5, material: "Cerámica esmaltada", titulo: "Origen", artista: "Lucía Pardo", precio: "€ 1.200" },
+  { img: obra6, material: "Bronce", titulo: "Eco", artista: "Pablo Reyes", precio: "€ 9.600" },
+  { img: obra7, material: "Alabastro", titulo: "Quietud", artista: "Inés Ferrer", precio: "€ 5.300" },
+  { img: obra8, material: "Vidrio soplado", titulo: "Luz interior", artista: "Tomás Vigo", precio: "€ 4.150" },
 ];
 
 export const Coleccion = () => (
