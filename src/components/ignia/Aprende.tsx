@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 const posts = [
-  { img: "https://images.unsplash.com/photo-1578321272125-4e4c4c3643c5?w=1200&q=80", tag: "Para coleccionistas", titulo: "Cómo leer la pátina de una pieza de bronce", tiempo: "8 min de lectura" },
-  { img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=80", tag: "Para artistas", titulo: "Fotografiar escultura sin distorsionar el volumen", tiempo: "12 min de lectura" },
-  { img: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=1200&q=80", tag: "Editorial", titulo: "Ediciones únicas vs ediciones limitadas: qué cambia", tiempo: "6 min de lectura" },
+  { img: "https://images.unsplash.com/photo-1577083287894-2bdf3b4cd2cd?w=1200&q=80", tag: "Para coleccionistas", titulo: "Cómo leer la pátina de una pieza de bronce", tiempo: "8 min de lectura" },
+  { img: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=1200&q=80", tag: "Para artistas", titulo: "Fotografiar escultura sin distorsionar el volumen", tiempo: "12 min de lectura" },
+  { img: "https://images.unsplash.com/photo-1594732832278-abd644401426?w=1200&q=80", tag: "Editorial", titulo: "Ediciones únicas vs ediciones limitadas: qué cambia", tiempo: "6 min de lectura" },
 ];
 
 export const Aprende = () => {
