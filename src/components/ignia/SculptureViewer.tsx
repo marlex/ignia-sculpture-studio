@@ -117,16 +117,25 @@ export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => 
           backgroundPosition: "center",
         };
 
-  const currentFrame = useMemo(() => {
-    if (!hasTurntable) return fallback[obraIndex];
-    const idx = Math.round((angle / 360) * frameCount) % frameCount;
-    return seq[idx];
+  const { frameA, frameB, blend } = useMemo(() => {
+    if (!hasTurntable) {
+      return { frameA: fallback[obraIndex], frameB: fallback[obraIndex], blend: 0 };
+    }
+    const pos = (angle / 360) * frameCount;
+    const i = Math.floor(pos) % frameCount;
+    const j = (i + 1) % frameCount;
+    const blend = pos - Math.floor(pos);
+    return { frameA: seq[i], frameB: seq[j], blend };
   }, [angle, frameCount, hasTurntable, obraIndex, seq]);
 
-  // for fallback (single image) we still apply a perspective rotateY illusion
   const fallbackTransform = !hasTurntable
     ? `perspective(1400px) rotateY(${Math.sin((angle * Math.PI) / 180) * 18}deg) scale(${scale})`
     : `scale(${scale})`;
+
+  const dropShadow =
+    bgMode === "dark"
+      ? "drop-shadow(0 50px 90px rgba(0,0,0,0.85))"
+      : "drop-shadow(0 35px 70px rgba(0,0,0,0.28))";
 
   return (
     <div
@@ -136,20 +145,27 @@ export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => 
       style={bg}
     >
       <div className="absolute inset-0 flex items-center justify-center">
-        <img
-          src={currentFrame}
-          alt=""
-          draggable={false}
-          className="max-h-[88vh] max-w-[60vw] object-contain"
-          style={{
-            transform: fallbackTransform,
-            filter:
-              bgMode === "dark"
-                ? "drop-shadow(0 50px 90px rgba(0,0,0,0.85))"
-                : "drop-shadow(0 35px 70px rgba(0,0,0,0.28))",
-            willChange: "transform",
-          }}
-        />
+        <div
+          className="relative"
+          style={{ width: "min(60vw, 88vh)", height: "88vh", transform: fallbackTransform, willChange: "transform" }}
+        >
+          <img
+            src={frameA}
+            alt=""
+            draggable={false}
+            className="absolute inset-0 w-full h-full object-contain"
+            style={{ filter: dropShadow, opacity: 1 - blend }}
+          />
+          {hasTurntable && (
+            <img
+              src={frameB}
+              alt=""
+              draggable={false}
+              className="absolute inset-0 w-full h-full object-contain"
+              style={{ filter: dropShadow, opacity: blend }}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
