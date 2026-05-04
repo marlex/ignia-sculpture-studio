@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { SculptureViewer } from "./SculptureViewer";
 
 const obras = [
-  { nombre: "Ofrenda", artista: "Helena Vázquez", material: "Bronce pulido a mano", año: "2025", edicion: "Edición única", precio: "€ 22.500", slug: "ofrenda" },
   { nombre: "Lirio en vuelo", artista: "Ana Ruiz", material: "Mármol de Carrara", año: "2024", edicion: "Edición única", precio: "€ 14.800", slug: "lirio-en-vuelo" },
+  { nombre: "Ofrenda", artista: "Helena Vázquez", material: "Bronce pulido a mano", año: "2025", edicion: "Edición única", precio: "€ 22.500", slug: "ofrenda" },
   { nombre: "Torsión I", artista: "Camila Soler", material: "Alabastro blanco", año: "2025", edicion: "1 de 3", precio: "€ 11.600", slug: "torsion-i" },
 ];
 
