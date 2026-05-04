@@ -4,7 +4,7 @@ export const CtaFinal = () => (
       Tu obra de arte empieza aquí.
     </h2>
     <p className="font-body text-[16px] font-light mt-5 mb-12 text-white">
-      Sin exclusividad. Sin contratos largos. Sin intermediarios.
+      Colecciona y vende todo con la mayor autenticidad.
     </p>
     <div className="flex flex-wrap gap-3 justify-center">
       <button className="btn-primary btn-primary-inverse">Crear mi perfil de artista</button>
