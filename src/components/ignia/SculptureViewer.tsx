@@ -1,101 +1,205 @@
-import { useEffect, useRef, useState } from "react";
-import hero1 from "@/assets/hero-1.png";
-import hero2 from "@/assets/hero-2.png";
-import hero3 from "@/assets/hero-3.png";
-import bg1 from "@/assets/hero-bg-1.jpg";
-import bg2 from "@/assets/hero-bg-2.jpg";
-import bg3 from "@/assets/hero-bg-3.jpg";
+import { Suspense, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import {
+  OrbitControls,
+  Environment,
+  ContactShadows,
+  Float,
+  MeshTransmissionMaterial,
+  Center,
+} from "@react-three/drei";
+import * as THREE from "three";
 
 interface SculptureViewerProps {
   obraIndex: number;
   bgMode: "studio" | "white" | "dark";
 }
 
-const heroes = [hero2, hero1, hero3];
-const studios = [bg2, bg1, bg3];
+/* ---------- procedural sculpture geometries ---------- */
+
+// 01 — Lirio en vuelo (mármol de Carrara): tres pétalos torsionados que se elevan
+const LirioGeometry = () => {
+  const geom = new THREE.LatheGeometry(
+    Array.from({ length: 60 }, (_, i) => {
+      const t = i / 59;
+      const r = 0.18 + Math.sin(t * Math.PI) * 0.55 + Math.sin(t * Math.PI * 3) * 0.08;
+      const y = t * 2.4 - 1.2;
+      return new THREE.Vector2(Math.max(0.05, r * (1 - t * 0.4)), y);
+    }),
+    96
+  );
+  geom.computeVertexNormals();
+  return <primitive object={geom} attach="geometry" />;
+};
+
+const Lirio = () => (
+  <group>
+    <mesh castShadow receiveShadow>
+      <LirioGeometry />
+      <meshPhysicalMaterial
+        color="#f4f1ec"
+        roughness={0.32}
+        metalness={0}
+        clearcoat={0.4}
+        clearcoatRoughness={0.5}
+        sheen={0.3}
+        sheenColor="#fff"
+      />
+    </mesh>
+    {[0, 1, 2].map(i => {
+      const a = (i / 3) * Math.PI * 2;
+      return (
+        <mesh
+          key={i}
+          castShadow
+          position={[Math.cos(a) * 0.35, 0.6, Math.sin(a) * 0.35]}
+          rotation={[Math.PI * 0.15, a, Math.PI * 0.25]}
+          scale={[0.45, 1.1, 0.12]}
+        >
+          <sphereGeometry args={[0.6, 48, 48]} />
+          <meshPhysicalMaterial
+            color="#efece6"
+            roughness={0.28}
+            clearcoat={0.5}
+            clearcoatRoughness={0.4}
+          />
+        </mesh>
+      );
+    })}
+  </group>
+);
+
+// 02 — Ofrenda (bronce pulido): cuenco/torus elevado sobre base
+const Ofrenda = () => (
+  <group>
+    <mesh castShadow receiveShadow position={[0, -0.9, 0]}>
+      <cylinderGeometry args={[0.55, 0.7, 0.35, 64]} />
+      <meshPhysicalMaterial color="#3a2a1a" roughness={0.55} metalness={0.6} />
+    </mesh>
+    <mesh castShadow position={[0, -0.5, 0]}>
+      <cylinderGeometry args={[0.12, 0.18, 0.5, 32]} />
+      <meshStandardMaterial color="#8a6a3a" roughness={0.35} metalness={0.95} />
+    </mesh>
+    <mesh castShadow receiveShadow position={[0, 0.15, 0]} rotation={[Math.PI / 2, 0, 0]}>
+      <torusGeometry args={[0.85, 0.32, 64, 128]} />
+      <meshPhysicalMaterial
+        color="#b5874a"
+        roughness={0.2}
+        metalness={1}
+        clearcoat={0.6}
+        clearcoatRoughness={0.15}
+      />
+    </mesh>
+    <mesh castShadow position={[0, 0.55, 0]}>
+      <sphereGeometry args={[0.22, 48, 48]} />
+      <meshPhysicalMaterial color="#d9a25c" roughness={0.15} metalness={1} clearcoat={0.8} />
+    </mesh>
+  </group>
+);
+
+// 03 — Torsión I (alabastro blanco): nudo torsionado translúcido
+const Torsion = () => (
+  <mesh castShadow receiveShadow rotation={[0.2, 0, 0.3]}>
+    <torusKnotGeometry args={[0.75, 0.26, 256, 48, 2, 3]} />
+    <MeshTransmissionMaterial
+      color="#f7f4ee"
+      thickness={0.6}
+      roughness={0.18}
+      transmission={0.6}
+      ior={1.45}
+      chromaticAberration={0.02}
+      backside
+      backsideThickness={0.3}
+      attenuationDistance={2}
+      attenuationColor="#ece5d6"
+    />
+  </mesh>
+);
+
+/* ---------- scene wrapper with idle auto-rotation ---------- */
+
+const Sculpture = ({ index }: { index: number }) => {
+  const ref = useRef<THREE.Group>(null);
+  useFrame((_, dt) => {
+    if (ref.current) ref.current.rotation.y += dt * 0.25;
+  });
+  return (
+    <group ref={ref}>
+      <Center disableY>
+        {index === 0 && <Lirio />}
+        {index === 1 && <Ofrenda />}
+        {index === 2 && <Torsion />}
+      </Center>
+    </group>
+  );
+};
+
+/* ---------- main viewer ---------- */
 
 export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [rot, setRot] = useState(0);
-  const [scale, setScale] = useState(1);
-  const drag = useRef<{ active: boolean; x: number; interacted: boolean }>({ active: false, x: 0, interacted: false });
-
-  // gentle oscillation when idle (keeps illusion of volume on flat images)
-  useEffect(() => {
-    let raf = 0;
-    const start = performance.now();
-    const tick = (now: number) => {
-      if (!drag.current.active && !drag.current.interacted) {
-        const t = (now - start) / 1000;
-        setRot(Math.sin(t * 0.6) * 12);
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
-  // resume auto-rotate when changing obra
-  useEffect(() => {
-    drag.current.interacted = false;
-    setRot(0);
-    setScale(1);
-  }, [obraIndex]);
-
-  useEffect(() => {
-    const onMove = (e: PointerEvent) => {
-      if (!drag.current.active) return;
-      const dx = e.clientX - drag.current.x;
-      drag.current.x = e.clientX;
-      setRot(r => Math.max(-22, Math.min(22, r + dx * 0.25)));
-    };
-    const onUp = () => (drag.current.active = false);
-    window.addEventListener("pointermove", onMove);
-    window.addEventListener("pointerup", onUp);
-    return () => {
-      window.removeEventListener("pointermove", onMove);
-      window.removeEventListener("pointerup", onUp);
-    };
-  }, []);
-
-  const onDown = (e: React.PointerEvent) => {
-    drag.current.active = true;
-    drag.current.interacted = true;
-    drag.current.x = e.clientX;
-  };
-
-  const onWheel = (e: React.WheelEvent) => {
-    drag.current.interacted = true;
-    setScale(s => Math.max(0.7, Math.min(1.6, s - e.deltaY * 0.001)));
-  };
-
-  const bg =
+  const bgStyle =
     bgMode === "white"
       ? { background: "#ffffff" }
       : bgMode === "dark"
       ? { background: "#0d0d0d" }
-      : { backgroundImage: `url(${studios[obraIndex]})`, backgroundSize: "cover", backgroundPosition: "center" };
+      : {
+          background:
+            "radial-gradient(ellipse at 50% 35%, #eeeae2 0%, #d9d2c4 55%, #b8ad99 100%)",
+        };
+
+  const envPreset = bgMode === "dark" ? "night" : "studio";
 
   return (
-    <div
-      ref={ref}
-      onPointerDown={onDown}
-      onWheel={onWheel}
-      className="absolute inset-0 cursor-grab active:cursor-grabbing select-none touch-none"
-      style={bg}
-    >
-      <div className="absolute inset-0 flex items-center justify-center">
-        <img
-          src={heroes[obraIndex]}
-          alt=""
-          draggable={false}
-          className="max-h-[88vh] max-w-[60vw] object-contain"
-          style={{
-            transform: `perspective(1200px) rotateY(${rot}deg) scale(${scale})`,
-            filter: bgMode === "dark" ? "drop-shadow(0 40px 80px rgba(0,0,0,0.8))" : "drop-shadow(0 30px 60px rgba(0,0,0,0.25))",
-          }}
+    <div className="absolute inset-0" style={bgStyle}>
+      <Canvas
+        key={`${obraIndex}-${bgMode}`}
+        shadows
+        dpr={[1, 2]}
+        camera={{ position: [0, 0.4, 4.2], fov: 35 }}
+        gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping }}
+      >
+        <color attach="background" args={[bgMode === "dark" ? "#0d0d0d" : bgMode === "white" ? "#ffffff" : "#e6e0d3"]} />
+
+        <ambientLight intensity={bgMode === "dark" ? 0.15 : 0.35} />
+        <directionalLight
+          position={[4, 6, 5]}
+          intensity={bgMode === "dark" ? 1.4 : 1.1}
+          castShadow
+          shadow-mapSize={[2048, 2048]}
+          shadow-bias={-0.0005}
         />
-      </div>
+        <directionalLight position={[-4, 3, -2]} intensity={0.5} color="#cfd8e6" />
+
+        <Suspense fallback={null}>
+          <Float speed={1.2} rotationIntensity={0.15} floatIntensity={0.35} floatingRange={[-0.05, 0.05]}>
+            <Sculpture index={obraIndex} />
+          </Float>
+
+          <ContactShadows
+            position={[0, -1.35, 0]}
+            opacity={bgMode === "dark" ? 0.6 : 0.45}
+            scale={6}
+            blur={2.4}
+            far={3}
+            resolution={1024}
+            color={bgMode === "dark" ? "#000" : "#1a1a1a"}
+          />
+
+          <Environment preset={envPreset as "studio" | "night"} />
+        </Suspense>
+
+        <OrbitControls
+          enablePan={false}
+          enableDamping
+          dampingFactor={0.08}
+          minDistance={2.6}
+          maxDistance={6}
+          minPolarAngle={Math.PI / 3}
+          maxPolarAngle={Math.PI / 1.7}
+          rotateSpeed={0.7}
+          zoomSpeed={0.6}
+        />
+      </Canvas>
     </div>
   );
 };
