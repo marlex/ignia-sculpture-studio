@@ -65,10 +65,10 @@ export const Hero = () => {
               style={{ opacity: i === actual ? 1 : 0.3 }}
             >
               <div
-                className="w-11 h-14 border-[0.5px] border-border overflow-hidden flex items-center justify-center text-[8px] font-light uppercase tracking-widest"
+                className="w-12 h-16 border-[0.5px] border-border overflow-hidden flex items-center justify-center text-[11px] font-light uppercase tracking-widest"
                 style={{
-                  background: i === 0 ? "#9a7b5a" : i === 1 ? "#ece8e0" : "#d8d0c4",
-                  color: i === 0 ? "#fff" : "#888",
+                  background: "#111",
+                  color: "#fff",
                   borderBottom: i === actual ? "2px solid hsl(var(--verde))" : undefined,
                 }}
               >
