@@ -69,7 +69,7 @@ export const Hero = () => {
                 style={{
                   background: "#111",
                   color: "#fff",
-                  borderBottom: i === actual ? "2px solid hsl(var(--verde))" : undefined,
+                  borderBottom: i === actual ? "2px solid #fff" : undefined,
                 }}
               >
                 0{i + 1}
