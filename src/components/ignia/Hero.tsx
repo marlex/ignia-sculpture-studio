@@ -69,7 +69,7 @@ export const Hero = () => {
                 style={{
                   background: "#111",
                   color: "#fff",
-                  borderBottom: i === actual ? "2px solid hsl(var(--verde))" : undefined,
+                  borderBottom: i === actual ? "2px solid #fff" : undefined,
                 }}
               >
                 0{i + 1}
@@ -119,7 +119,7 @@ export const Hero = () => {
                   background: "rgba(248,248,246,0.88)",
                 }}
               >
-                {m === "studio" ? "Estudio" : m === "white" ? "Blanco" : "Negro"}
+                {m === "studio" ? "Estudio" : m === "white" ? "Blanco" : "Sombra"}
               </button>
             ))}
           </div>
