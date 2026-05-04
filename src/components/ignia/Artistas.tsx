@@ -13,9 +13,9 @@ const data = {
     { foto: a3, nombre: "Ana Ruiz", esp: "Mármol y piedra", obras: "31 obras" },
   ],
   Emergentes: [
-    { foto: a4, nombre: "Camila Soler", esp: "Alabastro orgánico", obras: "9 obras" },
-    { foto: a5, nombre: "Diego Lara", esp: "Acero contemporáneo", obras: "12 obras" },
-    { foto: a6, nombre: "Sofía Méndez", esp: "Madera tallada", obras: "7 obras" },
+    { foto: a4, nombre: "Diego Lara", esp: "Acero contemporáneo", obras: "12 obras" },
+    { foto: a5, nombre: "Camila Soler", esp: "Alabastro orgánico", obras: "9 obras" },
+    { foto: a6, nombre: "Mateo Rivas", esp: "Madera tallada", obras: "7 obras" },
   ],
 };
 
