@@ -119,7 +119,7 @@ export const Hero = () => {
                   background: "rgba(248,248,246,0.88)",
                 }}
               >
-                {m === "studio" ? "Estudio" : m === "white" ? "Blanco" : "Negro"}
+                {m === "studio" ? "Estudio" : m === "white" ? "Blanco" : "Sombra"}
               </button>
             ))}
           </div>
