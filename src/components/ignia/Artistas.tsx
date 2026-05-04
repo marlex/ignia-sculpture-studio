@@ -26,7 +26,7 @@ export const Artistas = () => {
             <button
               key={t}
               onClick={() => setTab(t)}
-              className="font-body text-[11px] font-light tracking-[0.08em] pb-1.5 transition-colors"
+              className="font-body text-[14px] font-light tracking-[0.08em] pb-1.5 transition-colors"
               style={{
                 color: tab === t ? "hsl(var(--black-pure))" : "hsl(var(--gray))",
                 borderBottom: tab === t ? "1.5px solid hsl(var(--black-pure))" : "1.5px solid transparent",
@@ -45,8 +45,8 @@ export const Artistas = () => {
               <img src={a.foto} alt={a.nombre} loading="lazy" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[700ms]" />
             </div>
             <h3 className="font-display font-bold text-[16px] text-ink mb-1">{a.nombre}</h3>
-            <div className="font-body text-[12px] font-light text-gray mb-1.5">{a.esp}</div>
-            <div className="font-body text-[10px] font-light text-muted-line uppercase tracking-[0.14em]">{a.obras}</div>
+            <div className="font-body text-[14px] font-light text-gray mb-1.5">{a.esp}</div>
+            <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em]">{a.obras}</div>
           </article>
         ))}
       </div>

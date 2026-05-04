@@ -15,12 +15,12 @@ export const Coleccion = () => (
       <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">Descubre todas las colecciones</h2>
       <a href="#" className="link-arrow">Ver las 843 obras →</a>
     </div>
-    <p className="font-body text-[12px] font-light text-gray mb-8">843 obras · Actualizado semanalmente</p>
+    <p className="font-body text-[14px] font-light text-gray mb-8">843 obras · Actualizado semanalmente</p>
 
     <div className="flex flex-wrap gap-3 mb-10">
-      <input type="search" placeholder="Buscar artista, obra, material…" className="w-60 border-[0.5px] border-border bg-white font-body text-[11px] font-light px-3.5 py-2.5 outline-none focus:border-ink transition-colors" />
+      <input type="search" placeholder="Buscar artista, obra, material…" className="w-60 border-[0.5px] border-border bg-white font-body text-[14px] font-light px-3.5 py-2.5 outline-none focus:border-ink transition-colors" />
       {["Material", "Precio", "Técnica"].map(s => (
-        <select key={s} className="border-[0.5px] border-border bg-white font-body text-[11px] font-light px-3.5 py-2.5 outline-none focus:border-ink transition-colors">
+        <select key={s} className="border-[0.5px] border-border bg-white font-body text-[14px] font-light px-3.5 py-2.5 outline-none focus:border-ink transition-colors">
           <option>{s}</option>
         </select>
       ))}
@@ -32,16 +32,16 @@ export const Coleccion = () => (
           <div className="relative aspect-[4/5] overflow-hidden bg-secondary">
             <img src={o.img} alt={o.titulo} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
             <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span className="font-body text-[9px] font-light tracking-[0.16em] uppercase text-white">Ver en 3D</span>
+              <span className="font-body text-[14px] font-light tracking-[0.16em] uppercase text-white">Ver en 3D</span>
             </div>
           </div>
           <div className="p-5">
-            <div className="font-body text-[9px] font-light text-muted-line uppercase tracking-[0.14em] mb-1.5">{o.material}</div>
+            <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-1.5">{o.material}</div>
             <h3 className="font-display font-bold text-[17px] text-ink mb-1">{o.titulo}</h3>
-            <div className="font-body text-[12px] font-light text-gray mb-3">{o.artista}</div>
+            <div className="font-body text-[14px] font-light text-gray mb-3">{o.artista}</div>
             <div className="flex items-center justify-between pt-3 border-t-[0.5px] border-border">
               <span className="font-body text-[14px] font-normal text-ink">{o.precio}</span>
-              <span className="font-body text-[9px] font-light text-muted-line uppercase tracking-[0.12em]">Disponible · 3D</span>
+              <span className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.12em]">Disponible · 3D</span>
             </div>
           </div>
         </article>
