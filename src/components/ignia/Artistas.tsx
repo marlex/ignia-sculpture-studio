@@ -2,14 +2,14 @@ import { useState } from "react";
 
 const data = {
   Establecidos: [
-    { foto: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80", nombre: "Helena Vázquez", esp: "Bronce figurativo", obras: "24 obras" },
-    { foto: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=600&q=80", nombre: "Marcos Iriarte", esp: "Abstracción metálica", obras: "18 obras" },
-    { foto: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&q=80", nombre: "Ana Ruiz", esp: "Mármol y piedra", obras: "31 obras" },
+    { foto: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80", nombre: "Helena Vázquez", esp: "Bronce figurativo", obras: "24 obras" },
+    { foto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80", nombre: "Marcos Iriarte", esp: "Abstracción metálica", obras: "18 obras" },
+    { foto: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80", nombre: "Ana Ruiz", esp: "Mármol y piedra", obras: "31 obras" },
   ],
   Emergentes: [
     { foto: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80", nombre: "Camila Soler", esp: "Alabastro orgánico", obras: "9 obras" },
-    { foto: "https://images.unsplash.com/photo-1557862921-37829c790f19?w=600&q=80", nombre: "Diego Lara", esp: "Acero contemporáneo", obras: "12 obras" },
-    { foto: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80", nombre: "Sofía Méndez", esp: "Madera tallada", obras: "7 obras" },
+    { foto: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=600&q=80", nombre: "Diego Lara", esp: "Acero contemporáneo", obras: "12 obras" },
+    { foto: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80", nombre: "Sofía Méndez", esp: "Madera tallada", obras: "7 obras" },
   ],
 };
 
