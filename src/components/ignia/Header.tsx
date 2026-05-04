@@ -10,13 +10,13 @@ export const Header = () => (
       </a>
       <nav className="hidden md:flex items-center gap-9">
         {navItems.map(item => (
-          <a key={item} href="#" className="font-body text-[12px] font-light text-gray hover:text-ink transition-colors">
+          <a key={item} href="#" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
             {item}
           </a>
         ))}
       </nav>
       <div className="flex items-center gap-4">
-        <a href="#" className="font-body text-[11px] font-light text-gray hover:text-ink transition-colors">Entrar</a>
+        <a href="#" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">Entrar</a>
         <button className="btn-primary !py-2 !px-5">Publicar obra ↗</button>
       </div>
     </div>

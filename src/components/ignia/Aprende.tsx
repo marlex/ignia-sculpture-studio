@@ -20,9 +20,9 @@ export const Aprende = () => {
           <img src={p.img} alt={p.titulo} className="w-full h-full object-cover" />
         </div>
         <div>
-          <div className="font-body text-[9px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{p.tag}</div>
+          <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{p.tag}</div>
           <h3 className="font-display font-bold text-[26px] tracking-[-0.02em] text-ink mb-3 leading-tight">{p.titulo}</h3>
-          <div className="font-body text-[11px] font-light text-gray">{p.tiempo}</div>
+          <div className="font-body text-[14px] font-light text-gray">{p.tiempo}</div>
         </div>
       </div>
       <div className="flex gap-2 mt-10">

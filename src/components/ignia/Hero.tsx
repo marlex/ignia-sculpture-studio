@@ -34,7 +34,7 @@ export const Hero = () => {
 
       {/* hint */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-body text-[9px] font-light tracking-[0.2em] uppercase z-[5] pointer-events-none whitespace-nowrap transition-opacity duration-[1200ms]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-body text-[14px] font-light tracking-[0.2em] uppercase z-[5] pointer-events-none whitespace-nowrap transition-opacity duration-[1200ms]"
         style={{ opacity: showHint ? 0.55 : 0, color: dark ? "#aaa" : "hsl(var(--gray))" }}
       >
         Arrastra para rotar · Scroll para zoom
@@ -65,10 +65,10 @@ export const Hero = () => {
               style={{ opacity: i === actual ? 1 : 0.3 }}
             >
               <div
-                className="w-11 h-14 border-[0.5px] border-border overflow-hidden flex items-center justify-center text-[8px] font-light uppercase tracking-widest"
+                className="w-12 h-16 border-[0.5px] border-border overflow-hidden flex items-center justify-center text-[14px] font-light uppercase tracking-widest"
                 style={{
-                  background: i === 0 ? "#9a7b5a" : i === 1 ? "#ece8e0" : "#d8d0c4",
-                  color: i === 0 ? "#fff" : "#888",
+                  background: "#111",
+                  color: "#fff",
                   borderBottom: i === actual ? "2px solid hsl(var(--verde))" : undefined,
                 }}
               >
@@ -80,13 +80,13 @@ export const Hero = () => {
 
         {/* info */}
         <div className="flex-1" style={{ color: textColor }}>
-          <div className="font-body text-[9px] font-light tracking-[0.2em] uppercase mb-1.5" style={{ color: grayColor }}>
+          <div className="font-body text-[14px] font-light tracking-[0.2em] uppercase mb-1.5" style={{ color: grayColor }}>
             0{actual + 1} — 03
           </div>
           <h1 className="font-display font-bold leading-[0.95] tracking-[-0.03em] mb-3" style={{ fontSize: "clamp(36px, 5vw, 72px)", color: textColor }}>
             {o.nombre}
           </h1>
-          <div className="flex items-center gap-2 flex-wrap mb-3.5 font-body text-[12px] font-light tracking-wide" style={{ color: grayColor }}>
+          <div className="flex items-center gap-2 flex-wrap mb-3.5 font-body text-[14px] font-light tracking-wide" style={{ color: grayColor }}>
             <span>{o.artista}</span>
             <span style={{ color: dark ? "#333" : "hsl(var(--border))" }}>·</span>
             <span>{o.material}</span>
@@ -97,7 +97,7 @@ export const Hero = () => {
           </div>
           <div className="flex items-baseline gap-7">
             <span className="font-display font-bold text-[22px] tracking-[-0.01em]" style={{ color: textColor }}>{o.precio}</span>
-            <a href={`/obra/${o.slug}`} className="font-body text-[10px] font-light tracking-[0.14em] uppercase border-b-[0.5px] pb-px hover:opacity-50 transition-opacity"
+            <a href={`/obra/${o.slug}`} className="font-body text-[13px] font-light tracking-[0.14em] uppercase border-b-[0.5px] pb-px hover:opacity-50 transition-opacity"
               style={{ color: textColor, borderColor: textColor }}>
               Ver obra completa →
             </a>
@@ -106,13 +106,13 @@ export const Hero = () => {
 
         {/* bg controls */}
         <div className="shrink-0 text-right">
-          <div className="font-body text-[8px] font-light tracking-[0.14em] uppercase text-muted-line mb-1.5">Fondo</div>
+          <div className="font-body text-[14px] font-light tracking-[0.14em] uppercase text-muted-line mb-1.5">Fondo</div>
           <div className="flex md:flex-col gap-[3px] items-end">
             {(["studio", "white", "dark"] as BgMode[]).map(m => (
               <button
                 key={m}
                 onClick={() => setBg(m)}
-                className="font-body text-[9px] font-light tracking-[0.1em] uppercase border-[0.5px] px-2.5 py-1 backdrop-blur transition-all"
+                className="font-body text-[14px] font-light tracking-[0.1em] uppercase border-[0.5px] px-2.5 py-1 backdrop-blur transition-all"
                 style={{
                   color: bg === m ? "hsl(var(--black-pure))" : "hsl(var(--gray))",
                   borderColor: bg === m ? "hsl(var(--black-pure))" : "hsl(var(--border))",
