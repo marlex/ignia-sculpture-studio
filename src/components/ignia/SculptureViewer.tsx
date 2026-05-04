@@ -18,14 +18,40 @@ export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => 
   const ref = useRef<HTMLDivElement>(null);
   const [rot, setRot] = useState(0);
   const [scale, setScale] = useState(1);
-  const drag = useRef<{ active: boolean; x: number }>({ active: false, x: 0 });
+  const drag = useRef<{ active: boolean; x: number; interacted: boolean }>({ active: false, x: 0, interacted: false });
+
+  // auto-rotation when idle
+  useEffect(() => {
+    let raf = 0;
+    let last = performance.now();
+    const tick = (now: number) => {
+      const dt = now - last;
+      last = now;
+      if (!drag.current.active && !drag.current.interacted) {
+        setRot(r => {
+          const next = r + dt * 0.012;
+          return next > 360 ? next - 360 : next;
+        });
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  // resume auto-rotate when changing obra
+  useEffect(() => {
+    drag.current.interacted = false;
+    setRot(0);
+    setScale(1);
+  }, [obraIndex]);
 
   useEffect(() => {
     const onMove = (e: PointerEvent) => {
       if (!drag.current.active) return;
       const dx = e.clientX - drag.current.x;
       drag.current.x = e.clientX;
-      setRot(r => Math.max(-25, Math.min(25, r + dx * 0.15)));
+      setRot(r => r + dx * 0.4);
     };
     const onUp = () => (drag.current.active = false);
     window.addEventListener("pointermove", onMove);
@@ -38,10 +64,12 @@ export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => 
 
   const onDown = (e: React.PointerEvent) => {
     drag.current.active = true;
+    drag.current.interacted = true;
     drag.current.x = e.clientX;
   };
 
   const onWheel = (e: React.WheelEvent) => {
+    drag.current.interacted = true;
     setScale(s => Math.max(0.7, Math.min(1.6, s - e.deltaY * 0.001)));
   };
 
@@ -65,7 +93,7 @@ export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => 
           src={heroes[obraIndex]}
           alt=""
           draggable={false}
-          className="max-h-[88vh] max-w-[60vw] object-contain transition-transform duration-200 ease-out"
+          className="max-h-[88vh] max-w-[60vw] object-contain"
           style={{
             transform: `perspective(1200px) rotateY(${rot}deg) scale(${scale})`,
             filter: bgMode === "dark" ? "drop-shadow(0 40px 80px rgba(0,0,0,0.8))" : "drop-shadow(0 30px 60px rgba(0,0,0,0.25))",
