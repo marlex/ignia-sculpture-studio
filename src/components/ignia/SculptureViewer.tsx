@@ -39,6 +39,13 @@ export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => 
     return () => cancelAnimationFrame(raf);
   }, []);
 
+  // resume auto-rotate when changing obra
+  useEffect(() => {
+    drag.current.interacted = false;
+    setRot(0);
+    setScale(1);
+  }, [obraIndex]);
+
   useEffect(() => {
     const onMove = (e: PointerEvent) => {
       if (!drag.current.active) return;
