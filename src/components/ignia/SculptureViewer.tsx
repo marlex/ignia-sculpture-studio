@@ -50,7 +50,7 @@ export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => 
       ? { background: "#ffffff" }
       : bgMode === "dark"
       ? { background: "#0d0d0d" }
-      : { backgroundImage: `url(${bgStudio})`, backgroundSize: "cover", backgroundPosition: "center" };
+      : { backgroundImage: `url(${studios[obraIndex]})`, backgroundSize: "cover", backgroundPosition: "center" };
 
   return (
     <div
