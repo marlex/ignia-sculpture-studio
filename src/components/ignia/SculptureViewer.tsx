@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import hero1 from "@/assets/hero-1.png";
 import hero2 from "@/assets/hero-2.png";
 import hero3 from "@/assets/hero-3.png";
-import bgStudio from "@/assets/hero-bg-studio.jpg";
+import bg1 from "@/assets/hero-bg-1.jpg";
+import bg2 from "@/assets/hero-bg-2.jpg";
+import bg3 from "@/assets/hero-bg-3.jpg";
 
 interface SculptureViewerProps {
   obraIndex: number;
@@ -10,6 +12,7 @@ interface SculptureViewerProps {
 }
 
 const heroes = [hero1, hero2, hero3];
+const studios = [bg1, bg2, bg3];
 
 export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => {
   const ref = useRef<HTMLDivElement>(null);
