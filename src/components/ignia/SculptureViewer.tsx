@@ -13,64 +13,102 @@ interface SculptureViewerProps {
   bgMode: "studio" | "white" | "dark";
 }
 
-// Procedural bronze sculpture — twisted vertical form (Lirio en vuelo)
+// "Lirio en vuelo" — elegant elongated bronze drop / flame form
 function BronzeFlight() {
-  const ref = useRef<THREE.Mesh>(null!);
-  useFrame((_, dt) => {
-    if (ref.current) ref.current.rotation.y += dt * 0.35;
-  });
-  // Build a twisted lathe profile
-  const points: THREE.Vector2[] = [];
-  for (let i = 0; i <= 40; i++) {
-    const t = i / 40;
-    const y = t * 3.2 - 1.6;
-    const r = 0.45 + 0.35 * Math.sin(t * Math.PI) - 0.15 * t;
-    points.push(new THREE.Vector2(Math.max(0.05, r), y));
-  }
-  return (
-    <mesh ref={ref} castShadow receiveShadow>
-      <latheGeometry args={[points, 96]} />
-      <meshStandardMaterial color="#7a4a1f" metalness={1} roughness={0.32} envMapIntensity={1.2} />
-    </mesh>
-  );
-}
-
-// Polished bronze "Ofrenda" — torus knot
-function BronzeOffering() {
   const ref = useRef<THREE.Mesh>(null!);
   useFrame((_, dt) => {
     if (ref.current) ref.current.rotation.y += dt * 0.3;
   });
+  const points: THREE.Vector2[] = [];
+  for (let i = 0; i <= 80; i++) {
+    const t = i / 80;
+    const y = t * 3.6 - 1.8;
+    // Smooth tear-drop / flame profile
+    const base = Math.sin(Math.pow(t, 0.85) * Math.PI);
+    const taper = 1 - Math.pow(Math.abs(t - 0.35) * 1.2, 1.6);
+    const r = Math.max(0.02, 0.55 * base * Math.max(0.15, taper));
+    points.push(new THREE.Vector2(r, y));
+  }
   return (
-    <mesh ref={ref} castShadow receiveShadow scale={0.95}>
-      <torusKnotGeometry args={[1, 0.32, 220, 32, 2, 3]} />
-      <meshStandardMaterial color="#8a5a2b" metalness={1} roughness={0.18} envMapIntensity={1.4} />
+    <mesh ref={ref} castShadow receiveShadow position={[0, 0.05, 0]}>
+      <latheGeometry args={[points, 160]} />
+      <meshPhysicalMaterial
+        color="#6b3a17"
+        metalness={1}
+        roughness={0.28}
+        clearcoat={0.4}
+        clearcoatRoughness={0.35}
+        envMapIntensity={1.4}
+      />
     </mesh>
   );
 }
 
-// Alabaster "Torsión I" — twisted column
-function AlabasterTorsion() {
-  const ref = useRef<THREE.Group>(null!);
+// "Ofrenda" — polished bronze möbius-like ribbon (parametric)
+function BronzeOffering() {
+  const ref = useRef<THREE.Mesh>(null!);
   useFrame((_, dt) => {
-    if (ref.current) ref.current.rotation.y += dt * 0.32;
+    if (ref.current) ref.current.rotation.y += dt * 0.28;
   });
-  // Build a twisted box-ish form via segments
+  const geom = (() => {
+    const g = new THREE.ParametricGeometry(
+      (u, v, target) => {
+        const U = u * Math.PI * 2;
+        const V = (v - 0.5) * 0.55;
+        const a = 1.1 + V * Math.cos(U / 2);
+        const x = a * Math.cos(U);
+        const y = V * Math.sin(U / 2) * 1.4;
+        const z = a * Math.sin(U);
+        target.set(x, y, z);
+      },
+      180,
+      24
+    );
+    g.computeVertexNormals();
+    return g;
+  })();
   return (
-    <group ref={ref}>
-      {Array.from({ length: 28 }).map((_, i) => {
-        const t = i / 27;
-        const y = t * 3 - 1.5;
-        const rot = t * Math.PI * 1.4;
-        const s = 0.55 + 0.18 * Math.sin(t * Math.PI);
-        return (
-          <mesh key={i} position={[0, y, 0]} rotation={[0, rot, 0]} castShadow receiveShadow>
-            <boxGeometry args={[s, 3 / 28 + 0.01, s * 0.55]} />
-            <meshStandardMaterial color="#efeae0" metalness={0.05} roughness={0.55} />
-          </mesh>
-        );
-      })}
-    </group>
+    <mesh ref={ref} castShadow receiveShadow geometry={geom} scale={1.05}>
+      <meshPhysicalMaterial
+        color="#9a6a32"
+        metalness={1}
+        roughness={0.14}
+        clearcoat={0.6}
+        clearcoatRoughness={0.18}
+        envMapIntensity={1.6}
+        side={THREE.DoubleSide}
+      />
+    </mesh>
+  );
+}
+
+// "Torsión I" — alabaster smooth torsion (high-segment twisted lathe with displacement)
+function AlabasterTorsion() {
+  const ref = useRef<THREE.Mesh>(null!);
+  useFrame((_, dt) => {
+    if (ref.current) ref.current.rotation.y += dt * 0.3;
+  });
+  // Twisted, tapered organic column built from a tube along a curved spine
+  const curve = new THREE.CatmullRomCurve3([
+    new THREE.Vector3(0, -1.6, 0),
+    new THREE.Vector3(0.18, -0.8, 0.05),
+    new THREE.Vector3(-0.12, 0, -0.05),
+    new THREE.Vector3(0.1, 0.8, 0.04),
+    new THREE.Vector3(0, 1.7, 0),
+  ]);
+  return (
+    <mesh ref={ref} castShadow receiveShadow>
+      <tubeGeometry args={[curve, 220, 0.5, 48, false]} />
+      <meshPhysicalMaterial
+        color="#f1ece2"
+        metalness={0.04}
+        roughness={0.42}
+        transmission={0.18}
+        thickness={1.2}
+        clearcoat={0.25}
+        envMapIntensity={0.9}
+      />
+    </mesh>
   );
 }
 
