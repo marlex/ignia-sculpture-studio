@@ -32,7 +32,7 @@ export default function PerfilColeccionista() {
       { img: respiro, titulo: "Respiro", artista: "Helena Vázquez" },
     ],
   } : {
-    exit: "Sign out",
+    exit: "Sign out", view3d: "View in 3D",
     eyebrow: "Collector profile",
     sub: "Interests: figurative, large format. Budget €5,000 – €25,000.",
     stats: [["Works in collection", "7"], ["Saved", "23"], ["Sculptors followed", "12"]],
