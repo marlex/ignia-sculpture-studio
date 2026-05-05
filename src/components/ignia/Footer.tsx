@@ -1,9 +1,34 @@
+import { Link } from "react-router-dom";
 import { Logo } from "./Logo";
 
-const cols = [
-  { label: "Explorar", links: ["Colección", "Artistas", "Editorial", "Ignia Aprende"] },
-  { label: "Para artistas", links: ["Publicar obra", "Comisiones", "Guía 3D", "Ayuda"] },
-  { label: "Compañía", links: ["Sobre Ignia", "Prensa", "Términos", "Privacidad"] },
+const cols: { label: string; links: { label: string; to: string }[] }[] = [
+  {
+    label: "Explorar",
+    links: [
+      { label: "Colección", to: "/coleccion" },
+      { label: "Escultores", to: "/escultores" },
+      { label: "Editorial", to: "/editorial" },
+      { label: "Ignia Aprende", to: "/aprende" },
+    ],
+  },
+  {
+    label: "Para artistas",
+    links: [
+      { label: "Publicar obra", to: "/login" },
+      { label: "Mi perfil", to: "/perfil/escultor" },
+      { label: "Guía 3D", to: "/aprende" },
+      { label: "Ignia Aprende", to: "/aprende" },
+    ],
+  },
+  {
+    label: "Compañía",
+    links: [
+      { label: "Sobre Ignia", to: "/ignia-gallery" },
+      { label: "Editorial", to: "/editorial" },
+      { label: "Contacto", to: "/ignia-gallery" },
+      { label: "Entrar", to: "/login" },
+    ],
+  },
 ];
 
 export const Footer = () => (
@@ -20,7 +45,7 @@ export const Footer = () => (
           <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-4">{c.label}</div>
           <div className="flex flex-col gap-2.5">
             {c.links.map(l => (
-              <a key={l} href="#" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">{l}</a>
+              <Link key={l.label} to={l.to} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">{l.label}</Link>
             ))}
           </div>
         </div>

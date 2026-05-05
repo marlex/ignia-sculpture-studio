@@ -48,6 +48,10 @@ export const Coleccion = () => (
             <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-1.5">{o.material}</div>
             <h3 className="font-display font-bold text-[17px] text-ink mb-1">{o.titulo}</h3>
             <div className="font-body text-[14px] font-light text-gray mb-3">{o.artista}</div>
+            <div className="flex items-center gap-1.5 mb-3 font-body text-[12px] font-light text-muted-line uppercase tracking-[0.14em]">
+              <span aria-hidden>◆</span>
+              <span>Autenticidad verificada en blockchain</span>
+            </div>
             <div className="flex items-center justify-between pt-3 border-t-[0.5px] border-border">
               <span className="font-body text-[14px] font-normal text-ink">{o.precio}</span>
               <span className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.12em]">Disponible · 3D</span>
