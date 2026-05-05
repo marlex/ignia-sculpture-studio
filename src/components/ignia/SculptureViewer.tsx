@@ -2,6 +2,7 @@ import { Suspense, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, OrbitControls, ContactShadows, Float } from "@react-three/drei";
 import * as THREE from "three";
+import { ParametricGeometry } from "three/examples/jsm/geometries/ParametricGeometry.js";
 import bg1 from "@/assets/hero-bg-1.jpg";
 import bg2 from "@/assets/hero-bg-2.jpg";
 import bg3 from "@/assets/hero-bg-3.jpg";
