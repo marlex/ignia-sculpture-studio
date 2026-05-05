@@ -41,7 +41,7 @@ export const Coleccion = () => {
     search: "Buscar artista, obra, material…",
     filters: ["Material", "Precio", "Técnica"],
     view3d: "Ver en 3D",
-    auth: "Autenticidad verificada en blockchain",
+    auth: "Autenticidad",
     state: "Disponible · 3D",
   } : {
     h: "Discover the full collection",
@@ -50,7 +50,7 @@ export const Coleccion = () => {
     search: "Search artist, work, material…",
     filters: ["Material", "Price", "Technique"],
     view3d: "View in 3D",
-    auth: "Authenticity verified on blockchain",
+    auth: "Authenticity",
     state: "Available · 3D",
   };
 
@@ -84,9 +84,9 @@ export const Coleccion = () => {
               <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-1.5">{o.material}</div>
               <h3 className="font-display font-bold text-[17px] text-ink mb-1">{o.titulo}</h3>
               <div className="font-body text-[14px] font-light text-gray mb-3">{o.artista}</div>
-              <div className="flex items-center gap-1.5 mb-3 font-body text-[12px] font-light text-muted-line uppercase tracking-[0.14em]">
-                <span aria-hidden>◆</span>
-                <span>{t.auth}</span>
+              <div className="flex items-center gap-1.5 mb-3 font-body text-[11px] font-light text-muted-line normal-case tracking-normal">
+                <span aria-hidden className="text-ink">◆</span>
+                <span>{t.auth} <span className="font-mono text-ink/70">#0x{(i * 7919 + 0x3a9f).toString(16)}…{(i * 1117 + 0xc21).toString(16).slice(-3)}</span></span>
               </div>
               <div className="flex items-center justify-between pt-3 border-t-[0.5px] border-border">
                 <span className="font-body text-[14px] font-normal text-ink">{o.precio}</span>

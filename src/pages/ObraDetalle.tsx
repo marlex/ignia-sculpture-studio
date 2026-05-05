@@ -9,12 +9,12 @@ import { useLang } from "@/i18n/LanguageContext";
 
 const OBRAS = {
   es: {
-    "lirio-en-vuelo": { nombre: "Lirio en vuelo", artista: "Ana Ruiz", material: "Mármol de Carrara", año: "2024", edicion: "Edición única", precio: "€ 14.800", img: hero1, descripcion: "Talla directa en mármol blanco de Carrara. La pieza estudia la verticalidad y el peso aparente del vuelo, en una sola masa continua sin uniones." },
+    "lirio-en-vuelo": { nombre: "Lirio en vuelo", artista: "Ana Ruiz", material: "Bronce a la cera perdida", año: "2024", edicion: "Edición única", precio: "€ 14.800", img: hero1, descripcion: "Bronce fundido a la cera perdida, pulido y patinado a mano en taller. La pieza estudia la verticalidad y el peso aparente del vuelo, en una sola masa continua sin uniones." },
     "ofrenda": { nombre: "Ofrenda", artista: "Helena Vázquez", material: "Bronce pulido a mano", año: "2025", edicion: "Edición única", precio: "€ 22.500", img: hero2, descripcion: "Bronce a la cera perdida, fundido en taller propio y pulido manualmente. La pátina se trabaja en frío para acentuar los planos verticales." },
     "torsion-i": { nombre: "Torsión I", artista: "Camila Soler", material: "Alabastro blanco", año: "2025", edicion: "1 de 3", precio: "€ 11.600", img: hero3, descripcion: "Talla en alabastro translúcido. La pieza explora la torsión interna del bloque y aprovecha la luz natural para revelar las vetas." },
   },
   en: {
-    "lirio-en-vuelo": { nombre: "Lily in flight", artista: "Ana Ruiz", material: "Carrara marble", año: "2024", edicion: "Unique edition", precio: "€ 14,800", img: hero1, descripcion: "Direct carving in white Carrara marble. The piece studies verticality and the apparent weight of flight, in a single continuous mass without joins." },
+    "lirio-en-vuelo": { nombre: "Lily in flight", artista: "Ana Ruiz", material: "Lost-wax bronze", año: "2024", edicion: "Unique edition", precio: "€ 14,800", img: hero1, descripcion: "Lost-wax bronze, hand-polished and patinated in studio. The piece studies verticality and the apparent weight of flight, in a single continuous mass without joins." },
     "ofrenda": { nombre: "Offering", artista: "Helena Vázquez", material: "Hand-polished bronze", año: "2025", edicion: "Unique edition", precio: "€ 22,500", img: hero2, descripcion: "Lost-wax bronze, cast in the artist's own studio and polished by hand. The patina is worked cold to emphasise the vertical planes." },
     "torsion-i": { nombre: "Torsion I", artista: "Camila Soler", material: "White alabaster", año: "2025", edicion: "1 of 3", precio: "€ 11,600", img: hero3, descripcion: "Carving in translucent alabaster. The piece explores the internal torsion of the block and uses natural light to reveal the veins." },
   },

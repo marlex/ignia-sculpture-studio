@@ -1,12 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Environment, OrbitControls, ContactShadows, Float } from "@react-three/drei";
+import * as THREE from "three";
 import bg1 from "@/assets/hero-bg-1.jpg";
 import bg2 from "@/assets/hero-bg-2.jpg";
 import bg3 from "@/assets/hero-bg-3.jpg";
-import hero1 from "@/assets/hero-1.png";
-import hero2 from "@/assets/hero-2.png";
-import hero3 from "@/assets/hero-3.png";
 
-const heroes = [hero1, hero2, hero3];
 const studios = [bg1, bg2, bg3];
 
 interface SculptureViewerProps {
@@ -14,65 +13,74 @@ interface SculptureViewerProps {
   bgMode: "studio" | "white" | "dark";
 }
 
+// Procedural bronze sculpture — twisted vertical form (Lirio en vuelo)
+function BronzeFlight() {
+  const ref = useRef<THREE.Mesh>(null!);
+  useFrame((_, dt) => {
+    if (ref.current) ref.current.rotation.y += dt * 0.35;
+  });
+  // Build a twisted lathe profile
+  const points: THREE.Vector2[] = [];
+  for (let i = 0; i <= 40; i++) {
+    const t = i / 40;
+    const y = t * 3.2 - 1.6;
+    const r = 0.45 + 0.35 * Math.sin(t * Math.PI) - 0.15 * t;
+    points.push(new THREE.Vector2(Math.max(0.05, r), y));
+  }
+  return (
+    <mesh ref={ref} castShadow receiveShadow>
+      <latheGeometry args={[points, 96]} />
+      <meshStandardMaterial color="#7a4a1f" metalness={1} roughness={0.32} envMapIntensity={1.2} />
+    </mesh>
+  );
+}
+
+// Polished bronze "Ofrenda" — torus knot
+function BronzeOffering() {
+  const ref = useRef<THREE.Mesh>(null!);
+  useFrame((_, dt) => {
+    if (ref.current) ref.current.rotation.y += dt * 0.3;
+  });
+  return (
+    <mesh ref={ref} castShadow receiveShadow scale={0.95}>
+      <torusKnotGeometry args={[1, 0.32, 220, 32, 2, 3]} />
+      <meshStandardMaterial color="#8a5a2b" metalness={1} roughness={0.18} envMapIntensity={1.4} />
+    </mesh>
+  );
+}
+
+// Alabaster "Torsión I" — twisted column
+function AlabasterTorsion() {
+  const ref = useRef<THREE.Group>(null!);
+  useFrame((_, dt) => {
+    if (ref.current) ref.current.rotation.y += dt * 0.32;
+  });
+  // Build a twisted box-ish form via segments
+  return (
+    <group ref={ref}>
+      {Array.from({ length: 28 }).map((_, i) => {
+        const t = i / 27;
+        const y = t * 3 - 1.5;
+        const rot = t * Math.PI * 1.4;
+        const s = 0.55 + 0.18 * Math.sin(t * Math.PI);
+        return (
+          <mesh key={i} position={[0, y, 0]} rotation={[0, rot, 0]} castShadow receiveShadow>
+            <boxGeometry args={[s, 3 / 28 + 0.01, s * 0.55]} />
+            <meshStandardMaterial color="#efeae0" metalness={0.05} roughness={0.55} />
+          </mesh>
+        );
+      })}
+    </group>
+  );
+}
+
+const Sculpture = ({ idx }: { idx: number }) => {
+  if (idx === 0) return <BronzeFlight />;
+  if (idx === 1) return <BronzeOffering />;
+  return <AlabasterTorsion />;
+};
+
 export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => {
-  const [angle, setAngle] = useState(0);
-  const [scale, setScale] = useState(1);
-  const drag = useRef({ active: false, x: 0, interacted: false });
-  const angleRef = useRef(0);
-
-  // reset on obra change
-  useEffect(() => {
-    drag.current.interacted = false;
-    angleRef.current = 0;
-    setAngle(0);
-    setScale(1);
-  }, [obraIndex]);
-
-  // continuous smooth auto-rotation (hologram turntable) until user interacts
-  useEffect(() => {
-    let raf = 0;
-    let last = performance.now();
-    const tick = (now: number) => {
-      const dt = (now - last) / 1000;
-      last = now;
-      if (!drag.current.active && !drag.current.interacted) {
-        angleRef.current = (angleRef.current + dt * 25) % 360; // 25°/s ≈ 14.4s per turn
-        setAngle(angleRef.current);
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [obraIndex]);
-
-  useEffect(() => {
-    const onMove = (e: PointerEvent) => {
-      if (!drag.current.active) return;
-      const dx = e.clientX - drag.current.x;
-      drag.current.x = e.clientX;
-      angleRef.current += dx * 0.5;
-      setAngle(angleRef.current);
-    };
-    const onUp = () => (drag.current.active = false);
-    window.addEventListener("pointermove", onMove);
-    window.addEventListener("pointerup", onUp);
-    return () => {
-      window.removeEventListener("pointermove", onMove);
-      window.removeEventListener("pointerup", onUp);
-    };
-  }, []);
-
-  const onDown = (e: React.PointerEvent) => {
-    drag.current.active = true;
-    drag.current.interacted = true;
-    drag.current.x = e.clientX;
-  };
-
-  const onWheel = (e: React.WheelEvent) => {
-    drag.current.interacted = true;
-    setScale(s => Math.max(0.7, Math.min(1.6, s - e.deltaY * 0.001)));
-  };
-
   const bg =
     bgMode === "white"
       ? { background: "#ffffff" }
@@ -84,43 +92,33 @@ export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => 
           backgroundPosition: "center",
         };
 
-  // Hologram-style 3D rotation: rotateY for spin, slight rotateX for axis tilt.
-  // We compress horizontally based on |sin(angle)| to fake the silhouette
-  // narrowing as it turns 90° — gives true volumetric feel from a flat PNG.
-  const rad = (angle * Math.PI) / 180;
-  const compress = 0.45 + 0.55 * Math.abs(Math.cos(rad)); // 0.45 at 90°, 1 at 0°
-  const yaw = Math.sin(rad) * 28; // ±28° rotateY illusion
-  const tilt = -3; // subtle axis tilt for hologram feel
-
   return (
-    <div
-      onPointerDown={onDown}
-      onWheel={onWheel}
-      className="absolute inset-0 cursor-grab active:cursor-grabbing select-none touch-none"
-      style={bg}
-    >
-      <div
-        className="absolute inset-0 flex items-center justify-center"
-        style={{ perspective: "1800px" }}
-      >
-        <img
-          src={heroes[obraIndex]}
-          alt=""
-          draggable={false}
-          className="max-h-[88vh] max-w-[60vw] object-contain"
-          style={{
-            transform: `rotateX(${tilt}deg) rotateY(${yaw}deg) scale(${scale}) scaleX(${compress})`,
-            transformOrigin: "center center",
-            transition: "transform 60ms linear",
-            filter:
-              bgMode === "dark"
-                ? "drop-shadow(0 50px 90px rgba(0,0,0,0.85))"
-                : "drop-shadow(0 35px 70px rgba(0,0,0,0.28))",
-            willChange: "transform",
-            backfaceVisibility: "hidden",
-          }}
-        />
-      </div>
+    <div className="absolute inset-0" style={bg}>
+      <Canvas shadows camera={{ position: [0, 0.4, 5.2], fov: 32 }} dpr={[1, 2]}>
+        <Suspense fallback={null}>
+          <ambientLight intensity={bgMode === "dark" ? 0.25 : 0.6} />
+          <directionalLight
+            position={[4, 6, 5]}
+            intensity={bgMode === "dark" ? 1.6 : 1.1}
+            castShadow
+            shadow-mapSize={[1024, 1024]}
+          />
+          <directionalLight position={[-5, 2, -3]} intensity={0.4} />
+          <Float speed={1.2} rotationIntensity={0} floatIntensity={0.25}>
+            <Sculpture idx={obraIndex} />
+          </Float>
+          <ContactShadows position={[0, -1.65, 0]} opacity={bgMode === "dark" ? 0.7 : 0.45} scale={6} blur={2.4} far={4} />
+          <Environment preset={bgMode === "dark" ? "night" : "studio"} />
+          <OrbitControls
+            enablePan={false}
+            enableZoom
+            minDistance={3.5}
+            maxDistance={8}
+            minPolarAngle={Math.PI / 3}
+            maxPolarAngle={Math.PI / 1.8}
+          />
+        </Suspense>
+      </Canvas>
     </div>
   );
 };
