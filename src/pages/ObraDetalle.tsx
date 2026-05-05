@@ -29,7 +29,7 @@ const T = {
     authP: "Cada obra de Ignia incluye un certificado de autenticidad emitido en blockchain. El registro contiene la firma del artista, la trazabilidad del taller donde se realizó, el número dentro de la edición y el historial completo de propiedad. Es público, verificable desde cualquier parte del mundo y viaja con la pieza en futuras reventas.",
     tokenId: "Token ID", chain: "Cadena", signed: "Firmado por", edition: "Edición",
     cert: "Ver certificado público →",
-    buy: "Adquirir", talk: "Hablar con un curador",
+    buy: "Adquirir", talk: "Hablar con un curador", view3d: "Ver en 3D",
   },
   en: {
     back: "← Back to the collection",
