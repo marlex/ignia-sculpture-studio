@@ -69,10 +69,17 @@ export default function PerfilEscultor() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-          {t.obras.map(o => (
-            <article key={o.titulo} className="group cursor-pointer">
-              <div className="aspect-[4/5] overflow-hidden bg-secondary mb-4">
+          {t.obras.map((o, i) => (
+            <article key={o.titulo} className="group">
+              <div className="relative aspect-[4/5] overflow-hidden bg-secondary mb-4">
                 <img src={o.img} alt={o.titulo} loading="lazy" width={1024} height={1280} className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
+                <button
+                  onClick={() => setOpen3d(i)}
+                  aria-label={`${t.view3d} — ${o.titulo}`}
+                  className="absolute bottom-3 right-3 font-body text-[11px] tracking-[0.16em] uppercase bg-white/95 backdrop-blur text-ink px-3 py-1.5 border-[0.5px] border-border opacity-0 group-hover:opacity-100 transition-opacity hover:bg-ink hover:text-white"
+                >
+                  ◆ {t.view3d}
+                </button>
               </div>
               <h3 className="font-display font-bold text-[16px] text-ink mb-1">{o.titulo}</h3>
               <div className="font-body text-[13px] text-muted-line uppercase tracking-[0.14em]">{o.estado}</div>
@@ -80,6 +87,17 @@ export default function PerfilEscultor() {
           ))}
         </div>
       </section>
+
+      {open3d !== null && (
+        <Sculpture3DModal
+          open={open3d !== null}
+          onClose={() => setOpen3d(null)}
+          obraIndex={open3d}
+          titulo={t.obras[open3d].titulo}
+          artista="Helena Vázquez"
+          material={lang === "es" ? "Bronce" : "Bronze"}
+        />
+      )}
     </main>
   );
 }
