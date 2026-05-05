@@ -13,6 +13,7 @@ import EscultoresPage from "./pages/Escultores.tsx";
 import AprendePage from "./pages/Aprende.tsx";
 import EditorialPage from "./pages/Editorial.tsx";
 import IgniaGalleryPage from "./pages/IgniaGallery.tsx";
+import ObraDetalle from "./pages/ObraDetalle.tsx";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/aprende" element={<AprendePage />} />
           <Route path="/editorial" element={<EditorialPage />} />
           <Route path="/ignia-gallery" element={<IgniaGalleryPage />} />
+          <Route path="/obra/:slug" element={<ObraDetalle />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
