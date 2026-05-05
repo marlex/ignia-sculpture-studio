@@ -1,7 +1,9 @@
 import { useState } from "react";
-import helena from "@/assets/artist-5.jpg";
-import marcos from "@/assets/artist-2.jpg";
-import ana from "@/assets/artist-3.jpg";
+
+// Fotografías reales de personas (Unsplash) — escultores en estudio / retratos naturales
+const helena = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1600&q=80";
+const marcos = "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1600&q=80";
+const ana = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1600&q=80";
 
 const artistas = [
   {
@@ -72,7 +74,7 @@ export const Artistas = () => {
           <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-6">
             {principal.esp} · {principal.obras} · {principal.tiempo}
           </div>
-          <a href="#" className="link-arrow">Leer entrevista completa →</a>
+          <a href="#" className="link-arrow">Ver artista →</a>
         </div>
       </article>
 
