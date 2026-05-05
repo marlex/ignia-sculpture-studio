@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/ignia/Logo";
+import { Sculpture3DModal } from "@/components/ignia/Sculpture3DModal";
 import caida from "@/assets/perfil-escultura-caida.jpg";
 import eco from "@/assets/perfil-escultura-eco.jpg";
 import umbral from "@/assets/perfil-escultura-umbral.jpg";
@@ -10,8 +12,9 @@ import { useLang } from "@/i18n/LanguageContext";
 
 export default function PerfilEscultor() {
   const lang = useLang();
+  const [open3d, setOpen3d] = useState<number | null>(null);
   const t = lang === "es" ? {
-    publish: "Publicar obra ↗", exit: "Salir",
+    publish: "Publicar obra ↗", exit: "Salir", view3d: "Ver en 3D",
     eyebrow: "Perfil de escultor",
     sub: "Bronce figurativo · Toledo, España. Tres décadas trabajando la figura humana desde el oficio lento.",
     stats: [["Obras publicadas", "24"], ["Coleccionistas", "38"], ["Ediciones vendidas", "61"]],
@@ -25,7 +28,7 @@ export default function PerfilEscultor() {
       { img: resto, titulo: "Resto", estado: "Borrador" },
     ],
   } : {
-    publish: "Submit work ↗", exit: "Sign out",
+    publish: "Submit work ↗", exit: "Sign out", view3d: "View in 3D",
     eyebrow: "Sculptor profile",
     sub: "Figurative bronze · Toledo, Spain. Three decades working the human figure through slow craft.",
     stats: [["Published works", "24"], ["Collectors", "38"], ["Editions sold", "61"]],
@@ -66,10 +69,17 @@ export default function PerfilEscultor() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-          {t.obras.map(o => (
-            <article key={o.titulo} className="group cursor-pointer">
-              <div className="aspect-[4/5] overflow-hidden bg-secondary mb-4">
+          {t.obras.map((o, i) => (
+            <article key={o.titulo} className="group">
+              <div className="relative aspect-[4/5] overflow-hidden bg-secondary mb-4">
                 <img src={o.img} alt={o.titulo} loading="lazy" width={1024} height={1280} className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
+                <button
+                  onClick={() => setOpen3d(i)}
+                  aria-label={`${t.view3d} — ${o.titulo}`}
+                  className="absolute bottom-3 right-3 font-body text-[11px] tracking-[0.16em] uppercase bg-white/95 backdrop-blur text-ink px-3 py-1.5 border-[0.5px] border-border opacity-0 group-hover:opacity-100 transition-opacity hover:bg-ink hover:text-white"
+                >
+                  ◆ {t.view3d}
+                </button>
               </div>
               <h3 className="font-display font-bold text-[16px] text-ink mb-1">{o.titulo}</h3>
               <div className="font-body text-[13px] text-muted-line uppercase tracking-[0.14em]">{o.estado}</div>
@@ -77,6 +87,17 @@ export default function PerfilEscultor() {
           ))}
         </div>
       </section>
+
+      {open3d !== null && (
+        <Sculpture3DModal
+          open={open3d !== null}
+          onClose={() => setOpen3d(null)}
+          obraIndex={open3d}
+          titulo={t.obras[open3d].titulo}
+          artista="Helena Vázquez"
+          material={lang === "es" ? "Bronce" : "Bronze"}
+        />
+      )}
     </main>
   );
 }

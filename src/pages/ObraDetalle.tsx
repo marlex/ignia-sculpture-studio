@@ -1,10 +1,11 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
-import hero1 from "@/assets/hero-1.png";
-import hero2 from "@/assets/hero-2.png";
-import hero3 from "@/assets/hero-3.png";
-import bg1 from "@/assets/hero-bg-1.jpg";
+import { Sculpture3DModal } from "@/components/ignia/Sculpture3DModal";
+import hero1 from "@/assets/hero-real-1.jpg";
+import hero2 from "@/assets/hero-real-2.jpg";
+import hero3 from "@/assets/hero-real-3.jpg";
 import { useLang } from "@/i18n/LanguageContext";
 
 const OBRAS = {
@@ -27,7 +28,7 @@ const T = {
     authP: "Cada obra de Ignia incluye un certificado de autenticidad emitido en blockchain. El registro contiene la firma del artista, la trazabilidad del taller donde se realizó, el número dentro de la edición y el historial completo de propiedad. Es público, verificable desde cualquier parte del mundo y viaja con la pieza en futuras reventas.",
     tokenId: "Token ID", chain: "Cadena", signed: "Firmado por", edition: "Edición",
     cert: "Ver certificado público →",
-    buy: "Adquirir", talk: "Hablar con un curador",
+    buy: "Adquirir", talk: "Hablar con un curador", view3d: "Ver en 3D",
   },
   en: {
     back: "← Back to the collection",
@@ -35,7 +36,7 @@ const T = {
     authP: "Every Ignia work includes a certificate of authenticity issued on blockchain. The record contains the artist's signature, full traceability of the studio where it was made, its number within the edition and the complete ownership history. It is public, verifiable from anywhere in the world and travels with the piece in future resales.",
     tokenId: "Token ID", chain: "Chain", signed: "Signed by", edition: "Edition",
     cert: "View public certificate →",
-    buy: "Acquire", talk: "Talk to a curator",
+    buy: "Acquire", talk: "Talk to a curator", view3d: "View in 3D",
   },
 };
 
@@ -45,6 +46,10 @@ const ObraDetalle = () => {
   const obras = OBRAS[lang];
   const t = T[lang];
   const o = obras[slug as keyof typeof obras] ?? obras["lirio-en-vuelo"];
+  const slugIdx = ["lirio-en-vuelo", "ofrenda", "torsion-i"].indexOf(slug) >= 0
+    ? ["lirio-en-vuelo", "ofrenda", "torsion-i"].indexOf(slug)
+    : 0;
+  const [open3d, setOpen3d] = useState(false);
 
   return (
     <main className="pt-14 bg-white">
@@ -52,8 +57,14 @@ const ObraDetalle = () => {
 
       <section className="px-6 md:px-12 py-10">
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10">
-          <div className="aspect-square bg-secondary overflow-hidden flex items-center justify-center" style={{ backgroundImage: `url(${bg1})`, backgroundSize: "cover" }}>
-            <img src={o.img} alt={o.nombre} className="max-h-[80%] max-w-[80%] object-contain drop-shadow-2xl" />
+          <div className="relative aspect-square bg-secondary overflow-hidden">
+            <img src={o.img} alt={o.nombre} className="w-full h-full object-cover" />
+            <button
+              onClick={() => setOpen3d(true)}
+              className="absolute bottom-4 right-4 font-body text-[12px] tracking-[0.16em] uppercase bg-white/95 backdrop-blur text-ink px-4 py-2.5 border-[0.5px] border-border hover:bg-ink hover:text-white transition-colors"
+            >
+              ◆ {t.view3d}
+            </button>
           </div>
           <div>
             <div className="eyebrow mb-3"><Link to="/coleccion" className="hover:text-ink">{t.back}</Link></div>
@@ -90,6 +101,15 @@ const ObraDetalle = () => {
           </div>
         </div>
       </section>
+
+      <Sculpture3DModal
+        open={open3d}
+        onClose={() => setOpen3d(false)}
+        obraIndex={slugIdx}
+        titulo={o.nombre}
+        artista={o.artista}
+        material={o.material}
+      />
 
       <Footer />
     </main>
