@@ -63,14 +63,14 @@ export default function PerfilColeccionista() {
 
 const coleccion = [
   { img: "https://images.unsplash.com/photo-1554188248-986adbb73be4?w=800&q=80", titulo: "Caída", artista: "Helena Vázquez" },
-  { img: "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=800&q=80", titulo: "Umbral", artista: "Marcos Iriarte" },
-  { img: "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=800&q=80", titulo: "Quietud", artista: "Ana Ruiz" },
+  { img: "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=800&q=80", titulo: "Umbral", artista: "Marcos Iriarte" },
+  { img: "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?w=800&q=80", titulo: "Quietud", artista: "Ana Ruiz" },
 ];
 
 const recomendados = [
   { img: "https://images.unsplash.com/photo-1577720580479-7d839d829c73?w=800&q=80", titulo: "Eco", artista: "Diego Lara" },
-  { img: "https://images.unsplash.com/photo-1577720643272-265f09367456?w=800&q=80", titulo: "Vértice", artista: "Camila Soler" },
-  { img: "https://images.unsplash.com/photo-1577083553131-9b4b18b00ed0?w=800&q=80", titulo: "Resto", artista: "Mateo Rivas" },
+  { img: "https://images.unsplash.com/photo-1544413164-5f1b295eb435?w=800&q=80", titulo: "Vértice", artista: "Camila Soler" },
+  { img: "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?w=800&q=80", titulo: "Resto", artista: "Mateo Rivas" },
   { img: "https://images.unsplash.com/photo-1554188248-986adbb73be4?w=800&q=80", titulo: "Memoria", artista: "Helena Vázquez" },
 ];
 
