@@ -28,7 +28,7 @@ export default function PerfilEscultor() {
       { img: resto, titulo: "Resto", estado: "Borrador" },
     ],
   } : {
-    publish: "Submit work ↗", exit: "Sign out",
+    publish: "Submit work ↗", exit: "Sign out", view3d: "View in 3D",
     eyebrow: "Sculptor profile",
     sub: "Figurative bronze · Toledo, Spain. Three decades working the human figure through slow craft.",
     stats: [["Published works", "24"], ["Collectors", "38"], ["Editions sold", "61"]],
