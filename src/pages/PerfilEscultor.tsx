@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/ignia/Logo";
+import { Sculpture3DModal } from "@/components/ignia/Sculpture3DModal";
 import caida from "@/assets/perfil-escultura-caida.jpg";
 import eco from "@/assets/perfil-escultura-eco.jpg";
 import umbral from "@/assets/perfil-escultura-umbral.jpg";
