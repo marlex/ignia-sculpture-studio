@@ -104,9 +104,7 @@ export const Hero = () => {
             <span style={{ color: dark ? "#333" : "hsl(var(--border))" }}>·</span>
             <span>{o.material}</span>
             <span style={{ color: dark ? "#333" : "hsl(var(--border))" }}>·</span>
-            <span>{o.año}</span>
-            <span style={{ color: dark ? "#333" : "hsl(var(--border))" }}>·</span>
-            <span>{o.edicion}</span>
+            <span className="font-mono text-[12px]">{o.auth}</span>
           </div>
           <div className="flex items-baseline gap-7">
             <span className="font-display font-bold text-[22px] tracking-[-0.01em]" style={{ color: textColor }}>{o.precio}</span>
