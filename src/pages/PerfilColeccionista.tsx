@@ -13,8 +13,9 @@ import { useLang } from "@/i18n/LanguageContext";
 
 export default function PerfilColeccionista() {
   const lang = useLang();
+  const [open3d, setOpen3d] = useState<{ idx: number; titulo: string; artista: string } | null>(null);
   const t = lang === "es" ? {
-    exit: "Salir",
+    exit: "Salir", view3d: "Ver en 3D",
     eyebrow: "Perfil de coleccionista",
     sub: "Intereses: figurativo, gran formato. Presupuesto 5.000 € – 25.000 €.",
     stats: [["Obras en colección", "7"], ["Guardadas", "23"], ["Escultores seguidos", "12"]],
