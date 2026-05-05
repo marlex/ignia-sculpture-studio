@@ -1,7 +1,7 @@
 export const CtaFinal = () => (
   <section className="px-6 md:px-12 py-32 text-center" style={{ background: "hsl(var(--black-pure))" }}>
     <h2 className="font-display font-bold text-white tracking-[-0.02em]" style={{ fontSize: "clamp(32px, 4vw, 52px)" }}>
-      Tu obra de arte empieza aquí.
+      Tu escultura empieza aquí.
     </h2>
     <p className="font-body text-[16px] font-light mt-5 mb-12 text-white">
       Colecciona y vende esculturas con la mayor autenticidad.

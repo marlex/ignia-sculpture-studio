@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const posts = [
-  { img: "https://images.unsplash.com/photo-1577083287894-2bdf3b4cd2cd?w=1200&q=80", tag: "Para coleccionistas", titulo: "Cómo leer la pátina de una pieza de bronce", tiempo: "8 min de lectura" },
+  { img: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=1600&q=80", tag: "Para coleccionistas", titulo: "Cómo leer la pátina de una pieza de bronce", tiempo: "8 min de lectura" },
   { img: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=1200&q=80", tag: "Para artistas", titulo: "Fotografiar escultura sin distorsionar el volumen", tiempo: "12 min de lectura" },
   { img: "https://images.unsplash.com/photo-1594732832278-abd644401426?w=1200&q=80", tag: "Editorial", titulo: "Ediciones únicas vs ediciones limitadas: qué cambia", tiempo: "6 min de lectura" },
 ];
@@ -12,7 +12,7 @@ export const Aprende = () => {
   return (
     <section className="bg-surface px-6 md:px-12 py-24">
       <div className="flex items-end justify-between mb-10">
-        <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">Ignia Aprende</h2>
+        <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">Ignia aprende</h2>
         <a href="#" className="link-arrow">Ver más →</a>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-[65%_35%] gap-8 md:gap-14 items-center">

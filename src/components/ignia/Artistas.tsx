@@ -39,7 +39,7 @@ export const Artistas = () => {
     <section className="bg-white px-6 md:px-12 py-24">
       <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
         <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">
-          Artistas en Ignia
+          Escultores
         </h2>
         <a href="#" className="link-arrow">Ver todos →</a>
       </div>
@@ -74,7 +74,7 @@ export const Artistas = () => {
       {/* Otros artistas - miniaturas con descripción a la derecha */}
       <div className="border-t border-border pt-10">
         <div className="font-body text-[12px] font-light text-muted-line uppercase tracking-[0.18em] mb-6">
-          Artistas destacados
+          Escultores destacados
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {secundarios.map((a) => {
