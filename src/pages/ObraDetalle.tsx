@@ -6,7 +6,6 @@ import { Sculpture3DModal } from "@/components/ignia/Sculpture3DModal";
 import hero1 from "@/assets/hero-real-1.jpg";
 import hero2 from "@/assets/hero-real-2.jpg";
 import hero3 from "@/assets/hero-real-3.jpg";
-import bg1 from "@/assets/hero-bg-1.jpg";
 import { useLang } from "@/i18n/LanguageContext";
 
 const OBRAS = {
