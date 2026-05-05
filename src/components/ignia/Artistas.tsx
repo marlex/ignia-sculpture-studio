@@ -1,29 +1,29 @@
 import { useState } from "react";
 import { useLang } from "@/i18n/LanguageContext";
-import helena from "@/assets/artist-helena.jpg";
-import marcos from "@/assets/artist-marcos.jpg";
-import ana from "@/assets/artist-ana.jpg";
+import cristina from "@/assets/artist-cristina-iglesias-real.jpg";
+import jaume from "@/assets/artist-jaume-plensa-real.jpg";
+import susana from "@/assets/artist-susana-solano-real.jpg";
 
 const ARTISTAS = {
   es: [
-    { foto: helena, nombre: "Helena Vázquez", esp: "Bronce figurativo", obras: "24 obras",
-      titularEntrevista: "“El bronce no se domina, se escucha durante años hasta que empieza a responder.”",
-      extracto: "Helena Vázquez lleva tres décadas trabajando la figura humana en bronce desde su taller en Toledo. En esta conversación habla del oficio lento, de las piezas que casi destruye, y de por qué se niega a producir ediciones grandes.",
-      tiempo: "18 min de lectura", tag: "Entrevista" },
-    { foto: marcos, nombre: "Marcos Iriarte", esp: "Abstracción metálica", obras: "18 obras",
-      extracto: "El acero corten como lenguaje del paisaje industrial reinterpretado. Iriarte trabaja la oxidación controlada como parte del proceso creativo." },
-    { foto: ana, nombre: "Ana Ruiz", esp: "Mármol y piedra", obras: "31 obras",
-      extracto: "Desde su taller en Macael, Ana talla mármol blanco buscando la forma orgánica que la piedra ya contiene. Una obra puede llevarle más de un año." },
+    { foto: cristina, nombre: "Cristina Iglesias", esp: "Espacio, agua y bronce", obras: "Obra pública y museística",
+      titularEntrevista: "“Me interesa que la escultura no sea solo un objeto, sino un lugar que se atraviesa.”",
+      extracto: "Fotografiada en un contexto editorial real, Iglesias trabaja la escultura como arquitectura íntima: celosías, bronce, agua y recorridos que invitan a mirar desde dentro.",
+      tiempo: "18 min de lectura", tag: "Entrevista", credito: "Foto: Berria · CC BY-SA 4.0" },
+    { foto: jaume, nombre: "Jaume Plensa", esp: "Figura, palabra y escala", obras: "Instalaciones internacionales",
+      extracto: "Plensa aparece en una entrega de premios real, lejos del posado de catálogo. Su obra une presencia humana, silencio y escritura en piezas monumentales." , credito: "Foto: Gremi d'Editors de Catalunya · CC BY-SA 2.0" },
+    { foto: susana, nombre: "Susana Solano", esp: "Metal, estructura y espacio", obras: "Escultura contemporánea",
+      extracto: "Retratada junto a obra pública en un entorno real, Solano aborda el metal como construcción física y mental, con piezas que tensan vacío, peso y recorrido.", credito: "Foto: Kamahele · CC BY-SA 3.0" },
   ],
   en: [
-    { foto: helena, nombre: "Helena Vázquez", esp: "Figurative bronze", obras: "24 works",
-      titularEntrevista: "“You don't master bronze. You listen to it for years until it starts to answer.”",
-      extracto: "Helena Vázquez has spent three decades working the human figure in bronze from her studio in Toledo. In this conversation she talks about slow craft, the pieces she almost destroyed, and why she refuses to produce large editions.",
-      tiempo: "18 min read", tag: "Interview" },
-    { foto: marcos, nombre: "Marcos Iriarte", esp: "Metal abstraction", obras: "18 works",
-      extracto: "Corten steel as a reinterpreted language of the industrial landscape. Iriarte uses controlled oxidation as part of the creative process." },
-    { foto: ana, nombre: "Ana Ruiz", esp: "Marble and stone", obras: "31 works",
-      extracto: "From her workshop in Macael, Ana carves white marble searching for the organic form the stone already contains. A piece can take her over a year." },
+    { foto: cristina, nombre: "Cristina Iglesias", esp: "Space, water and bronze", obras: "Public and museum work",
+      titularEntrevista: "“I am interested in sculpture not only as an object, but as a place you move through.”",
+      extracto: "Photographed in a real editorial context, Iglesias treats sculpture as intimate architecture: lattices, bronze, water and passages that invite you to look from within.",
+      tiempo: "18 min read", tag: "Interview", credito: "Photo: Berria · CC BY-SA 4.0" },
+    { foto: jaume, nombre: "Jaume Plensa", esp: "Figure, word and scale", obras: "International installations",
+      extracto: "Plensa appears at a real awards ceremony, far from a catalogue pose. His work brings together human presence, silence and writing in monumental pieces.", credito: "Photo: Gremi d'Editors de Catalunya · CC BY-SA 2.0" },
+    { foto: susana, nombre: "Susana Solano", esp: "Metal, structure and space", obras: "Contemporary sculpture",
+      extracto: "Photographed beside public work in a real setting, Solano approaches metal as both physical and mental construction, tensioning void, weight and movement.", credito: "Photo: Kamahele · CC BY-SA 3.0" },
   ],
 };
 
@@ -46,7 +46,7 @@ export const Artistas = () => {
 
       <article className="grid grid-cols-1 md:grid-cols-[65%_35%] gap-8 md:gap-14 items-center mb-16">
         <div className="aspect-[16/9] overflow-hidden bg-secondary">
-          <img src={principal.foto} alt={principal.nombre} loading="lazy" width={1600} height={900} className="w-full h-full object-cover object-[center_25%]" />
+          <img src={principal.foto} alt={principal.nombre} loading="lazy" width={1600} height={900} className="w-full h-full object-cover object-[center_35%]" />
         </div>
         <div>
           <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-4">
@@ -59,6 +59,7 @@ export const Artistas = () => {
           <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-6">
             {principal.esp} · {principal.obras} · {principal.tiempo}
           </div>
+          <div className="font-body text-[11px] font-light text-muted-line mb-6">{principal.credito}</div>
           <a href="#" className="link-arrow">{t.view}</a>
         </div>
       </article>
@@ -71,12 +72,13 @@ export const Artistas = () => {
             return (
               <button key={a.nombre} onClick={() => setI(realIdx)} className="group grid grid-cols-[40%_60%] gap-5 text-left items-start">
                 <div className="aspect-square overflow-hidden bg-secondary">
-                  <img src={a.foto} alt={a.nombre} loading="lazy" width={800} height={800} className="w-full h-full object-cover object-[center_25%] transition-transform duration-[700ms] group-hover:scale-[1.03]" />
+                  <img src={a.foto} alt={a.nombre} loading="lazy" width={800} height={800} className="w-full h-full object-cover object-[center_35%] transition-transform duration-[700ms] group-hover:scale-[1.03]" />
                 </div>
                 <div>
                   <h4 className="font-display font-bold text-[18px] text-ink mb-1.5 leading-tight">{a.nombre}</h4>
                   <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{a.esp}</div>
                   <p className="font-body text-[14px] font-light text-gray leading-relaxed mb-3">{a.extracto}</p>
+                  <div className="font-body text-[11px] font-light text-muted-line mb-3">{a.credito}</div>
                   <span className="link-arrow text-[12px]">{t.view}</span>
                 </div>
               </button>
