@@ -1,6 +1,6 @@
 import { Logo } from "./Logo";
 
-const navItems = ["Ignia", "Colección", "Artistas", "Aprende", "Editorial"];
+const navItems = ["Colección", "Artistas", "Aprende", "Editorial", "Ignia gallery"];
 
 export const Header = () => (
   <header className="sticky top-0 z-[100] h-14 bg-white border-b border-border flex items-center px-6 md:px-12">
