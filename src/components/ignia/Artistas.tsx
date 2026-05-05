@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLang } from "@/i18n/LanguageContext";
 
 const helena = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1600&q=80";
-const marcos = "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1600&q=80";
+const marcos = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1600&q=80";
 const ana = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1600&q=80";
 
 const ARTISTAS = {
