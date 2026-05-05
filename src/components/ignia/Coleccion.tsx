@@ -36,6 +36,7 @@ const OBRAS = {
 export const Coleccion = () => {
   const lang = useLang();
   const obras = OBRAS[lang];
+  const [open3d, setOpen3d] = useState<number | null>(null);
   const t = lang === "es" ? {
     h: "Descubre todas las colecciones",
     cta: "Ver las 843 obras →",
