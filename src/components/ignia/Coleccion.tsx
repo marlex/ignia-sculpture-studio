@@ -76,12 +76,16 @@ export const Coleccion = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
         {obras.map((o, i) => (
-          <article key={i} className="bg-white group cursor-pointer">
+          <article key={i} className="bg-white group">
             <div className="relative aspect-[4/5] overflow-hidden bg-secondary">
               <img src={o.img} alt={o.titulo} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <span className="font-body text-[14px] font-light tracking-[0.16em] uppercase text-white">{t.view3d}</span>
-              </div>
+              <button
+                onClick={() => setOpen3d(i)}
+                aria-label={`${t.view3d} — ${o.titulo}`}
+                className="absolute bottom-3 right-3 font-body text-[11px] tracking-[0.16em] uppercase bg-white/95 backdrop-blur text-ink px-3 py-1.5 border-[0.5px] border-border opacity-0 group-hover:opacity-100 transition-opacity hover:bg-ink hover:text-white"
+              >
+                ◆ {t.view3d}
+              </button>
             </div>
             <div className="p-5">
               <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-1.5">{o.material}</div>
@@ -93,12 +97,28 @@ export const Coleccion = () => {
               </div>
               <div className="flex items-center justify-between pt-3 border-t-[0.5px] border-border">
                 <span className="font-body text-[14px] font-normal text-ink">{o.precio}</span>
-                <span className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.12em]">{t.state}</span>
+                <button
+                  onClick={() => setOpen3d(i)}
+                  className="font-body text-[12px] font-light text-ink uppercase tracking-[0.12em] hover:opacity-60 transition-opacity"
+                >
+                  {t.view3d} →
+                </button>
               </div>
             </div>
           </article>
         ))}
       </div>
+
+      {open3d !== null && (
+        <Sculpture3DModal
+          open={open3d !== null}
+          onClose={() => setOpen3d(null)}
+          obraIndex={open3d}
+          titulo={obras[open3d].titulo}
+          artista={obras[open3d].artista}
+          material={obras[open3d].material}
+        />
+      )}
     </section>
   );
 };
