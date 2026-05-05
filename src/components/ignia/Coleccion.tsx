@@ -1,3 +1,4 @@
+import { useState } from "react";
 import obra1 from "@/assets/obra-1.jpg";
 import obra2 from "@/assets/obra-2.jpg";
 import obra3 from "@/assets/obra-3.jpg";
@@ -7,6 +8,7 @@ import obra6 from "@/assets/obra-6.jpg";
 import obra7 from "@/assets/obra-7.jpg";
 import obra8 from "@/assets/obra-8.jpg";
 import { useLang } from "@/i18n/LanguageContext";
+import { Sculpture3DModal } from "./Sculpture3DModal";
 
 const OBRAS = {
   es: [
