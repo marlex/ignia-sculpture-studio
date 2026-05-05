@@ -17,7 +17,7 @@ export const Aprende = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-[65%_35%] gap-8 md:gap-14 items-center">
         <div className="aspect-[16/9] overflow-hidden bg-secondary">
-          <img src={p.img} alt={p.titulo} className="w-full h-full object-cover" />
+          <img src={p.img} alt={p.titulo} loading="lazy" className="w-full h-full object-cover object-[center_30%]" />
         </div>
         <div>
           <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{p.tag}</div>
