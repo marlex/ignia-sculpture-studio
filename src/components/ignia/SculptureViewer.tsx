@@ -52,7 +52,7 @@ function BronzeOffering() {
     if (ref.current) ref.current.rotation.y += dt * 0.28;
   });
   const geom = (() => {
-    const g = new THREE.ParametricGeometry(
+    const g = new ParametricGeometry(
       (u, v, target) => {
         const U = u * Math.PI * 2;
         const V = (v - 0.5) * 0.55;
