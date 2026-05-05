@@ -12,7 +12,7 @@ export const Aprende = () => {
   return (
     <section className="bg-surface px-6 md:px-12 py-24">
       <div className="flex items-end justify-between mb-10">
-        <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">Ignia Aprende</h2>
+        <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">Ignia aprende</h2>
         <a href="#" className="link-arrow">Ver más →</a>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-[65%_35%] gap-8 md:gap-14 items-center">
