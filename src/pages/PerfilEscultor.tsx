@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/ignia/Logo";
+import obra1 from "@/assets/obra-1.jpg";
+import obra2 from "@/assets/obra-2.jpg";
+import obra3 from "@/assets/obra-3.jpg";
+import obra4 from "@/assets/obra-4.jpg";
+import obra5 from "@/assets/obra-5.jpg";
+import obra6 from "@/assets/obra-6.jpg";
 
 export default function PerfilEscultor() {
   return (
@@ -50,12 +56,12 @@ export default function PerfilEscultor() {
 }
 
 const obras = [
-  { img: "https://images.unsplash.com/photo-1554188248-986adbb73be4?w=800&q=80", titulo: "Caída", estado: "Publicada" },
-  { img: "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?w=800&q=80", titulo: "Eco", estado: "Publicada" },
-  { img: "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=800&q=80", titulo: "Umbral", estado: "Borrador" },
-  { img: "https://images.unsplash.com/photo-1544413164-5f1b295eb435?w=800&q=80", titulo: "Vértice", estado: "Vendida" },
-  { img: "https://images.unsplash.com/photo-1577720580479-7d839d829c73?w=800&q=80", titulo: "Quietud", estado: "Publicada" },
-  { img: "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?w=800&q=80", titulo: "Resto", estado: "Borrador" },
+  { img: obra1, titulo: "Caída", estado: "Publicada" },
+  { img: obra6, titulo: "Eco", estado: "Publicada" },
+  { img: obra2, titulo: "Umbral", estado: "Borrador" },
+  { img: obra3, titulo: "Vértice", estado: "Vendida" },
+  { img: obra7, titulo: "Quietud", estado: "Publicada" },
+  { img: obra4, titulo: "Resto", estado: "Borrador" },
 ];
 
 const Stat = ({ label, value }: { label: string; value: string }) => (
