@@ -6,6 +6,7 @@ import obra3 from "@/assets/obra-3.jpg";
 import obra4 from "@/assets/obra-4.jpg";
 import obra5 from "@/assets/obra-5.jpg";
 import obra6 from "@/assets/obra-6.jpg";
+import obra7 from "@/assets/obra-7.jpg";
 
 export default function PerfilEscultor() {
   return (
