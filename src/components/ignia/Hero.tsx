@@ -4,14 +4,14 @@ import { useLang } from "@/i18n/LanguageContext";
 
 const OBRAS = {
   es: [
-    { nombre: "Lirio en vuelo", artista: "Ana Ruiz", material: "Bronce a la cera perdida", año: "2024", edicion: "Edición única", precio: "€ 14.800", slug: "lirio-en-vuelo" },
-    { nombre: "Ofrenda", artista: "Helena Vázquez", material: "Bronce pulido a mano", año: "2025", edicion: "Edición única", precio: "€ 22.500", slug: "ofrenda" },
-    { nombre: "Torsión I", artista: "Camila Soler", material: "Alabastro blanco", año: "2025", edicion: "1 de 3", precio: "€ 11.600", slug: "torsion-i" },
+    { nombre: "Lirio en vuelo", artista: "Ana Ruiz", material: "Bronce a la cera perdida", precio: "€ 14.800", slug: "lirio-en-vuelo", auth: "Autenticidad #0x3a9f…c21" },
+    { nombre: "Ofrenda", artista: "Helena Vázquez", material: "Bronce pulido a mano", precio: "€ 22.500", slug: "ofrenda", auth: "Autenticidad #0x7b14…e08" },
+    { nombre: "Torsión I", artista: "Camila Soler", material: "Alabastro blanco", precio: "€ 11.600", slug: "torsion-i", auth: "Autenticidad #0x2d5c…a93" },
   ],
   en: [
-    { nombre: "Lily in flight", artista: "Ana Ruiz", material: "Lost-wax bronze", año: "2024", edicion: "Unique edition", precio: "€ 14,800", slug: "lirio-en-vuelo" },
-    { nombre: "Offering", artista: "Helena Vázquez", material: "Hand-polished bronze", año: "2025", edicion: "Unique edition", precio: "€ 22,500", slug: "ofrenda" },
-    { nombre: "Torsion I", artista: "Camila Soler", material: "White alabaster", año: "2025", edicion: "1 of 3", precio: "€ 11,600", slug: "torsion-i" },
+    { nombre: "Lily in flight", artista: "Ana Ruiz", material: "Lost-wax bronze", precio: "€ 14,800", slug: "lirio-en-vuelo", auth: "Authenticity #0x3a9f…c21" },
+    { nombre: "Offering", artista: "Helena Vázquez", material: "Hand-polished bronze", precio: "€ 22,500", slug: "ofrenda", auth: "Authenticity #0x7b14…e08" },
+    { nombre: "Torsion I", artista: "Camila Soler", material: "White alabaster", precio: "€ 11,600", slug: "torsion-i", auth: "Authenticity #0x2d5c…a93" },
   ],
 };
 
@@ -104,9 +104,7 @@ export const Hero = () => {
             <span style={{ color: dark ? "#333" : "hsl(var(--border))" }}>·</span>
             <span>{o.material}</span>
             <span style={{ color: dark ? "#333" : "hsl(var(--border))" }}>·</span>
-            <span>{o.año}</span>
-            <span style={{ color: dark ? "#333" : "hsl(var(--border))" }}>·</span>
-            <span>{o.edicion}</span>
+            <span className="font-mono text-[12px]">{o.auth}</span>
           </div>
           <div className="flex items-baseline gap-7">
             <span className="font-display font-bold text-[22px] tracking-[-0.01em]" style={{ color: textColor }}>{o.precio}</span>
