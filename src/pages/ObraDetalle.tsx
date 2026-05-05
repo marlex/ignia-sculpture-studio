@@ -103,6 +103,15 @@ const ObraDetalle = () => {
         </div>
       </section>
 
+      <Sculpture3DModal
+        open={open3d}
+        onClose={() => setOpen3d(false)}
+        obraIndex={slugIdx}
+        titulo={o.nombre}
+        artista={o.artista}
+        material={o.material}
+      />
+
       <Footer />
     </main>
   );
