@@ -41,7 +41,7 @@ export const Coleccion = () => {
     search: "Buscar artista, obra, material…",
     filters: ["Material", "Precio", "Técnica"],
     view3d: "Ver en 3D",
-    auth: "Autenticidad verificada en blockchain",
+    auth: "Autenticidad",
     state: "Disponible · 3D",
   } : {
     h: "Discover the full collection",
