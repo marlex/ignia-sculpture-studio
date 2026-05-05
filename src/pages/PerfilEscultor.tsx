@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/ignia/Logo";
-import obra1 from "@/assets/obra-1.jpg";
-import obra2 from "@/assets/obra-2.jpg";
-import obra3 from "@/assets/obra-3.jpg";
-import obra4 from "@/assets/obra-4.jpg";
-import obra5 from "@/assets/obra-5.jpg";
-import obra6 from "@/assets/obra-6.jpg";
-import obra7 from "@/assets/obra-7.jpg";
+import caida from "@/assets/perfil-escultura-caida.jpg";
+import eco from "@/assets/perfil-escultura-eco.jpg";
+import umbral from "@/assets/perfil-escultura-umbral.jpg";
+import vertice from "@/assets/perfil-escultura-vertice.jpg";
+import quietud from "@/assets/perfil-escultura-quietud.jpg";
+import resto from "@/assets/perfil-escultura-resto.jpg";
 
 export default function PerfilEscultor() {
   return (
@@ -44,7 +43,7 @@ export default function PerfilEscultor() {
           {obras.map(o => (
             <article key={o.titulo} className="group cursor-pointer">
               <div className="aspect-[4/5] overflow-hidden bg-secondary mb-4">
-                <img src={o.img} alt={o.titulo} loading="lazy" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[700ms]" />
+                <img src={o.img} alt={o.titulo} loading="lazy" width={1024} height={1280} className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
               </div>
               <h3 className="font-display font-bold text-[16px] text-ink mb-1">{o.titulo}</h3>
               <div className="font-body text-[13px] text-muted-line uppercase tracking-[0.14em]">{o.estado}</div>
@@ -57,12 +56,12 @@ export default function PerfilEscultor() {
 }
 
 const obras = [
-  { img: obra1, titulo: "Caída", estado: "Publicada" },
-  { img: obra6, titulo: "Eco", estado: "Publicada" },
-  { img: obra2, titulo: "Umbral", estado: "Borrador" },
-  { img: obra3, titulo: "Vértice", estado: "Vendida" },
-  { img: obra7, titulo: "Quietud", estado: "Publicada" },
-  { img: obra4, titulo: "Resto", estado: "Borrador" },
+  { img: caida, titulo: "Caída", estado: "Publicada" },
+  { img: eco, titulo: "Eco", estado: "Publicada" },
+  { img: umbral, titulo: "Umbral", estado: "Borrador" },
+  { img: vertice, titulo: "Vértice", estado: "Vendida" },
+  { img: quietud, titulo: "Quietud", estado: "Publicada" },
+  { img: resto, titulo: "Resto", estado: "Borrador" },
 ];
 
 const Stat = ({ label, value }: { label: string; value: string }) => (

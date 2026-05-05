@@ -1,8 +1,11 @@
 import { useState } from "react";
+import helena from "@/assets/artist-5.jpg";
+import marcos from "@/assets/artist-2.jpg";
+import ana from "@/assets/artist-3.jpg";
 
 const artistas = [
   {
-    foto: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1600&q=80",
+    foto: helena,
     nombre: "Helena Vázquez",
     esp: "Bronce figurativo",
     obras: "24 obras",
@@ -13,7 +16,7 @@ const artistas = [
     tag: "Entrevista",
   },
   {
-    foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+    foto: marcos,
     nombre: "Marcos Iriarte",
     esp: "Abstracción metálica",
     obras: "18 obras",
@@ -21,7 +24,7 @@ const artistas = [
       "El acero corten como lenguaje del paisaje industrial reinterpretado. Iriarte trabaja la oxidación controlada como parte del proceso creativo.",
   },
   {
-    foto: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&q=80",
+    foto: ana,
     nombre: "Ana Ruiz",
     esp: "Mármol y piedra",
     obras: "31 obras",
@@ -51,7 +54,9 @@ export const Artistas = () => {
             src={principal.foto}
             alt={principal.nombre}
             loading="lazy"
-            className="w-full h-full object-cover object-[center_25%] grayscale"
+            width={1600}
+            height={900}
+            className="w-full h-full object-cover object-[center_25%]"
           />
         </div>
         <div>
@@ -90,7 +95,9 @@ export const Artistas = () => {
                     src={a.foto}
                     alt={a.nombre}
                     loading="lazy"
-                    className="w-full h-full object-cover object-[center_25%] grayscale group-hover:grayscale-0 transition-all duration-[700ms]"
+                    width={800}
+                    height={800}
+                    className="w-full h-full object-cover object-[center_25%] transition-transform duration-[700ms] group-hover:scale-[1.03]"
                   />
                 </div>
                 <div>

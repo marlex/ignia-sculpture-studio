@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/ignia/Logo";
-import obra1 from "@/assets/obra-1.jpg";
-import obra2 from "@/assets/obra-2.jpg";
-import obra3 from "@/assets/obra-3.jpg";
-import obra4 from "@/assets/obra-4.jpg";
-import obra5 from "@/assets/obra-5.jpg";
-import obra6 from "@/assets/obra-6.jpg";
-import obra7 from "@/assets/obra-7.jpg";
+import arco from "@/assets/perfil-escultura-arco.jpg";
+import memoria from "@/assets/perfil-escultura-memoria.jpg";
+import nexo from "@/assets/perfil-escultura-nexo.jpg";
+import latido from "@/assets/perfil-escultura-latido.jpg";
+import orbita from "@/assets/perfil-escultura-orbita.jpg";
+import mineral from "@/assets/perfil-escultura-mineral.jpg";
+import respiro from "@/assets/perfil-escultura-respiro.jpg";
 
 export default function PerfilColeccionista() {
   return (
@@ -40,7 +40,7 @@ export default function PerfilColeccionista() {
             {coleccion.map(o => (
               <article key={o.titulo} className="group cursor-pointer">
                 <div className="aspect-[4/5] overflow-hidden bg-secondary mb-4">
-                  <img src={o.img} alt={o.titulo} loading="lazy" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[700ms]" />
+                  <img src={o.img} alt={o.titulo} loading="lazy" width={1024} height={1280} className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
                 </div>
                 <h3 className="font-display font-bold text-[16px] text-ink mb-1">{o.titulo}</h3>
                 <div className="font-body text-[13px] text-muted-line uppercase tracking-[0.14em]">{o.artista}</div>
@@ -55,7 +55,7 @@ export default function PerfilColeccionista() {
             {recomendados.map(o => (
               <article key={o.titulo} className="group cursor-pointer">
                 <div className="aspect-square overflow-hidden bg-secondary mb-3">
-                  <img src={o.img} alt={o.titulo} loading="lazy" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[700ms]" />
+                  <img src={o.img} alt={o.titulo} loading="lazy" width={1024} height={1024} className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
                 </div>
                 <h3 className="font-display font-bold text-[14px] text-ink">{o.titulo}</h3>
                 <div className="font-body text-[12px] text-muted-line uppercase tracking-[0.14em]">{o.artista}</div>
@@ -69,16 +69,16 @@ export default function PerfilColeccionista() {
 }
 
 const coleccion = [
-  { img: obra1, titulo: "Caída", artista: "Helena Vázquez" },
-  { img: obra2, titulo: "Umbral", artista: "Marcos Iriarte" },
-  { img: obra7, titulo: "Quietud", artista: "Ana Ruiz" },
+  { img: arco, titulo: "Arco", artista: "Helena Vázquez" },
+  { img: memoria, titulo: "Memoria", artista: "Marcos Iriarte" },
+  { img: nexo, titulo: "Nexo", artista: "Ana Ruiz" },
 ];
 
 const recomendados = [
-  { img: obra6, titulo: "Eco", artista: "Diego Lara" },
-  { img: obra3, titulo: "Vértice", artista: "Camila Soler" },
-  { img: obra4, titulo: "Resto", artista: "Mateo Rivas" },
-  { img: obra5, titulo: "Memoria", artista: "Helena Vázquez" },
+  { img: latido, titulo: "Latido", artista: "Diego Lara" },
+  { img: orbita, titulo: "Órbita", artista: "Camila Soler" },
+  { img: mineral, titulo: "Mineral", artista: "Mateo Rivas" },
+  { img: respiro, titulo: "Respiro", artista: "Helena Vázquez" },
 ];
 
 const Stat = ({ label, value }: { label: string; value: string }) => (
