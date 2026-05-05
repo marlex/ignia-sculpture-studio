@@ -9,7 +9,7 @@ import { useLang } from "@/i18n/LanguageContext";
 
 const OBRAS = {
   es: {
-    "lirio-en-vuelo": { nombre: "Lirio en vuelo", artista: "Ana Ruiz", material: "Mármol de Carrara", año: "2024", edicion: "Edición única", precio: "€ 14.800", img: hero1, descripcion: "Talla directa en mármol blanco de Carrara. La pieza estudia la verticalidad y el peso aparente del vuelo, en una sola masa continua sin uniones." },
+    "lirio-en-vuelo": { nombre: "Lirio en vuelo", artista: "Ana Ruiz", material: "Bronce a la cera perdida", año: "2024", edicion: "Edición única", precio: "€ 14.800", img: hero1, descripcion: "Bronce fundido a la cera perdida, pulido y patinado a mano en taller. La pieza estudia la verticalidad y el peso aparente del vuelo, en una sola masa continua sin uniones." },
     "ofrenda": { nombre: "Ofrenda", artista: "Helena Vázquez", material: "Bronce pulido a mano", año: "2025", edicion: "Edición única", precio: "€ 22.500", img: hero2, descripcion: "Bronce a la cera perdida, fundido en taller propio y pulido manualmente. La pátina se trabaja en frío para acentuar los planos verticales." },
     "torsion-i": { nombre: "Torsión I", artista: "Camila Soler", material: "Alabastro blanco", año: "2025", edicion: "1 de 3", precio: "€ 11.600", img: hero3, descripcion: "Talla en alabastro translúcido. La pieza explora la torsión interna del bloque y aprovecha la luz natural para revelar las vetas." },
   },
