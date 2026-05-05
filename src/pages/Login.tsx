@@ -1,12 +1,40 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Logo } from "@/components/ignia/Logo";
+import { useLang } from "@/i18n/LanguageContext";
 
 type Role = "escultor" | "coleccionista";
 
 export default function Login() {
   const [role, setRole] = useState<Role>("escultor");
   const navigate = useNavigate();
+  const lang = useLang();
+
+  const t = lang === "es" ? {
+    enter: "Entrar", access: "Accede a Ignia",
+    email: "Email", emailPh: "tu@email.com",
+    pass: "Contraseña", passPh: "••••••••",
+    btnIn: "Entrar ↗",
+    or: "o crea una cuenta",
+    register: "Registro", join: "Únete a Ignia",
+    iam: (r: Role) => `Soy ${r === "escultor" ? "escultor" : "coleccionista"}`,
+    fSculptor: { name: "Nombre artístico", namePh: "Ej. Helena Vázquez", disc: "Disciplina principal", discPh: "Bronce, mármol, acero, piedra...", city: "Ciudad / taller", cityPh: "Toledo, España", bio: "Bio breve", bioPh: "Cuéntanos sobre tu obra escultórica (máx. 280 caracteres)" },
+    fCollector: { name: "Nombre completo", namePh: "Ej. María García", interests: "Intereses escultóricos", interestsPh: "Figurativo, abstracto, gran formato...", budget: "Rango de presupuesto", budgetPh: "2.000 € – 20.000 €" },
+    btnReg: "Crear cuenta ↗",
+    exit: "Salir",
+  } : {
+    enter: "Sign in", access: "Access Ignia",
+    email: "Email", emailPh: "you@email.com",
+    pass: "Password", passPh: "••••••••",
+    btnIn: "Sign in ↗",
+    or: "or create an account",
+    register: "Sign up", join: "Join Ignia",
+    iam: (r: Role) => `I'm a ${r === "escultor" ? "sculptor" : "collector"}`,
+    fSculptor: { name: "Artist name", namePh: "e.g. Helena Vázquez", disc: "Main discipline", discPh: "Bronze, marble, steel, stone...", city: "City / studio", cityPh: "Toledo, Spain", bio: "Short bio", bioPh: "Tell us about your sculptural work (max. 280 characters)" },
+    fCollector: { name: "Full name", namePh: "e.g. María García", interests: "Sculptural interests", interestsPh: "Figurative, abstract, large format...", budget: "Budget range", budgetPh: "€2,000 – €20,000" },
+    btnReg: "Create account ↗",
+    exit: "Exit",
+  };
 
   const goToProfile = (e: React.FormEvent, r: Role) => {
     e.preventDefault();
@@ -20,32 +48,23 @@ export default function Login() {
       </header>
 
       <section className="max-w-[560px] mx-auto px-6 py-16 md:py-20">
-        {/* LOGIN */}
-        <div className="eyebrow mb-3">Entrar</div>
-        <h1 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-8 leading-tight">
-          Accede a Ignia
-        </h1>
+        <div className="eyebrow mb-3">{t.enter}</div>
+        <h1 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-8 leading-tight">{t.access}</h1>
 
         <form onSubmit={(e) => goToProfile(e, role)} className="space-y-5">
-          <Field label="Email" type="email" placeholder="tu@email.com" />
-          <Field label="Contraseña" type="password" placeholder="••••••••" />
-          <button type="submit" className="btn-primary w-full justify-center !py-3.5">
-            Entrar ↗
-          </button>
+          <Field label={t.email} type="email" placeholder={t.emailPh} />
+          <Field label={t.pass} type="password" placeholder={t.passPh} />
+          <button type="submit" className="btn-primary w-full justify-center !py-3.5">{t.btnIn}</button>
         </form>
 
-        {/* Separador */}
         <div className="flex items-center gap-4 my-14">
           <div className="flex-1 h-px bg-border" />
-          <span className="font-body text-[12px] uppercase tracking-[0.18em] text-muted-line">o crea una cuenta</span>
+          <span className="font-body text-[12px] uppercase tracking-[0.18em] text-muted-line">{t.or}</span>
           <div className="flex-1 h-px bg-border" />
         </div>
 
-        {/* REGISTRO con tabs */}
-        <div className="eyebrow mb-3">Registro</div>
-        <h2 className="font-display font-bold text-[clamp(24px,2.6vw,32px)] tracking-[-0.02em] text-ink mb-8 leading-tight">
-          Únete a Ignia
-        </h2>
+        <div className="eyebrow mb-3">{t.register}</div>
+        <h2 className="font-display font-bold text-[clamp(24px,2.6vw,32px)] tracking-[-0.02em] text-ink mb-8 leading-tight">{t.join}</h2>
 
         <div className="flex gap-7 border-b border-border mb-8">
           {(["escultor", "coleccionista"] as Role[]).map(r => (
@@ -53,14 +72,14 @@ export default function Login() {
               key={r}
               type="button"
               onClick={() => setRole(r)}
-              className="font-body text-[14px] font-light tracking-[0.08em] pb-3 capitalize transition-colors"
+              className="font-body text-[14px] font-light tracking-[0.08em] pb-3 transition-colors"
               style={{
                 color: role === r ? "hsl(var(--black-pure))" : "hsl(var(--gray))",
                 borderBottom: role === r ? "1.5px solid hsl(var(--black-pure))" : "1.5px solid transparent",
                 marginBottom: "-1px",
               }}
             >
-              Soy {r}
+              {t.iam(r)}
             </button>
           ))}
         </div>
@@ -68,25 +87,23 @@ export default function Login() {
         <form onSubmit={(e) => goToProfile(e, role)} className="space-y-5">
           {role === "escultor" ? (
             <>
-              <Field label="Nombre artístico" placeholder="Ej. Helena Vázquez" />
-              <Field label="Email" type="email" placeholder="tu@email.com" />
-              <Field label="Contraseña" type="password" placeholder="••••••••" />
-              <Field label="Disciplina principal" placeholder="Bronce, mármol, acero, piedra..." />
-              <Field label="Ciudad / taller" placeholder="Toledo, España" />
-              <FieldArea label="Bio breve" placeholder="Cuéntanos sobre tu obra escultórica (máx. 280 caracteres)" />
+              <Field label={t.fSculptor.name} placeholder={t.fSculptor.namePh} />
+              <Field label={t.email} type="email" placeholder={t.emailPh} />
+              <Field label={t.pass} type="password" placeholder={t.passPh} />
+              <Field label={t.fSculptor.disc} placeholder={t.fSculptor.discPh} />
+              <Field label={t.fSculptor.city} placeholder={t.fSculptor.cityPh} />
+              <FieldArea label={t.fSculptor.bio} placeholder={t.fSculptor.bioPh} />
             </>
           ) : (
             <>
-              <Field label="Nombre completo" placeholder="Ej. María García" />
-              <Field label="Email" type="email" placeholder="tu@email.com" />
-              <Field label="Contraseña" type="password" placeholder="••••••••" />
-              <Field label="Intereses escultóricos" placeholder="Figurativo, abstracto, gran formato..." />
-              <Field label="Rango de presupuesto" placeholder="2.000 € – 20.000 €" />
+              <Field label={t.fCollector.name} placeholder={t.fCollector.namePh} />
+              <Field label={t.email} type="email" placeholder={t.emailPh} />
+              <Field label={t.pass} type="password" placeholder={t.passPh} />
+              <Field label={t.fCollector.interests} placeholder={t.fCollector.interestsPh} />
+              <Field label={t.fCollector.budget} placeholder={t.fCollector.budgetPh} />
             </>
           )}
-          <button type="submit" className="btn-primary w-full justify-center !py-3.5">
-            Crear cuenta ↗
-          </button>
+          <button type="submit" className="btn-primary w-full justify-center !py-3.5">{t.btnReg}</button>
         </form>
       </section>
     </main>
@@ -96,21 +113,13 @@ export default function Login() {
 const Field = ({ label, type = "text", placeholder }: { label: string; type?: string; placeholder?: string }) => (
   <label className="block">
     <span className="block font-body text-[12px] uppercase tracking-[0.18em] text-muted-line mb-2">{label}</span>
-    <input
-      type={type}
-      placeholder={placeholder}
-      className="w-full bg-transparent border-0 border-b border-border focus:border-ink outline-none py-2.5 font-body text-[15px] text-ink placeholder:text-muted-line/60"
-    />
+    <input type={type} placeholder={placeholder} className="w-full bg-transparent border-0 border-b border-border focus:border-ink outline-none py-2.5 font-body text-[15px] text-ink placeholder:text-muted-line/60" />
   </label>
 );
 
 const FieldArea = ({ label, placeholder }: { label: string; placeholder?: string }) => (
   <label className="block">
     <span className="block font-body text-[12px] uppercase tracking-[0.18em] text-muted-line mb-2">{label}</span>
-    <textarea
-      rows={3}
-      placeholder={placeholder}
-      className="w-full bg-transparent border border-border focus:border-ink outline-none p-3 font-body text-[15px] text-ink placeholder:text-muted-line/60 resize-none"
-    />
+    <textarea rows={3} placeholder={placeholder} className="w-full bg-transparent border border-border focus:border-ink outline-none p-3 font-body text-[15px] text-ink placeholder:text-muted-line/60 resize-none" />
   </label>
 );
