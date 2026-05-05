@@ -7,7 +7,7 @@ import { CtaFinal } from "@/components/ignia/CtaFinal";
 import { Footer } from "@/components/ignia/Footer";
 
 const Index = () => (
-  <main>
+  <main className="pt-14">
     <Header />
     <Hero />
     <Coleccion />
