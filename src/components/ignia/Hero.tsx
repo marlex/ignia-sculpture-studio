@@ -1,11 +1,19 @@
 import { useEffect, useState } from "react";
 import { SculptureViewer } from "./SculptureViewer";
+import { useLang } from "@/i18n/LanguageContext";
 
-const obras = [
-  { nombre: "Lirio en vuelo", artista: "Ana Ruiz", material: "Mármol de Carrara", año: "2024", edicion: "Edición única", precio: "€ 14.800", slug: "lirio-en-vuelo" },
-  { nombre: "Ofrenda", artista: "Helena Vázquez", material: "Bronce pulido a mano", año: "2025", edicion: "Edición única", precio: "€ 22.500", slug: "ofrenda" },
-  { nombre: "Torsión I", artista: "Camila Soler", material: "Alabastro blanco", año: "2025", edicion: "1 de 3", precio: "€ 11.600", slug: "torsion-i" },
-];
+const OBRAS = {
+  es: [
+    { nombre: "Lirio en vuelo", artista: "Ana Ruiz", material: "Mármol de Carrara", año: "2024", edicion: "Edición única", precio: "€ 14.800", slug: "lirio-en-vuelo" },
+    { nombre: "Ofrenda", artista: "Helena Vázquez", material: "Bronce pulido a mano", año: "2025", edicion: "Edición única", precio: "€ 22.500", slug: "ofrenda" },
+    { nombre: "Torsión I", artista: "Camila Soler", material: "Alabastro blanco", año: "2025", edicion: "1 de 3", precio: "€ 11.600", slug: "torsion-i" },
+  ],
+  en: [
+    { nombre: "Lily in flight", artista: "Ana Ruiz", material: "Carrara marble", año: "2024", edicion: "Unique edition", precio: "€ 14,800", slug: "lirio-en-vuelo" },
+    { nombre: "Offering", artista: "Helena Vázquez", material: "Hand-polished bronze", año: "2025", edicion: "Unique edition", precio: "€ 22,500", slug: "ofrenda" },
+    { nombre: "Torsion I", artista: "Camila Soler", material: "White alabaster", año: "2025", edicion: "1 of 3", precio: "€ 11,600", slug: "torsion-i" },
+  ],
+};
 
 type BgMode = "studio" | "white" | "dark";
 
@@ -19,7 +27,12 @@ export const Hero = () => {
     return () => clearTimeout(t);
   }, []);
 
+  const lang = useLang();
+  const obras = OBRAS[lang];
   const o = obras[actual];
+  const t = lang === "es"
+    ? { hint: "Arrastra para rotar · Scroll para zoom", prev: "Anterior", next: "Siguiente", view: "Ver obra completa →", bg: "Fondo", studio: "Estudio", white: "Blanco", dark: "Sombra" }
+    : { hint: "Drag to rotate · Scroll to zoom", prev: "Previous", next: "Next", view: "View full piece →", bg: "Background", studio: "Studio", white: "White", dark: "Shadow" };
   const dark = bg === "dark";
   const fadeBase = bg === "white" ? "255,255,255" : bg === "dark" ? "17,17,17" : "248,248,246";
   const textColor = dark ? "#fff" : "hsl(var(--black-pure))";
@@ -37,13 +50,13 @@ export const Hero = () => {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-body text-[14px] font-light tracking-[0.2em] uppercase z-[5] pointer-events-none whitespace-nowrap transition-opacity duration-[1200ms]"
         style={{ opacity: showHint ? 0.55 : 0, color: dark ? "#aaa" : "hsl(var(--gray))" }}
       >
-        Arrastra para rotar · Scroll para zoom
+        {t.hint}
       </div>
 
       {/* arrows */}
-      <button onClick={prev} aria-label="Anterior" className="absolute top-1/2 -translate-y-1/2 left-6 md:left-12 z-20 w-10 h-10 flex items-center justify-center text-[15px] border-[0.5px] border-border backdrop-blur-md transition-colors hover:bg-white"
+      <button onClick={prev} aria-label={t.prev} className="absolute top-1/2 -translate-y-1/2 left-6 md:left-12 z-20 w-10 h-10 flex items-center justify-center text-[15px] border-[0.5px] border-border backdrop-blur-md transition-colors hover:bg-white"
         style={{ background: "rgba(248,248,246,0.85)", color: "#111" }}>←</button>
-      <button onClick={next} aria-label="Siguiente" className="absolute top-1/2 -translate-y-1/2 right-6 md:right-12 z-20 w-10 h-10 flex items-center justify-center text-[15px] border-[0.5px] border-border backdrop-blur-md transition-colors hover:bg-white"
+      <button onClick={next} aria-label={t.next} className="absolute top-1/2 -translate-y-1/2 right-6 md:right-12 z-20 w-10 h-10 flex items-center justify-center text-[15px] border-[0.5px] border-border backdrop-blur-md transition-colors hover:bg-white"
         style={{ background: "rgba(248,248,246,0.85)", color: "#111" }}>→</button>
 
       {/* fade */}
@@ -99,14 +112,14 @@ export const Hero = () => {
             <span className="font-display font-bold text-[22px] tracking-[-0.01em]" style={{ color: textColor }}>{o.precio}</span>
             <a href={`/obra/${o.slug}`} className="font-body text-[13px] font-light tracking-[0.14em] uppercase border-b-[0.5px] pb-px hover:opacity-50 transition-opacity"
               style={{ color: textColor, borderColor: textColor }}>
-              Ver obra completa →
+              {t.view}
             </a>
           </div>
         </div>
 
         {/* bg controls */}
         <div className="shrink-0 text-right">
-          <div className="font-body text-[14px] font-light tracking-[0.14em] uppercase text-muted-line mb-1.5">Fondo</div>
+          <div className="font-body text-[14px] font-light tracking-[0.14em] uppercase text-muted-line mb-1.5">{t.bg}</div>
           <div className="flex md:flex-col gap-[3px] items-end">
             {(["studio", "white", "dark"] as BgMode[]).map(m => (
               <button
@@ -119,7 +132,7 @@ export const Hero = () => {
                   background: "rgba(248,248,246,0.88)",
                 }}
               >
-                {m === "studio" ? "Estudio" : m === "white" ? "Blanco" : "Sombra"}
+                {m === "studio" ? t.studio : m === "white" ? t.white : t.dark}
               </button>
             ))}
           </div>
