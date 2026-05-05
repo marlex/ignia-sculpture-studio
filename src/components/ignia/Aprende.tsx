@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const posts = [
-  { img: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=1600&q=80", tag: "Para coleccionistas", titulo: "Cómo leer la pátina de una pieza de bronce", tiempo: "8 min de lectura" },
+  { img: "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=1600&q=80", tag: "Para coleccionistas", titulo: "Cómo leer la pátina de una pieza de bronce", tiempo: "8 min de lectura" },
   { img: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=1200&q=80", tag: "Para artistas", titulo: "Fotografiar escultura sin distorsionar el volumen", tiempo: "12 min de lectura" },
   { img: "https://images.unsplash.com/photo-1594732832278-abd644401426?w=1200&q=80", tag: "Editorial", titulo: "Ediciones únicas vs ediciones limitadas: qué cambia", tiempo: "6 min de lectura" },
 ];
