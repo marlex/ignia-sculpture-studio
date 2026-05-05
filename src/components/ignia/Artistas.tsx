@@ -45,8 +45,8 @@ export const Artistas = () => {
       </div>
 
       {/* Entrevista destacada */}
-      <article className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-8 md:gap-14 items-center mb-16">
-        <div className="aspect-[4/5] md:aspect-[5/6] overflow-hidden bg-secondary">
+      <article className="grid grid-cols-1 md:grid-cols-[65%_35%] gap-8 md:gap-14 items-center mb-16">
+        <div className="aspect-[16/9] overflow-hidden bg-secondary">
           <img
             src={principal.foto}
             alt={principal.nombre}
