@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useLang } from "@/i18n/LanguageContext";
-
-const helena = "https://images.unsplash.com/photo-1607748862156-7c548e7e98f4?auto=format&fit=crop&w=1600&q=80";
-const marcos = "https://images.unsplash.com/photo-1542451313056-cf7f76bf6e8e?auto=format&fit=crop&w=1600&q=80";
-const ana = "https://images.unsplash.com/photo-1596079890744-c1a0462d0975?auto=format&fit=crop&w=1600&q=80";
+import helena from "@/assets/artist-helena.jpg";
+import marcos from "@/assets/artist-marcos.jpg";
+import ana from "@/assets/artist-ana.jpg";
 
 const ARTISTAS = {
   es: [
