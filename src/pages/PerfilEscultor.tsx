@@ -12,8 +12,9 @@ import { useLang } from "@/i18n/LanguageContext";
 
 export default function PerfilEscultor() {
   const lang = useLang();
+  const [open3d, setOpen3d] = useState<number | null>(null);
   const t = lang === "es" ? {
-    publish: "Publicar obra ↗", exit: "Salir",
+    publish: "Publicar obra ↗", exit: "Salir", view3d: "Ver en 3D",
     eyebrow: "Perfil de escultor",
     sub: "Bronce figurativo · Toledo, España. Tres décadas trabajando la figura humana desde el oficio lento.",
     stats: [["Obras publicadas", "24"], ["Coleccionistas", "38"], ["Ediciones vendidas", "61"]],
