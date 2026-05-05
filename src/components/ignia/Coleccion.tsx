@@ -50,7 +50,7 @@ export const Coleccion = () => {
     search: "Search artist, work, material…",
     filters: ["Material", "Price", "Technique"],
     view3d: "View in 3D",
-    auth: "Authenticity verified on blockchain",
+    auth: "Authenticity",
     state: "Available · 3D",
   };
 
