@@ -1,11 +1,19 @@
 import { useEffect, useState } from "react";
 import { SculptureViewer } from "./SculptureViewer";
+import { useLang } from "@/i18n/LanguageContext";
 
-const obras = [
-  { nombre: "Lirio en vuelo", artista: "Ana Ruiz", material: "Mármol de Carrara", año: "2024", edicion: "Edición única", precio: "€ 14.800", slug: "lirio-en-vuelo" },
-  { nombre: "Ofrenda", artista: "Helena Vázquez", material: "Bronce pulido a mano", año: "2025", edicion: "Edición única", precio: "€ 22.500", slug: "ofrenda" },
-  { nombre: "Torsión I", artista: "Camila Soler", material: "Alabastro blanco", año: "2025", edicion: "1 de 3", precio: "€ 11.600", slug: "torsion-i" },
-];
+const OBRAS = {
+  es: [
+    { nombre: "Lirio en vuelo", artista: "Ana Ruiz", material: "Mármol de Carrara", año: "2024", edicion: "Edición única", precio: "€ 14.800", slug: "lirio-en-vuelo" },
+    { nombre: "Ofrenda", artista: "Helena Vázquez", material: "Bronce pulido a mano", año: "2025", edicion: "Edición única", precio: "€ 22.500", slug: "ofrenda" },
+    { nombre: "Torsión I", artista: "Camila Soler", material: "Alabastro blanco", año: "2025", edicion: "1 de 3", precio: "€ 11.600", slug: "torsion-i" },
+  ],
+  en: [
+    { nombre: "Lily in flight", artista: "Ana Ruiz", material: "Carrara marble", año: "2024", edicion: "Unique edition", precio: "€ 14,800", slug: "lirio-en-vuelo" },
+    { nombre: "Offering", artista: "Helena Vázquez", material: "Hand-polished bronze", año: "2025", edicion: "Unique edition", precio: "€ 22,500", slug: "ofrenda" },
+    { nombre: "Torsion I", artista: "Camila Soler", material: "White alabaster", año: "2025", edicion: "1 of 3", precio: "€ 11,600", slug: "torsion-i" },
+  ],
+};
 
 type BgMode = "studio" | "white" | "dark";
 
