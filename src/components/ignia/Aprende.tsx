@@ -40,28 +40,30 @@ export const Aprende = () => {
         <div className="aspect-[16/9] overflow-hidden bg-secondary">
           <img src={p.img} alt={p.titulo} loading="lazy" width={1600} height={896} className="w-full h-full object-cover object-center" />
         </div>
-        <div>
+        <div className="flex flex-col gap-6">
           <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{p.tag}</div>
           <h3 className="font-display font-bold text-[26px] tracking-[-0.02em] text-ink mb-3 leading-tight">{p.titulo}</h3>
           <div className="font-body text-[14px] font-light text-gray">{p.tiempo}</div>
-        </div>
-      </div>
-      <div className="flex items-center justify-between gap-6 mt-10">
-        <div className="flex gap-3" role="tablist" aria-label="Seleccionar artículo">
-          {posts.map((post, idx) => (
-            <button
-              key={post.titulo}
-              type="button"
-              onClick={() => setI(idx)}
-              aria-label={`Ver artículo: ${post.titulo}`}
-              aria-current={i === idx ? "true" : undefined}
-              className={`h-3 w-3 rounded-full border border-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4 ${i === idx ? "bg-ink" : "bg-surface"}`}
-            />
-          ))}
-        </div>
-        <div className="flex gap-3">
-          <button type="button" onClick={goPrev} aria-label="Artículo anterior" className="h-10 w-10 border border-border text-ink hover:border-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink">←</button>
-          <button type="button" onClick={goNext} aria-label="Artículo siguiente" className="h-10 w-10 border border-border text-ink hover:border-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink">→</button>
+          <div className="flex items-center justify-between gap-5 pt-4" aria-label="Controles del carrusel">
+            <div className="flex items-center gap-4">
+              {posts.map((post, idx) => (
+                <button
+                  key={post.titulo}
+                  type="button"
+                  onClick={() => setI(idx)}
+                  aria-label={`Ver artículo ${idx + 1}: ${post.titulo}`}
+                  aria-current={i === idx ? "true" : undefined}
+                  className="group flex h-9 w-9 items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4"
+                >
+                  <span className={`h-3.5 w-3.5 rounded-full border border-ink transition-all ${i === idx ? "bg-ink scale-110" : "bg-surface group-hover:bg-border"}`} />
+                </button>
+              ))}
+            </div>
+            <div className="flex gap-3">
+              <button type="button" onClick={goPrev} aria-label="Artículo anterior" className="h-11 w-11 border border-ink text-ink hover:bg-ink hover:text-surface transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4">←</button>
+              <button type="button" onClick={goNext} aria-label="Artículo siguiente" className="h-11 w-11 border border-ink text-ink hover:bg-ink hover:text-surface transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4">→</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
