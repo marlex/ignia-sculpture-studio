@@ -1,20 +1,23 @@
 import { useState } from "react";
+import bronzePatina from "@/assets/obra-1.jpg";
+import sculpturePhoto from "@/assets/obra-2.jpg";
+import limitedEdition from "@/assets/obra-6.jpg";
 
 const posts = [
   {
-    img: "https://images.unsplash.com/photo-1544413164-5f1b295eb435?w=1600&q=80",
+    img: bronzePatina,
     tag: "Para coleccionistas",
     titulo: "Cómo leer la pátina de una pieza de bronce",
     tiempo: "8 min de lectura",
   },
   {
-    img: "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?w=1600&q=80",
+    img: sculpturePhoto,
     tag: "Para escultores",
     titulo: "Fotografiar escultura sin distorsionar el volumen",
     tiempo: "12 min de lectura",
   },
   {
-    img: "https://images.unsplash.com/photo-1554188248-986adbb73be4?w=1600&q=80",
+    img: limitedEdition,
     tag: "Editorial",
     titulo: "Ediciones únicas vs ediciones limitadas en escultura",
     tiempo: "6 min de lectura",
@@ -32,7 +35,7 @@ export const Aprende = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-[65%_35%] gap-8 md:gap-14 items-center">
         <div className="aspect-[16/9] overflow-hidden bg-secondary">
-          <img src={p.img} alt={p.titulo} loading="lazy" className="w-full h-full object-cover object-[center_30%]" />
+          <img src={p.img} alt={p.titulo} loading="lazy" className="w-full h-full object-contain" />
         </div>
         <div>
           <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{p.tag}</div>
