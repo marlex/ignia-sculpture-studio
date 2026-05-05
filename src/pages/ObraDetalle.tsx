@@ -47,6 +47,10 @@ const ObraDetalle = () => {
   const obras = OBRAS[lang];
   const t = T[lang];
   const o = obras[slug as keyof typeof obras] ?? obras["lirio-en-vuelo"];
+  const slugIdx = ["lirio-en-vuelo", "ofrenda", "torsion-i"].indexOf(slug) >= 0
+    ? ["lirio-en-vuelo", "ofrenda", "torsion-i"].indexOf(slug)
+    : 0;
+  const [open3d, setOpen3d] = useState(false);
 
   return (
     <main className="pt-14 bg-white">
@@ -54,8 +58,14 @@ const ObraDetalle = () => {
 
       <section className="px-6 md:px-12 py-10">
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10">
-          <div className="aspect-square bg-secondary overflow-hidden flex items-center justify-center" style={{ backgroundImage: `url(${bg1})`, backgroundSize: "cover" }}>
-            <img src={o.img} alt={o.nombre} className="max-h-[80%] max-w-[80%] object-contain drop-shadow-2xl" />
+          <div className="relative aspect-square bg-secondary overflow-hidden">
+            <img src={o.img} alt={o.nombre} className="w-full h-full object-cover" />
+            <button
+              onClick={() => setOpen3d(true)}
+              className="absolute bottom-4 right-4 font-body text-[12px] tracking-[0.16em] uppercase bg-white/95 backdrop-blur text-ink px-4 py-2.5 border-[0.5px] border-border hover:bg-ink hover:text-white transition-colors"
+            >
+              ◆ {t.view3d}
+            </button>
           </div>
           <div>
             <div className="eyebrow mb-3"><Link to="/coleccion" className="hover:text-ink">{t.back}</Link></div>
