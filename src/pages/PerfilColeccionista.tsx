@@ -79,9 +79,10 @@ export default function PerfilColeccionista() {
                   <button
                     onClick={() => setOpen3d({ idx: i, titulo: o.titulo, artista: o.artista })}
                     aria-label={`${t.view3d} — ${o.titulo}`}
-                    className="absolute bottom-3 right-3 font-body text-[11px] tracking-[0.16em] uppercase bg-white/95 backdrop-blur text-ink px-3 py-1.5 border-[0.5px] border-border opacity-0 group-hover:opacity-100 transition-opacity hover:bg-ink hover:text-white"
+                    className="absolute bottom-3 right-3 font-body text-[10px] font-light tracking-[0.18em] uppercase text-white/90 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
                   >
-                    ◆ {t.view3d}
+                    <span aria-hidden className="inline-block w-1 h-1 rounded-full bg-white/80" />
+                    {t.view3d}
                   </button>
                 </div>
                 <h3 className="font-display font-bold text-[16px] text-ink mb-1">{o.titulo}</h3>
@@ -101,9 +102,10 @@ export default function PerfilColeccionista() {
                   <button
                     onClick={() => setOpen3d({ idx: i + 3, titulo: o.titulo, artista: o.artista })}
                     aria-label={`${t.view3d} — ${o.titulo}`}
-                    className="absolute bottom-2 right-2 font-body text-[10px] tracking-[0.16em] uppercase bg-white/95 backdrop-blur text-ink px-2.5 py-1 border-[0.5px] border-border opacity-0 group-hover:opacity-100 transition-opacity hover:bg-ink hover:text-white"
+                    className="absolute bottom-2 right-2 font-body text-[10px] font-light tracking-[0.18em] uppercase text-white/90 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
                   >
-                    ◆ {t.view3d}
+                    <span aria-hidden className="inline-block w-1 h-1 rounded-full bg-white/80" />
+                    {t.view3d}
                   </button>
                 </div>
                 <h3 className="font-display font-bold text-[14px] text-ink">{o.titulo}</h3>
