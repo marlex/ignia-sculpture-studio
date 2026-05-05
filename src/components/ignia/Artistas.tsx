@@ -50,7 +50,8 @@ export const Artistas = () => {
           <img
             src={principal.foto}
             alt={principal.nombre}
-            className="w-full h-full object-cover grayscale"
+            loading="lazy"
+            className="w-full h-full object-cover object-[center_25%] grayscale"
           />
         </div>
         <div>
