@@ -70,12 +70,13 @@ export const Hero = () => {
       <button onClick={next} aria-label={t.next} className="absolute top-1/2 -translate-y-1/2 right-6 md:right-12 z-20 w-10 h-10 flex items-center justify-center text-[15px] border-[0.5px] border-border backdrop-blur-md transition-colors hover:bg-white"
         style={{ background: "rgba(248,248,246,0.9)", color: "#111" }}>→</button>
 
-      {/* Floating 3D button (centered low) */}
+      {/* Floating 3D link (centered low, subtle) */}
       <button
         onClick={() => setOpen3d(true)}
-        className="absolute left-1/2 -translate-x-1/2 bottom-[210px] md:bottom-[180px] z-20 font-body text-[12px] tracking-[0.18em] uppercase bg-ink text-white px-5 py-3 hover:bg-ink/90 transition-colors"
+        className="absolute left-1/2 -translate-x-1/2 bottom-[210px] md:bottom-[180px] z-20 font-body text-[10px] font-light tracking-[0.22em] uppercase text-white/85 hover:text-white transition-colors flex items-center gap-2"
       >
-        ◆ {t.view3d}
+        <span aria-hidden className="inline-block w-1 h-1 rounded-full bg-white/70" />
+        {t.view3d}
       </button>
 
       {/* bottom strip */}

@@ -61,9 +61,10 @@ const ObraDetalle = () => {
             <img src={o.img} alt={o.nombre} className="w-full h-full object-cover" />
             <button
               onClick={() => setOpen3d(true)}
-              className="absolute bottom-4 right-4 font-body text-[12px] tracking-[0.16em] uppercase bg-white/95 backdrop-blur text-ink px-4 py-2.5 border-[0.5px] border-border hover:bg-ink hover:text-white transition-colors"
+              className="absolute bottom-4 right-4 font-body text-[10px] font-light tracking-[0.2em] uppercase text-white/90 hover:text-white transition-colors flex items-center gap-1.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
             >
-              ◆ {t.view3d}
+              <span aria-hidden className="inline-block w-1 h-1 rounded-full bg-white/80" />
+              {t.view3d}
             </button>
           </div>
           <div>
