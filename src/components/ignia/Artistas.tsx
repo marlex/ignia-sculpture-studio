@@ -50,7 +50,8 @@ export const Artistas = () => {
           <img
             src={principal.foto}
             alt={principal.nombre}
-            className="w-full h-full object-cover grayscale"
+            loading="lazy"
+            className="w-full h-full object-cover object-[center_25%] grayscale"
           />
         </div>
         <div>
@@ -73,7 +74,7 @@ export const Artistas = () => {
       {/* Otros artistas - miniaturas con descripción a la derecha */}
       <div className="border-t border-border pt-10">
         <div className="font-body text-[12px] font-light text-muted-line uppercase tracking-[0.18em] mb-6">
-          Otros artistas
+          Artistas destacados
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {secundarios.map((a) => {
@@ -89,7 +90,7 @@ export const Artistas = () => {
                     src={a.foto}
                     alt={a.nombre}
                     loading="lazy"
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[700ms]"
+                    className="w-full h-full object-cover object-[center_25%] grayscale group-hover:grayscale-0 transition-all duration-[700ms]"
                   />
                 </div>
                 <div>
