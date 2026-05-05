@@ -6,6 +6,8 @@ import hero3 from "@/assets/hero-real-3.jpg";
 import { useLang } from "@/i18n/LanguageContext";
 
 const photos = [hero1, hero2, hero3];
+// Per-image vertical framing so sculptures sit at the same height across slides
+const focalY = ["28%", "40%", "42%"];
 
 const OBRAS = {
   es: [
@@ -47,7 +49,8 @@ export const Hero = () => {
         <img
           src={photos[actual]}
           alt={o.nombre}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-[object-position] duration-700"
+          style={{ objectPosition: `center ${focalY[actual]}` }}
           width={1280}
           height={1600}
         />
