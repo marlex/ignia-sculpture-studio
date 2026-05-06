@@ -1,4 +1,4 @@
-import { Suspense, useMemo, useRef } from "react";
+import { Suspense, useMemo, useRef, type ReactElement } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, OrbitControls, ContactShadows, Float } from "@react-three/drei";
 import * as THREE from "three";
@@ -195,7 +195,7 @@ const Sculpture = ({ variant, material }: { variant: number; material?: string }
       side={family === 1 ? THREE.DoubleSide : THREE.FrontSide}
     />
   );
-  const wrap = (node: JSX.Element) => (
+  const wrap = (node: ReactElement) => (
     <group
       scale={[0.9 + profile * 0.045, 0.94 + ((variant + 2) % 4) * 0.055, 0.9 + ((variant + 4) % 5) * 0.035]}
       rotation={[profile * 0.035, variant * 0.17, -profile * 0.025]}
