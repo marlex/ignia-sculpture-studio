@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { Sculpture3DModal } from "./Sculpture3DModal";
+import { SculptureViewer } from "./SculptureViewer";
 import hero1 from "@/assets/hero-real-1.jpg";
 import hero2 from "@/assets/hero-real-2.jpg";
 import hero3 from "@/assets/hero-real-3.jpg";
 import { useLang } from "@/i18n/LanguageContext";
 
 const photos = [hero1, hero2, hero3];
-// Per-image vertical framing so sculptures sit at the same height across slides
-const focalY = ["28%", "40%", "42%"];
 
 const OBRAS = {
   es: [
