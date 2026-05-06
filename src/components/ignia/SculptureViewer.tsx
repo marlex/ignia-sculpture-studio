@@ -217,21 +217,21 @@ const Sculpture = ({ variant, material }: { variant: number; material?: string }
     return wrap(<mesh castShadow receiveShadow rotation={[0.15, 0.25, -0.08]}><coneGeometry args={[0.62, 3.1, 7, 16]} />{commonMaterial}</mesh>);
   }
   if (family === 6) {
-    return <mesh castShadow receiveShadow rotation={[0.05, 0.2, 0.16]}><cylinderGeometry args={[0.28, 0.72, 2.9, 9, 12]} />{commonMaterial}</mesh>;
+    return wrap(<mesh castShadow receiveShadow rotation={[0.05, 0.2, 0.16]}><cylinderGeometry args={[0.28, 0.72, 2.9, 9, 12]} />{commonMaterial}</mesh>);
   }
   if (family === 7) {
-    return <mesh castShadow receiveShadow scale={[0.9, 1.38, 0.9]}><sphereGeometry args={[0.98, 64, 32]} />{commonMaterial}</mesh>;
+    return wrap(<mesh castShadow receiveShadow scale={[0.9, 1.38, 0.9]}><sphereGeometry args={[0.98, 64, 32]} />{commonMaterial}</mesh>);
   }
   if (family === 8) {
-    return <mesh castShadow receiveShadow rotation={[0.2, 0.35, 0]}><torusGeometry args={[0.82, 0.14, 24, 150]} />{commonMaterial}</mesh>;
+    return wrap(<mesh castShadow receiveShadow rotation={[0.2, 0.35, 0]}><torusGeometry args={[0.82, 0.14, 24, 150]} />{commonMaterial}</mesh>);
   }
   if (family === 9) {
-    return <mesh castShadow receiveShadow scale={[0.72, 1.45, 0.5]} rotation={[0.08, 0.45, 0.05]}><octahedronGeometry args={[1.25, 3]} />{commonMaterial}</mesh>;
+    return wrap(<mesh castShadow receiveShadow scale={[0.72, 1.45, 0.5]} rotation={[0.08, 0.45, 0.05]}><octahedronGeometry args={[1.25, 3]} />{commonMaterial}</mesh>);
   }
   if (family === 10) {
-    return <mesh castShadow receiveShadow scale={[0.62, 1.75, 0.62]} rotation={[0.12, 0.25, 0]}><icosahedronGeometry args={[1.08, 4]} />{commonMaterial}</mesh>;
+    return wrap(<mesh castShadow receiveShadow scale={[0.62, 1.75, 0.62]} rotation={[0.12, 0.25, 0]}><icosahedronGeometry args={[1.08, 4]} />{commonMaterial}</mesh>);
   }
-  return <mesh castShadow receiveShadow rotation={[0.18, 0.3, -0.12]}><dodecahedronGeometry args={[1.1, 2]} />{commonMaterial}</mesh>;
+  return wrap(<mesh castShadow receiveShadow rotation={[0.18, 0.3, -0.12]}><dodecahedronGeometry args={[1.1, 2]} />{commonMaterial}</mesh>);
 };
 
 export const SculptureViewer = ({ obraIndex, bgMode, titulo, material }: SculptureViewerProps) => {
