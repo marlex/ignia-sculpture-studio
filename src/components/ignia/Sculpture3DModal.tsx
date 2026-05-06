@@ -49,7 +49,7 @@ export const Sculpture3DModal = ({ open, onClose, obraIndex, titulo, artista, ma
         </button>
       </header>
       <div className="relative flex-1">
-        <SculptureViewer obraIndex={obraIndex} bgMode={bg} titulo={titulo} material={material} viewAngle={angle} />
+        <SculptureViewer obraIndex={obraIndex} bgMode={bg} titulo={titulo} material={material} viewAngle={angle} photoSrc={photoSrc} />
         <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white/55 font-body text-[11px] uppercase tracking-[0.18em] pointer-events-none">
           {t.hint}
         </div>
