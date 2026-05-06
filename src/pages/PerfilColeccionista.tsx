@@ -11,11 +11,13 @@ import mineral from "@/assets/perfil-escultura-mineral.jpg";
 import respiro from "@/assets/perfil-escultura-respiro.jpg";
 import { useLang } from "@/i18n/LanguageContext";
 
+const SLUGS = ["lirio-en-vuelo", "ofrenda", "torsion-i"];
+
 export default function PerfilColeccionista() {
   const lang = useLang();
   const [open3d, setOpen3d] = useState<{ idx: number; titulo: string; artista: string } | null>(null);
   const t = lang === "es" ? {
-    exit: "Salir", view3d: "Ver en 3D",
+    exit: "Salir", view3d: "Ver en 3D", viewObra: "Ver escultura",
     eyebrow: "Perfil de coleccionista",
     sub: "Intereses: figurativo, gran formato. Presupuesto 5.000 € – 25.000 €.",
     stats: [["Obras en colección", "7"], ["Guardadas", "23"], ["Escultores seguidos", "12"]],
@@ -32,7 +34,7 @@ export default function PerfilColeccionista() {
       { img: respiro, titulo: "Respiro", artista: "Helena Vázquez" },
     ],
   } : {
-    exit: "Sign out", view3d: "View in 3D",
+    exit: "Sign out", view3d: "View in 3D", viewObra: "View sculpture",
     eyebrow: "Collector profile",
     sub: "Interests: figurative, large format. Budget €5,000 – €25,000.",
     stats: [["Works in collection", "7"], ["Saved", "23"], ["Sculptors followed", "12"]],
