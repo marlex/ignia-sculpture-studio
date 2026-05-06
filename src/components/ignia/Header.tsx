@@ -1,6 +1,7 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Logo } from "./Logo";
-import { useLang, useSetLang } from "@/i18n/LanguageContext";
+import { useLang, useSetLang, type Lang } from "@/i18n/LanguageContext";
 
 const NAV = {
   es: [
@@ -37,26 +38,8 @@ export const Header = () => {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-4">
-          <div className="flex items-center font-body text-[12px] uppercase tracking-[0.14em]" role="group" aria-label="Language">
-            <button
-              type="button"
-              onClick={() => setLang("es")}
-              aria-pressed={lang === "es"}
-              className={`px-1.5 transition-colors ${lang === "es" ? "text-ink font-normal" : "text-gray hover:text-ink"}`}
-            >
-              ES
-            </button>
-            <span className="text-border">/</span>
-            <button
-              type="button"
-              onClick={() => setLang("en")}
-              aria-pressed={lang === "en"}
-              className={`px-1.5 transition-colors ${lang === "en" ? "text-ink font-normal" : "text-gray hover:text-ink"}`}
-            >
-              EN
-            </button>
-          </div>
+        <div className="flex items-center gap-5">
+          <LangDropdown lang={lang} setLang={setLang} />
           <Link to="/login" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
             {lang === "es" ? "Entrar" : "Sign in"}
           </Link>
