@@ -15,6 +15,7 @@ interface SculptureViewerProps {
   titulo?: string;
   material?: string;
   viewAngle?: number;
+  photoSrc?: string;
 }
 
 type ModelKind =
