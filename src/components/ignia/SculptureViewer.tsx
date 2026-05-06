@@ -174,7 +174,8 @@ function AlabasterTorsion() {
 }
 
 const Sculpture = ({ variant, material }: { variant: number; material?: string }) => {
-  const family = variant % 12;
+  const family = variant < 3 ? variant : 3 + ((variant - 3) % 9);
+  const profile = variant % 5;
   const normalizedMaterial = normalizeTitle(material);
   const isLight = normalizedMaterial.includes("alabastro") || normalizedMaterial.includes("alabaster") || normalizedMaterial.includes("marmol") || normalizedMaterial.includes("marble");
   const isGlass = normalizedMaterial.includes("vidrio") || normalizedMaterial.includes("glass");
@@ -194,18 +195,26 @@ const Sculpture = ({ variant, material }: { variant: number; material?: string }
       side={family === 1 ? THREE.DoubleSide : THREE.FrontSide}
     />
   );
+  const wrap = (node: JSX.Element) => (
+    <group
+      scale={[0.9 + profile * 0.045, 0.94 + ((variant + 2) % 4) * 0.055, 0.9 + ((variant + 4) % 5) * 0.035]}
+      rotation={[profile * 0.035, variant * 0.17, -profile * 0.025]}
+    >
+      {node}
+    </group>
+  );
 
-  if (family === 0) return <BronzeFlight />;
-  if (family === 1) return <BronzeOffering />;
-  if (family === 2) return <AlabasterTorsion />;
+  if (family === 0) return wrap(<BronzeFlight />);
+  if (family === 1) return wrap(<BronzeOffering />);
+  if (family === 2) return wrap(<AlabasterTorsion />);
   if (family === 3) {
-    return <mesh castShadow receiveShadow rotation={[0.28, 0.25, -0.15]}><torusKnotGeometry args={[0.82, 0.19, 180, 22, 2, 3]} />{commonMaterial}</mesh>;
+    return wrap(<mesh castShadow receiveShadow rotation={[0.28, 0.25, -0.15]}><torusKnotGeometry args={[0.82, 0.19, 180, 22, 2, 3]} />{commonMaterial}</mesh>);
   }
   if (family === 4) {
-    return <mesh castShadow receiveShadow scale={[1.25, 1.65, 0.28]} rotation={[0.1, 0.35, 0.08]}><boxGeometry args={[1, 1, 1, 12, 18, 6]} />{commonMaterial}</mesh>;
+    return wrap(<mesh castShadow receiveShadow scale={[1.25, 1.65, 0.28]} rotation={[0.1, 0.35, 0.08]}><boxGeometry args={[1, 1, 1, 12, 18, 6]} />{commonMaterial}</mesh>);
   }
   if (family === 5) {
-    return <mesh castShadow receiveShadow rotation={[0.15, 0.25, -0.08]}><coneGeometry args={[0.62, 3.1, 7, 16]} />{commonMaterial}</mesh>;
+    return wrap(<mesh castShadow receiveShadow rotation={[0.15, 0.25, -0.08]}><coneGeometry args={[0.62, 3.1, 7, 16]} />{commonMaterial}</mesh>);
   }
   if (family === 6) {
     return <mesh castShadow receiveShadow rotation={[0.05, 0.2, 0.16]}><cylinderGeometry args={[0.28, 0.72, 2.9, 9, 12]} />{commonMaterial}</mesh>;
