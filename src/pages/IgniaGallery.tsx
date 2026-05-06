@@ -165,18 +165,11 @@ const IgniaGalleryPage = () => {
       </section>
 
       <section className="bg-white px-6 md:px-12 py-20">
-        <div className="max-w-[1080px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div>
-            <div className="eyebrow mb-3">{t.visitEy}</div>
-            <h2 className="font-display font-bold text-[clamp(22px,2.4vw,32px)] tracking-[-0.02em] text-ink leading-tight mb-4">{t.visitH}</h2>
-            <p className="font-body text-[15px] font-light text-gray leading-relaxed">{t.visitP}</p>
-          </div>
-          <div>
-            <div className="eyebrow mb-3">{t.contactEy}</div>
-            <p className="font-body text-[15px] font-light text-gray leading-relaxed">
-              hola@igniagallery.com<br />+34 910 000 000
-            </p>
-          </div>
+        <div className="max-w-[1080px] mx-auto">
+          <div className="eyebrow mb-3">{t.contactEy}</div>
+          <p className="font-body text-[15px] font-light text-gray leading-relaxed">
+            hola@igniagallery.com<br />+34 910 000 000
+          </p>
         </div>
       </section>
 
