@@ -47,9 +47,6 @@ export const Header = () => {
       </div>
     </header>
   );
-      </div>
-    </header>
-  );
 };
 
 const LANGS: { code: Lang; label: string }[] = [
