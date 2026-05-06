@@ -106,9 +106,6 @@ export const Hero = () => {
 
         {/* info */}
         <div className="flex-1 text-ink">
-          <div className="font-body text-[12px] font-light tracking-[0.2em] uppercase mb-1.5 text-muted-line">
-            0{actual + 1} {t.of} 03
-          </div>
           <h1 className="font-display font-bold leading-[0.95] tracking-[-0.03em] mb-3 text-ink" style={{ fontSize: "clamp(36px, 5vw, 72px)" }}>
             {o.nombre}
           </h1>
