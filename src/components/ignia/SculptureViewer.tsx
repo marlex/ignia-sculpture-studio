@@ -1,4 +1,4 @@
-import { Suspense, useRef } from "react";
+import { Suspense, useMemo, useRef, type ReactElement } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, OrbitControls, ContactShadows, Float } from "@react-three/drei";
 import * as THREE from "three";
@@ -12,7 +12,67 @@ const studios = [bg1, bg2, bg3];
 interface SculptureViewerProps {
   obraIndex: number;
   bgMode: "studio" | "white" | "dark";
+  titulo?: string;
+  material?: string;
 }
+
+const normalizeTitle = (value = "") =>
+  value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+
+const titleVariants: Record<string, number> = {
+  "lirio en vuelo": 0,
+  "lily in flight": 0,
+  ofrenda: 1,
+  offering: 1,
+  "torsion i": 2,
+  confluencia: 3,
+  confluence: 3,
+  "pliegue iii": 4,
+  "fold iii": 4,
+  vertigo: 5,
+  raiz: 6,
+  root: 6,
+  origen: 7,
+  origin: 7,
+  eco: 8,
+  echo: 8,
+  quietud: 9,
+  stillness: 9,
+  "luz interior": 10,
+  "inner light": 10,
+  caida: 11,
+  fall: 11,
+  umbral: 12,
+  threshold: 12,
+  vertice: 13,
+  vertex: 13,
+  resto: 14,
+  remnant: 14,
+  arco: 15,
+  arch: 15,
+  memoria: 16,
+  memory: 16,
+  nexo: 17,
+  nexus: 17,
+  latido: 18,
+  heartbeat: 18,
+  orbita: 19,
+  orbit: 19,
+  mineral: 20,
+  respiro: 21,
+  breath: 21,
+};
+
+const resolveVariant = (titulo: string | undefined, obraIndex: number) => {
+  const normalized = normalizeTitle(titulo);
+  if (normalized in titleVariants) return titleVariants[normalized];
+  return ((obraIndex % 24) + 24) % 24;
+};
 
 // "Lirio en vuelo" — elegant elongated bronze drop / flame form
 function BronzeFlight() {
@@ -113,20 +173,77 @@ function AlabasterTorsion() {
   );
 }
 
-const Sculpture = ({ idx }: { idx: number }) => {
-  if (idx === 0) return <BronzeFlight />;
-  if (idx === 1) return <BronzeOffering />;
-  return <AlabasterTorsion />;
+const Sculpture = ({ variant, material }: { variant: number; material?: string }) => {
+  const family = variant < 3 ? variant : 3 + ((variant - 3) % 9);
+  const profile = variant % 5;
+  const normalizedMaterial = normalizeTitle(material);
+  const isLight = normalizedMaterial.includes("alabastro") || normalizedMaterial.includes("alabaster") || normalizedMaterial.includes("marmol") || normalizedMaterial.includes("marble");
+  const isGlass = normalizedMaterial.includes("vidrio") || normalizedMaterial.includes("glass");
+  const isWood = normalizedMaterial.includes("madera") || normalizedMaterial.includes("wood");
+  const baseColor = isGlass ? "#dfe9e6" : isLight ? "#f1ece2" : isWood ? "#7a4a28" : family % 3 === 1 ? "#9a6a32" : "#6b3a17";
+  const metalness = isLight || isGlass || isWood ? 0.04 : 1;
+  const roughness = isGlass ? 0.08 : isLight ? 0.42 : isWood ? 0.58 : family % 3 === 1 ? 0.14 : 0.28;
+  const commonMaterial = (
+    <meshPhysicalMaterial
+      color={baseColor}
+      metalness={metalness}
+      roughness={roughness}
+      transmission={isGlass ? 0.5 : isLight ? 0.14 : 0}
+      thickness={isGlass || isLight ? 1.2 : 0.1}
+      clearcoat={isGlass ? 0.75 : isLight ? 0.25 : 0.45}
+      envMapIntensity={isGlass ? 1.5 : 1.1}
+      side={family === 1 ? THREE.DoubleSide : THREE.FrontSide}
+    />
+  );
+  const wrap = (node: ReactElement) => (
+    <group
+      scale={[0.9 + profile * 0.045, 0.94 + ((variant + 2) % 4) * 0.055, 0.9 + ((variant + 4) % 5) * 0.035]}
+      rotation={[profile * 0.035, variant * 0.17, -profile * 0.025]}
+    >
+      {node}
+    </group>
+  );
+
+  if (family === 0) return wrap(<BronzeFlight />);
+  if (family === 1) return wrap(<BronzeOffering />);
+  if (family === 2) return wrap(<AlabasterTorsion />);
+  if (family === 3) {
+    return wrap(<mesh castShadow receiveShadow rotation={[0.28, 0.25, -0.15]}><torusKnotGeometry args={[0.82, 0.19, 180, 22, 2, 3]} />{commonMaterial}</mesh>);
+  }
+  if (family === 4) {
+    return wrap(<mesh castShadow receiveShadow scale={[1.25, 1.65, 0.28]} rotation={[0.1, 0.35, 0.08]}><boxGeometry args={[1, 1, 1, 12, 18, 6]} />{commonMaterial}</mesh>);
+  }
+  if (family === 5) {
+    return wrap(<mesh castShadow receiveShadow rotation={[0.15, 0.25, -0.08]}><coneGeometry args={[0.62, 3.1, 7, 16]} />{commonMaterial}</mesh>);
+  }
+  if (family === 6) {
+    return wrap(<mesh castShadow receiveShadow rotation={[0.05, 0.2, 0.16]}><cylinderGeometry args={[0.28, 0.72, 2.9, 9, 12]} />{commonMaterial}</mesh>);
+  }
+  if (family === 7) {
+    return wrap(<mesh castShadow receiveShadow scale={[0.9, 1.38, 0.9]}><sphereGeometry args={[0.98, 64, 32]} />{commonMaterial}</mesh>);
+  }
+  if (family === 8) {
+    return wrap(<mesh castShadow receiveShadow rotation={[0.2, 0.35, 0]}><torusGeometry args={[0.82, 0.14, 24, 150]} />{commonMaterial}</mesh>);
+  }
+  if (family === 9) {
+    return wrap(<mesh castShadow receiveShadow scale={[0.72, 1.45, 0.5]} rotation={[0.08, 0.45, 0.05]}><octahedronGeometry args={[1.25, 3]} />{commonMaterial}</mesh>);
+  }
+  if (family === 10) {
+    return wrap(<mesh castShadow receiveShadow scale={[0.62, 1.75, 0.62]} rotation={[0.12, 0.25, 0]}><icosahedronGeometry args={[1.08, 4]} />{commonMaterial}</mesh>);
+  }
+  return wrap(<mesh castShadow receiveShadow rotation={[0.18, 0.3, -0.12]}><dodecahedronGeometry args={[1.1, 2]} />{commonMaterial}</mesh>);
 };
 
-export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => {
+export const SculptureViewer = ({ obraIndex, bgMode, titulo, material }: SculptureViewerProps) => {
+  const variant = useMemo(() => resolveVariant(titulo, obraIndex), [titulo, obraIndex]);
+  const studioIndex = ((variant % studios.length) + studios.length) % studios.length;
   const bg =
     bgMode === "white"
       ? { background: "#ffffff" }
       : bgMode === "dark"
       ? { background: "#0d0d0d" }
       : {
-          backgroundImage: `url(${studios[obraIndex]})`,
+          backgroundImage: `url(${studios[studioIndex]})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         };
@@ -144,7 +261,7 @@ export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => 
           />
           <directionalLight position={[-5, 2, -3]} intensity={0.4} />
           <Float speed={1.2} rotationIntensity={0} floatIntensity={0.25}>
-            <Sculpture idx={obraIndex} />
+            <Sculpture variant={variant} material={material} />
           </Float>
           <ContactShadows position={[0, -1.65, 0]} opacity={bgMode === "dark" ? 0.7 : 0.45} scale={6} blur={2.4} far={4} />
           <Environment preset={bgMode === "dark" ? "night" : "studio"} />
