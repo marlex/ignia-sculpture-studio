@@ -76,19 +76,25 @@ export default function PerfilColeccionista() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {t.coleccion.map((o, i) => (
               <article key={o.titulo} className="group">
-                <div className="relative aspect-[4/5] overflow-hidden bg-secondary mb-4">
+                <Link to={`/obra/${SLUGS[i % SLUGS.length]}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary mb-4">
                   <img src={o.img} alt={o.titulo} loading="lazy" width={1024} height={1280} className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
+                </Link>
+                <h3 className="font-display font-bold text-[16px] text-ink mb-1">{o.titulo}</h3>
+                <div className="font-body text-[13px] text-muted-line uppercase tracking-[0.14em] mb-3">{o.artista}</div>
+                <div className="flex items-center gap-4">
+                  <Link
+                    to={`/obra/${SLUGS[i % SLUGS.length]}`}
+                    className="font-body text-[12px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-60 transition-opacity"
+                  >
+                    {t.viewObra} →
+                  </Link>
                   <button
                     onClick={() => setOpen3d({ idx: i, titulo: o.titulo, artista: o.artista })}
-                    aria-label={`${t.view3d} — ${o.titulo}`}
-                    className="absolute bottom-3 right-3 font-body text-[10px] font-light tracking-[0.18em] uppercase text-white/90 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
+                    className="font-body text-[11px] font-light text-muted-line uppercase tracking-[0.12em] hover:text-ink transition-colors"
                   >
-                    <span aria-hidden className="inline-block w-1 h-1 rounded-full bg-white/80" />
                     {t.view3d}
                   </button>
                 </div>
-                <h3 className="font-display font-bold text-[16px] text-ink mb-1">{o.titulo}</h3>
-                <div className="font-body text-[13px] text-muted-line uppercase tracking-[0.14em]">{o.artista}</div>
               </article>
             ))}
           </div>
