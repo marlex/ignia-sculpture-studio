@@ -1,5 +1,5 @@
-import { Suspense, useMemo, useRef, type ReactElement } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Suspense, useMemo, type ReactElement } from "react";
+import { Canvas } from "@react-three/fiber";
 import { Environment, OrbitControls, ContactShadows, Float } from "@react-three/drei";
 import * as THREE from "three";
 import { ParametricGeometry } from "three/examples/jsm/geometries/ParametricGeometry.js";
@@ -14,7 +14,25 @@ interface SculptureViewerProps {
   bgMode: "studio" | "white" | "dark";
   titulo?: string;
   material?: string;
+  viewAngle?: number;
 }
+
+type ModelKind =
+  | "hero-flight"
+  | "hero-offering"
+  | "hero-torsion"
+  | "figure-curvy"
+  | "marble-fold"
+  | "corten-ribbon"
+  | "wood-root"
+  | "blue-ceramic"
+  | "slender-figure"
+  | "white-loop"
+  | "amber-glass"
+  | "bronze-fall"
+  | "black-figure"
+  | "white-ring"
+  | "geometric";
 
 const normalizeTitle = (value = "") =>
   value
@@ -24,219 +42,366 @@ const normalizeTitle = (value = "") =>
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
 
-const titleVariants: Record<string, number> = {
-  "lirio en vuelo": 0,
-  "lily in flight": 0,
-  ofrenda: 1,
-  offering: 1,
-  "torsion i": 2,
-  confluencia: 3,
-  confluence: 3,
-  "pliegue iii": 4,
-  "fold iii": 4,
-  vertigo: 5,
-  raiz: 6,
-  root: 6,
-  origen: 7,
-  origin: 7,
-  eco: 8,
-  echo: 8,
-  quietud: 9,
-  stillness: 9,
-  "luz interior": 10,
-  "inner light": 10,
-  caida: 11,
-  fall: 11,
-  umbral: 12,
-  threshold: 12,
-  vertice: 13,
-  vertex: 13,
-  resto: 14,
-  remnant: 14,
-  arco: 15,
-  arch: 15,
-  memoria: 16,
-  memory: 16,
-  nexo: 17,
-  nexus: 17,
-  latido: 18,
-  heartbeat: 18,
-  orbita: 19,
-  orbit: 19,
-  mineral: 20,
-  respiro: 21,
-  breath: 21,
+const titleModels: Record<string, ModelKind> = {
+  "lirio en vuelo": "hero-flight",
+  "lily in flight": "hero-flight",
+  ofrenda: "hero-offering",
+  offering: "hero-offering",
+  "torsion i": "hero-torsion",
+  confluencia: "figure-curvy",
+  confluence: "figure-curvy",
+  "pliegue iii": "marble-fold",
+  "fold iii": "marble-fold",
+  vertigo: "corten-ribbon",
+  raiz: "wood-root",
+  root: "wood-root",
+  origen: "blue-ceramic",
+  origin: "blue-ceramic",
+  eco: "slender-figure",
+  echo: "slender-figure",
+  quietud: "white-loop",
+  stillness: "white-loop",
+  "luz interior": "amber-glass",
+  "inner light": "amber-glass",
+  caida: "bronze-fall",
+  fall: "bronze-fall",
+  umbral: "black-figure",
+  threshold: "black-figure",
+  vertice: "geometric",
+  vertex: "geometric",
+  resto: "wood-root",
+  remnant: "wood-root",
+  arco: "white-ring",
+  arch: "white-ring",
+  memoria: "marble-fold",
+  memory: "marble-fold",
+  nexo: "hero-offering",
+  nexus: "hero-offering",
+  latido: "black-figure",
+  heartbeat: "black-figure",
+  orbita: "hero-torsion",
+  orbit: "hero-torsion",
+  mineral: "geometric",
+  respiro: "white-loop",
+  breath: "white-loop",
 };
 
-const resolveVariant = (titulo: string | undefined, obraIndex: number) => {
+const resolveModel = (titulo: string | undefined, obraIndex: number): ModelKind => {
   const normalized = normalizeTitle(titulo);
-  if (normalized in titleVariants) return titleVariants[normalized];
-  return ((obraIndex % 24) + 24) % 24;
+  if (normalized in titleModels) return titleModels[normalized];
+  const fallback: ModelKind[] = [
+    "hero-flight",
+    "hero-offering",
+    "hero-torsion",
+    "figure-curvy",
+    "marble-fold",
+    "corten-ribbon",
+    "wood-root",
+    "blue-ceramic",
+    "slender-figure",
+    "white-loop",
+    "amber-glass",
+    "geometric",
+  ];
+  return fallback[((obraIndex % fallback.length) + fallback.length) % fallback.length];
 };
 
-// "Lirio en vuelo" — elegant elongated bronze drop / flame form
-function BronzeFlight() {
-  const ref = useRef<THREE.Mesh>(null!);
-  useFrame((_, dt) => {
-    if (ref.current) ref.current.rotation.y += dt * 0.3;
-  });
+const StudioMaterial = ({ kind, side = THREE.FrontSide }: { kind: ModelKind; side?: THREE.Side }) => {
+  const material = (() => {
+    if (kind === "marble-fold" || kind === "hero-torsion" || kind === "white-loop" || kind === "white-ring") {
+      return { color: "#f1ece2", metalness: 0.03, roughness: 0.38, transmission: 0.12, clearcoat: 0.28, envMapIntensity: 1.05 };
+    }
+    if (kind === "wood-root") return { color: "#7a4a28", metalness: 0.02, roughness: 0.62, transmission: 0, clearcoat: 0.18, envMapIntensity: 0.75 };
+    if (kind === "blue-ceramic") return { color: "#063fb8", metalness: 0.02, roughness: 0.18, transmission: 0, clearcoat: 0.9, envMapIntensity: 1.45 };
+    if (kind === "corten-ribbon") return { color: "#b34a1c", metalness: 0.82, roughness: 0.22, transmission: 0, clearcoat: 0.5, envMapIntensity: 1.45 };
+    if (kind === "amber-glass") return { color: "#f47a14", metalness: 0.02, roughness: 0.06, transmission: 0.58, clearcoat: 0.85, envMapIntensity: 1.8 };
+    if (kind === "hero-offering") return { color: "#9a6a32", metalness: 1, roughness: 0.13, transmission: 0, clearcoat: 0.65, envMapIntensity: 1.75 };
+    return { color: "#3b2414", metalness: 0.92, roughness: 0.26, transmission: 0, clearcoat: 0.48, envMapIntensity: 1.35 };
+  })();
+
+  return (
+    <meshPhysicalMaterial
+      color={material.color}
+      metalness={material.metalness}
+      roughness={material.roughness}
+      transmission={material.transmission}
+      thickness={1.1}
+      clearcoat={material.clearcoat}
+      clearcoatRoughness={0.2}
+      envMapIntensity={material.envMapIntensity}
+      side={side}
+    />
+  );
+};
+
+function HeroFlight({ kind }: { kind: ModelKind }) {
   const points: THREE.Vector2[] = [];
-  for (let i = 0; i <= 80; i++) {
-    const t = i / 80;
-    const y = t * 3.6 - 1.8;
-    // Smooth tear-drop / flame profile
-    const base = Math.sin(Math.pow(t, 0.85) * Math.PI);
-    const taper = 1 - Math.pow(Math.abs(t - 0.35) * 1.2, 1.6);
-    const r = Math.max(0.02, 0.55 * base * Math.max(0.15, taper));
+  for (let i = 0; i <= 96; i++) {
+    const t = i / 96;
+    const y = t * 3.85 - 1.88;
+    const base = Math.sin(Math.pow(t, 0.78) * Math.PI);
+    const swell = 0.62 + 0.38 * Math.sin(t * Math.PI * 2.1 + 0.55);
+    const r = Math.max(0.025, 0.42 * base * swell * (1 - t * 0.18));
     points.push(new THREE.Vector2(r, y));
   }
   return (
-    <mesh ref={ref} castShadow receiveShadow position={[0, 0.05, 0]}>
-      <latheGeometry args={[points, 160]} />
-      <meshPhysicalMaterial
-        color="#6b3a17"
-        metalness={1}
-        roughness={0.28}
-        clearcoat={0.4}
-        clearcoatRoughness={0.35}
-        envMapIntensity={1.4}
-      />
-    </mesh>
+    <group>
+      <mesh castShadow receiveShadow rotation={[0, 0.18, 0]}>
+        <latheGeometry args={[points, 192]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+      {[0, 1, 2].map((n) => (
+        <mesh key={n} castShadow receiveShadow position={[0, 0.28 + n * 0.06, 0]} rotation={[0.08, n * 2.08, 0.28]} scale={[0.22, 1.62, 0.05]}>
+          <sphereGeometry args={[0.92, 48, 24]} />
+          <StudioMaterial kind={kind} />
+        </mesh>
+      ))}
+    </group>
   );
 }
 
-// "Ofrenda" — polished bronze möbius-like ribbon (parametric)
-function BronzeOffering() {
-  const ref = useRef<THREE.Mesh>(null!);
-  useFrame((_, dt) => {
-    if (ref.current) ref.current.rotation.y += dt * 0.28;
-  });
-  const geom = (() => {
+function BronzeOffering({ kind }: { kind: ModelKind }) {
+  const geom = useMemo(() => {
     const g = new ParametricGeometry(
       (u, v, target) => {
         const U = u * Math.PI * 2;
-        const V = (v - 0.5) * 0.55;
-        const a = 1.1 + V * Math.cos(U / 2);
-        const x = a * Math.cos(U);
-        const y = V * Math.sin(U / 2) * 1.4;
-        const z = a * Math.sin(U);
-        target.set(x, y, z);
+        const V = (v - 0.5) * 0.58;
+        const a = 1.06 + V * Math.cos(U / 2);
+        target.set(a * Math.cos(U), V * Math.sin(U / 2) * 1.55, a * Math.sin(U));
       },
-      180,
-      24
+      220,
+      28
     );
     g.computeVertexNormals();
     return g;
-  })();
+  }, []);
+
   return (
-    <mesh ref={ref} castShadow receiveShadow geometry={geom} scale={1.05}>
-      <meshPhysicalMaterial
-        color="#9a6a32"
-        metalness={1}
-        roughness={0.14}
-        clearcoat={0.6}
-        clearcoatRoughness={0.18}
-        envMapIntensity={1.6}
-        side={THREE.DoubleSide}
-      />
-    </mesh>
+    <group>
+      <mesh castShadow receiveShadow geometry={geom} scale={[1.08, 1.08, 1.08]} rotation={[0.08, 0.15, -0.05]}>
+        <StudioMaterial kind={kind} side={THREE.DoubleSide} />
+      </mesh>
+      <mesh castShadow receiveShadow position={[0, 0.98, 0]}>
+        <sphereGeometry args={[0.28, 48, 24]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+    </group>
   );
 }
 
-// "Torsión I" — alabaster smooth torsion (high-segment twisted lathe with displacement)
-function AlabasterTorsion() {
-  const ref = useRef<THREE.Mesh>(null!);
-  useFrame((_, dt) => {
-    if (ref.current) ref.current.rotation.y += dt * 0.3;
-  });
-  // Twisted, tapered organic column built from a tube along a curved spine
+function HeroTorsion({ kind }: { kind: ModelKind }) {
   const curve = new THREE.CatmullRomCurve3([
-    new THREE.Vector3(0, -1.6, 0),
-    new THREE.Vector3(0.18, -0.8, 0.05),
-    new THREE.Vector3(-0.12, 0, -0.05),
-    new THREE.Vector3(0.1, 0.8, 0.04),
-    new THREE.Vector3(0, 1.7, 0),
+    new THREE.Vector3(-0.18, -1.75, 0),
+    new THREE.Vector3(0.38, -0.88, 0.2),
+    new THREE.Vector3(-0.34, 0, -0.18),
+    new THREE.Vector3(0.32, 0.86, 0.16),
+    new THREE.Vector3(-0.08, 1.76, 0),
   ]);
   return (
-    <mesh ref={ref} castShadow receiveShadow>
-      <tubeGeometry args={[curve, 220, 0.5, 48, false]} />
-      <meshPhysicalMaterial
-        color="#f1ece2"
-        metalness={0.04}
-        roughness={0.42}
-        transmission={0.18}
-        thickness={1.2}
-        clearcoat={0.25}
-        envMapIntensity={0.9}
-      />
+    <group>
+      <mesh castShadow receiveShadow rotation={[0, 0.15, 0]}>
+        <tubeGeometry args={[curve, 260, 0.36, 56, false]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+      <mesh castShadow receiveShadow scale={[0.42, 1.72, 0.18]} rotation={[0.14, 0.75, -0.22]}>
+        <sphereGeometry args={[1, 64, 32]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+    </group>
+  );
+}
+
+function FigureCurvy({ kind }: { kind: ModelKind }) {
+  return (
+    <group position={[0, -0.18, 0]}>
+      <mesh castShadow receiveShadow position={[0, 0.44, 0]} scale={[0.48, 0.92, 0.36]} rotation={[0, 0.12, -0.1]}>
+        <sphereGeometry args={[1, 64, 32]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+      <mesh castShadow receiveShadow position={[0.02, 1.42, 0]} scale={[0.33, 0.5, 0.28]}>
+        <sphereGeometry args={[1, 48, 24]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+      <mesh castShadow receiveShadow position={[0.02, 2.12, 0]} scale={[0.17, 0.17, 0.17]}>
+        <sphereGeometry args={[1, 48, 24]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+      <mesh castShadow receiveShadow position={[-0.48, 0.58, 0]} rotation={[0, 0, -0.34]}>
+        <capsuleGeometry args={[0.075, 1.6, 12, 24]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+      <mesh castShadow receiveShadow position={[0.52, 0.6, 0]} rotation={[0, 0, 0.28]}>
+        <capsuleGeometry args={[0.075, 1.55, 12, 24]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+      <mesh castShadow receiveShadow position={[-0.18, -1.02, 0]} rotation={[0.08, 0, -0.09]}>
+        <capsuleGeometry args={[0.12, 1.65, 16, 28]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+      <mesh castShadow receiveShadow position={[0.24, -1.0, 0]} rotation={[0, 0, 0.1]}>
+        <capsuleGeometry args={[0.12, 1.62, 16, 28]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+      <mesh receiveShadow position={[0, -1.95, 0]} scale={[1.1, 0.08, 0.65]}>
+        <boxGeometry args={[1, 1, 1]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+    </group>
+  );
+}
+
+function MarbleFold({ kind }: { kind: ModelKind }) {
+  return (
+    <group>
+      {[0, 1, 2].map((n) => (
+        <mesh key={n} castShadow receiveShadow scale={[0.32, 1.74, 0.12]} rotation={[0.18, n * 1.9 + 0.25, n === 1 ? -0.42 : 0.36]} position={[Math.sin(n * 2.1) * 0.16, 0, Math.cos(n * 2.1) * 0.1]}>
+          <sphereGeometry args={[1, 64, 32]} />
+          <StudioMaterial kind={kind} side={THREE.DoubleSide} />
+        </mesh>
+      ))}
+      <mesh receiveShadow position={[0, -1.72, 0]} scale={[1.05, 0.12, 0.72]}>
+        <boxGeometry args={[1, 1, 1]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+    </group>
+  );
+}
+
+function Ribbon({ kind }: { kind: ModelKind }) {
+  return (
+    <mesh castShadow receiveShadow rotation={[0.2, 0.28, -0.18]} scale={[1.05, 1.28, 1.05]}>
+      <torusKnotGeometry args={[0.82, 0.16, 230, 26, 2, 3]} />
+      <StudioMaterial kind={kind} side={THREE.DoubleSide} />
     </mesh>
   );
 }
 
-const Sculpture = ({ variant, material }: { variant: number; material?: string }) => {
-  const family = variant < 3 ? variant : 3 + ((variant - 3) % 9);
-  const profile = variant % 5;
-  const normalizedMaterial = normalizeTitle(material);
-  const isLight = normalizedMaterial.includes("alabastro") || normalizedMaterial.includes("alabaster") || normalizedMaterial.includes("marmol") || normalizedMaterial.includes("marble");
-  const isGlass = normalizedMaterial.includes("vidrio") || normalizedMaterial.includes("glass");
-  const isWood = normalizedMaterial.includes("madera") || normalizedMaterial.includes("wood");
-  const baseColor = isGlass ? "#dfe9e6" : isLight ? "#f1ece2" : isWood ? "#7a4a28" : family % 3 === 1 ? "#9a6a32" : "#6b3a17";
-  const metalness = isLight || isGlass || isWood ? 0.04 : 1;
-  const roughness = isGlass ? 0.08 : isLight ? 0.42 : isWood ? 0.58 : family % 3 === 1 ? 0.14 : 0.28;
-  const commonMaterial = (
-    <meshPhysicalMaterial
-      color={baseColor}
-      metalness={metalness}
-      roughness={roughness}
-      transmission={isGlass ? 0.5 : isLight ? 0.14 : 0}
-      thickness={isGlass || isLight ? 1.2 : 0.1}
-      clearcoat={isGlass ? 0.75 : isLight ? 0.25 : 0.45}
-      envMapIntensity={isGlass ? 1.5 : 1.1}
-      side={family === 1 ? THREE.DoubleSide : THREE.FrontSide}
-    />
+function WoodRoot({ kind }: { kind: ModelKind }) {
+  const branches = [
+    [0, 0.1, 0, 0.16, 2.2, 0, 0, 0],
+    [-0.42, 0.2, 0.02, 0.12, 1.65, 0, 0, -0.5],
+    [0.38, 0.3, -0.04, 0.1, 1.5, 0, 0, 0.46],
+    [-0.15, -0.44, 0.16, 0.14, 1.32, 0.8, 0.15, 0.2],
+  ];
+  return (
+    <group position={[0, -0.35, 0]}>
+      {branches.map(([x, y, z, r, h, rx, ry, rz], i) => (
+        <mesh key={i} castShadow receiveShadow position={[x, y, z]} rotation={[rx, ry, rz]}>
+          <capsuleGeometry args={[r, h, 12, 24]} />
+          <StudioMaterial kind={kind} />
+        </mesh>
+      ))}
+      {[[-0.22, 1.08, 0], [0.24, 1.0, 0.06], [0, -1.1, 0.1]].map(([x, y, z], i) => (
+        <mesh key={`b-${i}`} castShadow receiveShadow position={[x, y, z]} scale={[0.42, 0.5, 0.34]}>
+          <sphereGeometry args={[1, 36, 18]} />
+          <StudioMaterial kind={kind} />
+        </mesh>
+      ))}
+    </group>
   );
-  const wrap = (node: ReactElement) => (
-    <group
-      scale={[0.9 + profile * 0.045, 0.94 + ((variant + 2) % 4) * 0.055, 0.9 + ((variant + 4) % 5) * 0.035]}
-      rotation={[profile * 0.035, variant * 0.17, -profile * 0.025]}
-    >
+}
+
+function BlueCeramic({ kind }: { kind: ModelKind }) {
+  const points: THREE.Vector2[] = [];
+  for (let i = 0; i <= 72; i++) {
+    const t = i / 72;
+    const y = t * 3 - 1.5;
+    const r = 0.18 + Math.sin(t * Math.PI) * (0.42 + 0.16 * Math.sin(t * Math.PI * 2.2));
+    points.push(new THREE.Vector2(Math.max(0.08, r), y));
+  }
+  return (
+    <mesh castShadow receiveShadow rotation={[0.08, 0.12, -0.18]} scale={[0.9, 1.05, 0.9]}>
+      <latheGeometry args={[points, 128]} />
+      <StudioMaterial kind={kind} />
+    </mesh>
+  );
+}
+
+function SlenderFigure({ kind }: { kind: ModelKind }) {
+  return (
+    <group position={[0, -0.2, 0]}>
+      <mesh castShadow receiveShadow position={[0, 0.5, 0]} scale={[0.21, 1.25, 0.18]} rotation={[0, 0.18, -0.08]}>
+        <capsuleGeometry args={[0.42, 1.55, 16, 32]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+      <mesh castShadow receiveShadow position={[0, 1.78, 0]} scale={[0.18, 0.18, 0.18]}>
+        <sphereGeometry args={[1, 42, 20]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+      <mesh castShadow receiveShadow position={[-0.28, 0.35, 0]} rotation={[0, 0, -0.28]}>
+        <capsuleGeometry args={[0.055, 1.15, 10, 18]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+      <mesh castShadow receiveShadow position={[0.18, -0.95, 0]} rotation={[0, 0, 0.06]}>
+        <capsuleGeometry args={[0.07, 1.5, 12, 22]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+      <mesh receiveShadow position={[0, -1.88, 0]} scale={[0.72, 0.08, 0.48]}>
+        <boxGeometry args={[1, 1, 1]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+    </group>
+  );
+}
+
+function WhiteLoop({ kind }: { kind: ModelKind }) {
+  return (
+    <group>
+      <mesh castShadow receiveShadow scale={[0.92, 1.12, 0.92]} rotation={[0.22, 0.28, 0.05]}>
+        <torusKnotGeometry args={[0.7, 0.18, 210, 28, 1, 2]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+      <mesh castShadow receiveShadow position={[0.34, -0.28, 0]} scale={[0.42, 1.08, 0.18]} rotation={[0.12, 0.55, -0.36]}>
+        <sphereGeometry args={[1, 48, 24]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+    </group>
+  );
+}
+
+function BronzeFall({ kind }: { kind: ModelKind }) {
+  return (
+    <group rotation={[0, 0, Math.PI]} position={[0, 0.16, 0]}>
+      <FigureCurvy kind={kind} />
+    </group>
+  );
+}
+
+function Geometric({ kind }: { kind: ModelKind }) {
+  return (
+    <mesh castShadow receiveShadow scale={[0.72, 1.45, 0.55]} rotation={[0.16, 0.4, 0.12]}>
+      <octahedronGeometry args={[1.22, 3]} />
+      <StudioMaterial kind={kind} />
+    </mesh>
+  );
+}
+
+const Sculpture = ({ kind, viewAngle = 0 }: { kind: ModelKind; viewAngle?: number }) => {
+  const node: ReactElement = (() => {
+    if (kind === "hero-flight") return <HeroFlight kind={kind} />;
+    if (kind === "hero-offering") return <BronzeOffering kind={kind} />;
+    if (kind === "hero-torsion") return <HeroTorsion kind={kind} />;
+    if (kind === "figure-curvy") return <FigureCurvy kind={kind} />;
+    if (kind === "marble-fold") return <MarbleFold kind={kind} />;
+    if (kind === "corten-ribbon" || kind === "amber-glass" || kind === "white-ring") return <Ribbon kind={kind} />;
+    if (kind === "wood-root") return <WoodRoot kind={kind} />;
+    if (kind === "blue-ceramic") return <BlueCeramic kind={kind} />;
+    if (kind === "slender-figure" || kind === "black-figure") return <SlenderFigure kind={kind} />;
+    if (kind === "white-loop") return <WhiteLoop kind={kind} />;
+    if (kind === "bronze-fall") return <BronzeFall kind={kind} />;
+    return <Geometric kind={kind} />;
+  })();
+
+  return (
+    <group rotation={[0, viewAngle, 0]} scale={kind.startsWith("hero") ? 1.05 : 1}>
       {node}
     </group>
   );
-
-  if (family === 0) return wrap(<BronzeFlight />);
-  if (family === 1) return wrap(<BronzeOffering />);
-  if (family === 2) return wrap(<AlabasterTorsion />);
-  if (family === 3) {
-    return wrap(<mesh castShadow receiveShadow rotation={[0.28, 0.25, -0.15]}><torusKnotGeometry args={[0.82, 0.19, 180, 22, 2, 3]} />{commonMaterial}</mesh>);
-  }
-  if (family === 4) {
-    return wrap(<mesh castShadow receiveShadow scale={[1.25, 1.65, 0.28]} rotation={[0.1, 0.35, 0.08]}><boxGeometry args={[1, 1, 1, 12, 18, 6]} />{commonMaterial}</mesh>);
-  }
-  if (family === 5) {
-    return wrap(<mesh castShadow receiveShadow rotation={[0.15, 0.25, -0.08]}><coneGeometry args={[0.62, 3.1, 7, 16]} />{commonMaterial}</mesh>);
-  }
-  if (family === 6) {
-    return wrap(<mesh castShadow receiveShadow rotation={[0.05, 0.2, 0.16]}><cylinderGeometry args={[0.28, 0.72, 2.9, 9, 12]} />{commonMaterial}</mesh>);
-  }
-  if (family === 7) {
-    return wrap(<mesh castShadow receiveShadow scale={[0.9, 1.38, 0.9]}><sphereGeometry args={[0.98, 64, 32]} />{commonMaterial}</mesh>);
-  }
-  if (family === 8) {
-    return wrap(<mesh castShadow receiveShadow rotation={[0.2, 0.35, 0]}><torusGeometry args={[0.82, 0.14, 24, 150]} />{commonMaterial}</mesh>);
-  }
-  if (family === 9) {
-    return wrap(<mesh castShadow receiveShadow scale={[0.72, 1.45, 0.5]} rotation={[0.08, 0.45, 0.05]}><octahedronGeometry args={[1.25, 3]} />{commonMaterial}</mesh>);
-  }
-  if (family === 10) {
-    return wrap(<mesh castShadow receiveShadow scale={[0.62, 1.75, 0.62]} rotation={[0.12, 0.25, 0]}><icosahedronGeometry args={[1.08, 4]} />{commonMaterial}</mesh>);
-  }
-  return wrap(<mesh castShadow receiveShadow rotation={[0.18, 0.3, -0.12]}><dodecahedronGeometry args={[1.1, 2]} />{commonMaterial}</mesh>);
 };
 
-export const SculptureViewer = ({ obraIndex, bgMode, titulo, material }: SculptureViewerProps) => {
-  const variant = useMemo(() => resolveVariant(titulo, obraIndex), [titulo, obraIndex]);
-  const studioIndex = ((variant % studios.length) + studios.length) % studios.length;
+export const SculptureViewer = ({ obraIndex, bgMode, titulo, material, viewAngle = 0 }: SculptureViewerProps) => {
+  const kind = useMemo(() => resolveModel(titulo, obraIndex), [titulo, obraIndex]);
+  const studioIndex = ((obraIndex % studios.length) + studios.length) % studios.length;
   const bg =
     bgMode === "white"
       ? { background: "#ffffff" }
@@ -250,28 +415,31 @@ export const SculptureViewer = ({ obraIndex, bgMode, titulo, material }: Sculptu
 
   return (
     <div className="absolute inset-0" style={bg}>
-      <Canvas shadows camera={{ position: [0, 0.4, 5.2], fov: 32 }} dpr={[1, 2]}>
+      <Canvas shadows camera={{ position: [0, 0.32, 5.2], fov: 31 }} dpr={[1, 1.6]} gl={{ antialias: true, powerPreference: "high-performance" }}>
         <Suspense fallback={null}>
-          <ambientLight intensity={bgMode === "dark" ? 0.25 : 0.6} />
+          <ambientLight intensity={bgMode === "dark" ? 0.28 : 0.58} />
           <directionalLight
             position={[4, 6, 5]}
-            intensity={bgMode === "dark" ? 1.6 : 1.1}
+            intensity={bgMode === "dark" ? 1.75 : 1.22}
             castShadow
             shadow-mapSize={[1024, 1024]}
           />
-          <directionalLight position={[-5, 2, -3]} intensity={0.4} />
-          <Float speed={1.2} rotationIntensity={0} floatIntensity={0.25}>
-            <Sculpture variant={variant} material={material} />
+          <directionalLight position={[-5, 2, -3]} intensity={0.46} />
+          <spotLight position={[0, 5, 2]} angle={0.32} penumbra={0.8} intensity={0.55} castShadow />
+          <Float speed={1.05} rotationIntensity={0.04} floatIntensity={0.22}>
+            <Sculpture kind={kind} viewAngle={viewAngle} />
           </Float>
-          <ContactShadows position={[0, -1.65, 0]} opacity={bgMode === "dark" ? 0.7 : 0.45} scale={6} blur={2.4} far={4} />
+          <ContactShadows position={[0, -1.88, 0]} opacity={bgMode === "dark" ? 0.76 : 0.48} scale={6.5} blur={2.6} far={4.5} />
           <Environment preset={bgMode === "dark" ? "night" : "studio"} />
           <OrbitControls
             enablePan={false}
             enableZoom
-            minDistance={3.5}
+            autoRotate
+            autoRotateSpeed={0.28}
+            minDistance={3.4}
             maxDistance={8}
-            minPolarAngle={Math.PI / 3}
-            maxPolarAngle={Math.PI / 1.8}
+            minPolarAngle={Math.PI / 3.2}
+            maxPolarAngle={Math.PI / 1.75}
           />
         </Suspense>
       </Canvas>
