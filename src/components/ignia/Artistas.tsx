@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
 import cristina from "@/assets/artist-cristina-iglesias-real.jpg";
 import jaume from "@/assets/artist-jaume-plensa-real.jpg";
@@ -45,22 +46,24 @@ export const Artistas = () => {
       </div>
 
       <article className="grid grid-cols-1 md:grid-cols-[65%_35%] gap-8 md:gap-14 items-center mb-16">
-        <div className="aspect-[16/9] overflow-hidden bg-secondary">
-          <img src={principal.foto} alt={principal.nombre} loading="lazy" width={1600} height={900} className="w-full h-full object-cover object-[center_35%]" />
-        </div>
+        <Link to="/perfil/escultor" aria-label={principal.nombre} className="block aspect-[16/9] overflow-hidden bg-secondary group">
+          <img src={principal.foto} alt={principal.nombre} loading="lazy" width={1600} height={900} className="w-full h-full object-cover object-[center_35%] transition-transform duration-[700ms] group-hover:scale-[1.02]" />
+        </Link>
         <div>
-          <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-4">
-            {principal.tag} · {principal.nombre}
-          </div>
-          <h3 className="font-display font-bold text-[clamp(24px,2.4vw,32px)] tracking-[-0.02em] text-ink mb-5 leading-[1.15]">
-            {principal.titularEntrevista}
-          </h3>
-          <p className="font-body text-[15px] font-light text-gray leading-relaxed mb-6">{principal.extracto}</p>
-          <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-6">
-            {principal.esp} · {principal.obras} · {principal.tiempo}
-          </div>
-          <div className="font-body text-[11px] font-light text-muted-line mb-6">{principal.credito}</div>
-          <a href="#" className="link-arrow">{t.view}</a>
+          <Link to="/perfil/escultor" className="block group">
+            <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-4">
+              {principal.tag} · {principal.nombre}
+            </div>
+            <h3 className="font-display font-bold text-[clamp(24px,2.4vw,32px)] tracking-[-0.02em] text-ink mb-5 leading-[1.15] group-hover:opacity-70 transition-opacity">
+              {principal.titularEntrevista}
+            </h3>
+            <p className="font-body text-[15px] font-light text-gray leading-relaxed mb-6">{principal.extracto}</p>
+            <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-6">
+              {principal.esp} · {principal.obras} · {principal.tiempo}
+            </div>
+            <div className="font-body text-[11px] font-light text-muted-line mb-6">{principal.credito}</div>
+            <span className="link-arrow">{t.view}</span>
+          </Link>
         </div>
       </article>
 
@@ -70,18 +73,23 @@ export const Artistas = () => {
           {secundarios.map((a) => {
             const realIdx = artistas.findIndex((x) => x.nombre === a.nombre);
             return (
-              <button key={a.nombre} onClick={() => setI(realIdx)} className="group grid grid-cols-[40%_60%] gap-5 text-left items-start">
-                <div className="aspect-square overflow-hidden bg-secondary">
+              <article key={a.nombre} className="group grid grid-cols-[40%_60%] gap-5 items-start">
+                <Link to="/perfil/escultor" aria-label={a.nombre} className="block aspect-square overflow-hidden bg-secondary">
                   <img src={a.foto} alt={a.nombre} loading="lazy" width={800} height={800} className="w-full h-full object-cover object-[center_35%] transition-transform duration-[700ms] group-hover:scale-[1.03]" />
-                </div>
+                </Link>
                 <div>
-                  <h4 className="font-display font-bold text-[18px] text-ink mb-1.5 leading-tight">{a.nombre}</h4>
-                  <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{a.esp}</div>
-                  <p className="font-body text-[14px] font-light text-gray leading-relaxed mb-3">{a.extracto}</p>
-                  <div className="font-body text-[11px] font-light text-muted-line mb-3">{a.credito}</div>
-                  <span className="link-arrow text-[12px]">{t.view}</span>
+                  <Link to="/perfil/escultor" className="block hover:opacity-80 transition-opacity">
+                    <h4 className="font-display font-bold text-[18px] text-ink mb-1.5 leading-tight">{a.nombre}</h4>
+                    <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{a.esp}</div>
+                    <p className="font-body text-[14px] font-light text-gray leading-relaxed mb-3">{a.extracto}</p>
+                    <div className="font-body text-[11px] font-light text-muted-line mb-3">{a.credito}</div>
+                    <span className="link-arrow text-[12px]">{t.view}</span>
+                  </Link>
+                  <button onClick={() => setI(realIdx)} className="mt-3 font-body text-[11px] font-light text-muted-line uppercase tracking-[0.14em] hover:text-ink transition-colors">
+                    {lang === "es" ? "Destacar arriba" : "Feature above"}
+                  </button>
                 </div>
-              </button>
+              </article>
             );
           })}
         </div>
