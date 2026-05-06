@@ -45,7 +45,7 @@ export const Sculpture3DModal = ({ open, onClose, obraIndex, titulo, artista, ma
         </button>
       </header>
       <div className="relative flex-1">
-        <SculptureViewer obraIndex={obraIndex % 3} bgMode={bg} />
+        <SculptureViewer obraIndex={obraIndex} bgMode={bg} titulo={titulo} material={material} />
         <div className="absolute bottom-5 left-0 right-0 flex items-center justify-center gap-2 z-10 text-[12px]">
           {(["studio", "white", "dark"] as BgMode[]).map(m => (
             <button
