@@ -173,20 +173,68 @@ function AlabasterTorsion() {
   );
 }
 
-const Sculpture = ({ idx }: { idx: number }) => {
-  if (idx === 0) return <BronzeFlight />;
-  if (idx === 1) return <BronzeOffering />;
-  return <AlabasterTorsion />;
+const Sculpture = ({ variant, material }: { variant: number; material?: string }) => {
+  const family = variant % 12;
+  const normalizedMaterial = normalizeTitle(material);
+  const isLight = normalizedMaterial.includes("alabastro") || normalizedMaterial.includes("alabaster") || normalizedMaterial.includes("marmol") || normalizedMaterial.includes("marble");
+  const isGlass = normalizedMaterial.includes("vidrio") || normalizedMaterial.includes("glass");
+  const isWood = normalizedMaterial.includes("madera") || normalizedMaterial.includes("wood");
+  const baseColor = isGlass ? "#dfe9e6" : isLight ? "#f1ece2" : isWood ? "#7a4a28" : family % 3 === 1 ? "#9a6a32" : "#6b3a17";
+  const metalness = isLight || isGlass || isWood ? 0.04 : 1;
+  const roughness = isGlass ? 0.08 : isLight ? 0.42 : isWood ? 0.58 : family % 3 === 1 ? 0.14 : 0.28;
+  const commonMaterial = (
+    <meshPhysicalMaterial
+      color={baseColor}
+      metalness={metalness}
+      roughness={roughness}
+      transmission={isGlass ? 0.5 : isLight ? 0.14 : 0}
+      thickness={isGlass || isLight ? 1.2 : 0.1}
+      clearcoat={isGlass ? 0.75 : isLight ? 0.25 : 0.45}
+      envMapIntensity={isGlass ? 1.5 : 1.1}
+      side={family === 1 ? THREE.DoubleSide : THREE.FrontSide}
+    />
+  );
+
+  if (family === 0) return <BronzeFlight />;
+  if (family === 1) return <BronzeOffering />;
+  if (family === 2) return <AlabasterTorsion />;
+  if (family === 3) {
+    return <mesh castShadow receiveShadow rotation={[0.28, 0.25, -0.15]}><torusKnotGeometry args={[0.82, 0.19, 180, 22, 2, 3]} />{commonMaterial}</mesh>;
+  }
+  if (family === 4) {
+    return <mesh castShadow receiveShadow scale={[1.25, 1.65, 0.28]} rotation={[0.1, 0.35, 0.08]}><boxGeometry args={[1, 1, 1, 12, 18, 6]} />{commonMaterial}</mesh>;
+  }
+  if (family === 5) {
+    return <mesh castShadow receiveShadow rotation={[0.15, 0.25, -0.08]}><coneGeometry args={[0.62, 3.1, 7, 16]} />{commonMaterial}</mesh>;
+  }
+  if (family === 6) {
+    return <mesh castShadow receiveShadow rotation={[0.05, 0.2, 0.16]}><cylinderGeometry args={[0.28, 0.72, 2.9, 9, 12]} />{commonMaterial}</mesh>;
+  }
+  if (family === 7) {
+    return <mesh castShadow receiveShadow scale={[0.9, 1.38, 0.9]}><sphereGeometry args={[0.98, 64, 32]} />{commonMaterial}</mesh>;
+  }
+  if (family === 8) {
+    return <mesh castShadow receiveShadow rotation={[0.2, 0.35, 0]}><torusGeometry args={[0.82, 0.14, 24, 150]} />{commonMaterial}</mesh>;
+  }
+  if (family === 9) {
+    return <mesh castShadow receiveShadow scale={[0.72, 1.45, 0.5]} rotation={[0.08, 0.45, 0.05]}><octahedronGeometry args={[1.25, 3]} />{commonMaterial}</mesh>;
+  }
+  if (family === 10) {
+    return <mesh castShadow receiveShadow scale={[0.62, 1.75, 0.62]} rotation={[0.12, 0.25, 0]}><icosahedronGeometry args={[1.08, 4]} />{commonMaterial}</mesh>;
+  }
+  return <mesh castShadow receiveShadow rotation={[0.18, 0.3, -0.12]}><dodecahedronGeometry args={[1.1, 2]} />{commonMaterial}</mesh>;
 };
 
-export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => {
+export const SculptureViewer = ({ obraIndex, bgMode, titulo, material }: SculptureViewerProps) => {
+  const variant = useMemo(() => resolveVariant(titulo, obraIndex), [titulo, obraIndex]);
+  const studioIndex = ((variant % studios.length) + studios.length) % studios.length;
   const bg =
     bgMode === "white"
       ? { background: "#ffffff" }
       : bgMode === "dark"
       ? { background: "#0d0d0d" }
       : {
-          backgroundImage: `url(${studios[obraIndex]})`,
+          backgroundImage: `url(${studios[studioIndex]})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         };
@@ -204,7 +252,7 @@ export const SculptureViewer = ({ obraIndex, bgMode }: SculptureViewerProps) => 
           />
           <directionalLight position={[-5, 2, -3]} intensity={0.4} />
           <Float speed={1.2} rotationIntensity={0} floatIntensity={0.25}>
-            <Sculpture idx={obraIndex} />
+            <Sculpture variant={variant} material={material} />
           </Float>
           <ContactShadows position={[0, -1.65, 0]} opacity={bgMode === "dark" ? 0.7 : 0.45} scale={6} blur={2.4} far={4} />
           <Environment preset={bgMode === "dark" ? "night" : "studio"} />
