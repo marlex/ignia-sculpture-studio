@@ -36,8 +36,8 @@ export const Hero = () => {
   const obras = OBRAS[lang];
   const o = obras[actual];
   const t = lang === "es"
-    ? { hint: "Pulsa para verla en 3D", prev: "Anterior", next: "Siguiente", view: "Ver obra completa →", view3d: "Ver en 3D", of: "de" }
-    : { hint: "Tap to view in 3D", prev: "Previous", next: "Next", view: "View full piece →", view3d: "View in 3D", of: "of" };
+    ? { hint: "Pulsa para verla en 3D", prev: "Anterior", next: "Siguiente", view: "Ver escultura →", view3d: "Ver en 3D", of: "de" }
+    : { hint: "Tap to view in 3D", prev: "Previous", next: "Next", view: "View sculpture →", view3d: "View in 3D", of: "of" };
 
   const next = () => setActual((actual + 1) % 3);
   const prev = () => setActual((actual + 2) % 3);
