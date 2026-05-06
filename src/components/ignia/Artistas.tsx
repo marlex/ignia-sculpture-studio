@@ -46,11 +46,11 @@ export const Artistas = () => {
       </div>
 
       <article className="grid grid-cols-1 md:grid-cols-[65%_35%] gap-8 md:gap-14 items-center mb-16">
-        <Link to="/perfil/escultor" aria-label={principal.nombre} className="block aspect-[16/9] overflow-hidden bg-secondary group">
+        <Link to={`/perfil/escultor/${principal.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} aria-label={principal.nombre} className="block aspect-[16/9] overflow-hidden bg-secondary group">
           <img src={principal.foto} alt={principal.nombre} loading="lazy" width={1600} height={900} className="w-full h-full object-cover object-[center_35%] transition-transform duration-[700ms] group-hover:scale-[1.02]" />
         </Link>
         <div>
-          <Link to="/perfil/escultor" className="block group">
+          <Link to={`/perfil/escultor/${principal.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} className="block group">
             <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-4">
               {principal.tag} · {principal.nombre}
             </div>
@@ -74,11 +74,11 @@ export const Artistas = () => {
             const realIdx = artistas.findIndex((x) => x.nombre === a.nombre);
             return (
               <article key={a.nombre} className="group grid grid-cols-[40%_60%] gap-5 items-start">
-                <Link to="/perfil/escultor" aria-label={a.nombre} className="block aspect-square overflow-hidden bg-secondary">
+                <Link to={`/perfil/escultor/${a.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} aria-label={a.nombre} className="block aspect-square overflow-hidden bg-secondary">
                   <img src={a.foto} alt={a.nombre} loading="lazy" width={800} height={800} className="w-full h-full object-cover object-[center_35%] transition-transform duration-[700ms] group-hover:scale-[1.03]" />
                 </Link>
                 <div>
-                  <Link to="/perfil/escultor" className="block hover:opacity-80 transition-opacity">
+                  <Link to={`/perfil/escultor/${a.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} className="block hover:opacity-80 transition-opacity">
                     <h4 className="font-display font-bold text-[18px] text-ink mb-1.5 leading-tight">{a.nombre}</h4>
                     <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{a.esp}</div>
                     <p className="font-body text-[14px] font-light text-gray leading-relaxed mb-3">{a.extracto}</p>
