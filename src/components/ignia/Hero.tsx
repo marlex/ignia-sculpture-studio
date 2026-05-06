@@ -24,6 +24,7 @@ const OBRAS = {
 export const Hero = () => {
   const [actual, setActual] = useState(0);
   const [open3d, setOpen3d] = useState(false);
+  const [view, setView] = useState<"3d" | "photo">("3d");
   const [showHint, setShowHint] = useState(true);
 
   useEffect(() => {
@@ -35,28 +36,37 @@ export const Hero = () => {
   const obras = OBRAS[lang];
   const o = obras[actual];
   const t = lang === "es"
-    ? { hint: "Pulsa para verla en 3D", prev: "Anterior", next: "Siguiente", view: "Ver escultura →", view3d: "Ver en 3D", of: "de" }
-    : { hint: "Tap to view in 3D", prev: "Previous", next: "Next", view: "View sculpture →", view3d: "View in 3D", of: "of" };
+    ? { hint: "Arrastra para rotar la escultura", prev: "Anterior", next: "Siguiente", view: "Ver escultura →", view3d: "Ver en 3D", photo: "Foto", model: "3D", expand: "Ampliar 3D" }
+    : { hint: "Drag to rotate the sculpture", prev: "Previous", next: "Next", view: "View sculpture →", view3d: "View in 3D", photo: "Photo", model: "3D", expand: "Expand 3D" };
 
   const next = () => setActual((actual + 1) % 3);
   const prev = () => setActual((actual + 2) % 3);
 
   return (
     <section className="relative w-screen h-screen overflow-hidden bg-surface">
-      {/* Real photo */}
+      {/* Media: live 3D viewer (rotatable) or real photo */}
       <div className="absolute inset-0">
-        <img
-          src={photos[actual]}
-          alt={o.nombre}
-          className="w-full h-full object-cover transition-[object-position] duration-700"
-          style={{ objectPosition: `center ${focalY[actual]}` }}
-          width={1280}
-          height={1600}
-        />
+        {view === "3d" ? (
+          <SculptureViewer
+            obraIndex={actual}
+            bgMode="studio"
+            titulo={o.nombre}
+            material={o.material}
+          />
+        ) : (
+          <img
+            src={photos[actual]}
+            alt={o.nombre}
+            className="w-full h-full object-cover"
+            style={{ objectPosition: "center 35%" }}
+            width={1280}
+            height={1600}
+          />
+        )}
       </div>
 
       {/* Subtle vignette */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, transparent 30%, transparent 55%, rgba(0,0,0,0.45) 100%)" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, transparent 30%, transparent 55%, rgba(255,255,255,0.55) 100%)" }} />
 
       {/* hint chip */}
       <div
@@ -66,19 +76,33 @@ export const Hero = () => {
         ◆ {t.hint}
       </div>
 
+      {/* View toggle */}
+      <div className="absolute top-6 right-6 z-20 flex bg-white/90 backdrop-blur border-[0.5px] border-border">
+        {(["3d", "photo"] as const).map((v) => (
+          <button
+            key={v}
+            onClick={() => setView(v)}
+            className="font-body text-[11px] uppercase tracking-[0.16em] px-3 py-2 transition-colors"
+            style={{ background: view === v ? "#111" : "transparent", color: view === v ? "#fff" : "#444" }}
+          >
+            {v === "3d" ? t.model : t.photo}
+          </button>
+        ))}
+      </div>
+
       {/* arrows */}
       <button onClick={prev} aria-label={t.prev} className="absolute top-1/2 -translate-y-1/2 left-6 md:left-12 z-20 w-10 h-10 flex items-center justify-center text-[15px] border-[0.5px] border-border backdrop-blur-md transition-colors hover:bg-white"
         style={{ background: "rgba(248,248,246,0.9)", color: "#111" }}>←</button>
       <button onClick={next} aria-label={t.next} className="absolute top-1/2 -translate-y-1/2 right-6 md:right-12 z-20 w-10 h-10 flex items-center justify-center text-[15px] border-[0.5px] border-border backdrop-blur-md transition-colors hover:bg-white"
         style={{ background: "rgba(248,248,246,0.9)", color: "#111" }}>→</button>
 
-      {/* Floating 3D link (centered low, subtle) */}
+      {/* Expand 3D button */}
       <button
         onClick={() => setOpen3d(true)}
-        className="absolute left-1/2 -translate-x-1/2 bottom-[210px] md:bottom-[180px] z-20 font-body text-[10px] font-light tracking-[0.22em] uppercase text-white/85 hover:text-white transition-colors flex items-center gap-2"
+        className="absolute left-1/2 -translate-x-1/2 bottom-[210px] md:bottom-[180px] z-20 font-body text-[11px] font-light tracking-[0.22em] uppercase text-ink/85 hover:text-ink transition-colors flex items-center gap-2 bg-white/85 backdrop-blur px-3 py-2 border-[0.5px] border-border"
       >
-        <span aria-hidden className="inline-block w-1 h-1 rounded-full bg-white/70" />
-        {t.view3d}
+        <span aria-hidden className="inline-block w-1 h-1 rounded-full bg-ink" />
+        {t.expand}
       </button>
 
       {/* bottom strip */}
