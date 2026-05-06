@@ -88,29 +88,27 @@ export const Coleccion = () => {
                 <img src={o.img} alt={o.titulo} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
               </Link>
               <div className="p-5">
-                <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-1.5">{o.material}</div>
+                <button
+                  onClick={() => setOpen3d(i)}
+                  className="inline-flex items-center gap-1.5 mb-2 font-body text-[10px] font-light text-muted-line uppercase tracking-[0.14em] border-[0.5px] border-border px-2 py-1 hover:text-ink hover:border-ink transition-colors"
+                >
+                  <span aria-hidden>◇</span> {t.view3d}
+                </button>
                 <h3 className="font-display font-bold text-[17px] text-ink mb-1">{o.titulo}</h3>
-                <div className="font-body text-[14px] font-light text-gray mb-3">{o.artista}</div>
+                <div className="font-body text-[14px] font-light text-gray mb-1.5">{o.artista}</div>
+                <div className="font-body text-[12px] font-light text-muted-line uppercase tracking-[0.14em] mb-2">{o.material}</div>
                 <div className="flex items-center gap-1.5 mb-3 font-body text-[11px] font-light text-muted-line normal-case tracking-normal">
                   <span aria-hidden className="text-ink">◆</span>
                   <span>{t.auth} <span className="font-mono text-ink/70">#0x{(i * 7919 + 0x3a9f).toString(16)}…{(i * 1117 + 0xc21).toString(16).slice(-3)}</span></span>
                 </div>
                 <div className="flex items-center justify-between pt-3 border-t-[0.5px] border-border gap-3">
                   <span className="font-body text-[14px] font-normal text-ink">{o.precio}</span>
-                  <div className="flex items-center gap-4">
-                    <Link
-                      to={`/obra/${slug}`}
-                      className="font-body text-[12px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-60 transition-opacity"
-                    >
-                      {t.viewObra} →
-                    </Link>
-                    <button
-                      onClick={() => setOpen3d(i)}
-                      className="font-body text-[11px] font-light text-muted-line uppercase tracking-[0.12em] hover:text-ink transition-colors"
-                    >
-                      {t.view3d}
-                    </button>
-                  </div>
+                  <Link
+                    to={`/obra/${slug}`}
+                    className="font-body text-[12px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-60 transition-opacity"
+                  >
+                    {t.viewObra} →
+                  </Link>
                 </div>
               </div>
             </article>
