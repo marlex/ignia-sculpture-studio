@@ -156,6 +156,7 @@ export const Hero = () => {
         titulo={o.nombre}
         artista={o.artista}
         material={o.material}
+        photoSrc={photos[actual]}
       />
     </section>
   );
