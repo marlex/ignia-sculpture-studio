@@ -105,19 +105,25 @@ export default function PerfilColeccionista() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {t.recomendados.map((o, i) => (
               <article key={o.titulo} className="group">
-                <div className="relative aspect-square overflow-hidden bg-secondary mb-3">
+                <Link to={`/obra/${SLUGS[(i + 3) % SLUGS.length]}`} className="block relative aspect-square overflow-hidden bg-secondary mb-3">
                   <img src={o.img} alt={o.titulo} loading="lazy" width={1024} height={1024} className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
+                </Link>
+                <h3 className="font-display font-bold text-[14px] text-ink">{o.titulo}</h3>
+                <div className="font-body text-[12px] text-muted-line uppercase tracking-[0.14em] mb-2">{o.artista}</div>
+                <div className="flex items-center gap-3">
+                  <Link
+                    to={`/obra/${SLUGS[(i + 3) % SLUGS.length]}`}
+                    className="font-body text-[11px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-60 transition-opacity"
+                  >
+                    {t.viewObra} →
+                  </Link>
                   <button
                     onClick={() => setOpen3d({ idx: i + 3, titulo: o.titulo, artista: o.artista })}
-                    aria-label={`${t.view3d} — ${o.titulo}`}
-                    className="absolute bottom-2 right-2 font-body text-[10px] font-light tracking-[0.18em] uppercase text-white/90 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
+                    className="font-body text-[10px] font-light text-muted-line uppercase tracking-[0.12em] hover:text-ink transition-colors"
                   >
-                    <span aria-hidden className="inline-block w-1 h-1 rounded-full bg-white/80" />
                     {t.view3d}
                   </button>
                 </div>
-                <h3 className="font-display font-bold text-[14px] text-ink">{o.titulo}</h3>
-                <div className="font-body text-[12px] text-muted-line uppercase tracking-[0.14em]">{o.artista}</div>
               </article>
             ))}
           </div>
