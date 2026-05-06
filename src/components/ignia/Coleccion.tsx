@@ -80,39 +80,42 @@ export const Coleccion = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
-        {obras.map((o, i) => (
-          <article key={i} className="bg-white group">
-            <div className="relative aspect-[4/5] overflow-hidden bg-secondary">
-              <img src={o.img} alt={o.titulo} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-              <button
-                onClick={() => setOpen3d(i)}
-                aria-label={`${t.view3d} — ${o.titulo}`}
-                className="absolute bottom-3 right-3 font-body text-[10px] font-light tracking-[0.18em] uppercase text-white/90 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
-              >
-                <span aria-hidden className="inline-block w-1 h-1 rounded-full bg-white/80" />
-                {t.view3d}
-              </button>
-            </div>
-            <div className="p-5">
-              <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-1.5">{o.material}</div>
-              <h3 className="font-display font-bold text-[17px] text-ink mb-1">{o.titulo}</h3>
-              <div className="font-body text-[14px] font-light text-gray mb-3">{o.artista}</div>
-              <div className="flex items-center gap-1.5 mb-3 font-body text-[11px] font-light text-muted-line normal-case tracking-normal">
-                <span aria-hidden className="text-ink">◆</span>
-                <span>{t.auth} <span className="font-mono text-ink/70">#0x{(i * 7919 + 0x3a9f).toString(16)}…{(i * 1117 + 0xc21).toString(16).slice(-3)}</span></span>
+        {obras.map((o, i) => {
+          const slug = SLUGS[i % SLUGS.length];
+          return (
+            <article key={i} className="bg-white group">
+              <Link to={`/obra/${slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary">
+                <img src={o.img} alt={o.titulo} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+              </Link>
+              <div className="p-5">
+                <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-1.5">{o.material}</div>
+                <h3 className="font-display font-bold text-[17px] text-ink mb-1">{o.titulo}</h3>
+                <div className="font-body text-[14px] font-light text-gray mb-3">{o.artista}</div>
+                <div className="flex items-center gap-1.5 mb-3 font-body text-[11px] font-light text-muted-line normal-case tracking-normal">
+                  <span aria-hidden className="text-ink">◆</span>
+                  <span>{t.auth} <span className="font-mono text-ink/70">#0x{(i * 7919 + 0x3a9f).toString(16)}…{(i * 1117 + 0xc21).toString(16).slice(-3)}</span></span>
+                </div>
+                <div className="flex items-center justify-between pt-3 border-t-[0.5px] border-border gap-3">
+                  <span className="font-body text-[14px] font-normal text-ink">{o.precio}</span>
+                  <div className="flex items-center gap-4">
+                    <Link
+                      to={`/obra/${slug}`}
+                      className="font-body text-[12px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-60 transition-opacity"
+                    >
+                      {t.viewObra} →
+                    </Link>
+                    <button
+                      onClick={() => setOpen3d(i)}
+                      className="font-body text-[11px] font-light text-muted-line uppercase tracking-[0.12em] hover:text-ink transition-colors"
+                    >
+                      {t.view3d}
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center justify-between pt-3 border-t-[0.5px] border-border">
-                <span className="font-body text-[14px] font-normal text-ink">{o.precio}</span>
-                <button
-                  onClick={() => setOpen3d(i)}
-                  className="font-body text-[12px] font-light text-ink uppercase tracking-[0.12em] hover:opacity-60 transition-opacity"
-                >
-                  {t.view3d} →
-                </button>
-              </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
 
       {open3d !== null && (
