@@ -16,7 +16,7 @@ type BgMode = "studio" | "white" | "dark";
 
 const ANGLES = [0, Math.PI / 3, (2 * Math.PI) / 3, Math.PI];
 
-export const Sculpture3DModal = ({ open, onClose, obraIndex, titulo, artista, material }: Props) => {
+export const Sculpture3DModal = ({ open, onClose, obraIndex, titulo, artista, material, photoSrc }: Props) => {
   const lang = useLang();
   const [bg, setBg] = useState<BgMode>("studio");
   const [angle, setAngle] = useState(0);
