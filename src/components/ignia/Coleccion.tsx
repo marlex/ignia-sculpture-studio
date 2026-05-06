@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import obra1 from "@/assets/obra-1.jpg";
 import obra2 from "@/assets/obra-2.jpg";
 import obra3 from "@/assets/obra-3.jpg";
@@ -9,6 +10,8 @@ import obra7 from "@/assets/obra-7.jpg";
 import obra8 from "@/assets/obra-8.jpg";
 import { useLang } from "@/i18n/LanguageContext";
 import { Sculpture3DModal } from "./Sculpture3DModal";
+
+const SLUGS = ["lirio-en-vuelo", "ofrenda", "torsion-i"];
 
 const OBRAS = {
   es: [
@@ -44,6 +47,7 @@ export const Coleccion = () => {
     search: "Buscar artista, obra, material…",
     filters: ["Material", "Precio", "Técnica"],
     view3d: "Ver en 3D",
+    viewObra: "Ver escultura",
     auth: "Autenticidad",
     state: "Disponible · 3D",
   } : {
@@ -53,6 +57,7 @@ export const Coleccion = () => {
     search: "Search artist, work, material…",
     filters: ["Material", "Price", "Technique"],
     view3d: "View in 3D",
+    viewObra: "View sculpture",
     auth: "Authenticity",
     state: "Available · 3D",
   };
