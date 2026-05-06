@@ -15,6 +15,7 @@ interface SculptureViewerProps {
   titulo?: string;
   material?: string;
   viewAngle?: number;
+  photoSrc?: string;
 }
 
 type ModelKind =
@@ -399,16 +400,17 @@ const Sculpture = ({ kind, viewAngle = 0 }: { kind: ModelKind; viewAngle?: numbe
   );
 };
 
-export const SculptureViewer = ({ obraIndex, bgMode, titulo, material, viewAngle = 0 }: SculptureViewerProps) => {
+export const SculptureViewer = ({ obraIndex, bgMode, titulo, material, viewAngle = 0, photoSrc }: SculptureViewerProps) => {
   const kind = useMemo(() => resolveModel(titulo, obraIndex), [titulo, obraIndex]);
   const studioIndex = ((obraIndex % studios.length) + studios.length) % studios.length;
+  const studioBg = photoSrc ?? studios[studioIndex];
   const bg =
     bgMode === "white"
       ? { background: "#ffffff" }
       : bgMode === "dark"
       ? { background: "#0d0d0d" }
       : {
-          backgroundImage: `url(${studios[studioIndex]})`,
+          backgroundImage: `url(${studioBg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         };

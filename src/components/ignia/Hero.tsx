@@ -52,6 +52,7 @@ export const Hero = () => {
             bgMode="studio"
             titulo={o.nombre}
             material={o.material}
+            photoSrc={photos[actual]}
           />
         ) : (
           <img
@@ -155,6 +156,7 @@ export const Hero = () => {
         titulo={o.nombre}
         artista={o.artista}
         material={o.material}
+        photoSrc={photos[actual]}
       />
     </section>
   );
