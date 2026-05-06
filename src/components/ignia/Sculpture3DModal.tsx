@@ -9,6 +9,7 @@ interface Props {
   titulo: string;
   artista: string;
   material: string;
+  photoSrc?: string;
 }
 
 type BgMode = "studio" | "white" | "dark";
