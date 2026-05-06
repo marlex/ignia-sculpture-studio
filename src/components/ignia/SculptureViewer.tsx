@@ -1,4 +1,4 @@
-import { Suspense, useRef } from "react";
+import { Suspense, useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, OrbitControls, ContactShadows, Float } from "@react-three/drei";
 import * as THREE from "three";
@@ -12,7 +12,67 @@ const studios = [bg1, bg2, bg3];
 interface SculptureViewerProps {
   obraIndex: number;
   bgMode: "studio" | "white" | "dark";
+  titulo?: string;
+  material?: string;
 }
+
+const normalizeTitle = (value = "") =>
+  value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+
+const titleVariants: Record<string, number> = {
+  "lirio en vuelo": 0,
+  "lily in flight": 0,
+  ofrenda: 1,
+  offering: 1,
+  "torsion i": 2,
+  confluencia: 3,
+  confluence: 3,
+  "pliegue iii": 4,
+  "fold iii": 4,
+  vertigo: 5,
+  raiz: 6,
+  root: 6,
+  origen: 7,
+  origin: 7,
+  eco: 8,
+  echo: 8,
+  quietud: 9,
+  stillness: 9,
+  "luz interior": 10,
+  "inner light": 10,
+  caida: 11,
+  fall: 11,
+  umbral: 12,
+  threshold: 12,
+  vertice: 13,
+  vertex: 13,
+  resto: 14,
+  remnant: 14,
+  arco: 15,
+  arch: 15,
+  memoria: 16,
+  memory: 16,
+  nexo: 17,
+  nexus: 17,
+  latido: 18,
+  heartbeat: 18,
+  orbita: 19,
+  orbit: 19,
+  mineral: 20,
+  respiro: 21,
+  breath: 21,
+};
+
+const resolveVariant = (titulo: string | undefined, obraIndex: number) => {
+  const normalized = normalizeTitle(titulo);
+  if (normalized in titleVariants) return titleVariants[normalized];
+  return ((obraIndex % 24) + 24) % 24;
+};
 
 // "Lirio en vuelo" — elegant elongated bronze drop / flame form
 function BronzeFlight() {
