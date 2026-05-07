@@ -25,16 +25,12 @@ const T = {
   },
 };
 
-const ANGLES = [0, Math.PI / 3, (2 * Math.PI) / 3, Math.PI];
-
 const ObraDetalle = () => {
   const { slug = "" } = useParams();
   const lang = useLang();
   const t = T[lang];
   const o = getWorkBySlug(slug, lang);
   const [open3d, setOpen3d] = useState(false);
-  const [view, setView] = useState<"photo" | "3d">("3d");
-  const [angle, setAngle] = useState(0);
 
   return (
     <main className="pt-14 bg-white">
@@ -43,42 +39,18 @@ const ObraDetalle = () => {
       <section className="px-6 md:px-12 py-10">
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10">
           <div>
-            <div className="relative aspect-square bg-secondary overflow-hidden">
-              {view === "photo" ? (
-                <img src={o.image} alt={o.title} className="w-full h-full object-cover" />
-              ) : (
-                <SculptureViewer
-                  obraIndex={o.index}
-                  bgMode="studio"
-                  titulo={o.title}
-                  material={o.material}
-                  viewAngle={angle}
-                  photoSrc={o.image}
-                  model={o.model}
-                />
-              )}
-              <button
-                onClick={() => setOpen3d(true)}
-                className="absolute bottom-4 right-4 font-body text-[10px] font-light tracking-[0.2em] uppercase text-white bg-black/55 backdrop-blur px-3 py-1.5 hover:bg-black/75 transition-colors z-10"
-              >
+            <button
+              type="button"
+              onClick={() => setOpen3d(true)}
+              aria-label={t.view3d}
+              className="relative aspect-square w-full bg-secondary overflow-hidden block cursor-zoom-in group"
+            >
+              <img src={o.image} alt={o.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
+              <span className="absolute bottom-4 right-4 font-body text-[10px] font-light tracking-[0.2em] uppercase text-white bg-black/55 backdrop-blur px-3 py-1.5 group-hover:bg-black/80 transition-colors">
                 {t.view3d} ↗
-              </button>
-              <div className="absolute top-4 left-4 flex gap-1 bg-white/85 backdrop-blur border-[0.5px] border-border z-10">
-                {(["photo", "3d"] as const).map((v) => (
-                  <button
-                    key={v}
-                    onClick={() => setView(v)}
-                    className="font-body text-[10px] uppercase tracking-[0.16em] px-2.5 py-1.5 transition-colors"
-                    style={{
-                      background: view === v ? "hsl(var(--black-pure))" : "transparent",
-                      color: view === v ? "#fff" : "hsl(var(--gray))",
-                    }}
-                  >
-                    {v === "photo" ? t.photo : t.model}
-                  </button>
-                ))}
-              </div>
-            </div>
+              </span>
+            </button>
+          </div>
 
             <div className="mt-3 flex items-center gap-2 flex-wrap">
               <span className="font-body text-[10px] uppercase tracking-[0.18em] text-muted-line mr-2">{t.angles}</span>
