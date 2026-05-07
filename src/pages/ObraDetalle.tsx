@@ -118,7 +118,7 @@ const ObraDetalle = () => {
               <p className="font-body text-[14px] font-light text-gray leading-relaxed mb-4">{t.authP}</p>
               <dl className="grid grid-cols-2 gap-y-2.5 gap-x-4 font-body text-[13px]">
                 <dt className="text-muted-line uppercase tracking-[0.12em]">{t.tokenId}</dt>
-                <dd className="text-ink font-mono">0x{slug.slice(0, 6).padEnd(6, "a")}…f21c</dd>
+                <dd className="text-ink font-mono">{o.authenticity}</dd>
                 <dt className="text-muted-line uppercase tracking-[0.12em]">{t.chain}</dt>
                 <dd className="text-ink">Polygon</dd>
                 <dt className="text-muted-line uppercase tracking-[0.12em]">{t.signed}</dt>
