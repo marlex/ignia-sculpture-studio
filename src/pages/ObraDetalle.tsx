@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { Sculpture3DModal } from "@/components/ignia/Sculpture3DModal";
-import { SculptureViewer } from "@/components/ignia/SculptureViewer";
 import { useLang } from "@/i18n/LanguageContext";
 import { getWorkBySlug } from "@/data/igniaWorks";
 
@@ -26,16 +25,12 @@ const T = {
   },
 };
 
-const ANGLES = [0, Math.PI / 3, (2 * Math.PI) / 3, Math.PI];
-
 const ObraDetalle = () => {
   const { slug = "" } = useParams();
   const lang = useLang();
   const t = T[lang];
   const o = getWorkBySlug(slug, lang);
   const [open3d, setOpen3d] = useState(false);
-  const [view, setView] = useState<"photo" | "3d">("3d");
-  const [angle, setAngle] = useState(0);
 
   return (
     <main className="pt-14 bg-white">
@@ -44,62 +39,17 @@ const ObraDetalle = () => {
       <section className="px-6 md:px-12 py-10">
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10">
           <div>
-            <div className="relative aspect-square bg-secondary overflow-hidden">
-              {view === "photo" ? (
-                <img src={o.image} alt={o.title} className="w-full h-full object-cover" />
-              ) : (
-                <SculptureViewer
-                  obraIndex={o.index}
-                  bgMode="studio"
-                  titulo={o.title}
-                  material={o.material}
-                  viewAngle={angle}
-                  photoSrc={o.image}
-                  model={o.model}
-                />
-              )}
-              <button
-                onClick={() => setOpen3d(true)}
-                className="absolute bottom-4 right-4 font-body text-[10px] font-light tracking-[0.2em] uppercase text-white bg-black/55 backdrop-blur px-3 py-1.5 hover:bg-black/75 transition-colors z-10"
-              >
+            <button
+              type="button"
+              onClick={() => setOpen3d(true)}
+              aria-label={t.view3d}
+              className="relative aspect-square w-full bg-secondary overflow-hidden block cursor-zoom-in group"
+            >
+              <img src={o.image} alt={o.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
+              <span className="absolute bottom-4 right-4 font-body text-[10px] font-light tracking-[0.2em] uppercase text-white bg-black/55 backdrop-blur px-3 py-1.5 group-hover:bg-black/80 transition-colors">
                 {t.view3d} ↗
-              </button>
-              <div className="absolute top-4 left-4 flex gap-1 bg-white/85 backdrop-blur border-[0.5px] border-border z-10">
-                {(["photo", "3d"] as const).map((v) => (
-                  <button
-                    key={v}
-                    onClick={() => setView(v)}
-                    className="font-body text-[10px] uppercase tracking-[0.16em] px-2.5 py-1.5 transition-colors"
-                    style={{
-                      background: view === v ? "hsl(var(--black-pure))" : "transparent",
-                      color: view === v ? "#fff" : "hsl(var(--gray))",
-                    }}
-                  >
-                    {v === "photo" ? t.photo : t.model}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-3 flex items-center gap-2 flex-wrap">
-              <span className="font-body text-[10px] uppercase tracking-[0.18em] text-muted-line mr-2">{t.angles}</span>
-              {ANGLES.map((a, i) => (
-                <button
-                  key={i}
-                  onClick={() => { setView("3d"); setAngle(a); }}
-                  aria-label={`${t.angles} ${i + 1}`}
-                  className="w-12 h-12 border-[0.5px] flex items-center justify-center transition-colors"
-                  style={{
-                    borderColor: view === "3d" && angle === a ? "hsl(var(--black-pure))" : "hsl(var(--border))",
-                    background: view === "3d" && angle === a ? "hsl(var(--secondary))" : "#fff",
-                  }}
-                >
-                  <span aria-hidden className="relative block w-6 h-6 rounded-full border-[0.5px] border-ink/60">
-                    <span className="absolute top-1/2 left-1/2 w-[1px] h-2.5 bg-ink" style={{ transform: `translate(-50%, -100%) rotate(${a}rad)` }} />
-                  </span>
-                </button>
-              ))}
-            </div>
+              </span>
+            </button>
           </div>
           <div>
             <div className="eyebrow mb-3"><Link to="/coleccion" className="hover:text-ink">{t.back}</Link></div>
