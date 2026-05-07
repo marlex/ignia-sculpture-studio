@@ -177,6 +177,41 @@ const ObraDetalle = () => {
         </div>
       </section>
 
+      {chatOpen && (
+        <div className="fixed inset-0 z-[200] bg-black/50 flex items-end md:items-center md:justify-end" onClick={() => setChatOpen(false)}>
+          <div
+            className="w-full md:w-[420px] h-[80vh] md:h-full bg-white flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <header className="flex items-center justify-between px-5 h-14 border-b border-border">
+              <div className="flex items-center gap-2">
+                <MessageCircle className="w-4 h-4 text-ink" />
+                <span className="font-display font-bold text-[15px] text-ink">{t.talk}</span>
+              </div>
+              <button onClick={() => setChatOpen(false)} className="text-gray hover:text-ink font-body text-[20px] leading-none">×</button>
+            </header>
+            <div className="flex-1 overflow-y-auto p-5 space-y-3">
+              <div className="bg-secondary px-4 py-3 font-body text-[14px] text-ink max-w-[85%]">
+                Hola, soy curador de Ignia. ¿En qué puedo ayudarte con <strong>{o.title}</strong>?
+              </div>
+            </div>
+            <form
+              onSubmit={(e) => { e.preventDefault(); }}
+              className="border-t border-border p-3 flex gap-2"
+            >
+              <input
+                type="text"
+                placeholder="Escribe tu mensaje…"
+                className="flex-1 border border-border px-3 py-2.5 font-body text-[14px] outline-none focus:border-ink"
+              />
+              <button type="submit" className="bg-ink text-white font-body text-[12px] uppercase tracking-[0.14em] px-4">
+                Enviar
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
       <Footer />
     </main>
   );
