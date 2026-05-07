@@ -57,9 +57,14 @@ type WorkRecord = {
   slug: string;
   image: string;
   model: WorkModelKey;
+  glbUrl?: string;
+  extraImages?: string[];
   es: WorkCopy;
   en: WorkCopy;
 };
+
+const GLB_HELMET = "https://threejs.org/examples/models/gltf/DamagedHelmet/glTF/DamagedHelmet.gltf";
+const GLB_MICHELLE = "https://threejs.org/examples/models/gltf/Michelle.glb";
 
 const desc = {
   es: "Pieza seleccionada por Ignia por su presencia escultórica, calidad material y trazabilidad completa de taller. El visor 3D usa el mismo registro de obra que la fotografía y la ficha ampliada.",
@@ -73,9 +78,9 @@ export const WORKS: WorkRecord[] = [
   { slug: "lirio-en-vuelo", image: hero1, model: "hero-flight", es: { title: "Lirio en vuelo", artist: "Ana Ruiz", material: "Bronce patinado", year: "2024", edition: "Edición única", price: "€ 14.800", description: "Bronce vertical patinado a mano, con una silueta ascendente que concentra la tensión del vuelo en una sola forma negra y pulida.", authenticity: "#0x3a9f…c21" }, en: { title: "Lily in flight", artist: "Ana Ruiz", material: "Patinated bronze", year: "2024", edition: "Unique edition", price: "€ 14,800", description: "Hand-patinated vertical bronze, with an ascending silhouette that holds the tension of flight in one black polished form.", authenticity: "#0x3a9f…c21" } },
   { slug: "ofrenda", image: hero2, model: "hero-offering", es: { title: "Ofrenda", artist: "Helena Vázquez", material: "Bronce pulido a mano", year: "2025", edition: "Edición única", price: "€ 22.500", description: "Bronce pulido con doble lazo y esfera superior. Una pieza de presencia inmediata, pensada para verse girando desde cualquier ángulo.", authenticity: "#0x7b14…e08" }, en: { title: "Offering", artist: "Helena Vázquez", material: "Hand-polished bronze", year: "2025", edition: "Unique edition", price: "€ 22,500", description: "Polished bronze with a double loop and upper sphere. A piece with immediate presence, meant to be seen rotating from every angle.", authenticity: "#0x7b14…e08" } },
   { slug: "torsion-i", image: hero3, model: "hero-torsion", es: { title: "Torsión I", artist: "Camila Soler", material: "Alabastro blanco", year: "2025", edition: "1 de 3", price: "€ 11.600", description: "Talla en alabastro translúcido. La pieza explora la torsión interna del bloque y aprovecha la luz natural para revelar las vetas.", authenticity: "#0x2d5c…a93" }, en: { title: "Torsion I", artist: "Camila Soler", material: "White alabaster", year: "2025", edition: "1 of 3", price: "€ 11,600", description: "Carving in translucent alabaster. The piece explores the internal torsion of the block and uses natural light to reveal the veins.", authenticity: "#0x2d5c…a93" } },
-  { slug: "confluencia", image: obra1, model: "figure-curvy", es: { title: "Confluencia", artist: "Marcos Iriarte", material: "Bronce", year: "2024", edition: "Edición única", price: "€ 8.400", description: desc.es, authenticity: "#0x3a9f…c21" }, en: { title: "Confluence", artist: "Marcos Iriarte", material: "Bronze", year: "2024", edition: "Unique edition", price: "€ 8,400", description: desc.en, authenticity: "#0x3a9f…c21" } },
-  { slug: "pliegue-iii", image: obra2, model: "marble-fold", es: { title: "Pliegue III", artist: "Alba Costa", material: "Mármol", year: "2024", edition: "1 de 5", price: "€ 12.200", description: desc.es, authenticity: "#0x598e…07e" }, en: { title: "Fold III", artist: "Alba Costa", material: "Marble", year: "2024", edition: "1 of 5", price: "€ 12,200", description: desc.en, authenticity: "#0x598e…07e" } },
-  { slug: "vertigo", image: obra3, model: "corten-ribbon", es: { title: "Vértigo", artist: "Diego Lara", material: "Acero corten", year: "2025", edition: "Edición única", price: "€ 6.700", description: desc.es, authenticity: "#0x787d…4db" }, en: { title: "Vertigo", artist: "Diego Lara", material: "Corten steel", year: "2025", edition: "Unique edition", price: "€ 6,700", description: desc.en, authenticity: "#0x787d…4db" } },
+  { slug: "confluencia", image: obra1, model: "figure-curvy", glbUrl: GLB_MICHELLE, extraImages: [obra2, obra3, obra4], es: { title: "Confluencia", artist: "Marcos Iriarte", material: "Bronce", year: "2024", edition: "Edición única", price: "€ 8.400", description: desc.es, authenticity: "#0x3a9f…c21" }, en: { title: "Confluence", artist: "Marcos Iriarte", material: "Bronze", year: "2024", edition: "Unique edition", price: "€ 8,400", description: desc.en, authenticity: "#0x3a9f…c21" } },
+  { slug: "pliegue-iii", image: obra2, model: "marble-fold", extraImages: [obra5, obra7], es: { title: "Pliegue III", artist: "Alba Costa", material: "Mármol", year: "2024", edition: "1 de 5", price: "€ 12.200", description: desc.es, authenticity: "#0x598e…07e" }, en: { title: "Fold III", artist: "Alba Costa", material: "Marble", year: "2024", edition: "1 of 5", price: "€ 12,200", description: desc.en, authenticity: "#0x598e…07e" } },
+  { slug: "vertigo", image: obra3, model: "corten-ribbon", glbUrl: GLB_HELMET, extraImages: [obra6, obra8], es: { title: "Vértigo", artist: "Diego Lara", material: "Acero corten", year: "2025", edition: "Edición única", price: "€ 6.700", description: desc.es, authenticity: "#0x787d…4db" }, en: { title: "Vertigo", artist: "Diego Lara", material: "Corten steel", year: "2025", edition: "Unique edition", price: "€ 6,700", description: desc.en, authenticity: "#0x787d…4db" } },
   { slug: "raiz", image: obra4, model: "wood-root", es: { title: "Raíz", artist: "Sofía Méndez", material: "Madera de roble", year: "2023", edition: "Edición única", price: "€ 3.900", description: desc.es, authenticity: "#0x976c…938" }, en: { title: "Root", artist: "Sofía Méndez", material: "Oak wood", year: "2023", edition: "Unique edition", price: "€ 3,900", description: desc.en, authenticity: "#0x976c…938" } },
   { slug: "origen", image: obra5, model: "blue-ceramic", es: { title: "Origen", artist: "Lucía Pardo", material: "Cerámica esmaltada", year: "2025", edition: "2 de 8", price: "€ 1.200", description: desc.es, authenticity: "#0xa614…22f" }, en: { title: "Origin", artist: "Lucía Pardo", material: "Glazed ceramic", year: "2025", edition: "2 of 8", price: "€ 1,200", description: desc.en, authenticity: "#0xa614…22f" } },
   { slug: "eco", image: obra6, model: "slender-figure", es: { title: "Eco", artist: "Pablo Reyes", material: "Bronce", year: "2024", edition: "Edición única", price: "€ 9.600", description: desc.es, authenticity: "#0xbf03…686" }, en: { title: "Echo", artist: "Pablo Reyes", material: "Bronze", year: "2024", edition: "Unique edition", price: "€ 9,600", description: desc.en, authenticity: "#0xbf03…686" } },
@@ -102,6 +107,8 @@ const localizeWork = (work: WorkRecord, lang: Lang, index: number) => ({
   slug: work.slug,
   image: work.image,
   model: work.model,
+  glbUrl: work.glbUrl,
+  extraImages: work.extraImages,
   index,
   ...work[lang],
 });
