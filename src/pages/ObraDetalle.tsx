@@ -14,7 +14,7 @@ const T = {
     authP: "Cada obra de Ignia incluye un certificado de autenticidad emitido en blockchain. Es público, verificable desde cualquier parte del mundo y viaja con la pieza en futuras reventas.",
     tokenId: "Token ID", chain: "Cadena", signed: "Firmado por", edition: "Edición",
     cert: "Ver certificado público →",
-    buy: "Adquirir", talk: "Hablar con un curador",
+    buy: "Adquirir", talk: "Hablar con Ignia",
     photos: "Fotos", view3d: "Vista 3D",
     counter: (n: number) => `${n} fotos · Navega por los ángulos`,
   },
@@ -24,7 +24,7 @@ const T = {
     authP: "Every Ignia work includes a certificate of authenticity issued on blockchain. It is public, verifiable worldwide and travels with the piece in future resales.",
     tokenId: "Token ID", chain: "Chain", signed: "Signed by", edition: "Edition",
     cert: "View public certificate →",
-    buy: "Acquire", talk: "Talk to a curator",
+    buy: "Acquire", talk: "Talk to Ignia",
     photos: "Photos", view3d: "3D view",
     counter: (n: number) => `${n} photos · Browse angles`,
   },
@@ -192,7 +192,7 @@ const ObraDetalle = () => {
             </header>
             <div className="flex-1 overflow-y-auto p-5 space-y-3">
               <div className="bg-secondary px-4 py-3 font-body text-[14px] text-ink max-w-[85%]">
-                Hola, soy curador de Ignia. ¿En qué puedo ayudarte con <strong>{o.title}</strong>?
+                Hola, soy Ignia. ¿En qué puedo ayudarte con <strong>{o.title}</strong>?
               </div>
             </div>
             <form
