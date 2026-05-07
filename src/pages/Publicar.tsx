@@ -16,17 +16,19 @@ const empty: ObraDraft = {
 };
 
 export default function Publicar() {
-  const { user } = useAuth();
+  const { user, login } = useAuth();
   const navigate = useNavigate();
   const lang = useLang();
 
-  // Auth gate
+  // Auto-login as demo artist if not authenticated (no validation required for demo flow)
   useEffect(() => {
-    if (!user) navigate(`/login?redirect=${encodeURIComponent("/publicar")}`);
-  }, [user, navigate]);
+    if (!user) {
+      login({ name: "Cristina Iglesias", email: "cristina@ignia.gallery", role: "escultor" });
+    }
+  }, [user, login]);
 
   const [step, setStep] = useState(1);
-  const [draft, setDraft] = useState<ObraDraft>({ ...empty, artista: user?.name || "" });
+  const [draft, setDraft] = useState<ObraDraft>({ ...empty, artista: user?.name || "Cristina Iglesias" });
   const [confirmed, setConfirmed] = useState(false);
   const [publishedId, setPublishedId] = useState<string | null>(null);
 
@@ -60,14 +62,13 @@ export default function Publicar() {
   };
 
   const publish = () => {
-    if (!user) return;
     const obra: Obra = {
       ...draft,
       id: certIdRef.current.toLowerCase(),
       certificadoId: certIdRef.current,
       hash,
       fechaPublicacion: new Date().toISOString(),
-      ownerEmail: user.email,
+      ownerEmail: user?.email || "demo@ignia.gallery",
       estado: "Publicada",
       visitas: 0,
       favoritos: 0,
