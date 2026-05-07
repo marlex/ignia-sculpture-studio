@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Logo } from "./Logo";
 import { useLang, useSetLang, type Lang } from "@/i18n/LanguageContext";
+import { useAuth } from "@/auth/AuthContext";
 
 const NAV = {
   es: [
@@ -24,10 +25,22 @@ export const Header = () => {
   const lang = useLang();
   const setLang = useSetLang();
   const items = NAV[lang];
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const goPublish = () => {
+    if (user) navigate("/publicar");
+    else navigate(`/login?redirect=${encodeURIComponent("/publicar")}`);
+  };
+
+  const t = lang === "es"
+    ? { publish: "Publicar escultura", signin: "Entrar", signout: "Salir", dashboard: "Mi panel" }
+    : { publish: "Publish sculpture", signin: "Sign in", signout: "Sign out", dashboard: "Dashboard" };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100] h-14 bg-white/95 backdrop-blur border-b border-border flex items-center px-6 md:px-12">
-      <div className="flex items-center justify-between w-full">
+      <div className="flex items-center justify-between w-full gap-4">
         <Link to="/" className="flex items-center" aria-label="Ignia Gallery">
           <Logo />
         </Link>
@@ -38,11 +51,29 @@ export const Header = () => {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-4">
+          <button
+            type="button"
+            onClick={goPublish}
+            className="hidden sm:inline-flex btn-primary !py-2 !px-4 text-[11px]"
+          >
+            {t.publish}
+          </button>
           <LangDropdown lang={lang} setLang={setLang} />
-          <Link to="/login" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
-            {lang === "es" ? "Entrar" : "Sign in"}
-          </Link>
+          {user ? (
+            <div className="hidden md:flex items-center gap-3">
+              <Link to="/dashboard" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+                {t.dashboard}
+              </Link>
+              <button onClick={() => { logout(); navigate("/"); }} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+                {t.signout}
+              </button>
+            </div>
+          ) : (
+            <Link to={`/login?redirect=${encodeURIComponent(location.pathname)}`} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+              {t.signin}
+            </Link>
+          )}
         </div>
       </div>
     </header>
