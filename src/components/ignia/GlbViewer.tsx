@@ -35,12 +35,14 @@ function ModelViewerContent({
   poster,
   minHeight,
   showAr = true,
+  bgColor = "#f5f5f0",
 }: {
   url: string;
   alt: string;
   poster?: string;
   minHeight: string;
   showAr?: boolean;
+  bgColor?: string;
 }) {
   return (
     <model-viewer
@@ -61,7 +63,7 @@ function ModelViewerContent({
         width: "100%",
         height: "100%",
         minHeight,
-        backgroundColor: "#f5f5f0",
+        backgroundColor: bgColor,
         ["--poster-color" as never]: "transparent",
       }}
     >
