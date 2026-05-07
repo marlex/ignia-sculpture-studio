@@ -72,12 +72,15 @@ export const Coleccion = () => {
           return (
             <article key={i} className="bg-white group">
               <Link to={`/obra/${o.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary">
-                {has3d ? (
-                  <div className="absolute inset-0 pointer-events-none">
-                    <GlbViewer url={o.glbUrl!} alt={o.title} minHeight="100%" />
-                  </div>
-                ) : (
-                  <img src={o.image} alt={o.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                <img src={o.image} alt={o.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                {has3d && (
+                  <button
+                    type="button"
+                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); setOpen3d(i); }}
+                    className="absolute top-3 right-3 z-10 bg-white/90 border border-border font-body text-[11px] uppercase tracking-[0.14em] px-3 py-1.5 hover:bg-white transition-colors"
+                  >
+                    {t.view3d}
+                  </button>
                 )}
               </Link>
               <div className="p-5">
