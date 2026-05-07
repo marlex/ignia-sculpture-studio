@@ -50,28 +50,6 @@ const ObraDetalle = () => {
                 {t.view3d} ↗
               </span>
             </button>
-          </div>
-
-            <div className="mt-3 flex items-center gap-2 flex-wrap">
-              <span className="font-body text-[10px] uppercase tracking-[0.18em] text-muted-line mr-2">{t.angles}</span>
-              {ANGLES.map((a, i) => (
-                <button
-                  key={i}
-                  onClick={() => { setView("3d"); setAngle(a); }}
-                  aria-label={`${t.angles} ${i + 1}`}
-                  className="w-12 h-12 border-[0.5px] flex items-center justify-center transition-colors"
-                  style={{
-                    borderColor: view === "3d" && angle === a ? "hsl(var(--black-pure))" : "hsl(var(--border))",
-                    background: view === "3d" && angle === a ? "hsl(var(--secondary))" : "#fff",
-                  }}
-                >
-                  <span aria-hidden className="relative block w-6 h-6 rounded-full border-[0.5px] border-ink/60">
-                    <span className="absolute top-1/2 left-1/2 w-[1px] h-2.5 bg-ink" style={{ transform: `translate(-50%, -100%) rotate(${a}rad)` }} />
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
           <div>
             <div className="eyebrow mb-3"><Link to="/coleccion" className="hover:text-ink">{t.back}</Link></div>
             <h1 className="font-display font-bold text-[clamp(32px,4vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-3">{o.title}</h1>
