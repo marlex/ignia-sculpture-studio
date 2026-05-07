@@ -73,21 +73,6 @@ const ObraDetalle = () => {
               </div>
             )}
 
-            {false && has3d && hasGallery && (
-              <div className="flex gap-1 mb-3">
-                {(["photos", "3d"] as const).map(m => (
-                  <button
-                    key={m}
-                    onClick={() => setMode(m)}
-                    className={`font-body text-[11px] uppercase tracking-[0.18em] px-4 py-2 border transition-colors ${
-                      mode === m ? "bg-ink text-white border-ink" : "border-border text-gray hover:text-ink hover:border-ink"
-                    }`}
-                  >
-                    {m === "photos" ? t.photos : t.view3d}
-                  </button>
-                ))}
-              </div>
-            )}
 
             <div className="relative aspect-square w-full bg-secondary overflow-hidden">
               {mode === "3d" && has3d ? (
