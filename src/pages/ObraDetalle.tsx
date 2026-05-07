@@ -5,7 +5,7 @@ import { Footer } from "@/components/ignia/Footer";
 import { GlbViewer } from "@/components/ignia/GlbViewer";
 import { useLang } from "@/i18n/LanguageContext";
 import { getWorkBySlug } from "@/data/igniaWorks";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
 
 const T = {
   es: {
@@ -43,6 +43,7 @@ const ObraDetalle = () => {
   // Default mode: 3d if no extra photos, otherwise photos
   const [mode, setMode] = useState<"photos" | "3d">(has3d ? "3d" : "photos");
   const [idx, setIdx] = useState(0);
+  const [chatOpen, setChatOpen] = useState(false);
 
   useEffect(() => { setIdx(0); }, [slug]);
 
@@ -160,16 +161,56 @@ const ObraDetalle = () => {
                 <dt className="text-muted-line uppercase tracking-[0.12em]">{t.edition}</dt>
                 <dd className="text-ink">{o.edition}</dd>
               </dl>
-              <a href="#" className="link-arrow inline-block mt-5">{t.cert}</a>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <button className="bg-ink text-white font-body text-[14px] tracking-[0.14em] uppercase py-3.5 hover:bg-ink/90 transition-colors">{t.buy}</button>
-              <button className="border border-ink text-ink font-body text-[14px] tracking-[0.14em] uppercase py-3.5 hover:bg-secondary transition-colors">{t.talk}</button>
+            <div className="flex gap-3">
+              <button className="flex-1 bg-ink text-white font-body text-[15px] tracking-[0.16em] uppercase py-5 hover:bg-ink/90 transition-colors">{t.buy}</button>
+              <button
+                onClick={() => setChatOpen(true)}
+                aria-label={t.talk}
+                className="shrink-0 w-14 border border-ink text-ink flex items-center justify-center hover:bg-secondary transition-colors"
+              >
+                <MessageCircle className="w-5 h-5" />
+              </button>
             </div>
           </div>
         </div>
       </section>
+
+      {chatOpen && (
+        <div className="fixed inset-0 z-[200] bg-black/50 flex items-end md:items-center md:justify-end" onClick={() => setChatOpen(false)}>
+          <div
+            className="w-full md:w-[420px] h-[80vh] md:h-full bg-white flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <header className="flex items-center justify-between px-5 h-14 border-b border-border">
+              <div className="flex items-center gap-2">
+                <MessageCircle className="w-4 h-4 text-ink" />
+                <span className="font-display font-bold text-[15px] text-ink">{t.talk}</span>
+              </div>
+              <button onClick={() => setChatOpen(false)} className="text-gray hover:text-ink font-body text-[20px] leading-none">×</button>
+            </header>
+            <div className="flex-1 overflow-y-auto p-5 space-y-3">
+              <div className="bg-secondary px-4 py-3 font-body text-[14px] text-ink max-w-[85%]">
+                Hola, soy curador de Ignia. ¿En qué puedo ayudarte con <strong>{o.title}</strong>?
+              </div>
+            </div>
+            <form
+              onSubmit={(e) => { e.preventDefault(); }}
+              className="border-t border-border p-3 flex gap-2"
+            >
+              <input
+                type="text"
+                placeholder="Escribe tu mensaje…"
+                className="flex-1 border border-border px-3 py-2.5 font-body text-[14px] outline-none focus:border-ink"
+              />
+              <button type="submit" className="bg-ink text-white font-body text-[12px] uppercase tracking-[0.14em] px-4">
+                Enviar
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </main>

@@ -2,12 +2,12 @@ export const CtaFinal = ({ lang = "es" }: { lang?: "es" | "en" }) => {
   const t = lang === "es" ? {
     title: "Tu escultura empieza aquí.",
     sub: "Colecciona y vende esculturas con la mayor autenticidad.",
-    a: "Crear mi perfil de artista",
+    a: "Publicar escultura",
     b: "Acceder como coleccionista",
   } : {
     title: "Your sculpture starts here.",
     sub: "Collect and sell sculpture with verified authenticity.",
-    a: "Create my artist profile",
+    a: "Publish sculpture",
     b: "Sign in as collector",
   };
   return (
