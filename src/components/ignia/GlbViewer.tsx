@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "@google/model-viewer";
+import "@google/model-viewer/dist/model-viewer.min.js";
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
