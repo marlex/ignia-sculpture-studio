@@ -145,12 +145,6 @@ export default function PerfilEscultor() {
                   >
                     {t.viewObra} →
                   </Link>
-                  <button
-                    onClick={() => setOpen3d(i)}
-                    className="font-body text-[11px] font-light text-muted-line uppercase tracking-[0.12em] hover:text-ink transition-colors"
-                  >
-                    {t.view3d}
-                  </button>
                 </div>
               </article>
             );
@@ -158,18 +152,6 @@ export default function PerfilEscultor() {
         </div>
       </section>
 
-      {activeWork && (
-        <Sculpture3DModal
-          open={!!activeWork}
-          onClose={() => setOpen3d(null)}
-          obraIndex={activeWork.index}
-          titulo={activeWork.title}
-          artista={activeWork.artist}
-          material={activeWork.material}
-          photoSrc={activeWork.image}
-          model={activeWork.model}
-        />
-      )}
     </main>
   );
 }
