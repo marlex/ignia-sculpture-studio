@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { Sculpture3DModal } from "@/components/ignia/Sculpture3DModal";
-import { SculptureViewer } from "@/components/ignia/SculptureViewer";
 import { useLang } from "@/i18n/LanguageContext";
 import { getWorkBySlug } from "@/data/igniaWorks";
 
