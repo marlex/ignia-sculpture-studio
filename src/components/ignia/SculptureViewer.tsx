@@ -2,7 +2,6 @@ import { Suspense, useMemo, type ReactElement } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, OrbitControls, ContactShadows, Float } from "@react-three/drei";
 import * as THREE from "three";
-import { ParametricGeometry } from "three/examples/jsm/geometries/ParametricGeometry.js";
 import bg1 from "@/assets/hero-bg-1.jpg";
 import bg2 from "@/assets/hero-bg-2.jpg";
 import bg3 from "@/assets/hero-bg-3.jpg";
@@ -149,28 +148,22 @@ function HeroFlight({ kind }: { kind: ModelKind }) {
 }
 
 function BronzeOffering({ kind }: { kind: ModelKind }) {
-  const geom = useMemo(() => {
-    const g = new ParametricGeometry(
-      (u, v, target) => {
-        const U = u * Math.PI * 2;
-        const V = (v - 0.5) * 0.58;
-        const a = 1.06 + V * Math.cos(U / 2);
-        target.set(a * Math.cos(U), V * Math.sin(U / 2) * 1.55, a * Math.sin(U));
-      },
-      220,
-      28
-    );
-    g.computeVertexNormals();
-    return g;
-  }, []);
-
   return (
-    <group>
-      <mesh castShadow receiveShadow geometry={geom} scale={[1.08, 1.08, 1.08]} rotation={[0.08, 0.15, -0.05]}>
-        <StudioMaterial kind={kind} side={THREE.DoubleSide} />
+    <group position={[0, -0.12, 0]}>
+      <mesh castShadow receiveShadow scale={[0.72, 1.34, 0.72]} rotation={[0.04, 0.28, 0.72]}>
+        <torusGeometry args={[0.74, 0.105, 56, 220]} />
+        <StudioMaterial kind={kind} />
       </mesh>
-      <mesh castShadow receiveShadow position={[0, 0.98, 0]}>
-        <sphereGeometry args={[0.28, 48, 24]} />
+      <mesh castShadow receiveShadow scale={[0.72, 1.34, 0.72]} rotation={[0.04, -0.28, -0.72]}>
+        <torusGeometry args={[0.74, 0.105, 56, 220]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+      <mesh castShadow receiveShadow position={[0.02, 1.62, 0.02]} scale={[0.22, 0.22, 0.22]}>
+        <sphereGeometry args={[1, 56, 28]} />
+        <StudioMaterial kind={kind} />
+      </mesh>
+      <mesh receiveShadow position={[0, -1.62, 0]} scale={[0.86, 0.13, 0.62]}>
+        <boxGeometry args={[1, 1, 1]} />
         <StudioMaterial kind={kind} />
       </mesh>
     </group>
@@ -178,21 +171,16 @@ function BronzeOffering({ kind }: { kind: ModelKind }) {
 }
 
 function HeroTorsion({ kind }: { kind: ModelKind }) {
-  const curve = new THREE.CatmullRomCurve3([
-    new THREE.Vector3(-0.18, -1.75, 0),
-    new THREE.Vector3(0.38, -0.88, 0.2),
-    new THREE.Vector3(-0.34, 0, -0.18),
-    new THREE.Vector3(0.32, 0.86, 0.16),
-    new THREE.Vector3(-0.08, 1.76, 0),
-  ]);
   return (
-    <group>
-      <mesh castShadow receiveShadow rotation={[0, 0.15, 0]}>
-        <tubeGeometry args={[curve, 260, 0.36, 56, false]} />
-        <StudioMaterial kind={kind} />
-      </mesh>
-      <mesh castShadow receiveShadow scale={[0.42, 1.72, 0.18]} rotation={[0.14, 0.75, -0.22]}>
-        <sphereGeometry args={[1, 64, 32]} />
+    <group position={[0, -0.05, 0]}>
+      {[0, 1, 2, 3].map((n) => (
+        <mesh key={n} castShadow receiveShadow scale={[0.2, 1.72, 0.12]} rotation={[0.18, n * 0.72, n % 2 ? -0.28 : 0.28]} position={[Math.sin(n * 1.7) * 0.08, 0, Math.cos(n * 1.7) * 0.05]}>
+          <sphereGeometry args={[1, 64, 32]} />
+          <StudioMaterial kind={kind} side={THREE.DoubleSide} />
+        </mesh>
+      ))}
+      <mesh receiveShadow position={[0, -1.74, 0]} scale={[0.78, 0.1, 0.56]}>
+        <boxGeometry args={[1, 1, 1]} />
         <StudioMaterial kind={kind} />
       </mesh>
     </group>
