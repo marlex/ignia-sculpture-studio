@@ -63,7 +63,7 @@ export default function Login() {
         <h1 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-8 leading-tight">{t.access}</h1>
 
         <form onSubmit={(e) => goToProfile(e, role)} className="space-y-5">
-          <Field label={t.email} type="email" placeholder={t.emailPh} />
+          <Field label={t.email} type="email" placeholder={t.emailPh} inputRef={emailRef} />
           <Field label={t.pass} type="password" placeholder={t.passPh} />
           <button type="submit" className="btn-primary w-full justify-center !py-3.5">{t.btnIn}</button>
         </form>
