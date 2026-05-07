@@ -121,10 +121,10 @@ export default function Login() {
   );
 }
 
-const Field = ({ label, type = "text", placeholder }: { label: string; type?: string; placeholder?: string }) => (
+const Field = ({ label, type = "text", placeholder, inputRef }: { label: string; type?: string; placeholder?: string; inputRef?: React.RefObject<HTMLInputElement> }) => (
   <label className="block">
     <span className="block font-body text-[12px] uppercase tracking-[0.18em] text-muted-line mb-2">{label}</span>
-    <input type={type} placeholder={placeholder} className="w-full bg-transparent border-0 border-b border-border focus:border-ink outline-none py-2.5 font-body text-[15px] text-ink placeholder:text-muted-line/60" />
+    <input ref={inputRef} type={type} placeholder={placeholder} className="w-full bg-transparent border-0 border-b border-border focus:border-ink outline-none py-2.5 font-body text-[15px] text-ink placeholder:text-muted-line/60" />
   </label>
 );
 
