@@ -41,15 +41,8 @@ export function GlbViewer({
   poster?: string;
   minHeight?: string;
 }) {
-  const [loaded, setLoaded] = useState(false);
-
   return (
     <div className={`relative w-full h-full ${className}`} style={{ background: "#f5f5f0" }}>
-      {!loaded && (
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 font-body text-[12px] font-light tracking-[0.18em] uppercase text-ink/60">
-          Cargando vista 3D…
-        </div>
-      )}
       <model-viewer
         src={url}
         alt={alt}
