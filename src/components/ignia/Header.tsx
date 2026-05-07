@@ -52,13 +52,6 @@ export const Header = () => {
           ))}
         </nav>
         <div className="flex items-center gap-4">
-          <button
-            type="button"
-            onClick={goPublish}
-            className="hidden sm:inline-flex btn-primary !py-2 !px-4 text-[11px]"
-          >
-            {t.publish}
-          </button>
           <LangDropdown lang={lang} setLang={setLang} />
           {user ? (
             <div className="hidden md:flex items-center gap-3">
@@ -74,6 +67,13 @@ export const Header = () => {
               {t.signin}
             </Link>
           )}
+          <button
+            type="button"
+            onClick={goPublish}
+            className="hidden sm:inline-flex btn-primary !py-2 !px-4 text-[11px]"
+          >
+            {t.publish}
+          </button>
         </div>
       </div>
     </header>

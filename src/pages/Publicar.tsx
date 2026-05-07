@@ -16,17 +16,19 @@ const empty: ObraDraft = {
 };
 
 export default function Publicar() {
-  const { user } = useAuth();
+  const { user, login } = useAuth();
   const navigate = useNavigate();
   const lang = useLang();
 
-  // Auth gate
+  // Auto-login as demo artist if not authenticated (no validation required for demo flow)
   useEffect(() => {
-    if (!user) navigate(`/login?redirect=${encodeURIComponent("/publicar")}`);
-  }, [user, navigate]);
+    if (!user) {
+      login({ name: "Cristina Iglesias", email: "cristina@ignia.gallery", role: "escultor" });
+    }
+  }, [user, login]);
 
   const [step, setStep] = useState(1);
-  const [draft, setDraft] = useState<ObraDraft>({ ...empty, artista: user?.name || "" });
+  const [draft, setDraft] = useState<ObraDraft>({ ...empty, artista: user?.name || "Cristina Iglesias" });
   const [confirmed, setConfirmed] = useState(false);
   const [publishedId, setPublishedId] = useState<string | null>(null);
 
@@ -41,14 +43,9 @@ export default function Publicar() {
 
   const set = <K extends keyof ObraDraft>(k: K, v: ObraDraft[K]) => setDraft((d) => ({ ...d, [k]: v }));
 
-  const step1Valid = useMemo(() => {
-    return !!(draft.titulo && draft.artista && /^\d{4}$/.test(draft.anyo) && draft.tecnica
-      && draft.alto && draft.ancho && draft.profundo
-      && draft.precio && draft.descripcion.length >= 80
-      && (draft.edicion !== "limitada" || (draft.ejemplares && +draft.ejemplares > 1 && +draft.ejemplares <= 20)));
-  }, [draft]);
-
-  const step2Valid = !!draft.fotoPrincipal;
+  // Demo flow: steps can advance without strict validation
+  const step1Valid = true;
+  const step2Valid = true;
 
   const next = () => setStep((s) => Math.min(4, s + 1));
   const prev = () => setStep((s) => Math.max(1, s - 1));
@@ -60,14 +57,13 @@ export default function Publicar() {
   };
 
   const publish = () => {
-    if (!user) return;
     const obra: Obra = {
       ...draft,
       id: certIdRef.current.toLowerCase(),
       certificadoId: certIdRef.current,
       hash,
       fechaPublicacion: new Date().toISOString(),
-      ownerEmail: user.email,
+      ownerEmail: user?.email || "demo@ignia.gallery",
       estado: "Publicada",
       visitas: 0,
       favoritos: 0,
@@ -84,7 +80,17 @@ export default function Publicar() {
     <main className="min-h-screen bg-white">
       <header className="sticky top-0 z-50 h-14 bg-white border-b border-border flex items-center justify-between px-6 md:px-12">
         <Link to="/" aria-label="Ignia Gallery"><Logo /></Link>
-        <Link to="/dashboard" className="font-body text-[13px] text-gray hover:text-ink">{t.cancel}</Link>
+        <div className="flex items-center gap-4">
+          {user && (
+            <span className="hidden sm:inline-flex items-center gap-2 font-body text-[12px] text-ink">
+              <span className="w-6 h-6 rounded-full bg-ink text-white flex items-center justify-center text-[10px] font-medium">
+                {user.name.split(" ").map(n => n[0]).slice(0, 2).join("")}
+              </span>
+              {user.name}
+            </span>
+          )}
+          <Link to="/dashboard" className="font-body text-[13px] text-gray hover:text-ink">{t.cancel}</Link>
+        </div>
       </header>
 
       <section className="max-w-[880px] mx-auto px-6 py-10 md:py-14">
