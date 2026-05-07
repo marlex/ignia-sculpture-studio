@@ -43,7 +43,7 @@ export function GlbViewer({
 
   return (
     <div className={`relative w-full h-full bg-transparent ${className}`}>
-      {/* @ts-expect-error custom element */}
+      {/* model-viewer custom element from @google/model-viewer */}
       <model-viewer
         src={url}
         alt={alt}

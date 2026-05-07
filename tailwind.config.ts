@@ -8,9 +8,9 @@ export default {
     container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
     extend: {
       fontFamily: {
-        display: ["Poppins", "sans-serif"],
-        body: ["Poppins", "sans-serif"],
-        sans: ["Poppins", "sans-serif"],
+        display: ["Urbanist", "sans-serif"],
+        body: ["Urbanist", "sans-serif"],
+        sans: ["Urbanist", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
