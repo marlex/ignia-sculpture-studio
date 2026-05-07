@@ -108,7 +108,7 @@ const ObraDetalle = () => {
               <Link to="/perfil/escultor" className="underline-offset-4 hover:underline">{o.artist}</Link> · {o.material} · {o.year} · {o.edition}
             </div>
             <div className="font-display font-bold text-[26px] text-ink mb-8">{o.price}</div>
-            <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-10">{o.descripcion}</p>
+            <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-10">{o.description}</p>
 
             <div className="border border-border p-6 mb-6">
               <div className="flex items-center gap-2 mb-3">
@@ -122,9 +122,9 @@ const ObraDetalle = () => {
                 <dt className="text-muted-line uppercase tracking-[0.12em]">{t.chain}</dt>
                 <dd className="text-ink">Polygon</dd>
                 <dt className="text-muted-line uppercase tracking-[0.12em]">{t.signed}</dt>
-                <dd className="text-ink">{o.artista}</dd>
+                <dd className="text-ink">{o.artist}</dd>
                 <dt className="text-muted-line uppercase tracking-[0.12em]">{t.edition}</dt>
-                <dd className="text-ink">{o.edicion}</dd>
+                <dd className="text-ink">{o.edition}</dd>
               </dl>
               <a href="#" className="link-arrow inline-block mt-5">{t.cert}</a>
             </div>
@@ -140,10 +140,12 @@ const ObraDetalle = () => {
       <Sculpture3DModal
         open={open3d}
         onClose={() => setOpen3d(false)}
-        obraIndex={slugIdx}
-        titulo={o.nombre}
-        artista={o.artista}
+        obraIndex={o.index}
+        titulo={o.title}
+        artista={o.artist}
         material={o.material}
+        photoSrc={o.image}
+        model={o.model}
       />
 
       <Footer />
