@@ -23,8 +23,8 @@ export const Hero = () => {
     ? { hint: "Arrastra para rotar la escultura", prev: "Anterior", next: "Siguiente", view: "Ver escultura →", view3d: "Ver en 3D", photo: "Foto", model: "3D", expand: "Ampliar 3D" }
     : { hint: "Drag to rotate the sculpture", prev: "Previous", next: "Next", view: "View sculpture →", view3d: "View in 3D", photo: "Photo", model: "3D", expand: "Expand 3D" };
 
-  const next = () => setActual((actual + 1) % 3);
-  const prev = () => setActual((actual + 2) % 3);
+  const next = () => setActual((actual + 1) % obras.length);
+  const prev = () => setActual((actual + obras.length - 1) % obras.length);
 
   return (
     <section className="relative w-screen h-screen overflow-hidden bg-surface">
