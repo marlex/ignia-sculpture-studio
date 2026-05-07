@@ -43,9 +43,13 @@ export default function Login() {
     exit: "Exit",
   };
 
-  const goToProfile = (e: React.FormEvent, r: Role) => {
+  const goToProfile = (e: React.FormEvent, r: Role, signup = false) => {
     e.preventDefault();
-    navigate(r === "escultor" ? "/perfil/escultor" : "/perfil/coleccionista");
+    const email = (signup ? emailSignupRef.current?.value : emailRef.current?.value) || "user@ignia.gallery";
+    const name = nameRef.current?.value || (r === "escultor" ? "Artista" : "Coleccionista");
+    login({ email, name, role: r });
+    if (redirect) navigate(redirect);
+    else navigate(r === "escultor" ? "/dashboard" : "/perfil/coleccionista");
   };
 
   return (
