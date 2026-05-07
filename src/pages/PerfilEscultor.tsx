@@ -124,9 +124,8 @@ export default function PerfilEscultor() {
           </div>
         </div>
 
-        <div className="flex items-end justify-between mb-8">
+        <div className="mb-8">
           <h2 className="font-display font-bold text-[clamp(22px,2.4vw,32px)] tracking-[-0.02em] text-ink">{t.mine}</h2>
-          <button className="btn-primary !py-2 !px-5">{t.new}</button>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
