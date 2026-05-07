@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useRef } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Logo } from "@/components/ignia/Logo";
 import { useLang } from "@/i18n/LanguageContext";
+import { useAuth } from "@/auth/AuthContext";
 
 type Role = "escultor" | "coleccionista";
 
@@ -9,6 +10,12 @@ export default function Login() {
   const [role, setRole] = useState<Role>("escultor");
   const navigate = useNavigate();
   const lang = useLang();
+  const { login } = useAuth();
+  const [params] = useSearchParams();
+  const redirect = params.get("redirect") || "";
+  const emailRef = useRef<HTMLInputElement>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailSignupRef = useRef<HTMLInputElement>(null);
 
   const t = lang === "es" ? {
     enter: "Entrar", access: "Accede a Ignia",
