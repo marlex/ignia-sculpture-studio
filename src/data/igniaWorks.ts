@@ -22,6 +22,12 @@ import respiro from "@/assets/perfil-escultura-respiro.jpg";
 import resto from "@/assets/perfil-escultura-resto.jpg";
 import umbral from "@/assets/perfil-escultura-umbral.jpg";
 import verticePerfil from "@/assets/perfil-escultura-vertice.jpg";
+import hecate1 from "@/assets/hecate-triformis-1.jpg";
+import hecate2 from "@/assets/hecate-triformis-2.jpg";
+import hecate3 from "@/assets/hecate-triformis-3.jpg";
+import mujerNino1 from "@/assets/mujer-y-nino-1.jpg";
+import mujerNino2 from "@/assets/mujer-y-nino-2.jpg";
+import mujerNino3 from "@/assets/mujer-y-nino-3.jpg";
 
 export type WorkModelKey =
   | "hero-flight"
