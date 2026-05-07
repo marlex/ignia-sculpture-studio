@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/ignia/Logo";
-import { Sculpture3DModal } from "@/components/ignia/Sculpture3DModal";
 import arco from "@/assets/perfil-escultura-arco.jpg";
 import memoria from "@/assets/perfil-escultura-memoria.jpg";
 import nexo from "@/assets/perfil-escultura-nexo.jpg";
@@ -10,7 +8,7 @@ import orbita from "@/assets/perfil-escultura-orbita.jpg";
 import mineral from "@/assets/perfil-escultura-mineral.jpg";
 import respiro from "@/assets/perfil-escultura-respiro.jpg";
 import { useLang } from "@/i18n/LanguageContext";
-import { getWorkBySlug } from "@/data/igniaWorks";
+
 
 export default function PerfilColeccionista() {
   const lang = useLang();
