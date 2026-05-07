@@ -160,12 +160,17 @@ const ObraDetalle = () => {
                 <dt className="text-muted-line uppercase tracking-[0.12em]">{t.edition}</dt>
                 <dd className="text-ink">{o.edition}</dd>
               </dl>
-              <a href="#" className="link-arrow inline-block mt-5">{t.cert}</a>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <button className="bg-ink text-white font-body text-[14px] tracking-[0.14em] uppercase py-3.5 hover:bg-ink/90 transition-colors">{t.buy}</button>
-              <button className="border border-ink text-ink font-body text-[14px] tracking-[0.14em] uppercase py-3.5 hover:bg-secondary transition-colors">{t.talk}</button>
+            <div className="flex gap-3">
+              <button className="flex-1 bg-ink text-white font-body text-[15px] tracking-[0.16em] uppercase py-5 hover:bg-ink/90 transition-colors">{t.buy}</button>
+              <button
+                onClick={() => setChatOpen(true)}
+                aria-label={t.talk}
+                className="shrink-0 w-14 border border-ink text-ink flex items-center justify-center hover:bg-secondary transition-colors"
+              >
+                <MessageCircle className="w-5 h-5" />
+              </button>
             </div>
           </div>
         </div>
