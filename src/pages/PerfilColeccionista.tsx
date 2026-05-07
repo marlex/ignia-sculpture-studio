@@ -10,12 +10,11 @@ import orbita from "@/assets/perfil-escultura-orbita.jpg";
 import mineral from "@/assets/perfil-escultura-mineral.jpg";
 import respiro from "@/assets/perfil-escultura-respiro.jpg";
 import { useLang } from "@/i18n/LanguageContext";
-
-const SLUGS = ["lirio-en-vuelo", "ofrenda", "torsion-i"];
+import { getWorkBySlug } from "@/data/igniaWorks";
 
 export default function PerfilColeccionista() {
   const lang = useLang();
-  const [open3d, setOpen3d] = useState<{ idx: number; titulo: string; artista: string } | null>(null);
+  const [open3d, setOpen3d] = useState<string | null>(null);
   const t = lang === "es" ? {
     exit: "Salir", view3d: "Ver en 3D", viewObra: "Ver escultura",
     eyebrow: "Perfil de coleccionista",
@@ -23,15 +22,15 @@ export default function PerfilColeccionista() {
     stats: [["Obras en colección", "7"], ["Guardadas", "23"], ["Escultores seguidos", "12"]],
     mine: "Mi colección", reco: "Recomendado para ti",
     coleccion: [
-      { img: arco, titulo: "Arco", artista: "Helena Vázquez" },
-      { img: memoria, titulo: "Memoria", artista: "Marcos Iriarte" },
-      { img: nexo, titulo: "Nexo", artista: "Ana Ruiz" },
+      { slug: "arco", img: arco, titulo: "Arco", artista: "Helena Vázquez" },
+      { slug: "memoria", img: memoria, titulo: "Memoria", artista: "Marcos Iriarte" },
+      { slug: "nexo", img: nexo, titulo: "Nexo", artista: "Ana Ruiz" },
     ],
     recomendados: [
-      { img: latido, titulo: "Latido", artista: "Diego Lara" },
-      { img: orbita, titulo: "Órbita", artista: "Camila Soler" },
-      { img: mineral, titulo: "Mineral", artista: "Mateo Rivas" },
-      { img: respiro, titulo: "Respiro", artista: "Helena Vázquez" },
+      { slug: "latido", img: latido, titulo: "Latido", artista: "Diego Lara" },
+      { slug: "orbita", img: orbita, titulo: "Órbita", artista: "Camila Soler" },
+      { slug: "mineral", img: mineral, titulo: "Mineral", artista: "Mateo Rivas" },
+      { slug: "respiro", img: respiro, titulo: "Respiro", artista: "Helena Vázquez" },
     ],
   } : {
     exit: "Sign out", view3d: "View in 3D", viewObra: "View sculpture",
@@ -40,15 +39,15 @@ export default function PerfilColeccionista() {
     stats: [["Works in collection", "7"], ["Saved", "23"], ["Sculptors followed", "12"]],
     mine: "My collection", reco: "Recommended for you",
     coleccion: [
-      { img: arco, titulo: "Arch", artista: "Helena Vázquez" },
-      { img: memoria, titulo: "Memory", artista: "Marcos Iriarte" },
-      { img: nexo, titulo: "Nexus", artista: "Ana Ruiz" },
+      { slug: "arco", img: arco, titulo: "Arch", artista: "Helena Vázquez" },
+      { slug: "memoria", img: memoria, titulo: "Memory", artista: "Marcos Iriarte" },
+      { slug: "nexo", img: nexo, titulo: "Nexus", artista: "Ana Ruiz" },
     ],
     recomendados: [
-      { img: latido, titulo: "Heartbeat", artista: "Diego Lara" },
-      { img: orbita, titulo: "Orbit", artista: "Camila Soler" },
-      { img: mineral, titulo: "Mineral", artista: "Mateo Rivas" },
-      { img: respiro, titulo: "Breath", artista: "Helena Vázquez" },
+      { slug: "latido", img: latido, titulo: "Heartbeat", artista: "Diego Lara" },
+      { slug: "orbita", img: orbita, titulo: "Orbit", artista: "Camila Soler" },
+      { slug: "mineral", img: mineral, titulo: "Mineral", artista: "Mateo Rivas" },
+      { slug: "respiro", img: respiro, titulo: "Breath", artista: "Helena Vázquez" },
     ],
   };
 
