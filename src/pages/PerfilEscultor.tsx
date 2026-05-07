@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Logo } from "@/components/ignia/Logo";
-import { Sculpture3DModal } from "@/components/ignia/Sculpture3DModal";
 import caida from "@/assets/perfil-escultura-caida.jpg";
 import eco from "@/assets/perfil-escultura-eco.jpg";
 import umbral from "@/assets/perfil-escultura-umbral.jpg";
@@ -82,20 +80,19 @@ export default function PerfilEscultor() {
   const lang = useLang();
   const { slug = "helena-vazquez" } = useParams();
   const artist = ARTISTAS[slug] ?? ARTISTAS["helena-vazquez"];
-  const [open3d, setOpen3d] = useState<number | null>(null);
   const t = lang === "es"
-    ? { publish: "Publicar obra ↗", exit: "Salir", view3d: "Ver en 3D", viewObra: "Ver escultura",
+    ? { publish: "Publicar obra ↗", exit: "Salir", viewObra: "Ver escultura",
         eyebrow: "Perfil de escultor",
         stats: [["Obras publicadas", "24"], ["Coleccionistas", "38"], ["Ediciones vendidas", "61"]],
-        mine: "Mis obras", new: "+ Nueva obra" }
-    : { publish: "Submit work ↗", exit: "Sign out", view3d: "View in 3D", viewObra: "View sculpture",
+        mine: "Mis obras" }
+    : { publish: "Submit work ↗", exit: "Sign out", viewObra: "View sculpture",
         eyebrow: "Sculptor profile",
         stats: [["Published works", "24"], ["Collectors", "38"], ["Editions sold", "61"]],
-        mine: "My works", new: "+ New work" };
+        mine: "My works" };
 
   const bio = lang === "es" ? artist.bioEs : artist.bioEn;
   const esp = lang === "es" ? artist.espEs : artist.espEn;
-  const activeWork = open3d !== null ? getWorkBySlug(artist.obras[open3d].slug, lang) : null;
+
 
   return (
     <main className="min-h-screen bg-white">
