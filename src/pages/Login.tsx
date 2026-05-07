@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useRef } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Logo } from "@/components/ignia/Logo";
 import { useLang } from "@/i18n/LanguageContext";
+import { useAuth } from "@/auth/AuthContext";
 
 type Role = "escultor" | "coleccionista";
 
@@ -9,6 +10,12 @@ export default function Login() {
   const [role, setRole] = useState<Role>("escultor");
   const navigate = useNavigate();
   const lang = useLang();
+  const { login } = useAuth();
+  const [params] = useSearchParams();
+  const redirect = params.get("redirect") || "";
+  const emailRef = useRef<HTMLInputElement>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailSignupRef = useRef<HTMLInputElement>(null);
 
   const t = lang === "es" ? {
     enter: "Entrar", access: "Accede a Ignia",
@@ -36,9 +43,13 @@ export default function Login() {
     exit: "Exit",
   };
 
-  const goToProfile = (e: React.FormEvent, r: Role) => {
+  const goToProfile = (e: React.FormEvent, r: Role, signup = false) => {
     e.preventDefault();
-    navigate(r === "escultor" ? "/perfil/escultor" : "/perfil/coleccionista");
+    const email = (signup ? emailSignupRef.current?.value : emailRef.current?.value) || "user@ignia.gallery";
+    const name = nameRef.current?.value || (r === "escultor" ? "Artista" : "Coleccionista");
+    login({ email, name, role: r });
+    if (redirect) navigate(redirect);
+    else navigate(r === "escultor" ? "/dashboard" : "/perfil/coleccionista");
   };
 
   return (
@@ -52,7 +63,7 @@ export default function Login() {
         <h1 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-8 leading-tight">{t.access}</h1>
 
         <form onSubmit={(e) => goToProfile(e, role)} className="space-y-5">
-          <Field label={t.email} type="email" placeholder={t.emailPh} />
+          <Field label={t.email} type="email" placeholder={t.emailPh} inputRef={emailRef} />
           <Field label={t.pass} type="password" placeholder={t.passPh} />
           <button type="submit" className="btn-primary w-full justify-center !py-3.5">{t.btnIn}</button>
         </form>
@@ -84,11 +95,11 @@ export default function Login() {
           ))}
         </div>
 
-        <form onSubmit={(e) => goToProfile(e, role)} className="space-y-5">
+        <form onSubmit={(e) => goToProfile(e, role, true)} className="space-y-5">
           {role === "escultor" ? (
             <>
-              <Field label={t.fSculptor.name} placeholder={t.fSculptor.namePh} />
-              <Field label={t.email} type="email" placeholder={t.emailPh} />
+              <Field label={t.fSculptor.name} placeholder={t.fSculptor.namePh} inputRef={nameRef} />
+              <Field label={t.email} type="email" placeholder={t.emailPh} inputRef={emailSignupRef} />
               <Field label={t.pass} type="password" placeholder={t.passPh} />
               <Field label={t.fSculptor.disc} placeholder={t.fSculptor.discPh} />
               <Field label={t.fSculptor.city} placeholder={t.fSculptor.cityPh} />
@@ -96,8 +107,8 @@ export default function Login() {
             </>
           ) : (
             <>
-              <Field label={t.fCollector.name} placeholder={t.fCollector.namePh} />
-              <Field label={t.email} type="email" placeholder={t.emailPh} />
+              <Field label={t.fCollector.name} placeholder={t.fCollector.namePh} inputRef={nameRef} />
+              <Field label={t.email} type="email" placeholder={t.emailPh} inputRef={emailSignupRef} />
               <Field label={t.pass} type="password" placeholder={t.passPh} />
               <Field label={t.fCollector.interests} placeholder={t.fCollector.interestsPh} />
               <Field label={t.fCollector.budget} placeholder={t.fCollector.budgetPh} />
@@ -110,10 +121,10 @@ export default function Login() {
   );
 }
 
-const Field = ({ label, type = "text", placeholder }: { label: string; type?: string; placeholder?: string }) => (
+const Field = ({ label, type = "text", placeholder, inputRef }: { label: string; type?: string; placeholder?: string; inputRef?: React.RefObject<HTMLInputElement> }) => (
   <label className="block">
     <span className="block font-body text-[12px] uppercase tracking-[0.18em] text-muted-line mb-2">{label}</span>
-    <input type={type} placeholder={placeholder} className="w-full bg-transparent border-0 border-b border-border focus:border-ink outline-none py-2.5 font-body text-[15px] text-ink placeholder:text-muted-line/60" />
+    <input ref={inputRef} type={type} placeholder={placeholder} className="w-full bg-transparent border-0 border-b border-border focus:border-ink outline-none py-2.5 font-body text-[15px] text-ink placeholder:text-muted-line/60" />
   </label>
 );
 
