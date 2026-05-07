@@ -59,7 +59,7 @@ const ObraDetalle = () => {
             {/* Mode tabs only when both modes are real */}
             {has3d && (
               <div className="flex gap-1 mb-3">
-                {(["photos", "3d"] as const).map(m => (
+                {(["3d", "photos"] as const).map(m => (
                   <button
                     key={m}
                     onClick={() => setMode(m)}
