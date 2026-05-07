@@ -179,7 +179,7 @@ export default function AddView3d() {
             </div>
             <div className="flex items-center gap-3">
               <button onClick={publish3d} className="btn-primary">Publicar vista 3D en mi obra</button>
-              <button onClick={() => { setStage("A"); setPhotos([]); }} className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line hover:text-ink">
+              <button onClick={() => { setStage("A"); setPhotos([]); setSimCount(0); }} className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line hover:text-ink">
                 Repetir con mejores fotos
               </button>
               <button onClick={() => setSuccess(false)} className="ml-auto font-body text-[10px] uppercase tracking-[0.14em] text-muted-line/60 hover:text-muted-line">
@@ -198,7 +198,7 @@ export default function AddView3d() {
             <p className="font-body text-[14px] text-gray">
               Revisa las recomendaciones de fotografía e inténtalo de nuevo.
             </p>
-            <button onClick={() => { setStage("A"); setSuccess(true); setPhotos([]); }} className="btn-primary">Intentarlo de nuevo</button>
+            <button onClick={() => { setStage("A"); setSuccess(true); setPhotos([]); setSimCount(0); }} className="btn-primary">Intentarlo de nuevo</button>
           </div>
         )}
 
