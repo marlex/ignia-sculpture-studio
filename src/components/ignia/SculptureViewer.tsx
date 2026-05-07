@@ -6,6 +6,7 @@ import { ParametricGeometry } from "three/examples/jsm/geometries/ParametricGeom
 import bg1 from "@/assets/hero-bg-1.jpg";
 import bg2 from "@/assets/hero-bg-2.jpg";
 import bg3 from "@/assets/hero-bg-3.jpg";
+import type { WorkModelKey } from "@/data/igniaWorks";
 
 const studios = [bg1, bg2, bg3];
 
@@ -16,24 +17,10 @@ interface SculptureViewerProps {
   material?: string;
   viewAngle?: number;
   photoSrc?: string;
+  model?: WorkModelKey;
 }
 
-type ModelKind =
-  | "hero-flight"
-  | "hero-offering"
-  | "hero-torsion"
-  | "figure-curvy"
-  | "marble-fold"
-  | "corten-ribbon"
-  | "wood-root"
-  | "blue-ceramic"
-  | "slender-figure"
-  | "white-loop"
-  | "amber-glass"
-  | "bronze-fall"
-  | "black-figure"
-  | "white-ring"
-  | "geometric";
+type ModelKind = WorkModelKey;
 
 const normalizeTitle = (value = "") =>
   value
@@ -400,8 +387,8 @@ const Sculpture = ({ kind, viewAngle = 0 }: { kind: ModelKind; viewAngle?: numbe
   );
 };
 
-export const SculptureViewer = ({ obraIndex, bgMode, titulo, material, viewAngle = 0, photoSrc }: SculptureViewerProps) => {
-  const kind = useMemo(() => resolveModel(titulo, obraIndex), [titulo, obraIndex]);
+export const SculptureViewer = ({ obraIndex, bgMode, titulo, material, viewAngle = 0, photoSrc, model }: SculptureViewerProps) => {
+  const kind = useMemo(() => model ?? resolveModel(titulo, obraIndex), [model, titulo, obraIndex]);
   const studioIndex = ((obraIndex % studios.length) + studios.length) % studios.length;
   const studioBg = photoSrc ?? studios[studioIndex];
   const bg =
