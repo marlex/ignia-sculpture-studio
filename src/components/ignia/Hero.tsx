@@ -48,8 +48,8 @@ export const Hero = () => {
         </button>
       )}
 
-      {/* Subtle vignette */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, transparent 30%, transparent 55%, rgba(255,255,255,0.55) 100%)" }} />
+      {/* Smooth bottom fade from dark scene to white UI */}
+      <div className="absolute inset-x-0 bottom-0 h-[55%] pointer-events-none z-[1]" style={{ background: "linear-gradient(to bottom, rgba(28,28,26,0) 0%, rgba(28,28,26,0.15) 35%, rgba(255,255,255,0.55) 70%, rgba(255,255,255,0.95) 92%, #ffffff 100%)" }} />
 
       {/* hint chip */}
       <div
