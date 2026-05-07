@@ -95,11 +95,11 @@ export default function Login() {
           ))}
         </div>
 
-        <form onSubmit={(e) => goToProfile(e, role)} className="space-y-5">
+        <form onSubmit={(e) => goToProfile(e, role, true)} className="space-y-5">
           {role === "escultor" ? (
             <>
-              <Field label={t.fSculptor.name} placeholder={t.fSculptor.namePh} />
-              <Field label={t.email} type="email" placeholder={t.emailPh} />
+              <Field label={t.fSculptor.name} placeholder={t.fSculptor.namePh} inputRef={nameRef} />
+              <Field label={t.email} type="email" placeholder={t.emailPh} inputRef={emailSignupRef} />
               <Field label={t.pass} type="password" placeholder={t.passPh} />
               <Field label={t.fSculptor.disc} placeholder={t.fSculptor.discPh} />
               <Field label={t.fSculptor.city} placeholder={t.fSculptor.cityPh} />
@@ -107,8 +107,8 @@ export default function Login() {
             </>
           ) : (
             <>
-              <Field label={t.fCollector.name} placeholder={t.fCollector.namePh} />
-              <Field label={t.email} type="email" placeholder={t.emailPh} />
+              <Field label={t.fCollector.name} placeholder={t.fCollector.namePh} inputRef={nameRef} />
+              <Field label={t.email} type="email" placeholder={t.emailPh} inputRef={emailSignupRef} />
               <Field label={t.pass} type="password" placeholder={t.passPh} />
               <Field label={t.fCollector.interests} placeholder={t.fCollector.interestsPh} />
               <Field label={t.fCollector.budget} placeholder={t.fCollector.budgetPh} />
