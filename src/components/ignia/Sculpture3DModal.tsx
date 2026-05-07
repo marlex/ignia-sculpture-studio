@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { SculptureViewer } from "./SculptureViewer";
 import { useLang } from "@/i18n/LanguageContext";
+import type { WorkModelKey } from "@/data/igniaWorks";
 
 interface Props {
   open: boolean;
@@ -10,13 +11,14 @@ interface Props {
   artista: string;
   material: string;
   photoSrc?: string;
+  model?: WorkModelKey;
 }
 
 type BgMode = "studio" | "white" | "dark";
 
 const ANGLES = [0, Math.PI / 3, (2 * Math.PI) / 3, Math.PI];
 
-export const Sculpture3DModal = ({ open, onClose, obraIndex, titulo, artista, material, photoSrc }: Props) => {
+export const Sculpture3DModal = ({ open, onClose, obraIndex, titulo, artista, material, photoSrc, model }: Props) => {
   const lang = useLang();
   const [bg, setBg] = useState<BgMode>("studio");
   const [angle, setAngle] = useState(0);
@@ -49,7 +51,7 @@ export const Sculpture3DModal = ({ open, onClose, obraIndex, titulo, artista, ma
         </button>
       </header>
       <div className="relative flex-1">
-        <SculptureViewer obraIndex={obraIndex} bgMode={bg} titulo={titulo} material={material} viewAngle={angle} photoSrc={photoSrc} />
+        <SculptureViewer obraIndex={obraIndex} bgMode={bg} titulo={titulo} material={material} viewAngle={angle} photoSrc={photoSrc} model={model} />
         <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white/55 font-body text-[11px] uppercase tracking-[0.18em] pointer-events-none">
           {t.hint}
         </div>
