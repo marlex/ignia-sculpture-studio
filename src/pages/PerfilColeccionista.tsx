@@ -12,7 +12,7 @@ import { useLang } from "@/i18n/LanguageContext";
 
 export default function PerfilColeccionista() {
   const lang = useLang();
-  const [open3d, setOpen3d] = useState<string | null>(null);
+  
   const t = lang === "es" ? {
     exit: "Salir", view3d: "Ver en 3D", viewObra: "Ver escultura",
     eyebrow: "Perfil de coleccionista",
@@ -48,7 +48,7 @@ export default function PerfilColeccionista() {
       { slug: "respiro", img: respiro, titulo: "Breath", artista: "Helena Vázquez" },
     ],
   };
-  const activeWork = open3d ? getWorkBySlug(open3d, lang) : null;
+  
 
   return (
     <main className="min-h-screen bg-white">
@@ -86,12 +86,6 @@ export default function PerfilColeccionista() {
                   >
                     {t.viewObra} →
                   </Link>
-                  <button
-                    onClick={() => setOpen3d(o.slug)}
-                    className="font-body text-[11px] font-light text-muted-line uppercase tracking-[0.12em] hover:text-ink transition-colors"
-                  >
-                    {t.view3d}
-                  </button>
                 </div>
               </article>
             ))}
@@ -115,12 +109,6 @@ export default function PerfilColeccionista() {
                   >
                     {t.viewObra} →
                   </Link>
-                  <button
-                    onClick={() => setOpen3d(o.slug)}
-                    className="font-body text-[10px] font-light text-muted-line uppercase tracking-[0.12em] hover:text-ink transition-colors"
-                  >
-                    {t.view3d}
-                  </button>
                 </div>
               </article>
             ))}
@@ -128,18 +116,6 @@ export default function PerfilColeccionista() {
         </div>
       </section>
 
-      {activeWork && (
-        <Sculpture3DModal
-          open={!!activeWork}
-          onClose={() => setOpen3d(null)}
-          obraIndex={activeWork.index}
-          titulo={activeWork.title}
-          artista={activeWork.artist}
-          material={activeWork.material}
-          photoSrc={activeWork.image}
-          model={activeWork.model}
-        />
-      )}
     </main>
   );
 }
