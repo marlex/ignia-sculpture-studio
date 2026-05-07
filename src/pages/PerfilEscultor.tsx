@@ -95,6 +95,7 @@ export default function PerfilEscultor() {
 
   const bio = lang === "es" ? artist.bioEs : artist.bioEn;
   const esp = lang === "es" ? artist.espEs : artist.espEn;
+  const activeWork = open3d !== null ? getWorkBySlug(artist.obras[open3d].slug, lang) : null;
 
   return (
     <main className="min-h-screen bg-white">
@@ -133,14 +134,14 @@ export default function PerfilEscultor() {
             const titulo = o.titulo[lang];
             return (
               <article key={titulo} className="group">
-                <Link to={`/obra/${SLUGS[i % SLUGS.length]}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary mb-4">
+                <Link to={`/obra/${o.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary mb-4">
                   <img src={o.img} alt={titulo} loading="lazy" width={1024} height={1280} className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
                 </Link>
                 <h3 className="font-display font-bold text-[16px] text-ink mb-1">{titulo}</h3>
                 <div className="font-body text-[13px] text-muted-line uppercase tracking-[0.14em] mb-3">{o.estado[lang]}</div>
                 <div className="flex items-center gap-4">
                   <Link
-                    to={`/obra/${SLUGS[i % SLUGS.length]}`}
+                    to={`/obra/${o.slug}`}
                     className="font-body text-[12px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-60 transition-opacity"
                   >
                     {t.viewObra} →
@@ -158,14 +159,16 @@ export default function PerfilEscultor() {
         </div>
       </section>
 
-      {open3d !== null && (
+      {activeWork && (
         <Sculpture3DModal
-          open={open3d !== null}
+          open={!!activeWork}
           onClose={() => setOpen3d(null)}
-          obraIndex={open3d}
-          titulo={artist.obras[open3d].titulo[lang]}
-          artista={artist.nombre}
-          material={lang === "es" ? "Bronce" : "Bronze"}
+          obraIndex={activeWork.index}
+          titulo={activeWork.title}
+          artista={activeWork.artist}
+          material={activeWork.material}
+          photoSrc={activeWork.image}
+          model={activeWork.model}
         />
       )}
     </main>
