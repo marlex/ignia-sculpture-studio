@@ -28,7 +28,7 @@ export const Hero = () => {
     <section className="relative w-screen h-screen overflow-hidden bg-surface">
       {o.glbUrl ? (
         <div className="absolute inset-0">
-          <GlbViewer url={o.glbUrl} alt={o.title} minHeight="100vh" />
+          <GlbViewer url={o.glbUrl} alt={o.title} minHeight="100vh" bgColor="#1c1c1a" />
         </div>
       ) : (
         <button

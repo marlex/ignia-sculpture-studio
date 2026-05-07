@@ -35,12 +35,14 @@ function ModelViewerContent({
   poster,
   minHeight,
   showAr = true,
+  bgColor = "#f5f5f0",
 }: {
   url: string;
   alt: string;
   poster?: string;
   minHeight: string;
   showAr?: boolean;
+  bgColor?: string;
 }) {
   return (
     <model-viewer
@@ -61,7 +63,7 @@ function ModelViewerContent({
         width: "100%",
         height: "100%",
         minHeight,
-        backgroundColor: "#f5f5f0",
+        backgroundColor: bgColor,
         ["--poster-color" as never]: "transparent",
       }}
     >
@@ -98,6 +100,7 @@ export function GlbViewer({
   poster,
   minHeight = "500px",
   enableFullscreen = true,
+  bgColor = "#f5f5f0",
 }: {
   url: string;
   alt?: string;
@@ -105,13 +108,14 @@ export function GlbViewer({
   poster?: string;
   minHeight?: string;
   enableFullscreen?: boolean;
+  bgColor?: string;
 }) {
   const [fs, setFs] = useState(false);
 
   return (
     <>
-      <div className={`relative w-full h-full ${className}`} style={{ background: "#f5f5f0" }}>
-        <ModelViewerContent url={url} alt={alt} poster={poster} minHeight={minHeight} />
+      <div className={`relative w-full h-full ${className}`} style={{ background: bgColor }}>
+        <ModelViewerContent url={url} alt={alt} poster={poster} minHeight={minHeight} bgColor={bgColor} />
         {enableFullscreen && (
           <button
             type="button"
@@ -135,7 +139,7 @@ export function GlbViewer({
             <X className="w-5 h-5" />
           </button>
           <div className="w-full h-full">
-            <ModelViewerContent url={url} alt={alt} poster={poster} minHeight="100vh" />
+            <ModelViewerContent url={url} alt={alt} poster={poster} minHeight="100vh" bgColor={bgColor} />
           </div>
         </div>
       )}
