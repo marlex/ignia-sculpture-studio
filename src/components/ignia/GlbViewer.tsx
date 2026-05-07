@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Maximize2, X } from "lucide-react";
 import "@google/model-viewer/dist/model-viewer.min.js";
 
 declare global {
@@ -58,7 +59,7 @@ export function GlbViewer({
         ar=""
         ar-modes="webxr scene-viewer quick-look"
         poster={poster}
-        onLoad={() => setLoaded(true)}
+        
         style={{
           width: "100%",
           height: "100%",
