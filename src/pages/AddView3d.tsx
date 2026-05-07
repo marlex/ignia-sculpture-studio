@@ -14,6 +14,9 @@ export default function AddView3d() {
 
   const [stage, setStage] = useState<"A" | "B" | "C">("A");
   const [photos, setPhotos] = useState<File[]>([]);
+  const [simCount, setSimCount] = useState(0);
+  const totalCount = photos.length + simCount;
+  const [photos, setPhotos] = useState<File[]>([]);
   const [progress, setProgress] = useState(0);
   const [emailNotify, setEmailNotify] = useState(true);
   const [success, setSuccess] = useState(true); // true → exit on C; toggle to false to test fail
