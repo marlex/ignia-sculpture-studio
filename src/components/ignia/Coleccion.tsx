@@ -69,23 +69,15 @@ export const Coleccion = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
         {obras.map((o, i) => {
           const has3d = !!o.glbUrl;
-          const hasAngles = (o.extraImages?.length || 0) > 0;
           return (
             <article key={i} className="bg-white group">
               <Link to={`/obra/${o.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary">
-                <img src={o.image} alt={o.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-                {has3d && (
-                  <button
-                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); setOpen3d(i); }}
-                    className="absolute bottom-3 left-3 font-body text-[10px] uppercase tracking-[0.18em] bg-ink text-white px-3 py-1.5 hover:bg-ink/85 transition-colors"
-                  >
-                    {t.view3d}
-                  </button>
-                )}
-                {!has3d && hasAngles && (
-                  <span className="absolute bottom-3 left-3 font-body text-[10px] uppercase tracking-[0.18em] bg-white/95 text-ink px-3 py-1.5 border border-border">
-                    {t.viewAngles}
-                  </span>
+                {has3d ? (
+                  <div className="absolute inset-0 pointer-events-none">
+                    <GlbViewer url={o.glbUrl!} alt={o.title} minHeight="100%" />
+                  </div>
+                ) : (
+                  <img src={o.image} alt={o.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
                 )}
               </Link>
               <div className="p-5">

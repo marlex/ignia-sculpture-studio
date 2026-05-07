@@ -41,7 +41,7 @@ const ObraDetalle = () => {
   const has3d = !!o.glbUrl;
 
   // Default mode: 3d if no extra photos, otherwise photos
-  const [mode, setMode] = useState<"photos" | "3d">(has3d && !hasGallery ? "3d" : "photos");
+  const [mode, setMode] = useState<"photos" | "3d">(has3d ? "3d" : "photos");
   const [idx, setIdx] = useState(0);
 
   useEffect(() => { setIdx(0); }, [slug]);
@@ -57,7 +57,7 @@ const ObraDetalle = () => {
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10">
           <div>
             {/* Mode tabs only when both modes are real */}
-            {has3d && hasGallery && (
+            {has3d && (
               <div className="flex gap-1 mb-3">
                 {(["photos", "3d"] as const).map(m => (
                   <button
@@ -72,6 +72,7 @@ const ObraDetalle = () => {
                 ))}
               </div>
             )}
+
 
             <div className="relative aspect-square w-full bg-secondary overflow-hidden">
               {mode === "3d" && has3d ? (
