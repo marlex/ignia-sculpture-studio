@@ -167,9 +167,26 @@ const IgniaGalleryPage = () => {
       <section className="bg-white px-6 md:px-12 py-20">
         <div className="max-w-[1080px] mx-auto">
           <div className="eyebrow mb-3">{t.contactEy}</div>
-          <p className="font-body text-[15px] font-light text-gray leading-relaxed">
-            hola@igniagallery.com<br />+34 910 000 000
-          </p>
+          <ul className="font-body text-[15px] font-light text-gray leading-relaxed space-y-1">
+            <li>
+              Instagram:{" "}
+              <a href="https://www.instagram.com/igniagallery/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-ink transition-colors">
+                @igniagallery
+              </a>
+            </li>
+            <li>
+              LinkedIn:{" "}
+              <a href="https://www.linkedin.com/company/ignia-gallery/about/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-ink transition-colors">
+                Ignia Gallery
+              </a>
+            </li>
+            <li>
+              {lang === "es" ? "Teléfono" : "Phone"}:{" "}
+              <a href="tel:+34673152055" className="underline underline-offset-4 hover:text-ink transition-colors">
+                +34 673 152 055
+              </a>
+            </li>
+          </ul>
         </div>
       </section>
 
