@@ -131,10 +131,10 @@ export default function AddView3d() {
 
               <div className="mt-4 flex items-center justify-between">
                 <div className="font-body text-[13px] text-ink">
-                  {photos.length} fotos seleccionadas <span className="text-muted-line">(mínimo 20)</span>
+                  {totalCount} fotos seleccionadas <span className="text-muted-line">(mínimo 20)</span>
                 </div>
-                {photos.length < 20 && (
-                  <button onClick={() => setPhotos(Array.from({ length: 24 }))} className="font-body text-[11px] uppercase tracking-[0.14em] text-muted-line hover:text-ink">
+                {totalCount < 20 && (
+                  <button onClick={() => setSimCount(24)} className="font-body text-[11px] uppercase tracking-[0.14em] text-muted-line hover:text-ink">
                     Simular 24 fotos
                   </button>
                 )}
@@ -206,7 +206,7 @@ export default function AddView3d() {
           <div className="flex justify-end mt-12 pt-6 border-t border-border">
             <button
               onClick={() => setStage("B")}
-              disabled={photos.length < 20}
+              disabled={totalCount < 20}
               className="btn-primary disabled:opacity-30 disabled:cursor-not-allowed"
             >
               Continuar →
