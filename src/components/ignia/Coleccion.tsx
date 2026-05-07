@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
-import { Sculpture3DModal } from "./Sculpture3DModal";
+import { GlbViewer } from "./GlbViewer";
 import { getCatalogueWorks } from "@/data/igniaWorks";
+import { X } from "lucide-react";
 
 export const Coleccion = () => {
   const lang = useLang();
   const obras = getCatalogueWorks(lang);
   const [open3d, setOpen3d] = useState<number | null>(null);
+
   const t = lang === "es" ? {
     h: "Descubre todas las colecciones",
     cta: "Ver las 843 obras →",
@@ -15,9 +17,11 @@ export const Coleccion = () => {
     search: "Buscar artista, obra, material…",
     filters: ["Material", "Precio", "Técnica"],
     view3d: "Ver en 3D",
+    viewAngles: "Ver ángulos",
     viewObra: "Ver escultura",
     auth: "Autenticidad",
-    state: "Disponible · 3D",
+    close: "Cerrar",
+    hint: "Arrastra para rotar · Scroll para zoom",
   } : {
     h: "Discover the full collection",
     cta: "Browse all 843 works →",
@@ -25,10 +29,25 @@ export const Coleccion = () => {
     search: "Search artist, work, material…",
     filters: ["Material", "Price", "Technique"],
     view3d: "View in 3D",
+    viewAngles: "View angles",
     viewObra: "View sculpture",
     auth: "Authenticity",
-    state: "Available · 3D",
+    close: "Close",
+    hint: "Drag to rotate · Scroll to zoom",
   };
+
+  const open = open3d !== null ? obras[open3d] : null;
+
+  useEffect(() => {
+    if (open3d === null) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen3d(null);
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [open3d]);
 
   return (
     <section className="bg-surface px-6 md:px-12 py-24">
@@ -49,18 +68,27 @@ export const Coleccion = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
         {obras.map((o, i) => {
+          const has3d = !!o.glbUrl;
+          const hasAngles = (o.extraImages?.length || 0) > 0;
           return (
             <article key={i} className="bg-white group">
               <Link to={`/obra/${o.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary">
                 <img src={o.image} alt={o.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                {has3d && (
+                  <button
+                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); setOpen3d(i); }}
+                    className="absolute bottom-3 left-3 font-body text-[10px] uppercase tracking-[0.18em] bg-ink text-white px-3 py-1.5 hover:bg-ink/85 transition-colors"
+                  >
+                    {t.view3d}
+                  </button>
+                )}
+                {!has3d && hasAngles && (
+                  <span className="absolute bottom-3 left-3 font-body text-[10px] uppercase tracking-[0.18em] bg-white/95 text-ink px-3 py-1.5 border border-border">
+                    {t.viewAngles}
+                  </span>
+                )}
               </Link>
               <div className="p-5">
-                <button
-                  onClick={() => setOpen3d(i)}
-                  className="inline-flex items-center gap-1.5 mb-2 font-body text-[10px] font-light text-muted-line uppercase tracking-[0.14em] border-[0.5px] border-border px-2 py-1 hover:text-ink hover:border-ink transition-colors"
-                >
-                  <span aria-hidden>◇</span> {t.view3d}
-                </button>
                 <h3 className="font-display font-bold text-[17px] text-ink mb-1">{o.title}</h3>
                 <div className="font-body text-[14px] font-light text-gray mb-1.5">{o.artist}</div>
                 <div className="font-body text-[12px] font-light text-muted-line uppercase tracking-[0.14em] mb-2">{o.material}</div>
@@ -83,17 +111,24 @@ export const Coleccion = () => {
         })}
       </div>
 
-      {open3d !== null && (
-        <Sculpture3DModal
-          open={open3d !== null}
-          onClose={() => setOpen3d(null)}
-          obraIndex={open3d}
-          titulo={obras[open3d].title}
-          artista={obras[open3d].artist}
-          material={obras[open3d].material}
-          photoSrc={obras[open3d].image}
-          model={obras[open3d].model}
-        />
+      {open && open.glbUrl && (
+        <div className="fixed inset-0 z-[200] bg-black/95 flex flex-col">
+          <header className="flex items-center justify-between px-6 md:px-10 h-14 border-b border-white/10 text-white">
+            <div className="flex items-baseline gap-3">
+              <span className="font-display font-bold text-[16px]">{open.title}</span>
+              <span className="font-body text-[12px] uppercase tracking-[0.14em] text-white/55">{open.artist} · {open.material}</span>
+            </div>
+            <button onClick={() => setOpen3d(null)} aria-label={t.close} className="text-white/80 hover:text-white">
+              <X className="w-5 h-5" />
+            </button>
+          </header>
+          <div className="relative flex-1">
+            <GlbViewer url={open.glbUrl} />
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white/55 font-body text-[11px] uppercase tracking-[0.18em] pointer-events-none">
+              {t.hint}
+            </div>
+          </div>
+        </div>
       )}
     </section>
   );
