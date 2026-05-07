@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Sculpture3DModal } from "./Sculpture3DModal";
+import { Link, useNavigate } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
 import { getHeroWorks } from "@/data/igniaWorks";
 
 export const Hero = () => {
   const [actual, setActual] = useState(0);
-  const [open3d, setOpen3d] = useState(false);
   const [showHint, setShowHint] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const t = setTimeout(() => setShowHint(false), 3500);
