@@ -1,25 +1,9 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Sculpture3DModal } from "./Sculpture3DModal";
 import { SculptureViewer } from "./SculptureViewer";
-import hero1 from "@/assets/hero-real-1.jpg";
-import hero2 from "@/assets/hero-real-2.jpg";
-import hero3 from "@/assets/hero-real-3.jpg";
 import { useLang } from "@/i18n/LanguageContext";
-
-const photos = [hero1, hero2, hero3];
-
-const OBRAS = {
-  es: [
-    { nombre: "Lirio en vuelo", artista: "Ana Ruiz", material: "Bronce a la cera perdida", precio: "€ 14.800", slug: "lirio-en-vuelo", auth: "Autenticidad #0x3a9f…c21" },
-    { nombre: "Ofrenda", artista: "Helena Vázquez", material: "Bronce pulido a mano", precio: "€ 22.500", slug: "ofrenda", auth: "Autenticidad #0x7b14…e08" },
-    { nombre: "Torsión I", artista: "Camila Soler", material: "Alabastro blanco", precio: "€ 11.600", slug: "torsion-i", auth: "Autenticidad #0x2d5c…a93" },
-  ],
-  en: [
-    { nombre: "Lily in flight", artista: "Ana Ruiz", material: "Lost-wax bronze", precio: "€ 14,800", slug: "lirio-en-vuelo", auth: "Authenticity #0x3a9f…c21" },
-    { nombre: "Offering", artista: "Helena Vázquez", material: "Hand-polished bronze", precio: "€ 22,500", slug: "ofrenda", auth: "Authenticity #0x7b14…e08" },
-    { nombre: "Torsion I", artista: "Camila Soler", material: "White alabaster", precio: "€ 11,600", slug: "torsion-i", auth: "Authenticity #0x2d5c…a93" },
-  ],
-};
+import { getHeroWorks } from "@/data/igniaWorks";
 
 export const Hero = () => {
   const [actual, setActual] = useState(0);
@@ -33,7 +17,7 @@ export const Hero = () => {
   }, []);
 
   const lang = useLang();
-  const obras = OBRAS[lang];
+  const obras = getHeroWorks(lang);
   const o = obras[actual];
   const t = lang === "es"
     ? { hint: "Arrastra para rotar la escultura", prev: "Anterior", next: "Siguiente", view: "Ver escultura →", view3d: "Ver en 3D", photo: "Foto", model: "3D", expand: "Ampliar 3D" }
@@ -50,14 +34,15 @@ export const Hero = () => {
           <SculptureViewer
             obraIndex={actual}
             bgMode="studio"
-            titulo={o.nombre}
+            titulo={o.title}
             material={o.material}
-            photoSrc={photos[actual]}
+            photoSrc={o.image}
+            model={o.model}
           />
         ) : (
           <img
-            src={photos[actual]}
-            alt={o.nombre}
+            src={o.image}
+            alt={o.title}
             className="w-full h-full object-cover"
             style={{ objectPosition: "center 35%" }}
             width={1280}
@@ -114,7 +99,7 @@ export const Hero = () => {
             <button
               key={ob.slug}
               onClick={() => setActual(i)}
-              aria-label={ob.nombre}
+              aria-label={ob.title}
               className="cursor-pointer transition-opacity"
               style={{ opacity: i === actual ? 1 : 0.35 }}
             >
@@ -122,7 +107,7 @@ export const Hero = () => {
                 className="w-12 h-16 border-[0.5px] border-border overflow-hidden"
                 style={{ borderBottom: i === actual ? "2px solid hsl(var(--ink))" : undefined }}
               >
-                <img src={photos[i]} alt="" className="w-full h-full object-cover" />
+                <img src={ob.image} alt="" className="w-full h-full object-cover" />
               </div>
             </button>
           ))}
@@ -131,20 +116,20 @@ export const Hero = () => {
         {/* info */}
         <div className="flex-1 text-ink">
           <h1 className="font-display font-bold leading-[0.95] tracking-[-0.03em] mb-3 text-ink" style={{ fontSize: "clamp(36px, 5vw, 72px)" }}>
-            {o.nombre}
+            {o.title}
           </h1>
           <div className="flex items-center gap-2 flex-wrap mb-3.5 font-body text-[14px] font-light tracking-wide text-gray">
-            <span>{o.artista}</span>
+            <span>{o.artist}</span>
             <span className="text-border">·</span>
             <span>{o.material}</span>
             <span className="text-border">·</span>
-            <span className="font-mono text-[12px]">{o.auth}</span>
+            <span className="font-mono text-[12px]">{lang === "es" ? "Autenticidad" : "Authenticity"} {o.authenticity}</span>
           </div>
           <div className="flex items-baseline gap-7">
-            <span className="font-display font-bold text-[22px] tracking-[-0.01em] text-ink">{o.precio}</span>
-            <a href={`/obra/${o.slug}`} className="font-body text-[13px] font-light tracking-[0.14em] uppercase border-b-[0.5px] border-ink pb-px hover:opacity-50 transition-opacity text-ink">
+            <span className="font-display font-bold text-[22px] tracking-[-0.01em] text-ink">{o.price}</span>
+            <Link to={`/obra/${o.slug}`} className="font-body text-[13px] font-light tracking-[0.14em] uppercase border-b-[0.5px] border-ink pb-px hover:opacity-50 transition-opacity text-ink">
               {t.view}
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -153,10 +138,11 @@ export const Hero = () => {
         open={open3d}
         onClose={() => setOpen3d(false)}
         obraIndex={actual}
-        titulo={o.nombre}
-        artista={o.artista}
+        titulo={o.title}
+        artista={o.artist}
         material={o.material}
-        photoSrc={photos[actual]}
+        photoSrc={o.image}
+        model={o.model}
       />
     </section>
   );
