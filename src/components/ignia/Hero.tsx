@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
 import { getHeroWorks } from "@/data/igniaWorks";
+import { GlbViewer } from "./GlbViewer";
 
 export const Hero = () => {
   const [actual, setActual] = useState(0);
@@ -25,22 +26,27 @@ export const Hero = () => {
 
   return (
     <section className="relative w-screen h-screen overflow-hidden bg-surface">
-      {/* Real photo as primary view; click opens the work detail page */}
-      <button
-        type="button"
-        onClick={() => navigate(`/obra/${o.slug}`)}
-        aria-label={t.view}
-        className="absolute inset-0 block w-full h-full cursor-zoom-in"
-      >
-        <img
-          src={o.image}
-          alt={o.title}
-          className="w-full h-full object-cover"
-          style={{ objectPosition: "center 35%" }}
-          width={1280}
-          height={1600}
-        />
-      </button>
+      {o.glbUrl ? (
+        <div className="absolute inset-0">
+          <GlbViewer url={o.glbUrl} alt={o.title} minHeight="100vh" />
+        </div>
+      ) : (
+        <button
+          type="button"
+          onClick={() => navigate(`/obra/${o.slug}`)}
+          aria-label={t.view}
+          className="absolute inset-0 block w-full h-full cursor-zoom-in"
+        >
+          <img
+            src={o.image}
+            alt={o.title}
+            className="w-full h-full object-cover"
+            style={{ objectPosition: "center 35%" }}
+            width={1280}
+            height={1600}
+          />
+        </button>
+      )}
 
       {/* Subtle vignette */}
       <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, transparent 30%, transparent 55%, rgba(255,255,255,0.55) 100%)" }} />
