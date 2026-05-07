@@ -50,6 +50,7 @@ const ObraDetalle = () => {
                 {t.view3d} ↗
               </span>
             </button>
+          </div>
           <div>
             <div className="eyebrow mb-3"><Link to="/coleccion" className="hover:text-ink">{t.back}</Link></div>
             <h1 className="font-display font-bold text-[clamp(32px,4vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-3">{o.title}</h1>
