@@ -20,15 +20,15 @@ export default function Publicar() {
   const navigate = useNavigate();
   const lang = useLang();
 
-  // Auto-login as demo artist if not authenticated (no validation required for demo flow)
+  // Demo: force the showcased artist identity
   useEffect(() => {
-    if (!user) {
+    if (!user || user.name !== "Cristina Iglesias") {
       login({ name: "Cristina Iglesias", email: "cristina@ignia.gallery", role: "escultor" });
     }
   }, [user, login]);
 
   const [step, setStep] = useState(1);
-  const [draft, setDraft] = useState<ObraDraft>({ ...empty, artista: user?.name || "Cristina Iglesias" });
+  const [draft, setDraft] = useState<ObraDraft>({ ...empty, artista: "Cristina Iglesias" });
   const [confirmed, setConfirmed] = useState(false);
   const [publishedId, setPublishedId] = useState<string | null>(null);
 
@@ -151,7 +151,6 @@ const Step1 = ({ t, draft, set }: any) => (
   <div className="space-y-5">
     <SectionTitle>{t.s1.h}</SectionTitle>
     <FieldText label={t.s1.titulo} value={draft.titulo} onChange={(v) => set("titulo", v)} required />
-    <FieldText label={t.s1.artista} value={draft.artista} onChange={(v) => set("artista", v)} required />
     <FieldText label={t.s1.anyo} value={draft.anyo} onChange={(v) => set("anyo", v.replace(/\D/g, "").slice(0, 4))} required placeholder="2025" />
     <FieldText label={t.s1.tecnica} value={draft.tecnica} onChange={(v) => set("tecnica", v)} required placeholder={t.s1.tecnicaPh} />
     <div>
