@@ -10,12 +10,11 @@ import orbita from "@/assets/perfil-escultura-orbita.jpg";
 import mineral from "@/assets/perfil-escultura-mineral.jpg";
 import respiro from "@/assets/perfil-escultura-respiro.jpg";
 import { useLang } from "@/i18n/LanguageContext";
-
-const SLUGS = ["lirio-en-vuelo", "ofrenda", "torsion-i"];
+import { getWorkBySlug } from "@/data/igniaWorks";
 
 export default function PerfilColeccionista() {
   const lang = useLang();
-  const [open3d, setOpen3d] = useState<{ idx: number; titulo: string; artista: string } | null>(null);
+  const [open3d, setOpen3d] = useState<string | null>(null);
   const t = lang === "es" ? {
     exit: "Salir", view3d: "Ver en 3D", viewObra: "Ver escultura",
     eyebrow: "Perfil de coleccionista",
@@ -23,15 +22,15 @@ export default function PerfilColeccionista() {
     stats: [["Obras en colección", "7"], ["Guardadas", "23"], ["Escultores seguidos", "12"]],
     mine: "Mi colección", reco: "Recomendado para ti",
     coleccion: [
-      { img: arco, titulo: "Arco", artista: "Helena Vázquez" },
-      { img: memoria, titulo: "Memoria", artista: "Marcos Iriarte" },
-      { img: nexo, titulo: "Nexo", artista: "Ana Ruiz" },
+      { slug: "arco", img: arco, titulo: "Arco", artista: "Helena Vázquez" },
+      { slug: "memoria", img: memoria, titulo: "Memoria", artista: "Marcos Iriarte" },
+      { slug: "nexo", img: nexo, titulo: "Nexo", artista: "Ana Ruiz" },
     ],
     recomendados: [
-      { img: latido, titulo: "Latido", artista: "Diego Lara" },
-      { img: orbita, titulo: "Órbita", artista: "Camila Soler" },
-      { img: mineral, titulo: "Mineral", artista: "Mateo Rivas" },
-      { img: respiro, titulo: "Respiro", artista: "Helena Vázquez" },
+      { slug: "latido", img: latido, titulo: "Latido", artista: "Diego Lara" },
+      { slug: "orbita", img: orbita, titulo: "Órbita", artista: "Camila Soler" },
+      { slug: "mineral", img: mineral, titulo: "Mineral", artista: "Mateo Rivas" },
+      { slug: "respiro", img: respiro, titulo: "Respiro", artista: "Helena Vázquez" },
     ],
   } : {
     exit: "Sign out", view3d: "View in 3D", viewObra: "View sculpture",
@@ -40,17 +39,18 @@ export default function PerfilColeccionista() {
     stats: [["Works in collection", "7"], ["Saved", "23"], ["Sculptors followed", "12"]],
     mine: "My collection", reco: "Recommended for you",
     coleccion: [
-      { img: arco, titulo: "Arch", artista: "Helena Vázquez" },
-      { img: memoria, titulo: "Memory", artista: "Marcos Iriarte" },
-      { img: nexo, titulo: "Nexus", artista: "Ana Ruiz" },
+      { slug: "arco", img: arco, titulo: "Arch", artista: "Helena Vázquez" },
+      { slug: "memoria", img: memoria, titulo: "Memory", artista: "Marcos Iriarte" },
+      { slug: "nexo", img: nexo, titulo: "Nexus", artista: "Ana Ruiz" },
     ],
     recomendados: [
-      { img: latido, titulo: "Heartbeat", artista: "Diego Lara" },
-      { img: orbita, titulo: "Orbit", artista: "Camila Soler" },
-      { img: mineral, titulo: "Mineral", artista: "Mateo Rivas" },
-      { img: respiro, titulo: "Breath", artista: "Helena Vázquez" },
+      { slug: "latido", img: latido, titulo: "Heartbeat", artista: "Diego Lara" },
+      { slug: "orbita", img: orbita, titulo: "Orbit", artista: "Camila Soler" },
+      { slug: "mineral", img: mineral, titulo: "Mineral", artista: "Mateo Rivas" },
+      { slug: "respiro", img: respiro, titulo: "Breath", artista: "Helena Vázquez" },
     ],
   };
+  const activeWork = open3d ? getWorkBySlug(open3d, lang) : null;
 
   return (
     <main className="min-h-screen bg-white">
@@ -76,20 +76,20 @@ export default function PerfilColeccionista() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {t.coleccion.map((o, i) => (
               <article key={o.titulo} className="group">
-                <Link to={`/obra/${SLUGS[i % SLUGS.length]}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary mb-4">
+                <Link to={`/obra/${o.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary mb-4">
                   <img src={o.img} alt={o.titulo} loading="lazy" width={1024} height={1280} className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
                 </Link>
                 <h3 className="font-display font-bold text-[16px] text-ink mb-1">{o.titulo}</h3>
                 <div className="font-body text-[13px] text-muted-line uppercase tracking-[0.14em] mb-3">{o.artista}</div>
                 <div className="flex items-center gap-4">
                   <Link
-                    to={`/obra/${SLUGS[i % SLUGS.length]}`}
+                    to={`/obra/${o.slug}`}
                     className="font-body text-[12px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-60 transition-opacity"
                   >
                     {t.viewObra} →
                   </Link>
                   <button
-                    onClick={() => setOpen3d({ idx: i, titulo: o.titulo, artista: o.artista })}
+                    onClick={() => setOpen3d(o.slug)}
                     className="font-body text-[11px] font-light text-muted-line uppercase tracking-[0.12em] hover:text-ink transition-colors"
                   >
                     {t.view3d}
@@ -105,20 +105,20 @@ export default function PerfilColeccionista() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {t.recomendados.map((o, i) => (
               <article key={o.titulo} className="group">
-                <Link to={`/obra/${SLUGS[(i + 3) % SLUGS.length]}`} className="block relative aspect-square overflow-hidden bg-secondary mb-3">
+                <Link to={`/obra/${o.slug}`} className="block relative aspect-square overflow-hidden bg-secondary mb-3">
                   <img src={o.img} alt={o.titulo} loading="lazy" width={1024} height={1024} className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
                 </Link>
                 <h3 className="font-display font-bold text-[14px] text-ink">{o.titulo}</h3>
                 <div className="font-body text-[12px] text-muted-line uppercase tracking-[0.14em] mb-2">{o.artista}</div>
                 <div className="flex items-center gap-3">
                   <Link
-                    to={`/obra/${SLUGS[(i + 3) % SLUGS.length]}`}
+                    to={`/obra/${o.slug}`}
                     className="font-body text-[11px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-60 transition-opacity"
                   >
                     {t.viewObra} →
                   </Link>
                   <button
-                    onClick={() => setOpen3d({ idx: i + 3, titulo: o.titulo, artista: o.artista })}
+                    onClick={() => setOpen3d(o.slug)}
                     className="font-body text-[10px] font-light text-muted-line uppercase tracking-[0.12em] hover:text-ink transition-colors"
                   >
                     {t.view3d}
@@ -130,14 +130,16 @@ export default function PerfilColeccionista() {
         </div>
       </section>
 
-      {open3d && (
+      {activeWork && (
         <Sculpture3DModal
-          open={!!open3d}
+          open={!!activeWork}
           onClose={() => setOpen3d(null)}
-          obraIndex={open3d.idx}
-          titulo={open3d.titulo}
-          artista={open3d.artista}
-          material={lang === "es" ? "Bronce" : "Bronze"}
+          obraIndex={activeWork.index}
+          titulo={activeWork.title}
+          artista={activeWork.artist}
+          material={activeWork.material}
+          photoSrc={activeWork.image}
+          model={activeWork.model}
         />
       )}
     </main>
