@@ -75,7 +75,7 @@ export const Hero = () => {
       </Link>
 
       {/* bottom strip */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 pb-8 md:pb-9 flex flex-col md:flex-row items-stretch md:items-end gap-6 md:gap-12 bg-gradient-to-t from-white via-white/95 to-white/0 pt-16">
+      <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 pb-8 md:pb-9 flex flex-col md:flex-row items-stretch md:items-end gap-6 md:gap-12 pt-16">
         {/* thumbs */}
         <div className="flex md:flex-col gap-2 shrink-0">
           {obras.map((ob, i) => (
