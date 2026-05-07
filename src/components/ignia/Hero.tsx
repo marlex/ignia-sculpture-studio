@@ -48,8 +48,8 @@ export const Hero = () => {
         </button>
       )}
 
-      {/* Subtle vignette */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, transparent 30%, transparent 55%, rgba(255,255,255,0.55) 100%)" }} />
+      {/* Smooth bottom fade from dark scene to white UI */}
+      <div className="absolute inset-x-0 bottom-0 h-[55%] pointer-events-none z-[1]" style={{ background: "linear-gradient(to bottom, rgba(28,28,26,0) 0%, rgba(28,28,26,0.15) 35%, rgba(255,255,255,0.55) 70%, rgba(255,255,255,0.95) 92%, #ffffff 100%)" }} />
 
       {/* hint chip */}
       <div
@@ -75,7 +75,7 @@ export const Hero = () => {
       </Link>
 
       {/* bottom strip */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 pb-8 md:pb-9 flex flex-col md:flex-row items-stretch md:items-end gap-6 md:gap-12 bg-gradient-to-t from-white via-white/95 to-white/0 pt-16">
+      <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 pb-8 md:pb-9 flex flex-col md:flex-row items-stretch md:items-end gap-6 md:gap-12 pt-16">
         {/* thumbs */}
         <div className="flex md:flex-col gap-2 shrink-0">
           {obras.map((ob, i) => (
