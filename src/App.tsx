@@ -18,6 +18,7 @@ import IgniaGalleryPage from "./pages/IgniaGallery.tsx";
 import ObraDetalle from "./pages/ObraDetalle.tsx";
 import Publicar from "./pages/Publicar.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
+import AddView3d from "./pages/AddView3d.tsx";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
               <Route path="/publicar" element={<Publicar />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/dashboard/:section" element={<Dashboard />} />
+              <Route path="/dashboard/obras/:id/3d" element={<AddView3d />} />
               <Route path="/perfil/escultor" element={<PerfilEscultor />} />
               <Route path="/perfil/escultor/:slug" element={<PerfilEscultor />} />
               <Route path="/perfil/coleccionista" element={<PerfilColeccionista />} />
