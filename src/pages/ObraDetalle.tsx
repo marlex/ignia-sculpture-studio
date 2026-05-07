@@ -43,6 +43,7 @@ const ObraDetalle = () => {
   // Default mode: 3d if no extra photos, otherwise photos
   const [mode, setMode] = useState<"photos" | "3d">(has3d ? "3d" : "photos");
   const [idx, setIdx] = useState(0);
+  const [chatOpen, setChatOpen] = useState(false);
 
   useEffect(() => { setIdx(0); }, [slug]);
 
