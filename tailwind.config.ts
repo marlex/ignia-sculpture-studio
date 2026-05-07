@@ -9,8 +9,8 @@ export default {
     extend: {
       fontFamily: {
         display: ["Urbanist", "sans-serif"],
-        body: ["Urbanist", "sans-serif"],
-        sans: ["Urbanist", "sans-serif"],
+        body: ["Manrope", "sans-serif"],
+        sans: ["Manrope", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
