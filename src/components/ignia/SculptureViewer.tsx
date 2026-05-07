@@ -378,7 +378,10 @@ const Sculpture = ({ kind, viewAngle = 0 }: { kind: ModelKind; viewAngle?: numbe
 export const SculptureViewer = ({ obraIndex, bgMode, titulo, material, viewAngle = 0, photoSrc, model }: SculptureViewerProps) => {
   const kind = useMemo(() => model ?? resolveModel(titulo, obraIndex), [model, titulo, obraIndex]);
   const studioIndex = ((obraIndex % studios.length) + studios.length) % studios.length;
-  const studioBg = photoSrc ?? studios[studioIndex];
+  // Never use the artwork photo as background — it caused a "double sculpture" overlay.
+  // The 3D viewer always uses a neutral studio backdrop. The real photo lives in the photo view.
+  void photoSrc;
+  const studioBg = studios[studioIndex];
   const bg =
     bgMode === "white"
       ? { background: "#ffffff" }
