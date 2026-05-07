@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Sculpture3DModal } from "./Sculpture3DModal";
-import { SculptureViewer } from "./SculptureViewer";
 import { useLang } from "@/i18n/LanguageContext";
 import { getHeroWorks } from "@/data/igniaWorks";
 
 export const Hero = () => {
   const [actual, setActual] = useState(0);
   const [open3d, setOpen3d] = useState(false);
-  const [view, setView] = useState<"3d" | "photo">("3d");
   const [showHint, setShowHint] = useState(true);
 
   useEffect(() => {
@@ -20,36 +18,30 @@ export const Hero = () => {
   const obras = getHeroWorks(lang);
   const o = obras[actual];
   const t = lang === "es"
-    ? { hint: "Arrastra para rotar la escultura", prev: "Anterior", next: "Siguiente", view: "Ver escultura →", view3d: "Ver en 3D", photo: "Foto", model: "3D", expand: "Ampliar 3D" }
-    : { hint: "Drag to rotate the sculpture", prev: "Previous", next: "Next", view: "View sculpture →", view3d: "View in 3D", photo: "Photo", model: "3D", expand: "Expand 3D" };
+    ? { hint: "Click en la pieza para verla en 3D", prev: "Anterior", next: "Siguiente", view: "Ver escultura →", expand: "Ampliar 3D" }
+    : { hint: "Click the piece to view it in 3D", prev: "Previous", next: "Next", view: "View sculpture →", expand: "Expand 3D" };
 
   const next = () => setActual((actual + 1) % obras.length);
   const prev = () => setActual((actual + obras.length - 1) % obras.length);
 
   return (
     <section className="relative w-screen h-screen overflow-hidden bg-surface">
-      {/* Media: live 3D viewer (rotatable) or real photo */}
-      <div className="absolute inset-0">
-        {view === "3d" ? (
-          <SculptureViewer
-            obraIndex={actual}
-            bgMode="studio"
-            titulo={o.title}
-            material={o.material}
-            photoSrc={o.image}
-            model={o.model}
-          />
-        ) : (
-          <img
-            src={o.image}
-            alt={o.title}
-            className="w-full h-full object-cover"
-            style={{ objectPosition: "center 35%" }}
-            width={1280}
-            height={1600}
-          />
-        )}
-      </div>
+      {/* Real photo as primary view; click opens 3D modal */}
+      <button
+        type="button"
+        onClick={() => setOpen3d(true)}
+        aria-label={t.expand}
+        className="absolute inset-0 block w-full h-full cursor-zoom-in"
+      >
+        <img
+          src={o.image}
+          alt={o.title}
+          className="w-full h-full object-cover"
+          style={{ objectPosition: "center 35%" }}
+          width={1280}
+          height={1600}
+        />
+      </button>
 
       {/* Subtle vignette */}
       <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, transparent 30%, transparent 55%, rgba(255,255,255,0.55) 100%)" }} />
@@ -60,20 +52,6 @@ export const Hero = () => {
         style={{ opacity: showHint ? 0.95 : 0 }}
       >
         ◆ {t.hint}
-      </div>
-
-      {/* View toggle */}
-      <div className="absolute top-6 right-6 z-20 flex bg-white/90 backdrop-blur border-[0.5px] border-border">
-        {(["3d", "photo"] as const).map((v) => (
-          <button
-            key={v}
-            onClick={() => setView(v)}
-            className="font-body text-[11px] uppercase tracking-[0.16em] px-3 py-2 transition-colors"
-            style={{ background: view === v ? "#111" : "transparent", color: view === v ? "#fff" : "#444" }}
-          >
-            {v === "3d" ? t.model : t.photo}
-          </button>
-        ))}
       </div>
 
       {/* arrows */}
