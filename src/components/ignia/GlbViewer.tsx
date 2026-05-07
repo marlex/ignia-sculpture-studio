@@ -29,46 +29,44 @@ declare global {
   }
 }
 
-export function GlbViewer({
+function ModelViewerContent({
   url,
-  alt = "Escultura 3D",
-  className = "",
+  alt,
   poster,
-  minHeight = "500px",
+  minHeight,
+  showAr = true,
 }: {
   url: string;
-  alt?: string;
-  className?: string;
+  alt: string;
   poster?: string;
-  minHeight?: string;
+  minHeight: string;
+  showAr?: boolean;
 }) {
   return (
-    <div className={`relative w-full h-full ${className}`} style={{ background: "#f5f5f0" }}>
-      <model-viewer
-        src={url}
-        alt={alt}
-        camera-controls=""
-        auto-rotate=""
-        auto-rotate-delay={1500}
-        rotation-per-second="15deg"
-        shadow-intensity="2"
-        shadow-softness="1"
-        environment-image="legacy"
-        exposure="0.8"
-        tone-mapping="commerce"
-        ar=""
-        ar-modes="webxr scene-viewer quick-look"
-        poster={poster}
-        
-        style={{
-          width: "100%",
-          height: "100%",
-          minHeight,
-          backgroundColor: "#f5f5f0",
-          ["--poster-color" as never]: "transparent",
-        }}
-      >
-        <div slot="progress-bar" style={{ display: "none" }} />
+    <model-viewer
+      src={url}
+      alt={alt}
+      camera-controls=""
+      auto-rotate=""
+      auto-rotate-delay={1500}
+      rotation-per-second="15deg"
+      shadow-intensity="2"
+      shadow-softness="1"
+      environment-image="legacy"
+      exposure="0.8"
+      tone-mapping="commerce"
+      {...(showAr ? { ar: "" as const, "ar-modes": "webxr scene-viewer quick-look" } : {})}
+      poster={poster}
+      style={{
+        width: "100%",
+        height: "100%",
+        minHeight,
+        backgroundColor: "#f5f5f0",
+        ["--poster-color" as never]: "transparent",
+      }}
+    >
+      <div slot="progress-bar" style={{ display: "none" }} />
+      {showAr && (
         <button
           slot="ar-button"
           style={{
@@ -88,7 +86,60 @@ export function GlbViewer({
         >
           Ver en tu espacio
         </button>
-      </model-viewer>
-    </div>
+      )}
+    </model-viewer>
   );
 }
+
+export function GlbViewer({
+  url,
+  alt = "Escultura 3D",
+  className = "",
+  poster,
+  minHeight = "500px",
+  enableFullscreen = true,
+}: {
+  url: string;
+  alt?: string;
+  className?: string;
+  poster?: string;
+  minHeight?: string;
+  enableFullscreen?: boolean;
+}) {
+  const [fs, setFs] = useState(false);
+
+  return (
+    <>
+      <div className={`relative w-full h-full ${className}`} style={{ background: "#f5f5f0" }}>
+        <ModelViewerContent url={url} alt={alt} poster={poster} minHeight={minHeight} />
+        {enableFullscreen && (
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); setFs(true); }}
+            aria-label="Ampliar 3D"
+            className="absolute top-3 right-3 z-20 w-10 h-10 bg-white/90 border border-border flex items-center justify-center hover:bg-white transition-colors"
+          >
+            <Maximize2 className="w-4 h-4" />
+          </button>
+        )}
+      </div>
+
+      {fs && (
+        <div className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center">
+          <button
+            type="button"
+            onClick={() => setFs(false)}
+            aria-label="Cerrar"
+            className="absolute top-4 right-4 z-10 w-11 h-11 bg-white/90 border border-border flex items-center justify-center hover:bg-white transition-colors"
+          >
+            <X className="w-5 h-5" />
+          </button>
+          <div className="w-full h-full">
+            <ModelViewerContent url={url} alt={alt} poster={poster} minHeight="100vh" />
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
