@@ -43,9 +43,14 @@ export default function Publicar() {
 
   const set = <K extends keyof ObraDraft>(k: K, v: ObraDraft[K]) => setDraft((d) => ({ ...d, [k]: v }));
 
-  // Demo flow: steps can advance without strict validation
-  const step1Valid = true;
-  const step2Valid = true;
+  const step1Valid = useMemo(() => {
+    return !!(draft.titulo && /^\d{4}$/.test(draft.anyo) && draft.tecnica
+      && draft.alto && draft.ancho && draft.profundo
+      && draft.precio && draft.descripcion.length >= 80
+      && (draft.edicion !== "limitada" || (draft.ejemplares && +draft.ejemplares >= 1 && +draft.ejemplares <= 20)));
+  }, [draft]);
+
+  const step2Valid = !!draft.fotoPrincipal;
 
   const next = () => setStep((s) => Math.min(4, s + 1));
   const prev = () => setStep((s) => Math.max(1, s - 1));

@@ -20,6 +20,7 @@ export type ObraDraft = {
   fotosAdicionales: string[]; // dataURLs
   archivo3dNombre?: string;
   archivo3dDataUrl?: string; // base64 .glb (small files only)
+  glbUrl?: string; // public URL to a .glb file (added later via 3D flow)
 };
 
 export type Obra = ObraDraft & {
@@ -51,6 +52,14 @@ export const saveObra = (o: Obra) => {
 };
 
 export const getObra = (id: string): Obra | undefined => listObras().find((o) => o.id === id);
+
+export const updateObra = (id: string, patch: Partial<Obra>) => {
+  const all = listObras();
+  const idx = all.findIndex((o) => o.id === id);
+  if (idx === -1) return;
+  all[idx] = { ...all[idx], ...patch };
+  localStorage.setItem(KEY, JSON.stringify(all));
+};
 
 // Simple SHA-256 hash
 export const sha256 = async (text: string): Promise<string> => {

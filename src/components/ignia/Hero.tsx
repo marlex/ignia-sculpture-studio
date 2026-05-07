@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Sculpture3DModal } from "./Sculpture3DModal";
+import { Link, useNavigate } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
 import { getHeroWorks } from "@/data/igniaWorks";
 
 export const Hero = () => {
   const [actual, setActual] = useState(0);
-  const [open3d, setOpen3d] = useState(false);
   const [showHint, setShowHint] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const t = setTimeout(() => setShowHint(false), 3500);
@@ -26,11 +25,11 @@ export const Hero = () => {
 
   return (
     <section className="relative w-screen h-screen overflow-hidden bg-surface">
-      {/* Real photo as primary view; click opens 3D modal */}
+      {/* Real photo as primary view; click opens the work detail page */}
       <button
         type="button"
-        onClick={() => setOpen3d(true)}
-        aria-label={t.expand}
+        onClick={() => navigate(`/obra/${o.slug}`)}
+        aria-label={t.view}
         className="absolute inset-0 block w-full h-full cursor-zoom-in"
       >
         <img
@@ -60,14 +59,14 @@ export const Hero = () => {
       <button onClick={next} aria-label={t.next} className="absolute top-1/2 -translate-y-1/2 right-6 md:right-12 z-20 w-10 h-10 flex items-center justify-center text-[15px] border-[0.5px] border-border backdrop-blur-md transition-colors hover:bg-white"
         style={{ background: "rgba(248,248,246,0.9)", color: "#111" }}>→</button>
 
-      {/* Expand 3D button */}
-      <button
-        onClick={() => setOpen3d(true)}
+      {/* View work button */}
+      <Link
+        to={`/obra/${o.slug}`}
         className="absolute left-1/2 -translate-x-1/2 bottom-[210px] md:bottom-[180px] z-20 font-body text-[11px] font-light tracking-[0.22em] uppercase text-ink/85 hover:text-ink transition-colors flex items-center gap-2 bg-white/85 backdrop-blur px-3 py-2 border-[0.5px] border-border"
       >
         <span aria-hidden className="inline-block w-1 h-1 rounded-full bg-ink" />
-        {t.expand}
-      </button>
+        {t.view}
+      </Link>
 
       {/* bottom strip */}
       <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 pb-8 md:pb-9 flex flex-col md:flex-row items-stretch md:items-end gap-6 md:gap-12 bg-gradient-to-t from-white via-white/95 to-white/0 pt-16">
@@ -112,16 +111,6 @@ export const Hero = () => {
         </div>
       </div>
 
-      <Sculpture3DModal
-        open={open3d}
-        onClose={() => setOpen3d(false)}
-        obraIndex={actual}
-        titulo={o.title}
-        artista={o.artist}
-        material={o.material}
-        photoSrc={o.image}
-        model={o.model}
-      />
     </section>
   );
 };

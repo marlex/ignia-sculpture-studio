@@ -1,27 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
-import { Sculpture3DModal } from "@/components/ignia/Sculpture3DModal";
+import { GlbViewer } from "@/components/ignia/GlbViewer";
 import { useLang } from "@/i18n/LanguageContext";
 import { getWorkBySlug } from "@/data/igniaWorks";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const T = {
   es: {
     back: "← Volver a la colección",
     auth: "Autenticidad verificada",
-    authP: "Cada obra de Ignia incluye un certificado de autenticidad emitido en blockchain. El registro contiene la firma del artista, la trazabilidad del taller donde se realizó, el número dentro de la edición y el historial completo de propiedad. Es público, verificable desde cualquier parte del mundo y viaja con la pieza en futuras reventas.",
+    authP: "Cada obra de Ignia incluye un certificado de autenticidad emitido en blockchain. Es público, verificable desde cualquier parte del mundo y viaja con la pieza en futuras reventas.",
     tokenId: "Token ID", chain: "Cadena", signed: "Firmado por", edition: "Edición",
     cert: "Ver certificado público →",
-    buy: "Adquirir", talk: "Hablar con un curador", view3d: "Ampliar 3D", angles: "Ángulos", photo: "Foto", model: "Modelo 3D",
+    buy: "Adquirir", talk: "Hablar con un curador",
+    photos: "Fotos", view3d: "Vista 3D",
+    counter: (n: number) => `${n} fotos · Navega por los ángulos`,
   },
   en: {
     back: "← Back to the collection",
     auth: "Verified authenticity",
-    authP: "Every Ignia work includes a certificate of authenticity issued on blockchain. The record contains the artist's signature, full traceability of the studio where it was made, its number within the edition and the complete ownership history. It is public, verifiable from anywhere in the world and travels with the piece in future resales.",
+    authP: "Every Ignia work includes a certificate of authenticity issued on blockchain. It is public, verifiable worldwide and travels with the piece in future resales.",
     tokenId: "Token ID", chain: "Chain", signed: "Signed by", edition: "Edition",
     cert: "View public certificate →",
-    buy: "Acquire", talk: "Talk to a curator", view3d: "Expand 3D", angles: "Angles", photo: "Photo", model: "3D model",
+    buy: "Acquire", talk: "Talk to a curator",
+    photos: "Photos", view3d: "3D view",
+    counter: (n: number) => `${n} photos · Browse angles`,
   },
 };
 
@@ -30,7 +35,19 @@ const ObraDetalle = () => {
   const lang = useLang();
   const t = T[lang];
   const o = getWorkBySlug(slug, lang);
-  const [open3d, setOpen3d] = useState(false);
+
+  const photos = [o.image, ...(o.extraImages || [])];
+  const hasGallery = photos.length >= 2;
+  const has3d = !!o.glbUrl;
+
+  // Default mode: 3d if no extra photos, otherwise photos
+  const [mode, setMode] = useState<"photos" | "3d">(has3d && !hasGallery ? "3d" : "photos");
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => { setIdx(0); }, [slug]);
+
+  const next = () => setIdx((idx + 1) % photos.length);
+  const prev = () => setIdx((idx + photos.length - 1) % photos.length);
 
   return (
     <main className="pt-14 bg-white">
@@ -39,18 +56,84 @@ const ObraDetalle = () => {
       <section className="px-6 md:px-12 py-10">
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10">
           <div>
-            <button
-              type="button"
-              onClick={() => setOpen3d(true)}
-              aria-label={t.view3d}
-              className="relative aspect-square w-full bg-secondary overflow-hidden block cursor-zoom-in group"
-            >
-              <img src={o.image} alt={o.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
-              <span className="absolute bottom-4 right-4 font-body text-[10px] font-light tracking-[0.2em] uppercase text-white bg-black/55 backdrop-blur px-3 py-1.5 group-hover:bg-black/80 transition-colors">
-                {t.view3d} ↗
-              </span>
-            </button>
+            {/* Mode tabs only when both modes are real */}
+            {has3d && hasGallery && (
+              <div className="flex gap-1 mb-3">
+                {(["photos", "3d"] as const).map(m => (
+                  <button
+                    key={m}
+                    onClick={() => setMode(m)}
+                    className={`font-body text-[11px] uppercase tracking-[0.18em] px-4 py-2 border transition-colors ${
+                      mode === m ? "bg-ink text-white border-ink" : "border-border text-gray hover:text-ink hover:border-ink"
+                    }`}
+                  >
+                    {m === "photos" ? t.photos : t.view3d}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            <div className="relative aspect-square w-full bg-secondary overflow-hidden">
+              {mode === "3d" && has3d ? (
+                <GlbViewer url={o.glbUrl!} />
+              ) : (
+                <>
+                  {/* Crossfade stack */}
+                  {photos.map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt={`${o.title} — ${i + 1}`}
+                      className="absolute inset-0 w-full h-full object-cover transition-opacity duration-200"
+                      style={{ opacity: i === idx ? 1 : 0 }}
+                    />
+                  ))}
+                  {hasGallery && (
+                    <>
+                      <button
+                        onClick={prev}
+                        aria-label="Anterior"
+                        className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 border border-border flex items-center justify-center md:opacity-0 md:group-hover:opacity-100 hover:bg-white transition-opacity"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={next}
+                        aria-label="Siguiente"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 border border-border flex items-center justify-center hover:bg-white transition-colors"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </>
+                  )}
+                </>
+              )}
+            </div>
+
+            {/* Thumbnails (photos mode + gallery) */}
+            {mode === "photos" && hasGallery && (
+              <>
+                <div className="flex gap-2 mt-3 overflow-x-auto snap-x">
+                  {photos.map((src, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setIdx(i)}
+                      className={`shrink-0 w-16 h-16 border-2 overflow-hidden snap-start transition-colors ${
+                        i === idx ? "border-ink" : "border-transparent opacity-60 hover:opacity-100"
+                      }`}
+                      aria-label={`Ángulo ${i + 1}`}
+                    >
+                      <img src={src} alt="" className="w-full h-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+                <p className="font-body text-[11px] uppercase tracking-[0.18em] text-muted-line mt-3">
+                  {t.counter(photos.length)}
+                </p>
+              </>
+            )}
           </div>
+
           <div>
             <div className="eyebrow mb-3"><Link to="/coleccion" className="hover:text-ink">{t.back}</Link></div>
             <h1 className="font-display font-bold text-[clamp(32px,4vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-3">{o.title}</h1>
@@ -86,17 +169,6 @@ const ObraDetalle = () => {
           </div>
         </div>
       </section>
-
-      <Sculpture3DModal
-        open={open3d}
-        onClose={() => setOpen3d(false)}
-        obraIndex={o.index}
-        titulo={o.title}
-        artista={o.artist}
-        material={o.material}
-        photoSrc={o.image}
-        model={o.model}
-      />
 
       <Footer />
     </main>

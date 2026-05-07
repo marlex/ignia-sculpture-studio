@@ -4,7 +4,7 @@ import { Logo } from "@/components/ignia/Logo";
 import { useAuth } from "@/auth/AuthContext";
 import { useLang } from "@/i18n/LanguageContext";
 import { listObras, Obra, ObraEstado } from "@/data/obrasStore";
-import { LayoutGrid, Plus, BarChart3, ShoppingBag, User, ShieldCheck, LogOut, Eye, Heart, Image as ImgIcon } from "lucide-react";
+import { LayoutGrid, Plus, BarChart3, ShoppingBag, User, ShieldCheck, LogOut, Eye, Heart, Image as ImgIcon, Box, Pencil } from "lucide-react";
 
 type Section = "inicio" | "obras" | "publicar" | "stats" | "ventas" | "perfil" | "certificados";
 
@@ -174,18 +174,36 @@ const ObrasList = ({ obras, lang, t }: { obras: Obra[]; lang: "es" | "en"; t: an
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {obras.map(o => (
         <article key={o.id} className="group">
-          <div className="aspect-[4/5] overflow-hidden bg-secondary mb-3">
+          <div className="aspect-[4/5] overflow-hidden bg-secondary mb-3 relative">
             {o.fotoPrincipal ? (
               <img src={o.fotoPrincipal} alt={o.titulo} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
             ) : <div className="w-full h-full flex items-center justify-center text-muted-line"><ImgIcon className="w-8 h-8" /></div>}
+            {o.glbUrl && (
+              <span className="absolute top-2 left-2 inline-flex items-center gap-1 bg-ink text-white px-2 py-1 font-body text-[10px] uppercase tracking-[0.14em]">
+                <Box className="w-3 h-3" /> Vista 3D activa
+              </span>
+            )}
           </div>
           <h3 className="font-display font-bold text-[16px] text-ink mb-1">{o.titulo}</h3>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mb-3">
             <EstadoBadge estado={o.estado} lang={lang} />
             <div className="flex items-center gap-3 text-muted-line font-body text-[11px]">
               <span className="flex items-center gap-1"><Eye className="w-3 h-3" /> {o.visitas}</span>
               <span className="flex items-center gap-1"><Heart className="w-3 h-3" /> {o.favoritos}</span>
             </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <button className="flex-1 inline-flex items-center justify-center gap-1.5 border border-border text-ink font-body text-[11px] uppercase tracking-[0.14em] py-2 hover:border-ink transition-colors">
+              <Pencil className="w-3 h-3" /> Editar obra
+            </button>
+            {!o.glbUrl && (
+              <Link
+                to={`/dashboard/obras/${o.id}/3d`}
+                className="flex-1 inline-flex items-center justify-center gap-1.5 border border-ink text-ink font-body text-[11px] uppercase tracking-[0.14em] py-2 hover:bg-ink hover:text-white transition-colors"
+              >
+                <Box className="w-3 h-3" /> Añadir vista 3D
+              </Link>
+            )}
           </div>
         </article>
       ))}

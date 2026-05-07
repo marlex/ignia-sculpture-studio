@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Logo } from "@/components/ignia/Logo";
-import { Sculpture3DModal } from "@/components/ignia/Sculpture3DModal";
 import caida from "@/assets/perfil-escultura-caida.jpg";
 import eco from "@/assets/perfil-escultura-eco.jpg";
 import umbral from "@/assets/perfil-escultura-umbral.jpg";
@@ -12,7 +10,7 @@ import cristina from "@/assets/artist-cristina-iglesias-real.jpg";
 import jaume from "@/assets/artist-jaume-plensa-real.jpg";
 import susana from "@/assets/artist-susana-solano-real.jpg";
 import { useLang } from "@/i18n/LanguageContext";
-import { getWorkBySlug } from "@/data/igniaWorks";
+
 
 type ArtistData = {
   nombre: string;
@@ -82,20 +80,19 @@ export default function PerfilEscultor() {
   const lang = useLang();
   const { slug = "helena-vazquez" } = useParams();
   const artist = ARTISTAS[slug] ?? ARTISTAS["helena-vazquez"];
-  const [open3d, setOpen3d] = useState<number | null>(null);
   const t = lang === "es"
-    ? { publish: "Publicar obra ↗", exit: "Salir", view3d: "Ver en 3D", viewObra: "Ver escultura",
+    ? { publish: "Publicar obra ↗", exit: "Salir", viewObra: "Ver escultura",
         eyebrow: "Perfil de escultor",
         stats: [["Obras publicadas", "24"], ["Coleccionistas", "38"], ["Ediciones vendidas", "61"]],
-        mine: "Mis obras", new: "+ Nueva obra" }
-    : { publish: "Submit work ↗", exit: "Sign out", view3d: "View in 3D", viewObra: "View sculpture",
+        mine: "Mis obras" }
+    : { publish: "Submit work ↗", exit: "Sign out", viewObra: "View sculpture",
         eyebrow: "Sculptor profile",
         stats: [["Published works", "24"], ["Collectors", "38"], ["Editions sold", "61"]],
-        mine: "My works", new: "+ New work" };
+        mine: "My works" };
 
   const bio = lang === "es" ? artist.bioEs : artist.bioEn;
   const esp = lang === "es" ? artist.espEs : artist.espEn;
-  const activeWork = open3d !== null ? getWorkBySlug(artist.obras[open3d].slug, lang) : null;
+
 
   return (
     <main className="min-h-screen bg-white">
@@ -145,12 +142,6 @@ export default function PerfilEscultor() {
                   >
                     {t.viewObra} →
                   </Link>
-                  <button
-                    onClick={() => setOpen3d(i)}
-                    className="font-body text-[11px] font-light text-muted-line uppercase tracking-[0.12em] hover:text-ink transition-colors"
-                  >
-                    {t.view3d}
-                  </button>
                 </div>
               </article>
             );
@@ -158,18 +149,6 @@ export default function PerfilEscultor() {
         </div>
       </section>
 
-      {activeWork && (
-        <Sculpture3DModal
-          open={!!activeWork}
-          onClose={() => setOpen3d(null)}
-          obraIndex={activeWork.index}
-          titulo={activeWork.title}
-          artista={activeWork.artist}
-          material={activeWork.material}
-          photoSrc={activeWork.image}
-          model={activeWork.model}
-        />
-      )}
     </main>
   );
 }
