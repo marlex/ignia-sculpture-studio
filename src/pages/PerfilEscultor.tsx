@@ -10,7 +10,7 @@ import cristina from "@/assets/artist-cristina-iglesias-real.jpg";
 import jaume from "@/assets/artist-jaume-plensa-real.jpg";
 import susana from "@/assets/artist-susana-solano-real.jpg";
 import { useLang } from "@/i18n/LanguageContext";
-import { getWorkBySlug } from "@/data/igniaWorks";
+
 
 type ArtistData = {
   nombre: string;
