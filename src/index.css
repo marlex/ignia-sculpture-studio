@@ -40,8 +40,10 @@
 
     --radius: 0;
 
-    --f-display: 'Urbanist', sans-serif;
-    --f-body: 'Manrope', sans-serif;
+    --font-titulo: 'DM Serif Display', serif;
+    --font-cuerpo: 'Cormorant Garamond', serif;
+    --f-display: var(--font-titulo);
+    --f-body: var(--font-cuerpo);
   }
 }
 
@@ -59,23 +61,23 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: var(--f-body);
+    font-family: var(--font-cuerpo);
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5 {
-    font-family: var(--f-display);
-    font-weight: 700;
+    font-family: var(--font-titulo);
+    font-weight: 400;
     letter-spacing: -0.02em;
   }
 }
 
 @layer components {
   .btn-primary {
-    font-family: var(--f-body);
+    font-family: var(--font-cuerpo);
     font-size: 12px;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     background: hsl(var(--black-pure));
@@ -97,9 +99,9 @@
   }
 
   .btn-ghost {
-    font-family: var(--f-body);
+    font-family: var(--font-cuerpo);
     font-size: 12px;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     background: transparent;
@@ -119,9 +121,9 @@
   .btn-ghost-dark:hover { border-color: #fff; }
 
   .link-arrow {
-    font-family: var(--f-body);
+    font-family: var(--font-cuerpo);
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: hsl(var(--black-pure));
@@ -134,8 +136,8 @@
   .link-arrow:hover { opacity: 0.45; }
 
   .eyebrow {
-    font-family: var(--f-body);
-    font-size: 12px;
+    font-family: var(--font-cuerpo);
+    font-size: 11px;
     font-weight: 300;
     letter-spacing: 0.2em;
     text-transform: uppercase;
