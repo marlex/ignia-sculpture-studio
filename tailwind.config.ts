@@ -8,10 +8,9 @@ export default {
     container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
     extend: {
       fontFamily: {
-        display: ["DM Serif Display", "serif"],
-        body: ["Cormorant Garamond", "serif"],
-        sans: ["Cormorant Garamond", "serif"],
-        serif: ["DM Serif Display", "serif"],
+        display: ["Urbanist", "sans-serif"],
+        body: ["Manrope", "sans-serif"],
+        sans: ["Manrope", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
