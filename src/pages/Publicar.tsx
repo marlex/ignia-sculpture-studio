@@ -116,7 +116,7 @@ export default function Publicar() {
           {step < 4 ? (
             <button
               onClick={next}
-              disabled={(step === 1 && !step1Valid) || (step === 2 && !step2Valid) || (step === 3 && !confirmed)}
+              disabled={step === 3 && !confirmed}
               className="btn-primary disabled:opacity-30 disabled:cursor-not-allowed"
             >
               {t.next}
