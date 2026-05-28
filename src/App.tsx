@@ -19,6 +19,7 @@ import ObraDetalle from "./pages/ObraDetalle.tsx";
 import Publicar from "./pages/Publicar.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 import AddView3d from "./pages/AddView3d.tsx";
+import ObraAnalytics from "./pages/ObraAnalytics.tsx";
 
 const queryClient = new QueryClient();
 
