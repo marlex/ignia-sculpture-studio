@@ -125,23 +125,27 @@ export default function PerfilEscultor() {
           <h2 className="font-display font-bold text-[clamp(22px,2.4vw,32px)] tracking-[-0.02em] text-ink">{t.mine}</h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-          {artist.obras.map((o, i) => {
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          {artist.obras.map((o) => {
             const titulo = o.titulo[lang];
             return (
-              <article key={titulo} className="group">
-                <Link to={`/obra/${o.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary mb-4">
+              <article key={titulo + o.slug} className="group">
+                <Link to={`/analiticas/${slug}/${o.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary mb-4">
                   <img src={o.img} alt={titulo} loading="lazy" width={1024} height={1280} className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
                 </Link>
-                <h3 className="font-display font-bold text-[16px] text-ink mb-1">{titulo}</h3>
-                <div className="font-body text-[13px] text-muted-line uppercase tracking-[0.14em] mb-3">{o.estado[lang]}</div>
-                <div className="flex items-center gap-4">
-                  <Link
-                    to={`/obra/${o.slug}`}
-                    className="font-body text-[12px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-60 transition-opacity"
-                  >
-                    {t.viewObra} →
-                  </Link>
+                <h3 className="font-display font-bold text-[16px] text-ink mb-0.5">
+                  {titulo} {o.anyo && <span className="text-muted-line font-normal">· {o.anyo}</span>}
+                </h3>
+                <div className="font-body text-[11px] text-muted-line uppercase tracking-[0.14em] mb-3">{o.estado[lang]}</div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  {o.tiene3D ? (
+                    <span className="inline-block px-2 py-1 font-body text-[10px] uppercase tracking-[0.16em] font-medium" style={{ backgroundColor: "#CCFF00", color: "#000" }}>3D activo</span>
+                  ) : (
+                    <>
+                      <span className="inline-block px-2 py-1 font-body text-[10px] uppercase tracking-[0.16em] border border-amber-500 text-amber-600">3D pendiente</span>
+                      <button className="font-body text-[10px] uppercase tracking-[0.14em] border border-ink text-ink px-2 py-1 hover:bg-ink hover:text-white transition-colors">Añadir</button>
+                    </>
+                  )}
                 </div>
               </article>
             );
