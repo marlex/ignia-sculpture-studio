@@ -1,26 +1,42 @@
-import { useEffect, useMemo, useRef, useState, Suspense } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF, Environment } from "@react-three/drei";
 import { Logo } from "@/components/ignia/Logo";
 import { useAuth } from "@/auth/AuthContext";
-import { useLang } from "@/i18n/LanguageContext";
-import { ObraDraft, Obra, newCertId, sha256, saveObra } from "@/data/obrasStore";
-import { Check, Upload, X, ChevronDown, Loader2, ShieldCheck, QrCode } from "lucide-react";
+import { Upload, X, Image as ImageIcon, Video, Clock, Check } from "lucide-react";
 
-const empty: ObraDraft = {
-  titulo: "", artista: "", anyo: "", tecnica: "",
-  alto: "", ancho: "", profundo: "", peso: "",
-  edicion: "unica", ejemplares: "", precio: "", descripcion: "",
-  fotosAdicionales: [],
+type ThreeDChoice = "ahora" | "tarde" | null;
+
+type Draft = {
+  titulo: string;
+  anyo: string;
+  tecnica: string;
+  materiales: string;
+  alto: string;
+  ancho: string;
+  fondo: string;
+  peso: string;
+  tipo: "unica" | "limitada" | "prueba";
+  numeracion: string;
+  descripcion: string;
+  imagenes: string[]; // dataURLs
+  precio: string;
+  disponibilidad: "venta" | "visible" | "consultar";
+  threeD: ThreeDChoice;
+  videoNombre?: string;
 };
+
+const STEPS = ["La obra", "Imágenes", "Precio", "Vista 3D"];
+
+const TECNICAS = [
+  "Talla directa", "Modelado en arcilla", "Fundición en bronce",
+  "Construcción en acero", "Escultura en resina", "Madera tallada",
+  "Piedra labrada", "Técnica mixta", "Otra",
+];
 
 export default function Publicar() {
   const { user, login } = useAuth();
   const navigate = useNavigate();
-  const lang = useLang();
 
-  // Demo: force the showcased artist identity
   useEffect(() => {
     if (!user || user.name !== "Cristina Iglesias") {
       login({ name: "Cristina Iglesias", email: "cristina@ignia.gallery", role: "escultor" });
@@ -28,58 +44,18 @@ export default function Publicar() {
   }, [user, login]);
 
   const [step, setStep] = useState(1);
-  const [draft, setDraft] = useState<ObraDraft>({ ...empty, artista: "Cristina Iglesias" });
-  const [confirmed, setConfirmed] = useState(false);
-  const [publishedId, setPublishedId] = useState<string | null>(null);
+  const [draft, setDraft] = useState<Draft>({
+    titulo: "", anyo: "", tecnica: "", materiales: "",
+    alto: "", ancho: "", fondo: "", peso: "",
+    tipo: "unica", numeracion: "",
+    descripcion: "", imagenes: [], precio: "",
+    disponibilidad: "venta", threeD: null,
+  });
+  const [done, setDone] = useState(false);
 
-  const certIdRef = useRef<string>(newCertId());
-  const [hash, setHash] = useState("");
+  const set = <K extends keyof Draft>(k: K, v: Draft[K]) => setDraft((d) => ({ ...d, [k]: v }));
 
-  useEffect(() => {
-    sha256(JSON.stringify({ ...draft, certId: certIdRef.current })).then(setHash);
-  }, [draft, step]);
-
-  const t = lang === "es" ? COPY_ES : COPY_EN;
-
-  const set = <K extends keyof ObraDraft>(k: K, v: ObraDraft[K]) => setDraft((d) => ({ ...d, [k]: v }));
-
-  const step1Valid = useMemo(() => {
-    return !!(draft.titulo && /^\d{4}$/.test(draft.anyo) && draft.tecnica
-      && draft.alto && draft.ancho && draft.profundo
-      && draft.precio && draft.descripcion.length >= 80
-      && (draft.edicion !== "limitada" || (draft.ejemplares && +draft.ejemplares >= 1 && +draft.ejemplares <= 20)));
-  }, [draft]);
-
-  const step2Valid = !!draft.fotoPrincipal;
-
-  const next = () => setStep((s) => Math.min(4, s + 1));
-  const prev = () => setStep((s) => Math.max(1, s - 1));
-
-  const handleFile = (file: File, onData: (s: string) => void) => {
-    const r = new FileReader();
-    r.onload = () => onData(r.result as string);
-    r.readAsDataURL(file);
-  };
-
-  const publish = () => {
-    const obra: Obra = {
-      ...draft,
-      id: certIdRef.current.toLowerCase(),
-      certificadoId: certIdRef.current,
-      hash,
-      fechaPublicacion: new Date().toISOString(),
-      ownerEmail: user?.email || "demo@ignia.gallery",
-      estado: "Publicada",
-      visitas: 0,
-      favoritos: 0,
-    };
-    saveObra(obra);
-    setPublishedId(obra.id);
-  };
-
-  if (publishedId) return <SuccessScreen t={t} certId={certIdRef.current} obraId={publishedId} onAnother={() => {
-    setPublishedId(null); setDraft({ ...empty, artista: user?.name || "" }); setStep(1); certIdRef.current = newCertId();
-  }} />;
+  if (done) return <Confirmation draft={draft} onAnother={() => { setDone(false); setStep(1); setDraft({ ...draft, titulo: "", imagenes: [], precio: "", threeD: null }); }} />;
 
   return (
     <main className="min-h-screen bg-white">
@@ -94,35 +70,32 @@ export default function Publicar() {
               {user.name}
             </span>
           )}
-          <Link to="/dashboard" className="font-body text-[13px] text-gray hover:text-ink">{t.cancel}</Link>
+          <Link to="/dashboard" className="font-body text-[13px] text-gray hover:text-ink">Cancelar</Link>
         </div>
       </header>
 
       <section className="max-w-[880px] mx-auto px-6 py-10 md:py-14">
-        <div className="eyebrow mb-2">{t.publishEyebrow}</div>
-        <h1 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-8 leading-tight">{t.publishTitle}</h1>
+        <div className="eyebrow mb-2">Publicar obra</div>
+        <h1 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-8 leading-tight">Nueva escultura</h1>
 
-        <Stepper step={step} labels={t.steps} />
+        <Pills step={step} onJump={setStep} />
 
         <div className="mt-10">
-          {step === 1 && <Step1 t={t} draft={draft} set={set} />}
-          {step === 2 && <Step2 t={t} draft={draft} set={set} handleFile={handleFile} />}
-          {step === 3 && <Step3 t={t} draft={draft} certId={certIdRef.current} hash={hash} confirmed={confirmed} setConfirmed={setConfirmed} />}
-          {step === 4 && <Step4 t={t} draft={draft} certId={certIdRef.current} onEdit={() => setStep(1)} />}
+          {step === 1 && <Step1 draft={draft} set={set} />}
+          {step === 2 && <Step2 draft={draft} set={set} />}
+          {step === 3 && <Step3 draft={draft} set={set} />}
+          {step === 4 && <Step4 draft={draft} set={set} />}
         </div>
 
         <div className="flex items-center justify-between mt-12 pt-6 border-t border-border">
-          <button onClick={prev} disabled={step === 1} className="btn-ghost disabled:opacity-30 disabled:cursor-not-allowed">{t.back}</button>
+          <button onClick={() => setStep((s) => Math.max(1, s - 1))} disabled={step === 1}
+            className="btn-ghost disabled:opacity-30 disabled:cursor-not-allowed">← Anterior</button>
           {step < 4 ? (
-            <button
-              onClick={next}
-              disabled={step === 3 && !confirmed}
-              className="btn-primary disabled:opacity-30 disabled:cursor-not-allowed"
-            >
-              {t.next}
+            <button onClick={() => setStep((s) => Math.min(4, s + 1))} className="btn-primary">
+              {step === 1 ? "Imágenes →" : step === 2 ? "Precio →" : "Vista 3D →"}
             </button>
           ) : (
-            <button onClick={publish} className="btn-primary">{t.publishBtn}</button>
+            <button onClick={() => setDone(true)} className="btn-primary">Publicar obra</button>
           )}
         </div>
       </section>
@@ -130,426 +103,343 @@ export default function Publicar() {
   );
 }
 
-const Stepper = ({ step, labels }: { step: number; labels: string[] }) => (
-  <div className="flex items-center gap-3">
-    {labels.map((l, i) => {
+// ============ Pills navigation ============
+const Pills = ({ step, onJump }: { step: number; onJump: (n: number) => void }) => (
+  <div className="flex flex-wrap items-center gap-2">
+    {STEPS.map((label, i) => {
       const n = i + 1;
-      const done = n < step;
       const active = n === step;
+      const done = n < step;
       return (
-        <div key={l} className="flex items-center gap-3 flex-1">
-          <div className={`flex items-center gap-2 ${active ? "text-ink" : done ? "text-ink" : "text-muted-line"}`}>
-            <div className={`w-7 h-7 flex items-center justify-center border ${active || done ? "border-ink bg-ink text-white" : "border-border"} font-body text-[12px]`}>
-              {done ? <Check className="w-3.5 h-3.5" /> : n}
-            </div>
-            <span className="font-body text-[12px] uppercase tracking-[0.14em] hidden sm:inline">{l}</span>
-          </div>
-          {n < labels.length && <div className={`flex-1 h-px ${done ? "bg-ink" : "bg-border"}`} />}
+        <div key={label} className="flex items-center gap-2">
+          <button
+            onClick={() => onJump(n)}
+            className={`px-4 py-2 font-body text-[11px] uppercase tracking-[0.16em] transition-colors ${
+              active ? "bg-ink text-white" : done ? "bg-secondary text-ink" : "text-muted-line hover:text-ink"
+            }`}
+          >
+            {label}
+          </button>
+          {n < STEPS.length && <span className="text-muted-line">›</span>}
         </div>
       );
     })}
   </div>
 );
 
-// ---------------- Step 1 ----------------
-const Step1 = ({ t, draft, set }: any) => (
-  <div className="space-y-5">
-    <SectionTitle>{t.s1.h}</SectionTitle>
-    <FieldText label={t.s1.titulo} value={draft.titulo} onChange={(v) => set("titulo", v)} required />
-    <FieldText label={t.s1.anyo} value={draft.anyo} onChange={(v) => set("anyo", v.replace(/\D/g, "").slice(0, 4))} required placeholder="2025" />
-    <FieldText label={t.s1.tecnica} value={draft.tecnica} onChange={(v) => set("tecnica", v)} required placeholder={t.s1.tecnicaPh} />
-    <div>
-      <Label>{t.s1.dim} *</Label>
-      <div className="grid grid-cols-3 gap-3 mt-2">
-        <NumInput value={draft.alto} onChange={(v) => set("alto", v)} placeholder={t.s1.alto} />
-        <NumInput value={draft.ancho} onChange={(v) => set("ancho", v)} placeholder={t.s1.ancho} />
-        <NumInput value={draft.profundo} onChange={(v) => set("profundo", v)} placeholder={t.s1.prof} />
-      </div>
+// ============ Step 1 ============
+const Step1 = ({ draft, set }: { draft: Draft; set: any }) => (
+  <div className="space-y-6">
+    <h2 className="font-display font-bold text-[24px] text-ink">La obra</h2>
+
+    <Field label="Título">
+      <Input value={draft.titulo} onChange={(v) => set("titulo", v)} placeholder="Ej. Forma en reposo II" />
+    </Field>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <Field label="Año de creación">
+        <Input type="number" value={draft.anyo} onChange={(v) => set("anyo", v)} placeholder="2025" />
+      </Field>
+      <Field label="Técnica">
+        <Select value={draft.tecnica} onChange={(v) => set("tecnica", v)} options={TECNICAS} />
+      </Field>
     </div>
-    <FieldText label={t.s1.peso} value={draft.peso} onChange={(v) => set("peso", v)} placeholder="kg" />
-    <div>
-      <Label>{t.s1.edicion} *</Label>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
-        {(["unica", "limitada", "reproduccion"] as const).map((e) => (
-          <button
-            key={e}
-            type="button"
-            onClick={() => set("edicion", e)}
-            className={`border px-4 py-3 font-body text-[13px] text-left transition-colors ${
-              draft.edicion === e ? "border-ink bg-ink text-white" : "border-border hover:border-ink"
-            }`}
-          >
-            {t.s1.editionOpts[e]}
-          </button>
-        ))}
+
+    <Field label="Materiales">
+      <Input value={draft.materiales} onChange={(v) => set("materiales", v)} placeholder="Ej. Bronce patinado, base de mármol negro" />
+    </Field>
+
+    <Field label="Dimensiones (cm)">
+      <div className="grid grid-cols-3 gap-3">
+        <Input value={draft.alto} onChange={(v) => set("alto", v)} placeholder="Alto" type="number" />
+        <Input value={draft.ancho} onChange={(v) => set("ancho", v)} placeholder="Ancho" type="number" />
+        <Input value={draft.fondo} onChange={(v) => set("fondo", v)} placeholder="Fondo" type="number" />
       </div>
-      {draft.edicion === "limitada" && (
-        <div className="mt-3">
-          <NumInput value={draft.ejemplares || ""} onChange={(v) => set("ejemplares", v)} placeholder={t.s1.ejemplaresPh} />
-        </div>
-      )}
+    </Field>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <Field label="Peso en kg (opcional)">
+        <Input value={draft.peso} onChange={(v) => set("peso", v)} placeholder="kg" type="number" />
+      </Field>
+      <Field label="Tipo de obra">
+        <Select value={draft.tipo} onChange={(v) => set("tipo", v)}
+          options={[["unica", "Obra única"], ["limitada", "Edición limitada"], ["prueba", "Prueba de artista"]]} />
+      </Field>
     </div>
-    <FieldText label={t.s1.precio} value={draft.precio} onChange={(v) => set("precio", v)} required placeholder="€" />
-    <div>
-      <Label>{t.s1.desc} *</Label>
-      <textarea
-        rows={5}
-        value={draft.descripcion}
-        onChange={(e) => set("descripcion", e.target.value)}
-        placeholder={t.s1.descPh}
-        className="w-full mt-2 bg-transparent border border-border focus:border-ink outline-none p-3 font-body text-[15px] text-ink resize-none"
-      />
-      <div className="mt-1 font-body text-[11px] text-muted-line">
-        {draft.descripcion.length} / 80 {t.s1.minChars}
+
+    {(draft.tipo === "limitada" || draft.tipo === "prueba") && (
+      <Field label="Numeración">
+        <Input value={draft.numeracion} onChange={(v) => set("numeracion", v)} placeholder="Ej. 3 / 10" />
+      </Field>
+    )}
+
+    <Field label="Descripción y significado">
+      <div className="relative">
+        <textarea
+          rows={6}
+          maxLength={800}
+          value={draft.descripcion}
+          onChange={(e) => set("descripcion", e.target.value)}
+          className="w-full bg-transparent border border-border focus:border-ink outline-none p-3 font-body text-[15px] text-ink resize-none"
+        />
+        <div className="text-right font-body text-[11px] text-muted-line mt-1">{draft.descripcion.length} / 800</div>
       </div>
-    </div>
+    </Field>
   </div>
 );
 
-// ---------------- Step 2 ----------------
-const Step2 = ({ t, draft, set, handleFile }: any) => {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="space-y-8">
-      <SectionTitle>{t.s2.h}</SectionTitle>
+// ============ Step 2 ============
+const Step2 = ({ draft, set }: { draft: Draft; set: any }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
 
+  const addFiles = (files: FileList | null) => {
+    if (!files) return;
+    const remaining = 12 - draft.imagenes.length;
+    Array.from(files).slice(0, remaining).forEach((f) => {
+      const r = new FileReader();
+      r.onload = () => set("imagenes", [...draft.imagenes, r.result as string]);
+      r.readAsDataURL(f);
+    });
+  };
+
+  const remove = (i: number) => set("imagenes", draft.imagenes.filter((_, idx) => idx !== i));
+
+  return (
+    <div className="space-y-6">
       <div>
-        <Label>{t.s2.main} *</Label>
-        <Uploader
-          accept="image/jpeg,image/png,image/webp"
-          maxMB={10}
-          file={draft.fotoPrincipal}
-          onFile={(f) => handleFile(f, (data: string) => set("fotoPrincipal", data))}
-          onClear={() => set("fotoPrincipal", undefined)}
-          previewType="image"
-          label={t.s2.mainCta}
-        />
+        <h2 className="font-display font-bold text-[24px] text-ink">Imágenes de la obra</h2>
+        <p className="font-body text-[14px] text-gray mt-2">La primera imagen será la portada en el catálogo. Sube al menos 3 desde ángulos distintos.</p>
       </div>
 
-      <div>
-        <Label>{t.s2.extra}</Label>
-        <p className="font-body text-[12px] text-muted-line mt-1 mb-3">{t.s2.extraHelp}</p>
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-          {draft.fotosAdicionales.map((src: string, i: number) => (
+      <div className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line">
+        {draft.imagenes.length} imágenes · mínimo 3 recomendadas
+      </div>
+
+      {draft.imagenes.length > 0 && (
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {draft.imagenes.map((src, i) => (
             <div key={i} className="relative aspect-square bg-secondary">
-              <img src={src} alt={`extra-${i}`} className="w-full h-full object-cover" />
-              <button onClick={() => set("fotosAdicionales", draft.fotosAdicionales.filter((_: any, idx: number) => idx !== i))}
-                className="absolute top-1 right-1 bg-white/90 p-1"><X className="w-3 h-3" /></button>
+              <img src={src} alt={`obra-${i}`} className="w-full h-full object-cover" />
+              <button onClick={() => remove(i)} className="absolute top-1 right-1 bg-white/95 p-1.5 hover:bg-white"><X className="w-3 h-3" /></button>
+              {i === 0 && (
+                <span className="absolute bottom-0 inset-x-0 bg-ink text-white font-body text-[10px] uppercase tracking-[0.18em] text-center py-1">Portada</span>
+              )}
             </div>
           ))}
-          {draft.fotosAdicionales.length < 5 && (
-            <label className="aspect-square border border-dashed border-border flex items-center justify-center cursor-pointer hover:border-ink transition-colors">
-              <Upload className="w-5 h-5 text-muted-line" />
-              <input type="file" accept="image/*" className="hidden" onChange={(e) => {
-                const f = e.target.files?.[0]; if (!f) return;
-                handleFile(f, (data: string) => set("fotosAdicionales", [...draft.fotosAdicionales, data]));
-              }} />
-            </label>
-          )}
         </div>
+      )}
+
+      <div
+        onDragOver={(e) => e.preventDefault()}
+        onDrop={(e) => { e.preventDefault(); addFiles(e.dataTransfer.files); }}
+        onClick={() => inputRef.current?.click()}
+        className="border border-dashed border-border hover:border-ink transition-colors cursor-pointer p-10 flex flex-col items-center justify-center text-center"
+      >
+        <ImageIcon className="w-7 h-7 text-muted-line mb-3" />
+        <div className="font-body text-[14px] text-ink">Arrastra aquí o haz clic para seleccionar</div>
+        <div className="font-body text-[12px] text-muted-line mt-1">JPG, PNG o WEBP · Mínimo 1500 px · Máx. 20 MB por imagen</div>
+        <input ref={inputRef} type="file" accept="image/jpeg,image/png,image/webp" multiple className="hidden"
+          onChange={(e) => addFiles(e.target.files)} />
       </div>
 
+      <p className="font-body text-[13px] text-muted-line italic">Consejo: fondo neutro y luz natural lateral revelan mejor la textura y los materiales.</p>
+    </div>
+  );
+};
+
+// ============ Step 3 ============
+const Step3 = ({ draft, set }: { draft: Draft; set: any }) => {
+  const precioNum = parseFloat(draft.precio.replace(/[^\d.]/g, "")) || 0;
+  let nivel = "Emerging", comision = 18;
+  if (precioNum >= 15000) { nivel = "Featured"; comision = 12; }
+  else if (precioNum >= 3000) { nivel = "Established"; comision = 15; }
+  const recibe = Math.round(precioNum * (1 - comision / 100));
+
+  return (
+    <div className="space-y-6">
       <div>
-        <Label>{t.s2.glb}</Label>
-        <p className="font-body text-[12px] text-muted-line mt-1 mb-3">{t.s2.glbHelp}</p>
-        <Uploader
-          accept=".glb,.gltf,model/gltf-binary,model/gltf+json"
-          maxMB={50}
-          file={draft.archivo3dDataUrl}
-          fileName={draft.archivo3dNombre}
-          onFile={(f) => {
-            set("archivo3dNombre", f.name);
-            handleFile(f, (data: string) => set("archivo3dDataUrl", data));
-          }}
-          onClear={() => { set("archivo3dDataUrl", undefined); set("archivo3dNombre", undefined); }}
-          previewType="3d"
-          label={t.s2.glbCta}
-        />
-        <button type="button" onClick={() => setOpen(!open)} className="mt-4 flex items-center gap-2 font-body text-[12px] uppercase tracking-[0.14em] text-ink">
-          {t.s2.howH} <ChevronDown className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`} />
-        </button>
-        {open && (
-          <p className="mt-3 font-body text-[13px] text-gray border-l-2 border-border pl-4">{t.s2.howBody}</p>
-        )}
+        <h2 className="font-display font-bold text-[24px] text-ink">Precio y disponibilidad</h2>
+        <p className="font-body text-[14px] text-gray mt-2">El precio lo fijas tú. Ignia aplica una comisión del 12 al 18 % según tu nivel artístico.</p>
+      </div>
+
+      <Field label="Precio">
+        <div className="relative">
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 font-body text-[15px] text-muted-line">€</span>
+          <input
+            value={draft.precio}
+            onChange={(e) => set("precio", e.target.value)}
+            placeholder="0"
+            inputMode="decimal"
+            className="w-full bg-transparent border border-border focus:border-ink outline-none pl-7 pr-3 py-2.5 font-body text-[15px] text-ink"
+          />
+        </div>
+      </Field>
+
+      {precioNum > 0 && (
+        <div className="bg-secondary p-5 animate-fade-in">
+          <div className="font-body text-[11px] uppercase tracking-[0.18em] text-muted-line mb-2">Recibirás por esta obra</div>
+          <div className="font-display font-bold text-[36px] text-ink leading-none mb-2">€ {recibe.toLocaleString("es-ES")}</div>
+          <div className="font-body text-[12px] text-gray">Nivel <span className="text-ink font-medium">{nivel}</span> · comisión {comision} %</div>
+        </div>
+      )}
+
+      <Field label="Disponibilidad">
+        <div className="flex flex-wrap gap-2">
+          {[["venta", "A la venta"], ["visible", "Solo visible"], ["consultar", "Consultar precio"]].map(([k, l]) => (
+            <button key={k} type="button" onClick={() => set("disponibilidad", k)}
+              className={`px-4 py-2.5 font-body text-[13px] border transition-colors ${
+                draft.disponibilidad === k ? "bg-ink text-white border-ink" : "border-border text-ink hover:border-ink"
+              }`}>{l}</button>
+          ))}
+        </div>
+      </Field>
+
+      <div className="border-l-[3px] border-ink pl-4 py-1">
+        <p className="font-body text-[14px] text-ink leading-relaxed">
+          <strong className="font-display">Certificado blockchain incluido.</strong> Al publicar, Ignia genera automáticamente un certificado de autenticidad con tus datos, la fecha de registro y tu identidad verificada. Es inmutable y acompaña a la obra para siempre.
+        </p>
       </div>
     </div>
   );
 };
 
-const Uploader = ({ accept, maxMB, file, fileName, onFile, onClear, previewType, label }: {
-  accept: string; maxMB: number; file?: string; fileName?: string;
-  onFile: (f: File) => void; onClear: () => void; previewType: "image" | "3d"; label: string;
-}) => {
-  const ref = useRef<HTMLInputElement>(null);
-  const onPick = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const f = e.target.files?.[0]; if (!f) return;
-    if (f.size > maxMB * 1024 * 1024) { alert(`Max ${maxMB}MB`); return; }
-    onFile(f);
-  };
+// ============ Step 4 ============
+const Step4 = ({ draft, set }: { draft: Draft; set: any }) => {
+  const videoRef = useRef<HTMLInputElement>(null);
   return (
-    <div className="border border-dashed border-border p-4">
-      {file ? (
-        <div className="flex items-start gap-4">
-          {previewType === "image" ? (
-            <img src={file} alt="preview" className="w-32 h-32 object-cover bg-secondary" />
-          ) : (
-            <div className="w-32 h-32 bg-secondary"><GlbPreview src={file} /></div>
-          )}
-          <div className="flex-1">
-            <div className="font-body text-[13px] text-ink">{fileName || (previewType === "image" ? "Imagen subida" : "Archivo 3D")}</div>
-            <button onClick={onClear} className="mt-2 font-body text-[11px] uppercase tracking-[0.14em] text-muted-line hover:text-ink">Eliminar ✕</button>
+    <div className="space-y-6">
+      <div>
+        <h2 className="font-display font-bold text-[24px] text-ink">Vista 3D</h2>
+        <p className="font-body text-[14px] text-gray mt-2">El visor 3D es el diferencial de Ignia. El coleccionista gira la escultura desde todos los ángulos antes de comprarla. No es obligatoria para publicar.</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <button type="button" onClick={() => set("threeD", "ahora")}
+          className={`text-left p-6 transition-colors ${draft.threeD === "ahora" ? "border-2 border-ink" : "border-[1.5px] border-border hover:border-ink"}`}>
+          <Video className="w-6 h-6 text-ink mb-3" />
+          <div className="font-display font-bold text-[18px] text-ink mb-2">La añado ahora</div>
+          <div className="font-body text-[13px] text-gray">Graba 30 segundos rodeando la escultura con el móvil. El modelo 3D estará listo en menos de 30 minutos.</div>
+        </button>
+
+        <button type="button" onClick={() => set("threeD", "tarde")}
+          className={`text-left p-6 transition-colors ${draft.threeD === "tarde" ? "border-2 border-ink" : "border-[1.5px] border-border hover:border-ink"}`}>
+          <Clock className="w-6 h-6 text-ink mb-3" />
+          <div className="font-display font-bold text-[18px] text-ink mb-2">La añado más tarde</div>
+          <div className="font-body text-[13px] text-gray">La obra se publica y queda pendiente de vista 3D en tu perfil. Puedes añadirla cuando quieras.</div>
+        </button>
+      </div>
+
+      {draft.threeD === "ahora" && (
+        <div className="space-y-4 animate-fade-in">
+          <div className="border-l-2 border-border pl-4 py-1">
+            <ol className="font-body text-[13px] text-gray space-y-1.5 list-decimal list-inside">
+              <li>Coloca la escultura sobre superficie plana con buena iluminación.</li>
+              <li>Empieza desde el frente y camina despacio completando un círculo.</li>
+              <li>Graba 25-35 segundos sin pausas, móvil a la altura de la obra.</li>
+            </ol>
+          </div>
+          <div
+            onClick={() => videoRef.current?.click()}
+            className="border border-dashed border-border hover:border-ink transition-colors cursor-pointer p-10 flex flex-col items-center justify-center text-center"
+          >
+            <Video className="w-7 h-7 text-muted-line mb-3" />
+            <div className="font-body text-[14px] text-ink">{draft.videoNombre || "Arrastra el vídeo o haz clic para seleccionar"}</div>
+            <div className="font-body text-[12px] text-muted-line mt-1">MP4 o MOV · 25-35 segundos · Máx. 500 MB</div>
+            <input ref={videoRef} type="file" accept="video/mp4,video/quicktime" className="hidden"
+              onChange={(e) => { const f = e.target.files?.[0]; if (f) set("videoNombre", f.name); }} />
           </div>
         </div>
-      ) : (
-        <button type="button" onClick={() => ref.current?.click()} className="w-full flex flex-col items-center justify-center gap-2 py-10 hover:bg-secondary transition-colors">
-          <Upload className="w-6 h-6 text-muted-line" />
-          <span className="font-body text-[13px] text-gray">{label}</span>
-          <span className="font-body text-[11px] text-muted-line">Max {maxMB} MB</span>
-        </button>
       )}
-      <input ref={ref} type="file" accept={accept} className="hidden" onChange={onPick} />
+
+      {draft.threeD === "tarde" && (
+        <div className="animate-fade-in flex items-start gap-3 p-4 bg-secondary">
+          <span className="inline-block px-2 py-1 font-body text-[10px] uppercase tracking-[0.16em] font-medium" style={{ backgroundColor: "#CCFF00", color: "#000" }}>Pendiente</span>
+          <p className="font-body text-[13px] text-gray flex-1">Esta obra aparecerá en tu perfil marcada como pendiente de vista 3D. Puedes añadirla desde el listado de tus obras en cualquier momento.</p>
+        </div>
+      )}
     </div>
   );
 };
 
-// 3D preview
-function GlbPreview({ src }: { src: string }) {
+// ============ Confirmation ============
+const Confirmation = ({ draft, onAnother }: { draft: Draft; onAnother: () => void }) => {
+  const has3D = draft.threeD === "ahora";
+  const obrasMini = [
+    { titulo: "Caída", estado: "Publicada", tiene3D: true },
+    { titulo: "Eco", estado: "Publicada", tiene3D: true },
+    { titulo: "Umbral", estado: "En revisión editorial", tiene3D: false },
+    { titulo: draft.titulo || "Nueva escultura", estado: "En revisión editorial", tiene3D: has3D, nueva: true },
+  ];
+
   return (
-    <Canvas camera={{ position: [0, 0, 3], fov: 40 }}>
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[3, 3, 3]} intensity={0.8} />
-      <Suspense fallback={null}>
-        <GlbModel src={src} />
-        <Environment preset="studio" />
-      </Suspense>
-      <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={2} />
-    </Canvas>
-  );
-}
-function GlbModel({ src }: { src: string }) {
-  const gltf = useGLTF(src);
-  return <primitive object={gltf.scene} scale={1} />;
-}
+    <main className="min-h-screen bg-white">
+      <header className="sticky top-0 z-50 h-14 bg-white border-b border-border flex items-center justify-between px-6 md:px-12">
+        <Link to="/" aria-label="Ignia Gallery"><Logo /></Link>
+        <Link to="/dashboard" className="font-body text-[13px] text-gray hover:text-ink">Salir</Link>
+      </header>
 
-// ---------------- Step 3 ----------------
-const Step3 = ({ t, draft, certId, hash, confirmed, setConfirmed }: any) => (
-  <div className="space-y-6">
-    <SectionTitle>{t.s3.h}</SectionTitle>
-    <article className="border border-ink p-8 bg-secondary/30">
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-2">
-          <ShieldCheck className="w-5 h-5 text-ink" />
-          <span className="font-body text-[11px] uppercase tracking-[0.18em] text-ink">Ignia Gallery — {t.s3.issuer}</span>
+      <section className="max-w-[720px] mx-auto px-6 py-16 text-center">
+        <div className="w-16 h-16 mx-auto bg-ink rounded-full flex items-center justify-center mb-6">
+          <Check className="w-8 h-8 text-white" />
         </div>
-        <span className="font-body text-[11px] text-muted-line">#{certId.slice(0, 8)}</span>
-      </div>
-      <h3 className="font-display font-bold text-[clamp(24px,3vw,36px)] text-ink leading-tight mb-1">{draft.titulo || "—"}</h3>
-      <div className="font-body text-[14px] text-gray mb-6">{draft.artista || "—"} · {draft.anyo || "—"}</div>
-      <div className="grid grid-cols-2 gap-x-6 gap-y-3 mb-6">
-        <CertRow l={t.s3.tech} v={draft.tecnica} />
-        <CertRow l={t.s3.dim} v={`${draft.alto || "—"} × ${draft.ancho || "—"} × ${draft.profundo || "—"} cm`} />
-        <CertRow l={t.s3.edition} v={draft.edicion === "unica" ? t.s1.editionOpts.unica : draft.edicion === "limitada" ? `${t.s1.editionOpts.limitada} (${draft.ejemplares || "?"})` : t.s1.editionOpts.reproduccion} />
-        <CertRow l={t.s3.date} v={new Date().toLocaleDateString(t.locale)} />
-      </div>
-      <div className="border-t border-border pt-4 flex items-end justify-between gap-4">
-        <div className="flex-1 min-w-0">
-          <div className="font-body text-[10px] uppercase tracking-[0.18em] text-muted-line mb-1">{t.s3.certNum}</div>
-          <div className="font-mono text-[12px] text-ink break-all">{certId}</div>
-          <div className="font-body text-[10px] uppercase tracking-[0.18em] text-muted-line mt-3 mb-1">{t.s3.hash}</div>
-          <div className="font-mono text-[11px] text-gray break-all">{hash ? `0x${hash.slice(0, 32)}…` : t.s3.hashWait}</div>
+        <h1 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-3">Tu obra ya está publicada.</h1>
+        <p className="font-body text-[15px] text-gray max-w-[520px] mx-auto mb-12">
+          {has3D
+            ? "El modelo 3D estará procesado en menos de 30 minutos. La ficha está en revisión editorial."
+            : "La ficha está en revisión editorial. La vista 3D aparece como pendiente en tu perfil."}
+        </p>
+
+        <div className="text-left border-t border-border">
+          {obrasMini.map((o, i) => (
+            <div key={i} className={`flex items-center justify-between gap-4 py-4 border-b border-border ${o.nueva ? "bg-secondary -mx-4 px-4" : ""}`}>
+              <div>
+                <div className="font-display font-bold text-[15px] text-ink">{o.titulo}</div>
+                <div className="font-body text-[12px] text-muted-line">{o.estado}</div>
+              </div>
+              {o.tiene3D ? (
+                <div className="flex items-center gap-2 font-body text-[12px] text-ink">
+                  <span className="w-2 h-2 rounded-full bg-green-500" /> Vista 3D lista
+                </div>
+              ) : (
+                <div className="flex items-center gap-3">
+                  <span className="flex items-center gap-2 font-body text-[12px] text-ink">
+                    <span className="w-2 h-2 rounded-full bg-amber-500" /> Vista 3D pendiente
+                  </span>
+                  <button className="border border-ink text-ink font-body text-[11px] uppercase tracking-[0.14em] px-3 py-1.5 hover:bg-ink hover:text-white transition-colors">Añadir 3D</button>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
-        <div className="w-20 h-20 border border-border flex flex-col items-center justify-center text-muted-line">
-          <QrCode className="w-8 h-8" />
-          <span className="font-body text-[8px] uppercase tracking-[0.14em] mt-1 text-center">QR</span>
+
+        <div className="mt-10 flex flex-wrap justify-center gap-6 font-body text-[13px]">
+          <Link to="/obra/caida" className="text-ink underline underline-offset-4 hover:opacity-60">Ver ficha de la obra</Link>
+          <button onClick={onAnother} className="text-ink underline underline-offset-4 hover:opacity-60">Publicar otra obra</button>
+          <Link to="/perfil/escultor/cristina-iglesias" className="text-ink underline underline-offset-4 hover:opacity-60">Ir a mi perfil</Link>
         </div>
-      </div>
-    </article>
-    <p className="font-body text-[13px] text-gray">{t.s3.note}</p>
-    <label className="flex items-start gap-3 cursor-pointer">
-      <input type="checkbox" checked={confirmed} onChange={(e) => setConfirmed(e.target.checked)} className="mt-1" />
-      <span className="font-body text-[14px] text-ink">{t.s3.consent}</span>
-    </label>
-  </div>
-);
-
-const CertRow = ({ l, v }: { l: string; v: string }) => (
-  <div>
-    <div className="font-body text-[10px] uppercase tracking-[0.18em] text-muted-line mb-1">{l}</div>
-    <div className="font-body text-[14px] text-ink">{v || "—"}</div>
-  </div>
-);
-
-// ---------------- Step 4 ----------------
-const Step4 = ({ t, draft, certId, onEdit }: any) => (
-  <div className="space-y-8">
-    <SectionTitle>{t.s4.h}</SectionTitle>
-
-    <Block title={t.s4.data}>
-      <dl className="grid grid-cols-2 gap-y-2 font-body text-[14px]">
-        <Dt>{t.s1.titulo}</Dt><Dd>{draft.titulo}</Dd>
-        <Dt>{t.s1.artista}</Dt><Dd>{draft.artista}</Dd>
-        <Dt>{t.s1.anyo}</Dt><Dd>{draft.anyo}</Dd>
-        <Dt>{t.s1.tecnica}</Dt><Dd>{draft.tecnica}</Dd>
-        <Dt>{t.s1.dim}</Dt><Dd>{draft.alto} × {draft.ancho} × {draft.profundo} cm</Dd>
-        <Dt>{t.s1.edicion}</Dt><Dd>{draft.edicion === "limitada" ? `${t.s1.editionOpts.limitada} (${draft.ejemplares})` : t.s1.editionOpts[draft.edicion as "unica" | "reproduccion"]}</Dd>
-        <Dt>{t.s1.precio}</Dt><Dd>{draft.precio} €</Dd>
-      </dl>
-      <p className="mt-3 font-body text-[14px] text-gray">{draft.descripcion}</p>
-    </Block>
-
-    <Block title={t.s4.images}>
-      <div className="flex gap-3 flex-wrap">
-        {draft.fotoPrincipal && <img src={draft.fotoPrincipal} className="w-28 h-28 object-cover bg-secondary" alt="main" />}
-        {draft.fotosAdicionales.map((s: string, i: number) => <img key={i} src={s} className="w-28 h-28 object-cover bg-secondary" alt={`extra-${i}`} />)}
-      </div>
-    </Block>
-
-    <Block title={t.s4.glb}>
-      {draft.archivo3dNombre ? (
-        <div className="flex items-center gap-4">
-          <div className="w-28 h-28 bg-secondary"><GlbPreview src={draft.archivo3dDataUrl} /></div>
-          <span className="font-body text-[14px] text-ink">{draft.archivo3dNombre}</span>
-        </div>
-      ) : (
-        <p className="font-body text-[14px] text-gray">{t.s4.glbEmpty}</p>
-      )}
-    </Block>
-
-    <Block title={t.s4.cert}>
-      <div className="font-body text-[13px] text-gray">
-        <div>#{certId}</div>
-        <div className="mt-1">{new Date().toLocaleDateString(t.locale)}</div>
-      </div>
-    </Block>
-
-    <button onClick={onEdit} className="btn-ghost">{t.s4.edit}</button>
-  </div>
-);
-
-const SuccessScreen = ({ t, certId, obraId, onAnother }: any) => {
-  const navigate = useNavigate();
-  return (
-    <main className="min-h-screen bg-white flex flex-col items-center justify-center px-6 py-20 text-center">
-      <div className="w-20 h-20 rounded-full bg-ink flex items-center justify-center mb-8 animate-in zoom-in duration-500">
-        <Check className="w-10 h-10 text-white" />
-      </div>
-      <h1 className="font-display font-bold text-[clamp(28px,3.6vw,44px)] text-ink mb-3">{t.success.h}</h1>
-      <p className="font-body text-[14px] text-gray mb-2">{t.success.cert}</p>
-      <div className="font-mono text-[12px] text-ink mb-10">#{certId}</div>
-      <div className="flex gap-3 flex-wrap justify-center">
-        <button onClick={() => navigate(`/dashboard/obras`)} className="btn-primary">{t.success.view}</button>
-        <button onClick={onAnother} className="btn-ghost">{t.success.another}</button>
-      </div>
+      </section>
     </main>
   );
 };
 
-// ---------- Inputs ----------
-const Label = ({ children }: any) => (
-  <span className="block font-body text-[12px] uppercase tracking-[0.18em] text-muted-line">{children}</span>
-);
-const SectionTitle = ({ children }: any) => (
-  <h2 className="font-display font-bold text-[22px] text-ink mb-2">{children}</h2>
-);
-const FieldText = ({ label, value, onChange, required, placeholder }: any) => (
-  <label className="block">
-    <Label>{label} {required && "*"}</Label>
-    <input value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder}
-      className="w-full mt-2 bg-transparent border-0 border-b border-border focus:border-ink outline-none py-2.5 font-body text-[15px] text-ink placeholder:text-muted-line/60" />
-  </label>
-);
-const NumInput = ({ value, onChange, placeholder }: any) => (
-  <input value={value} onChange={(e) => onChange(e.target.value.replace(/[^\d.]/g, ""))}
-    placeholder={placeholder} inputMode="decimal"
-    className="w-full bg-transparent border border-border focus:border-ink outline-none px-3 py-2.5 font-body text-[15px] text-ink placeholder:text-muted-line/60" />
-);
-const Block = ({ title, children }: any) => (
-  <section>
-    <h3 className="font-body text-[12px] uppercase tracking-[0.18em] text-muted-line mb-3 pb-2 border-b border-border">{title}</h3>
+// ============ Atoms ============
+const Field = ({ label, children }: { label: string; children: React.ReactNode }) => (
+  <div>
+    <label className="block font-body text-[12px] uppercase tracking-[0.18em] text-muted-line mb-2">{label}</label>
     {children}
-  </section>
+  </div>
 );
-const Dt = ({ children }: any) => <dt className="text-muted-line">{children}</dt>;
-const Dd = ({ children }: any) => <dd className="text-ink">{children}</dd>;
-
-// ---------- Copy ----------
-const COPY_ES = {
-  publishEyebrow: "Publicar escultura",
-  publishTitle: "Comparte tu obra con coleccionistas",
-  cancel: "Cancelar",
-  back: "← Volver",
-  next: "Continuar →",
-  publishBtn: "Publicar obra ↗",
-  steps: ["Información", "Imágenes y 3D", "Certificado", "Revisión"],
-  locale: "es-ES",
-  s1: {
-    h: "Datos de la obra",
-    titulo: "Título de la obra",
-    artista: "Nombre del artista",
-    anyo: "Año de creación",
-    tecnica: "Técnica y materiales",
-    tecnicaPh: "Ej. Bronce patinado sobre base de piedra",
-    dim: "Dimensiones (cm)",
-    alto: "Alto", ancho: "Ancho", prof: "Profundo",
-    peso: "Peso aproximado (kg)",
-    edicion: "Tipo de edición",
-    editionOpts: { unica: "Obra única (1/1)", limitada: "Edición limitada", reproduccion: "Reproducción" },
-    ejemplaresPh: "Número de ejemplares (máx. 20)",
-    precio: "Precio de venta (€)",
-    desc: "Descripción editorial",
-    descPh: "Cuenta la historia de la obra: inspiración, proceso, materiales…",
-    minChars: "caracteres mínimos",
-  },
-  s2: {
-    h: "Imágenes y archivo 3D",
-    main: "Foto principal de la obra",
-    mainCta: "Subir foto principal (JPG, PNG, WEBP)",
-    extra: "Fotos adicionales (hasta 5)",
-    extraHelp: "Recomendado: muestra la obra desde distintos ángulos para que los coleccionistas puedan apreciarla mejor.",
-    glb: "Archivo 3D de la escultura (opcional)",
-    glbCta: "Subir archivo .glb o .gltf",
-    glbHelp: "Sube un archivo .glb o .gltf para que los coleccionistas puedan rotar la pieza en 360°. Si no tienes este archivo ahora, puedes añadirlo más tarde desde tu perfil.",
-    howH: "¿Cómo consigo un archivo 3D de mi escultura?",
-    howBody: "Necesitas hacer fotogrametría: fotografía la pieza desde 20 a 40 ángulos cubriendo 360° y procésalas con software como Meshroom (gratuito), RealityCapture o la app Polycam desde el móvil. El resultado es un archivo .glb que puedes subir aquí.",
-  },
-  s3: {
-    h: "Certificado blockchain",
-    issuer: "Entidad emisora",
-    tech: "Técnica y materiales",
-    dim: "Dimensiones",
-    edition: "Tipo de edición",
-    date: "Fecha de certificación",
-    certNum: "Número único de certificado",
-    hash: "Hash de registro en blockchain",
-    hashWait: "Se generará en el momento de la publicación",
-    note: "Al publicar, esta información quedará registrada de forma permanente en blockchain. El certificado acompaña a la obra y puede verificarse en cualquier momento por compradores, instituciones o aseguradoras.",
-    consent: "Confirmo que soy el autor o autora de esta obra, o que tengo los derechos necesarios para publicarla en Ignia Gallery.",
-  },
-  s4: {
-    h: "Revisión y publicación",
-    data: "Datos de la obra",
-    images: "Imágenes",
-    glb: "Archivo 3D",
-    glbEmpty: "No incluido — puedes añadirlo más tarde desde tu perfil.",
-    cert: "Certificado blockchain",
-    edit: "Editar",
-  },
-  success: {
-    h: "¡Tu escultura ya está en Ignia Gallery!",
-    cert: "ID del certificado blockchain",
-    view: "Ver mi obra publicada",
-    another: "Publicar otra escultura",
-  },
-};
-
-const COPY_EN = {
-  ...COPY_ES,
-  publishEyebrow: "Publish sculpture",
-  publishTitle: "Share your work with collectors",
-  cancel: "Cancel",
-  back: "← Back",
-  next: "Continue →",
-  publishBtn: "Publish work ↗",
-  steps: ["Information", "Images & 3D", "Certificate", "Review"],
-  locale: "en-GB",
-};
+const Input = ({ value, onChange, placeholder, type }: { value: string; onChange: (v: string) => void; placeholder?: string; type?: string }) => (
+  <input value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} type={type || "text"}
+    className="w-full bg-transparent border border-border focus:border-ink outline-none px-3 py-2.5 font-body text-[15px] text-ink" />
+);
+const Select = ({ value, onChange, options }: { value: string; onChange: (v: string) => void; options: (string | [string, string])[] }) => (
+  <select value={value} onChange={(e) => onChange(e.target.value)}
+    className="w-full bg-transparent border border-border focus:border-ink outline-none px-3 py-2.5 font-body text-[15px] text-ink appearance-none">
+    <option value="">—</option>
+    {options.map((o) => {
+      const [k, l] = Array.isArray(o) ? o : [o, o];
+      return <option key={k} value={k}>{l}</option>;
+    })}
+  </select>
+);
