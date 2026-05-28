@@ -19,7 +19,7 @@ type ArtistData = {
   bioEn: string;
   espEs: string;
   espEn: string;
-  obras: { slug: string; img: string; titulo: { es: string; en: string }; estado: { es: string; en: string } }[];
+  obras: { slug: string; img: string; anyo?: number; titulo: { es: string; en: string }; estado: { es: string; en: string }; tiene3D: boolean }[];
 };
 
 const ARTISTAS: Record<string, ArtistData> = {
