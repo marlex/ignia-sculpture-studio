@@ -30,9 +30,9 @@ const ARTISTAS: Record<string, ArtistData> = {
     bioEn: "San Sebastián, Spain. Space, water and bronze. Her work joins intimate architecture and lattices that invite you to look from within.",
     espEs: "Bronce, agua y celosía", espEn: "Bronze, water and lattice",
     obras: [
-      { slug: "caida", img: caida, titulo: { es: "Caída", en: "Fall" }, estado: { es: "Publicada", en: "Published" } },
-      { slug: "eco-ondas", img: eco, titulo: { es: "Eco", en: "Echo" }, estado: { es: "Publicada", en: "Published" } },
-      { slug: "umbral", img: umbral, titulo: { es: "Umbral", en: "Threshold" }, estado: { es: "Vendida", en: "Sold" } },
+      { slug: "caida", img: caida, anyo: 2023, titulo: { es: "Caída", en: "Fall" }, estado: { es: "Publicada", en: "Published" }, tiene3D: true },
+      { slug: "eco-ondas", img: eco, anyo: 2022, titulo: { es: "Eco", en: "Echo" }, estado: { es: "Publicada", en: "Published" }, tiene3D: false },
+      { slug: "umbral", img: umbral, anyo: 2021, titulo: { es: "Umbral", en: "Threshold" }, estado: { es: "Vendida", en: "Sold" }, tiene3D: true },
     ],
   },
   "jaume-plensa": {
@@ -42,9 +42,9 @@ const ARTISTAS: Record<string, ArtistData> = {
     bioEn: "Barcelona, Spain. Figure, word and scale. His work brings together human presence, silence and writing in monumental pieces.",
     espEs: "Figura, palabra y escala", espEn: "Figure, word and scale",
     obras: [
-      { slug: "vertice", img: vertice, titulo: { es: "Vértice", en: "Vertex" }, estado: { es: "Publicada", en: "Published" } },
-      { slug: "quietud", img: quietud, titulo: { es: "Quietud", en: "Stillness" }, estado: { es: "Publicada", en: "Published" } },
-      { slug: "resto", img: resto, titulo: { es: "Resto", en: "Remnant" }, estado: { es: "Borrador", en: "Draft" } },
+      { slug: "vertice", img: vertice, anyo: 2024, titulo: { es: "Vértice", en: "Vertex" }, estado: { es: "Publicada", en: "Published" }, tiene3D: true },
+      { slug: "quietud", img: quietud, anyo: 2023, titulo: { es: "Quietud", en: "Stillness" }, estado: { es: "Publicada", en: "Published" }, tiene3D: false },
+      { slug: "resto", img: resto, anyo: 2022, titulo: { es: "Resto", en: "Remnant" }, estado: { es: "Borrador", en: "Draft" }, tiene3D: false },
     ],
   },
   "susana-solano": {
@@ -54,9 +54,9 @@ const ARTISTAS: Record<string, ArtistData> = {
     bioEn: "Barcelona, Spain. Metal, structure and space. Approaches metal as both physical and mental construction.",
     espEs: "Metal, estructura y espacio", espEn: "Metal, structure and space",
     obras: [
-      { slug: "caida", img: caida, titulo: { es: "Caída", en: "Fall" }, estado: { es: "Publicada", en: "Published" } },
-      { slug: "vertice", img: vertice, titulo: { es: "Vértice", en: "Vertex" }, estado: { es: "Vendida", en: "Sold" } },
-      { slug: "umbral", img: umbral, titulo: { es: "Umbral", en: "Threshold" }, estado: { es: "Borrador", en: "Draft" } },
+      { slug: "caida", img: caida, anyo: 2023, titulo: { es: "Caída", en: "Fall" }, estado: { es: "Publicada", en: "Published" }, tiene3D: true },
+      { slug: "vertice", img: vertice, anyo: 2022, titulo: { es: "Vértice", en: "Vertex" }, estado: { es: "Vendida", en: "Sold" }, tiene3D: false },
+      { slug: "umbral", img: umbral, anyo: 2021, titulo: { es: "Umbral", en: "Threshold" }, estado: { es: "Borrador", en: "Draft" }, tiene3D: false },
     ],
   },
   "helena-vazquez": {
@@ -66,12 +66,12 @@ const ARTISTAS: Record<string, ArtistData> = {
     bioEn: "Toledo, Spain. Figurative bronze. Three decades working the human figure through slow craft.",
     espEs: "Bronce figurativo", espEn: "Figurative bronze",
     obras: [
-      { slug: "caida", img: caida, titulo: { es: "Caída", en: "Fall" }, estado: { es: "Publicada", en: "Published" } },
-      { slug: "eco-ondas", img: eco, titulo: { es: "Eco", en: "Echo" }, estado: { es: "Publicada", en: "Published" } },
-      { slug: "umbral", img: umbral, titulo: { es: "Umbral", en: "Threshold" }, estado: { es: "Borrador", en: "Draft" } },
-      { slug: "vertice", img: vertice, titulo: { es: "Vértice", en: "Vertex" }, estado: { es: "Vendida", en: "Sold" } },
-      { slug: "quietud", img: quietud, titulo: { es: "Quietud", en: "Stillness" }, estado: { es: "Publicada", en: "Published" } },
-      { slug: "resto", img: resto, titulo: { es: "Resto", en: "Remnant" }, estado: { es: "Borrador", en: "Draft" } },
+      { slug: "caida", img: caida, anyo: 2024, titulo: { es: "Caída", en: "Fall" }, estado: { es: "Publicada", en: "Published" }, tiene3D: true },
+      { slug: "eco-ondas", img: eco, anyo: 2023, titulo: { es: "Eco", en: "Echo" }, estado: { es: "Publicada", en: "Published" }, tiene3D: false },
+      { slug: "umbral", img: umbral, anyo: 2022, titulo: { es: "Umbral", en: "Threshold" }, estado: { es: "Borrador", en: "Draft" }, tiene3D: false },
+      { slug: "vertice", img: vertice, anyo: 2022, titulo: { es: "Vértice", en: "Vertex" }, estado: { es: "Vendida", en: "Sold" }, tiene3D: true },
+      { slug: "quietud", img: quietud, anyo: 2021, titulo: { es: "Quietud", en: "Stillness" }, estado: { es: "Publicada", en: "Published" }, tiene3D: true },
+      { slug: "resto", img: resto, anyo: 2020, titulo: { es: "Resto", en: "Remnant" }, estado: { es: "Borrador", en: "Draft" }, tiene3D: false },
     ],
   },
 };
