@@ -19,7 +19,7 @@ type ArtistData = {
   bioEn: string;
   espEs: string;
   espEn: string;
-  obras: { slug: string; img: string; titulo: { es: string; en: string }; estado: { es: string; en: string } }[];
+  obras: { slug: string; img: string; anyo?: number; titulo: { es: string; en: string }; estado: { es: string; en: string }; tiene3D: boolean }[];
 };
 
 const ARTISTAS: Record<string, ArtistData> = {
@@ -30,9 +30,9 @@ const ARTISTAS: Record<string, ArtistData> = {
     bioEn: "San Sebastián, Spain. Space, water and bronze. Her work joins intimate architecture and lattices that invite you to look from within.",
     espEs: "Bronce, agua y celosía", espEn: "Bronze, water and lattice",
     obras: [
-      { slug: "caida", img: caida, titulo: { es: "Caída", en: "Fall" }, estado: { es: "Publicada", en: "Published" } },
-      { slug: "eco-ondas", img: eco, titulo: { es: "Eco", en: "Echo" }, estado: { es: "Publicada", en: "Published" } },
-      { slug: "umbral", img: umbral, titulo: { es: "Umbral", en: "Threshold" }, estado: { es: "Vendida", en: "Sold" } },
+      { slug: "caida", img: caida, anyo: 2023, titulo: { es: "Caída", en: "Fall" }, estado: { es: "Publicada", en: "Published" }, tiene3D: true },
+      { slug: "eco-ondas", img: eco, anyo: 2022, titulo: { es: "Eco", en: "Echo" }, estado: { es: "Publicada", en: "Published" }, tiene3D: false },
+      { slug: "umbral", img: umbral, anyo: 2021, titulo: { es: "Umbral", en: "Threshold" }, estado: { es: "Vendida", en: "Sold" }, tiene3D: true },
     ],
   },
   "jaume-plensa": {
@@ -42,9 +42,9 @@ const ARTISTAS: Record<string, ArtistData> = {
     bioEn: "Barcelona, Spain. Figure, word and scale. His work brings together human presence, silence and writing in monumental pieces.",
     espEs: "Figura, palabra y escala", espEn: "Figure, word and scale",
     obras: [
-      { slug: "vertice", img: vertice, titulo: { es: "Vértice", en: "Vertex" }, estado: { es: "Publicada", en: "Published" } },
-      { slug: "quietud", img: quietud, titulo: { es: "Quietud", en: "Stillness" }, estado: { es: "Publicada", en: "Published" } },
-      { slug: "resto", img: resto, titulo: { es: "Resto", en: "Remnant" }, estado: { es: "Borrador", en: "Draft" } },
+      { slug: "vertice", img: vertice, anyo: 2024, titulo: { es: "Vértice", en: "Vertex" }, estado: { es: "Publicada", en: "Published" }, tiene3D: true },
+      { slug: "quietud", img: quietud, anyo: 2023, titulo: { es: "Quietud", en: "Stillness" }, estado: { es: "Publicada", en: "Published" }, tiene3D: false },
+      { slug: "resto", img: resto, anyo: 2022, titulo: { es: "Resto", en: "Remnant" }, estado: { es: "Borrador", en: "Draft" }, tiene3D: false },
     ],
   },
   "susana-solano": {
@@ -54,9 +54,9 @@ const ARTISTAS: Record<string, ArtistData> = {
     bioEn: "Barcelona, Spain. Metal, structure and space. Approaches metal as both physical and mental construction.",
     espEs: "Metal, estructura y espacio", espEn: "Metal, structure and space",
     obras: [
-      { slug: "caida", img: caida, titulo: { es: "Caída", en: "Fall" }, estado: { es: "Publicada", en: "Published" } },
-      { slug: "vertice", img: vertice, titulo: { es: "Vértice", en: "Vertex" }, estado: { es: "Vendida", en: "Sold" } },
-      { slug: "umbral", img: umbral, titulo: { es: "Umbral", en: "Threshold" }, estado: { es: "Borrador", en: "Draft" } },
+      { slug: "caida", img: caida, anyo: 2023, titulo: { es: "Caída", en: "Fall" }, estado: { es: "Publicada", en: "Published" }, tiene3D: true },
+      { slug: "vertice", img: vertice, anyo: 2022, titulo: { es: "Vértice", en: "Vertex" }, estado: { es: "Vendida", en: "Sold" }, tiene3D: false },
+      { slug: "umbral", img: umbral, anyo: 2021, titulo: { es: "Umbral", en: "Threshold" }, estado: { es: "Borrador", en: "Draft" }, tiene3D: false },
     ],
   },
   "helena-vazquez": {
@@ -66,12 +66,12 @@ const ARTISTAS: Record<string, ArtistData> = {
     bioEn: "Toledo, Spain. Figurative bronze. Three decades working the human figure through slow craft.",
     espEs: "Bronce figurativo", espEn: "Figurative bronze",
     obras: [
-      { slug: "caida", img: caida, titulo: { es: "Caída", en: "Fall" }, estado: { es: "Publicada", en: "Published" } },
-      { slug: "eco-ondas", img: eco, titulo: { es: "Eco", en: "Echo" }, estado: { es: "Publicada", en: "Published" } },
-      { slug: "umbral", img: umbral, titulo: { es: "Umbral", en: "Threshold" }, estado: { es: "Borrador", en: "Draft" } },
-      { slug: "vertice", img: vertice, titulo: { es: "Vértice", en: "Vertex" }, estado: { es: "Vendida", en: "Sold" } },
-      { slug: "quietud", img: quietud, titulo: { es: "Quietud", en: "Stillness" }, estado: { es: "Publicada", en: "Published" } },
-      { slug: "resto", img: resto, titulo: { es: "Resto", en: "Remnant" }, estado: { es: "Borrador", en: "Draft" } },
+      { slug: "caida", img: caida, anyo: 2024, titulo: { es: "Caída", en: "Fall" }, estado: { es: "Publicada", en: "Published" }, tiene3D: true },
+      { slug: "eco-ondas", img: eco, anyo: 2023, titulo: { es: "Eco", en: "Echo" }, estado: { es: "Publicada", en: "Published" }, tiene3D: false },
+      { slug: "umbral", img: umbral, anyo: 2022, titulo: { es: "Umbral", en: "Threshold" }, estado: { es: "Borrador", en: "Draft" }, tiene3D: false },
+      { slug: "vertice", img: vertice, anyo: 2022, titulo: { es: "Vértice", en: "Vertex" }, estado: { es: "Vendida", en: "Sold" }, tiene3D: true },
+      { slug: "quietud", img: quietud, anyo: 2021, titulo: { es: "Quietud", en: "Stillness" }, estado: { es: "Publicada", en: "Published" }, tiene3D: true },
+      { slug: "resto", img: resto, anyo: 2020, titulo: { es: "Resto", en: "Remnant" }, estado: { es: "Borrador", en: "Draft" }, tiene3D: false },
     ],
   },
 };
@@ -125,23 +125,27 @@ export default function PerfilEscultor() {
           <h2 className="font-display font-bold text-[clamp(22px,2.4vw,32px)] tracking-[-0.02em] text-ink">{t.mine}</h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-          {artist.obras.map((o, i) => {
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          {artist.obras.map((o) => {
             const titulo = o.titulo[lang];
             return (
-              <article key={titulo} className="group">
-                <Link to={`/obra/${o.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary mb-4">
+              <article key={titulo + o.slug} className="group">
+                <Link to={`/analiticas/${slug}/${o.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary mb-4">
                   <img src={o.img} alt={titulo} loading="lazy" width={1024} height={1280} className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
                 </Link>
-                <h3 className="font-display font-bold text-[16px] text-ink mb-1">{titulo}</h3>
-                <div className="font-body text-[13px] text-muted-line uppercase tracking-[0.14em] mb-3">{o.estado[lang]}</div>
-                <div className="flex items-center gap-4">
-                  <Link
-                    to={`/obra/${o.slug}`}
-                    className="font-body text-[12px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-60 transition-opacity"
-                  >
-                    {t.viewObra} →
-                  </Link>
+                <h3 className="font-display font-bold text-[16px] text-ink mb-0.5">
+                  {titulo} {o.anyo && <span className="text-muted-line font-normal">· {o.anyo}</span>}
+                </h3>
+                <div className="font-body text-[11px] text-muted-line uppercase tracking-[0.14em] mb-3">{o.estado[lang]}</div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  {o.tiene3D ? (
+                    <span className="inline-block px-2 py-1 font-body text-[10px] uppercase tracking-[0.16em] font-medium" style={{ backgroundColor: "#CCFF00", color: "#000" }}>3D activo</span>
+                  ) : (
+                    <>
+                      <span className="inline-block px-2 py-1 font-body text-[10px] uppercase tracking-[0.16em] border border-amber-500 text-amber-600">3D pendiente</span>
+                      <button className="font-body text-[10px] uppercase tracking-[0.14em] border border-ink text-ink px-2 py-1 hover:bg-ink hover:text-white transition-colors">Añadir</button>
+                    </>
+                  )}
                 </div>
               </article>
             );

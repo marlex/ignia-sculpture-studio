@@ -19,6 +19,7 @@ import ObraDetalle from "./pages/ObraDetalle.tsx";
 import Publicar from "./pages/Publicar.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 import AddView3d from "./pages/AddView3d.tsx";
+import ObraAnalytics from "./pages/ObraAnalytics.tsx";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ const App = () => (
               <Route path="/editorial" element={<EditorialPage />} />
               <Route path="/ignia-gallery" element={<IgniaGalleryPage />} />
               <Route path="/obra/:slug" element={<ObraDetalle />} />
+              <Route path="/analiticas/:slug/:obraSlug" element={<ObraAnalytics />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
