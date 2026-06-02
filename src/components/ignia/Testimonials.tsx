@@ -41,13 +41,8 @@ export const Testimonials = () => {
           {testimonials.map((t, i) => (
             <div
               key={i}
-              className="md:px-12"
-              style={{
-                borderRight:
-                  i < testimonials.length - 1
-                    ? "1px solid #EEEEEE"
-                    : "none",
-              }}
+              className={`md:px-12 ${i < testimonials.length - 1 ? "md:border-r" : ""}`}
+              style={{ borderColor: "#EEEEEE" }}
             >
               <p
                 style={{
