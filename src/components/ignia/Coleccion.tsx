@@ -50,7 +50,7 @@ export const Coleccion = () => {
   }, [open3d]);
 
   return (
-    <section className="bg-white px-6 md:px-12 pt-8 pb-28">
+    <section className="bg-white px-6 md:px-12 py-[60px]">
       <div className="flex items-end justify-between mb-2 flex-wrap gap-4">
         <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.h}</h2>
         <a href="#" className="link-arrow">{t.cta}</a>
