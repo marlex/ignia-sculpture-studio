@@ -25,7 +25,7 @@ export const Hero = () => {
   const prev = () => setActual((actual + obras.length - 1) % obras.length);
 
   return (
-    <section className="relative w-screen h-screen overflow-hidden bg-surface">
+    <section className="relative w-screen overflow-hidden bg-surface" style={{ height: "calc(100vh - 120px)" }}>
       {o.glbUrl ? (
         <div className="absolute inset-0">
           <GlbViewer url={o.glbUrl} alt={o.title} minHeight="100vh" bgColor="#1c1c1a" />
