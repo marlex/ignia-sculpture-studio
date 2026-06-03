@@ -12,7 +12,7 @@ export const Coleccion = () => {
 
   const t = lang === "es" ? {
     h: "Descubre todas las colecciones",
-    cta: "Ver las 843 obras →",
+    cta: "Ver obras →",
     sub: "843 obras · Actualizado semanalmente",
     search: "Buscar artista, obra, material…",
     filters: ["Material", "Precio", "Técnica"],
