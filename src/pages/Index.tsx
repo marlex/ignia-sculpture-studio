@@ -10,7 +10,6 @@ import { Reviews } from "@/components/ignia/home/Reviews";
 import { CtaFinalNew } from "@/components/ignia/home/CtaFinalNew";
 import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { Splash } from "@/components/ignia/home/Splash";
-import { HeroBanner } from "@/components/ignia/home/HeroBanner";
 import { useFadeUp } from "@/hooks/useFadeUp";
 
 const Index = () => {
@@ -24,7 +23,6 @@ const Index = () => {
     return () => window.removeEventListener("ignia:open-invite", open);
   }, []);
 
-  const fadeBanner = useFadeUp<HTMLDivElement>();
   const fadeTicker = useFadeUp<HTMLDivElement>();
   const fadeCol = useFadeUp<HTMLDivElement>();
   const fadeArt = useFadeUp<HTMLDivElement>();
@@ -36,9 +34,6 @@ const Index = () => {
       <Splash />
       <Header />
       <Hero />
-      <div ref={fadeBanner}>
-        <HeroBanner onInvite={() => setInviteOpen(true)} onCollection={scrollToColeccion} />
-      </div>
       <div ref={fadeTicker}>
         <Ticker />
       </div>
