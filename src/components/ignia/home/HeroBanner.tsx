@@ -18,7 +18,6 @@ export const HeroBanner = ({ onInvite }: { onInvite: () => void; onCollection?: 
           style={{
             fontFamily: "'Cormorant Garamond', serif",
             fontWeight: 300,
-            fontStyle: "italic",
             fontSize: "clamp(22px, 3vw, 44px)",
             color: "#111111",
             letterSpacing: "0.01em",

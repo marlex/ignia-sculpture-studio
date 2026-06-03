@@ -5,15 +5,12 @@ import { Artistas } from "@/components/ignia/Artistas";
 import { Footer } from "@/components/ignia/Footer";
 import { Hero } from "@/components/ignia/Hero";
 import { Ticker } from "@/components/ignia/home/Ticker";
-import { Stats } from "@/components/ignia/home/Stats";
 import { WhyIgnia } from "@/components/ignia/home/WhyIgnia";
 import { Reviews } from "@/components/ignia/home/Reviews";
 import { CtaFinalNew } from "@/components/ignia/home/CtaFinalNew";
 import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { Splash } from "@/components/ignia/home/Splash";
 import { HeroBanner } from "@/components/ignia/home/HeroBanner";
-import { LogosTicker } from "@/components/ignia/home/LogosTicker";
-import { ConstruidaPara } from "@/components/ignia/home/ConstruidaPara";
 import { useFadeUp } from "@/hooks/useFadeUp";
 
 const Index = () => {
@@ -28,13 +25,10 @@ const Index = () => {
   }, []);
 
   const fadeBanner = useFadeUp<HTMLDivElement>();
-  const fadeLogos = useFadeUp<HTMLDivElement>();
   const fadeTicker = useFadeUp<HTMLDivElement>();
-  const fadeStats = useFadeUp<HTMLDivElement>();
   const fadeWhy = useFadeUp<HTMLDivElement>();
   const fadeCol = useFadeUp<HTMLDivElement>();
   const fadeArt = useFadeUp<HTMLDivElement>();
-  const fadeConstruida = useFadeUp<HTMLDivElement>();
   const fadeReviews = useFadeUp<HTMLDivElement>();
   const fadeCta = useFadeUp<HTMLDivElement>();
 
@@ -46,14 +40,8 @@ const Index = () => {
       <div ref={fadeBanner}>
         <HeroBanner onInvite={() => setInviteOpen(true)} onCollection={scrollToColeccion} />
       </div>
-      <div ref={fadeLogos}>
-        <LogosTicker />
-      </div>
       <div ref={fadeTicker}>
         <Ticker />
-      </div>
-      <div ref={fadeStats}>
-        <Stats />
       </div>
       <div ref={fadeWhy}>
         <WhyIgnia />
@@ -65,9 +53,6 @@ const Index = () => {
       </div>
       <div ref={fadeArt}>
         <Artistas />
-      </div>
-      <div ref={fadeConstruida}>
-        <ConstruidaPara onInvite={() => setInviteOpen(true)} />
       </div>
       <div ref={fadeReviews}>
         <Reviews />
