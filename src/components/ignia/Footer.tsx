@@ -89,8 +89,19 @@ export const Footer = () => {
           </div>
         ))}
       </div>
-      <div className="border-t-[0.5px] border-border mt-10 pt-5 flex justify-between flex-wrap gap-3">
-        <span className="font-body text-[14px] font-light text-gray">© 2026 Ignia Gallery</span>
+      <div className="border-t-[0.5px] border-border mt-10 pt-5 flex justify-between flex-wrap gap-3 items-center">
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <span className="font-body text-[14px] font-light text-gray">© 2026 Ignia Gallery</span>
+          <a href="/legal/terminos.html" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+            {lang === "es" ? "Términos y Condiciones" : "Terms & Conditions"}
+          </a>
+          <a href="/legal/privacidad.html" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+            {lang === "es" ? "Política de Privacidad" : "Privacy Policy"}
+          </a>
+          <a href="/legal/envios-y-devoluciones.html" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+            {lang === "es" ? "Envíos y Devoluciones" : "Shipping & Returns"}
+          </a>
+        </div>
         <span className="font-body text-[14px] font-light" style={{ color: "#444" }}>{status}</span>
       </div>
     </footer>
