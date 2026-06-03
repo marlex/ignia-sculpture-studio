@@ -49,7 +49,7 @@ export const InviteModal = ({ open, onClose }: Props) => {
         @keyframes modalIn { from { opacity:0; transform: translateY(16px) } to { opacity:1; transform:translateY(0) } }
         .invite-input { width:100%; background:transparent; border:none; border-bottom:1px solid #111111; outline:none; font-family:Manrope,sans-serif; font-weight:500; color:#111111; font-size:16px; padding:0 0 8px; border-radius:0; }
         .invite-input:focus { border-bottom-color:#111111; }
-        .invite-label { display:block; font-family:Manrope,sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:0.14em; font-size:11px; color:#111111; margin-bottom:12px; }
+        .invite-label { display:block; font-family:Manrope,sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:0.14em; font-size:11px; color:#111111; margin-bottom:12px; }
         .invite-field { margin-bottom:28px; }
       `}</style>
       <div
