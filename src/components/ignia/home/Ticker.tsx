@@ -6,21 +6,17 @@ const FAIRS = [
 
 export const Ticker = () => {
   const row = (
-    <div className="flex items-center shrink-0" style={{ paddingRight: 48 }}>
+    <div className="flex items-center shrink-0" style={{ paddingRight: 64 }}>
       {FAIRS.map((f, i) => (
         <span key={i} className="flex items-center">
-          <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: 18 }}>{f}</span>
-          {i < FAIRS.length - 1 && <span style={{ color: "#666666", padding: "0 24px" }}>·</span>}
-          {i === FAIRS.length - 1 && <span style={{ color: "#666666", padding: "0 24px" }}>·</span>}
+          <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: 26 }}>{f}</span>
+          <span style={{ color: "#999999", padding: "0 32px" }}>·</span>
         </span>
       ))}
     </div>
   );
   return (
-    <section style={{ background: "#FFFFFF", padding: "24px 0", borderTop: "1px solid #E5E5E5", borderBottom: "1px solid #E5E5E5" }}>
-      <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "#666666", textAlign: "center", marginBottom: 16 }}>
-        El mundo de la escultura se mueve aquí
-      </div>
+    <section style={{ background: "#FFFFFF", padding: "72px 0" }}>
       <div className="overflow-hidden ticker-wrap">
         <div className="flex ticker-track">
           {row}{row}
