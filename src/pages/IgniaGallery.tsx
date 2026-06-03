@@ -151,12 +151,6 @@ const IgniaGalleryPage = () => {
                 Ignia Gallery
               </a>
             </li>
-            <li>
-              {lang === "es" ? "Teléfono" : "Phone"}:{" "}
-              <a href="tel:+34673152055" className="underline underline-offset-4 hover:text-ink transition-colors">
-                +34 673 152 055
-              </a>
-            </li>
           </ul>
         </div>
       </section>
