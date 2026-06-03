@@ -31,15 +31,14 @@ const ARTISTAS = {
 export const Artistas = () => {
   const lang = useLang();
   const artistas = ARTISTAS[lang];
-  const [i, setI] = useState(0);
-  const principal = artistas[i];
-  const secundarios = artistas.filter((_, idx) => idx !== i).slice(0, 2);
+  const principal = artistas.find((a) => a.nombre === "Susana Solano") ?? artistas[0];
+  const secundarios = artistas.filter((a) => a.nombre !== principal.nombre).slice(0, 2);
   const t = lang === "es"
     ? { h: "Escultores", all: "Ver todos →", featured: "Escultores destacados", view: "Ver artista →" }
     : { h: "Sculptors", all: "View all →", featured: "Featured sculptors", view: "View artist →" };
 
   return (
-    <section className="bg-white px-6 md:px-12 py-24">
+    <section className="px-6 md:px-12 py-24" style={{ background: "#f5f5f5" }}>
       <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
         <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.h}</h2>
         <a href="#" className="link-arrow">{t.all}</a>
