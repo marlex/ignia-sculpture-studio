@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
 
 export const Splash = () => {
-  const [show, setShow] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return !sessionStorage.getItem("ignia_splash_seen");
-  });
+  const [show, setShow] = useState(true);
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
     if (!show) return;
-    sessionStorage.setItem("ignia_splash_seen", "1");
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     // fade-in 600ms + hold 1200ms = 1800ms, then fade out 500ms
