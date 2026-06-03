@@ -6,11 +6,12 @@ export const HeroBanner = ({ onInvite, onCollection }: { onInvite: () => void; o
     fontWeight: 600,
     textTransform: "uppercase",
     letterSpacing: "0.13em",
-    fontSize: 11,
-    padding: "10px 20px",
+    fontSize: 10,
+    padding: "8px 18px",
     border: "none",
     borderRadius: 0,
     cursor: "pointer",
+    boxShadow: "none",
   };
 
   return (
@@ -18,12 +19,12 @@ export const HeroBanner = ({ onInvite, onCollection }: { onInvite: () => void; o
       style={{
         background: "#FFFFFF",
         height: 64,
-        padding: "0 48px",
+        padding: "0 40px",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        borderTop: "1px solid #E0E0E0",
-        borderBottom: "1px solid #E0E0E0",
+        borderTop: "0.5px solid #E5E5E5",
+        borderBottom: "0.5px solid #E5E5E5",
         borderRadius: 0,
       }}
     >
@@ -32,10 +33,9 @@ export const HeroBanner = ({ onInvite, onCollection }: { onInvite: () => void; o
           fontFamily: "'Cormorant Garamond', serif",
           fontWeight: 300,
           fontStyle: "italic",
-          fontSize: 18,
+          fontSize: 17,
           color: "#111111",
-          letterSpacing: "0.01em",
-          lineHeight: 1,
+          letterSpacing: "0.02em",
         }}
       >
         La primera galería global de escultura.
