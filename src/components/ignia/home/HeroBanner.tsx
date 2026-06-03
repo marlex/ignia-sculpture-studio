@@ -22,7 +22,7 @@ export const HeroBanner = (_props: { onInvite?: () => void; onCollection?: () =>
           textAlign: "center",
         }}
       >
-        Ignia es la primera galería global de escultura.
+        Galería exclusiva para la escultura.
       </span>
     </div>
   );
