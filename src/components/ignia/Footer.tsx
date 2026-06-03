@@ -23,7 +23,7 @@ const COLS = {
       ],
     },
     {
-      label: "Compañía",
+      label: "IGNIA GALLERY",
       links: [
         { label: "Sobre Ignia", to: "/ignia-gallery" },
         { label: "Editorial", to: "/editorial" },
@@ -52,7 +52,7 @@ const COLS = {
       ],
     },
     {
-      label: "Company",
+      label: "IGNIA GALLERY",
       links: [
         { label: "About Ignia", to: "/ignia-gallery" },
         { label: "Editorial", to: "/editorial" },
