@@ -69,7 +69,7 @@ export const Footer = () => {
   const tagline = lang === "es"
     ? "La primera galería digital dedicada exclusivamente a la escultura."
     : "The first digital gallery devoted exclusively to sculpture.";
-  const status = lang === "es" ? "v0.1 — Validación activa" : "v0.1 — Active validation";
+  const status = lang === "es" ? "v0.1 — Beta" : "v0.1 — Beta";
 
   return (
     <footer className="bg-white border-t-[0.5px] border-border px-6 md:px-12 pt-14 pb-8">
