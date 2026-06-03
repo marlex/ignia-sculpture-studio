@@ -11,11 +11,6 @@ const T = {
     nameEy: "El nombre",
     nameH: <>Ignia viene del latín <em>ignis</em>, fuego.</>,
     nameP: <>En la retórica latina, <em>ignis</em> era también lo que aviva o enciende una pasión. Ignia Gallery nace exactamente de eso: encender algo que ya existía pero que nadie podía ver todavía. Un talento escultórico enorme, disperso por el mundo, sin el escaparate que merece.</>,
-    foundEy: "Quiénes están detrás",
-    found1a: "Antes de los títulos, antes del producto digital, antes del project management, ya había pintura. Más tarde llegó la escultura, y con ella la consciencia física de lo que significa crear algo tridimensional con las manos.",
-    found1b: "Ignia nace de esa doble mirada: la de quien ha estado dentro del taller con las manos llenas de barro y bronce, y la de quien lleva más de una década diseñando productos digitales que la gente ama usar.",
-    found2a: "Cuando empezamos a buscar dónde mostrar y vender escultura, lo que encontramos fue decepcionante. No por falta de oferta, sino porque ninguna experiencia estaba pensada para una obra que cambia con la luz, el ángulo y la distancia.",
-    found2b: "Una foto frontal nunca le hará justicia a una pieza tridimensional. Esa frustración, muy personal, es la que dio origen a todo lo que somos hoy.",
     pillEy: "Lo que defendemos",
     pillH: "Una plataforma dedicada exclusivamente a la escultura.",
     pilares: [
@@ -52,11 +47,6 @@ const T = {
     nameEy: "The name",
     nameH: <>Ignia comes from the Latin <em>ignis</em>, fire.</>,
     nameP: <>In Latin rhetoric, <em>ignis</em> was also that which kindles a passion. Ignia Gallery was born exactly from that: igniting something that already existed but no one could yet see. An enormous sculptural talent, scattered around the world, without the showcase it deserves.</>,
-    foundEy: "Who's behind it",
-    found1a: "Before the titles, before digital product, before project management, there was painting. Later came sculpture, and with it the physical awareness of what it means to create something three-dimensional with your hands.",
-    found1b: "Ignia is born from that double lens: that of someone who has stood in the workshop with hands full of clay and bronze, and that of someone who has spent over a decade designing digital products people love to use.",
-    found2a: "When we started looking for where to show and sell sculpture, what we found was disappointing. Not because there was no supply, but because no experience was designed for a piece that changes with light, angle and distance.",
-    found2b: "A frontal photograph will never do justice to a three-dimensional piece. That very personal frustration is what gave birth to everything we are today.",
     pillEy: "What we stand for",
     pillH: "A platform devoted exclusively to sculpture.",
     pilares: [
@@ -113,21 +103,6 @@ const IgniaGalleryPage = () => {
         </div>
       </section>
 
-      <section className="bg-surface px-6 md:px-12 py-20">
-        <div className="max-w-[1080px] mx-auto">
-          <div className="eyebrow mb-4">{t.foundEy}</div>
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-12">
-            <div>
-              <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-5">{t.found1a}</p>
-              <p className="font-body text-[16px] font-light text-gray leading-relaxed">{t.found1b}</p>
-            </div>
-            <div>
-              <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-5">{t.found2a}</p>
-              <p className="font-body text-[16px] font-light text-gray leading-relaxed">{t.found2b}</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="bg-white px-6 md:px-12 py-20">
         <div className="max-w-[1080px] mx-auto">
