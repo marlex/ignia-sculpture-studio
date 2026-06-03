@@ -27,7 +27,7 @@ export default function Dashboard() {
   return (
     <main style={{ background: "#FFFFFF", minHeight: "100vh" }}>
       <header style={{ borderBottom: "1px solid #E5E5E5", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <Link to="/" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: 20, letterSpacing: "0.12em", textDecoration: "none" }}>
+        <Link to="/" style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 400, color: "#111111", fontSize: 20, letterSpacing: "0.12em", textDecoration: "none", textTransform: "uppercase" }}>
           IGNIA
         </Link>
         <span style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 14 }}>
