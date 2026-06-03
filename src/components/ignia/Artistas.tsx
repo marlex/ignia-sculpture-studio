@@ -70,7 +70,6 @@ export const Artistas = () => {
         <div className="font-body text-[12px] font-light text-muted-line uppercase tracking-[0.18em] mb-6">{t.featured}</div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {secundarios.map((a) => {
-            const realIdx = artistas.findIndex((x) => x.nombre === a.nombre);
             return (
               <article key={a.nombre} className="group grid grid-cols-[40%_60%] gap-5 items-start">
                 <Link to={`/perfil/escultor/${a.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} aria-label={a.nombre} className="block aspect-square overflow-hidden bg-secondary">
@@ -84,9 +83,6 @@ export const Artistas = () => {
                     <div className="font-body text-[11px] font-light text-muted-line mb-3">{a.credito}</div>
                     <span className="link-arrow text-[12px]">{t.view}</span>
                   </Link>
-                  <button onClick={() => setI(realIdx)} className="mt-3 font-body text-[11px] font-light text-muted-line uppercase tracking-[0.14em] hover:text-ink transition-colors">
-                    {lang === "es" ? "Destacar arriba" : "Feature above"}
-                  </button>
                 </div>
               </article>
             );
