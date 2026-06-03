@@ -26,7 +26,6 @@ const Index = () => {
 
   const fadeBanner = useFadeUp<HTMLDivElement>();
   const fadeTicker = useFadeUp<HTMLDivElement>();
-  const fadeWhy = useFadeUp<HTMLDivElement>();
   const fadeCol = useFadeUp<HTMLDivElement>();
   const fadeArt = useFadeUp<HTMLDivElement>();
   const fadeReviews = useFadeUp<HTMLDivElement>();
