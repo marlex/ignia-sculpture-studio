@@ -5,7 +5,7 @@ export const CtaFinalNew = ({ onInvite, onCollection }: { onInvite: () => void; 
   return (
     <section style={{ background: "#111111", padding: "120px 24px" }}>
       <div ref={ref} className="max-w-[1280px] mx-auto" style={{ textAlign: "center" }}>
-        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#FFFFFF", fontSize: "clamp(38px,6vw,70px)", lineHeight: 1, letterSpacing: "-0.03em", whiteSpace: "nowrap" }}>
+        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#FFFFFF", fontSize: "clamp(33px,6vw,65px)", lineHeight: 1, letterSpacing: "-0.03em", whiteSpace: "nowrap" }}>
           Tu escultura empieza aquí.
         </h2>
         <div style={{ marginTop: 48, display: "flex", gap: 32, justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}>
