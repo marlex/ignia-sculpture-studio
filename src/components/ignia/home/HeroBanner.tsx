@@ -4,7 +4,7 @@ export const HeroBanner = ({ onInvite }: { onInvite: () => void; onCollection?: 
       style={{
         background: "#FFFFFF",
         minHeight: 96,
-        padding: "20px 40px",
+        padding: "80px 40px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
