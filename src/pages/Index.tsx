@@ -3,7 +3,7 @@ import { Header } from "@/components/ignia/Header";
 import { Coleccion } from "@/components/ignia/Coleccion";
 import { Artistas } from "@/components/ignia/Artistas";
 import { Footer } from "@/components/ignia/Footer";
-import { HeroSlideshow } from "@/components/ignia/home/HeroSlideshow";
+import { Hero } from "@/components/ignia/Hero";
 import { Ticker } from "@/components/ignia/home/Ticker";
 import { Stats } from "@/components/ignia/home/Stats";
 import { WhyIgnia } from "@/components/ignia/home/WhyIgnia";
@@ -27,7 +27,7 @@ const Index = () => {
     <main className="pt-14" style={{ background: "#FFFFFF" }}>
       <Splash />
       <Header />
-      <HeroSlideshow onInvite={() => setInviteOpen(true)} onCollection={scrollToColeccion} />
+      <Hero />
       <HeroBanner onInvite={() => setInviteOpen(true)} onCollection={scrollToColeccion} />
       <Ticker />
 
