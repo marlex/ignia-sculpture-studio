@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Envíos y Devoluciones — Ignia Gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;700&family=Manrope:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --white: #FFFFFF;
+      --grey-100: #F5F5F5;
+      --grey-300: #CCCCCC;
+      --grey-600: #666666;
+      --grey-800: #1A1A1A;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 300;
+      color: var(--grey-800);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    .page-header {
+      border-bottom: 1px solid var(--grey-300);
+      padding: 40px 0 32px;
+      margin-bottom: 64px;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .wordmark {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 32px;
+    }
+
+    h1 {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.1;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .meta {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      color: var(--grey-600);
+      letter-spacing: 0.02em;
+    }
+
+    h2 {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-top: 64px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--grey-300);
+    }
+
+    h3 {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      color: var(--black);
+      margin-top: 36px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 15px;
+      margin-bottom: 16px;
+      color: var(--grey-800);
+    }
+
+    .intro {
+      font-size: 17px;
+      line-height: 1.65;
+      margin-bottom: 0;
+      margin-top: 8px;
+    }
+
+    .zones {
+      margin: 28px 0;
+      border: 1px solid var(--grey-300);
+    }
+
+    .zone {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      border-bottom: 1px solid var(--grey-300);
+    }
+
+    .zone:last-child {
+      border-bottom: none;
+    }
+
+    .zone-label {
+      padding: 18px 20px;
+      background: var(--grey-100);
+      border-right: 1px solid var(--grey-300);
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .zone-label span {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--black);
+    }
+
+    .zone-content {
+      padding: 18px 20px;
+    }
+
+    .zone-content p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .zone-content .zone-name {
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .zone-content .zone-detail {
+      color: var(--grey-600);
+      font-size: 13px;
+    }
+
+    .highlight-block {
+      background: var(--grey-100);
+      padding: 24px 28px;
+      margin: 28px 0;
+      border-left: 2px solid var(--black);
+    }
+
+    .highlight-block p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .highlight-block p + p {
+      margin-top: 10px;
+    }
+
+    .return-block {
+      border: 1px solid var(--grey-300);
+      padding: 28px;
+      margin: 24px 0;
+    }
+
+    .return-block h3 {
+      margin-top: 0;
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .return-block p {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .return-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .page-footer {
+      margin-top: 96px;
+      padding: 32px 0 48px;
+      border-top: 1px solid var(--grey-300);
+    }
+
+    .page-footer p {
+      font-size: 12px;
+      color: var(--grey-600);
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .page-header { padding: 28px 0 24px; margin-bottom: 40px; }
+      h2 { margin-top: 48px; }
+      .zone { grid-template-columns: 90px 1fr; }
+      .zone-label { padding: 14px 12px; }
+      .zone-content { padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <div class="container">
+      <a class="wordmark" href="/">Ignia Gallery</a>
+      <h1>Política de Envíos y Devoluciones</h1>
+      <p class="meta">Última actualización: mayo de 2026</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <p class="intro">Cuando confirmas una compra en Ignia, nos encargamos de todo lo que ocurre después. Recogemos la obra en el taller del artista, la embalamos con materiales especializados y la llevamos hasta tu puerta. No tienes que gestionar nada.</p>
+
+    <h2>Envíos</h2>
+
+    <h3>Cómo funciona</h3>
+    <p>Todas las obras se recogen, embalan y transportan de forma íntegra por los partners logísticos especializados de Ignia, independientemente del tamaño, el peso o el material de la escultura. El artista no gestiona el embalaje ni el envío en ningún caso.</p>
+    <p>Cada obra llega con el certificado de autenticidad, la ficha técnica de la pieza y las instrucciones de conservación, con una presentación uniforme que responde al estándar de Ignia.</p>
+
+    <h3>Transparencia de costes</h3>
+    <p>Antes de confirmar la compra verás el precio de la obra, el coste de envío y seguro desglosados, y el total. El coste de envío se calcula automáticamente en función del destino y las características de la obra. Sin sorpresas ni costes ocultos.</p>
+
+    <h3>Zonas de entrega y plazos orientativos</h3>
+
+    <div class="zones">
+      <div class="zone">
+        <div class="zone-label"><span>Zona Verde</span></div>
+        <div class="zone-content">
+          <p class="zone-name">España peninsular, Portugal, Francia, Alemania, Italia, Bélgica, Países Bajos</p>
+          <p class="zone-detail">Plazo orientativo: 5 a 14 días hábiles.</p>
+        </div>
+      </div>
+      <div class="zone">
+        <div class="zone-label"><span>Zona Naranja</span></div>
+        <div class="zone-content">
+          <p class="zone-name">Reino Unido, Suiza, Oriente Medio, Estados Unidos, Canadá, México</p>
+          <p class="zone-detail">Plazo orientativo: 10 a 21 días hábiles. Ignia gestiona todos los trámites aduaneros. No tienes que hacer nada.</p>
+        </div>
+      </div>
+      <div class="zone">
+        <div class="zone-label"><span>Zona Roja</span></div>
+        <div class="zone-content">
+          <p class="zone-name">Asia, Australia, América del Sur y destinos con restricciones de exportación cultural</p>
+          <p class="zone-detail">Plazo variable. Ignia te contactará antes de activar el envío para confirmar el proceso.</p>
+        </div>
+      </div>
+      <div class="zone">
+        <div class="zone-label"><span>A medida</span></div>
+        <div class="zone-content">
+          <p class="zone-name">Obras de gran formato, peso excepcional o valor superior a 30.000 €</p>
+          <p class="zone-detail">Cotización personalizada en un plazo máximo de 24 horas tras la compra.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Los plazos son orientativos y pueden verse afectados por factores externos como condiciones climáticas, periodos festivos o demoras aduaneras. Te mantendremos informada del estado del envío en todo momento.</p>
+
+    <h3>Seguro de tránsito</h3>
+    <p>Todas las obras viajan con seguro de tránsito de tipo todo riesgo que cubre pérdida total, daño y robo durante el trayecto completo de puerta a puerta. La cobertura es sobre el valor declarado de la obra. En caso de incidencia, Ignia gestiona la reclamación. No tienes que hacer ningún trámite.</p>
+
+    <h3>Envíos internacionales y aduanas</h3>
+    <p>Para envíos fuera de la Unión Europea, Ignia gestiona todos los trámites aduaneros a través de sus partners logísticos. Las obras de arte originales se benefician en general de tipos arancelarios reducidos o exenciones en los principales mercados. Cualquier coste aduanero aplicable se incluye en el cálculo de envío mostrado antes de confirmar la compra.</p>
+
+    <h2>Devoluciones</h2>
+
+    <div class="return-block">
+      <h3>Obra dañada o que no corresponde a lo descrito</h3>
+      <p>Si la obra llega en condiciones distintas a las descritas o ha sufrido daños durante el transporte, tienes 14 días naturales desde la recepción para notificárnoslo en hola@igniagallery.com o desde tu área de cliente, adjuntando fotografías del estado de la obra y del embalaje.</p>
+      <p>El retorno corre íntegramente a cargo de Ignia. Recibirás el reembolso completo del importe pagado (precio de la obra más coste de envío original) en un plazo máximo de 14 días desde la confirmación de la incidencia, mediante el mismo método de pago utilizado en la compra.</p>
+    </div>
+
+    <div class="return-block">
+      <h3>Cambio de opinión</h3>
+      <p>Tienes derecho a devolver la obra en un plazo de 14 días naturales desde la recepción sin necesidad de dar ninguna explicación. El coste del retorno corre a tu cargo, aunque Ignia coordina la recogida para facilitarte el proceso.</p>
+      <p>Recibirás el reembolso del precio de la obra (no del coste de envío original) en un plazo máximo de 14 días desde que recibamos la obra y verifiquemos que se encuentra en el mismo estado en que fue enviada.</p>
+    </div>
+
+    <h3>Condiciones generales</h3>
+    <p>No se aceptan devoluciones de obras instaladas, modificadas o dañadas tras la recepción. Las obras realizadas por encargo personalizado no tienen derecho de desistimiento y se identifican de forma expresa en su ficha de producto.</p>
+
+    <div class="highlight-block">
+      <p>Para iniciar cualquier devolución, escríbenos a hola@igniagallery.com o contacta con nosotros desde tu área de cliente. Te acompañamos en el proceso.</p>
+    </div>
+
+    <div class="page-footer">
+      <p>Ignia Gallery · hola@igniagallery.com · Madrid, España</p>
+    </div>
+
+  </div>
+</body>
+</html>
