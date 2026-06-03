@@ -117,7 +117,8 @@ export const InviteModal = ({ open, onClose }: Props) => {
               <button
                 type="submit"
                 disabled={loading}
-                style={{ width: "100%", background: "#111111", color: "#FFFFFF", fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 13, padding: 18, border: "none", borderRadius: 0, cursor: "pointer", transition: "background-color 250ms" }}
+                className="font-body"
+                style={{ width: "100%", background: "#111111", color: "#FFFFFF", fontWeight: 300, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 14, padding: "18px 36px", border: "none", borderRadius: 0, cursor: "pointer", transition: "background-color 250ms" }}
                 onMouseEnter={(e) => (e.currentTarget.style.background = "#333333")}
                 onMouseLeave={(e) => (e.currentTarget.style.background = "#111111")}
               >
