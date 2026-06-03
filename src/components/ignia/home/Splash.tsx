@@ -8,12 +8,12 @@ export const Splash = () => {
     if (!show) return;
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    // fade-in 600ms + hold 1200ms = 1800ms, then fade out 500ms
-    const t1 = setTimeout(() => setFading(true), 1800);
+    // soft fade-in 1200ms + hold 1400ms = 2600ms, then soft fade out 1200ms
+    const t1 = setTimeout(() => setFading(true), 2600);
     const t2 = setTimeout(() => {
       setShow(false);
       document.body.style.overflow = prevOverflow;
-    }, 2300);
+    }, 3800);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
@@ -34,15 +34,15 @@ export const Splash = () => {
         alignItems: "center",
         justifyContent: "center",
         opacity: fading ? 0 : 1,
-        transition: "opacity 0.5s ease",
+        transition: "opacity 1.2s ease",
       }}
     >
       <style>{`
         @keyframes ignia-in {
-          from { opacity: 0; transform: scale(0.97); }
+          from { opacity: 0; transform: scale(0.985); }
           to   { opacity: 1; transform: scale(1); }
         }
-        .ignia-splash-logo { width: 42vw; max-width: 460px; animation: ignia-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; transform-origin: center; }
+        .ignia-splash-logo { width: 36vw; max-width: 400px; animation: ignia-in 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards; transform-origin: center; }
       `}</style>
       <div className="ignia-splash-logo">
         <svg width="100%" viewBox="0 0 151 43" fill="none" xmlns="http://www.w3.org/2000/svg">
