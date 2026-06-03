@@ -59,12 +59,12 @@ export const InviteModal = ({ open, onClose }: Props) => {
         <button
           onClick={onClose}
           aria-label="Cerrar"
-          style={{ position: "absolute", top: 16, right: 20, background: "transparent", border: "none", cursor: "pointer", fontFamily: "Urbanist, sans-serif", fontWeight: 700, color: "#111111", fontSize: 24, lineHeight: 1 }}
+          style={{ position: "absolute", top: 16, right: 20, background: "transparent", border: "none", cursor: "pointer", fontFamily: "'Tenor Sans', serif", fontWeight: 700, color: "#111111", fontSize: 24, lineHeight: 1 }}
         >×</button>
 
         {submitted ? (
           <div>
-            <h2 style={{ fontFamily: "Urbanist, sans-serif", fontWeight: 700, color: "#111111", fontSize: 24, marginBottom: 16 }}>
+            <h2 style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 700, color: "#111111", fontSize: 24, marginBottom: 16 }}>
               Solicitud recibida.
             </h2>
             <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 15, lineHeight: 1.6 }}>
@@ -73,7 +73,7 @@ export const InviteModal = ({ open, onClose }: Props) => {
           </div>
         ) : (
           <>
-            <h2 style={{ fontFamily: "Urbanist, sans-serif", fontWeight: 700, color: "#111111", fontSize: 32, lineHeight: 1.1, marginBottom: 12 }}>
+            <h2 style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 700, color: "#111111", fontSize: 32, lineHeight: 1.1, marginBottom: 12 }}>
               Solicitar invitación
             </h2>
             <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 15, lineHeight: 1.5, marginBottom: 36 }}>
@@ -117,7 +117,7 @@ export const InviteModal = ({ open, onClose }: Props) => {
               <button
                 type="submit"
                 disabled={loading}
-                style={{ width: "100%", background: "#111111", color: "#FFFFFF", fontFamily: "Urbanist, sans-serif", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 13, padding: 18, border: "none", borderRadius: 0, cursor: "pointer", transition: "background-color 250ms" }}
+                style={{ width: "100%", background: "#111111", color: "#FFFFFF", fontFamily: "'Tenor Sans', serif", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 13, padding: 18, border: "none", borderRadius: 0, cursor: "pointer", transition: "background-color 250ms" }}
                 onMouseEnter={(e) => (e.currentTarget.style.background = "#333333")}
                 onMouseLeave={(e) => (e.currentTarget.style.background = "#111111")}
               >
