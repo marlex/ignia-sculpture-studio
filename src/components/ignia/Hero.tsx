@@ -98,7 +98,7 @@ export const Hero = () => {
 
         {/* info */}
         <div className="flex-1 text-ink">
-          <h1 className="font-display font-bold leading-[0.95] tracking-[-0.03em] mb-3 text-ink" style={{ fontSize: "clamp(36px, 5vw, 72px)" }}>
+          <h1 className="leading-[1.1] tracking-[0.01em] mb-3 text-ink" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, fontSize: "clamp(22px, 3vw, 44px)" }}>
             {o.title}
           </h1>
           <div className="flex items-center gap-2 flex-wrap mb-3.5 font-body text-[14px] font-light tracking-wide text-gray">
