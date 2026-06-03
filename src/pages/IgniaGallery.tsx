@@ -8,7 +8,7 @@ const T = {
     eyebrow: "La historia",
     h: <>Encender lo que nadie<br />podía ver todavía.</>,
     cite: "“Behind every great piece of art is an unseen mountain of sacrifice, discipline, and commitment.”",
-    nameEy: "El nombre",
+    
     nameH: <>Ignia viene del latín <em>ignis</em>, fuego.</>,
     nameP: <>En la retórica latina, <em>ignis</em> era también lo que aviva o enciende una pasión. Ignia Gallery nace exactamente de eso: encender algo que ya existía pero que nadie podía ver todavía. Un talento escultórico enorme, disperso por el mundo, sin el escaparate que merece.</>,
     pillEy: "Lo que defendemos",
@@ -44,7 +44,7 @@ const T = {
     eyebrow: "The story",
     h: <>Igniting what no one<br />could yet see.</>,
     cite: "“Behind every great piece of art is an unseen mountain of sacrifice, discipline, and commitment.”",
-    nameEy: "The name",
+    
     nameH: <>Ignia comes from the Latin <em>ignis</em>, fire.</>,
     nameP: <>In Latin rhetoric, <em>ignis</em> was also that which kindles a passion. Ignia Gallery was born exactly from that: igniting something that already existed but no one could yet see. An enormous sculptural talent, scattered around the world, without the showcase it deserves.</>,
     pillEy: "What we stand for",
@@ -97,14 +97,13 @@ const IgniaGalleryPage = () => {
 
       <section className="bg-white px-6 md:px-12 py-20">
         <div className="max-w-[860px] mx-auto">
-          <div className="eyebrow mb-4">{t.nameEy}</div>
           <h2 className="font-display font-bold text-[clamp(28px,3.4vw,44px)] tracking-[-0.02em] text-ink leading-[1.1] mb-6">{t.nameH}</h2>
           <p className="font-body text-[17px] font-light text-gray leading-relaxed mb-5">{t.nameP}</p>
         </div>
       </section>
 
 
-      <section className="bg-white px-6 md:px-12 py-20">
+      <section className="px-6 md:px-12 py-20" style={{ backgroundColor: '#F5F5F5' }}>
         <div className="max-w-[1080px] mx-auto">
           <div className="eyebrow mb-4">{t.pillEy}</div>
           <h2 className="font-display font-bold text-[clamp(26px,3vw,40px)] tracking-[-0.02em] text-ink leading-[1.1] mb-10">{t.pillH}</h2>
