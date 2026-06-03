@@ -116,7 +116,6 @@ const IgniaGalleryPage = () => {
       <section className="bg-surface px-6 md:px-12 py-20">
         <div className="max-w-[1080px] mx-auto">
           <div className="eyebrow mb-4">{t.foundEy}</div>
-          <h2 className="font-display font-bold text-[clamp(26px,3vw,40px)] tracking-[-0.02em] text-ink leading-[1.1] mb-10">{t.foundH}</h2>
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-12">
             <div>
               <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-5">{t.found1a}</p>
