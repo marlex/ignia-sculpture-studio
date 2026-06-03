@@ -12,12 +12,12 @@ export const Splash = () => {
     sessionStorage.setItem("ignia_splash_seen", "1");
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    // animation 1.8s + 3s hold = 4.8s, then fade 1.2s
-    const t1 = setTimeout(() => setFading(true), 4800);
+    // fade-in 600ms + hold 1200ms = 1800ms, then fade out 500ms
+    const t1 = setTimeout(() => setFading(true), 1800);
     const t2 = setTimeout(() => {
       setShow(false);
       document.body.style.overflow = prevOverflow;
-    }, 6000);
+    }, 2300);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
@@ -38,16 +38,15 @@ export const Splash = () => {
         alignItems: "center",
         justifyContent: "center",
         opacity: fading ? 0 : 1,
-        transition: "opacity 1.2s ease",
+        transition: "opacity 0.5s ease",
       }}
     >
       <style>{`
         @keyframes ignia-in {
-          0%   { opacity: 0; letter-spacing: 0.5em; transform: scaleX(0.85); }
-          60%  { opacity: 1; }
-          100% { opacity: 1; transform: scaleX(1); }
+          from { opacity: 0; transform: scale(0.97); }
+          to   { opacity: 1; transform: scale(1); }
         }
-        .ignia-splash-logo { width: 55vw; max-width: 600px; animation: ignia-in 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; transform-origin: center; }
+        .ignia-splash-logo { width: 42vw; max-width: 460px; animation: ignia-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; transform-origin: center; }
       `}</style>
       <div className="ignia-splash-logo">
         <svg width="100%" viewBox="0 0 151 43" fill="none" xmlns="http://www.w3.org/2000/svg">

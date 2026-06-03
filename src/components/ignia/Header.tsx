@@ -34,9 +34,14 @@ export const Header = () => {
     else navigate(`/login?redirect=${encodeURIComponent("/publicar")}`);
   };
 
+  const openInvite = () => {
+    window.dispatchEvent(new Event("ignia:open-invite"));
+  };
+
   const t = lang === "es"
-    ? { publish: "Publicar escultura", signin: "Entrar", signout: "Salir", dashboard: "Mi panel" }
-    : { publish: "Publish sculpture", signin: "Sign in", signout: "Sign out", dashboard: "Dashboard" };
+    ? { publish: "Solicitar invitación", signin: "Entrar", signout: "Salir", dashboard: "Mi panel" }
+    : { publish: "Request invitation", signin: "Sign in", signout: "Sign out", dashboard: "Dashboard" };
+
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100] h-14 bg-white/95 backdrop-blur border-b border-border flex items-center px-6 md:px-12">
@@ -69,7 +74,7 @@ export const Header = () => {
           )}
           <button
             type="button"
-            onClick={goPublish}
+            onClick={openInvite}
             className="hidden sm:inline-flex btn-primary !py-2 !px-4 text-[11px]"
           >
             {t.publish}
