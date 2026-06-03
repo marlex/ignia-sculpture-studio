@@ -42,9 +42,6 @@ const Index = () => {
       <div ref={fadeTicker}>
         <Ticker />
       </div>
-      <div ref={fadeWhy}>
-        <WhyIgnia />
-      </div>
       <div ref={coleccionRef}>
         <div ref={fadeCol}>
           <Coleccion />
