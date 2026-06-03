@@ -23,7 +23,6 @@ const Index = () => {
     return () => window.removeEventListener("ignia:open-invite", open);
   }, []);
 
-  const fadeBanner = useFadeUp<HTMLDivElement>();
   const fadeTicker = useFadeUp<HTMLDivElement>();
   const fadeCol = useFadeUp<HTMLDivElement>();
   const fadeArt = useFadeUp<HTMLDivElement>();
@@ -35,9 +34,6 @@ const Index = () => {
       <Splash />
       <Header />
       <Hero />
-      <div ref={fadeBanner}>
-        <HeroBanner onInvite={() => setInviteOpen(true)} onCollection={scrollToColeccion} />
-      </div>
       <div ref={fadeTicker}>
         <Ticker />
       </div>
