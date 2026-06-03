@@ -42,12 +42,12 @@ export default function Publicar() {
   return (
     <main style={{ background: "#FFFFFF", minHeight: "100vh" }}>
       <header style={{ borderBottom: "1px solid #E5E5E5", padding: "20px 40px" }}>
-        <Link to="/" style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 700, color: "#111111", fontSize: 20, letterSpacing: "0.12em", textDecoration: "none" }}>
+        <Link to="/" style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 400, color: "#111111", fontSize: 20, letterSpacing: "0.12em", textDecoration: "none", textTransform: "uppercase" }}>
           IGNIA
         </Link>
       </header>
       <section style={{ maxWidth: 720, margin: "0 auto", padding: "80px 24px 120px" }}>
-        <h1 style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 700, color: "#111111", fontSize: 40, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 16 }}>
+        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: 40, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 16 }}>
           Publicar una obra
         </h1>
         <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 17, lineHeight: 1.5, marginBottom: 56 }}>
@@ -56,7 +56,7 @@ export default function Publicar() {
 
         {submitted ? (
           <div>
-            <h2 style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 700, color: "#111111", fontSize: 28, marginBottom: 16 }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: 28, marginBottom: 16 }}>
               Obra recibida.
             </h2>
             <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>
@@ -98,7 +98,7 @@ export default function Publicar() {
           <button
             type="submit"
             disabled={loading}
-            style={{ width: "100%", background: "#111111", color: "#FFFFFF", fontFamily: "'Tenor Sans', serif", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 13, padding: 18, border: "none", borderRadius: 0, cursor: "pointer", marginTop: 24, transition: "background-color 250ms" }}
+            style={{ width: "100%", background: "#111111", color: "#FFFFFF", fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 13, padding: 18, border: "none", borderRadius: 0, cursor: "pointer", marginTop: 24, transition: "background-color 250ms" }}
             onMouseEnter={(e) => (e.currentTarget.style.background = "#333333")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "#111111")}
           >

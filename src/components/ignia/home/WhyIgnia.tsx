@@ -11,16 +11,16 @@ export const WhyIgnia = () => {
   return (
     <section style={{ background: "#111111", padding: "100px 24px" }}>
       <div ref={ref} className="max-w-[1280px] mx-auto">
-        <h2 style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 700, color: "#FFFFFF", fontSize: "clamp(32px,4.5vw,48px)", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 72, maxWidth: 780 }}>
+        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#FFFFFF", fontSize: "clamp(32px,4.5vw,48px)", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 72, maxWidth: 780 }}>
           Construida para la escultura. Solo para eso.
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3">
           {BLOCKS.map((b, i) => (
             <div key={b.n} style={{ padding: "0 40px", borderLeft: i === 0 ? "none" : "1px solid #333333" }}>
-              <div style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 700, color: "#FFFFFF", opacity: 0.15, fontSize: 80, lineHeight: 1, marginBottom: 24 }}>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#FFFFFF", opacity: 0.15, fontSize: 80, lineHeight: 1, marginBottom: 24 }}>
                 {b.n}
               </div>
-              <h3 style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 700, color: "#FFFFFF", fontSize: 22, lineHeight: 1.25, marginBottom: 16 }}>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#FFFFFF", fontSize: 22, lineHeight: 1.25, marginBottom: 16 }}>
                 {b.t}
               </h3>
               <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "rgba(255,255,255,0.7)", fontSize: 16, lineHeight: 1.7 }}>

@@ -39,13 +39,14 @@ export const HeroSlideshow = ({ onInvite, onCollection }: Props) => {
   }, []);
 
   return (
-    <section className="relative w-full h-screen overflow-hidden" style={{ background: "#111111" }}>
+    <section className="relative w-full h-screen overflow-hidden" style={{ background: "#000000" }}>
       <style>{`
         @keyframes kb-a { 0%{transform:scale(1) translate(0,0)} 100%{transform:scale(1.08) translate(-16px,0)} }
         @keyframes kb-b { 0%{transform:scale(1) translate(0,0)} 100%{transform:scale(1.08) translate(0,-12px)} }
+        .hero-cta-light:hover { background:#F2F2F2 !important; }
       `}</style>
 
-      {/* Slideshow background — absolute, full hero */}
+      {/* Slideshow background */}
       <div ref={layerRef} className="absolute inset-0 will-change-transform z-0">
         {IMAGES.map((src, i) => (
           <div
@@ -67,53 +68,97 @@ export const HeroSlideshow = ({ onInvite, onCollection }: Props) => {
         ))}
       </div>
 
-      {/* Overlay above slideshow */}
-      <div className="absolute inset-0 z-[1]" style={{ background: "rgba(0,0,0,0.55)" }} />
+      {/* Overlay */}
+      <div className="absolute inset-0 z-[1]" style={{ background: "rgba(0,0,0,0.6)" }} />
 
-      {/* Two-column content above overlay */}
-      <div className="relative z-10 h-full grid grid-cols-1 md:grid-cols-[55%_45%] items-center gap-8 px-6 md:px-12 lg:px-16">
-        <div className="max-w-[640px]">
-          <h1
-            style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 400, color: "#FFFFFF", fontSize: "clamp(40px, 6vw, 72px)", lineHeight: 1.05, letterSpacing: "-0.01em" }}
-          >
-            La primera galería del mundo<br />dedicada exclusivamente<br />a la escultura.
-          </h1>
-          <p
-            className="mt-7 max-w-[560px]"
-            style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#FFFFFF", opacity: 0.85, fontSize: "19px", lineHeight: 1.5 }}
-          >
-            Ve cada obra en 3D. Compra con certificado blockchain. Los artistas se quedan con el 82–85%. Sin galería, sin condiciones.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <button
-              onClick={onInvite}
-              className="hero-cta-light"
-              style={{ fontFamily: "Manrope, sans-serif", fontWeight: 700, fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", padding: "16px 32px", background: "#FFFFFF", color: "#111111", border: "none", borderRadius: 0, cursor: "pointer", transition: "background-color 250ms" }}
-            >
-              Solicitar invitación
-            </button>
-            <button
-              onClick={onCollection}
-              className="hero-cta-dark"
-              style={{ fontFamily: "Manrope, sans-serif", fontWeight: 700, fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", padding: "16px 32px", background: "transparent", color: "#FFFFFF", border: "1px solid #FFFFFF", borderRadius: 0, cursor: "pointer", transition: "background-color 250ms" }}
-            >
-              Ver la colección
-            </button>
-          </div>
+      {/* 3D sculpture centered, 65vh, slightly above center */}
+      {featured?.glbUrl && (
+        <div
+          className="absolute left-1/2 z-[2] pointer-events-auto"
+          style={{ top: "46%", transform: "translate(-50%, -50%)", height: "65vh", width: "min(900px, 90vw)" }}
+        >
+          <GlbViewer url={featured.glbUrl} alt={featured.title} bgColor="transparent" minHeight="65vh" />
         </div>
+      )}
 
-        {/* 3D viewer column */}
-        <div className="hidden md:block w-full" style={{ height: "70vh" }}>
-          {featured?.glbUrl && (
-            <GlbViewer url={featured.glbUrl} alt={featured.title} bgColor="transparent" minHeight="70vh" />
-          )}
+      {/* Headline above sculpture */}
+      <h1
+        className="absolute left-1/2 z-[3] text-center w-full px-6 pointer-events-none"
+        style={{
+          top: "10vh",
+          transform: "translateX(-50%)",
+          fontFamily: "'Cormorant Garamond', serif",
+          fontWeight: 300,
+          color: "#FFFFFF",
+          fontSize: 28,
+          textTransform: "uppercase",
+          letterSpacing: "0.2em",
+          lineHeight: 1.2,
+        }}
+      >
+        La primera galería mundial de escultura
+      </h1>
+
+      {/* Subtitle + CTAs below sculpture */}
+      <div
+        className="absolute left-1/2 z-[3] text-center w-full px-6"
+        style={{ bottom: "8vh", transform: "translateX(-50%)" }}
+      >
+        <p
+          style={{
+            fontFamily: "Manrope, sans-serif",
+            fontWeight: 500,
+            color: "#FFFFFF",
+            opacity: 0.75,
+            fontSize: 15,
+            lineHeight: 1.5,
+            maxWidth: 720,
+            margin: "0 auto",
+          }}
+        >
+          Ve cada obra en 3D. Certificado blockchain en cada venta. Los artistas se quedan con el 82–85%.
+        </p>
+        <div className="flex items-center justify-center flex-wrap" style={{ gap: 32, marginTop: 32 }}>
+          <button
+            onClick={onInvite}
+            className="hero-cta-light"
+            style={{
+              fontFamily: "Manrope, sans-serif",
+              fontWeight: 600,
+              fontSize: 12,
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              padding: "14px 28px",
+              background: "#FFFFFF",
+              color: "#111111",
+              border: "none",
+              borderRadius: 0,
+              cursor: "pointer",
+              transition: "background-color 250ms",
+            }}
+          >
+            Solicitar invitación
+          </button>
+          <button
+            onClick={onCollection}
+            style={{
+              fontFamily: "Manrope, sans-serif",
+              fontWeight: 500,
+              fontSize: 12,
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              color: "#FFFFFF",
+              background: "transparent",
+              border: "none",
+              borderBottom: "1px solid #FFFFFF",
+              paddingBottom: 2,
+              cursor: "pointer",
+            }}
+          >
+            Ver la colección
+          </button>
         </div>
       </div>
-
-      <style>{`
-        .hero-cta-light:hover { background:#F2F2F2 !important; }
-        .hero-cta-dark:hover { background:#333333 !important; }
-      `}</style>
     </section>
   );
 };
