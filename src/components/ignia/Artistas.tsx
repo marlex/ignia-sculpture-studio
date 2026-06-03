@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
 import cristina from "@/assets/artist-cristina-iglesias-real.jpg";
@@ -31,15 +30,14 @@ const ARTISTAS = {
 export const Artistas = () => {
   const lang = useLang();
   const artistas = ARTISTAS[lang];
-  const [i, setI] = useState(0);
-  const principal = artistas[i];
-  const secundarios = artistas.filter((_, idx) => idx !== i).slice(0, 2);
+  const principal = artistas.find((a) => a.nombre === "Susana Solano") ?? artistas[0];
+  const secundarios = artistas.filter((a) => a.nombre !== principal.nombre).slice(0, 2);
   const t = lang === "es"
     ? { h: "Escultores", all: "Ver todos →", featured: "Escultores destacados", view: "Ver artista →" }
     : { h: "Sculptors", all: "View all →", featured: "Featured sculptors", view: "View artist →" };
 
   return (
-    <section className="bg-white px-6 md:px-12 py-24">
+    <section className="px-6 md:px-12 py-24" style={{ background: "#f5f5f5" }}>
       <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
         <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.h}</h2>
         <a href="#" className="link-arrow">{t.all}</a>
@@ -71,7 +69,6 @@ export const Artistas = () => {
         <div className="font-body text-[12px] font-light text-muted-line uppercase tracking-[0.18em] mb-6">{t.featured}</div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {secundarios.map((a) => {
-            const realIdx = artistas.findIndex((x) => x.nombre === a.nombre);
             return (
               <article key={a.nombre} className="group grid grid-cols-[40%_60%] gap-5 items-start">
                 <Link to={`/perfil/escultor/${a.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} aria-label={a.nombre} className="block aspect-square overflow-hidden bg-secondary">
@@ -85,9 +82,6 @@ export const Artistas = () => {
                     <div className="font-body text-[11px] font-light text-muted-line mb-3">{a.credito}</div>
                     <span className="link-arrow text-[12px]">{t.view}</span>
                   </Link>
-                  <button onClick={() => setI(realIdx)} className="mt-3 font-body text-[11px] font-light text-muted-line uppercase tracking-[0.14em] hover:text-ink transition-colors">
-                    {lang === "es" ? "Destacar arriba" : "Feature above"}
-                  </button>
                 </div>
               </article>
             );
