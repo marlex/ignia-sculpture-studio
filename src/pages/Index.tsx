@@ -10,7 +10,6 @@ import { Reviews } from "@/components/ignia/home/Reviews";
 import { CtaFinalNew } from "@/components/ignia/home/CtaFinalNew";
 import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { Splash } from "@/components/ignia/home/Splash";
-import { HeroBanner } from "@/components/ignia/home/HeroBanner";
 import { useFadeUp } from "@/hooks/useFadeUp";
 
 const Index = () => {
