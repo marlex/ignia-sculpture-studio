@@ -10,7 +10,10 @@ import { WhyIgnia } from "@/components/ignia/home/WhyIgnia";
 import { Reviews } from "@/components/ignia/home/Reviews";
 import { CtaFinalNew } from "@/components/ignia/home/CtaFinalNew";
 import { InviteModal } from "@/components/ignia/home/InviteModal";
+import { Splash } from "@/components/ignia/home/Splash";
+import { HeroBanner } from "@/components/ignia/home/HeroBanner";
 import { useFadeUp } from "@/hooks/useFadeUp";
+
 
 const Index = () => {
   const [inviteOpen, setInviteOpen] = useState(false);
@@ -22,9 +25,12 @@ const Index = () => {
 
   return (
     <main className="pt-14" style={{ background: "#FFFFFF" }}>
+      <Splash />
       <Header />
       <HeroSlideshow onInvite={() => setInviteOpen(true)} onCollection={scrollToColeccion} />
+      <HeroBanner onInvite={() => setInviteOpen(true)} onCollection={scrollToColeccion} />
       <Ticker />
+
       <Stats />
       <WhyIgnia />
       <div ref={coleccionRef}>
