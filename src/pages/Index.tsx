@@ -1,30 +1,46 @@
+import { useState, useRef } from "react";
 import { Header } from "@/components/ignia/Header";
-import { Hero } from "@/components/ignia/Hero";
 import { Coleccion } from "@/components/ignia/Coleccion";
 import { Artistas } from "@/components/ignia/Artistas";
-import { Aprende } from "@/components/ignia/Aprende";
-import { CtaFinal } from "@/components/ignia/CtaFinal";
-import { Testimonials } from "@/components/ignia/Testimonials";
-import { Sponsors } from "@/components/ignia/Sponsors";
 import { Footer } from "@/components/ignia/Footer";
-import { useLang } from "@/i18n/LanguageContext";
+import { HeroSlideshow } from "@/components/ignia/home/HeroSlideshow";
+import { Ticker } from "@/components/ignia/home/Ticker";
+import { Stats } from "@/components/ignia/home/Stats";
+import { WhyIgnia } from "@/components/ignia/home/WhyIgnia";
+import { Reviews } from "@/components/ignia/home/Reviews";
+import { CtaFinalNew } from "@/components/ignia/home/CtaFinalNew";
+import { InviteModal } from "@/components/ignia/home/InviteModal";
+import { useFadeUp } from "@/hooks/useFadeUp";
 
 const Index = () => {
-  const lang = useLang();
+  const [inviteOpen, setInviteOpen] = useState(false);
+  const coleccionRef = useRef<HTMLDivElement>(null);
+  const scrollToColeccion = () => coleccionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  const fadeCol = useFadeUp<HTMLDivElement>();
+  const fadeArt = useFadeUp<HTMLDivElement>();
+
   return (
-    <main className="pt-14">
+    <main className="pt-14" style={{ background: "#FFFFFF" }}>
       <Header />
-      <Hero />
-      <Coleccion />
-      <Artistas />
-      <Aprende />
-      <CtaFinal lang={lang} />
-      <Testimonials />
-      <Sponsors />
+      <HeroSlideshow onInvite={() => setInviteOpen(true)} onCollection={scrollToColeccion} />
+      <Ticker />
+      <Stats />
+      <WhyIgnia />
+      <div ref={coleccionRef}>
+        <div ref={fadeCol}>
+          <Coleccion />
+        </div>
+      </div>
+      <div ref={fadeArt}>
+        <Artistas />
+      </div>
+      <Reviews />
+      <CtaFinalNew onInvite={() => setInviteOpen(true)} onCollection={scrollToColeccion} />
       <Footer />
+      <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} />
     </main>
   );
 };
 
 export default Index;
-
