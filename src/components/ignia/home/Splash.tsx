@@ -39,13 +39,14 @@ export const Splash = () => {
     >
       <style>{`
         @keyframes ignia-in {
-          from { opacity: 0; transform: scale(0.985); }
-          to   { opacity: 1; transform: scale(1); }
+          from { opacity: 0; }
+          to   { opacity: 1; }
         }
-        .ignia-splash-logo { width: 36vw; max-width: 400px; animation: ignia-in 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards; transform-origin: center; }
+        .ignia-splash-group { opacity: 0; animation: ignia-in 2s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        .ignia-splash-logo { width: 36vw; max-width: 400px; display: block; margin: 0 auto; }
       `}</style>
-      <div className="ignia-splash-logo">
-        <svg width="100%" viewBox="0 0 151 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div className="ignia-splash-group">
+        <svg className="ignia-splash-logo" viewBox="0 0 151 43" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M139.536 29.9316H119.042L113.815 42.2128H111.083L128.665 0.480713H131.635L151 42.2128H145.238L139.536 29.9316ZM138.288 27.2489L128.962 7.15785H128.725L120.171 27.2489H138.288Z" fill="white"/>
           <path d="M100.077 0.480713H105.52V42.2128H100.077V0.480713Z" fill="white"/>
           <path d="M90.8802 0.519165H92.2505H93.6209L93.7242 42.1744H93.2659L60.255 10.9374H60.0167V42.1744H57.2759V0.67664H57.5738L90.6418 32.3864H90.8802V0.519165Z" fill="white"/>
@@ -56,13 +57,11 @@ export const Splash = () => {
           style={{
             fontFamily: "'Cormorant Garamond', serif",
             fontWeight: 300,
-            fontSize: "clamp(16px, 2vw, 22px)",
-            color: "rgba(255,255,255,0.75)",
+            fontSize: "clamp(20px, 2.6vw, 30px)",
+            color: "rgba(255,255,255,0.8)",
             letterSpacing: "0.04em",
             textAlign: "center",
-            marginTop: "24px",
-            opacity: 0,
-            animation: "ignia-in 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards",
+            marginTop: "28px",
           }}
         >
           Galería exclusiva para la escultura.
