@@ -5,7 +5,7 @@ import { Artistas } from "@/components/ignia/Artistas";
 import { Footer } from "@/components/ignia/Footer";
 import { Hero } from "@/components/ignia/Hero";
 import { Ticker } from "@/components/ignia/home/Ticker";
-import { WhyIgnia } from "@/components/ignia/home/WhyIgnia";
+
 import { Reviews } from "@/components/ignia/home/Reviews";
 import { CtaFinalNew } from "@/components/ignia/home/CtaFinalNew";
 import { InviteModal } from "@/components/ignia/home/InviteModal";
@@ -26,7 +26,6 @@ const Index = () => {
 
   const fadeBanner = useFadeUp<HTMLDivElement>();
   const fadeTicker = useFadeUp<HTMLDivElement>();
-  const fadeWhy = useFadeUp<HTMLDivElement>();
   const fadeCol = useFadeUp<HTMLDivElement>();
   const fadeArt = useFadeUp<HTMLDivElement>();
   const fadeReviews = useFadeUp<HTMLDivElement>();
@@ -42,9 +41,6 @@ const Index = () => {
       </div>
       <div ref={fadeTicker}>
         <Ticker />
-      </div>
-      <div ref={fadeWhy}>
-        <WhyIgnia />
       </div>
       <div ref={coleccionRef}>
         <div ref={fadeCol}>
