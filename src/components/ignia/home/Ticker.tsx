@@ -9,7 +9,7 @@ export const Ticker = () => {
     <div className="flex items-center shrink-0" style={{ paddingRight: 48 }}>
       {FAIRS.map((f, i) => (
         <span key={i} className="flex items-center">
-          <span style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 700, color: "#111111", fontSize: 18 }}>{f}</span>
+          <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: 18 }}>{f}</span>
           {i < FAIRS.length - 1 && <span style={{ color: "#666666", padding: "0 24px" }}>·</span>}
           {i === FAIRS.length - 1 && <span style={{ color: "#666666", padding: "0 24px" }}>·</span>}
         </span>

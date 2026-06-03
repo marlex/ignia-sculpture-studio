@@ -11,13 +11,13 @@ export const Reviews = () => {
   return (
     <section style={{ background: "#F5F5F5", padding: "100px 24px" }}>
       <div ref={ref} className="max-w-[1280px] mx-auto">
-        <h2 style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 700, color: "#111111", fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, marginBottom: 56, letterSpacing: "-0.02em" }}>
+        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, marginBottom: 56, letterSpacing: "-0.02em" }}>
           Lo que dicen sobre Ignia
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {CITAS.map((c, i) => (
             <article key={i} style={{ background: "#FFFFFF", border: "1px solid #E5E5E5", padding: 40, position: "relative" }}>
-              <div aria-hidden style={{ position: "absolute", top: 16, left: 24, fontFamily: "'Tenor Sans', serif", fontWeight: 700, color: "#111111", opacity: 0.08, fontSize: 64, lineHeight: 1 }}>
+              <div aria-hidden style={{ position: "absolute", top: 16, left: 24, fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", opacity: 0.08, fontSize: 64, lineHeight: 1 }}>
                 "
               </div>
               <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, fontStyle: "italic", color: "#111111", fontSize: 17, lineHeight: 1.8, position: "relative" }}>
