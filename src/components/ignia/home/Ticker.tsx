@@ -16,7 +16,7 @@ export const Ticker = () => {
     </div>
   );
   return (
-    <section style={{ background: "#FFFFFF", padding: "72px 0" }}>
+    <section style={{ background: "#f5f5f5", padding: "72px 0" }}>
       <div className="overflow-hidden ticker-wrap">
         <div className="flex ticker-track">
           {row}{row}
