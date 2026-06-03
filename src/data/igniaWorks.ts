@@ -77,7 +77,7 @@ const desc = {
   en: "A work selected by Ignia for its sculptural presence, material quality and complete studio traceability. The 3D viewer uses the same artwork record as the photograph and detail page.",
 };
 
-export const HERO_WORK_SLUGS = ["hecate-triformis", "torsion-i", "vertigo"] as const;
+export const HERO_WORK_SLUGS = ["vinculo", "torsion-i", "vertigo"] as const;
 export const CATALOGUE_WORK_SLUGS = ["mujer-y-nino", "pliegue-iii", "raiz", "origen", "eco", "quietud-alabastro", "luz-interior", "arco"] as const;
 
 export const WORKS: WorkRecord[] = [
