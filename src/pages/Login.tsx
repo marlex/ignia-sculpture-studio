@@ -18,7 +18,7 @@ export default function Login() {
   const emailSignupRef = useRef<HTMLInputElement>(null);
 
   const t = lang === "es" ? {
-    enter: "Entrar", access: "Accede a Ignia",
+    enter: "Entrar", access: "Accede con invitación",
     email: "Email", emailPh: "tu@email.com",
     pass: "Contraseña", passPh: "••••••••",
     btnIn: "Entrar ↗",
