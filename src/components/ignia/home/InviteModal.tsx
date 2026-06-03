@@ -49,7 +49,7 @@ export const InviteModal = ({ open, onClose }: Props) => {
         @keyframes modalIn { from { opacity:0; transform: translateY(16px) } to { opacity:1; transform:translateY(0) } }
         .invite-input { width:100%; background:transparent; border:none; border-bottom:1px solid #111111; outline:none; font-family:Manrope,sans-serif; font-weight:500; color:#111111; font-size:16px; padding:0 0 8px; border-radius:0; }
         .invite-input:focus { border-bottom-color:#111111; }
-        .invite-label { display:block; font-family:Manrope,sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:0.14em; font-size:11px; color:#111111; margin-bottom:12px; }
+        .invite-label { display:block; font-family:Manrope,sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:0.14em; font-size:11px; color:#111111; margin-bottom:12px; }
         .invite-field { margin-bottom:28px; }
       `}</style>
       <div
@@ -64,7 +64,7 @@ export const InviteModal = ({ open, onClose }: Props) => {
 
         {submitted ? (
           <div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: 24, marginBottom: 16 }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 24, marginBottom: 16 }}>
               Solicitud recibida.
             </h2>
             <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 15, lineHeight: 1.6 }}>
@@ -73,7 +73,7 @@ export const InviteModal = ({ open, onClose }: Props) => {
           </div>
         ) : (
           <>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: 32, lineHeight: 1.1, marginBottom: 12 }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 32, lineHeight: 1.1, marginBottom: 12 }}>
               Solicitar invitación
             </h2>
             <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 15, lineHeight: 1.5, marginBottom: 36 }}>
@@ -117,7 +117,8 @@ export const InviteModal = ({ open, onClose }: Props) => {
               <button
                 type="submit"
                 disabled={loading}
-                style={{ width: "100%", background: "#111111", color: "#FFFFFF", fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 13, padding: 18, border: "none", borderRadius: 0, cursor: "pointer", transition: "background-color 250ms" }}
+                className="font-body"
+                style={{ width: "100%", background: "#111111", color: "#FFFFFF", fontWeight: 300, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 14, padding: "18px 36px", border: "none", borderRadius: 0, cursor: "pointer", transition: "background-color 250ms" }}
                 onMouseEnter={(e) => (e.currentTarget.style.background = "#333333")}
                 onMouseLeave={(e) => (e.currentTarget.style.background = "#111111")}
               >
