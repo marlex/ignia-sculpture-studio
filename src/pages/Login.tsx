@@ -68,54 +68,6 @@ export default function Login() {
           <button type="submit" className="btn-primary w-full justify-center !py-3.5">{t.btnIn}</button>
         </form>
 
-        <div className="flex items-center gap-4 my-14">
-          <div className="flex-1 h-px bg-border" />
-          <span className="font-body text-[12px] uppercase tracking-[0.18em] text-muted-line">{t.or}</span>
-          <div className="flex-1 h-px bg-border" />
-        </div>
-
-        <div className="eyebrow mb-3">{t.register}</div>
-        <h2 className="font-display font-bold text-[clamp(24px,2.6vw,32px)] tracking-[-0.02em] text-ink mb-8 leading-tight">{t.join}</h2>
-
-        <div className="flex gap-7 border-b border-border mb-8">
-          {(["escultor", "coleccionista"] as Role[]).map(r => (
-            <button
-              key={r}
-              type="button"
-              onClick={() => setRole(r)}
-              className="font-body text-[14px] font-light tracking-[0.08em] pb-3 transition-colors"
-              style={{
-                color: role === r ? "hsl(var(--black-pure))" : "hsl(var(--gray))",
-                borderBottom: role === r ? "1.5px solid hsl(var(--black-pure))" : "1.5px solid transparent",
-                marginBottom: "-1px",
-              }}
-            >
-              {t.iam(r)}
-            </button>
-          ))}
-        </div>
-
-        <form onSubmit={(e) => goToProfile(e, role, true)} className="space-y-5">
-          {role === "escultor" ? (
-            <>
-              <Field label={t.fSculptor.name} placeholder={t.fSculptor.namePh} inputRef={nameRef} />
-              <Field label={t.email} type="email" placeholder={t.emailPh} inputRef={emailSignupRef} />
-              <Field label={t.pass} type="password" placeholder={t.passPh} />
-              <Field label={t.fSculptor.disc} placeholder={t.fSculptor.discPh} />
-              <Field label={t.fSculptor.city} placeholder={t.fSculptor.cityPh} />
-              <FieldArea label={t.fSculptor.bio} placeholder={t.fSculptor.bioPh} />
-            </>
-          ) : (
-            <>
-              <Field label={t.fCollector.name} placeholder={t.fCollector.namePh} inputRef={nameRef} />
-              <Field label={t.email} type="email" placeholder={t.emailPh} inputRef={emailSignupRef} />
-              <Field label={t.pass} type="password" placeholder={t.passPh} />
-              <Field label={t.fCollector.interests} placeholder={t.fCollector.interestsPh} />
-              <Field label={t.fCollector.budget} placeholder={t.fCollector.budgetPh} />
-            </>
-          )}
-          <button type="submit" className="btn-primary w-full justify-center !py-3.5">{t.btnReg}</button>
-        </form>
       </section>
     </main>
   );
