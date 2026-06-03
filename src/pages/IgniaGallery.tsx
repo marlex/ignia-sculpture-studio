@@ -12,7 +12,6 @@ const T = {
     nameH: <>Ignia viene del latín <em>ignis</em>, fuego.</>,
     nameP: <>En la retórica latina, <em>ignis</em> era también lo que aviva o enciende una pasión. Ignia Gallery nace exactamente de eso: encender algo que ya existía pero que nadie podía ver todavía. Un talento escultórico enorme, disperso por el mundo, sin el escaparate que merece.</>,
     foundEy: "Quiénes están detrás",
-    foundH: "Artistas plásticas y diseñadoras de producto.",
     found1a: "Antes de los títulos, antes del producto digital, antes del project management, ya había pintura. Más tarde llegó la escultura, y con ella la consciencia física de lo que significa crear algo tridimensional con las manos.",
     found1b: "Ignia nace de esa doble mirada: la de quien ha estado dentro del taller con las manos llenas de barro y bronce, y la de quien lleva más de una década diseñando productos digitales que la gente ama usar.",
     found2a: "Cuando empezamos a buscar dónde mostrar y vender escultura, lo que encontramos fue decepcionante. No por falta de oferta, sino porque ninguna experiencia estaba pensada para una obra que cambia con la luz, el ángulo y la distancia.",
