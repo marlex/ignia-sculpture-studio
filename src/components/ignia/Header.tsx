@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Logo } from "./Logo";
 import { useLang, useSetLang, type Lang } from "@/i18n/LanguageContext";
@@ -109,13 +110,13 @@ export const Header = () => {
         </div>
       </div>
 
-      {mobileOpen && (
+      {mobileOpen && createPortal(
         <div
           style={{
             position: "fixed",
             inset: 0,
             background: "#000000",
-            zIndex: 200,
+            zIndex: 9999,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -175,7 +176,8 @@ export const Header = () => {
           >
             {t.publish}
           </button>
-        </div>
+        </div>,
+        document.body
       )}
     </header>
   );
