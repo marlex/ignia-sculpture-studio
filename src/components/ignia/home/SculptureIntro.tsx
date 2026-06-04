@@ -1,6 +1,20 @@
+import { useLang } from "@/i18n/LanguageContext";
 
 export const SculptureIntro = () => {
+  const lang = useLang();
+  const t = lang === "es"
+    ? {
+        title: "El mundo de la escultura, de cerca.",
+        body: "El primer global sculpture gallery dedicada exclusivamente a la escultura. Compra, vende y descubre obras de gran valor, con visualización 3D, certificados de autenticidad en blockchain y comisiones justas.",
+        cta: "Solicitar invitación",
+      }
+    : {
+        title: "The sculpture world, up close.",
+        body: "The first global sculpture gallery dedicated exclusively to sculpture. Buy, sell and discover high-value works, with 3D visualization, blockchain authenticity certificates and fair commissions.",
+        cta: "Request invitation",
+      };
   return (
+
     <section
       style={{
         background: "#0A0A0A",
