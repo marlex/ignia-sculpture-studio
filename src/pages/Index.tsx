@@ -8,6 +8,7 @@ import { Ticker } from "@/components/ignia/home/Ticker";
 
 import { Reviews } from "@/components/ignia/home/Reviews";
 import { CtaFinalNew } from "@/components/ignia/home/CtaFinalNew";
+import { FollowIgnia } from "@/components/ignia/home/FollowIgnia";
 import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { Splash } from "@/components/ignia/home/Splash";
 import { useFadeUp } from "@/hooks/useFadeUp";
@@ -52,6 +53,7 @@ const Index = () => {
       <div ref={fadeCta}>
         <CtaFinalNew onInvite={() => setInviteOpen(true)} onCollection={scrollToColeccion} />
       </div>
+      <FollowIgnia />
       <Footer />
       <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} />
     </main>
