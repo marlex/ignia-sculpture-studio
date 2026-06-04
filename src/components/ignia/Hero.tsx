@@ -76,31 +76,38 @@ export const Hero = () => {
         }
         .hero-sculpture-tap { transition: opacity 150ms ease-out, transform 300ms ease-out; }
         .hero-sculpture-tap.tap-flash { opacity: 0.85; }
+        @media (min-width: 769px) {
+          .hero-sculpture-desktop {
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><circle cx='12' cy='12' r='4' fill='%23111111'/><line x1='12' y1='2' x2='12' y2='8' stroke='%23111111' stroke-width='1'/><line x1='12' y1='16' x2='12' y2='22' stroke='%23111111' stroke-width='1'/><line x1='2' y1='12' x2='8' y2='12' stroke='%23111111' stroke-width='1'/><line x1='16' y1='12' x2='22' y2='12' stroke='%23111111' stroke-width='1'/></svg>") 12 12, pointer;
+          }
+          .hero-svg-arrow { opacity: 0; transition: opacity 200ms ease-in, transform 200ms ease-in; }
+          .hero-svg-arrow.left { transform: translateX(-16px); }
+          .hero-svg-arrow.right { transform: translateX(16px); }
+          .hero-section:hover .hero-svg-arrow { opacity: 1; transform: translateX(0); transition: opacity 280ms cubic-bezier(0.16,1,0.3,1), transform 280ms cubic-bezier(0.16,1,0.3,1); }
+          .hero-svg-arrow svg { transition: transform 180ms ease; }
+          .hero-svg-arrow svg line { transition: stroke 180ms ease; }
+          .hero-svg-arrow:hover svg { transform: scale(1.15); }
+          .hero-svg-arrow:hover svg line { stroke: rgba(255,255,255,1) !important; }
+        }
       `}</style>
 
+
       <div
-        className={`absolute inset-0 hero-sculpture-tap ${tapFlash ? "tap-flash" : ""}`}
-        onClick={isMobile ? handleSculptureTap : undefined}
-        style={{ cursor: isMobile ? "pointer" : "default" }}
+        className={`absolute inset-0 hero-sculpture-tap hero-sculpture-desktop ${tapFlash ? "tap-flash" : ""}`}
+        onClick={() => navigate(`/obra/${o.slug}`)}
+        style={{ cursor: isMobile ? "pointer" : undefined }}
       >
         {o.glbUrl ? (
-          <GlbViewer url={o.glbUrl} alt={o.title} minHeight="100vh" bgColor="#1c1c1a" />
+          <GlbViewer url={o.glbUrl} alt={o.title} minHeight="100vh" bgColor="#1c1c1a" enableFullscreen={false} />
         ) : (
-          <button
-            type="button"
-            onClick={() => navigate(`/obra/${o.slug}`)}
-            aria-label={t.view}
-            className="absolute inset-0 block w-full h-full cursor-zoom-in"
-          >
-            <img
-              src={o.image}
-              alt={o.title}
-              className="w-full h-full object-cover"
-              style={{ objectPosition: "center 35%" }}
-              width={1280}
-              height={1600}
-            />
-          </button>
+          <img
+            src={o.image}
+            alt={o.title}
+            className="w-full h-full object-cover"
+            style={{ objectPosition: "center 35%" }}
+            width={1280}
+            height={1600}
+          />
         )}
       </div>
 
@@ -115,20 +122,31 @@ export const Hero = () => {
         ◆ {t.hint}
       </div>
 
-      {/* arrows (desktop only) */}
-      <button onClick={prev} aria-label={t.prev} className="hero-arrows absolute top-1/2 -translate-y-1/2 left-6 md:left-12 z-20 w-10 h-10 flex items-center justify-center text-[15px] border-[0.5px] border-border backdrop-blur-md transition-colors hover:bg-white"
-        style={{ background: "rgba(248,248,246,0.9)", color: "#111" }}>←</button>
-      <button onClick={next} aria-label={t.next} className="hero-arrows absolute top-1/2 -translate-y-1/2 right-6 md:right-12 z-20 w-10 h-10 flex items-center justify-center text-[15px] border-[0.5px] border-border backdrop-blur-md transition-colors hover:bg-white"
-        style={{ background: "rgba(248,248,246,0.9)", color: "#111" }}>→</button>
-
-      {/* Floating View work button (desktop) */}
-      <Link
-        to={`/obra/${o.slug}`}
-        className="hero-view-floating absolute left-1/2 -translate-x-1/2 bottom-[210px] md:bottom-[180px] z-20 font-body text-[11px] font-light tracking-[0.22em] uppercase text-ink/85 hover:text-ink transition-colors flex items-center gap-2 bg-white/85 backdrop-blur px-3 py-2 border-[0.5px] border-border"
+      {/* arrows (desktop minimal SVG; mobile hidden via .hero-arrows rule) */}
+      <button
+        onClick={(e) => { e.stopPropagation(); prev(); }}
+        aria-label={t.prev}
+        className="hero-arrows hero-svg-arrow left absolute top-1/2 -translate-y-1/2 z-20"
+        style={{ left: 24, width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", background: "transparent", border: "none", padding: 0, cursor: "pointer" }}
       >
-        <span aria-hidden className="inline-block w-1 h-1 rounded-full bg-ink" />
-        {t.view}
-      </Link>
+        <svg width="28" height="16" viewBox="0 0 28 16" fill="none" aria-hidden>
+          <line x1="27" y1="8" x2="7" y2="8" stroke="rgba(255,255,255,0.6)" strokeWidth="0.8" strokeLinecap="round" />
+          <line x1="7" y1="8" x2="13.55" y2="3.41" stroke="rgba(255,255,255,0.6)" strokeWidth="0.8" strokeLinecap="round" />
+          <line x1="7" y1="8" x2="13.55" y2="12.59" stroke="rgba(255,255,255,0.6)" strokeWidth="0.8" strokeLinecap="round" />
+        </svg>
+      </button>
+      <button
+        onClick={(e) => { e.stopPropagation(); next(); }}
+        aria-label={t.next}
+        className="hero-arrows hero-svg-arrow right absolute top-1/2 -translate-y-1/2 z-20"
+        style={{ right: 24, width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", background: "transparent", border: "none", padding: 0, cursor: "pointer" }}
+      >
+        <svg width="28" height="16" viewBox="0 0 28 16" fill="none" aria-hidden>
+          <line x1="1" y1="8" x2="21" y2="8" stroke="rgba(255,255,255,0.6)" strokeWidth="0.8" strokeLinecap="round" />
+          <line x1="21" y1="8" x2="14.45" y2="3.41" stroke="rgba(255,255,255,0.6)" strokeWidth="0.8" strokeLinecap="round" />
+          <line x1="21" y1="8" x2="14.45" y2="12.59" stroke="rgba(255,255,255,0.6)" strokeWidth="0.8" strokeLinecap="round" />
+        </svg>
+      </button>
 
       {/* bottom strip */}
       <div className="hero-bottom-strip absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 pb-8 md:pb-9 flex flex-col md:flex-row items-stretch md:items-end gap-6 md:gap-12 pt-16">
@@ -185,7 +203,7 @@ export const Hero = () => {
             <span className="text-border">·</span>
             <span>{o.material}</span>
             <span className="text-border">·</span>
-            <span className="font-mono text-[12px]">{lang === "es" ? "Autenticidad" : "Authenticity"} {o.authenticity}</span>
+            <span style={{ fontWeight: 400 }}>{lang === "es" ? "Autenticidad" : "Authenticity"} {o.authenticity}</span>
           </div>
           <div className="flex items-baseline gap-7">
             <span className="font-display font-bold text-[22px] tracking-[-0.01em] text-ink">{o.price}</span>
