@@ -28,7 +28,6 @@ const Index = () => {
   const fadeCol = useFadeUp<HTMLDivElement>();
   const fadeArt = useFadeUp<HTMLDivElement>();
   const fadeReviews = useFadeUp<HTMLDivElement>();
-  const fadeCta = useFadeUp<HTMLDivElement>();
 
   return (
     <main className="pt-14" style={{ background: "#FFFFFF" }}>
