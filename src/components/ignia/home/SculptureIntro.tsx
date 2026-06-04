@@ -4,7 +4,7 @@ export const SculptureIntro = () => {
   return (
     <section
       style={{
-        background: "#0A0A0A",
+        background: "#FFFFFF",
         padding: "clamp(64px, 9vw, 120px) clamp(24px, 6vw, 80px)",
       }}
     >
@@ -13,7 +13,7 @@ export const SculptureIntro = () => {
           style={{
             fontFamily: "'DM Serif Display', serif",
             fontWeight: 400,
-            color: "#FFFFFF",
+            color: "#111111",
             fontSize: "clamp(36px, 5.4vw, 64px)",
             lineHeight: 1.05,
             letterSpacing: "-0.02em",
@@ -26,7 +26,7 @@ export const SculptureIntro = () => {
           style={{
             fontFamily: "'Cormorant Garamond', serif",
             fontWeight: 400,
-            color: "rgba(255,255,255,0.8)",
+            color: "rgba(17,17,17,0.8)",
             fontSize: "clamp(18px, 1.8vw, 24px)",
             lineHeight: 1.45,
             marginTop: 24,
@@ -54,9 +54,9 @@ export const SculptureIntro = () => {
               letterSpacing: "0.18em",
               textTransform: "uppercase",
               padding: "16px 32px",
-              background: "#FFFFFF",
-              color: "#0A0A0A",
-              border: "1px solid #FFFFFF",
+              background: "#111111",
+              color: "#FFFFFF",
+              border: "1px solid #111111",
               borderRadius: 0,
               textDecoration: "none",
               display: "inline-block",
@@ -77,20 +77,20 @@ export const SculptureIntro = () => {
               textTransform: "uppercase",
               padding: "16px 32px",
               background: "transparent",
-              color: "#FFFFFF",
-              border: "1px solid #FFFFFF",
+              color: "#111111",
+              border: "1px solid #111111",
               borderRadius: 0,
               textDecoration: "none",
               display: "inline-block",
               transition: "background-color 0.2s, color 0.2s",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#FFFFFF";
-              e.currentTarget.style.color = "#0A0A0A";
+              e.currentTarget.style.background = "#111111";
+              e.currentTarget.style.color = "#FFFFFF";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "#FFFFFF";
+              e.currentTarget.style.color = "#111111";
             }}
           >
             Unirme como artista
