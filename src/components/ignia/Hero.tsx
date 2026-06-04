@@ -195,10 +195,10 @@ export const Hero = () => {
 
         {/* info desktop */}
         <div className="hero-info-desktop flex-1 text-ink">
-          <h1 className="leading-[1.1] tracking-[0.01em] mb-3 text-ink" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(22px, 3vw, 44px)" }}>
+          <h1 className="leading-[1.05] tracking-[0.01em] mb-1.5 text-ink" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(27px, 3.4vw, 49px)" }}>
             {o.title}
           </h1>
-          <div className="flex items-center gap-2 flex-wrap mb-3.5 font-body text-[14px] font-light tracking-wide text-gray">
+          <div className="flex items-center gap-2 flex-wrap mb-2 font-body text-[14px] font-light tracking-wide text-gray">
             <span>{o.artist}</span>
             <span className="text-border">·</span>
             <span>{o.material}</span>
