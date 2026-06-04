@@ -83,7 +83,7 @@ export const SculptureIntro = () => {
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
-            Solicitar invitación
+            {t.cta}
           </button>
         </div>
       </div>
