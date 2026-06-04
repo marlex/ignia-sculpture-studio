@@ -1,11 +1,53 @@
 import { useEffect, useState } from "react";
+import { useLang } from "@/i18n/LanguageContext";
 
 type Props = { open: boolean; onClose: () => void };
 
 export const InviteModal = ({ open, onClose }: Props) => {
+  const lang = useLang();
   const [bio, setBio] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const t = lang === "es"
+    ? {
+        title: "Solicitar invitación",
+        subtitle: "30 plazas. Comisión Pro permanente del 15%. Sin cuotas, sin exclusividad.",
+        name: "Nombre completo",
+        email: "Email",
+        country: "País",
+        social: "Instagram o web",
+        material: "Materiales principales",
+        materialOptions: ["Piedra", "Madera", "Metal", "Cerámica", "Resina", "Textil", "Técnica mixta", "Otro"],
+        works: "Obras disponibles (aprox.)",
+        worksOptions: ["1–3", "4–10", "11–20", "Más de 20"],
+        bioLabel: "Cuéntanos tu práctica",
+        bioPlaceholder: "",
+        submit: "Enviar solicitud",
+        sending: "Enviando…",
+        successTitle: "Solicitud recibida.",
+        successMsg: "Revisamos cada solicitud personalmente y te contactamos en 48 horas.",
+        close: "Cerrar",
+      }
+    : {
+        title: "Request invitation",
+        subtitle: "30 spots. Permanent 15% Pro commission. No fees, no exclusivity.",
+        name: "Full name",
+        email: "Email",
+        country: "Country",
+        social: "Instagram or website",
+        material: "Main materials",
+        materialOptions: ["Stone", "Wood", "Metal", "Ceramics", "Resin", "Textile", "Mixed media", "Other"],
+        works: "Available works (approx.)",
+        worksOptions: ["1–3", "4–10", "11–20", "More than 20"],
+        bioLabel: "Tell us about your practice",
+        bioPlaceholder: "",
+        submit: "Send request",
+        sending: "Sending…",
+        successTitle: "Request received.",
+        successMsg: "We review every request personally and will contact you within 48 hours.",
+        close: "Close",
+      };
 
   useEffect(() => {
     if (!open) return;
@@ -58,53 +100,53 @@ export const InviteModal = ({ open, onClose }: Props) => {
       >
         <button
           onClick={onClose}
-          aria-label="Cerrar"
+          aria-label={t.close}
           style={{ position: "absolute", top: 16, right: 20, background: "transparent", border: "none", cursor: "pointer", fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: 24, lineHeight: 1 }}
         >×</button>
 
         {submitted ? (
           <div>
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 24, marginBottom: 16 }}>
-              Solicitud recibida.
+              {t.successTitle}
             </h2>
             <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 15, lineHeight: 1.6 }}>
-              Revisamos cada solicitud personalmente y te contactamos en 48 horas.
+              {t.successMsg}
             </p>
           </div>
         ) : (
           <>
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 32, lineHeight: 1.1, marginBottom: 12 }}>
-              Solicitar invitación
+              {t.title}
             </h2>
             <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 15, lineHeight: 1.5, marginBottom: 36 }}>
-              30 plazas. Comisión Pro permanente del 15%. Sin cuotas, sin exclusividad.
+              {t.subtitle}
             </p>
             <form onSubmit={handleSubmit}>
               {[
-                { l: "Nombre completo", n: "nombre", t: "text" },
-                { l: "Email", n: "email", t: "email" },
-                { l: "País", n: "pais", t: "text" },
-                { l: "Instagram o web", n: "social", t: "text" },
+                { l: t.name, n: "nombre", type: "text" },
+                { l: t.email, n: "email", type: "email" },
+                { l: t.country, n: "pais", type: "text" },
+                { l: t.social, n: "social", type: "text" },
               ].map((f) => (
                 <div key={f.n} className="invite-field">
                   <label className="invite-label" htmlFor={f.n}>{f.l}</label>
-                  <input id={f.n} name={f.n} type={f.t} className="invite-input" />
+                  <input id={f.n} name={f.n} type={f.type} className="invite-input" />
                 </div>
               ))}
               <div className="invite-field">
-                <label className="invite-label" htmlFor="material">Materiales principales</label>
+                <label className="invite-label" htmlFor="material">{t.material}</label>
                 <select id="material" name="material" className="invite-input">
-                  {["Piedra","Madera","Metal","Cerámica","Resina","Textil","Técnica mixta","Otro"].map(o => <option key={o}>{o}</option>)}
+                  {t.materialOptions.map(o => <option key={o}>{o}</option>)}
                 </select>
               </div>
               <div className="invite-field">
-                <label className="invite-label" htmlFor="obras">Obras disponibles (aprox.)</label>
+                <label className="invite-label" htmlFor="obras">{t.works}</label>
                 <select id="obras" name="obras" className="invite-input">
-                  {["1–3","4–10","11–20","Más de 20"].map(o => <option key={o}>{o}</option>)}
+                  {t.worksOptions.map(o => <option key={o}>{o}</option>)}
                 </select>
               </div>
               <div className="invite-field">
-                <label className="invite-label" htmlFor="bio">Cuéntanos tu práctica</label>
+                <label className="invite-label" htmlFor="bio">{t.bioLabel}</label>
                 <textarea
                   id="bio" name="bio" maxLength={300} rows={3}
                   value={bio} onChange={(e) => setBio(e.target.value)}
@@ -122,7 +164,7 @@ export const InviteModal = ({ open, onClose }: Props) => {
                 onMouseEnter={(e) => (e.currentTarget.style.background = "#333333")}
                 onMouseLeave={(e) => (e.currentTarget.style.background = "#111111")}
               >
-                {loading ? "Enviando…" : "Enviar solicitud"}
+                {loading ? t.sending : t.submit}
               </button>
             </form>
           </>
