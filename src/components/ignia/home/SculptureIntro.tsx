@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 
 export const SculptureIntro = () => {
   return (
@@ -8,7 +7,7 @@ export const SculptureIntro = () => {
         padding: "clamp(64px, 9vw, 120px) clamp(24px, 6vw, 80px)",
       }}
     >
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
         <h2
           style={{
             fontFamily: "'Cormorant Garamond', serif",
@@ -34,6 +33,7 @@ export const SculptureIntro = () => {
             marginTop: 24,
             marginBottom: 0,
             maxWidth: 820,
+            marginInline: "auto",
           }}
         >
           El primer marketplace global dedicado exclusivamente a la escultura. Compra, vende y descubre obras contemporáneas — con visualización 3D, certificados de autenticidad en blockchain y comisiones desde el 12%.
@@ -45,6 +45,7 @@ export const SculptureIntro = () => {
             gap: 16,
             flexWrap: "wrap",
             alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <button
@@ -70,34 +71,6 @@ export const SculptureIntro = () => {
           >
             Solicitar invitación
           </button>
-          <Link
-            to="/escultores"
-            style={{
-              fontFamily: "Manrope, sans-serif",
-              fontWeight: 500,
-              fontSize: 12,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              padding: "16px 32px",
-              background: "transparent",
-              color: "#FFFFFF",
-              border: "1px solid #FFFFFF",
-              borderRadius: 0,
-              textDecoration: "none",
-              display: "inline-block",
-              transition: "background-color 0.2s, color 0.2s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#FFFFFF";
-              e.currentTarget.style.color = "#0A0A0A";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "#FFFFFF";
-            }}
-          >
-            Unirme como artista
-          </Link>
         </div>
       </div>
     </section>
