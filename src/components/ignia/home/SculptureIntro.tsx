@@ -50,7 +50,7 @@ export const SculptureIntro = () => {
             marginInline: "auto",
           }}
         >
-          El primer marketplace global dedicado exclusivamente a la escultura. Compra, vende y descubre obras contemporáneas — con visualización 3D, certificados de autenticidad en blockchain y comisiones desde el 12%.
+          {t.body}
         </p>
         <div
           style={{
