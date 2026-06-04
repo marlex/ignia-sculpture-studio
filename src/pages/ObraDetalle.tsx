@@ -45,6 +45,13 @@ const ObraDetalle = () => {
   const [mode, setMode] = useState<"photos" | "3d">(has3d ? "3d" : "photos");
   const [idx, setIdx] = useState(0);
   const [chatOpen, setChatOpen] = useState(false);
+  const [inviteOpen, setInviteOpen] = useState(false);
+
+  useEffect(() => {
+    const open = () => setInviteOpen(true);
+    window.addEventListener("ignia:open-invite", open);
+    return () => window.removeEventListener("ignia:open-invite", open);
+  }, []);
 
   useEffect(() => { setIdx(0); }, [slug]);
 
