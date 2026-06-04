@@ -148,7 +148,7 @@
 /* Mobile: 40px top/bottom for all main blocks except hero and banner */
 @media (max-width: 768px) {
   .ticker-section { padding: 40px 0 !important; }
-  .ticker-item { font-size: 20px !important; }
+  .ticker-item { font-size: 28px !important; }
   section.bg-white.px-6, /* Coleccion */
   section.px-6.md\:px-12 {
     padding-top: 40px !important;
