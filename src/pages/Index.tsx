@@ -53,6 +53,7 @@ const Index = () => {
       <div ref={fadeCta}>
         <CtaFinalNew onInvite={() => setInviteOpen(true)} onCollection={scrollToColeccion} />
       </div>
+      <FollowIgnia />
       <Footer />
       <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} />
     </main>
