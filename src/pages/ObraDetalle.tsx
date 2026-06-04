@@ -164,7 +164,7 @@ const ObraDetalle = () => {
             </div>
 
             <div className="flex gap-3">
-              <button className="flex-1 bg-ink text-white font-body text-[15px] tracking-[0.16em] uppercase py-5 hover:bg-ink/90 transition-colors">{t.buy}</button>
+              <button onClick={() => window.dispatchEvent(new Event("ignia:open-invite"))} className="flex-1 bg-ink text-white font-body text-[15px] tracking-[0.16em] uppercase py-5 hover:bg-ink/90 transition-colors">{t.buy}</button>
               <button
                 onClick={() => setChatOpen(true)}
                 aria-label={t.talk}
