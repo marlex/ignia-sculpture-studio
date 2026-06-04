@@ -13,7 +13,7 @@ export const SculptureIntro = () => {
           style={{
             fontFamily: "'DM Serif Display', serif",
             fontWeight: 400,
-            color: "#FFFFFF",
+            color: "#111111",
             fontSize: "clamp(36px, 5.4vw, 64px)",
             lineHeight: 1.05,
             letterSpacing: "-0.02em",
