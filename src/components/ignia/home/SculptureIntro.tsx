@@ -20,7 +20,7 @@ export const SculptureIntro = () => {
             margin: 0,
           }}
         >
-          The sculpture world, up close.
+          El mundo de la escultura, de cerca.
         </h2>
         <p
           style={{
@@ -34,7 +34,7 @@ export const SculptureIntro = () => {
             maxWidth: 820,
           }}
         >
-          The first global marketplace dedicated exclusively to sculpture. Buy, sell and discover contemporary works — with 3D visualization, blockchain certificates of authenticity, and commissions from 12%.
+          El primer marketplace global dedicado exclusivamente a la escultura. Compra, vende y descubre obras contemporáneas — con visualización 3D, certificados de autenticidad en blockchain y comisiones desde el 12%.
         </p>
         <div
           style={{
@@ -65,7 +65,7 @@ export const SculptureIntro = () => {
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
-            Explore the collection
+            Explorar la colección
           </Link>
           <Link
             to="/escultores"
@@ -93,7 +93,7 @@ export const SculptureIntro = () => {
               e.currentTarget.style.color = "#111111";
             }}
           >
-            Join as an artist
+            Unirme como artista
           </Link>
         </div>
       </div>
