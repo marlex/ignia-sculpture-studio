@@ -1,0 +1,102 @@
+import { Link } from "react-router-dom";
+
+export const SculptureIntro = () => {
+  return (
+    <section
+      style={{
+        background: "#FFFFFF",
+        padding: "clamp(64px, 9vw, 120px) clamp(24px, 6vw, 80px)",
+      }}
+    >
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <h2
+          style={{
+            fontFamily: "'DM Serif Display', serif",
+            fontWeight: 400,
+            color: "#111111",
+            fontSize: "clamp(36px, 5.4vw, 64px)",
+            lineHeight: 1.05,
+            letterSpacing: "-0.02em",
+            margin: 0,
+          }}
+        >
+          The sculpture world, up close.
+        </h2>
+        <p
+          style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontWeight: 400,
+            color: "rgba(17,17,17,0.8)",
+            fontSize: "clamp(18px, 1.8vw, 24px)",
+            lineHeight: 1.45,
+            marginTop: 24,
+            marginBottom: 0,
+            maxWidth: 820,
+          }}
+        >
+          The first global marketplace dedicated exclusively to sculpture. Buy, sell and discover contemporary works — with 3D visualization, blockchain certificates of authenticity, and commissions from 12%.
+        </p>
+        <div
+          style={{
+            marginTop: 40,
+            display: "flex",
+            gap: 16,
+            flexWrap: "wrap",
+            alignItems: "center",
+          }}
+        >
+          <Link
+            to="/coleccion"
+            style={{
+              fontFamily: "Manrope, sans-serif",
+              fontWeight: 500,
+              fontSize: 12,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              padding: "16px 32px",
+              background: "#111111",
+              color: "#FFFFFF",
+              border: "1px solid #111111",
+              borderRadius: 0,
+              textDecoration: "none",
+              display: "inline-block",
+              transition: "opacity 0.2s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+          >
+            Explore the collection
+          </Link>
+          <Link
+            to="/escultores"
+            style={{
+              fontFamily: "Manrope, sans-serif",
+              fontWeight: 500,
+              fontSize: 12,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              padding: "16px 32px",
+              background: "transparent",
+              color: "#111111",
+              border: "1px solid #111111",
+              borderRadius: 0,
+              textDecoration: "none",
+              display: "inline-block",
+              transition: "background-color 0.2s, color 0.2s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "#111111";
+              e.currentTarget.style.color = "#FFFFFF";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.color = "#111111";
+            }}
+          >
+            Join as an artist
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
