@@ -35,10 +35,10 @@ const Index = () => {
       <Splash />
       <Header />
       <Hero />
-      <SculptureIntro />
       <div ref={fadeTicker}>
         <Ticker />
       </div>
+      <SculptureIntro />
 
       <div ref={coleccionRef}>
         <div ref={fadeCol}>
