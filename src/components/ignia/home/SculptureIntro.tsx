@@ -4,7 +4,7 @@ export const SculptureIntro = () => {
   return (
     <section
       style={{
-        background: "#0A0A0A",
+        background: "#FFFFFF",
         padding: "clamp(64px, 9vw, 120px) clamp(24px, 6vw, 80px)",
       }}
     >
