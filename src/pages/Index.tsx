@@ -7,7 +7,7 @@ import { Hero } from "@/components/ignia/Hero";
 import { Ticker } from "@/components/ignia/home/Ticker";
 
 import { Reviews } from "@/components/ignia/home/Reviews";
-import { CtaFinalNew } from "@/components/ignia/home/CtaFinalNew";
+
 import { FollowIgnia } from "@/components/ignia/home/FollowIgnia";
 import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { Splash } from "@/components/ignia/home/Splash";
@@ -28,7 +28,6 @@ const Index = () => {
   const fadeCol = useFadeUp<HTMLDivElement>();
   const fadeArt = useFadeUp<HTMLDivElement>();
   const fadeReviews = useFadeUp<HTMLDivElement>();
-  const fadeCta = useFadeUp<HTMLDivElement>();
 
   return (
     <main className="pt-14" style={{ background: "#FFFFFF" }}>
@@ -49,9 +48,6 @@ const Index = () => {
       </div>
       <div ref={fadeReviews}>
         <Reviews />
-      </div>
-      <div ref={fadeCta}>
-        <CtaFinalNew onInvite={() => setInviteOpen(true)} onCollection={scrollToColeccion} />
       </div>
       <FollowIgnia />
       <Footer />
