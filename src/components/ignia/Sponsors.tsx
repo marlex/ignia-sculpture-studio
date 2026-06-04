@@ -8,7 +8,7 @@ const logos = [
 
 export const Sponsors = () => {
   return (
-    <section style={{ background: "#fff", padding: "80px 0" }}>
+    <section className="sponsors-section" style={{ background: "#fff", padding: "80px 0" }}>
       <div className="px-6 md:px-12">
         <p
           style={{

@@ -72,7 +72,7 @@ export const Footer = () => {
   const status = lang === "es" ? "v0.1 — Beta" : "v0.1 — Beta";
 
   return (
-    <footer className="bg-white border-t-[0.5px] border-border px-6 md:px-12 pt-14 pb-8">
+    <footer className="footer-section bg-white border-t-[0.5px] border-border px-6 md:px-12 pt-14 pb-8">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
         <div>
           <Logo />

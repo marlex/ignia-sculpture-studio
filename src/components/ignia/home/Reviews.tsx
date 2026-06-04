@@ -18,7 +18,7 @@ export const Reviews = () => {
   const citas = CITAS[lang];
   const title = lang === "es" ? "Lo que dicen sobre Ignia" : "What they say about Ignia";
   return (
-    <section style={{ background: "#FFFFFF", padding: "60px 24px" }}>
+    <section className="reviews-section" style={{ background: "#FFFFFF", padding: "60px 24px" }}>
       <div ref={ref} className="max-w-[1180px] mx-auto">
         <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: "clamp(30px,4vw,44px)", lineHeight: 1.1, marginBottom: 72, letterSpacing: "-0.02em" }}>
           {title}
