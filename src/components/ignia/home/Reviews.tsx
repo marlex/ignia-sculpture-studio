@@ -18,12 +18,12 @@ export const Reviews = () => {
   const citas = CITAS[lang];
   const title = lang === "es" ? "Lo que dicen sobre Ignia" : "What they say about Ignia";
   return (
-    <section className="reviews-section" style={{ background: "#FFFFFF", padding: "60px 24px" }}>
-      <div ref={ref} className="max-w-[1180px] mx-auto">
-        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: "clamp(30px,4vw,44px)", lineHeight: 1.1, marginBottom: 72, letterSpacing: "-0.02em" }}>
+    <section className="reviews-section bg-white px-6 md:px-12 py-[60px]">
+      <div ref={ref}>
+        <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-8">
           {title}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {citas.map((c, i) => (
             <figure key={i} style={{ position: "relative", paddingLeft: 4 }}>
               <div aria-hidden style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: 72, lineHeight: 0.6, marginBottom: 24, opacity: 0.25 }}>
