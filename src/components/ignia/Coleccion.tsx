@@ -24,7 +24,7 @@ export const Coleccion = () => {
     hint: "Arrastra para rotar · Scroll para zoom",
   } : {
     h: "Discover the full collection",
-    cta: "Browse all 843 works →",
+    cta: "Browse works →",
     sub: "843 works · Updated weekly",
     search: "Search artist, work, material…",
     filters: ["Material", "Price", "Technique"],
