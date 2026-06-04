@@ -57,7 +57,7 @@ export const Sponsors = () => {
               src={logo.src}
               alt={logo.name}
               style={{
-                maxHeight: "28px",
+                maxHeight: "38px",
                 width: "auto",
                 filter: "grayscale(1)",
                 opacity: 0.45,
