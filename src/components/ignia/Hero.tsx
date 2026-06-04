@@ -64,6 +64,7 @@ export const Hero = () => {
     >
       <style>{`
         @media (max-width: 768px) {
+          .hero-section { height: calc(100vh - 56px) !important; }
           .hero-arrows { display: none !important; }
           .hero-view-floating { display: none !important; }
           .hero-thumbs { display: none !important; }
@@ -216,7 +217,7 @@ export const Hero = () => {
         {/* info mobile */}
         <div
           className="hero-info-mobile"
-          style={{ padding: "40px 20px", background: "#ffffff", lineHeight: 1.3 }}
+          style={{ padding: "20px 20px 24px", background: "#ffffff", lineHeight: 1.3 }}
         >
           <h1
             style={{
