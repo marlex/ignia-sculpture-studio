@@ -35,7 +35,7 @@ export const SculptureIntro = () => {
             margin: 0,
           }}
         >
-          El mundo de la escultura, de cerca.
+          {t.title}
         </h2>
         <p
           style={{
