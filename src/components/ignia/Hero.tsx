@@ -216,7 +216,7 @@ export const Hero = () => {
         {/* info mobile */}
         <div
           className="hero-info-mobile"
-          style={{ padding: "14px 20px", background: "#ffffff", lineHeight: 1.3 }}
+          style={{ padding: "40px 20px", background: "#ffffff", lineHeight: 1.3 }}
         >
           <h1
             style={{
