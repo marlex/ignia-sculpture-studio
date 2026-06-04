@@ -47,8 +47,9 @@ export const SculptureIntro = () => {
             alignItems: "center",
           }}
         >
-          <Link
-            to="/coleccion"
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event("ignia:open-invite"))}
             style={{
               fontFamily: "Manrope, sans-serif",
               fontWeight: 500,
@@ -58,17 +59,17 @@ export const SculptureIntro = () => {
               padding: "16px 32px",
               background: "#FFFFFF",
               color: "#0A0A0A",
-              border: "1px solid #FFFFFF",
+              border: "none",
               borderRadius: 0,
-              textDecoration: "none",
+              cursor: "pointer",
               display: "inline-block",
               transition: "opacity 0.2s",
             }}
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
-            Explorar la colección
-          </Link>
+            Solicitar invitación
+          </button>
           <Link
             to="/escultores"
             style={{
