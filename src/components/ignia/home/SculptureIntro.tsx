@@ -77,20 +77,20 @@ export const SculptureIntro = () => {
               textTransform: "uppercase",
               padding: "16px 32px",
               background: "transparent",
-              color: "#FFFFFF",
-              border: "1px solid #FFFFFF",
+              color: "#111111",
+              border: "1px solid #111111",
               borderRadius: 0,
               textDecoration: "none",
               display: "inline-block",
               transition: "background-color 0.2s, color 0.2s",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#FFFFFF";
-              e.currentTarget.style.color = "#0A0A0A";
+              e.currentTarget.style.background = "#111111";
+              e.currentTarget.style.color = "#FFFFFF";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "#FFFFFF";
+              e.currentTarget.style.color = "#111111";
             }}
           >
             Unirme como artista
