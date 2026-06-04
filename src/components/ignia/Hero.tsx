@@ -222,7 +222,7 @@ export const Hero = () => {
             style={{
               fontFamily: "'Cormorant Garamond', serif",
               fontWeight: 700,
-              fontSize: 22,
+              fontSize: 28,
               color: "#111111",
               lineHeight: 1.3,
               margin: 0,
