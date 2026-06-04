@@ -8,7 +8,7 @@ export const SculptureIntro = () => {
         padding: "clamp(64px, 9vw, 120px) clamp(24px, 6vw, 80px)",
       }}
     >
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
         <h2
           style={{
             fontFamily: "'Cormorant Garamond', serif",
@@ -34,6 +34,7 @@ export const SculptureIntro = () => {
             marginTop: 24,
             marginBottom: 0,
             maxWidth: 820,
+            marginInline: "auto",
           }}
         >
           El primer marketplace global dedicado exclusivamente a la escultura. Compra, vende y descubre obras contemporáneas — con visualización 3D, certificados de autenticidad en blockchain y comisiones desde el 12%.
