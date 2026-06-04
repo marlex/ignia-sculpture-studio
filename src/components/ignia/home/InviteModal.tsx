@@ -4,9 +4,50 @@ import { useLang } from "@/i18n/LanguageContext";
 type Props = { open: boolean; onClose: () => void };
 
 export const InviteModal = ({ open, onClose }: Props) => {
+  const lang = useLang();
   const [bio, setBio] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const t = lang === "es"
+    ? {
+        title: "Solicitar invitación",
+        subtitle: "30 plazas. Comisión Pro permanente del 15%. Sin cuotas, sin exclusividad.",
+        name: "Nombre completo",
+        email: "Email",
+        country: "País",
+        social: "Instagram o web",
+        material: "Materiales principales",
+        materialOptions: ["Piedra", "Madera", "Metal", "Cerámica", "Resina", "Textil", "Técnica mixta", "Otro"],
+        works: "Obras disponibles (aprox.)",
+        worksOptions: ["1–3", "4–10", "11–20", "Más de 20"],
+        bioLabel: "Cuéntanos tu práctica",
+        bioPlaceholder: "",
+        submit: "Enviar solicitud",
+        sending: "Enviando…",
+        successTitle: "Solicitud recibida.",
+        successMsg: "Revisamos cada solicitud personalmente y te contactamos en 48 horas.",
+        close: "Cerrar",
+      }
+    : {
+        title: "Request invitation",
+        subtitle: "30 spots. Permanent 15% Pro commission. No fees, no exclusivity.",
+        name: "Full name",
+        email: "Email",
+        country: "Country",
+        social: "Instagram or website",
+        material: "Main materials",
+        materialOptions: ["Stone", "Wood", "Metal", "Ceramics", "Resin", "Textile", "Mixed media", "Other"],
+        works: "Available works (approx.)",
+        worksOptions: ["1–3", "4–10", "11–20", "More than 20"],
+        bioLabel: "Tell us about your practice",
+        bioPlaceholder: "",
+        submit: "Send request",
+        sending: "Sending…",
+        successTitle: "Request received.",
+        successMsg: "We review every request personally and will contact you within 48 hours.",
+        close: "Close",
+      };
 
   useEffect(() => {
     if (!open) return;
