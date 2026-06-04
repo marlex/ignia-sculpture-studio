@@ -11,12 +11,14 @@ export const SculptureIntro = () => {
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <h2
           style={{
-            fontFamily: "'DM Serif Display', serif",
-            fontWeight: 400,
-            color: "#FFFFFF",
-            fontSize: "clamp(36px, 5.4vw, 64px)",
-            lineHeight: 1.05,
-            letterSpacing: "-0.02em",
+            fontFamily: "'Cormorant Garamond', serif",
+            fontWeight: 300,
+            fontSize: 56,
+            color: "rgba(255,255,255,0.88)",
+            lineHeight: 1.1,
+            letterSpacing: "0.01em",
+            fontStyle: "normal",
+            textTransform: "none",
             margin: 0,
           }}
         >
