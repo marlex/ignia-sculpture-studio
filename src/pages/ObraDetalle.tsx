@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
+import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { GlbViewer } from "@/components/ignia/GlbViewer";
 import { useLang } from "@/i18n/LanguageContext";
 import { getWorkBySlug } from "@/data/igniaWorks";
@@ -44,6 +45,13 @@ const ObraDetalle = () => {
   const [mode, setMode] = useState<"photos" | "3d">(has3d ? "3d" : "photos");
   const [idx, setIdx] = useState(0);
   const [chatOpen, setChatOpen] = useState(false);
+  const [inviteOpen, setInviteOpen] = useState(false);
+
+  useEffect(() => {
+    const open = () => setInviteOpen(true);
+    window.addEventListener("ignia:open-invite", open);
+    return () => window.removeEventListener("ignia:open-invite", open);
+  }, []);
 
   useEffect(() => { setIdx(0); }, [slug]);
 
@@ -164,7 +172,7 @@ const ObraDetalle = () => {
             </div>
 
             <div className="flex gap-3">
-              <button className="flex-1 bg-ink text-white font-body text-[15px] tracking-[0.16em] uppercase py-5 hover:bg-ink/90 transition-colors">{t.buy}</button>
+              <button onClick={() => window.dispatchEvent(new Event("ignia:open-invite"))} className="flex-1 bg-ink text-white font-body text-[15px] tracking-[0.16em] uppercase py-5 hover:bg-ink/90 transition-colors">{t.buy}</button>
               <button
                 onClick={() => setChatOpen(true)}
                 aria-label={t.talk}
@@ -212,6 +220,7 @@ const ObraDetalle = () => {
         </div>
       )}
 
+      <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} />
       <Footer />
     </main>
   );
