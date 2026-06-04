@@ -161,7 +161,7 @@ export const Hero = () => {
               style={{ opacity: i === actual ? 1 : 0.35 }}
             >
               <div
-                className="w-12 h-16 border-[0.5px] border-border overflow-hidden"
+                className="w-[58px] h-[74px] border-[0.5px] border-border overflow-hidden"
                 style={{ borderBottom: i === actual ? "2px solid hsl(var(--ink))" : undefined }}
               >
                 <img src={ob.image} alt="" className="w-full h-full object-cover" />
