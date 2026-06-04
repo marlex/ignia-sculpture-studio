@@ -46,6 +46,7 @@ export const SculptureIntro = () => {
             gap: 16,
             flexWrap: "wrap",
             alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <button
@@ -71,34 +72,6 @@ export const SculptureIntro = () => {
           >
             Solicitar invitación
           </button>
-          <Link
-            to="/escultores"
-            style={{
-              fontFamily: "Manrope, sans-serif",
-              fontWeight: 500,
-              fontSize: 12,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              padding: "16px 32px",
-              background: "transparent",
-              color: "#FFFFFF",
-              border: "1px solid #FFFFFF",
-              borderRadius: 0,
-              textDecoration: "none",
-              display: "inline-block",
-              transition: "background-color 0.2s, color 0.2s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#FFFFFF";
-              e.currentTarget.style.color = "#0A0A0A";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "#FFFFFF";
-            }}
-          >
-            Unirme como artista
-          </Link>
         </div>
       </div>
     </section>
