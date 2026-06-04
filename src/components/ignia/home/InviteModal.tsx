@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLang } from "@/i18n/LanguageContext";
 
 type Props = { open: boolean; onClose: () => void };
 
