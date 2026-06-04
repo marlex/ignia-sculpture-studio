@@ -26,7 +26,7 @@ export const SculptureIntro = () => {
           style={{
             fontFamily: "'Cormorant Garamond', serif",
             fontWeight: 400,
-            color: "rgba(255,255,255,0.8)",
+            color: "rgba(17,17,17,0.8)",
             fontSize: "clamp(18px, 1.8vw, 24px)",
             lineHeight: 1.45,
             marginTop: 24,
