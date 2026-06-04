@@ -76,7 +76,21 @@ export const Hero = () => {
         }
         .hero-sculpture-tap { transition: opacity 150ms ease-out, transform 300ms ease-out; }
         .hero-sculpture-tap.tap-flash { opacity: 0.85; }
+        @media (min-width: 769px) {
+          .hero-sculpture-desktop {
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><circle cx='12' cy='12' r='4' fill='%23111111'/><line x1='12' y1='2' x2='12' y2='8' stroke='%23111111' stroke-width='1'/><line x1='12' y1='16' x2='12' y2='22' stroke='%23111111' stroke-width='1'/><line x1='2' y1='12' x2='8' y2='12' stroke='%23111111' stroke-width='1'/><line x1='16' y1='12' x2='22' y2='12' stroke='%23111111' stroke-width='1'/></svg>") 12 12, pointer;
+          }
+          .hero-svg-arrow { opacity: 0; transition: opacity 200ms ease-in, transform 200ms ease-in; }
+          .hero-svg-arrow.left { transform: translateX(-16px); }
+          .hero-svg-arrow.right { transform: translateX(16px); }
+          .hero-section:hover .hero-svg-arrow { opacity: 1; transform: translateX(0); transition: opacity 280ms cubic-bezier(0.16,1,0.3,1), transform 280ms cubic-bezier(0.16,1,0.3,1); }
+          .hero-svg-arrow svg { transition: transform 180ms ease; }
+          .hero-svg-arrow svg line { transition: stroke 180ms ease; }
+          .hero-svg-arrow:hover svg { transform: scale(1.15); }
+          .hero-svg-arrow:hover svg line { stroke: rgba(255,255,255,1) !important; }
+        }
       `}</style>
+
 
       <div
         className={`absolute inset-0 hero-sculpture-tap ${tapFlash ? "tap-flash" : ""}`}
