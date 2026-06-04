@@ -28,11 +28,7 @@ export const Header = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-
-  const goPublish = () => {
-    if (user) navigate("/publicar");
-    else navigate(`/login?redirect=${encodeURIComponent("/publicar")}`);
-  };
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const openInvite = () => {
     window.dispatchEvent(new Event("ignia:open-invite"));
@@ -45,11 +41,22 @@ export const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100] h-14 bg-white/95 backdrop-blur border-b border-border flex items-center px-6 md:px-12">
+      <style>{`
+        @media (max-width: 768px) {
+          .header-nav-links { display: none !important; }
+          .header-user-links { display: none !important; }
+          .header-invite-btn { display: none !important; }
+          .header-signin-link { display: none !important; }
+        }
+        @media (min-width: 769px) {
+          .header-hamburger { display: none !important; }
+        }
+      `}</style>
       <div className="flex items-center justify-between w-full gap-4">
         <Link to="/" className="flex items-center" aria-label="Ignia Gallery">
           <Logo />
         </Link>
-        <nav className="hidden md:flex items-center gap-9">
+        <nav className="header-nav-links hidden md:flex items-center gap-9">
           {items.map(item => (
             <Link key={item.label} to={item.to} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
               {item.label}
@@ -59,7 +66,7 @@ export const Header = () => {
         <div className="flex items-center gap-4">
           <LangDropdown lang={lang} setLang={setLang} />
           {user ? (
-            <div className="hidden md:flex items-center gap-3">
+            <div className="header-user-links hidden md:flex items-center gap-3">
               <Link to="/dashboard" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
                 {t.dashboard}
               </Link>
@@ -68,19 +75,108 @@ export const Header = () => {
               </button>
             </div>
           ) : (
-            <Link to={`/login?redirect=${encodeURIComponent(location.pathname)}`} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+            <Link to={`/login?redirect=${encodeURIComponent(location.pathname)}`} className="header-signin-link font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
               {t.signin}
             </Link>
           )}
           <button
             type="button"
             onClick={openInvite}
-            className="hidden sm:inline-flex btn-primary !py-2 !px-4 text-[11px]"
+            className="header-invite-btn hidden sm:inline-flex btn-primary !py-2 !px-4 text-[11px]"
+          >
+            {t.publish}
+          </button>
+          <button
+            type="button"
+            aria-label="Open menu"
+            onClick={() => setMobileOpen(true)}
+            className="header-hamburger"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              gap: 4,
+              padding: 6,
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            <span style={{ width: 16, height: 1, background: "#111111", display: "block" }} />
+            <span style={{ width: 16, height: 1, background: "#111111", display: "block" }} />
+            <span style={{ width: 16, height: 1, background: "#111111", display: "block" }} />
+          </button>
+        </div>
+      </div>
+
+      {mobileOpen && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "#000000",
+            zIndex: 200,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 28,
+          }}
+        >
+          <button
+            type="button"
+            aria-label="Close menu"
+            onClick={() => setMobileOpen(false)}
+            style={{
+              position: "absolute",
+              top: 18,
+              right: 22,
+              background: "transparent",
+              border: "none",
+              color: "#FFFFFF",
+              fontSize: 28,
+              lineHeight: 1,
+              cursor: "pointer",
+              fontFamily: "'Cormorant Garamond', serif",
+              fontWeight: 300,
+            }}
+          >
+            ×
+          </button>
+          {items.map((item) => (
+            <Link
+              key={item.label}
+              to={item.to}
+              onClick={() => setMobileOpen(false)}
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontWeight: 300,
+                fontSize: 32,
+                color: "#FFFFFF",
+                textAlign: "center",
+                textDecoration: "none",
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
+          <button
+            type="button"
+            onClick={() => { setMobileOpen(false); openInvite(); }}
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontWeight: 300,
+              fontSize: 32,
+              color: "#FFFFFF",
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+            }}
           >
             {t.publish}
           </button>
         </div>
-      </div>
+      )}
     </header>
   );
 };

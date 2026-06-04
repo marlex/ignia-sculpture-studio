@@ -34,9 +34,19 @@ const Index = () => {
       <Splash />
       <Header />
       <Hero />
+      <div
+        className="mobile-hero-banner"
+        style={{ display: "none", padding: "16px 20px", textAlign: "center", background: "#FFFFFF" }}
+      >
+        <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, fontStyle: "italic", fontSize: 16, color: "#111111" }}>
+          La primera galería global de escultura.
+        </span>
+      </div>
+      <style>{`@media (max-width: 768px) { .mobile-hero-banner { display: block !important; } }`}</style>
       <div ref={fadeTicker}>
         <Ticker />
       </div>
+
       <div ref={coleccionRef}>
         <div ref={fadeCol}>
           <Coleccion />
