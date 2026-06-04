@@ -203,7 +203,7 @@ export const Hero = () => {
             <span className="text-border">·</span>
             <span>{o.material}</span>
             <span className="text-border">·</span>
-            <span className="font-mono text-[12px]">{lang === "es" ? "Autenticidad" : "Authenticity"} {o.authenticity}</span>
+            <span style={{ fontWeight: 400 }}>{lang === "es" ? "Autenticidad" : "Authenticity"} {o.authenticity}</span>
           </div>
           <div className="flex items-baseline gap-7">
             <span className="font-display font-bold text-[22px] tracking-[-0.01em] text-ink">{o.price}</span>
