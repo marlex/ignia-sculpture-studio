@@ -20,7 +20,7 @@ export const Ticker = () => {
   const presentIn = lang === "es" ? "Presentes en" : "Present in";
 
   const row = (
-    <div className="flex items-center shrink-0 ticker-row" style={{ paddingRight: 64 }}>
+    <div className="flex items-center shrink-0 ticker-row">
       {FAIRS.map((f, i) => (
         <span key={i} className="flex items-center">
           <span
