@@ -8,6 +8,7 @@ import { Hero } from "@/components/ignia/Hero";
 import { Ticker } from "@/components/ignia/home/Ticker";
 
 import { Reviews } from "@/components/ignia/home/Reviews";
+import { Aprende } from "@/components/ignia/Aprende";
 
 import { FollowIgnia } from "@/components/ignia/home/FollowIgnia";
 import { SculptureIntro } from "@/components/ignia/home/SculptureIntro";
@@ -55,6 +56,7 @@ const Index = () => {
         <Reviews />
       </div>
       <Colectores />
+      <Aprende />
       <FollowIgnia />
       <Footer />
       <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} />
