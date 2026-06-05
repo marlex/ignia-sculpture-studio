@@ -21,8 +21,8 @@ export const Hero = () => {
   const obras = getHeroWorks(lang);
   const o = obras[actual];
   const t = lang === "es"
-    ? { hint: "Click en la pieza para verla en 3D", prev: "Anterior", next: "Siguiente", view: "Ver escultura →", expand: "Ampliar 3D", buy: "Comprar", view3d: "Ver en 3D →", certified: "Autenticidad certificada", insured: "Envío asegurado", certificate: "Certificado de autenticidad", returns: "Devolución 14 días" }
-    : { hint: "Click the piece to view it in 3D", prev: "Previous", next: "Next", view: "View sculpture →", expand: "Expand 3D", buy: "Buy", view3d: "View in 3D →", certified: "Certified authenticity", insured: "Insured shipping", certificate: "Certificate of authenticity", returns: "Free 14-day returns" };
+    ? { hint: "Click en la pieza para verla en 3D", prev: "Anterior", next: "Siguiente", view: "Ver escultura →", expand: "Ampliar 3D", buy: "Comprar", view3d: "Ver en 3D →", viewObra: "Ver obra →", certified: "Autenticidad certificada", insured: "Envío asegurado", certificate: "Certificado de autenticidad", returns: "Devolución 14 días" }
+    : { hint: "Click the piece to view it in 3D", prev: "Previous", next: "Next", view: "View sculpture →", expand: "Expand 3D", buy: "Buy", view3d: "View in 3D →", viewObra: "View artwork →", certified: "Certified authenticity", insured: "Insured shipping", certificate: "Certificate of authenticity", returns: "Free 14-day returns" };
 
   const next = () => setActual((actual + 1) % obras.length);
   const prev = () => setActual((actual + obras.length - 1) % obras.length);
@@ -208,7 +208,7 @@ export const Hero = () => {
             onClick={(e) => e.stopPropagation()}
             className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink py-3.5 hover:bg-ink hover:text-white transition-colors text-ink mb-2.5"
           >
-            {t.view3d}
+            {o.glbUrl ? t.view3d : t.viewObra}
           </Link>
           <div className="flex items-center justify-between gap-3 font-body text-[11px] font-light tracking-wide text-gray flex-wrap">
             <span className="inline-flex items-center gap-1.5"><span>✓</span>{t.insured}</span>
@@ -256,7 +256,7 @@ export const Hero = () => {
             className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink hover:bg-ink hover:text-white transition-colors"
             style={{ padding: "12px 0", marginBottom: 10 }}
           >
-            {t.view3d}
+            {o.glbUrl ? t.view3d : t.viewObra}
           </Link>
           <div className="flex items-center justify-between gap-2 font-body text-[11px] font-light tracking-wide text-gray flex-wrap">
             <span className="inline-flex items-center gap-1"><span>✓</span>{t.insured}</span>
