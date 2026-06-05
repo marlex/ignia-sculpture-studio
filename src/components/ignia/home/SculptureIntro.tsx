@@ -5,7 +5,7 @@ export const SculptureIntro = () => {
   const t = lang === "es"
     ? {
         title: "El mundo de la escultura, de cerca.",
-        body: "El primer global sculpture gallery dedicada exclusivamente a la escultura. Compra, vende y descubre obras de gran valor, con visualización 3D, certificados de autenticidad en blockchain y comisiones justas.",
+        body: "La primera galería global dedicada exclusivamente a la escultura. Compra, vende y descubre obras de gran valor, con visualización 3D, certificados de autenticidad en blockchain y comisiones justas.",
         cta: "Solicitar invitación",
       }
     : {
