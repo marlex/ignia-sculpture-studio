@@ -75,10 +75,20 @@ export const Footer = () => {
     : "The first digital gallery devoted exclusively to sculpture.";
   const status = lang === "es" ? "v0.1 — Beta" : "v0.1 — Beta";
   const [open, setOpen] = useState<Record<string, boolean>>({});
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   const toggle = (label: string) => {
     setOpen(prev => ({ ...prev, [label]: !prev[label] }));
   };
+
 
   return (
     <footer className="footer-section bg-white border-t-[0.5px] border-border px-6 md:px-12 pt-14 pb-8">
