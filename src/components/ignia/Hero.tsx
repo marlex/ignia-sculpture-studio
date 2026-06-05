@@ -217,69 +217,54 @@ export const Hero = () => {
           </div>
         </div>
 
-        {/* info mobile */}
+        {/* info mobile — purchase card (same position, updated content) */}
         <div
-          className="hero-info-mobile"
-          style={{ padding: "20px 20px 24px", background: "#ffffff", lineHeight: 1.3 }}
+          className="hero-info-mobile text-ink"
+          style={{ padding: "16px 20px 20px", background: "rgba(255,255,255,0.92)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)", borderTop: "0.5px solid hsl(var(--border))" }}
         >
+          <div className="font-body text-[10px] font-light tracking-[0.22em] uppercase text-gray" style={{ marginBottom: 6 }}>
+            {o.artist}
+          </div>
           <h1
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontWeight: 700,
-              fontSize: 28,
-              color: "#111111",
-              lineHeight: 1.3,
-              margin: 0,
-              marginBottom: 4,
-            }}
+            className="text-ink"
+            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: 26, lineHeight: 1.1, letterSpacing: "0.01em", margin: 0, marginBottom: 6 }}
           >
             {o.title}
           </h1>
-          <div
-            style={{
-              fontFamily: "Manrope, sans-serif",
-              fontWeight: 500,
-              fontSize: 12,
-              color: "#666666",
-              lineHeight: 1.3,
-              whiteSpace: "nowrap",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              margin: 0,
-            }}
-          >
-            {o.artist} · {o.material} · {lang === "es" ? "Autenticidad" : "Authenticity"} {o.authenticity}
+          <div className="font-body text-[12px] font-light tracking-wide text-gray" style={{ marginBottom: 10 }}>
+            {o.material} · {o.year}
           </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginTop: 6,
-              lineHeight: 1.3,
-            }}
+          <div className="flex items-center gap-2 border-[0.5px] border-border px-3 py-2" style={{ marginBottom: 10 }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-ink shrink-0" aria-hidden>
+              <path d="M10 13a5 5 0 007.07 0l3-3a5 5 0 00-7.07-7.07l-1 1" />
+              <path d="M14 11a5 5 0 00-7.07 0l-3 3a5 5 0 007.07 7.07l1-1" />
+            </svg>
+            <span className="font-body text-[9px] font-light tracking-[0.18em] uppercase text-ink">{t.certified}</span>
+            <span className="font-body text-[10px] font-light tracking-wide text-gray ml-auto">{o.authenticity}</span>
+          </div>
+          <div className="font-display font-bold tracking-[-0.01em] text-ink" style={{ fontSize: 24, marginBottom: 10 }}>{o.price}</div>
+          <button
+            onClick={(e) => { e.stopPropagation(); navigate(`/obra/${o.slug}?buy=1`); }}
+            className="w-full font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-ink text-white hover:opacity-90 transition-opacity"
+            style={{ padding: "12px 0", marginBottom: 10 }}
           >
-            <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, fontSize: 20, color: "#111111", lineHeight: 1.3 }}>
-              {o.price}
-            </span>
-            <Link
-              to={`/obra/${o.slug}`}
-              style={{
-                fontFamily: "Manrope, sans-serif",
-                fontWeight: 500,
-                fontSize: 10,
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                color: "#111111",
-                borderBottom: "0.5px solid #111111",
-                paddingBottom: 1,
-                lineHeight: 1.3,
-              }}
-            >
-              {t.view}
-            </Link>
+            {t.buy}
+          </button>
+          <Link
+            to={`/obra/${o.slug}`}
+            onClick={(e) => e.stopPropagation()}
+            className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink hover:bg-ink hover:text-white transition-colors"
+            style={{ padding: "12px 0", marginBottom: 10 }}
+          >
+            {t.view3d}
+          </Link>
+          <div className="flex items-center justify-between gap-2 font-body text-[11px] font-light tracking-wide text-gray flex-wrap">
+            <span className="inline-flex items-center gap-1"><span>✓</span>{t.insured}</span>
+            <span className="inline-flex items-center gap-1"><span>✓</span>{t.certificate}</span>
+            <span className="inline-flex items-center gap-1"><span>✓</span>{t.returns}</span>
           </div>
         </div>
+
       </div>
 
     </section>
