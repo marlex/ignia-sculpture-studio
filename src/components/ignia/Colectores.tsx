@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
+import patriziaAsset from "@/assets/collector-patrizia.webp.asset.json";
+import joannouAsset from "@/assets/collector-joannou.webp.asset.json";
+import warburgAsset from "@/assets/collector-warburg.jpg.asset.json";
 
-const FOTO_PRINCIPAL = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Fondazione_Sandretto_Re_Rebaudengo.jpg/1280px-Fondazione_Sandretto_Re_Rebaudengo.jpg";
-const FOTO_JOANNOU = "https://deste.gr/wp-content/uploads/2022/06/DESTE-2022-KOONS-APOLLO-exterior-1-photo-George-Skordaras.jpg";
-const FOTO_WARBURG = "https://thedonumestate.com/assets/upload/Donum-AiWeiwei-ZodiacHeads-LowRes.jpg";
+const FOTO_PRINCIPAL = patriziaAsset.url;
+const FOTO_JOANNOU = joannouAsset.url;
+const FOTO_WARBURG = warburgAsset.url;
 
 const COLECCIONISTAS = {
   es: {
