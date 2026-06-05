@@ -19,13 +19,13 @@ export const SeisPrincipios = () => {
         .sp-vi { font-family:${CG}; font-weight:700; font-size:180px; color:#d9d2c4; line-height:0.78; flex-shrink:0; letter-spacing:-0.02em; margin-bottom:-0.08em; }
         .sp-title { font-family:${CG}; font-weight:700; font-size:clamp(32px,4.5vw,48px); color:#111; line-height:1.1; margin:0; letter-spacing:-0.02em; }
         .sp-grid { display:grid; grid-template-columns:1fr 1fr; }
-        .sp-cell { padding:56px 60px; position:relative; }
+        .sp-cell { padding:36px 60px; position:relative; }
         .sp-cell:nth-child(odd) { padding-left:0; border-right:1px solid #e8e3db; }
         .sp-cell:nth-child(even) { padding-right:0; }
         .sp-cell:nth-child(n+3) { border-top:1px solid #e8e3db; }
-        .sp-num { font-family:${CG}; font-weight:300; font-size:23px; letter-spacing:0.15em; color:#b8b0a0; margin:0 0 28px; }
-        .sp-rt { font-family:${CG}; font-size:24px; font-weight:700; line-height:1.3; color:#111; margin:0 0 20px; }
-        .sp-desc { font-family:${MAN}; font-size:16px; font-weight:500; line-height:1.7; color:#777; margin:0; max-width:460px; }
+        .sp-num { font-family:${CG}; font-weight:300; font-size:23px; letter-spacing:0.15em; color:#b8b0a0; margin:0 0 14px; }
+        .sp-rt { font-family:${CG}; font-size:24px; font-weight:700; line-height:1.3; color:#111; margin:0 0 10px; }
+        .sp-desc { font-family:${MAN}; font-size:16px; font-weight:500; line-height:1.6; color:#777; margin:0; max-width:460px; }
         @media (max-width:768px) {
           .sp-wrap { padding:0 24px; }
           .sp-header { flex-direction:column; gap:24px; padding:60px 0 40px; }
