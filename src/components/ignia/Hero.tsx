@@ -256,7 +256,7 @@ export const Hero = () => {
             className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink hover:bg-ink hover:text-white transition-colors"
             style={{ padding: "12px 0", marginBottom: 10 }}
           >
-            {t.view3d}
+            {o.glbUrl ? t.view3d : t.viewObra}
           </Link>
           <div className="flex items-center justify-between gap-2 font-body text-[11px] font-light tracking-wide text-gray flex-wrap">
             <span className="inline-flex items-center gap-1"><span>✓</span>{t.insured}</span>
