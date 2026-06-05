@@ -73,6 +73,11 @@ export const Footer = () => {
     ? "La primera galería digital dedicada exclusivamente a la escultura."
     : "The first digital gallery devoted exclusively to sculpture.";
   const status = lang === "es" ? "v0.1 — Beta" : "v0.1 — Beta";
+  const [open, setOpen] = useState<Record<string, boolean>>({});
+
+  const toggle = (label: string) => {
+    setOpen(prev => ({ ...prev, [label]: !prev[label] }));
+  };
 
   return (
     <footer className="footer-section bg-white border-t-[0.5px] border-border px-6 md:px-12 pt-14 pb-8">
@@ -82,14 +87,29 @@ export const Footer = () => {
           <p className="font-body text-[14px] font-light text-gray mt-4 max-w-[260px]">{tagline}</p>
         </div>
         {cols.map(c => (
-          <div key={c.label}>
-            <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-4">{c.label}</div>
-            <div className="flex flex-col gap-2.5">
-              {c.links.map(l => (
-                <Link key={l.label} to={l.to} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">{l.label}</Link>
-              ))}
-            </div>
-          </div>
+          <Collapsible
+            key={c.label}
+            open={!!open[c.label]}
+            onOpenChange={() => toggle(c.label)}
+            className="md:data-[state=closed]:overflow-visible"
+          >
+            <CollapsibleTrigger asChild>
+              <button className="w-full flex items-center justify-between md:justify-start md:pointer-events-none outline-none">
+                <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em]">{c.label}</div>
+                <ChevronDown
+                  className="w-4 h-4 text-muted-line transition-transform duration-300 md:hidden"
+                  style={{ transform: open[c.label] ? "rotate(180deg)" : "rotate(0deg)" }}
+                />
+              </button>
+            </CollapsibleTrigger>
+            <CollapsibleContent className="overflow-hidden transition-all data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down md:overflow-visible">
+              <div className="flex flex-col gap-2.5 mt-4">
+                {c.links.map(l => (
+                  <Link key={l.label} to={l.to} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">{l.label}</Link>
+                ))}
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
         ))}
       </div>
       <div className="border-t-[0.5px] border-border mt-10 pt-5 flex justify-between flex-wrap gap-3 items-center">
