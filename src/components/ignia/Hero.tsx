@@ -21,8 +21,8 @@ export const Hero = () => {
   const obras = getHeroWorks(lang);
   const o = obras[actual];
   const t = lang === "es"
-    ? { hint: "Click en la pieza para verla en 3D", prev: "Anterior", next: "Siguiente", view: "Ver escultura →", expand: "Ampliar 3D" }
-    : { hint: "Click the piece to view it in 3D", prev: "Previous", next: "Next", view: "View sculpture →", expand: "Expand 3D" };
+    ? { hint: "Click en la pieza para verla en 3D", prev: "Anterior", next: "Siguiente", view: "Ver escultura →", expand: "Ampliar 3D", buy: "Comprar", view3d: "Ver en 3D →", certified: "Autenticidad certificada", insured: "Envío asegurado", certificate: "Certificado de autenticidad", returns: "Devolución 14 días" }
+    : { hint: "Click the piece to view it in 3D", prev: "Previous", next: "Next", view: "View sculpture →", expand: "Expand 3D", buy: "Buy", view3d: "View in 3D →", certified: "Certified authenticity", insured: "Insured shipping", certificate: "Certificate of authenticity", returns: "Free 14-day returns" };
 
   const next = () => setActual((actual + 1) % obras.length);
   const prev = () => setActual((actual + obras.length - 1) % obras.length);
