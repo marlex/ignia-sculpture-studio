@@ -151,26 +151,6 @@ export const Hero = () => {
 
       {/* bottom strip */}
       <div className="hero-bottom-strip absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 pb-8 md:pb-9 flex flex-col md:flex-row items-stretch md:items-end gap-6 md:gap-12 pt-16">
-        {/* thumbs (desktop) */}
-        <div className="hero-thumbs flex md:flex-col gap-2 shrink-0">
-          {obras.map((ob, i) => (
-            <button
-              key={ob.slug}
-              onClick={() => setActual(i)}
-              aria-label={ob.title}
-              className="cursor-pointer transition-opacity"
-              style={{ opacity: i === actual ? 1 : 0.35 }}
-            >
-              <div
-                className="w-[58px] h-[74px] border-[0.5px] border-border overflow-hidden"
-                style={{ borderBottom: i === actual ? "2px solid hsl(var(--ink))" : undefined }}
-              >
-                <img src={ob.image} alt="" className="w-full h-full object-cover" />
-              </div>
-            </button>
-          ))}
-        </div>
-
         {/* dot indicators (mobile) */}
         <div
           className="hero-dots"
@@ -194,45 +174,46 @@ export const Hero = () => {
           ))}
         </div>
 
-        {/* info desktop */}
-        <div className="hero-info-desktop flex-1 text-ink max-w-[560px]">
-          <div className="font-body text-[11px] font-light tracking-[0.22em] uppercase text-gray mb-2">
+        {/* info desktop — purchase card */}
+        <div
+          className="hero-info-desktop text-ink w-full max-w-[460px] p-8 backdrop-blur-md"
+          style={{ background: "rgba(255,255,255,0.82)", border: "0.5px solid hsl(var(--border))" }}
+        >
+          <div className="font-body text-[11px] font-light tracking-[0.22em] uppercase text-gray mb-3">
             {o.artist}
           </div>
-          <h1 className="leading-[1.05] tracking-[0.01em] mb-1.5 text-ink" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(27px, 3.4vw, 49px)" }}>
+          <h1 className="leading-[1.05] tracking-[0.01em] mb-3 text-ink" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(32px, 3.4vw, 46px)" }}>
             {o.title}
           </h1>
-          <div className="font-body text-[13px] font-light tracking-wide text-gray mb-4">
+          <div className="font-body text-[13px] font-light tracking-wide text-gray mb-5">
             {o.material} · {o.year}
           </div>
-          <div className="inline-flex items-center gap-3 border-[0.5px] border-border px-4 py-2.5 mb-5">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-ink" aria-hidden>
+          <div className="flex items-center gap-3 border-[0.5px] border-border px-4 py-2.5 mb-6">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-ink shrink-0" aria-hidden>
               <path d="M10 13a5 5 0 007.07 0l3-3a5 5 0 00-7.07-7.07l-1 1" />
               <path d="M14 11a5 5 0 00-7.07 0l-3 3a5 5 0 007.07 7.07l1-1" />
             </svg>
-            <span className="font-body text-[11px] font-light tracking-[0.18em] uppercase text-ink">{t.certified}</span>
-            <span className="font-body text-[11px] font-light tracking-wide text-gray">{o.authenticity}</span>
+            <span className="font-body text-[10px] font-light tracking-[0.18em] uppercase text-ink">{t.certified}</span>
+            <span className="font-body text-[11px] font-light tracking-wide text-gray ml-auto">{o.authenticity}</span>
           </div>
-          <div className="flex items-center gap-5 mb-4">
-            <span className="font-display font-bold text-[24px] tracking-[-0.01em] text-ink">{o.price}</span>
-            <button
-              onClick={(e) => { e.stopPropagation(); navigate(`/obra/${o.slug}?buy=1`); }}
-              className="font-body text-[12px] font-medium tracking-[0.18em] uppercase bg-ink text-white px-8 py-3 hover:opacity-90 transition-opacity"
-            >
-              {t.buy}
-            </button>
-            <Link
-              to={`/obra/${o.slug}`}
-              onClick={(e) => e.stopPropagation()}
-              className="font-body text-[12px] font-light tracking-[0.18em] uppercase border-[0.5px] border-ink px-6 py-3 hover:bg-ink hover:text-white transition-colors text-ink"
-            >
-              {t.view3d}
-            </Link>
-          </div>
-          <div className="flex items-center gap-5 font-body text-[11px] font-light tracking-wide text-gray flex-wrap">
-            <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 inline-block">✓</span>{t.insured}</span>
-            <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 inline-block">✓</span>{t.certificate}</span>
-            <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 inline-block">✓</span>{t.returns}</span>
+          <div className="font-display font-bold text-[28px] tracking-[-0.01em] text-ink mb-5">{o.price}</div>
+          <button
+            onClick={(e) => { e.stopPropagation(); navigate(`/obra/${o.slug}?buy=1`); }}
+            className="w-full font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-ink text-white py-4 hover:opacity-90 transition-opacity mb-3"
+          >
+            {t.buy}
+          </button>
+          <Link
+            to={`/obra/${o.slug}`}
+            onClick={(e) => e.stopPropagation()}
+            className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink py-4 hover:bg-ink hover:text-white transition-colors text-ink mb-5"
+          >
+            {t.view3d}
+          </Link>
+          <div className="flex items-center justify-between gap-3 font-body text-[11px] font-light tracking-wide text-gray flex-wrap">
+            <span className="inline-flex items-center gap-1.5"><span>✓</span>{t.insured}</span>
+            <span className="inline-flex items-center gap-1.5"><span>✓</span>{t.certificate}</span>
+            <span className="inline-flex items-center gap-1.5"><span>✓</span>{t.returns}</span>
           </div>
         </div>
 
