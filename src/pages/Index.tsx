@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Header } from "@/components/ignia/Header";
 import { Coleccion } from "@/components/ignia/Coleccion";
 import { Artistas } from "@/components/ignia/Artistas";
+import { Colectores } from "@/components/ignia/Colectores";
 import { Footer } from "@/components/ignia/Footer";
 import { Hero } from "@/components/ignia/Hero";
 import { Ticker } from "@/components/ignia/home/Ticker";
@@ -53,6 +54,7 @@ const Index = () => {
       <div ref={fadeReviews}>
         <Reviews />
       </div>
+      <Colectores />
       <FollowIgnia />
       <Footer />
       <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} />
