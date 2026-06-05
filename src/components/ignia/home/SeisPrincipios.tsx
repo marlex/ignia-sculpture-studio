@@ -1,16 +1,35 @@
-const ROWS = [
-  { n: "I", t: "La escultura merece un escaparate a su altura.", d: "Tridimensional, global, sin las barreras que el mercado del arte lleva décadas imponiendo." },
-  { n: "II", t: "Ver es creer.", d: "Una obra de escultura no se entiende desde una foto plana. En Ignia se gira, se examina, se previsualizas en tu espacio antes de decidir." },
-  { n: "III", t: "Cada obra, certificada para siempre.", d: "Un registro en blockchain que viaja con la pieza aunque cambie de manos. La autenticidad no depende de nadie: está en la cadena." },
-  { n: "IV", t: "Las reglas del juego, visibles desde el principio.", d: "Comisiones fijas y publicadas. Criterios de selección abiertos. Datos reales para quien crea y para quien colecciona." },
-  { n: "V", t: "El conocimiento que el mercado nunca compartió.", d: "Guía experta para coleccionistas. Visibilidad y representación real para artistas que merecen llegar más lejos." },
-  { n: "VI", t: "Solo escultura. Siempre.", d: "No un marketplace genérico con una sección de escultura. Una plataforma construida entera y exclusivamente para este formato." },
-];
+import { useLang } from "@/i18n/LanguageContext";
+
+const ROWS = {
+  es: [
+    { n: "I", t: "La escultura merece un escaparate a su altura.", d: "Tridimensional, global, sin las barreras que el mercado del arte lleva décadas imponiendo." },
+    { n: "II", t: "Ver es creer.", d: "Una obra de escultura no se entiende desde una foto plana. En Ignia se gira, se examina, se previsualizas en tu espacio antes de decidir." },
+    { n: "III", t: "Cada obra, certificada para siempre.", d: "Un registro en blockchain que viaja con la pieza aunque cambie de manos. La autenticidad no depende de nadie: está en la cadena." },
+    { n: "IV", t: "Las reglas del juego, visibles desde el principio.", d: "Comisiones fijas y publicadas. Criterios de selección abiertos. Datos reales para quien crea y para quien colecciona." },
+    { n: "V", t: "El conocimiento que el mercado nunca compartió.", d: "Guía experta para coleccionistas. Visibilidad y representación real para artistas que merecen llegar más lejos." },
+    { n: "VI", t: "Solo escultura. Siempre.", d: "No un marketplace genérico con una sección de escultura. Una plataforma construida entera y exclusivamente para este formato." },
+  ],
+  en: [
+    { n: "I", t: "Sculpture deserves a stage worthy of it.", d: "Three-dimensional, global, free from the barriers the art market has imposed for decades." },
+    { n: "II", t: "Seeing is believing.", d: "A sculpture cannot be understood from a flat photo. On Ignia you rotate it, examine it and preview it in your own space before deciding." },
+    { n: "III", t: "Every work, certified forever.", d: "A blockchain record that travels with the piece even as it changes hands. Authenticity depends on no one: it lives on the chain." },
+    { n: "IV", t: "The rules of the game, visible from day one.", d: "Fixed, published commissions. Open selection criteria. Real data for those who create and those who collect." },
+    { n: "V", t: "The knowledge the market never shared.", d: "Expert guidance for collectors. Genuine visibility and representation for artists who deserve to go further." },
+    { n: "VI", t: "Only sculpture. Always.", d: "Not a generic marketplace with a sculpture section. A platform built entirely and exclusively for this format." },
+  ],
+};
+
+const TITLE = {
+  es: "Seis principios que definen un mundo diferente para la escultura.",
+  en: "Six principles that define a different world for sculpture.",
+};
 
 const CG = "'Cormorant Garamond', serif";
 const MAN = "Manrope, sans-serif";
 
 export const SeisPrincipios = () => {
+  const lang = useLang();
+  const rows = ROWS[lang];
   return (
     <section className="seis-principios w-full bg-white">
       <style>{`
@@ -38,10 +57,10 @@ export const SeisPrincipios = () => {
       <div className="sp-wrap">
         <div className="sp-header">
           <div className="sp-vi" aria-hidden="true">VI</div>
-          <h2 className="sp-title">Seis principios que definen un mundo diferente para la escultura.</h2>
+          <h2 className="sp-title">{TITLE[lang]}</h2>
         </div>
         <div className="sp-grid">
-          {ROWS.map((r) => (
+          {rows.map((r) => (
             <div key={r.n} className="sp-cell">
               <p className="sp-num">{r.n}</p>
               <h3 className="sp-rt">{r.t}</h3>
