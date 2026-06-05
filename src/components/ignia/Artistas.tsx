@@ -41,7 +41,7 @@ export const Artistas = () => {
   const lang = useLang();
   const artistas = ARTISTAS[lang];
   const principal = artistas.find((a) => a.nombre === "Susana Solano") ?? artistas[0];
-  const secundarios = artistas.filter((a) => a.nombre !== principal.nombre).slice(0, 2);
+  const secundarios = artistas.filter((a) => a.nombre !== principal.nombre).slice(0, 4);
   const t = lang === "es"
     ? { h: "Escultores", all: "Ver todos →", featured: "Escultores destacados", view: "Ver artista →" }
     : { h: "Sculptors", all: "View all →", featured: "Featured sculptors", view: "View artist →" };
