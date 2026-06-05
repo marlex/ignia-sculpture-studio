@@ -176,19 +176,19 @@ export const Hero = () => {
 
         {/* info desktop — purchase card */}
         <div
-          className="hero-info-desktop text-ink w-full max-w-[460px] p-8 backdrop-blur-md"
+          className="hero-info-desktop text-ink w-full max-w-[460px] pt-5 px-6 pb-5 backdrop-blur-md"
           style={{ background: "rgba(255,255,255,0.82)", border: "0.5px solid hsl(var(--border))" }}
         >
-          <div className="font-body text-[11px] font-light tracking-[0.22em] uppercase text-gray mb-3">
+          <div className="font-body text-[11px] font-light tracking-[0.22em] uppercase text-gray mb-2">
             {o.artist}
           </div>
-          <h1 className="leading-[1.05] tracking-[0.01em] mb-3 text-ink" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(32px, 3.4vw, 46px)" }}>
+          <h1 className="leading-[1.05] tracking-[0.01em] mb-2 text-ink" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(32px, 3.4vw, 46px)" }}>
             {o.title}
           </h1>
-          <div className="font-body text-[13px] font-light tracking-wide text-gray mb-5">
+          <div className="font-body text-[13px] font-light tracking-wide text-gray mb-2.5">
             {o.material} · {o.year}
           </div>
-          <div className="flex items-center gap-3 border-[0.5px] border-border px-4 py-2.5 mb-6">
+          <div className="flex items-center gap-2 border-[0.5px] border-border px-4 py-2 mb-2.5">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-ink shrink-0" aria-hidden>
               <path d="M10 13a5 5 0 007.07 0l3-3a5 5 0 00-7.07-7.07l-1 1" />
               <path d="M14 11a5 5 0 00-7.07 0l-3 3a5 5 0 007.07 7.07l1-1" />
@@ -196,17 +196,17 @@ export const Hero = () => {
             <span className="font-body text-[10px] font-light tracking-[0.18em] uppercase text-ink">{t.certified}</span>
             <span className="font-body text-[11px] font-light tracking-wide text-gray ml-auto">{o.authenticity}</span>
           </div>
-          <div className="font-display font-bold text-[28px] tracking-[-0.01em] text-ink mb-5">{o.price}</div>
+          <div className="font-display font-bold text-[28px] tracking-[-0.01em] text-ink mb-2.5">{o.price}</div>
           <button
             onClick={(e) => { e.stopPropagation(); navigate(`/obra/${o.slug}?buy=1`); }}
-            className="w-full font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-ink text-white py-4 hover:opacity-90 transition-opacity mb-3"
+            className="w-full font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-ink text-white py-3.5 hover:opacity-90 transition-opacity mb-2.5"
           >
             {t.buy}
           </button>
           <Link
             to={`/obra/${o.slug}`}
             onClick={(e) => e.stopPropagation()}
-            className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink py-4 hover:bg-ink hover:text-white transition-colors text-ink mb-5"
+            className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink py-3.5 hover:bg-ink hover:text-white transition-colors text-ink mb-2.5"
           >
             {t.view3d}
           </Link>
