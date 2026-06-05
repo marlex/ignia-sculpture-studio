@@ -15,7 +15,7 @@ export const SeisPrincipios = () => {
     <section className="seis-principios w-full bg-white">
       <style>{`
         .sp-wrap { max-width:1280px; margin:0 auto; padding:0 40px; }
-        .sp-header { display:flex; align-items:flex-start; gap:40px; padding:100px 0 80px; border-bottom:1px solid #e8e3db; }
+        .sp-header { display:flex; align-items:flex-end; gap:40px; padding:100px 0 80px; border-bottom:1px solid #e8e3db; }
         .sp-vi { font-family:${DM}; font-size:180px; color:#d9d2c4; line-height:0.85; font-style:normal; flex-shrink:0; }
         .sp-title { font-family:${DM}; font-size:clamp(40px,4.2vw,56px); color:#111; line-height:1.1; margin:0; font-weight:400; font-style:normal; }
         .sp-grid { display:grid; grid-template-columns:1fr 1fr; }
