@@ -10,6 +10,7 @@ import { Reviews } from "@/components/ignia/home/Reviews";
 
 import { FollowIgnia } from "@/components/ignia/home/FollowIgnia";
 import { SculptureIntro } from "@/components/ignia/home/SculptureIntro";
+import { SeisPrincipios } from "@/components/ignia/home/SeisPrincipios";
 import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { Splash } from "@/components/ignia/home/Splash";
 import { useFadeUp } from "@/hooks/useFadeUp";
@@ -45,6 +46,7 @@ const Index = () => {
           <Coleccion />
         </div>
       </div>
+      <SeisPrincipios />
       <div ref={fadeArt}>
         <Artistas />
       </div>
