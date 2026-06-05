@@ -7,8 +7,13 @@ import obra3 from "@/assets/obra-3.jpg";
 import obraRaizAsset from "@/assets/obra-raiz-new.jpg.asset.json";
 import obraOrigenAsset from "@/assets/obra-origen-new.jpg.asset.json";
 import obra6 from "@/assets/obra-eco.jpg";
-import obra7 from "@/assets/obra-quietud-alabastro.jpg";
+import obraQuietudAsset from "@/assets/obra-quietud-new.webp.asset.json";
 import obra8 from "@/assets/obra-luz-interior.jpg";
+
+const obra2 = obraPliegueAsset.url;
+const obra4 = obraRaizAsset.url;
+const obra5 = obraOrigenAsset.url;
+const obra7 = obraQuietudAsset.url;
 import arco from "@/assets/obra-arco-new.jpg";
 import caida from "@/assets/perfil-escultura-caida.jpg";
 import ecoOndas from "@/assets/perfil-escultura-eco.jpg";
