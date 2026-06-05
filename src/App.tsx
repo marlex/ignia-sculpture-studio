@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound.tsx";
 import Login from "./pages/Login.tsx";
 import PerfilEscultor from "./pages/PerfilEscultor.tsx";
 import PerfilColeccionista from "./pages/PerfilColeccionista.tsx";
+import ColeccionistaPublico from "./pages/ColeccionistaPublico.tsx";
 import ColeccionPage from "./pages/Coleccion.tsx";
 import EscultoresPage from "./pages/Escultores.tsx";
 import AprendePage from "./pages/Aprende.tsx";
@@ -42,6 +43,7 @@ const App = () => (
               <Route path="/perfil/escultor" element={<PerfilEscultor />} />
               <Route path="/perfil/escultor/:slug" element={<PerfilEscultor />} />
               <Route path="/perfil/coleccionista" element={<PerfilColeccionista />} />
+              <Route path="/coleccionista/:slug" element={<ColeccionistaPublico />} />
               <Route path="/coleccion" element={<ColeccionPage />} />
               <Route path="/escultores" element={<EscultoresPage />} />
               <Route path="/aprende" element={<AprendePage />} />

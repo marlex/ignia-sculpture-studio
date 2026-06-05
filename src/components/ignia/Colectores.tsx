@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
+import patriziaAsset from "@/assets/collector-patrizia.webp.asset.json";
+import joannouAsset from "@/assets/collector-joannou.webp.asset.json";
+import warburgAsset from "@/assets/collector-warburg.jpg.asset.json";
 
-const FOTO_PRINCIPAL = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Fondazione_Sandretto_Re_Rebaudengo.jpg/1280px-Fondazione_Sandretto_Re_Rebaudengo.jpg";
-const FOTO_JOANNOU = "https://deste.gr/wp-content/uploads/2022/06/DESTE-2022-KOONS-APOLLO-exterior-1-photo-George-Skordaras.jpg";
-const FOTO_WARBURG = "https://thedonumestate.com/assets/upload/Donum-AiWeiwei-ZodiacHeads-LowRes.jpg";
+const FOTO_PRINCIPAL = patriziaAsset.url;
+const FOTO_JOANNOU = joannouAsset.url;
+const FOTO_WARBURG = warburgAsset.url;
 
 const COLECCIONISTAS = {
   es: {
@@ -78,11 +81,11 @@ export const Colectores = () => {
       </div>
 
       <article className="grid grid-cols-1 md:grid-cols-[65%_35%] gap-8 md:gap-14 items-center mb-16">
-        <Link to={`/perfil/coleccionista/${slug(principal.nombre)}`} aria-label={principal.nombre} className="block aspect-[16/9] overflow-hidden bg-secondary group">
+        <Link to={`/coleccionista/${slug(principal.nombre)}`} aria-label={principal.nombre} className="block aspect-[16/9] overflow-hidden bg-secondary group">
           <img src={principal.foto} alt={principal.nombre} loading="lazy" width={1600} height={900} className="w-full h-full object-cover object-[center_35%] transition-transform duration-[700ms] group-hover:scale-[1.02]" />
         </Link>
         <div>
-          <Link to={`/perfil/coleccionista/${slug(principal.nombre)}`} className="block group">
+          <Link to={`/coleccionista/${slug(principal.nombre)}`} className="block group">
             <div className="font-display text-[24px] font-bold text-ink mb-4 leading-tight">
               {principal.nombre}
             </div>
@@ -100,11 +103,11 @@ export const Colectores = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {data.secundarios.map((c) => (
             <article key={c.nombre} className="group grid grid-cols-[40%_60%] gap-5 items-start">
-              <Link to={`/perfil/coleccionista/${slug(c.nombre)}`} aria-label={c.nombre} className="block aspect-square overflow-hidden bg-secondary">
+              <Link to={`/coleccionista/${slug(c.nombre)}`} aria-label={c.nombre} className="block aspect-square overflow-hidden bg-secondary">
                 <img src={c.foto} alt={c.nombre} loading="lazy" width={800} height={800} className="w-full h-full object-cover object-[center_35%] transition-transform duration-[700ms] group-hover:scale-[1.03]" />
               </Link>
               <div>
-                <Link to={`/perfil/coleccionista/${slug(c.nombre)}`} className="block hover:opacity-80 transition-opacity">
+                <Link to={`/coleccionista/${slug(c.nombre)}`} className="block hover:opacity-80 transition-opacity">
                   <h4 className="font-display font-bold text-[24px] text-ink mb-1.5 leading-tight">{c.nombre}</h4>
                   <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{c.ubicacion} · {c.foco}</div>
                   <p className="font-body text-[14px] font-light text-gray leading-relaxed mb-3">{c.extracto}</p>
