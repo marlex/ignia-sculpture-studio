@@ -1,0 +1,120 @@
+import { Link } from "react-router-dom";
+import { useLang } from "@/i18n/LanguageContext";
+
+const FOTO_PRINCIPAL = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Fondazione_Sandretto_Re_Rebaudengo.jpg/1280px-Fondazione_Sandretto_Re_Rebaudengo.jpg";
+const FOTO_JOANNOU = "https://deste.gr/wp-content/uploads/2022/06/DESTE-2022-KOONS-APOLLO-exterior-1-photo-George-Skordaras.jpg";
+const FOTO_WARBURG = "https://thedonumestate.com/assets/upload/Donum-AiWeiwei-ZodiacHeads-LowRes.jpg";
+
+const COLECCIONISTAS = {
+  es: {
+    principal: {
+      foto: FOTO_PRINCIPAL,
+      nombre: "Patrizia Sandretto Re Rebaudengo",
+      ubicacion: "Turín, Italia",
+      foco: "Escultura contemporánea · Instalación · Fotografía",
+      extracto: "Una de las patronas de arte contemporáneo más influyentes del mundo. Presidenta de la Fondazione Sandretto Re Rebaudengo desde 1995, su colección reúne más de 1.500 obras, incluyendo escultura de Tony Cragg, Adrián Villar Rojas y Maurizio Cattelan. Lleva más de tres décadas apoyando a escultores emergentes.",
+    },
+    secundarios: [
+      {
+        foto: FOTO_JOANNOU,
+        nombre: "Dakis Joannou",
+        ubicacion: "Atenas, Grecia",
+        foco: "Escultura · Instalación · Contemporáneo",
+        extracto: "Fundador de la DESTE Foundation for Contemporary Art. Su colección de más de 1.500 obras incluye piezas clave de Urs Fischer, Maurizio Cattelan y Jeff Koons. Cada verano comisiona escultura site-specific en el antiguo matadero de la isla de Hidra.",
+      },
+      {
+        foto: FOTO_WARBURG,
+        nombre: "Mei & Allan Warburg",
+        ubicacion: "Sonoma, California",
+        foco: "Escultura exterior · Site-specific · Gran formato",
+        extracto: "Fundadores de Donum Estate, una de las colecciones de escultura al aire libre más significativas del mundo. Más de 60 obras monumentales de Ai Weiwei, Louise Bourgeois, Yayoi Kusama y Olafur Eliasson, integradas en 200 hectáreas de viñedo en el norte de California.",
+      },
+    ],
+  },
+  en: {
+    principal: {
+      foto: FOTO_PRINCIPAL,
+      nombre: "Patrizia Sandretto Re Rebaudengo",
+      ubicacion: "Turin, Italy",
+      foco: "Contemporary sculpture · Installation · Photography",
+      extracto: "One of the most influential contemporary art patrons in the world. President of the Fondazione Sandretto Re Rebaudengo since 1995, her collection spans over 1,500 works including sculpture by Tony Cragg, Adrián Villar Rojas and Maurizio Cattelan. She has championed emerging sculptors for over three decades.",
+    },
+    secundarios: [
+      {
+        foto: FOTO_JOANNOU,
+        nombre: "Dakis Joannou",
+        ubicacion: "Athens, Greece",
+        foco: "Sculpture · Installation · Contemporary",
+        extracto: "Founder of the DESTE Foundation for Contemporary Art. His collection of over 1,500 works includes major sculpture by Urs Fischer, Maurizio Cattelan and Jeff Koons. Each summer he commissions site-specific sculpture at the former slaughterhouse on the island of Hydra.",
+      },
+      {
+        foto: FOTO_WARBURG,
+        nombre: "Mei & Allan Warburg",
+        ubicacion: "Sonoma, California",
+        foco: "Outdoor sculpture · Site-specific · Large scale",
+        extracto: "Founders of Donum Estate, one of the world's most significant outdoor sculpture collections. Over 60 monumental works by Ai Weiwei, Louise Bourgeois, Yayoi Kusama and Olafur Eliasson, integrated across 200 acres of vineyard in Northern California.",
+      },
+    ],
+  },
+};
+
+const slug = (s: string) =>
+  s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+export const Colectores = () => {
+  const lang = useLang();
+  const data = COLECCIONISTAS[lang];
+  const t = lang === "es"
+    ? { h: "Coleccionistas", all: "Ver todos →", featured: "Coleccionistas destacados", view: "Ver coleccionista →" }
+    : { h: "Collectors", all: "View all →", featured: "Featured collectors", view: "View collector →" };
+
+  const principal = data.principal;
+
+  return (
+    <section className="px-6 md:px-12 py-[60px]" style={{ background: "#f5f5f5" }}>
+      <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
+        <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.h}</h2>
+        <a href="#" className="link-arrow">{t.all}</a>
+      </div>
+
+      <article className="grid grid-cols-1 md:grid-cols-[65%_35%] gap-8 md:gap-14 items-center mb-16">
+        <Link to={`/perfil/coleccionista/${slug(principal.nombre)}`} aria-label={principal.nombre} className="block aspect-[16/9] overflow-hidden bg-secondary group">
+          <img src={principal.foto} alt={principal.nombre} loading="lazy" width={1600} height={900} className="w-full h-full object-cover object-[center_35%] transition-transform duration-[700ms] group-hover:scale-[1.02]" />
+        </Link>
+        <div>
+          <Link to={`/perfil/coleccionista/${slug(principal.nombre)}`} className="block group">
+            <div className="font-display text-[24px] font-bold text-ink mb-4 leading-tight">
+              {principal.nombre}
+            </div>
+            <p className="font-body text-[15px] font-light text-gray leading-relaxed mb-6">{principal.extracto}</p>
+            <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-6">
+              {principal.ubicacion} · {principal.foco}
+            </div>
+            <span className="link-arrow">{t.view}</span>
+          </Link>
+        </div>
+      </article>
+
+      <div className="border-t border-border pt-10">
+        <div className="font-body text-[12px] font-light text-muted-line uppercase tracking-[0.18em] mb-6">{t.featured}</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          {data.secundarios.map((c) => (
+            <article key={c.nombre} className="group grid grid-cols-[40%_60%] gap-5 items-start">
+              <Link to={`/perfil/coleccionista/${slug(c.nombre)}`} aria-label={c.nombre} className="block aspect-square overflow-hidden bg-secondary">
+                <img src={c.foto} alt={c.nombre} loading="lazy" width={800} height={800} className="w-full h-full object-cover object-[center_35%] transition-transform duration-[700ms] group-hover:scale-[1.03]" />
+              </Link>
+              <div>
+                <Link to={`/perfil/coleccionista/${slug(c.nombre)}`} className="block hover:opacity-80 transition-opacity">
+                  <h4 className="font-display font-bold text-[24px] text-ink mb-1.5 leading-tight">{c.nombre}</h4>
+                  <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{c.ubicacion} · {c.foco}</div>
+                  <p className="font-body text-[14px] font-light text-gray leading-relaxed mb-3">{c.extracto}</p>
+                  <span className="link-arrow text-[12px]">{t.view}</span>
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};

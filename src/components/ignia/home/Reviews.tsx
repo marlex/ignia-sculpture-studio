@@ -54,11 +54,9 @@ const Block = ({ title, citas }: { title: string; citas: { q: string; n: string;
 export const Reviews = () => {
   const lang = useLang();
   const title = lang === "es" ? "Lo que dicen sobre Ignia" : "What they say about Ignia";
-  const titleCol = lang === "es" ? "Coleccionistas destacados" : "Featured collectors";
   return (
-    <section className="reviews-section bg-white px-6 md:px-12 py-[60px] space-y-16">
+    <section className="reviews-section bg-white px-6 md:px-12 py-[60px]">
       <Block title={title} citas={CITAS[lang]} />
-      <Block title={titleCol} citas={CITAS_COLECCIONISTAS[lang]} />
     </section>
   );
 };
