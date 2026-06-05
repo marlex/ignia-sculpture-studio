@@ -2,13 +2,18 @@ import hero1 from "@/assets/hero-real-1.jpg";
 import hero2 from "@/assets/hero-real-2.jpg";
 import hero3 from "@/assets/hero-real-3.jpg";
 import obra1 from "@/assets/obra-1.jpg";
-import obra2 from "@/assets/obra-pliegue-iii.jpg";
+import obraPliegueAsset from "@/assets/obra-pliegue-iii-new.jpg.asset.json";
 import obra3 from "@/assets/obra-3.jpg";
-import obra4 from "@/assets/obra-raiz.jpg";
-import obra5 from "@/assets/obra-origen.jpg";
+import obraRaizAsset from "@/assets/obra-raiz-new.jpg.asset.json";
+import obraOrigenAsset from "@/assets/obra-origen-new.jpg.asset.json";
 import obra6 from "@/assets/obra-eco.jpg";
-import obra7 from "@/assets/obra-quietud-alabastro.jpg";
+import obraQuietudAsset from "@/assets/obra-quietud-new.webp.asset.json";
 import obra8 from "@/assets/obra-luz-interior.jpg";
+
+const obra2 = obraPliegueAsset.url;
+const obra4 = obraRaizAsset.url;
+const obra5 = obraOrigenAsset.url;
+const obra7 = obraQuietudAsset.url;
 import arco from "@/assets/obra-arco-new.jpg";
 import caida from "@/assets/perfil-escultura-caida.jpg";
 import ecoOndas from "@/assets/perfil-escultura-eco.jpg";
@@ -87,7 +92,7 @@ export const WORKS: WorkRecord[] = [
   { slug: "confluencia", image: obra1, model: "figure-curvy", extraImages: [obra2, obra3, obra4], es: { title: "Confluencia", artist: "Marcos Iriarte", material: "Bronce", year: "2024", edition: "Edición única", price: "€ 4.200", description: desc.es, authenticity: "#0x3a9f…c21" }, en: { title: "Confluence", artist: "Marcos Iriarte", material: "Bronze", year: "2024", edition: "Unique edition", price: "€ 4,200", description: desc.en, authenticity: "#0x3a9f…c21" } },
   { slug: "pliegue-iii", image: obra2, model: "marble-fold", extraImages: [obra5, obra7], es: { title: "Pliegue III", artist: "Alba Costa", material: "Mármol", year: "2024", edition: "1 de 5", price: "€ 7.400", description: desc.es, authenticity: "#0x598e…07e" }, en: { title: "Fold III", artist: "Alba Costa", material: "Marble", year: "2024", edition: "1 of 5", price: "€ 7,400", description: desc.en, authenticity: "#0x598e…07e" } },
   { slug: "vertigo", image: obra3, model: "corten-ribbon", extraImages: [obra6, obra8], es: { title: "Vértigo", artist: "Diego Lara", material: "Acero corten", year: "2025", edition: "Edición única", price: "€ 2.900", description: desc.es, authenticity: "#0x787d…4db" }, en: { title: "Vertigo", artist: "Diego Lara", material: "Corten steel", year: "2025", edition: "Unique edition", price: "€ 2,900", description: desc.en, authenticity: "#0x787d…4db" } },
-  { slug: "raiz", image: obra4, model: "wood-root", es: { title: "Raíz", artist: "Sofía Méndez", material: "Madera de roble", year: "2023", edition: "Edición única", price: "€ 1.650", description: desc.es, authenticity: "#0x976c…938" }, en: { title: "Root", artist: "Sofía Méndez", material: "Oak wood", year: "2023", edition: "Unique edition", price: "€ 1,650", description: desc.en, authenticity: "#0x976c…938" } },
+  { slug: "raiz", image: obra4, model: "wood-root", es: { title: "Raíz", artist: "Sofía Méndez", material: "Piedra tallada", year: "2023", edition: "Edición única", price: "€ 1.650", description: desc.es, authenticity: "#0x976c…938" }, en: { title: "Root", artist: "Sofía Méndez", material: "Carved stone", year: "2023", edition: "Unique edition", price: "€ 1,650", description: desc.en, authenticity: "#0x976c…938" } },
   { slug: "origen", image: obra5, model: "blue-ceramic", es: { title: "Origen", artist: "Lucía Pardo", material: "Cerámica esmaltada", year: "2025", edition: "2 de 8", price: "€ 580", description: desc.es, authenticity: "#0xa614…22f" }, en: { title: "Origin", artist: "Lucía Pardo", material: "Glazed ceramic", year: "2025", edition: "2 of 8", price: "€ 580", description: desc.en, authenticity: "#0xa614…22f" } },
   { slug: "eco", image: obra6, model: "slender-figure", es: { title: "Eco", artist: "Pablo Reyes", material: "Bronce", year: "2024", edition: "Edición única", price: "€ 5.400", description: desc.es, authenticity: "#0xbf03…686" }, en: { title: "Echo", artist: "Pablo Reyes", material: "Bronze", year: "2024", edition: "Unique edition", price: "€ 5,400", description: desc.en, authenticity: "#0xbf03…686" } },
   { slug: "quietud-alabastro", image: obra7, model: "white-loop", es: { title: "Quietud", artist: "Inés Ferrer", material: "Alabastro", year: "2025", edition: "1 de 6", price: "€ 2.300", description: desc.es, authenticity: "#0xddf2…2dd" }, en: { title: "Stillness", artist: "Inés Ferrer", material: "Alabaster", year: "2025", edition: "1 of 6", price: "€ 2,300", description: desc.en, authenticity: "#0xddf2…2dd" } },
