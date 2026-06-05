@@ -208,7 +208,7 @@ export const Hero = () => {
             onClick={(e) => e.stopPropagation()}
             className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink py-3.5 hover:bg-ink hover:text-white transition-colors text-ink mb-2.5"
           >
-            {t.view3d}
+            {o.glbUrl ? t.view3d : t.viewObra}
           </Link>
           <div className="flex items-center justify-between gap-3 font-body text-[11px] font-light tracking-wide text-gray flex-wrap">
             <span className="inline-flex items-center gap-1.5"><span>✓</span>{t.insured}</span>
