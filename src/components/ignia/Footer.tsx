@@ -102,7 +102,7 @@ export const Footer = () => {
                 />
               </button>
             </CollapsibleTrigger>
-            <CollapsibleContent className="overflow-hidden transition-all data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down md:overflow-visible">
+            <CollapsibleContent className="overflow-hidden md:overflow-visible">
               <div className="flex flex-col gap-2.5 mt-4">
                 {c.links.map(l => (
                   <Link key={l.label} to={l.to} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">{l.label}</Link>
