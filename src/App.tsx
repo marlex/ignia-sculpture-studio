@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound.tsx";
 import Login from "./pages/Login.tsx";
 import PerfilEscultor from "./pages/PerfilEscultor.tsx";
 import PerfilColeccionista from "./pages/PerfilColeccionista.tsx";
+import ColeccionistaPublico from "./pages/ColeccionistaPublico.tsx";
 import ColeccionPage from "./pages/Coleccion.tsx";
 import EscultoresPage from "./pages/Escultores.tsx";
 import AprendePage from "./pages/Aprende.tsx";
