@@ -81,11 +81,11 @@ export const Colectores = () => {
       </div>
 
       <article className="grid grid-cols-1 md:grid-cols-[65%_35%] gap-8 md:gap-14 items-center mb-16">
-        <Link to={`/perfil/coleccionista/${slug(principal.nombre)}`} aria-label={principal.nombre} className="block aspect-[16/9] overflow-hidden bg-secondary group">
+        <Link to={`/coleccionista/${slug(principal.nombre)}`} aria-label={principal.nombre} className="block aspect-[16/9] overflow-hidden bg-secondary group">
           <img src={principal.foto} alt={principal.nombre} loading="lazy" width={1600} height={900} className="w-full h-full object-cover object-[center_35%] transition-transform duration-[700ms] group-hover:scale-[1.02]" />
         </Link>
         <div>
-          <Link to={`/perfil/coleccionista/${slug(principal.nombre)}`} className="block group">
+          <Link to={`/coleccionista/${slug(principal.nombre)}`} className="block group">
             <div className="font-display text-[24px] font-bold text-ink mb-4 leading-tight">
               {principal.nombre}
             </div>
@@ -103,11 +103,11 @@ export const Colectores = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {data.secundarios.map((c) => (
             <article key={c.nombre} className="group grid grid-cols-[40%_60%] gap-5 items-start">
-              <Link to={`/perfil/coleccionista/${slug(c.nombre)}`} aria-label={c.nombre} className="block aspect-square overflow-hidden bg-secondary">
+              <Link to={`/coleccionista/${slug(c.nombre)}`} aria-label={c.nombre} className="block aspect-square overflow-hidden bg-secondary">
                 <img src={c.foto} alt={c.nombre} loading="lazy" width={800} height={800} className="w-full h-full object-cover object-[center_35%] transition-transform duration-[700ms] group-hover:scale-[1.03]" />
               </Link>
               <div>
-                <Link to={`/perfil/coleccionista/${slug(c.nombre)}`} className="block hover:opacity-80 transition-opacity">
+                <Link to={`/coleccionista/${slug(c.nombre)}`} className="block hover:opacity-80 transition-opacity">
                   <h4 className="font-display font-bold text-[24px] text-ink mb-1.5 leading-tight">{c.nombre}</h4>
                   <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{c.ubicacion} · {c.foco}</div>
                   <p className="font-body text-[14px] font-light text-gray leading-relaxed mb-3">{c.extracto}</p>
