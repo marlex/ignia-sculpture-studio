@@ -1,3 +1,5 @@
+import { useLang } from "@/i18n/LanguageContext";
+
 const FAIRS = [
   "Art Basel",
   "Frieze",
@@ -14,6 +16,9 @@ const FAIRS = [
 ];
 
 export const Ticker = () => {
+  const lang = useLang();
+  const presentIn = lang === "es" ? "Presentes en" : "Present in";
+
   const row = (
     <div className="flex items-center shrink-0 ticker-row" style={{ paddingRight: 64 }}>
       {FAIRS.map((f, i) => (
@@ -35,12 +40,44 @@ export const Ticker = () => {
       ))}
     </div>
   );
+
   return (
     <section className="ticker-section" style={{ background: "#f5f5f5", padding: "72px 0" }}>
-      <div className="overflow-hidden ticker-wrap">
-        <div className="flex ticker-track" style={{ whiteSpace: "nowrap" }}>
-          {row}
-          {row}
+      <div className="flex items-center" style={{ width: "100%" }}>
+        {/* Static title */}
+        <div
+          className="flex items-center"
+          style={{ paddingLeft: 24, paddingRight: 24, flexShrink: 0 }}
+        >
+          <span
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontStyle: "italic",
+              fontSize: 13,
+              color: "rgba(153, 153, 153, 0.6)",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {presentIn}
+          </span>
+        </div>
+        {/* Divider line */}
+        <div
+          style={{
+            width: 1,
+            height: 14,
+            background: "rgba(153, 153, 153, 0.4)",
+            flexShrink: 0,
+          }}
+        />
+        {/* Gap between divider and marquee */}
+        <div style={{ width: 24, flexShrink: 0 }} />
+        {/* Marquee */}
+        <div className="overflow-hidden ticker-wrap" style={{ flex: 1 }}>
+          <div className="flex ticker-track" style={{ whiteSpace: "nowrap" }}>
+            {row}
+            {row}
+          </div>
         </div>
       </div>
       <style>{`
