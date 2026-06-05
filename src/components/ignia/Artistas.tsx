@@ -50,7 +50,7 @@ export const Artistas = () => {
         <div>
           <Link to={`/perfil/escultor/${principal.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} className="block group">
             <div className="font-display text-[24px] font-bold text-ink mb-4 leading-tight">
-              · {principal.nombre}
+              {principal.nombre}
             </div>
             <h3 className="font-display font-bold text-[24px] tracking-[-0.02em] text-ink mb-5 leading-[1.15] group-hover:opacity-70 transition-opacity">
               {principal.titularEntrevista}
