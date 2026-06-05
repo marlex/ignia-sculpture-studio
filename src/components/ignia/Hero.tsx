@@ -195,22 +195,44 @@ export const Hero = () => {
         </div>
 
         {/* info desktop */}
-        <div className="hero-info-desktop flex-1 text-ink">
+        <div className="hero-info-desktop flex-1 text-ink max-w-[560px]">
+          <div className="font-body text-[11px] font-light tracking-[0.22em] uppercase text-gray mb-2">
+            {o.artist}
+          </div>
           <h1 className="leading-[1.05] tracking-[0.01em] mb-1.5 text-ink" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(27px, 3.4vw, 49px)" }}>
             {o.title}
           </h1>
-          <div className="flex items-center gap-2 flex-wrap mb-2 font-body text-[14px] font-light tracking-wide text-gray">
-            <span>{o.artist}</span>
-            <span className="text-border">·</span>
-            <span>{o.material}</span>
-            <span className="text-border">·</span>
-            <span style={{ fontWeight: 400 }}>{lang === "es" ? "Autenticidad" : "Authenticity"} {o.authenticity}</span>
+          <div className="font-body text-[13px] font-light tracking-wide text-gray mb-4">
+            {o.material} · {o.year}
           </div>
-          <div className="flex items-baseline gap-7">
-            <span className="font-display font-bold text-[22px] tracking-[-0.01em] text-ink">{o.price}</span>
-            <Link to={`/obra/${o.slug}`} className="font-body text-[13px] font-light tracking-[0.14em] uppercase border-b-[0.5px] border-ink pb-px hover:opacity-50 transition-opacity text-ink">
-              {t.view}
+          <div className="inline-flex items-center gap-3 border-[0.5px] border-border px-4 py-2.5 mb-5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-ink" aria-hidden>
+              <path d="M10 13a5 5 0 007.07 0l3-3a5 5 0 00-7.07-7.07l-1 1" />
+              <path d="M14 11a5 5 0 00-7.07 0l-3 3a5 5 0 007.07 7.07l1-1" />
+            </svg>
+            <span className="font-body text-[11px] font-light tracking-[0.18em] uppercase text-ink">{t.certified}</span>
+            <span className="font-body text-[11px] font-light tracking-wide text-gray">{o.authenticity}</span>
+          </div>
+          <div className="flex items-center gap-5 mb-4">
+            <span className="font-display font-bold text-[24px] tracking-[-0.01em] text-ink">{o.price}</span>
+            <button
+              onClick={(e) => { e.stopPropagation(); navigate(`/obra/${o.slug}?buy=1`); }}
+              className="font-body text-[12px] font-medium tracking-[0.18em] uppercase bg-ink text-white px-8 py-3 hover:opacity-90 transition-opacity"
+            >
+              {t.buy}
+            </button>
+            <Link
+              to={`/obra/${o.slug}`}
+              onClick={(e) => e.stopPropagation()}
+              className="font-body text-[12px] font-light tracking-[0.18em] uppercase border-[0.5px] border-ink px-6 py-3 hover:bg-ink hover:text-white transition-colors text-ink"
+            >
+              {t.view3d}
             </Link>
+          </div>
+          <div className="flex items-center gap-5 font-body text-[11px] font-light tracking-wide text-gray flex-wrap">
+            <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 inline-block">✓</span>{t.insured}</span>
+            <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 inline-block">✓</span>{t.certificate}</span>
+            <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 inline-block">✓</span>{t.returns}</span>
           </div>
         </div>
 
