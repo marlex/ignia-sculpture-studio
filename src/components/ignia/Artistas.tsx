@@ -52,7 +52,7 @@ export const Artistas = () => {
             <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-4">
               {principal.tag} · {principal.nombre}
             </div>
-            <h3 className="font-display font-bold text-[clamp(24px,2.4vw,32px)] tracking-[-0.02em] text-ink mb-5 leading-[1.15] group-hover:opacity-70 transition-opacity">
+            <h3 className="font-display font-bold text-[24px] tracking-[-0.02em] text-ink mb-5 leading-[1.15] group-hover:opacity-70 transition-opacity">
               {principal.titularEntrevista}
             </h3>
             <p className="font-body text-[15px] font-light text-gray leading-relaxed mb-6">{principal.extracto}</p>
