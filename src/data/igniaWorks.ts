@@ -25,7 +25,7 @@ import verticePerfil from "@/assets/perfil-escultura-vertice.jpg";
 import hecate1 from "@/assets/hecate-triformis-1.jpg";
 import hecate2 from "@/assets/hecate-triformis-2.jpg";
 import hecate3 from "@/assets/hecate-triformis-3.jpg";
-import mujerNino1 from "@/assets/obra-mujer-y-nino.jpg";
+import mujerNino1 from "@/assets/mujer-y-nino-1.jpg";
 import mujerNino2 from "@/assets/mujer-y-nino-2.jpg";
 import mujerNino3 from "@/assets/mujer-y-nino-3.jpg";
 
