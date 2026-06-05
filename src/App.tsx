@@ -43,6 +43,7 @@ const App = () => (
               <Route path="/perfil/escultor" element={<PerfilEscultor />} />
               <Route path="/perfil/escultor/:slug" element={<PerfilEscultor />} />
               <Route path="/perfil/coleccionista" element={<PerfilColeccionista />} />
+              <Route path="/coleccionista/:slug" element={<ColeccionistaPublico />} />
               <Route path="/coleccion" element={<ColeccionPage />} />
               <Route path="/escultores" element={<EscultoresPage />} />
               <Route path="/aprende" element={<AprendePage />} />
