@@ -3,6 +3,8 @@ import { useLang } from "@/i18n/LanguageContext";
 import cristina from "@/assets/artist-cristina-iglesias-real.jpg";
 import jaume from "@/assets/artist-jaume-plensa-real.jpg";
 import susana from "@/assets/artist-susana-solano-real.jpg";
+import barcelo from "@/assets/artist-miquel-barcelo-real.jpg";
+import chillida from "@/assets/artist-eduardo-chillida-real.jpg";
 
 const ARTISTAS = {
   es: [
@@ -12,6 +14,10 @@ const ARTISTAS = {
       tiempo: "18 min de lectura", tag: "Entrevista", credito: "Foto: Berria · CC BY-SA 4.0" },
     { foto: jaume, nombre: "Jaume Plensa", esp: "Figura, palabra y escala", obras: "Instalaciones internacionales",
       extracto: "Plensa aparece en una entrega de premios real, lejos del posado de catálogo. Su obra une presencia humana, silencio y escritura en piezas monumentales." , credito: "Foto: Gremi d'Editors de Catalunya · CC BY-SA 2.0" },
+    { foto: barcelo, nombre: "Miquel Barceló", esp: "Materia, barro y pigmento", obras: "Escultura y obra cerámica",
+      extracto: "Retratado en un acto público real, Barceló trabaja la escultura desde la materia: barro, bronce y pigmento que conservan la huella del gesto y del tiempo.", credito: "Foto: Jindřich Nosek (NoJin) · CC BY-SA 4.0" },
+    { foto: chillida, nombre: "Eduardo Chillida", esp: "Hierro, espacio y vacío", obras: "Esculturas monumentales en acero",
+      extracto: "Fotografía documental del escultor donostiarra. Chillida entiende la escultura como diálogo con el vacío: hierro, granito y acero que organizan el espacio en torno al silencio.", credito: "Foto: Archivo histórico · CC BY-SA 3.0" },
     { foto: susana, nombre: "Susana Solano", esp: "Metal, estructura y espacio", obras: "Escultura contemporánea",
       extracto: "Retratada junto a obra pública en un entorno real, Solano aborda el metal como construcción física y mental, con piezas que tensan vacío, peso y recorrido.", credito: "Foto: Kamahele · CC BY-SA 3.0" },
   ],
@@ -22,6 +28,10 @@ const ARTISTAS = {
       tiempo: "18 min read", tag: "Interview", credito: "Photo: Berria · CC BY-SA 4.0" },
     { foto: jaume, nombre: "Jaume Plensa", esp: "Figure, word and scale", obras: "International installations",
       extracto: "Plensa appears at a real awards ceremony, far from a catalogue pose. His work brings together human presence, silence and writing in monumental pieces.", credito: "Photo: Gremi d'Editors de Catalunya · CC BY-SA 2.0" },
+    { foto: barcelo, nombre: "Miquel Barceló", esp: "Matter, clay and pigment", obras: "Sculpture and ceramic work",
+      extracto: "Photographed at a real public event, Barceló approaches sculpture from matter itself: clay, bronze and pigment that preserve the trace of gesture and time.", credito: "Photo: Jindřich Nosek (NoJin) · CC BY-SA 4.0" },
+    { foto: chillida, nombre: "Eduardo Chillida", esp: "Iron, space and void", obras: "Monumental steel sculptures",
+      extracto: "Documentary portrait of the San Sebastián sculptor. Chillida understands sculpture as a dialogue with the void: iron, granite and steel arranging space around silence.", credito: "Photo: Historical archive · CC BY-SA 3.0" },
     { foto: susana, nombre: "Susana Solano", esp: "Metal, structure and space", obras: "Contemporary sculpture",
       extracto: "Photographed beside public work in a real setting, Solano approaches metal as both physical and mental construction, tensioning void, weight and movement.", credito: "Photo: Kamahele · CC BY-SA 3.0" },
   ],
@@ -31,7 +41,7 @@ export const Artistas = () => {
   const lang = useLang();
   const artistas = ARTISTAS[lang];
   const principal = artistas.find((a) => a.nombre === "Susana Solano") ?? artistas[0];
-  const secundarios = artistas.filter((a) => a.nombre !== principal.nombre).slice(0, 2);
+  const secundarios = artistas.filter((a) => a.nombre !== principal.nombre).slice(0, 4);
   const t = lang === "es"
     ? { h: "Escultores", all: "Ver todos →", featured: "Escultores destacados", view: "Ver artista →" }
     : { h: "Sculptors", all: "View all →", featured: "Featured sculptors", view: "View artist →" };
