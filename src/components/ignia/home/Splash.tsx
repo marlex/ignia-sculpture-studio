@@ -50,7 +50,7 @@ export const Splash = () => {
           style={{
             fontFamily: "'Cormorant Garamond', serif",
             fontWeight: 300,
-            fontSize: "clamp(20px, 2.6vw, 30px)",
+            fontSize: "clamp(34px, 5.2vw, 64px)",
             color: "rgba(255,255,255,0.8)",
             letterSpacing: "0.04em",
             textAlign: "center",
