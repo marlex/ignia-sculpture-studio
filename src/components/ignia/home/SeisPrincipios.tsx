@@ -16,7 +16,7 @@ export const SeisPrincipios = () => {
       <style>{`
         .sp-wrap { max-width:1280px; margin:0 auto; padding:0 40px; }
         .sp-header { display:flex; align-items:flex-end; gap:40px; padding:100px 0 80px; border-bottom:1px solid #e8e3db; }
-        .sp-vi { font-family:${CG}; font-weight:300; font-size:180px; color:#d9d2c4; line-height:0.85; flex-shrink:0; letter-spacing:-0.02em; }
+        .sp-vi { font-family:${CG}; font-weight:700; font-size:180px; color:#d9d2c4; line-height:0.78; flex-shrink:0; letter-spacing:-0.02em; margin-bottom:-0.08em; }
         .sp-title { font-family:${CG}; font-weight:700; font-size:clamp(32px,4.5vw,48px); color:#111; line-height:1.1; margin:0; letter-spacing:-0.02em; }
         .sp-grid { display:grid; grid-template-columns:1fr 1fr; }
         .sp-cell { padding:56px 60px; position:relative; }
