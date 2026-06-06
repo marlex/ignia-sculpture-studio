@@ -62,8 +62,8 @@ const ObraDetalle = () => {
     <main className="pt-14 bg-white">
       <Header />
 
-      <section className="px-0 md:px-12 py-0 md:py-10">
-        <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-6 md:gap-10 px-0 md:px-0">
+      <section className="px-6 md:px-12 py-10">
+        <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10">
           <div>
             {/* Mode tabs only when both modes are real */}
             {has3d && (
@@ -83,7 +83,7 @@ const ObraDetalle = () => {
             )}
 
 
-            <div className="relative w-full bg-secondary overflow-hidden h-[calc(100vh-3.5rem)] md:h-auto md:aspect-square">
+            <div className="relative w-full aspect-square bg-secondary overflow-hidden">
               {mode === "3d" && has3d ? (
                 <GlbViewer url={o.glbUrl!} />
               ) : (
@@ -119,11 +119,6 @@ const ObraDetalle = () => {
                 </>
               )}
 
-              {/* Mobile bottom overlay: artist + title */}
-              <div className="md:hidden absolute inset-x-0 bottom-0 pointer-events-none bg-gradient-to-t from-black/60 via-black/30 to-transparent pt-20 pb-6 px-6">
-                <div className="font-body text-[11px] uppercase tracking-[0.18em] text-white/85 mb-2">{o.artist}</div>
-                <h1 className="font-display font-bold text-[clamp(28px,7vw,40px)] tracking-[-0.02em] text-white leading-[1.05]">{o.title}</h1>
-              </div>
             </div>
 
             {/* Thumbnails (photos mode + gallery) */}
@@ -150,9 +145,9 @@ const ObraDetalle = () => {
             )}
           </div>
 
-          <div className="px-6 md:px-0 pb-10 md:pb-0 pt-6 md:pt-0">
-            <div className="eyebrow mb-3 hidden md:block"><Link to="/coleccion" className="hover:text-ink">{t.back}</Link></div>
-            <h1 className="hidden md:block font-display font-bold text-[clamp(32px,4vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-3">{o.title}</h1>
+          <div>
+            <div className="eyebrow mb-3"><Link to="/coleccion" className="hover:text-ink">{t.back}</Link></div>
+            <h1 className="font-display font-bold text-[clamp(32px,4vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-3">{o.title}</h1>
             <div className="font-body text-[15px] font-light text-gray mb-6">
               <Link to={`/perfil/escultor/${o.artist.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} className="underline-offset-4 hover:underline">{o.artist}</Link> · {o.material} · {o.year} · {o.edition}
             </div>
