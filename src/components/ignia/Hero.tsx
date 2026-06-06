@@ -73,6 +73,7 @@ export const Hero = () => {
           .hero-info-desktop { display: none !important; }
           .hero-bottom-strip { position: static !important; padding: 0 !important; gap: 0 !important; padding-top: 0 !important; }
           .hero-dots { position: absolute !important; left: 0 !important; right: 0 !important; top: calc(62vh - 22px) !important; padding: 0 !important; z-index: 4 !important; }
+          .hero-photo { object-position: 78% 50% !important; }
         }
         @media (min-width: 769px) {
           .hero-dots { display: none !important; }
@@ -105,7 +106,7 @@ export const Hero = () => {
           <img
             src={o.heroImage}
             alt={o.title}
-            className="w-full h-full object-cover"
+            className="hero-photo w-full h-full object-cover"
             style={{ objectPosition: "center 45%" }}
             width={1920}
             height={1080}
