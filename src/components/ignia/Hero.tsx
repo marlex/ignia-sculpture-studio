@@ -73,6 +73,7 @@ export const Hero = () => {
           .hero-info-desktop { display: none !important; }
           .hero-bottom-strip { position: static !important; padding: 0 !important; gap: 0 !important; padding-top: 0 !important; }
           .hero-dots { position: absolute !important; left: 0 !important; right: 0 !important; top: calc(62vh - 22px) !important; padding: 0 !important; z-index: 4 !important; }
+          .hero-photo { object-position: 78% 50% !important; }
         }
         @media (min-width: 769px) {
           .hero-dots { display: none !important; }
