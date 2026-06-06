@@ -96,12 +96,12 @@ export const Hero = () => {
 
 
       <div
-        className={`absolute inset-0 hero-sculpture-tap hero-sculpture-desktop ${tapFlash ? "tap-flash" : ""}`}
+        className={`absolute inset-0 hero-sculpture-wrap hero-sculpture-tap hero-sculpture-desktop ${tapFlash ? "tap-flash" : ""}`}
         onClick={() => navigate(`/obra/${o.slug}`)}
         style={{ cursor: isMobile ? "pointer" : undefined }}
       >
         {o.glbUrl ? (
-          <GlbViewer url={o.glbUrl} alt={o.title} minHeight="100vh" bgColor="#1c1c1a" enableFullscreen={false} />
+          <GlbViewer url={o.glbUrl} alt={o.title} minHeight="100vh" bgColor="#f8f8f5" enableFullscreen={false} />
         ) : (
           <img
             src={o.image}
@@ -115,7 +115,7 @@ export const Hero = () => {
       </div>
 
       {/* Smooth bottom fade */}
-      <div className="absolute inset-x-0 bottom-0 h-[55%] pointer-events-none z-[1]" style={{ background: "linear-gradient(to bottom, rgba(28,28,26,0) 0%, rgba(28,28,26,0.15) 35%, rgba(255,255,255,0.55) 70%, rgba(255,255,255,0.95) 92%, #ffffff 100%)" }} />
+      <div className="hero-fade absolute inset-x-0 bottom-0 h-[55%] pointer-events-none z-[1]" style={{ background: "linear-gradient(to bottom, rgba(248,248,245,0) 0%, rgba(248,248,245,0.4) 45%, rgba(248,248,245,0.85) 80%, #f8f8f5 100%)" }} />
 
       {/* hint chip */}
       <div
