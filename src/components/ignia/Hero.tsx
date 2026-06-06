@@ -56,7 +56,7 @@ export const Hero = () => {
 
   return (
     <section
-      className="hero-section relative w-screen overflow-hidden bg-surface"
+      className="hero-section relative w-screen overflow-hidden bg-secondary"
       style={{ height: "calc(100vh - 220px)" }}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
@@ -64,12 +64,14 @@ export const Hero = () => {
     >
       <style>{`
         @media (max-width: 768px) {
-          .hero-section { height: calc(100vh - 56px) !important; }
+          .hero-section { height: auto !important; min-height: calc(100vh - 56px); }
+          .hero-sculpture-wrap { position: relative !important; inset: auto !important; height: 62vh !important; }
+          .hero-fade { display: none !important; }
           .hero-arrows { display: none !important; }
           .hero-view-floating { display: none !important; }
           .hero-thumbs { display: none !important; }
           .hero-info-desktop { display: none !important; }
-          .hero-bottom-strip { padding: 0 !important; padding-bottom: 0 !important; padding-top: 0 !important; }
+          .hero-bottom-strip { position: relative !important; bottom: auto !important; left: auto !important; right: auto !important; padding: 0 !important; }
         }
         @media (min-width: 769px) {
           .hero-dots { display: none !important; }
@@ -94,12 +96,12 @@ export const Hero = () => {
 
 
       <div
-        className={`absolute inset-0 hero-sculpture-tap hero-sculpture-desktop ${tapFlash ? "tap-flash" : ""}`}
+        className={`absolute inset-0 hero-sculpture-wrap hero-sculpture-tap hero-sculpture-desktop ${tapFlash ? "tap-flash" : ""}`}
         onClick={() => navigate(`/obra/${o.slug}`)}
         style={{ cursor: isMobile ? "pointer" : undefined }}
       >
         {o.glbUrl ? (
-          <GlbViewer url={o.glbUrl} alt={o.title} minHeight="100vh" bgColor="#1c1c1a" enableFullscreen={false} />
+          <GlbViewer url={o.glbUrl} alt={o.title} minHeight="100vh" bgColor="#f8f8f5" enableFullscreen={false} />
         ) : (
           <img
             src={o.image}
@@ -113,7 +115,7 @@ export const Hero = () => {
       </div>
 
       {/* Smooth bottom fade */}
-      <div className="absolute inset-x-0 bottom-0 h-[55%] pointer-events-none z-[1]" style={{ background: "linear-gradient(to bottom, rgba(28,28,26,0) 0%, rgba(28,28,26,0.15) 35%, rgba(255,255,255,0.55) 70%, rgba(255,255,255,0.95) 92%, #ffffff 100%)" }} />
+      <div className="hero-fade absolute inset-x-0 bottom-0 h-[55%] pointer-events-none z-[1]" style={{ background: "linear-gradient(to bottom, rgba(248,248,245,0) 0%, rgba(248,248,245,0.4) 45%, rgba(248,248,245,0.85) 80%, #f8f8f5 100%)" }} />
 
       {/* hint chip */}
       <div
