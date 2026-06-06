@@ -100,7 +100,16 @@ export const Hero = () => {
         onClick={() => navigate(`/obra/${o.slug}`)}
         style={{ cursor: isMobile ? "pointer" : undefined }}
       >
-        {o.glbUrl ? (
+        {o.heroImage ? (
+          <img
+            src={o.heroImage}
+            alt={o.title}
+            className="w-full h-full object-cover"
+            style={{ objectPosition: "center 45%" }}
+            width={1920}
+            height={1080}
+          />
+        ) : o.glbUrl ? (
           <GlbViewer url={o.glbUrl} alt={o.title} minHeight="100vh" bgColor="#f8f8f5" enableFullscreen={false} />
         ) : (
           <img
