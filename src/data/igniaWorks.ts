@@ -120,6 +120,7 @@ export type LocalizedWork = ReturnType<typeof localizeWork>;
 const localizeWork = (work: WorkRecord, lang: Lang, index: number) => ({
   slug: work.slug,
   image: work.image,
+  heroImage: work.heroImage,
   model: work.model,
   glbUrl: work.glbUrl,
   extraImages: work.extraImages,
