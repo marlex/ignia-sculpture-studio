@@ -105,7 +105,7 @@ export const Hero = () => {
           <img
             src={o.heroImage}
             alt={o.title}
-            className="w-full h-full object-cover"
+            className="hero-photo w-full h-full object-cover"
             style={{ objectPosition: "center 45%" }}
             width={1920}
             height={1080}
