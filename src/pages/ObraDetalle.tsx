@@ -62,8 +62,8 @@ const ObraDetalle = () => {
     <main className="pt-14 bg-white">
       <Header />
 
-      <section className="px-6 md:px-12 py-10">
-        <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10">
+      <section className="px-0 md:px-12 py-0 md:py-10">
+        <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-6 md:gap-10 px-0 md:px-0">
           <div>
             {/* Mode tabs only when both modes are real */}
             {has3d && (
