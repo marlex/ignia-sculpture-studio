@@ -119,11 +119,6 @@ const ObraDetalle = () => {
                 </>
               )}
 
-              {/* Mobile bottom overlay: artist + title */}
-              <div className="md:hidden absolute inset-x-0 bottom-0 pointer-events-none bg-gradient-to-t from-black/60 via-black/30 to-transparent pt-20 pb-6 px-6">
-                <div className="font-body text-[11px] uppercase tracking-[0.18em] text-white/85 mb-2">{o.artist}</div>
-                <h1 className="font-display font-bold text-[clamp(28px,7vw,40px)] tracking-[-0.02em] text-white leading-[1.05]">{o.title}</h1>
-              </div>
             </div>
 
             {/* Thumbnails (photos mode + gallery) */}
