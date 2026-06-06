@@ -83,7 +83,7 @@ const ObraDetalle = () => {
             )}
 
 
-            <div className="relative w-full bg-secondary overflow-hidden h-[calc(100vh-3.5rem)] md:h-auto md:aspect-square">
+            <div className="relative w-full aspect-square bg-secondary overflow-hidden">
               {mode === "3d" && has3d ? (
                 <GlbViewer url={o.glbUrl!} />
               ) : (
