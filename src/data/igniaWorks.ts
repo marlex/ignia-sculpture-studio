@@ -69,6 +69,7 @@ type WorkCopy = {
 type WorkRecord = {
   slug: string;
   image: string;
+  heroImage?: string;
   model: WorkModelKey;
   glbUrl?: string;
   extraImages?: string[];
