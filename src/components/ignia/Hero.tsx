@@ -64,12 +64,14 @@ export const Hero = () => {
     >
       <style>{`
         @media (max-width: 768px) {
-          .hero-section { height: calc(100vh - 56px) !important; }
+          .hero-section { height: auto !important; min-height: calc(100vh - 56px); }
+          .hero-sculpture-wrap { position: relative !important; inset: auto !important; height: 62vh !important; }
+          .hero-fade { display: none !important; }
           .hero-arrows { display: none !important; }
           .hero-view-floating { display: none !important; }
           .hero-thumbs { display: none !important; }
           .hero-info-desktop { display: none !important; }
-          .hero-bottom-strip { padding: 0 !important; padding-bottom: 0 !important; padding-top: 0 !important; }
+          .hero-bottom-strip { position: relative !important; bottom: auto !important; left: auto !important; right: auto !important; padding: 0 !important; }
         }
         @media (min-width: 769px) {
           .hero-dots { display: none !important; }
