@@ -56,7 +56,7 @@ export const Splash = () => {
             textAlign: "center",
           }}
         >
-          Sculpture. Nothing else.
+          The place for sculpture.
         </p>
       </div>
     </div>
