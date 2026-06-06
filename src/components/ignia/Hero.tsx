@@ -56,7 +56,7 @@ export const Hero = () => {
 
   return (
     <section
-      className="hero-section relative w-screen overflow-hidden bg-surface"
+      className="hero-section relative w-screen overflow-hidden bg-secondary"
       style={{ height: "calc(100vh - 220px)" }}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
