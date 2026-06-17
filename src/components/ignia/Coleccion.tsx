@@ -55,7 +55,7 @@ export const Coleccion = () => {
         <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.h}</h2>
         <Link to="/coleccion" className="link-arrow">{t.cta}</Link>
       </div>
-      <p className="font-body text-[14px] font-light text-gray mb-8">{t.sub}</p>
+      <p className="font-body text-[16px] font-light text-gray mb-8">{t.sub}</p>
 
       <div className="flex flex-wrap gap-3 mb-10">
         <input type="search" placeholder={t.search} className="w-60 border-[0.5px] border-border bg-white font-body text-[14px] font-light px-3.5 py-2.5 outline-none focus:border-ink transition-colors" />
