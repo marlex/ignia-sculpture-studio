@@ -67,19 +67,39 @@ export const InviteModal = ({ open, onClose }: Props) => {
 
   if (!open) return null;
 
-  const endpoint = (import.meta as any).env?.VITE_FORMSPREE_ARTIST_ENDPOINT as string | undefined;
+  const endpoint = "https://formspree.io/f/xgobbeyp";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    setError(null);
     try {
-      if (endpoint) {
-        const fd = new FormData(e.currentTarget);
-        await fetch(endpoint, { method: "POST", body: fd, headers: { Accept: "application/json" } });
+      const form = e.currentTarget;
+      const data = {
+        nombre: (form.elements.namedItem("nombre") as HTMLInputElement)?.value,
+        email: (form.elements.namedItem("email") as HTMLInputElement)?.value,
+        pais: (form.elements.namedItem("pais") as HTMLInputElement)?.value,
+        social: (form.elements.namedItem("social") as HTMLInputElement)?.value,
+        material: (form.elements.namedItem("material") as HTMLSelectElement)?.value,
+        obras: (form.elements.namedItem("obras") as HTMLSelectElement)?.value,
+        bio: (form.elements.namedItem("bio") as HTMLTextAreaElement)?.value,
+      };
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Accept": "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        const result = await res.json().catch(() => ({}));
+        setError(result.error || (lang === "es" ? "Hubo un error al enviar. Inténtalo de nuevo." : "There was an error sending. Please try again."));
       }
-    } catch {}
-    setLoading(false);
-    setSubmitted(true);
+    } catch {
+      setError(lang === "es" ? "Hubo un error al enviar. Inténtalo de nuevo." : "There was an error sending. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
