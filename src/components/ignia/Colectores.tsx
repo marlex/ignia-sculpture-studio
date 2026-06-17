@@ -110,7 +110,7 @@ export const Colectores = () => {
                 <Link to={`/coleccionista/${slug(c.nombre)}`} className="block hover:opacity-80 transition-opacity">
                   <h4 className="font-display font-bold text-[28px] text-ink mb-1.5 leading-tight">{c.nombre}</h4>
                   <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{c.ubicacion} · {c.foco}</div>
-                  <p className="font-body text-[14px] font-light text-gray leading-relaxed mb-3">{c.extracto}</p>
+                  <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-3">{c.extracto}</p>
                   <span className="link-arrow text-[12px]">{t.view}</span>
                 </Link>
               </div>
