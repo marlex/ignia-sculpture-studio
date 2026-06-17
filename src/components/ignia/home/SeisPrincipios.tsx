@@ -21,7 +21,7 @@ const ROWS = {
 
 const TITLE = {
   es: "Seis principios que definen un mundo diferente para la escultura.",
-  en: "Six principles that define a different world for sculpture.",
+  en: "Six principles that define a different\u00A0\nworld for sculpture.",
 };
 
 const CG = "'Cormorant Garamond', serif";
@@ -35,7 +35,7 @@ export const SeisPrincipios = () => {
       <style>{`
         .sp-wrap { max-width:1240px; margin:0 auto; padding:140px 40px 160px; }
         .sp-eyebrow { font-family:${MAN}; font-size:11px; font-weight:600; letter-spacing:0.28em; text-transform:uppercase; color:#9a9485; margin:0 0 32px; }
-        .sp-title { font-family:${CG}; font-weight:700; font-size:clamp(40px,5vw,64px); color:#111; line-height:1.05; letter-spacing:-0.02em; margin:0 0 120px; }
+        .sp-title { font-family:${CG}; font-weight:700; font-size:clamp(40px,5vw,64px); color:#111; line-height:1.05; letter-spacing:-0.02em; margin:0 0 120px; white-space: pre-line; }
         .sp-title em { font-style:italic; font-weight:700; color:#8a8270; }
         .sp-grid { display:grid; grid-template-columns:repeat(2,1fr); column-gap:120px; row-gap:96px; }
         .sp-cell { display:grid; grid-template-columns:80px 1fr; column-gap:32px; align-items:start; }
