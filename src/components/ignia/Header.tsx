@@ -53,10 +53,7 @@ export const Header = () => {
           .header-hamburger { display: none !important; }
         }
       `}</style>
-      <div className="flex items-center justify-between w-full gap-4">
-        <Link to="/" className="flex items-center" aria-label="Ignia Gallery">
-          <Logo />
-        </Link>
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center w-full gap-4">
         <nav className="header-nav-links hidden md:flex items-center gap-9">
           {items.map(item => (
             <Link key={item.label} to={item.to} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
@@ -64,7 +61,12 @@ export const Header = () => {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-4">
+        <Link to="/" className="flex items-center justify-center" aria-label="Ignia Gallery">
+          <span style={{ display: "inline-block", transform: "scaleX(1.05)", transformOrigin: "center" }}>
+            <Logo />
+          </span>
+        </Link>
+        <div className="flex items-center justify-end gap-4">
           <LangDropdown lang={lang} setLang={setLang} />
           {user ? (
             <div className="header-user-links hidden md:flex items-center gap-3">
