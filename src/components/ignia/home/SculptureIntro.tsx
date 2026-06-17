@@ -42,7 +42,7 @@ export const SculptureIntro = () => {
             fontFamily: "Manrope, sans-serif",
             fontWeight: 400,
             color: "rgba(255,255,255,0.8)",
-            fontSize: "clamp(18px, 1.8vw, 24px)",
+            fontSize: 16,
             lineHeight: 1.55,
             marginTop: 24,
             marginBottom: 0,
