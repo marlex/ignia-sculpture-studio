@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Facebook, Instagram, Linkedin } from "lucide-react";
 import { Logo } from "./Logo";
 import { useLang } from "@/i18n/LanguageContext";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
@@ -9,12 +9,25 @@ import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/component
 const COLS = {
   es: [
     {
-      label: "Explorar",
+      label: "IGNIA GALLERY",
+      links: [
+        { label: "Entrar", to: "/login" },
+      ],
+    },
+    {
+      label: "Sobre Ignia",
+      links: [
+        { label: "Sobre Ignia", to: "/ignia-gallery" },
+        { label: "Contacto", to: "/ignia-gallery" },
+        { label: "Editorial", to: "/editorial" },
+      ],
+    },
+    {
+      label: "Escultura",
       links: [
         { label: "Colección", to: "/coleccion" },
         { label: "Escultores", to: "/escultores" },
-        { label: "Editorial", to: "/editorial" },
-        { label: "Ignia Aprende", to: "/aprende" },
+        { label: "Guía 3D", to: "/aprende" },
       ],
     },
     {
@@ -22,28 +35,31 @@ const COLS = {
       links: [
         { label: "Publicar obra", to: "/login" },
         { label: "Mi perfil", to: "/perfil/escultor" },
-        { label: "Guía 3D", to: "/aprende" },
         { label: "Ignia Aprende", to: "/aprende" },
-      ],
-    },
-    {
-      label: "IGNIA GALLERY",
-      links: [
-        { label: "Sobre Ignia", to: "/ignia-gallery" },
-        { label: "Editorial", to: "/editorial" },
-        { label: "Contacto", to: "/ignia-gallery" },
-        { label: "Entrar", to: "/login" },
       ],
     },
   ],
   en: [
     {
-      label: "Explore",
+      label: "IGNIA GALLERY",
+      links: [
+        { label: "Sign in", to: "/login" },
+      ],
+    },
+    {
+      label: "About",
+      links: [
+        { label: "About Ignia", to: "/ignia-gallery" },
+        { label: "Contact", to: "/ignia-gallery" },
+        { label: "Editorial", to: "/editorial" },
+      ],
+    },
+    {
+      label: "Sculpture",
       links: [
         { label: "Collection", to: "/coleccion" },
         { label: "Sculptors", to: "/escultores" },
-        { label: "Editorial", to: "/editorial" },
-        { label: "Ignia Learn", to: "/aprende" },
+        { label: "3D guide", to: "/aprende" },
       ],
     },
     {
@@ -51,17 +67,7 @@ const COLS = {
       links: [
         { label: "Submit your work", to: "/login" },
         { label: "My profile", to: "/perfil/escultor" },
-        { label: "3D guide", to: "/aprende" },
         { label: "Ignia Learn", to: "/aprende" },
-      ],
-    },
-    {
-      label: "IGNIA GALLERY",
-      links: [
-        { label: "About Ignia", to: "/ignia-gallery" },
-        { label: "Editorial", to: "/editorial" },
-        { label: "Contact", to: "/ignia-gallery" },
-        { label: "Sign in", to: "/login" },
       ],
     },
   ],
@@ -93,50 +99,70 @@ export const Footer = () => {
   return (
     <footer className="footer-section bg-white border-t-[0.5px] border-border px-6 md:px-12 pt-14 pb-8">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-        <div>
-          <Logo />
-          <p className="font-body text-[14px] font-light text-gray mt-4 max-w-[260px]">{tagline}</p>
-        </div>
-        {cols.map(c => (
-          <Collapsible
-            key={c.label}
-            open={isDesktop || !!open[c.label]}
-            onOpenChange={() => !isDesktop && toggle(c.label)}
-          >
-            <CollapsibleTrigger asChild>
-              <button className="w-full flex items-center justify-between md:justify-start md:pointer-events-none outline-none">
-                <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em]">{c.label}</div>
-                <ChevronDown
-                  className="w-4 h-4 text-muted-line transition-transform duration-300 md:hidden"
-                  style={{ transform: open[c.label] ? "rotate(180deg)" : "rotate(0deg)" }}
-                />
-              </button>
-            </CollapsibleTrigger>
-            <CollapsibleContent>
+        {cols.map((c, i) => (
+          i === 0 ? (
+            <div key={c.label}>
+              <Logo />
+              <p className="font-body text-[14px] font-light text-gray mt-4 max-w-[260px]">{tagline}</p>
               <div className="flex flex-col gap-2.5 mt-4">
                 {c.links.map(l => (
                   <Link key={l.label} to={l.to} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">{l.label}</Link>
                 ))}
               </div>
-            </CollapsibleContent>
-          </Collapsible>
-
+            </div>
+          ) : (
+            <Collapsible
+              key={c.label}
+              open={isDesktop || !!open[c.label]}
+              onOpenChange={() => !isDesktop && toggle(c.label)}
+            >
+              <CollapsibleTrigger asChild>
+                <button className="w-full flex items-center justify-between md:justify-start md:pointer-events-none outline-none">
+                  <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em]">{c.label}</div>
+                  <ChevronDown
+                    className="w-4 h-4 text-muted-line transition-transform duration-300 md:hidden"
+                    style={{ transform: open[c.label] ? "rotate(180deg)" : "rotate(0deg)" }}
+                  />
+                </button>
+              </CollapsibleTrigger>
+              <CollapsibleContent>
+                <div className="flex flex-col gap-2.5 mt-4">
+                  {c.links.map(l => (
+                    <Link key={l.label} to={l.to} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">{l.label}</Link>
+                  ))}
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
+          )
         ))}
       </div>
-      <div className="border-t-[0.5px] border-border mt-10 pt-5 flex justify-between flex-wrap gap-3 items-center">
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <span className="font-body text-[14px] font-light text-gray">© 2026 Ignia Gallery</span>
-          <Link to="/legal/terminos" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
-            {lang === "es" ? "Términos y Condiciones" : "Terms & Conditions"}
-          </Link>
-          <Link to="/legal/privacidad" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
-            {lang === "es" ? "Política de Privacidad" : "Privacy Policy"}
-          </Link>
-          <Link to="/legal/envios-y-devoluciones" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
-            {lang === "es" ? "Envíos y Devoluciones" : "Shipping & Returns"}
-          </Link>
+      <div className="border-t-[0.5px] border-border mt-10 pt-5">
+        <div className="flex items-center gap-4">
+          <a href="https://www.instagram.com/igniagallery/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <Instagram size={16} className="text-gray hover:text-ink transition-colors" />
+          </a>
+          <a href="https://www.linkedin.com/company/igniagallery/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <Linkedin size={16} className="text-gray hover:text-ink transition-colors" />
+          </a>
+          <a href="https://www.facebook.com/igniagallery" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <Facebook size={16} className="text-gray hover:text-ink transition-colors" />
+          </a>
         </div>
-        <span className="font-body text-[14px] font-light" style={{ color: "#444" }}>{status}</span>
+        <div className="mt-5 flex justify-between flex-wrap gap-3 items-center">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <span className="font-body text-[14px] font-light text-gray">© 2026 Ignia Gallery</span>
+            <Link to="/legal/terminos" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+              {lang === "es" ? "Términos y Condiciones" : "Terms & Conditions"}
+            </Link>
+            <Link to="/legal/privacidad" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+              {lang === "es" ? "Política de Privacidad" : "Privacy Policy"}
+            </Link>
+            <Link to="/legal/envios-y-devoluciones" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+              {lang === "es" ? "Envíos y Devoluciones" : "Shipping & Returns"}
+            </Link>
+          </div>
+          <span className="font-body text-[14px] font-light" style={{ color: "#444" }}>{status}</span>
+        </div>
       </div>
     </footer>
   );
