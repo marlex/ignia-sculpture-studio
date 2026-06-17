@@ -55,7 +55,7 @@ export const Coleccion = () => {
         <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.h}</h2>
         <Link to="/coleccion" className="link-arrow">{t.cta}</Link>
       </div>
-      <p className="font-body text-[14px] font-light text-gray mb-8">{t.sub}</p>
+      <p className="font-body text-[16px] font-light text-gray mb-8">{t.sub}</p>
 
       <div className="flex flex-wrap gap-3 mb-10">
         <input type="search" placeholder={t.search} className="w-60 border-[0.5px] border-border bg-white font-body text-[14px] font-light px-3.5 py-2.5 outline-none focus:border-ink transition-colors" />
@@ -85,14 +85,14 @@ export const Coleccion = () => {
               </Link>
               <div className="px-0 pt-3 pb-5">
                 <h3 className="font-display font-bold text-[28px] text-ink mb-1">{o.title}</h3>
-                <div className="font-body text-[14px] font-light text-gray mb-1.5">{o.artist}</div>
+                <div className="font-body text-[16px] font-light text-gray mb-1.5">{o.artist}</div>
                 <div className="font-body text-[12px] font-light text-muted-line uppercase tracking-[0.14em] mb-2">{o.material}</div>
                 <div className="flex items-center gap-1.5 mb-3 font-body text-[11px] font-light text-muted-line normal-case tracking-normal">
                   <span aria-hidden className="text-ink">◆</span>
                    <span>{t.auth} <span className="font-mono text-ink/70">{o.authenticity}</span></span>
                 </div>
                 <div className="flex items-center justify-between pt-3 gap-3">
-                  <span className="font-body text-[14px] font-normal text-ink">{o.price}</span>
+                  <span className="font-body text-[16px] font-normal text-ink">{o.price}</span>
                   <Link
                      to={`/obra/${o.slug}`}
                     className="font-body text-[12px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-60 transition-opacity"

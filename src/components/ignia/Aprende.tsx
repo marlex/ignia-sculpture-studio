@@ -47,7 +47,7 @@ export const Aprende = () => {
         <div className="flex flex-col gap-6">
           <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{p.tag}</div>
           <h3 className="font-display font-bold text-[26px] tracking-[-0.02em] text-ink mb-3 leading-tight">{p.titulo}</h3>
-          <div className="font-body text-[14px] font-light text-gray">{p.tiempo}</div>
+          <div className="font-body text-[16px] font-light text-gray">{p.tiempo}</div>
           <div className="flex items-center justify-between gap-5 pt-4" aria-label={t.controls}>
             <div className="flex items-center gap-4">
               {posts.map((post, idx) => (

@@ -41,8 +41,8 @@ const Block = ({ title, citas }: { title: string; citas: { q: string; n: string;
             </blockquote>
             <div style={{ height: 1, background: "#111111", opacity: 0.12, width: 48, margin: "40px 0 20px" }} />
             <figcaption>
-              <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 600, color: "#111111", fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase" }}>{c.n}</div>
-              <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 13, marginTop: 6, letterSpacing: "0.02em" }}>{c.r}</div>
+              <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 600, color: "#111111", fontSize: 16, letterSpacing: "0.08em", textTransform: "uppercase" }}>{c.n}</div>
+              <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, marginTop: 6, letterSpacing: "0.02em" }}>{c.r}</div>
             </figcaption>
           </figure>
         ))}

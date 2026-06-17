@@ -60,7 +60,7 @@ export const Testimonials = () => {
                 style={{
                   fontFamily: "'Urbanist', sans-serif",
                   fontWeight: 700,
-                  fontSize: "13px",
+                  fontSize: "16px",
                   textTransform: "uppercase",
                   letterSpacing: "0.12em",
                   color: "#1A1A1A",
@@ -72,7 +72,7 @@ export const Testimonials = () => {
                 style={{
                   fontFamily: "'Manrope', sans-serif",
                   fontWeight: 400,
-                  fontSize: "12px",
+                  fontSize: "16px",
                   color: "#999999",
                   marginTop: "4px",
                 }}
