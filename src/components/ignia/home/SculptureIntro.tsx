@@ -39,11 +39,11 @@ export const SculptureIntro = () => {
         </h2>
         <p
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "Manrope, sans-serif",
             fontWeight: 400,
             color: "rgba(255,255,255,0.8)",
             fontSize: "clamp(18px, 1.8vw, 24px)",
-            lineHeight: 1.45,
+            lineHeight: 1.55,
             marginTop: 24,
             marginBottom: 0,
             maxWidth: 820,
