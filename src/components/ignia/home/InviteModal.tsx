@@ -62,7 +62,7 @@ export const InviteModal = ({ open, onClose }: Props) => {
   }, [open, onClose]);
 
   useEffect(() => {
-    if (!open) { setSubmitted(false); setBio(""); }
+    if (!open) { setSubmitted(false); setBio(""); setError(null); }
   }, [open]);
 
   if (!open) return null;
