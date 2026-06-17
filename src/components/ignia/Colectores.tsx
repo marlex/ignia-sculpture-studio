@@ -89,7 +89,7 @@ export const Colectores = () => {
             <div className="font-display text-[28px] font-bold text-ink mb-4 leading-tight">
               {principal.nombre}
             </div>
-            <p className="font-body text-[15px] font-light text-gray leading-relaxed mb-6">{principal.extracto}</p>
+            <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-6">{principal.extracto}</p>
             <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-6">
               {principal.ubicacion} · {principal.foco}
             </div>
