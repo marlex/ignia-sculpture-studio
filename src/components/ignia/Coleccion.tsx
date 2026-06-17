@@ -83,7 +83,7 @@ export const Coleccion = () => {
                   </button>
                 )}
               </Link>
-              <div className="p-5">
+              <div className="px-0 pt-3 pb-5">
                 <h3 className="font-display font-bold text-[28px] text-ink mb-1">{o.title}</h3>
                 <div className="font-body text-[14px] font-light text-gray mb-1.5">{o.artist}</div>
                 <div className="font-body text-[12px] font-light text-muted-line uppercase tracking-[0.14em] mb-2">{o.material}</div>
