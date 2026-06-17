@@ -72,7 +72,7 @@ export const Testimonials = () => {
                 style={{
                   fontFamily: "'Manrope', sans-serif",
                   fontWeight: 400,
-                  fontSize: "12px",
+                  fontSize: "16px",
                   color: "#999999",
                   marginTop: "4px",
                 }}
