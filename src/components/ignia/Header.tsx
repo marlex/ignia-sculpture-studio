@@ -4,6 +4,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Logo } from "./Logo";
 import { useLang, useSetLang, type Lang } from "@/i18n/LanguageContext";
 import { useAuth } from "@/auth/AuthContext";
+import { SHOW_PUBLIC_AUTH } from "@/config/featureFlags";
 
 // Left nav (without Ignia gallery, which moves to the right cluster)
 const NAV_LEFT = {
@@ -85,7 +86,7 @@ export const Header = () => {
           <Link to={galleryItem.to} className="header-gallery-link font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
             {galleryItem.label}
           </Link>
-          {user ? (
+          {SHOW_PUBLIC_AUTH && (user ? (
             <div className="header-user-links hidden md:flex items-center gap-3">
               <Link to="/dashboard" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
                 {t.dashboard}
@@ -98,7 +99,7 @@ export const Header = () => {
             <Link to={`/login?redirect=${encodeURIComponent(location.pathname)}`} className="header-signin-link font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
               {t.signin}
             </Link>
-          )}
+          ))}
           <div className="header-lang">
             <LangDropdown lang={lang} setLang={setLang} />
           </div>

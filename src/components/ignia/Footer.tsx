@@ -4,6 +4,7 @@ import { ChevronDown, Facebook, Instagram, Linkedin } from "lucide-react";
 import { Logo } from "./Logo";
 import { useLang } from "@/i18n/LanguageContext";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
+import { SHOW_PUBLIC_AUTH } from "@/config/featureFlags";
 
 
 const COLS = {
@@ -104,11 +105,13 @@ export const Footer = () => {
             <div key={c.label}>
               <Logo />
               <p className="font-body text-[14px] font-light text-gray mt-4 max-w-[260px]">{tagline}</p>
-              <div className="flex flex-col gap-2.5 mt-4">
-                {c.links.map(l => (
-                  <Link key={l.label} to={l.to} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">{l.label}</Link>
-                ))}
-              </div>
+              {SHOW_PUBLIC_AUTH && (
+                <div className="flex flex-col gap-2.5 mt-4">
+                  {c.links.map(l => (
+                    <Link key={l.label} to={l.to} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">{l.label}</Link>
+                  ))}
+                </div>
+              )}
             </div>
           ) : (
             <Collapsible
