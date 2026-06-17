@@ -140,15 +140,15 @@ export const Footer = () => {
         ))}
       </div>
       <div className="border-t-[0.5px] border-border mt-10 pt-5">
-        <div className="flex items-center gap-4">
-          <a href="https://www.instagram.com/igniagallery/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <Instagram size={16} className="text-gray hover:text-ink transition-colors" />
+        <div className="flex items-center gap-5">
+          <a href="https://www.instagram.com/igniagallery/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="group">
+            <Instagram size={18} strokeWidth={1.25} className="text-gray group-hover:text-ink transition-colors duration-200" />
           </a>
-          <a href="https://www.linkedin.com/company/igniagallery/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <Linkedin size={16} className="text-gray hover:text-ink transition-colors" />
+          <a href="https://www.linkedin.com/company/igniagallery/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="group">
+            <Linkedin size={18} strokeWidth={1.25} className="text-gray group-hover:text-ink transition-colors duration-200" />
           </a>
-          <a href="https://www.facebook.com/igniagallery" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <Facebook size={16} className="text-gray hover:text-ink transition-colors" />
+          <a href="https://www.facebook.com/igniagallery" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="group">
+            <Facebook size={18} strokeWidth={1.25} className="text-gray group-hover:text-ink transition-colors duration-200" />
           </a>
         </div>
         <div className="mt-5 flex justify-between flex-wrap gap-3 items-center">
