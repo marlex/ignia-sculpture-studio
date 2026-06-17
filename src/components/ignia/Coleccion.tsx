@@ -92,7 +92,7 @@ export const Coleccion = () => {
                    <span>{t.auth} <span className="font-mono text-ink/70">{o.authenticity}</span></span>
                 </div>
                 <div className="flex items-center justify-between pt-3 gap-3">
-                  <span className="font-body text-[14px] font-normal text-ink">{o.price}</span>
+                  <span className="font-body text-[16px] font-normal text-ink">{o.price}</span>
                   <Link
                      to={`/obra/${o.slug}`}
                     className="font-body text-[12px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-60 transition-opacity"
