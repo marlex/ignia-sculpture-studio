@@ -5,27 +5,39 @@ import { Logo } from "./Logo";
 import { useLang, useSetLang, type Lang } from "@/i18n/LanguageContext";
 import { useAuth } from "@/auth/AuthContext";
 
-const NAV = {
+// Left nav (without Ignia gallery, which moves to the right cluster)
+const NAV_LEFT = {
   es: [
-    { label: "Colección", to: "/coleccion" },
     { label: "Escultores", to: "/escultores" },
+    { label: "Colección", to: "/coleccion" },
     { label: "Aprende", to: "/aprende" },
     { label: "Editorial", to: "/editorial" },
-    { label: "Ignia gallery", to: "/ignia-gallery" },
   ],
   en: [
-    { label: "Collection", to: "/coleccion" },
     { label: "Sculptors", to: "/escultores" },
+    { label: "Collection", to: "/coleccion" },
     { label: "Learn", to: "/aprende" },
     { label: "Editorial", to: "/editorial" },
-    { label: "Ignia gallery", to: "/ignia-gallery" },
   ],
+};
+
+const IGNIA_GALLERY = {
+  es: { label: "Ignia gallery", to: "/ignia-gallery" },
+  en: { label: "Ignia gallery", to: "/ignia-gallery" },
+};
+
+// Full nav order for mobile drawer
+const NAV_ALL = {
+  es: [...NAV_LEFT.es, IGNIA_GALLERY.es],
+  en: [...NAV_LEFT.en, IGNIA_GALLERY.en],
 };
 
 export const Header = () => {
   const lang = useLang();
   const setLang = useSetLang();
-  const items = NAV[lang];
+  const leftItems = NAV_LEFT[lang];
+  const galleryItem = IGNIA_GALLERY[lang];
+  const allItems = NAV_ALL[lang];
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -48,6 +60,9 @@ export const Header = () => {
           .header-user-links { display: none !important; }
           .header-invite-btn { display: none !important; }
           .header-signin-link { display: none !important; }
+          .header-lang { display: none !important; }
+          .header-gallery-link { display: none !important; }
+          .header-right-cluster { justify-content: flex-end !important; }
         }
         @media (min-width: 769px) {
           .header-hamburger { display: none !important; }
@@ -55,7 +70,7 @@ export const Header = () => {
       `}</style>
       <div className="grid grid-cols-[1fr_auto_1fr] items-center w-full gap-4">
         <nav className="header-nav-links hidden md:flex items-center gap-9">
-          {items.map(item => (
+          {leftItems.map(item => (
             <Link key={item.label} to={item.to} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
               {item.label}
             </Link>
@@ -66,8 +81,10 @@ export const Header = () => {
             <Logo />
           </span>
         </Link>
-        <div className="flex items-center justify-end gap-4">
-          <LangDropdown lang={lang} setLang={setLang} />
+        <div className="header-right-cluster flex items-center justify-end gap-4">
+          <Link to={galleryItem.to} className="header-gallery-link font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+            {galleryItem.label}
+          </Link>
           {user ? (
             <div className="header-user-links hidden md:flex items-center gap-3">
               <Link to="/dashboard" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
@@ -82,6 +99,9 @@ export const Header = () => {
               {t.signin}
             </Link>
           )}
+          <div className="header-lang">
+            <LangDropdown lang={lang} setLang={setLang} />
+          </div>
           <button
             type="button"
             onClick={openInvite}
@@ -146,7 +166,7 @@ export const Header = () => {
           >
             ×
           </button>
-          {items.map((item) => (
+          {allItems.map((item) => (
             <Link
               key={item.label}
               to={item.to}
@@ -178,6 +198,33 @@ export const Header = () => {
           >
             {t.publish}
           </button>
+          {/* Language switch inside mobile drawer */}
+          <div style={{ display: "flex", gap: 18, marginTop: 12 }}>
+            {LANGS.map((l) => {
+              const active = l.code === lang;
+              return (
+                <button
+                  key={l.code}
+                  type="button"
+                  onClick={() => { setLang(l.code); }}
+                  style={{
+                    fontFamily: "Manrope, sans-serif",
+                    fontSize: 13,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    color: active ? "#FFFFFF" : "rgba(255,255,255,0.5)",
+                    background: "transparent",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: 4,
+                  }}
+                  aria-pressed={active}
+                >
+                  {l.label}
+                </button>
+              );
+            })}
+          </div>
         </div>,
         document.body
       )}
