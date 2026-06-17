@@ -187,6 +187,11 @@ export const InviteModal = ({ open, onClose }: Props) => {
               >
                 {loading ? t.sending : t.submit}
               </button>
+              {error && (
+                <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#b91c1c", fontSize: 13, marginTop: 16, textAlign: "center" }}>
+                  {error}
+                </p>
+              )}
             </form>
           </>
         )}
