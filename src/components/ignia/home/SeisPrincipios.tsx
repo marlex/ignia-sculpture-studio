@@ -35,13 +35,13 @@ export const SeisPrincipios = () => {
       <style>{`
         .sp-wrap { max-width:1240px; margin:0 auto; padding:140px 40px 160px; }
         .sp-eyebrow { font-family:${MAN}; font-size:11px; font-weight:600; letter-spacing:0.28em; text-transform:uppercase; color:#9a9485; margin:0 0 32px; }
-        .sp-title { font-family:${CG}; font-weight:500; font-size:clamp(40px,5vw,64px); color:#111; line-height:1.05; letter-spacing:-0.02em; margin:0 0 120px; max-width:18ch; }
-        .sp-title em { font-style:italic; font-weight:500; color:#8a8270; }
+        .sp-title { font-family:${CG}; font-weight:700; font-size:clamp(40px,5vw,64px); color:#111; line-height:1.05; letter-spacing:-0.02em; margin:0 0 120px; max-width:18ch; }
+        .sp-title em { font-style:italic; font-weight:700; color:#8a8270; }
         .sp-grid { display:grid; grid-template-columns:repeat(2,1fr); column-gap:120px; row-gap:96px; }
         .sp-cell { display:grid; grid-template-columns:80px 1fr; column-gap:32px; align-items:start; }
         .sp-num { font-family:${CG}; font-weight:400; font-style:italic; font-size:56px; color:#c9c0ac; margin:0; line-height:1; letter-spacing:0; padding-top:4px; }
         .sp-body { min-width:0; }
-        .sp-rt { font-family:${CG}; font-size:30px; font-weight:500; line-height:1.25; color:#111; margin:0 0 18px; letter-spacing:-0.01em; max-width:24ch; }
+        .sp-rt { font-family:${CG}; font-size:30px; font-weight:700; line-height:1.25; color:#111; margin:0 0 18px; letter-spacing:-0.01em; max-width:24ch; }
         .sp-desc { font-family:${MAN}; font-size:15px; font-weight:400; line-height:1.7; color:#5a5648; margin:0; max-width:42ch; }
         @media (max-width:900px) {
           .sp-wrap { padding:80px 24px 100px; }
