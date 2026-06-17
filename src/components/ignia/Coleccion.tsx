@@ -66,11 +66,11 @@ export const Coleccion = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
         {obras.map((o, i) => {
           const has3d = !!o.glbUrl;
           return (
-            <article key={i} className="bg-white group border border-border">
+            <article key={i} className="bg-white group">
               <Link to={`/obra/${o.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary">
                 <img src={o.image} alt={o.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
                 {has3d && (
@@ -84,14 +84,14 @@ export const Coleccion = () => {
                 )}
               </Link>
               <div className="p-5">
-                <h3 className="font-display font-bold text-[24px] text-ink mb-1">{o.title}</h3>
+                <h3 className="font-display font-bold text-[28px] text-ink mb-1">{o.title}</h3>
                 <div className="font-body text-[14px] font-light text-gray mb-1.5">{o.artist}</div>
                 <div className="font-body text-[12px] font-light text-muted-line uppercase tracking-[0.14em] mb-2">{o.material}</div>
                 <div className="flex items-center gap-1.5 mb-3 font-body text-[11px] font-light text-muted-line normal-case tracking-normal">
                   <span aria-hidden className="text-ink">◆</span>
                    <span>{t.auth} <span className="font-mono text-ink/70">{o.authenticity}</span></span>
                 </div>
-                <div className="flex items-center justify-between pt-3 border-t-[0.5px] border-border gap-3">
+                <div className="flex items-center justify-between pt-3 gap-3">
                   <span className="font-body text-[14px] font-normal text-ink">{o.price}</span>
                   <Link
                      to={`/obra/${o.slug}`}
