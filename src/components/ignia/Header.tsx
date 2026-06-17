@@ -77,12 +77,12 @@ export const Header = () => {
             </Link>
           ))}
         </nav>
-        <Link to="/" className="flex items-center justify-center" aria-label="Ignia Gallery">
+        <Link to="/" className="col-start-2 flex items-center justify-center" aria-label="Ignia Gallery">
           <span style={{ display: "inline-block", transform: "scaleX(1.05)", transformOrigin: "center" }}>
             <Logo />
           </span>
         </Link>
-        <div className="header-right-cluster flex items-center justify-end gap-4">
+        <div className="header-right-cluster col-start-3 flex items-center justify-end gap-4">
           <Link to={galleryItem.to} className="header-gallery-link font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
             {galleryItem.label}
           </Link>
