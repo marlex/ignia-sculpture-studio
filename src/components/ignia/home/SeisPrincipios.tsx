@@ -37,21 +37,20 @@ export const SeisPrincipios = () => {
         .sp-header { display:flex; align-items:flex-end; gap:40px; padding:100px 0 80px; border-bottom:1px solid #e8e3db; }
         .sp-vi { font-family:${CG}; font-weight:700; font-size:180px; color:#d9d2c4; line-height:0.78; flex-shrink:0; letter-spacing:-0.02em; margin-bottom:-0.08em; }
         .sp-title { font-family:${CG}; font-weight:700; font-size:clamp(32px,4.5vw,48px); color:#111; line-height:1.1; margin:0; letter-spacing:-0.02em; }
-        .sp-grid { display:grid; grid-template-columns:1fr 1fr; }
-        .sp-cell { padding:36px 60px; position:relative; }
-        .sp-cell:nth-child(odd) { padding-left:0; border-right:1px solid #e8e3db; }
-        .sp-cell:nth-child(even) { padding-right:0; }
-        .sp-cell:nth-child(n+3) { border-top:1px solid #e8e3db; }
-        .sp-num { font-family:${CG}; font-weight:300; font-size:23px; letter-spacing:0.15em; color:#b8b0a0; margin:0 0 14px; }
-        .sp-rt { font-family:${CG}; font-size:24px; font-weight:700; line-height:1.3; color:#111; margin:0 0 10px; }
+        .sp-grid { display:grid; grid-template-columns:2fr 3fr; column-gap:200px; row-gap:120px; }
+        .sp-cell { padding:0; position:relative; }
+        .sp-num { font-family:${CG}; font-weight:700; font-size:48px; letter-spacing:0.08em; color:#d9d2c4; margin:0 0 18px; line-height:1; }
+        .sp-rt { font-family:${CG}; font-size:28px; font-weight:700; line-height:1.3; color:#111; margin:0 0 12px; }
+        .sp-rt--featured { font-size:32px; }
         .sp-desc { font-family:${MAN}; font-size:16px; font-weight:500; line-height:1.6; color:#777; margin:0; max-width:460px; }
         @media (max-width:768px) {
           .sp-wrap { padding:0 24px; }
           .sp-header { flex-direction:column; gap:24px; padding:60px 0 40px; }
           .sp-vi { display:none; }
-          .sp-grid { grid-template-columns:1fr; }
-          .sp-cell, .sp-cell:nth-child(odd), .sp-cell:nth-child(even) { padding:40px 0; border-right:none; }
-          .sp-cell + .sp-cell { border-top:1px solid #e8e3db; }
+          .sp-grid { grid-template-columns:1fr; column-gap:0; row-gap:100px; }
+          .sp-cell { padding:0; }
+          .sp-rt { font-size:26px; }
+          .sp-rt--featured { font-size:28px; }
         }
       `}</style>
       <div className="sp-wrap">
@@ -60,13 +59,16 @@ export const SeisPrincipios = () => {
           <h2 className="sp-title">{TITLE[lang]}</h2>
         </div>
         <div className="sp-grid">
-          {rows.map((r) => (
-            <div key={r.n} className="sp-cell">
-              <p className="sp-num">{r.n}</p>
-              <h3 className="sp-rt">{r.t}</h3>
-              <p className="sp-desc">{r.d}</p>
-            </div>
-          ))}
+          {rows.map((r) => {
+            const featured = r.n === "II" || r.n === "VI";
+            return (
+              <div key={r.n} className={`sp-cell ${featured ? "sp-cell--featured" : ""}`}>
+                <p className="sp-num">{r.n}</p>
+                <h3 className={`sp-rt ${featured ? "sp-rt--featured" : ""}`}>{r.t}</h3>
+                <p className="sp-desc">{r.d}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
