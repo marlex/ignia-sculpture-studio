@@ -110,7 +110,7 @@ export const HeroSlideshow = ({ onInvite, onCollection }: Props) => {
             fontWeight: 500,
             color: "#FFFFFF",
             opacity: 0.75,
-            fontSize: 15,
+            fontSize: 16,
             lineHeight: 1.5,
             maxWidth: 720,
             margin: "0 auto",

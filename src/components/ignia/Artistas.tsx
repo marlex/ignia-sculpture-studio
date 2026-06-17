@@ -65,7 +65,7 @@ export const Artistas = () => {
             <h3 className="font-display font-bold text-[28px] tracking-[-0.02em] text-ink mb-5 leading-[1.15] group-hover:opacity-70 transition-opacity">
               {principal.titularEntrevista}
             </h3>
-            <p className="font-body text-[15px] font-light text-gray leading-relaxed mb-6">{principal.extracto}</p>
+            <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-6">{principal.extracto}</p>
             <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-6">
               {principal.esp} · {principal.obras} · {principal.tiempo}
             </div>

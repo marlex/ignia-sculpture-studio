@@ -42,7 +42,7 @@ export const SeisPrincipios = () => {
         .sp-num { font-family:${CG}; font-weight:400; font-style:italic; font-size:56px; color:#c9c0ac; margin:0; line-height:1; letter-spacing:0; padding-top:4px; }
         .sp-body { min-width:0; }
         .sp-rt { font-family:${CG}; font-size:30px; font-weight:700; line-height:1.25; color:#111; margin:0 0 18px; letter-spacing:-0.01em; max-width:24ch; }
-        .sp-desc { font-family:${MAN}; font-size:15px; font-weight:400; line-height:1.7; color:#5a5648; margin:0; max-width:42ch; }
+        .sp-desc { font-family:${MAN}; font-size:16px; font-weight:400; line-height:1.7; color:#5a5648; margin:0; max-width:42ch; }
         @media (max-width:900px) {
           .sp-wrap { padding:80px 24px 100px; }
           .sp-title { margin-bottom:72px; }

@@ -78,7 +78,7 @@ export const ConstruidaPara = ({ onInvite }: { onInvite: () => void }) => {
                 fontFamily: "Manrope, sans-serif",
                 fontWeight: 500,
                 color: "rgba(255,255,255,0.55)",
-                fontSize: 15,
+                fontSize: 16,
                 lineHeight: 1.8,
                 marginTop: 12,
               }}

@@ -54,7 +54,7 @@ export const Stats = () => {
             <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: "clamp(40px,5vw,64px)", lineHeight: 1, letterSpacing: "-0.02em" }}>
               <AnimNum raw={it.value} />
             </div>
-            <div style={{ marginTop: 16, fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 15, lineHeight: 1.5 }}>
+            <div style={{ marginTop: 16, fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 16, lineHeight: 1.5 }}>
               {it.label}
             </div>
           </div>
