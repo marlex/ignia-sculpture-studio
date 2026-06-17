@@ -31,44 +31,40 @@ export const SeisPrincipios = () => {
   const lang = useLang();
   const rows = ROWS[lang];
   return (
-    <section className="seis-principios w-full bg-white">
+    <section className="seis-principios w-full bg-[#fafaf7]">
       <style>{`
-        .sp-wrap { max-width:1280px; margin:0 auto; padding:0 40px; }
-        .sp-header { display:flex; align-items:flex-end; gap:40px; padding:100px 0 80px; border-bottom:1px solid #e8e3db; }
-        .sp-vi { font-family:${CG}; font-weight:700; font-size:180px; color:#d9d2c4; line-height:0.78; flex-shrink:0; letter-spacing:-0.02em; margin-bottom:-0.08em; }
-        .sp-title { font-family:${CG}; font-weight:700; font-size:clamp(32px,4.5vw,48px); color:#111; line-height:1.1; margin:0; letter-spacing:-0.02em; }
-        .sp-grid { display:grid; grid-template-columns:2fr 3fr; column-gap:200px; row-gap:120px; }
-        .sp-cell { padding:0; position:relative; }
-        .sp-num { font-family:${CG}; font-weight:700; font-size:48px; letter-spacing:0.08em; color:#d9d2c4; margin:0 0 18px; line-height:1; }
-        .sp-rt { font-family:${CG}; font-size:28px; font-weight:700; line-height:1.3; color:#111; margin:0 0 12px; }
-        .sp-rt--featured { font-size:32px; }
-        .sp-desc { font-family:${MAN}; font-size:16px; font-weight:500; line-height:1.6; color:#777; margin:0; max-width:460px; }
-        @media (max-width:768px) {
-          .sp-wrap { padding:0 24px; }
-          .sp-header { flex-direction:column; gap:24px; padding:60px 0 40px; }
-          .sp-vi { display:none; }
-          .sp-grid { grid-template-columns:1fr; column-gap:0; row-gap:100px; }
-          .sp-cell { padding:0; }
+        .sp-wrap { max-width:1240px; margin:0 auto; padding:140px 40px 160px; }
+        .sp-eyebrow { font-family:${MAN}; font-size:11px; font-weight:600; letter-spacing:0.28em; text-transform:uppercase; color:#9a9485; margin:0 0 32px; }
+        .sp-title { font-family:${CG}; font-weight:500; font-size:clamp(40px,5vw,64px); color:#111; line-height:1.05; letter-spacing:-0.02em; margin:0 0 120px; max-width:18ch; }
+        .sp-title em { font-style:italic; font-weight:500; color:#8a8270; }
+        .sp-grid { display:grid; grid-template-columns:repeat(2,1fr); column-gap:120px; row-gap:96px; }
+        .sp-cell { display:grid; grid-template-columns:80px 1fr; column-gap:32px; align-items:start; }
+        .sp-num { font-family:${CG}; font-weight:400; font-style:italic; font-size:56px; color:#c9c0ac; margin:0; line-height:1; letter-spacing:0; padding-top:4px; }
+        .sp-body { min-width:0; }
+        .sp-rt { font-family:${CG}; font-size:30px; font-weight:500; line-height:1.25; color:#111; margin:0 0 18px; letter-spacing:-0.01em; max-width:24ch; }
+        .sp-desc { font-family:${MAN}; font-size:15px; font-weight:400; line-height:1.7; color:#5a5648; margin:0; max-width:42ch; }
+        @media (max-width:900px) {
+          .sp-wrap { padding:80px 24px 100px; }
+          .sp-title { margin-bottom:72px; }
+          .sp-grid { grid-template-columns:1fr; column-gap:0; row-gap:64px; }
+          .sp-cell { grid-template-columns:56px 1fr; column-gap:20px; }
+          .sp-num { font-size:42px; }
           .sp-rt { font-size:26px; }
-          .sp-rt--featured { font-size:28px; }
         }
       `}</style>
       <div className="sp-wrap">
-        <div className="sp-header">
-          <div className="sp-vi" aria-hidden="true">VI</div>
-          <h2 className="sp-title">{TITLE[lang]}</h2>
-        </div>
+        <p className="sp-eyebrow">{lang === "es" ? "Manifiesto · Seis principios" : "Manifesto · Six principles"}</p>
+        <h2 className="sp-title">{TITLE[lang]}</h2>
         <div className="sp-grid">
-          {rows.map((r) => {
-            const featured = r.n === "II" || r.n === "VI";
-            return (
-              <div key={r.n} className={`sp-cell ${featured ? "sp-cell--featured" : ""}`}>
-                <p className="sp-num">{r.n}</p>
-                <h3 className={`sp-rt ${featured ? "sp-rt--featured" : ""}`}>{r.t}</h3>
+          {rows.map((r) => (
+            <div key={r.n} className="sp-cell">
+              <p className="sp-num">{r.n}</p>
+              <div className="sp-body">
+                <h3 className="sp-rt">{r.t}</h3>
                 <p className="sp-desc">{r.d}</p>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
     </section>
