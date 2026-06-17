@@ -17,7 +17,9 @@ export const InviteModal = ({ open, onClose }: Props) => {
   const t = lang === "es"
     ? {
         title: "Solicitar invitación",
-        subtitle: "30 plazas. Comisión Pro permanente del 15%. Sin cuotas, sin exclusividad.",
+        subtitleArtista: "30 plazas. Comisión Pro permanente del 15%. Sin cuotas, sin exclusividad.",
+        subtitleColeccionista: "Acceso anticipado a una nueva forma de coleccionar escultura.",
+        subtitleEmpresa: "Hablemos sobre tu proyecto u organización.",
         whoTitle: "¿Quién eres?",
         roleArtista: "Artista",
         roleColeccionista: "Coleccionista",
@@ -55,7 +57,9 @@ export const InviteModal = ({ open, onClose }: Props) => {
       }
     : {
         title: "Request invitation",
-        subtitle: "30 spots. Permanent 15% Pro commission. No fees, no exclusivity.",
+        subtitleArtista: "30 spots. Permanent 15% Pro commission. No fees, no exclusivity.",
+        subtitleColeccionista: "Early access to a new way of collecting sculpture.",
+        subtitleEmpresa: "Let's talk about your project or organization.",
         whoTitle: "Who are you?",
         roleArtista: "Artist",
         roleColeccionista: "Collector",
@@ -246,9 +250,11 @@ export const InviteModal = ({ open, onClose }: Props) => {
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 32, lineHeight: 1.1, marginBottom: 12 }}>
               {t.title}
             </h2>
-            <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 15, lineHeight: 1.5, marginBottom: 36 }}>
-              {t.subtitle}
-            </p>
+            {profile && (
+              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 15, lineHeight: 1.5, marginBottom: 36 }}>
+                {profile === "artista" ? t.subtitleArtista : profile === "coleccionista" ? t.subtitleColeccionista : t.subtitleEmpresa}
+              </p>
+            )}
 
             {!profile ? (
               <div>
