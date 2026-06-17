@@ -21,7 +21,7 @@ const ROWS = {
 
 const TITLE = {
   es: "Seis principios que definen un mundo diferente para la escultura.",
-  en: "Six principles that define a different world for sculpture.",
+  en: "Six principles that define a different\u00A0\nworld for sculpture.",
 };
 
 const CG = "'Cormorant Garamond', serif";
