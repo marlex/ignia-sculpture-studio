@@ -59,13 +59,16 @@ export const SeisPrincipios = () => {
           <h2 className="sp-title">{TITLE[lang]}</h2>
         </div>
         <div className="sp-grid">
-          {rows.map((r) => (
-            <div key={r.n} className="sp-cell">
-              <p className="sp-num">{r.n}</p>
-              <h3 className="sp-rt">{r.t}</h3>
-              <p className="sp-desc">{r.d}</p>
-            </div>
-          ))}
+          {rows.map((r) => {
+            const featured = r.n === "II" || r.n === "VI";
+            return (
+              <div key={r.n} className={`sp-cell ${featured ? "sp-cell--featured" : ""}`}>
+                <p className="sp-num">{r.n}</p>
+                <h3 className={`sp-rt ${featured ? "sp-rt--featured" : ""}`}>{r.t}</h3>
+                <p className="sp-desc">{r.d}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
