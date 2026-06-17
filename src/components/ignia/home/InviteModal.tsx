@@ -8,6 +8,7 @@ export const InviteModal = ({ open, onClose }: Props) => {
   const [bio, setBio] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const t = lang === "es"
     ? {
