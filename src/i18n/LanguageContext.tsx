@@ -10,12 +10,11 @@ const Ctx = createContext<{ lang: Lang; setLang: (l: Lang) => void }>({
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [lang, setLangState] = useState<Lang>(() => {
     if (typeof window === "undefined") return "en";
-    return (localStorage.getItem("ignia.lang") as Lang) || "en";
+    return "en";
   });
 
   const setLang = (l: Lang) => {
     setLangState(l);
-    localStorage.setItem("ignia.lang", l);
   };
 
   useEffect(() => {
