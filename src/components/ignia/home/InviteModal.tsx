@@ -250,11 +250,6 @@ export const InviteModal = ({ open, onClose }: Props) => {
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 32, lineHeight: 1.1, marginBottom: 12 }}>
               {t.title}
             </h2>
-            {profile && (
-              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 15, lineHeight: 1.5, marginBottom: 36 }}>
-                {profile === "artista" ? t.subtitleArtista : profile === "coleccionista" ? t.subtitleColeccionista : t.subtitleEmpresa}
-              </p>
-            )}
 
             {!profile ? (
               <div>
@@ -268,6 +263,12 @@ export const InviteModal = ({ open, onClose }: Props) => {
                 <button type="button" className="back-btn" onClick={() => setProfile(null)}>
                   {t.back} · {profile === "artista" ? t.roleArtista : profile === "coleccionista" ? t.roleColeccionista : t.roleEmpresa}
                 </button>
+
+                {profile && (
+                  <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 15, lineHeight: 1.5, marginBottom: 36 }}>
+                    {profile === "artista" ? t.subtitleArtista : profile === "coleccionista" ? t.subtitleColeccionista : t.subtitleEmpresa}
+                  </p>
+                )}
 
                 {profile === "artista" && (
                   <>
