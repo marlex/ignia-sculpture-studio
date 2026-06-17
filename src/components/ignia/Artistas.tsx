@@ -88,7 +88,7 @@ export const Artistas = () => {
                   <Link to={`/perfil/escultor/${a.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} className="block hover:opacity-80 transition-opacity">
                     <h4 className="font-display font-bold text-[28px] text-ink mb-1.5 leading-tight">{a.nombre}</h4>
                     <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{a.esp}</div>
-                    <p className="font-body text-[14px] font-light text-gray leading-relaxed mb-3">{a.extracto}</p>
+                    <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-3">{a.extracto}</p>
                     <div className="font-body text-[11px] font-light text-muted-line mb-3">{a.credito}</div>
                     <span className="link-arrow text-[12px]">{t.view}</span>
                   </Link>
