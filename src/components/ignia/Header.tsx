@@ -43,6 +43,15 @@ export const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Mobile floating header on scroll
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const openInvite = () => {
     window.dispatchEvent(new Event("ignia:open-invite"));
@@ -54,7 +63,9 @@ export const Header = () => {
 
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[100] h-14 bg-white/95 backdrop-blur border-b border-border flex items-center px-6 md:px-12">
+    <header
+      className={`ignia-header fixed top-0 left-0 right-0 z-[100] h-14 bg-white/95 backdrop-blur border-b border-border flex items-center px-6 md:px-12 ${scrolled ? "is-scrolled" : ""}`}
+    >
       <style>{`
         @media (max-width: 768px) {
           .header-nav-links { display: none !important; }
@@ -64,24 +75,69 @@ export const Header = () => {
           .header-lang { display: none !important; }
           .header-gallery-link { display: none !important; }
           .header-right-cluster { justify-content: flex-end !important; }
+          /* Floating semi-transparent pill on scroll (mobile only) */
+          .ignia-header.is-scrolled {
+            top: 12px !important;
+            left: 12px !important;
+            right: 12px !important;
+            height: 52px !important;
+            border-radius: 9999px !important;
+            border: 0.5px solid rgba(0,0,0,0.06) !important;
+            background: rgba(255,255,255,0.72) !important;
+            -webkit-backdrop-filter: saturate(180%) blur(14px) !important;
+            backdrop-filter: saturate(180%) blur(14px) !important;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
+            padding-left: 14px !important;
+            padding-right: 14px !important;
+            transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+          }
         }
         @media (min-width: 769px) {
-          .header-hamburger { display: none !important; }
+          .header-hamburger,
+          .header-invite-icon-mobile { display: none !important; }
         }
+        .ignia-header { transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1); }
       `}</style>
       <div className="grid grid-cols-[1fr_auto_1fr] items-center w-full gap-4">
-        <nav className="header-nav-links hidden md:flex items-center gap-9">
-          {leftItems.map(item => (
-            <Link key={item.label} to={item.to} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        {/* LEFT: desktop nav + mobile hamburger */}
+        <div className="col-start-1 flex items-center gap-9 justify-start">
+          <button
+            type="button"
+            aria-label="Open menu"
+            onClick={() => setMobileOpen(true)}
+            className="header-hamburger"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              gap: 4,
+              padding: 6,
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            <span style={{ width: 18, height: 1, background: "#111111", display: "block" }} />
+            <span style={{ width: 18, height: 1, background: "#111111", display: "block" }} />
+            <span style={{ width: 18, height: 1, background: "#111111", display: "block" }} />
+          </button>
+          <nav className="header-nav-links hidden md:flex items-center gap-9">
+            {leftItems.map(item => (
+              <Link key={item.label} to={item.to} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        {/* CENTER: logo */}
         <Link to="/" className="col-start-2 flex items-center justify-center" aria-label="Ignia Gallery">
           <span style={{ display: "inline-block", transform: "scaleX(1.05)", transformOrigin: "center" }}>
             <Logo />
           </span>
         </Link>
+
+        {/* RIGHT: desktop cluster + mobile invite icon */}
         <div className="header-right-cluster col-start-3 flex items-center justify-end gap-4">
           <Link to={galleryItem.to} className="header-gallery-link font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
             {galleryItem.label}
@@ -110,25 +166,29 @@ export const Header = () => {
           >
             {t.publish}
           </button>
+          {/* Mobile-only invitation icon (envelope) */}
           <button
             type="button"
-            aria-label="Open menu"
-            onClick={() => setMobileOpen(true)}
-            className="header-hamburger"
+            onClick={openInvite}
+            aria-label={t.publish}
+            className="header-invite-icon-mobile"
             style={{
               display: "flex",
-              flexDirection: "column",
+              alignItems: "center",
               justifyContent: "center",
-              gap: 4,
-              padding: 6,
+              width: 32,
+              height: 32,
               background: "transparent",
               border: "none",
+              padding: 0,
               cursor: "pointer",
+              color: "#111111",
             }}
           >
-            <span style={{ width: 16, height: 1, background: "#111111", display: "block" }} />
-            <span style={{ width: 16, height: 1, background: "#111111", display: "block" }} />
-            <span style={{ width: 16, height: 1, background: "#111111", display: "block" }} />
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <rect x="3" y="5" width="18" height="14" rx="1.5" />
+              <path d="M3.5 6.5l8.5 6.5 8.5-6.5" />
+            </svg>
           </button>
         </div>
       </div>
