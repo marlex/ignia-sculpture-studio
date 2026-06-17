@@ -66,7 +66,7 @@ export const Coleccion = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-20 gap-y-24">
         {obras.map((o, i) => {
           const has3d = !!o.glbUrl;
           return (
