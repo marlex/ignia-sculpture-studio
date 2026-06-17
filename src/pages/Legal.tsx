@@ -12,7 +12,8 @@ const SLUGS: Record<string, { es: string; en: string }> = {
 
 export default function Legal() {
   const { slug } = useParams<{ slug: string }>();
-  const src = slug ? SLUGS[slug] : undefined;
+  const lang = useLang();
+  const src = slug ? SLUGS[slug]?.[lang] : undefined;
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [height, setHeight] = useState(800);
 
