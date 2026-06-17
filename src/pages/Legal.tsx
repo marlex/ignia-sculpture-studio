@@ -2,16 +2,18 @@ import { useEffect, useRef, useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
+import { useLang } from "@/i18n/LanguageContext";
 
-const SLUGS: Record<string, string> = {
-  "terminos": "/legal/terminos.html",
-  "privacidad": "/legal/privacidad.html",
-  "envios-y-devoluciones": "/legal/envios-y-devoluciones.html",
+const SLUGS: Record<string, { es: string; en: string }> = {
+  "terminos": { es: "/legal/terminos.html", en: "/legal/en/terminos.html" },
+  "privacidad": { es: "/legal/privacidad.html", en: "/legal/en/privacidad.html" },
+  "envios-y-devoluciones": { es: "/legal/envios-y-devoluciones.html", en: "/legal/en/envios-y-devoluciones.html" },
 };
 
 export default function Legal() {
   const { slug } = useParams<{ slug: string }>();
-  const src = slug ? SLUGS[slug] : undefined;
+  const lang = useLang();
+  const src = slug ? SLUGS[slug]?.[lang] : undefined;
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [height, setHeight] = useState(800);
 
