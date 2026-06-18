@@ -76,10 +76,9 @@ export const HeroFull = () => {
         }}
       />
 
-      {/* Content — lower third, centered */}
+      {/* Content — vertically centered */}
       <div
-        className="hf-inner absolute inset-x-0 bottom-0 z-[2] flex flex-col items-center text-center px-6"
-        style={{ paddingBottom: "9vh" }}
+        className="hf-inner absolute inset-0 z-[2] flex flex-col items-center justify-center text-center px-6"
       >
         <h1 className="hf-title-el hf-anim hf-title">{t.title}</h1>
         <p className="hf-body-el hf-anim hf-body">{t.body}</p>
