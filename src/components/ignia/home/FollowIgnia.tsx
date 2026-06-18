@@ -38,7 +38,7 @@ export const FollowIgnia = () => {
           margin: 0,
         }}
       >
-        The sculpture world, up close.
+        The sculpture world for everyone is here.
       </p>
 
       <div
