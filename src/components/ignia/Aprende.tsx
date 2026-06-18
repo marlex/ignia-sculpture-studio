@@ -29,11 +29,16 @@ export const Aprende = () => {
         <h2 id="ignia-aprende-title" className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.title}</h2>
         <a href="/aprende" className="link-arrow">{t.more}</a>
       </div>
-      <ul className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10" aria-label={t.list}>
+      <ul className="flex flex-col gap-16 md:gap-20" aria-label={t.list}>
         {posts.map((p) => (
           <li key={p.titulo}>
-            <a href="/aprende" className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4">
-              <div className="aspect-[16/10] overflow-hidden bg-secondary mb-5">
+            <a href="/aprende" className="group flex flex-col md:flex-row gap-8 md:gap-12 items-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4">
+              <div className="flex-1 flex flex-col justify-center md:pr-8 order-2 md:order-1">
+                <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{p.tag}</div>
+                <h3 className="font-display font-bold text-[clamp(24px,3vw,36px)] tracking-[-0.02em] text-ink mb-3 leading-tight">{p.titulo}</h3>
+                <div className="font-body text-[16px] font-light text-gray">{p.tiempo}</div>
+              </div>
+              <div className="flex-1 overflow-hidden bg-secondary order-1 md:order-2">
                 <img
                   src={p.img}
                   alt={p.titulo}
@@ -43,9 +48,6 @@ export const Aprende = () => {
                   className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
                 />
               </div>
-              <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{p.tag}</div>
-              <h3 className="font-display font-bold text-[22px] tracking-[-0.02em] text-ink mb-3 leading-tight">{p.titulo}</h3>
-              <div className="font-body text-[16px] font-light text-gray">{p.tiempo}</div>
             </a>
           </li>
         ))}
