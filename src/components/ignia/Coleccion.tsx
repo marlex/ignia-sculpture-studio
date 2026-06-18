@@ -113,7 +113,7 @@ export const Coleccion = () => {
               <button
                 type="button"
                 onClick={() => setOpenFeatured3d(true)}
-                className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-7 py-3.5 hover:bg-ink hover:text-white transition-colors"
+                className="link-arrow bg-transparent border-none p-0 cursor-pointer"
               >
                 {t.view3d} →
               </button>
