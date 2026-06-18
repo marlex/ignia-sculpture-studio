@@ -105,9 +105,9 @@ export const Coleccion = () => {
             <div className="flex items-center gap-4 flex-wrap">
               <Link
                 to={`/obra/${featured.slug}?buy=1`}
-                className="font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-ink text-white px-7 py-3.5 hover:opacity-90 transition-opacity"
+                className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-7 py-3.5 hover:bg-ink hover:text-white transition-colors"
               >
-                {t.viewObra}
+                {t.viewObra} →
               </Link>
               {featured.glbUrl && (
                 <button
