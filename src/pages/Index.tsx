@@ -4,14 +4,14 @@ import { Coleccion } from "@/components/ignia/Coleccion";
 import { Artistas } from "@/components/ignia/Artistas";
 import { Colectores } from "@/components/ignia/Colectores";
 import { Footer } from "@/components/ignia/Footer";
-import { Hero } from "@/components/ignia/Hero";
+import { HeroFull } from "@/components/ignia/home/HeroFull";
 import { Ticker } from "@/components/ignia/home/Ticker";
 
 import { Reviews } from "@/components/ignia/home/Reviews";
 import { Aprende } from "@/components/ignia/Aprende";
 
 import { FollowIgnia } from "@/components/ignia/home/FollowIgnia";
-import { SculptureIntro } from "@/components/ignia/home/SculptureIntro";
+
 import { SeisPrincipios } from "@/components/ignia/home/SeisPrincipios";
 import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { Splash } from "@/components/ignia/home/Splash";
@@ -37,11 +37,10 @@ const Index = () => {
     <main className="pt-14" style={{ background: "#FFFFFF" }}>
       <Splash />
       <Header />
-      <Hero />
+      <HeroFull />
       <div ref={fadeTicker}>
         <Ticker />
       </div>
-      <SculptureIntro />
 
       <div ref={coleccionRef}>
         <div ref={fadeCol}>
