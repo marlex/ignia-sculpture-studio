@@ -24,22 +24,22 @@ export const Aprende = () => {
     : { title: "Ignia learn", more: "See all →", list: "Ignia learn article list" };
 
   return (
-    <section className="bg-surface px-6 md:px-12 py-24" aria-labelledby="ignia-aprende-title">
-      <div className="flex items-end justify-between mb-10">
+    <section className="bg-surface px-6 md:px-12 py-16 md:py-20" aria-labelledby="ignia-aprende-title">
+      <div className="flex items-end justify-between mb-8">
         <h2 id="ignia-aprende-title" className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.title}</h2>
         <a href="/aprende" className="link-arrow">{t.more}</a>
       </div>
-      <ul className="flex flex-col gap-16 md:gap-20" aria-label={t.list}>
+      <ul className="flex flex-col gap-12 md:gap-14" aria-label={t.list}>
         {posts.map((p) => (
           <li key={p.titulo}>
-            <a href="/aprende" className="group flex flex-col md:flex-row gap-8 md:gap-12 items-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4">
-              <div className="flex-1 flex flex-col justify-center md:pr-8 order-2 md:order-1">
-                <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{p.tag}</div>
-                <h3 className="font-display font-bold text-[clamp(24px,3vw,36px)] tracking-[-0.02em] text-ink mb-2 leading-tight">{p.titulo}</h3>
+            <a href="/aprende" className="group flex flex-col md:flex-row gap-6 md:gap-8 items-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4">
+              <div className="md:w-[38%] flex flex-col justify-center order-2 md:order-1">
+                <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-2">{p.tag}</div>
+                <h3 className="font-display font-bold text-[clamp(22px,2.6vw,32px)] tracking-[-0.02em] text-ink mb-2 leading-tight">{p.titulo}</h3>
                 <p className="font-body text-[15px] font-light text-gray mb-3 leading-snug">{p.entradilla}</p>
                 <div className="font-body text-[16px] font-light text-gray">{p.tiempo}</div>
               </div>
-              <div className="flex-1 overflow-hidden bg-secondary order-1 md:order-2">
+              <div className="md:w-[62%] overflow-hidden bg-secondary order-1 md:order-2 aspect-[4/3]">
                 <img
                   src={p.img}
                   alt={p.titulo}
