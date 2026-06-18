@@ -55,7 +55,6 @@ export const HeroFull = () => {
         @media (max-width: 768px) {
           .hf-title-el { font-size: 34px; }
           .hf-body-el { font-size: 15px; max-width: 92%; }
-          .hf-inner { padding-bottom: 56px !important; }
         }
       `}</style>
 
