@@ -84,7 +84,7 @@ export default function PerfilColeccionista() {
                     to={`/obra/${o.slug}`}
                     className="font-body text-[12px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-60 transition-opacity"
                   >
-                    {t.viewObra} →
+                    {t.viewObra}
                   </Link>
                 </div>
               </article>
@@ -107,7 +107,7 @@ export default function PerfilColeccionista() {
                     to={`/obra/${o.slug}`}
                     className="font-body text-[11px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-60 transition-opacity"
                   >
-                    {t.viewObra} →
+                    {t.viewObra}
                   </Link>
                 </div>
               </article>
