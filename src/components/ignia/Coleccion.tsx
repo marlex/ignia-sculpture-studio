@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
 import { GlbViewer } from "./GlbViewer";
-import { getCatalogueWorks } from "@/data/igniaWorks";
+import { getCatalogueWorks, getWorkBySlug } from "@/data/igniaWorks";
 import { X } from "lucide-react";
 
 export const Coleccion = () => {
   const lang = useLang();
   const obras = getCatalogueWorks(lang);
+  const featured = getWorkBySlug("vinculo", lang);
   const [open3d, setOpen3d] = useState<number | null>(null);
+  const [openFeatured3d, setOpenFeatured3d] = useState(false);
 
   const t = lang === "es" ? {
     h: "Descubre todas las colecciones",
@@ -39,15 +41,18 @@ export const Coleccion = () => {
   const open = open3d !== null ? obras[open3d] : null;
 
   useEffect(() => {
-    if (open3d === null) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen3d(null);
+    const isOpen = open3d !== null || openFeatured3d;
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") { setOpen3d(null); setOpenFeatured3d(false); }
+    };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [open3d]);
+  }, [open3d, openFeatured3d]);
 
   return (
     <section className="bg-white px-8 md:px-16 lg:px-24 py-[60px]">
@@ -65,6 +70,58 @@ export const Coleccion = () => {
           </select>
         ))}
       </div>
+
+      {/* Featured: Tríada Olimpias */}
+      <article className="mb-20 md:mb-24 group">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-stretch">
+          <Link
+            to={`/obra/${featured.slug}`}
+            className="block relative md:col-span-2 aspect-[16/10] overflow-hidden bg-secondary"
+          >
+            <img
+              src={featured.heroImage || featured.image}
+              alt={featured.title}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+            />
+            {featured.glbUrl && (
+              <button
+                type="button"
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); setOpenFeatured3d(true); }}
+                className="absolute top-4 right-4 z-10 bg-white/90 border border-border font-body text-[12px] uppercase tracking-[0.16em] px-4 py-2 hover:bg-white transition-colors"
+              >
+                {t.view3d}
+              </button>
+            )}
+          </Link>
+          <div className="flex flex-col justify-end md:col-span-1">
+            <h3 className="font-display font-bold text-[clamp(36px,4vw,52px)] leading-[1.05] text-ink mb-2">{featured.title}</h3>
+            <div className="font-body text-[18px] font-light text-gray mb-1.5">{featured.artist}</div>
+            <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{featured.material}</div>
+            <div className="flex items-center gap-1.5 mb-5 font-body text-[12px] font-light text-muted-line">
+              <span aria-hidden className="text-ink">◆</span>
+              <span>{t.auth} <span className="font-mono text-ink/70">{featured.authenticity}</span></span>
+            </div>
+            <div className="font-body text-[22px] font-normal text-ink mb-5">{featured.price}</div>
+            <div className="flex items-center gap-4 flex-wrap">
+              <Link
+                to={`/obra/${featured.slug}?buy=1`}
+                className="font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-ink text-white px-7 py-3.5 hover:opacity-90 transition-opacity"
+              >
+                {t.viewObra}
+              </Link>
+              {featured.glbUrl && (
+                <button
+                  type="button"
+                  onClick={() => setOpenFeatured3d(true)}
+                  className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-7 py-3.5 hover:bg-ink hover:text-white transition-colors"
+                >
+                  {t.view3d}
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      </article>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-20 gap-y-24">
         {obras.map((o, i) => {
@@ -119,6 +176,26 @@ export const Coleccion = () => {
           </header>
           <div className="relative flex-1">
             <GlbViewer url={open.glbUrl} />
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white/55 font-body text-[11px] uppercase tracking-[0.18em] pointer-events-none">
+              {t.hint}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {openFeatured3d && featured.glbUrl && (
+        <div className="fixed inset-0 z-[200] bg-black/95 flex flex-col">
+          <header className="flex items-center justify-between px-6 md:px-10 h-14 border-b border-white/10 text-white">
+            <div className="flex items-baseline gap-3">
+              <span className="font-display font-bold text-[16px]">{featured.title}</span>
+              <span className="font-body text-[12px] uppercase tracking-[0.14em] text-white/55">{featured.artist} · {featured.material}</span>
+            </div>
+            <button onClick={() => setOpenFeatured3d(false)} aria-label={t.close} className="text-white/80 hover:text-white">
+              <X className="w-5 h-5" />
+            </button>
+          </header>
+          <div className="relative flex-1">
+            <GlbViewer url={featured.glbUrl} />
             <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white/55 font-body text-[11px] uppercase tracking-[0.18em] pointer-events-none">
               {t.hint}
             </div>
