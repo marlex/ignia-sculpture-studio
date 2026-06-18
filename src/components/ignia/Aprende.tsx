@@ -39,7 +39,7 @@ export const Aprende = () => {
                 <p className="font-body text-[15px] font-light text-gray mb-3 leading-snug">{p.entradilla}</p>
                 <div className="font-body text-[16px] font-light text-gray">{p.tiempo}</div>
               </div>
-              <div className="md:w-[62%] overflow-hidden bg-secondary order-1 md:order-2 aspect-[4/3]">
+              <div className="md:w-[62%] overflow-hidden bg-secondary order-1 md:order-2 aspect-[16/9]">
                 <img
                   src={p.img}
                   alt={p.titulo}
