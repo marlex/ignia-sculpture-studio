@@ -110,13 +110,13 @@ export const Coleccion = () => {
                 {t.viewObra} →
               </Link>
               {featured.glbUrl && (
-                <button
-                  type="button"
-                  onClick={() => setOpenFeatured3d(true)}
-                  className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-7 py-3.5 hover:bg-ink hover:text-white transition-colors"
-                >
-                  {t.view3d}
-                </button>
+              <button
+                type="button"
+                onClick={() => setOpenFeatured3d(true)}
+                className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-7 py-3.5 hover:bg-ink hover:text-white transition-colors"
+              >
+                {t.view3d} →
+              </button>
               )}
             </div>
           </div>
@@ -152,7 +152,7 @@ export const Coleccion = () => {
                   <span className="font-body text-[16px] font-normal text-ink">{o.price}</span>
                   <Link
                      to={`/obra/${o.slug}`}
-                    className="font-body text-[12px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-60 transition-opacity"
+                    className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-5 py-2.5 hover:bg-ink hover:text-white transition-colors"
                   >
                     {t.viewObra} →
                   </Link>
