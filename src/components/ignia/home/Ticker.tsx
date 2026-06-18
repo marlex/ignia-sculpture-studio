@@ -86,7 +86,7 @@ export const Ticker = () => {
         @keyframes tickermove { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
         @media (max-width: 768px) {
           .ticker-section { padding: 32px 0 !important; }
-          .ticker-item { font-size: 20px !important; }
+          .ticker-item { font-size: 25px !important; }
         }
       `}</style>
     </section>
