@@ -95,6 +95,22 @@ export const Header = () => {
         @media (min-width: 769px) {
           .header-hamburger,
           .header-invite-icon-mobile { display: none !important; }
+          /* Floating semi-transparent pill on scroll (desktop) */
+          .ignia-header.is-scrolled {
+            top: 12px !important;
+            left: 12px !important;
+            right: 12px !important;
+            height: 52px !important;
+            border-radius: 9999px !important;
+            border: 0.5px solid rgba(0,0,0,0.06) !important;
+            background: rgba(255,255,255,0.72) !important;
+            -webkit-backdrop-filter: saturate(180%) blur(14px) !important;
+            backdrop-filter: saturate(180%) blur(14px) !important;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
+            padding-left: 14px !important;
+            padding-right: 14px !important;
+            transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+          }
         }
         .ignia-header { transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1); }
       `}</style>
