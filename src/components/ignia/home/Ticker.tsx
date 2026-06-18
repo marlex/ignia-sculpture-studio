@@ -29,7 +29,7 @@ export const Ticker = () => {
               fontFamily: "'Cormorant Garamond', serif",
               fontWeight: 300,
               color: "#111111",
-              fontSize: 26,
+              fontSize: 31,
               whiteSpace: "nowrap",
             }}
           >
@@ -53,7 +53,7 @@ export const Ticker = () => {
             style={{
               fontFamily: "'Cormorant Garamond', serif",
               fontStyle: "italic",
-              fontSize: 16,
+              fontSize: 21,
               color: "rgba(17, 17, 17, 0.45)",
               whiteSpace: "nowrap",
             }}
@@ -86,7 +86,7 @@ export const Ticker = () => {
         @keyframes tickermove { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
         @media (max-width: 768px) {
           .ticker-section { padding: 32px 0 !important; }
-          .ticker-item { font-size: 20px !important; }
+          .ticker-item { font-size: 25px !important; }
         }
       `}</style>
     </section>
