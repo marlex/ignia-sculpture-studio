@@ -41,15 +41,18 @@ export const Coleccion = () => {
   const open = open3d !== null ? obras[open3d] : null;
 
   useEffect(() => {
-    if (open3d === null) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen3d(null);
+    const isOpen = open3d !== null || openFeatured3d;
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") { setOpen3d(null); setOpenFeatured3d(false); }
+    };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [open3d]);
+  }, [open3d, openFeatured3d]);
 
   return (
     <section className="bg-white px-8 md:px-16 lg:px-24 py-[60px]">
