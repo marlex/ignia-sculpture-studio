@@ -1,7 +1,7 @@
 import { useLang } from "@/i18n/LanguageContext";
-import triadaGalleryAsset from "@/assets/triada-olimpias-gallery.png.asset.json";
+import heroSculptureAsset from "@/assets/hero-sculpture-gallery.webp.asset.json";
 
-const bgUrl = triadaGalleryAsset.url;
+const bgUrl = heroSculptureAsset.url;
 
 export const HeroFull = () => {
   const lang = useLang();
