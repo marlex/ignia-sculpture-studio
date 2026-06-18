@@ -140,15 +140,22 @@ export const Footer = () => {
         ))}
       </div>
       <div className="border-t-[0.5px] border-border mt-10 pt-5">
-        <div className="flex items-center gap-5">
+        <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-4">Connect</div>
+        <div className="flex items-center gap-3">
           <a href="https://www.instagram.com/igniagallery/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="group">
-            <Instagram size={18} strokeWidth={1.25} className="text-gray group-hover:text-ink transition-colors duration-200" />
+            <div className="w-9 h-9 rounded-full bg-ink flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
+              <Instagram size={16} className="text-white" />
+            </div>
           </a>
           <a href="https://www.linkedin.com/company/igniagallery/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="group">
-            <Linkedin size={18} strokeWidth={1.25} className="text-gray group-hover:text-ink transition-colors duration-200" />
+            <div className="w-9 h-9 rounded-full bg-ink flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
+              <Linkedin size={16} className="text-white" />
+            </div>
           </a>
           <a href="https://www.facebook.com/igniagallery" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="group">
-            <Facebook size={18} strokeWidth={1.25} className="text-gray group-hover:text-ink transition-colors duration-200" />
+            <div className="w-9 h-9 rounded-full bg-ink flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
+              <Facebook size={16} className="text-white" />
+            </div>
           </a>
         </div>
         <div className="mt-5 flex justify-between flex-wrap gap-3 items-center">
