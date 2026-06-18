@@ -29,7 +29,7 @@ export const Ticker = () => {
               fontFamily: "'Cormorant Garamond', serif",
               fontWeight: 300,
               color: "#111111",
-              fontSize: 26,
+              fontSize: 31,
               whiteSpace: "nowrap",
             }}
           >
@@ -53,7 +53,7 @@ export const Ticker = () => {
             style={{
               fontFamily: "'Cormorant Garamond', serif",
               fontStyle: "italic",
-              fontSize: 16,
+              fontSize: 21,
               color: "rgba(17, 17, 17, 0.45)",
               whiteSpace: "nowrap",
             }}
