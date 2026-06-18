@@ -35,7 +35,8 @@ export const Aprende = () => {
             <a href="/aprende" className="group flex flex-col md:flex-row gap-8 md:gap-12 items-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4">
               <div className="flex-1 flex flex-col justify-center md:pr-8 order-2 md:order-1">
                 <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{p.tag}</div>
-                <h3 className="font-display font-bold text-[clamp(24px,3vw,36px)] tracking-[-0.02em] text-ink mb-3 leading-tight">{p.titulo}</h3>
+                <h3 className="font-display font-bold text-[clamp(24px,3vw,36px)] tracking-[-0.02em] text-ink mb-2 leading-tight">{p.titulo}</h3>
+                <p className="font-body text-[15px] font-light text-gray mb-3 leading-snug">{p.entradilla}</p>
                 <div className="font-body text-[16px] font-light text-gray">{p.tiempo}</div>
               </div>
               <div className="flex-1 overflow-hidden bg-secondary order-1 md:order-2">
