@@ -273,9 +273,11 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
-                <button type="button" className="back-btn" onClick={() => setProfile(null)}>
-                  {t.back} · {profile === "artista" ? t.roleArtista : profile === "coleccionista" ? t.roleColeccionista : t.roleEmpresa}
-                </button>
+                {defaultProfile !== "collector" && (
+                  <button type="button" className="back-btn" onClick={() => setProfile(null)}>
+                    {t.back} · {profile === "artista" ? t.roleArtista : profile === "coleccionista" ? t.roleColeccionista : t.roleEmpresa}
+                  </button>
+                )}
 
                 {profile && (
                   <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 16, lineHeight: 1.5, marginBottom: 36 }}>
