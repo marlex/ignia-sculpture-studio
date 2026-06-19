@@ -28,15 +28,15 @@ const COLS = {
       links: [
         { label: "Colección", to: "/coleccion" },
         { label: "Escultores", to: "/escultores" },
-        { label: "Guía 3D", to: "/aprende" },
       ],
     },
     {
       label: "Para artistas",
       links: [
         { label: "Publicar obra", to: "/login" },
-        { label: "Mi perfil", to: "/perfil/escultor" },
+        { label: "Guía 3D", to: "/aprende" },
         { label: "Ignia Aprende", to: "/aprende" },
+        { label: "Mi perfil", to: "/perfil/escultor" },
       ],
     },
   ],
