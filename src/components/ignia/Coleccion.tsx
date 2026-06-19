@@ -280,7 +280,7 @@ export const Coleccion = () => {
           </header>
           <div className="flex-1 flex items-center justify-center p-4 md:p-8">
             <div className="relative w-full max-w-[min(90vh,1100px)] aspect-square bg-secondary overflow-hidden">
-              <GlbViewer url={featured.glbUrl} />
+              <GlbViewer url={featured.glbUrl} onClose={() => setOpenFeatured3d(false)} />
               <div className="absolute top-4 left-1/2 -translate-x-1/2 text-ink/55 font-body text-[11px] uppercase tracking-[0.18em] pointer-events-none">
                 {t.hint}
               </div>
