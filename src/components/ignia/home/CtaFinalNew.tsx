@@ -5,7 +5,7 @@ export const CtaFinalNew = ({ onInvite, onCollection }: { onInvite: () => void; 
   const ref = useFadeUp<HTMLDivElement>();
   const lang = useLang();
   const t = lang === "es"
-    ? { h: "Tu escultura empieza aquí.", a: "Unirse a Ignia", b: "Ver la colección" }
+    ? { h: "Tu escultura empieza aquí.", a: "Únete a Ignia", b: "Ver la colección" }
     : { h: "Your sculpture starts here.", a: "Join Ignia", b: "View the collection" };
   return (
     <section className="cta-final-section" style={{ background: "#111111", padding: "120px 24px" }}>

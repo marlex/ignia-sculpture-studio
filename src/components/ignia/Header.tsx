@@ -58,7 +58,7 @@ export const Header = () => {
   };
 
   const t = lang === "es"
-    ? { publish: "Unirse a Ignia", signin: "Entrar", signout: "Salir", dashboard: "Mi panel" }
+    ? { publish: "Únete a Ignia", signin: "Entrar", signout: "Salir", dashboard: "Mi panel" }
     : { publish: "Join Ignia", signin: "Sign in", signout: "Sign out", dashboard: "Dashboard" };
 
 

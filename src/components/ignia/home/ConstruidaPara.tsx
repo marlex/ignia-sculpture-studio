@@ -106,7 +106,7 @@ export const ConstruidaPara = ({ onInvite }: { onInvite: () => void }) => {
             boxShadow: "none",
           }}
         >
-          Unirse a Ignia
+          Únete a Ignia
         </button>
       </div>
     </section>
