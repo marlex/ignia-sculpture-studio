@@ -101,6 +101,7 @@ export function GlbViewer({
   minHeight = "500px",
   enableFullscreen = true,
   bgColor = "#f5f5f0",
+  onClose,
 }: {
   url: string;
   alt?: string;
@@ -109,6 +110,7 @@ export function GlbViewer({
   minHeight?: string;
   enableFullscreen?: boolean;
   bgColor?: string;
+  onClose?: () => void;
 }) {
   const [fs, setFs] = useState(false);
 
