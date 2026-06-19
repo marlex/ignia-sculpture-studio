@@ -61,7 +61,7 @@ export const InviteModal = ({ open, onClose }: Props) => {
         subtitleColeccionista: "Early access to a new way of collecting sculpture.",
         subtitleEmpresa: "Let's talk about your project or organization.",
         whoTitle: "Who are you?",
-        roleArtista: "Artist",
+        roleArtista: "Show your work",
         roleColeccionista: "Collector",
         roleEmpresa: "Company or institution",
         back: "← Change",
