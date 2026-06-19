@@ -261,7 +261,6 @@ export const InviteModal = ({ open, onClose }: Props) => {
 
             {!profile ? (
               <div>
-                <p className="invite-label" style={{ marginBottom: 20 }}>{t.whoTitle}</p>
                 <button type="button" className="role-btn" onClick={() => setProfile("artista")}>{t.roleArtista}<span className="role-sub">{t.roleArtistaSub}</span></button>
                 <button type="button" className="role-btn" onClick={() => setProfile("coleccionista")}>{t.roleColeccionista}<span className="role-sub">{t.roleColeccionistaSub}</span></button>
                 <button type="button" className="role-btn" onClick={() => setProfile("empresa")}>{t.roleEmpresa}<span className="role-sub">{t.roleEmpresaSub}</span></button>
