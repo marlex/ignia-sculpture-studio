@@ -21,9 +21,12 @@ export const InviteModal = ({ open, onClose }: Props) => {
         subtitleColeccionista: "Acceso anticipado a una nueva forma de coleccionar escultura.",
         subtitleEmpresa: "Hablemos sobre tu proyecto u organización.",
         whoTitle: "¿Quién eres?",
-        roleArtista: "Artista",
-        roleColeccionista: "Coleccionista",
-        roleEmpresa: "Empresa o institución",
+        roleArtista: "Soy escultor/a",
+        roleColeccionista: "Soy coleccionista",
+        roleEmpresa: "Soy galería o empresa",
+        roleArtistaSub: "Sé descubierto por coleccionistas",
+        roleColeccionistaSub: "Encuentra obras que no encontrarás en otro sitio",
+        roleEmpresaSub: "Encarga, adquiere o colabora",
         back: "← Cambiar",
         name: "Nombre completo",
         org: "Nombre de la organización",
@@ -61,9 +64,12 @@ export const InviteModal = ({ open, onClose }: Props) => {
         subtitleColeccionista: "Early access to a new way of collecting sculpture.",
         subtitleEmpresa: "Let's talk about your project or organization.",
         whoTitle: "Who are you?",
-        roleArtista: "Show your work",
-        roleColeccionista: "Collector",
-        roleEmpresa: "Company or institution",
+        roleArtista: "I'm a sculptor",
+        roleColeccionista: "I'm a collector",
+        roleEmpresa: "I'm a gallery or company",
+        roleArtistaSub: "Get discovered by collectors",
+        roleColeccionistaSub: "Find works you won't find elsewhere",
+        roleEmpresaSub: "Source, commission or collaborate",
         back: "← Change",
         name: "Full name",
         org: "Organization name",
@@ -221,6 +227,8 @@ export const InviteModal = ({ open, onClose }: Props) => {
         .invite-field { margin-bottom:28px; }
         .role-btn { display:block; width:100%; text-align:left; padding:20px 24px; background:#FFFFFF; border:1px solid #111111; color:#111111; font-family:Manrope,sans-serif; font-weight:500; font-size:16px; letter-spacing:0.04em; cursor:pointer; transition: background 200ms, color 200ms; margin-bottom:12px; }
         .role-btn:hover { background:#111111; color:#FFFFFF; }
+        .role-sub { display:block; font-size:13px; font-weight:400; color:#666666; margin-top:4px; transition: color 200ms; }
+        .role-btn:hover .role-sub { color:#AAAAAA; }
         .chip { display:inline-block; padding:8px 14px; margin:0 8px 8px 0; border:1px solid #111111; background:#FFFFFF; color:#111111; font-family:Manrope,sans-serif; font-weight:500; font-size:13px; cursor:pointer; transition: background 200ms, color 200ms; }
         .chip.active { background:#111111; color:#FFFFFF; }
         .back-btn { background:transparent; border:none; padding:0; margin-bottom:20px; cursor:pointer; font-family:Manrope,sans-serif; font-weight:500; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#666666; }
@@ -254,9 +262,9 @@ export const InviteModal = ({ open, onClose }: Props) => {
             {!profile ? (
               <div>
                 <p className="invite-label" style={{ marginBottom: 20 }}>{t.whoTitle}</p>
-                <button type="button" className="role-btn" onClick={() => setProfile("artista")}>{t.roleArtista}</button>
-                <button type="button" className="role-btn" onClick={() => setProfile("coleccionista")}>{t.roleColeccionista}</button>
-                <button type="button" className="role-btn" onClick={() => setProfile("empresa")}>{t.roleEmpresa}</button>
+                <button type="button" className="role-btn" onClick={() => setProfile("artista")}>{t.roleArtista}<span className="role-sub">{t.roleArtistaSub}</span></button>
+                <button type="button" className="role-btn" onClick={() => setProfile("coleccionista")}>{t.roleColeccionista}<span className="role-sub">{t.roleColeccionistaSub}</span></button>
+                <button type="button" className="role-btn" onClick={() => setProfile("empresa")}>{t.roleEmpresa}<span className="role-sub">{t.roleEmpresaSub}</span></button>
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
