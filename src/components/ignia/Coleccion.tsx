@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
 import { GlbViewer } from "./GlbViewer";
 import { getCatalogueWorks, type LocalizedWork } from "@/data/igniaWorks";
-import { X } from "lucide-react";
+import { Box, X } from "lucide-react";
 
 const parsePrice = (price: string): number => {
   const digits = price.replace(/[^\d]/g, "");
@@ -206,15 +206,6 @@ export const Coleccion = () => {
             <article key={o.slug} className="bg-white group">
               <Link to={`/obra/${o.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary">
                 <img src={o.image} alt={o.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-                {has3d && (
-                  <button
-                    type="button"
-                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); setOpen3d(i); }}
-                    className="absolute top-3 right-3 z-10 bg-white/90 border border-border font-body text-[11px] uppercase tracking-[0.14em] px-3 py-1.5 hover:bg-white transition-colors"
-                  >
-                    {t.view3d}
-                  </button>
-                )}
               </Link>
               <div className="px-0 pt-3 pb-5">
                 <h3 className="font-display font-bold text-[28px] text-ink mb-1">{o.title}</h3>
@@ -226,14 +217,29 @@ export const Coleccion = () => {
                 </div>
                 <div className="flex items-center justify-between pt-3 gap-3">
                   <span className="font-body text-[16px] font-normal text-ink">{o.price}</span>
-                  <Link
-                     to={`/obra/${o.slug}`}
-                    className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-5 py-2.5 hover:bg-ink hover:text-white transition-colors"
-                  >
-                    {t.viewObra}
-                  </Link>
+                  <div className="flex items-center gap-2">
+                    {has3d && (
+                      <button
+                        type="button"
+                        onClick={() => setOpen3d(i)}
+                        aria-label={t.view3d}
+                        className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-4 py-2.5 hover:opacity-90 transition-opacity"
+                        style={{ backgroundColor: "#CCFF00" }}
+                      >
+                        <Box className="w-3.5 h-3.5" strokeWidth={2} />
+                        3D
+                      </button>
+                    )}
+                    <Link
+                       to={`/obra/${o.slug}`}
+                      className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-5 py-2.5 hover:bg-ink hover:text-white transition-colors"
+                    >
+                      {t.viewObra}
+                    </Link>
+                  </div>
                 </div>
               </div>
+
             </article>
           );
         })}
@@ -251,7 +257,7 @@ export const Coleccion = () => {
             </button>
           </header>
           <div className="relative flex-1">
-            <GlbViewer url={open.glbUrl} />
+            <GlbViewer url={open.glbUrl} minHeight="100%" enableFullscreen={false} />
             <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white/55 font-body text-[11px] uppercase tracking-[0.18em] pointer-events-none">
               {t.hint}
             </div>
@@ -271,7 +277,7 @@ export const Coleccion = () => {
             </button>
           </header>
           <div className="relative flex-1">
-            <GlbViewer url={featured.glbUrl} />
+            <GlbViewer url={featured.glbUrl} minHeight="100%" enableFullscreen={false} />
             <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white/55 font-body text-[11px] uppercase tracking-[0.18em] pointer-events-none">
               {t.hint}
             </div>
