@@ -101,6 +101,7 @@ export function GlbViewer({
   minHeight = "500px",
   enableFullscreen = true,
   bgColor = "#f5f5f0",
+  onClose,
 }: {
   url: string;
   alt?: string;
@@ -109,6 +110,7 @@ export function GlbViewer({
   minHeight?: string;
   enableFullscreen?: boolean;
   bgColor?: string;
+  onClose?: () => void;
 }) {
   const [fs, setFs] = useState(false);
 
@@ -116,7 +118,16 @@ export function GlbViewer({
     <>
       <div className={`relative w-full h-full ${className}`} style={{ background: bgColor }}>
         <ModelViewerContent url={url} alt={alt} poster={poster} minHeight={minHeight} bgColor={bgColor} />
-        {enableFullscreen && (
+        {onClose ? (
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); onClose(); }}
+            aria-label="Cerrar"
+            className="absolute top-3 right-3 z-20 w-10 h-10 bg-white/90 border border-border flex items-center justify-center hover:bg-white transition-colors"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        ) : enableFullscreen && (
           <button
             type="button"
             onClick={(e) => { e.stopPropagation(); setFs(true); }}
