@@ -16,7 +16,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
 
   const t = lang === "es"
     ? {
-        title: "Unirse a Ignia",
+        title: "Únete a Ignia",
         subtitleArtista: "30 plazas. Comisión Pro permanente del 15%. Sin cuotas, sin exclusividad.",
         subtitleColeccionista: "Acceso anticipado a una nueva forma de coleccionar escultura.",
         subtitleEmpresa: "Hablemos sobre tu proyecto u organización.",

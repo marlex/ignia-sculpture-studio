@@ -9,7 +9,7 @@ export const HeroFull = () => {
     ? {
         title: "El mundo de la escultura, de cerca.",
         body: "La primera galería global dedicada exclusivamente a la escultura. Compra, vende y descubre obras de gran valor, con visualización 3D, certificados de autenticidad en blockchain y comisiones justas.",
-        cta: "Unirse a Ignia",
+        cta: "Únete a Ignia",
       }
     : {
         title: "The sculpture world, up close.",
