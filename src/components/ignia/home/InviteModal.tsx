@@ -120,6 +120,12 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
     }
   }, [open]);
 
+  useEffect(() => {
+    if (open && defaultProfile === "collector") {
+      setProfile("coleccionista");
+    }
+  }, [open, defaultProfile]);
+
   if (!open) return null;
 
   const endpoint = "https://formspree.io/f/xgobbeyp";
