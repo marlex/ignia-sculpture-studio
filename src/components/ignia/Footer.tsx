@@ -28,6 +28,7 @@ const COLS = {
       links: [
         { label: "Colección", to: "/coleccion" },
         { label: "Escultores", to: "/escultores" },
+        { label: "Ignia Aprende", to: "/aprende" },
       ],
     },
     {
@@ -35,7 +36,6 @@ const COLS = {
       links: [
         { label: "Publicar obra", to: "/login" },
         { label: "Guía 3D", to: "/aprende" },
-        { label: "Ignia Aprende", to: "/aprende" },
         { label: "Mi perfil", to: "/perfil/escultor" },
       ],
     },
@@ -60,6 +60,7 @@ const COLS = {
       links: [
         { label: "Collection", to: "/coleccion" },
         { label: "Sculptors", to: "/escultores" },
+        { label: "Ignia Learn", to: "/aprende" },
       ],
     },
     {
@@ -67,7 +68,6 @@ const COLS = {
       links: [
         { label: "Share your work", to: "/login" },
         { label: "3D guide", to: "/aprende" },
-        { label: "Ignia Learn", to: "/aprende" },
         { label: "My profile", to: "/perfil/escultor" },
       ],
     },
