@@ -256,8 +256,10 @@ export const Coleccion = () => {
               <X className="w-5 h-5" />
             </button>
           </header>
-          <div className="relative flex-1">
-            <GlbViewer url={open.glbUrl} minHeight="100%" enableFullscreen={false} />
+          <div className="relative w-full h-[calc(100vh-3.5rem)]">
+            <GlbViewer url={open.glbUrl} minHeight="0" enableFullscreen={false} />
+
+
             <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white/55 font-body text-[11px] uppercase tracking-[0.18em] pointer-events-none">
               {t.hint}
             </div>
@@ -276,8 +278,10 @@ export const Coleccion = () => {
               <X className="w-5 h-5" />
             </button>
           </header>
-          <div className="relative flex-1">
-            <GlbViewer url={featured.glbUrl} minHeight="100%" enableFullscreen={false} />
+          <div className="relative w-full h-[calc(100vh-3.5rem)]">
+            <GlbViewer url={featured.glbUrl} minHeight="0" enableFullscreen={false} />
+
+
             <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white/55 font-body text-[11px] uppercase tracking-[0.18em] pointer-events-none">
               {t.hint}
             </div>
