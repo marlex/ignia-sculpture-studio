@@ -256,10 +256,12 @@ export const Coleccion = () => {
               <X className="w-5 h-5" />
             </button>
           </header>
-          <div className="relative flex-1">
-            <GlbViewer url={open.glbUrl} minHeight="100%" enableFullscreen={false} />
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white/55 font-body text-[11px] uppercase tracking-[0.18em] pointer-events-none">
-              {t.hint}
+          <div className="flex-1 flex items-center justify-center p-4 md:p-8">
+            <div className="relative w-full max-w-[min(90vh,1100px)] aspect-square bg-secondary overflow-hidden">
+              <GlbViewer url={open.glbUrl} />
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 text-ink/55 font-body text-[11px] uppercase tracking-[0.18em] pointer-events-none">
+                {t.hint}
+              </div>
             </div>
           </div>
         </div>
@@ -276,10 +278,12 @@ export const Coleccion = () => {
               <X className="w-5 h-5" />
             </button>
           </header>
-          <div className="relative flex-1">
-            <GlbViewer url={featured.glbUrl} minHeight="100%" enableFullscreen={false} />
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white/55 font-body text-[11px] uppercase tracking-[0.18em] pointer-events-none">
-              {t.hint}
+          <div className="flex-1 flex items-center justify-center p-4 md:p-8">
+            <div className="relative w-full max-w-[min(90vh,1100px)] aspect-square bg-secondary overflow-hidden">
+              <GlbViewer url={featured.glbUrl} />
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 text-ink/55 font-body text-[11px] uppercase tracking-[0.18em] pointer-events-none">
+                {t.hint}
+              </div>
             </div>
           </div>
         </div>
