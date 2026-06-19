@@ -16,7 +16,7 @@ export const InviteModal = ({ open, onClose }: Props) => {
 
   const t = lang === "es"
     ? {
-        title: "Solicitar invitación",
+        title: "Unirse a Ignia",
         subtitleArtista: "30 plazas. Comisión Pro permanente del 15%. Sin cuotas, sin exclusividad.",
         subtitleColeccionista: "Acceso anticipado a una nueva forma de coleccionar escultura.",
         subtitleEmpresa: "Hablemos sobre tu proyecto u organización.",
@@ -56,7 +56,7 @@ export const InviteModal = ({ open, onClose }: Props) => {
         errMsg: "Hubo un error al enviar. Inténtalo de nuevo.",
       }
     : {
-        title: "Request invitation",
+        title: "Join Ignia",
         subtitleArtista: "30 spots. Permanent 15% Pro commission. No fees, no exclusivity.",
         subtitleColeccionista: "Early access to a new way of collecting sculpture.",
         subtitleEmpresa: "Let's talk about your project or organization.",

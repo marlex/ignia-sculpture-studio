@@ -137,7 +137,7 @@ export const HeroSlideshow = ({ onInvite, onCollection }: Props) => {
               transition: "background-color 250ms",
             }}
           >
-            Solicitar invitación
+            Unirse a Ignia
           </button>
           <button
             onClick={onCollection}

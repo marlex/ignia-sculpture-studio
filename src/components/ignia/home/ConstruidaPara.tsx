@@ -106,7 +106,7 @@ export const ConstruidaPara = ({ onInvite }: { onInvite: () => void }) => {
             boxShadow: "none",
           }}
         >
-          Solicitar invitación
+          Unirse a Ignia
         </button>
       </div>
     </section>
