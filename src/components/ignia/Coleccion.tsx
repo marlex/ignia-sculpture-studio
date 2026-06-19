@@ -1,23 +1,37 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
 import { GlbViewer } from "./GlbViewer";
-import { getCatalogueWorks, getWorkBySlug } from "@/data/igniaWorks";
+import { getCatalogueWorks, type LocalizedWork } from "@/data/igniaWorks";
 import { X } from "lucide-react";
+
+const parsePrice = (price: string): number => {
+  const digits = price.replace(/[^\d]/g, "");
+  return digits ? parseInt(digits, 10) : 0;
+};
+
+const techniqueOf = (material: string): string => material.split(" ")[0];
 
 export const Coleccion = () => {
   const lang = useLang();
-  const obras = getCatalogueWorks(lang);
-  const featured = getWorkBySlug("vinculo", lang);
+  const allWorks = getCatalogueWorks(lang);
+
   const [open3d, setOpen3d] = useState<number | null>(null);
   const [openFeatured3d, setOpenFeatured3d] = useState(false);
+  const [query, setQuery] = useState("");
+  const [priceSort, setPriceSort] = useState<"asc" | "desc">("asc");
+  const [material, setMaterial] = useState<string>("");
+  const [technique, setTechnique] = useState<string>("");
 
   const t = lang === "es" ? {
     h: "Descubre todas las colecciones",
     cta: "Ver obras →",
     sub: "843 obras · Actualizado semanalmente",
     search: "Buscar artista, obra, material…",
-    filters: ["Material", "Precio", "Técnica"],
+    priceAsc: "Precio: menor a mayor",
+    priceDesc: "Precio: mayor a menor",
+    materialAll: "Material: todos",
+    techniqueAll: "Técnica: todas",
     view3d: "Ver en 3D",
     viewAngles: "Ver ángulos",
     viewObra: "Comprar",
@@ -29,7 +43,10 @@ export const Coleccion = () => {
     cta: "Browse works →",
     sub: "843 works · Updated weekly",
     search: "Search artist, work, material…",
-    filters: ["Material", "Price", "Technique"],
+    priceAsc: "Price: low to high",
+    priceDesc: "Price: high to low",
+    materialAll: "Material: all",
+    techniqueAll: "Technique: all",
     view3d: "View in 3D",
     viewAngles: "View angles",
     viewObra: "Buy",
@@ -38,7 +55,40 @@ export const Coleccion = () => {
     hint: "Drag to rotate · Scroll to zoom",
   };
 
-  const open = open3d !== null ? obras[open3d] : null;
+  const materialOptions = useMemo(
+    () => Array.from(new Set(allWorks.map(w => w.material))).sort(),
+    [allWorks]
+  );
+  const techniqueOptions = useMemo(
+    () => Array.from(new Set(allWorks.map(w => techniqueOf(w.material)))).sort(),
+    [allWorks]
+  );
+
+  const sorted = useMemo(() => {
+    const arr = [...allWorks].sort((a, b) => {
+      const diff = parsePrice(a.price) - parsePrice(b.price);
+      return priceSort === "asc" ? diff : -diff;
+    });
+    return arr;
+  }, [allWorks, priceSort]);
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return sorted.filter(w => {
+      if (material && w.material !== material) return false;
+      if (technique && techniqueOf(w.material) !== technique) return false;
+      if (q) {
+        const hay = `${w.title} ${w.artist} ${w.material}`.toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+      return true;
+    });
+  }, [sorted, query, material, technique]);
+
+  const featured = filtered[0];
+  const gridWorks = filtered.slice(1);
+
+  const open = open3d !== null ? gridWorks[open3d] : null;
 
   useEffect(() => {
     const isOpen = open3d !== null || openFeatured3d;
@@ -63,71 +113,97 @@ export const Coleccion = () => {
       <p className="font-body text-[16px] font-light text-gray mb-8">{t.sub}</p>
 
       <div className="flex flex-wrap gap-3 mb-10">
-        <input type="search" placeholder={t.search} className="w-60 border-[0.5px] border-border bg-white font-body text-[14px] font-light px-3.5 py-2.5 outline-none focus:border-ink transition-colors" />
-        {t.filters.map(s => (
-          <select key={s} className="border-[0.5px] border-border bg-white font-body text-[14px] font-light px-3.5 py-2.5 outline-none focus:border-ink transition-colors">
-            <option>{s}</option>
-          </select>
-        ))}
+        <input
+          type="search"
+          placeholder={t.search}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className="w-60 border-[0.5px] border-border bg-white font-body text-[14px] font-light px-3.5 py-2.5 outline-none focus:border-ink transition-colors"
+        />
+        <select
+          value={priceSort}
+          onChange={(e) => setPriceSort(e.target.value as "asc" | "desc")}
+          className="border-[0.5px] border-border bg-white font-body text-[14px] font-light px-3.5 py-2.5 outline-none focus:border-ink transition-colors"
+        >
+          <option value="asc">{t.priceAsc}</option>
+          <option value="desc">{t.priceDesc}</option>
+        </select>
+        <select
+          value={material}
+          onChange={(e) => setMaterial(e.target.value)}
+          className="border-[0.5px] border-border bg-white font-body text-[14px] font-light px-3.5 py-2.5 outline-none focus:border-ink transition-colors"
+        >
+          <option value="">{t.materialAll}</option>
+          {materialOptions.map(m => <option key={m} value={m}>{m}</option>)}
+        </select>
+        <select
+          value={technique}
+          onChange={(e) => setTechnique(e.target.value)}
+          className="border-[0.5px] border-border bg-white font-body text-[14px] font-light px-3.5 py-2.5 outline-none focus:border-ink transition-colors"
+        >
+          <option value="">{t.techniqueAll}</option>
+          {techniqueOptions.map(tk => <option key={tk} value={tk}>{tk}</option>)}
+        </select>
       </div>
 
-      {/* Featured: Tríada Olimpias */}
-      <article className="mb-20 md:mb-24 group">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-stretch">
-          <Link
-            to={`/obra/${featured.slug}`}
-            className="block relative md:col-span-2 aspect-[16/10] overflow-hidden bg-secondary"
-          >
-            <img
-              src={featured.heroImage || featured.image}
-              alt={featured.title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-            />
-            {featured.glbUrl && (
-              <button
-                type="button"
-                onClick={(e) => { e.preventDefault(); e.stopPropagation(); setOpenFeatured3d(true); }}
-                className="absolute top-4 right-4 z-10 bg-white/90 border border-border font-body text-[12px] uppercase tracking-[0.16em] px-4 py-2 hover:bg-white transition-colors"
-              >
-                {t.view3d}
-              </button>
-            )}
-          </Link>
-          <div className="flex flex-col justify-end md:col-span-1">
-            <h3 className="font-display font-bold text-[clamp(36px,4vw,52px)] leading-[1.05] text-ink mb-2">{featured.title}</h3>
-            <div className="font-body text-[18px] font-light text-gray mb-1.5">{featured.artist}</div>
-            <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{featured.material}</div>
-            <div className="flex items-center gap-1.5 mb-5 font-body text-[12px] font-light text-muted-line">
-              <span aria-hidden className="text-ink">◆</span>
-              <span>{t.auth} <span className="font-mono text-ink/70">{featured.authenticity}</span></span>
-            </div>
-            <div className="font-body text-[22px] font-normal text-ink mb-5">{featured.price}</div>
-            <div className="flex items-center gap-4 flex-wrap">
-              <Link
-                to={`/obra/${featured.slug}?buy=1`}
-                className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-7 py-3.5 hover:bg-ink hover:text-white transition-colors"
-              >
-                {t.viewObra}
-              </Link>
+      {featured && (
+        <article className="mb-20 md:mb-24 group">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-stretch">
+            <Link
+              to={`/obra/${featured.slug}`}
+              className="block relative md:col-span-2 aspect-[16/10] overflow-hidden bg-secondary"
+            >
+              <img
+                src={featured.heroImage || featured.image}
+                alt={featured.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+              />
               {featured.glbUrl && (
-              <button
-                type="button"
-                onClick={() => setOpenFeatured3d(true)}
-                className="link-arrow bg-transparent border-none p-0 cursor-pointer"
-              >
-                {t.view3d} →
-              </button>
+                <button
+                  type="button"
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setOpenFeatured3d(true); }}
+                  className="absolute top-4 right-4 z-10 bg-white/90 border border-border font-body text-[12px] uppercase tracking-[0.16em] px-4 py-2 hover:bg-white transition-colors"
+                >
+                  {t.view3d}
+                </button>
               )}
+            </Link>
+            <div className="flex flex-col justify-end md:col-span-1">
+              <h3 className="font-display font-bold text-[clamp(36px,4vw,52px)] leading-[1.05] text-ink mb-2">{featured.title}</h3>
+              <div className="font-body text-[18px] font-light text-gray mb-1.5">{featured.artist}</div>
+              <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{featured.material}</div>
+              <div className="flex items-center gap-1.5 mb-5 font-body text-[12px] font-light text-muted-line">
+                <span aria-hidden className="text-ink">◆</span>
+                <span>{t.auth} <span className="font-mono text-ink/70">{featured.authenticity}</span></span>
+              </div>
+              <div className="font-body text-[22px] font-normal text-ink mb-5">{featured.price}</div>
+              <div className="flex items-center gap-4 flex-wrap">
+                <Link
+                  to={`/obra/${featured.slug}?buy=1`}
+                  className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-7 py-3.5 hover:bg-ink hover:text-white transition-colors"
+                >
+                  {t.viewObra}
+                </Link>
+                {featured.glbUrl && (
+                  <button
+                    type="button"
+                    onClick={() => setOpenFeatured3d(true)}
+                    className="link-arrow bg-transparent border-none p-0 cursor-pointer"
+                  >
+                    {t.view3d} →
+                  </button>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </article>
+        </article>
+      )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-20 gap-y-24">
-        {obras.map((o, i) => {
+        {gridWorks.map((o, i) => {
           const has3d = !!o.glbUrl;
           return (
-            <article key={i} className="bg-white group">
+            <article key={o.slug} className="bg-white group">
               <Link to={`/obra/${o.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary">
                 <img src={o.image} alt={o.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
                 {has3d && (
@@ -183,7 +259,7 @@ export const Coleccion = () => {
         </div>
       )}
 
-      {openFeatured3d && featured.glbUrl && (
+      {openFeatured3d && featured?.glbUrl && (
         <div className="fixed inset-0 z-[200] bg-black/95 flex flex-col">
           <header className="flex items-center justify-between px-6 md:px-10 h-14 border-b border-white/10 text-white">
             <div className="flex items-baseline gap-3">
