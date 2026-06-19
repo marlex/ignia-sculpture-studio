@@ -66,7 +66,7 @@ const COLS = {
     {
       label: "For artists",
       links: [
-        { label: "Submit your work", to: "/login" },
+        { label: "Share your work", to: "/login" },
         { label: "My profile", to: "/perfil/escultor" },
         { label: "Ignia Learn", to: "/aprende" },
       ],
