@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
 import { GlbViewer } from "./GlbViewer";
 import { getCatalogueWorks, type LocalizedWork } from "@/data/igniaWorks";
-import { Box, X } from "lucide-react";
+import { Maximize2, X } from "lucide-react";
 
 const parsePrice = (price: string): number => {
   const digits = price.replace(/[^\d]/g, "");
@@ -223,10 +223,10 @@ export const Coleccion = () => {
                         type="button"
                         onClick={() => setOpen3d(i)}
                         aria-label={t.view3d}
-                        className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-4 py-2.5 hover:opacity-90 transition-opacity"
+                        className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase text-ink px-4 py-2.5 hover:opacity-90 transition-opacity"
                         style={{ backgroundColor: "#CCFF00" }}
                       >
-                        <Box className="w-3.5 h-3.5" strokeWidth={2} />
+                        <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
                         3D
                       </button>
                     )}
