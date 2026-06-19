@@ -223,10 +223,10 @@ export const Coleccion = () => {
                         type="button"
                         onClick={() => setOpen3d(i)}
                         aria-label={t.view3d}
-                        className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-4 py-2.5 hover:opacity-90 transition-opacity"
+                        className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase text-ink px-4 py-2.5 hover:opacity-90 transition-opacity"
                         style={{ backgroundColor: "#CCFF00" }}
                       >
-                        <Box className="w-3.5 h-3.5" strokeWidth={2} />
+                        <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
                         3D
                       </button>
                     )}
