@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useLang } from "@/i18n/LanguageContext";
 
-type Props = { open: boolean; onClose: () => void };
+type Props = { open: boolean; onClose: () => void; defaultProfile?: "collector" };
 type Profile = "artista" | "coleccionista" | "empresa";
 
-export const InviteModal = ({ open, onClose }: Props) => {
+export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
   const lang = useLang();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [bio, setBio] = useState("");
@@ -119,6 +119,12 @@ export const InviteModal = ({ open, onClose }: Props) => {
       setError(null); setProfile(null);
     }
   }, [open]);
+
+  useEffect(() => {
+    if (open && defaultProfile === "collector") {
+      setProfile("coleccionista");
+    }
+  }, [open, defaultProfile]);
 
   if (!open) return null;
 
