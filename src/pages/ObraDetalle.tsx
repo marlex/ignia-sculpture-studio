@@ -221,7 +221,7 @@ const ObraDetalle = () => {
         </div>
       )}
 
-      <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} />
+      <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} defaultProfile="collector" />
       <Footer />
     </main>
   );
