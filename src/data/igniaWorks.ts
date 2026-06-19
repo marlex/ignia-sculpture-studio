@@ -86,7 +86,7 @@ const desc = {
 };
 
 export const HERO_WORK_SLUGS = ["vinculo", "torsion-i", "vertigo"] as const;
-export const CATALOGUE_WORK_SLUGS = ["mujer-y-nino", "pliegue-iii", "raiz", "origen", "eco", "quietud-alabastro", "luz-interior", "arco"] as const;
+export const CATALOGUE_WORK_SLUGS = ["vinculo", "mujer-y-nino", "pliegue-iii", "raiz", "origen", "eco", "quietud-alabastro", "luz-interior", "arco"] as const;
 
 export const WORKS: WorkRecord[] = [
   { slug: "vinculo", image: hecate1, heroImage: triadaGallery, model: "hero-flight", glbUrl: GLB_HECATE, extraImages: [triadaGallery, hecate2, hecate3], es: { title: "Tríada Olimpias", artist: "Carmen Aldea", material: "Mármol de Macael tallado", year: "2025", edition: "Edición única", price: "€ 5.200", description: desc.es, authenticity: "#0xc81a…f390" }, en: { title: "Tríada Olimpias", artist: "Carmen Aldea", material: "Carved Macael marble", year: "2025", edition: "Unique edition", price: "€ 5,200", description: desc.en, authenticity: "#0xc81a…f390" } },
