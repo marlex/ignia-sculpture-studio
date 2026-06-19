@@ -58,8 +58,8 @@ export const Header = () => {
   };
 
   const t = lang === "es"
-    ? { publish: "Solicitar invitación", signin: "Entrar", signout: "Salir", dashboard: "Mi panel" }
-    : { publish: "Request invitation", signin: "Sign in", signout: "Sign out", dashboard: "Dashboard" };
+    ? { publish: "Unirse a Ignia", signin: "Entrar", signout: "Salir", dashboard: "Mi panel" }
+    : { publish: "Join Ignia", signin: "Sign in", signout: "Sign out", dashboard: "Dashboard" };
 
 
   return (
