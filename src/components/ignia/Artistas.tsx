@@ -80,7 +80,7 @@ export const Artistas = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {secundarios.map((a) => {
             return (
-              <article key={a.nombre} className="group grid grid-cols-[40%_60%] gap-5 items-start">
+              <article key={a.nombre} className="group grid grid-cols-1 md:grid-cols-[40%_60%] gap-5 items-start">
                 <Link to={`/perfil/escultor/${a.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} aria-label={a.nombre} className="block aspect-square overflow-hidden bg-secondary">
                   <img src={a.foto} alt={a.nombre} loading="lazy" width={800} height={800} className="w-full h-full object-cover object-[center_35%] transition-transform duration-[700ms] group-hover:scale-[1.03]" />
                 </Link>

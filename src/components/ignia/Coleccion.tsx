@@ -199,7 +199,7 @@ export const Coleccion = () => {
         </article>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-20 gap-y-24">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10 sm:gap-x-10 sm:gap-y-14 lg:gap-x-20 lg:gap-y-24">
         {gridWorks.map((o, i) => {
           const has3d = !!o.glbUrl;
           return (
@@ -207,11 +207,11 @@ export const Coleccion = () => {
               <Link to={`/obra/${o.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary">
                 <img src={o.image} alt={o.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
               </Link>
-              <div className="px-0 pt-3 pb-5">
-                <h3 className="font-display font-bold text-[28px] text-ink mb-1">{o.title}</h3>
-                <div className="font-body text-[16px] font-light text-gray mb-1.5">{o.artist}</div>
-                <div className="font-body text-[12px] font-light text-muted-line uppercase tracking-[0.14em] mb-2">{o.material}</div>
-                <div className="flex items-center gap-1.5 mb-3 font-body text-[11px] font-light text-muted-line normal-case tracking-normal">
+              <div className="px-0 pt-2 pb-3 sm:pt-3 sm:pb-5">
+                <h3 className="font-display font-bold text-[24px] sm:text-[28px] text-ink mb-0.5 sm:mb-1">{o.title}</h3>
+                <div className="font-body text-[15px] sm:text-[16px] font-light text-gray mb-0.5 sm:mb-1.5">{o.artist}</div>
+                <div className="font-body text-[11px] sm:text-[12px] font-light text-muted-line uppercase tracking-[0.14em] mb-1 sm:mb-2">{o.material}</div>
+                <div className="flex items-center gap-1.5 mb-1.5 sm:mb-3 font-body text-[11px] font-light text-muted-line normal-case tracking-normal">
                   <span aria-hidden className="text-ink">◆</span>
                    <span>{t.auth} <span className="font-mono text-ink/70">{o.authenticity}</span></span>
                 </div>

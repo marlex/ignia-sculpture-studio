@@ -102,7 +102,7 @@ export const Colectores = () => {
         <div className="font-body text-[12px] font-light text-muted-line uppercase tracking-[0.18em] mb-6">{t.featured}</div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {data.secundarios.map((c) => (
-            <article key={c.nombre} className="group grid grid-cols-[40%_60%] gap-5 items-start">
+            <article key={c.nombre} className="group grid grid-cols-1 md:grid-cols-[40%_60%] gap-5 items-start">
               <Link to={`/coleccionista/${slug(c.nombre)}`} aria-label={c.nombre} className="block aspect-square overflow-hidden bg-secondary">
                 <img src={c.foto} alt={c.nombre} loading="lazy" width={800} height={800} className="w-full h-full object-cover object-[center_35%] transition-transform duration-[700ms] group-hover:scale-[1.03]" />
               </Link>
