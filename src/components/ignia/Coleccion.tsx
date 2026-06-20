@@ -177,10 +177,10 @@ export const Coleccion = () => {
                 <span>{t.auth} <span className="font-mono text-ink/70">{featured.authenticity}</span></span>
               </div>
               <div className="font-body text-[22px] font-normal text-ink mb-5">{featured.price}</div>
-              <div className="flex items-center gap-4 flex-wrap">
+              <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3 md:gap-4">
                 <Link
                   to={`/obra/${featured.slug}?buy=1`}
-                  className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-7 py-3.5 hover:bg-ink hover:text-white transition-colors"
+                  className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-7 py-3.5 hover:bg-ink hover:text-white transition-colors block w-full md:w-auto text-center"
                 >
                   {t.viewObra}
                 </Link>
@@ -188,7 +188,7 @@ export const Coleccion = () => {
                   <button
                     type="button"
                     onClick={() => setOpenFeatured3d(true)}
-                    className="link-arrow bg-transparent border-none p-0 cursor-pointer"
+                    className="link-arrow bg-transparent border-none p-0 cursor-pointer text-center md:text-left"
                   >
                     {t.view3d} →
                   </button>
