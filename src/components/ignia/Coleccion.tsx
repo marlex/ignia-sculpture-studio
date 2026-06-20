@@ -215,27 +215,53 @@ export const Coleccion = () => {
                   <span aria-hidden className="text-ink">◆</span>
                    <span>{t.auth} <span className="font-mono text-ink/70">{o.authenticity}</span></span>
                 </div>
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-2 sm:pt-3 gap-2 sm:gap-3">
-                  <span className="font-body text-[16px] font-normal text-ink">{o.price}</span>
-                  <div className="flex items-center gap-2 w-full sm:w-auto">
+                <div className="pt-2 sm:pt-3">
+                  {/* Mobile: price + 3D in one row, Buy full-width below */}
+                  <div className="flex sm:hidden items-center justify-between mb-3">
+                    <span className="font-body text-[16px] font-normal text-ink">{o.price}</span>
                     {has3d && (
                       <button
                         type="button"
                         onClick={() => setOpen3d(i)}
                         aria-label={t.view3d}
-                        className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase text-ink px-4 py-2.5 hover:opacity-90 transition-opacity flex-shrink-0"
+                        className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase text-ink px-4 py-2.5 hover:opacity-90 transition-opacity"
                         style={{ backgroundColor: "#CCFF00" }}
                       >
                         <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
                         3D
                       </button>
                     )}
-                    <Link
-                       to={`/obra/${o.slug}`}
-                      className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-5 py-2.5 hover:bg-ink hover:text-white transition-colors flex-1 text-center"
-                    >
-                      {t.viewObra}
-                    </Link>
+                  </div>
+                  <Link
+                    to={`/obra/${o.slug}`}
+                    className="sm:hidden font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-5 py-3 hover:bg-ink hover:text-white transition-colors block w-full text-center"
+                  >
+                    {t.viewObra}
+                  </Link>
+
+                  {/* Desktop: unchanged */}
+                  <div className="hidden sm:flex items-center justify-between gap-3">
+                    <span className="font-body text-[16px] font-normal text-ink">{o.price}</span>
+                    <div className="flex items-center gap-2">
+                      {has3d && (
+                        <button
+                          type="button"
+                          onClick={() => setOpen3d(i)}
+                          aria-label={t.view3d}
+                          className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase text-ink px-4 py-2.5 hover:opacity-90 transition-opacity flex-shrink-0"
+                          style={{ backgroundColor: "#CCFF00" }}
+                        >
+                          <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
+                          3D
+                        </button>
+                      )}
+                      <Link
+                        to={`/obra/${o.slug}`}
+                        className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-5 py-2.5 hover:bg-ink hover:text-white transition-colors text-center"
+                      >
+                        {t.viewObra}
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
