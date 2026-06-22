@@ -133,6 +133,11 @@ export const Artistas = () => {
         </div>
       </section>
 
+      <SectionSeparator
+        title="La escultura merece un escenario a su altura."
+        subtitle="Tridimensional, global y pensado para la experiencia completa desde el taller hasta el espacio del coleccionista."
+      />
+
       <section className="px-6 md:px-12 py-[80px] bg-ink text-white">
         <div className="max-w-3xl mb-14">
           <div className="font-body text-[12px] font-light text-white/50 uppercase tracking-[0.18em] mb-4">{t.inspirationKicker}</div>
