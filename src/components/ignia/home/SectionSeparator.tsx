@@ -1,9 +1,10 @@
 interface SectionSeparatorProps {
   title: string;
   subtitle: string;
+  cta?: string;
 }
 
-export const SectionSeparator = ({ title, subtitle }: SectionSeparatorProps) => {
+export const SectionSeparator = ({ title, subtitle, cta }: SectionSeparatorProps) => {
   return (
     <section
       style={{
@@ -45,6 +46,31 @@ export const SectionSeparator = ({ title, subtitle }: SectionSeparatorProps) => 
       >
         {subtitle}
       </p>
+      {cta && (
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new Event("ignia:open-invite"))}
+          style={{
+            fontFamily: "Manrope, sans-serif",
+            fontWeight: 600,
+            fontSize: 12,
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            padding: "16px 32px",
+            background: "#FFFFFF",
+            color: "#111111",
+            border: "none",
+            borderRadius: 0,
+            cursor: "pointer",
+            transition: "background-color 250ms",
+            marginTop: 8,
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = "#F2F2F2")}
+          onMouseLeave={(e) => (e.currentTarget.style.background = "#FFFFFF")}
+        >
+          {cta}
+        </button>
+      )}
     </section>
   );
 };
