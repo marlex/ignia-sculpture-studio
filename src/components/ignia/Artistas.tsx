@@ -128,15 +128,13 @@ export const Artistas = () => {
 
       <section className="px-6 md:px-12 py-[60px] bg-ink text-white">
         <div className="mb-10">
-          <h2 className="font-body text-[12px] font-light uppercase tracking-[0.18em] text-white/60">{t.inspiration}</h2>
+          <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-white">{t.inspiration}</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-          {inspiration.map((a, i) => (
+          {inspiration.map((a) => (
             <article
               key={a.nombre}
-              className={`grid grid-cols-[96px_1fr] md:grid-cols-[120px_1fr] gap-5 items-center py-6 border-t border-white/15 ${
-                i === inspiration.length - 1 ? "border-b" : ""
-              } ${i === inspiration.length - 2 ? "md:border-b" : ""}`}
+              className="grid grid-cols-[96px_1fr] md:grid-cols-[120px_1fr] gap-5 items-center py-6"
             >
               <Link to={`/perfil/escultor/${slugify(a.nombre)}`} aria-label={a.nombre} className="block aspect-square overflow-hidden bg-white/5">
                 <img src={a.foto} alt={a.nombre} loading="lazy" width={240} height={240} className="w-full h-full object-cover object-[center_35%]" />
