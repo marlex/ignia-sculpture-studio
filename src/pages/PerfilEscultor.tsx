@@ -12,6 +12,10 @@ import susana from "@/assets/artist-susana-solano-real.jpg";
 import barcelo from "@/assets/artist-miquel-barcelo-real.jpg";
 import chillida from "@/assets/artist-eduardo-chillida-real.jpg";
 import adaRetratoAsset from "@/assets/ada-la-cadena-retrato-2.png.asset.json";
+import helenaPortrait from "@/assets/artist-helena-vazquez.jpg";
+import luciaPortrait from "@/assets/artist-lucia-pardo.jpg";
+import pabloPortrait from "@/assets/artist-pablo-reyes.jpg";
+import tomasPortrait from "@/assets/artist-tomas-vigo.jpg";
 import { useLang } from "@/i18n/LanguageContext";
 import { WORKS } from "@/data/igniaWorks";
 import { artistSlug } from "@/lib/artistSlug";
@@ -45,7 +49,7 @@ const BIOS: Record<string, Bio> = {
     espEs: "Metal, estructura y espacio", espEn: "Metal, structure and space",
   },
   "helena-vazquez": {
-    nombre: "Helena Vázquez", retrato: caida,
+    nombre: "Helena Vázquez", retrato: helenaPortrait,
     bioEs: "Toledo, España. Bronce figurativo. Tres décadas trabajando la figura humana desde el oficio lento del taller.",
     bioEn: "Toledo, Spain. Figurative bronze. Three decades working the human figure through the slow craft of the studio.",
     espEs: "Bronce figurativo", espEn: "Figurative bronze",
@@ -87,13 +91,13 @@ const BIOS: Record<string, Bio> = {
     espEs: "Cerámica contemporánea", espEn: "Contemporary ceramic",
   },
   "lucia-pardo": {
-    nombre: "Lucía Pardo", retrato: quietud,
+    nombre: "Lucía Pardo", retrato: luciaPortrait,
     bioEs: "Oporto, Portugal. Cerámica esmaltada en series cortas. Su obra explora el origen del volumen a partir del torno y del esmalte mate.",
     bioEn: "Porto, Portugal. Glazed ceramic in short series. Her work explores the origin of volume through the wheel and matt glaze.",
     espEs: "Cerámica esmaltada", espEn: "Glazed ceramic",
   },
   "pablo-reyes": {
-    nombre: "Pablo Reyes", retrato: eco,
+    nombre: "Pablo Reyes", retrato: pabloPortrait,
     bioEs: "Madrid, España. Bronce figurativo estilizado. Trabaja la figura alargada como eco humano: piezas verticales y silenciosas.",
     bioEn: "Madrid, Spain. Stylised figurative bronze. Works the elongated figure as a human echo: vertical, quiet pieces.",
     espEs: "Bronce estilizado", espEn: "Stylised bronze",
@@ -105,7 +109,7 @@ const BIOS: Record<string, Bio> = {
     espEs: "Alabastro y luz", espEn: "Alabaster and light",
   },
   "tomas-vigo": {
-    nombre: "Tomás Vigo", retrato: eco,
+    nombre: "Tomás Vigo", retrato: tomasPortrait,
     bioEs: "Vigo, España. Vidrio soplado en horno propio. Su serie Luz interior atrapa el color ámbar como núcleo cálido dentro del volumen.",
     bioEn: "Vigo, Spain. Glass blown in his own furnace. His Inner light series captures amber colour as a warm core within the volume.",
     espEs: "Vidrio soplado", espEn: "Blown glass",
