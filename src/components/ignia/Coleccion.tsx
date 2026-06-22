@@ -4,7 +4,13 @@ import { useLang } from "@/i18n/LanguageContext";
 import { GlbViewer } from "./GlbViewer";
 import { getCatalogueWorks, type LocalizedWork } from "@/data/igniaWorks";
 import { artistSlug } from "@/lib/artistSlug";
-import { Maximize2, X } from "lucide-react";
+import { Maximize2, X, Search } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 
 const parsePrice = (price: string): number => {
   const digits = price.replace(/[^\d]/g, "");
@@ -12,6 +18,8 @@ const parsePrice = (price: string): number => {
 };
 
 const techniqueOf = (material: string): string => material.split(" ")[0];
+
+type FilterKey = "price" | "material" | "technique";
 
 export const Coleccion = () => {
   const lang = useLang();
@@ -23,33 +31,38 @@ export const Coleccion = () => {
   const [priceSort, setPriceSort] = useState<"asc" | "desc">("asc");
   const [material, setMaterial] = useState<string>("");
   const [technique, setTechnique] = useState<string>("");
+  const [activeFilter, setActiveFilter] = useState<FilterKey | null>(null);
 
   const t = lang === "es" ? {
-    h: "Descubre todas las colecciones",
-    cta: "Ver obras →",
-    sub: "843 obras · Actualizado semanalmente",
+    h: "Colección",
+    worksLabel: "obras",
     search: "Buscar artista, obra, material…",
     priceAsc: "Precio: menor a mayor",
     priceDesc: "Precio: mayor a menor",
-    materialAll: "Material: todos",
-    techniqueAll: "Técnica: todas",
+    materialAll: "Todos los materiales",
+    techniqueAll: "Todas las técnicas",
+    chipPrice: "Precio",
+    chipMaterial: "Material",
+    chipTechnique: "Técnica",
+    apply: "Aplicar",
     view3d: "Ver en 3D",
-    viewAngles: "Ver ángulos",
     viewObra: "Comprar",
     auth: "Autenticidad",
     close: "Cerrar",
     hint: "Arrastra para rotar · Scroll para zoom",
   } : {
-    h: "Discover the full collection",
-    cta: "Browse works →",
-    sub: "843 works · Updated weekly",
+    h: "Collection",
+    worksLabel: "works",
     search: "Search artist, work, material…",
     priceAsc: "Price: low to high",
     priceDesc: "Price: high to low",
-    materialAll: "Material: all",
-    techniqueAll: "Technique: all",
+    materialAll: "All materials",
+    techniqueAll: "All techniques",
+    chipPrice: "Price",
+    chipMaterial: "Material",
+    chipTechnique: "Technique",
+    apply: "Apply",
     view3d: "View in 3D",
-    viewAngles: "View angles",
     viewObra: "Buy",
     auth: "Authenticity",
     close: "Close",
@@ -86,6 +99,8 @@ export const Coleccion = () => {
     });
   }, [sorted, query, material, technique]);
 
+  const totalCount = allWorks.length;
+
   const FEATURED_SLUG = "ulmuk-vase";
   const featured = filtered.find(w => w.slug === FEATURED_SLUG) ?? filtered[0];
   const gridWorks = filtered.filter(w => w.slug !== featured?.slug);
@@ -106,15 +121,74 @@ export const Coleccion = () => {
     };
   }, [open3d, openFeatured3d]);
 
-  return (
-    <section className="bg-white px-8 md:px-16 lg:px-24 py-[60px]">
-      <div className="flex items-end justify-between mb-2 flex-wrap gap-4">
-        <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.h}</h2>
-        <Link to="/coleccion" className="link-arrow">{t.cta}</Link>
-      </div>
-      <p className="font-body text-[16px] font-light text-gray mb-8">{t.sub}</p>
+  // Active chip indicator
+  const chipActive = (key: FilterKey) => {
+    if (key === "price") return priceSort !== "asc";
+    if (key === "material") return !!material;
+    if (key === "technique") return !!technique;
+    return false;
+  };
 
-      <div className="flex flex-wrap gap-3 mb-10">
+  const sheetTitle =
+    activeFilter === "price" ? t.chipPrice :
+    activeFilter === "material" ? t.chipMaterial :
+    activeFilter === "technique" ? t.chipTechnique : "";
+
+  return (
+    <section className="bg-white px-4 sm:px-8 md:px-16 lg:px-24 py-6 sm:py-10 md:py-[60px]">
+      {/* Title + dynamic count (mobile + desktop) */}
+      <div className="mb-3 sm:mb-6">
+        <h2 className="font-body text-[13px] sm:text-[14px] font-light uppercase tracking-[0.18em] text-gray">
+          {t.h}
+        </h2>
+        <p className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink leading-none mt-1">
+          {totalCount.toLocaleString(lang === "es" ? "es-ES" : "en-US")}{" "}
+          <span className="font-body font-light text-gray text-[16px] sm:text-[18px] tracking-normal normal-case">
+            {t.worksLabel}
+          </span>
+        </p>
+      </div>
+
+      {/* MOBILE: full-width search */}
+      <div className="sm:hidden mb-3">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray" strokeWidth={1.5} />
+          <input
+            type="search"
+            placeholder={t.search}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="w-full border-[0.5px] border-border bg-white font-body text-[14px] font-light pl-9 pr-3 py-2.5 outline-none focus:border-ink transition-colors"
+          />
+        </div>
+      </div>
+
+      {/* MOBILE: scrollable filter chips */}
+      <div className="sm:hidden mb-5 -mx-4 px-4 overflow-x-auto scrollbar-none" style={{ scrollbarWidth: "none" }}>
+        <div className="flex gap-2 w-max">
+          {([
+            { key: "price" as const, label: t.chipPrice },
+            { key: "material" as const, label: t.chipMaterial },
+            { key: "technique" as const, label: t.chipTechnique },
+          ]).map(c => (
+            <button
+              key={c.key}
+              type="button"
+              onClick={() => setActiveFilter(c.key)}
+              className={`font-body text-[11px] tracking-[0.18em] uppercase px-4 py-2 border-[0.5px] transition-colors whitespace-nowrap ${
+                chipActive(c.key)
+                  ? "border-ink bg-ink text-white"
+                  : "border-border bg-white text-ink"
+              }`}
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* DESKTOP: original filters */}
+      <div className="hidden sm:flex flex-wrap gap-3 mb-10">
         <input
           type="search"
           placeholder={t.search}
@@ -268,6 +342,117 @@ export const Coleccion = () => {
           );
         })}
       </div>
+
+      {/* MOBILE: bottom sheet for filters */}
+      <Sheet open={activeFilter !== null} onOpenChange={(o) => { if (!o) setActiveFilter(null); }}>
+        <SheetContent
+          side="bottom"
+          className="h-[60vh] rounded-t-2xl p-0 flex flex-col sm:max-w-none"
+        >
+          <SheetHeader className="px-5 pt-5 pb-3 border-b border-border text-left">
+            <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-border" aria-hidden />
+            <SheetTitle className="font-body text-[12px] font-medium tracking-[0.22em] uppercase text-ink">
+              {sheetTitle}
+            </SheetTitle>
+          </SheetHeader>
+
+          <div className="flex-1 overflow-y-auto px-5 py-4">
+            {activeFilter === "price" && (
+              <ul className="divide-y divide-border">
+                {[
+                  { v: "asc" as const, label: t.priceAsc },
+                  { v: "desc" as const, label: t.priceDesc },
+                ].map(opt => (
+                  <li key={opt.v}>
+                    <label className="flex items-center justify-between py-3.5 cursor-pointer">
+                      <span className="font-body text-[15px] font-light text-ink">{opt.label}</span>
+                      <input
+                        type="radio"
+                        name="price-sort"
+                        checked={priceSort === opt.v}
+                        onChange={() => setPriceSort(opt.v)}
+                        className="accent-ink w-4 h-4"
+                      />
+                    </label>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {activeFilter === "material" && (
+              <ul className="divide-y divide-border">
+                <li>
+                  <label className="flex items-center justify-between py-3.5 cursor-pointer">
+                    <span className="font-body text-[15px] font-light text-ink">{t.materialAll}</span>
+                    <input
+                      type="radio"
+                      name="material"
+                      checked={material === ""}
+                      onChange={() => setMaterial("")}
+                      className="accent-ink w-4 h-4"
+                    />
+                  </label>
+                </li>
+                {materialOptions.map(m => (
+                  <li key={m}>
+                    <label className="flex items-center justify-between py-3.5 cursor-pointer">
+                      <span className="font-body text-[15px] font-light text-ink">{m}</span>
+                      <input
+                        type="radio"
+                        name="material"
+                        checked={material === m}
+                        onChange={() => setMaterial(m)}
+                        className="accent-ink w-4 h-4"
+                      />
+                    </label>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {activeFilter === "technique" && (
+              <ul className="divide-y divide-border">
+                <li>
+                  <label className="flex items-center justify-between py-3.5 cursor-pointer">
+                    <span className="font-body text-[15px] font-light text-ink">{t.techniqueAll}</span>
+                    <input
+                      type="radio"
+                      name="technique"
+                      checked={technique === ""}
+                      onChange={() => setTechnique("")}
+                      className="accent-ink w-4 h-4"
+                    />
+                  </label>
+                </li>
+                {techniqueOptions.map(tk => (
+                  <li key={tk}>
+                    <label className="flex items-center justify-between py-3.5 cursor-pointer">
+                      <span className="font-body text-[15px] font-light text-ink">{tk}</span>
+                      <input
+                        type="radio"
+                        name="technique"
+                        checked={technique === tk}
+                        onChange={() => setTechnique(tk)}
+                        className="accent-ink w-4 h-4"
+                      />
+                    </label>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          <div className="px-5 pb-6 pt-3 border-t border-border">
+            <button
+              type="button"
+              onClick={() => setActiveFilter(null)}
+              className="w-full font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-ink text-white py-3.5 hover:opacity-90 transition-opacity"
+            >
+              {t.apply}
+            </button>
+          </div>
+        </SheetContent>
+      </Sheet>
 
       {open && open.glbUrl && (
         <div className="fixed inset-0 z-[200] bg-black/95 flex flex-col">
