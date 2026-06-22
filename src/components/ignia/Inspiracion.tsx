@@ -34,7 +34,7 @@ export const Inspiracion = () => {
     <section className="px-6 md:px-12 py-[80px] bg-ink text-white">
       <div className="max-w-3xl mb-14">
         <div className="font-body text-[12px] font-light text-white/50 uppercase tracking-[0.18em] mb-4">{t.inspirationKicker}</div>
-        <h2 className="font-display font-bold text-[clamp(32px,4vw,52px)] tracking-[-0.02em] leading-[1.05] text-white mb-5">{t.inspiration}</h2>
+        <h2 className="font-display font-medium text-[clamp(32px,4vw,52px)] tracking-[-0.02em] leading-[1.05] text-white mb-5">{t.inspiration}</h2>
         
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
