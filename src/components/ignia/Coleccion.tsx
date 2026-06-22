@@ -188,7 +188,7 @@ export const Coleccion = () => {
           placeholder={t.search}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-60 border-[0.5px] border-ink bg-white font-body text-[14px] font-light pl-3.5 pr-8 py-2.5 outline-none focus:border-ink transition-colors"
+          className="w-60 border-[0.5px] border-ink bg-white font-body text-[14px] font-light px-3.5 py-2.5 outline-none focus:border-ink transition-colors"
         />
         <select
           value={priceSort}
