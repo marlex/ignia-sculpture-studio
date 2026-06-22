@@ -35,6 +35,14 @@ import mujerNino2 from "@/assets/mujer-y-nino-2.jpg";
 import mujerNino3 from "@/assets/mujer-y-nino-3.jpg";
 import triadaGalleryAsset from "@/assets/triada-olimpias-gallery.png.asset.json";
 const triadaGallery = triadaGalleryAsset.url;
+import ulmukMainAsset from "@/assets/ulmuk-vase-main.jpeg.asset.json";
+import ulmuk2Asset from "@/assets/ulmuk-vase-2.jpeg.asset.json";
+import ulmuk3Asset from "@/assets/ulmuk-vase-3.jpeg.asset.json";
+import ulmuk4Asset from "@/assets/ulmuk-vase-4.jpeg.asset.json";
+const ulmukMain = ulmukMainAsset.url;
+const ulmuk2 = ulmuk2Asset.url;
+const ulmuk3 = ulmuk3Asset.url;
+const ulmuk4 = ulmuk4Asset.url;
 
 export type WorkModelKey =
   | "hero-flight"
@@ -86,7 +94,7 @@ const desc = {
 };
 
 export const HERO_WORK_SLUGS = ["vinculo", "torsion-i", "vertigo"] as const;
-export const CATALOGUE_WORK_SLUGS = ["vinculo", "mujer-y-nino", "pliegue-iii", "raiz", "luz-interior", "eco", "quietud-alabastro", "origen", "arco"] as const;
+export const CATALOGUE_WORK_SLUGS = ["vinculo", "mujer-y-nino", "pliegue-iii", "raiz", "luz-interior", "eco", "quietud-alabastro", "ulmuk-vase", "origen", "arco"] as const;
 
 export const WORKS: WorkRecord[] = [
   { slug: "vinculo", image: hecate1, heroImage: triadaGallery, model: "hero-flight", glbUrl: GLB_HECATE, extraImages: [triadaGallery, hecate2, hecate3], es: { title: "Tríada Olimpias", artist: "Carmen Aldea", material: "Mármol de Macael tallado", year: "2025", edition: "Edición única", price: "€ 5.200", description: desc.es, authenticity: "#0xc81a…f390" }, en: { title: "Tríada Olimpias", artist: "Carmen Aldea", material: "Carved Macael marble", year: "2025", edition: "Unique edition", price: "€ 5,200", description: desc.en, authenticity: "#0xc81a…f390" } },
@@ -96,6 +104,7 @@ export const WORKS: WorkRecord[] = [
   { slug: "pliegue-iii", image: obra2, model: "marble-fold", extraImages: [obra5, obra7], es: { title: "Pliegue III", artist: "Alba Costa", material: "Mármol", year: "2024", edition: "1 de 5", price: "€ 7.400", description: desc.es, authenticity: "#0x598e…07e" }, en: { title: "Fold III", artist: "Alba Costa", material: "Marble", year: "2024", edition: "1 of 5", price: "€ 7,400", description: desc.en, authenticity: "#0x598e…07e" } },
   { slug: "vertigo", image: obra3, model: "corten-ribbon", extraImages: [obra6, obra8], es: { title: "Vértigo", artist: "Diego Lara", material: "Acero corten", year: "2025", edition: "Edición única", price: "€ 2.900", description: desc.es, authenticity: "#0x787d…4db" }, en: { title: "Vertigo", artist: "Diego Lara", material: "Corten steel", year: "2025", edition: "Unique edition", price: "€ 2,900", description: desc.en, authenticity: "#0x787d…4db" } },
   { slug: "raiz", image: obra4, model: "wood-root", es: { title: "Raíz", artist: "Sofía Méndez", material: "Piedra tallada", year: "2023", edition: "Edición única", price: "€ 1.650", description: desc.es, authenticity: "#0x976c…938" }, en: { title: "Root", artist: "Sofía Méndez", material: "Carved stone", year: "2023", edition: "Unique edition", price: "€ 1,650", description: desc.en, authenticity: "#0x976c…938" } },
+  { slug: "ulmuk-vase", image: ulmukMain, model: "blue-ceramic", glbUrl: "/models/ulmuk-vase.glb", extraImages: [ulmuk2, ulmuk3, ulmuk4], es: { title: "Ulmuk Vase", artist: "Ada La Cadena", material: "Cerámica esmaltada", year: "2025", edition: "Edición única", price: "€ 1.200", description: desc.es, authenticity: "#0xulmk…v4se" }, en: { title: "Ulmuk Vase", artist: "Ada La Cadena", material: "Glazed ceramic", year: "2025", edition: "Unique edition", price: "€ 1,200", description: desc.en, authenticity: "#0xulmk…v4se" } },
   { slug: "origen", image: obra5, model: "blue-ceramic", es: { title: "Origen", artist: "Lucía Pardo", material: "Cerámica esmaltada", year: "2025", edition: "2 de 8", price: "€ 890", description: desc.es, authenticity: "#0xa614…22f" }, en: { title: "Origin", artist: "Lucía Pardo", material: "Glazed ceramic", year: "2025", edition: "2 of 8", price: "€ 890", description: desc.en, authenticity: "#0xa614…22f" } },
   { slug: "eco", image: obra6, model: "slender-figure", es: { title: "Eco", artist: "Pablo Reyes", material: "Bronce", year: "2024", edition: "Edición única", price: "€ 5.400", description: desc.es, authenticity: "#0xbf03…686" }, en: { title: "Echo", artist: "Pablo Reyes", material: "Bronze", year: "2024", edition: "Unique edition", price: "€ 5,400", description: desc.en, authenticity: "#0xbf03…686" } },
   { slug: "quietud-alabastro", image: obra7, model: "white-loop", es: { title: "Quietud", artist: "Inés Ferrer", material: "Alabastro", year: "2025", edition: "1 de 6", price: "€ 2.300", description: desc.es, authenticity: "#0xddf2…2dd" }, en: { title: "Stillness", artist: "Inés Ferrer", material: "Alabaster", year: "2025", edition: "1 of 6", price: "€ 2,300", description: desc.en, authenticity: "#0xddf2…2dd" } },
