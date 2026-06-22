@@ -53,10 +53,6 @@ const Index = () => {
       <div ref={fadeArt}>
         <Artistas />
       </div>
-      <SectionSeparator
-        title="Cada obra, certificada para siempre."
-        subtitle="Un certificado que garantiza la autenticidad de cada obra, para siempre."
-      />
       <div ref={fadeReviews}>
         <Reviews />
       </div>
@@ -65,6 +61,11 @@ const Index = () => {
         subtitle="Comisiones transparentes, criterios abiertos y datos reales para escultores y coleccionistas."
       />
       <Colectores />
+      <Inspiracion />
+      <SectionSeparator
+        title="Cada obra, certificada para siempre."
+        subtitle="Un certificado que garantiza la autenticidad de cada obra, para siempre."
+      />
       <Aprende />
       <Footer />
       <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} />
