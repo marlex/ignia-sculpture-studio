@@ -45,7 +45,7 @@ export const Inspiracion = () => {
             </Link>
             <div>
               <Link to={`/perfil/escultor/${slugify(a.nombre)}`} className="block hover:opacity-80 transition-opacity">
-                <h3 className="font-display font-bold text-[28px] text-white leading-tight mb-1.5">{a.nombre}</h3>
+                <h3 className="font-display font-medium text-[28px] text-white leading-tight mb-1.5">{a.nombre}</h3>
                 <div className="font-body text-[13px] font-light text-white/60 uppercase tracking-[0.14em] mb-3">
                   {a.esp} · {a.obras}
                 </div>
