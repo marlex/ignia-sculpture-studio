@@ -36,9 +36,10 @@ const Block = ({ title, citas }: { title: string; citas: { q: string; n: string;
             <div aria-hidden style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: 72, lineHeight: 0.6, marginBottom: 24, opacity: 0.25 }}>
               &ldquo;
             </div>
-            <blockquote style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, fontStyle: "italic", color: "#111111", fontSize: "clamp(20px,1.6vw,24px)", lineHeight: 1.55, letterSpacing: "-0.005em", margin: 0 }}>
+            <blockquote style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: "clamp(22px,2vw,30px)", lineHeight: 1.45, letterSpacing: "-0.005em", margin: 0 }}>
               {c.q}
             </blockquote>
+
             <div style={{ height: 1, background: "#111111", opacity: 0.12, width: 48, margin: "40px 0 20px" }} />
             <figcaption>
               <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 600, color: "#111111", fontSize: 16, letterSpacing: "0.08em", textTransform: "uppercase" }}>{c.n}</div>
