@@ -163,7 +163,7 @@ export const Coleccion = () => {
             </Link>
             <div className="flex flex-col justify-end md:col-span-1">
               <h3 className="font-display font-bold text-[clamp(36px,4vw,52px)] leading-[1.05] text-ink mb-2">{featured.title}</h3>
-              <div className="font-body text-[18px] font-light text-gray mb-1.5">{featured.artist}</div>
+              <Link to={`/perfil/escultor/${artistSlug(featured.artist)}`} className="font-body text-[18px] font-light text-gray mb-1.5 hover:text-ink hover:underline underline-offset-4 transition-colors w-fit">{featured.artist}</Link>
               <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{featured.material}</div>
               <div className="flex items-center gap-1.5 mb-5 font-body text-[12px] font-light text-muted-line">
                 <span aria-hidden className="text-ink">◆</span>
