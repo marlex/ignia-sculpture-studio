@@ -104,7 +104,7 @@ export const Footer = () => {
           i === 0 ? (
             <div key={c.label}>
               <Logo />
-              <p className="font-body text-[14px] font-light text-gray mt-4 max-w-[260px]">{tagline}</p>
+              <p className="font-body text-[16px] font-light text-gray mt-4 max-w-[260px]">{tagline}</p>
               {SHOW_PUBLIC_AUTH && (
                 <div className="flex flex-col gap-2.5 mt-4">
                   {c.links.map(l => (
