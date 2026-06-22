@@ -47,6 +47,10 @@ const Index = () => {
         </div>
       </div>
       <SectionSeparator
+        title="El conocimiento que necesitas para decidir bien."
+        subtitle="Comisiones transparentes, criterios abiertos y datos reales para escultores y coleccionistas."
+      />
+      <SectionSeparator
         title="Solo escultura. Siempre."
         subtitle="Un espacio construido enteramente alrededor de la escultura, el espacio que necesita."
       />
@@ -56,10 +60,6 @@ const Index = () => {
       <div ref={fadeReviews}>
         <Reviews />
       </div>
-      <SectionSeparator
-        title="El conocimiento que necesitas para decidir bien."
-        subtitle="Comisiones transparentes, criterios abiertos y datos reales para escultores y coleccionistas."
-      />
       <Colectores />
       <Inspiracion />
       <SectionSeparator
