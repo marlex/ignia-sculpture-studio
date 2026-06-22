@@ -11,6 +11,7 @@ import { Reviews } from "@/components/ignia/home/Reviews";
 import { Aprende } from "@/components/ignia/Aprende";
 
 import { SectionSeparator } from "@/components/ignia/home/SectionSeparator";
+import { Inspiracion } from "@/components/ignia/Inspiracion";
 import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { Splash } from "@/components/ignia/home/Splash";
 import { useFadeUp } from "@/hooks/useFadeUp";
