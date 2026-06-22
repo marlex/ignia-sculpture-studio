@@ -106,7 +106,7 @@ export const Artistas = () => {
               </h3>
               <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-6">{featured.extracto}</p>
               <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-6">
-                {featured.esp} · {featured.obras} · {featured.tiempo}
+                {featured.esp} · {featured.obras}
               </div>
               <span className="link-arrow">{t.view}</span>
             </Link>
