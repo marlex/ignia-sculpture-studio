@@ -217,8 +217,8 @@ export const Coleccion = () => {
       </div>
 
       {featured && (
-        <article className="mb-20 md:mb-24 group">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-stretch">
+        <article className="mb-10 md:mb-24 group">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-12 items-stretch">
             <Link
               to={`/obra/${featured.slug}`}
               className="block relative md:col-span-2 aspect-[4/5] md:aspect-[16/10] overflow-hidden bg-secondary"
@@ -230,7 +230,7 @@ export const Coleccion = () => {
               />
             </Link>
             <div className="flex flex-col justify-end md:col-span-1">
-              <h3 className="font-display font-bold text-[clamp(36px,4vw,52px)] leading-[1.05] text-ink mb-2"><Link to={`/obra/${featured.slug}`} className="hover:underline underline-offset-4">{featured.title}</Link></h3>
+              <h3 className="font-display font-bold text-[30px] md:text-[clamp(36px,4vw,52px)] leading-[1.05] text-ink mb-0.5 md:mb-2"><Link to={`/obra/${featured.slug}`} className="hover:underline underline-offset-4">{featured.title}</Link></h3>
               <Link to={`/perfil/escultor/${artistSlug(featured.artist)}`} className="font-body text-[18px] font-light text-gray mb-1.5 hover:text-ink hover:underline underline-offset-4 transition-colors w-fit">{featured.artist}</Link>
               <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{featured.material}</div>
               <div className="flex items-center gap-1.5 mb-5 font-body text-[12px] font-light text-muted-line">
