@@ -90,7 +90,7 @@ export const Artistas = () => {
     <>
       <section className="px-6 md:px-12 py-[60px]" style={{ background: "#f5f5f5" }}>
         <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
-          <h2 className="font-body text-[12px] font-light text-muted-line uppercase tracking-[0.18em]">{t.label}</h2>
+          <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.label}</h2>
           <a href="#" className="link-arrow">{t.all}</a>
         </div>
 
