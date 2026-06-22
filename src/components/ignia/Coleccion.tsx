@@ -172,7 +172,7 @@ export const Coleccion = () => {
               className={`font-body text-[11px] tracking-[0.18em] uppercase px-4 py-2 border-[0.5px] transition-colors whitespace-nowrap ${
                 chipActive(c.key)
                   ? "border-ink bg-ink text-white"
-                  : "border-border bg-white text-ink"
+                  : "border-ink bg-white text-ink"
               }`}
             >
               {c.label}
