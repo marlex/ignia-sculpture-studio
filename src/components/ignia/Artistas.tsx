@@ -4,7 +4,7 @@ import cristina from "@/assets/artist-cristina-iglesias-real.jpg";
 import jaume from "@/assets/artist-jaume-plensa-real.jpg";
 import barcelo from "@/assets/artist-miquel-barcelo-real.jpg";
 import chillida from "@/assets/artist-eduardo-chillida-real.jpg";
-import ulmukAsset from "@/assets/ulmuk-vase-main.jpeg.asset.json";
+import ulmukAsset from "@/assets/ada-la-cadena-taller.png.asset.json";
 import mujerNino from "@/assets/mujer-y-nino-1.jpg";
 import origen from "@/assets/obra-origen-new.jpg.asset.json";
 import eco from "@/assets/obra-eco.jpg";
