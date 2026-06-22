@@ -5,10 +5,10 @@ import jaume from "@/assets/artist-jaume-plensa-real.jpg";
 import barcelo from "@/assets/artist-miquel-barcelo-real.jpg";
 import chillida from "@/assets/artist-eduardo-chillida-real.jpg";
 import ulmukAsset from "@/assets/ada-la-cadena-taller.png.asset.json";
-import mujerNino from "@/assets/mujer-y-nino-1.jpg";
-import origen from "@/assets/obra-origen-new.jpg.asset.json";
-import eco from "@/assets/obra-eco.jpg";
-import luz from "@/assets/obra-luz-interior.jpg";
+import helenaPortrait from "@/assets/artist-helena-vazquez.jpg";
+import luciaPortrait from "@/assets/artist-lucia-pardo.jpg";
+import pabloPortrait from "@/assets/artist-pablo-reyes.jpg";
+import tomasPortrait from "@/assets/artist-tomas-vigo.jpg";
 
 const ulmuk = ulmukAsset.url;
 const origenImg = origen.url;
