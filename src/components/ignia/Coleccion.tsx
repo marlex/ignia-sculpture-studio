@@ -193,7 +193,7 @@ export const Coleccion = () => {
         <select
           value={priceSort}
           onChange={(e) => setPriceSort(e.target.value as "asc" | "desc")}
-          className="border-[0.5px] border-ink bg-white font-body text-[14px] font-light pl-3.5 pr-8 py-2.5 outline-none focus:border-ink transition-colors"
+          className="border-[0.5px] appearance-none border-ink bg-white font-body text-[14px] font-light pl-3.5 pr-10 py-2.5 outline-none focus:border-ink transition-colors bg-no-repeat bg-[right_0.75rem_center] bg-[length:10px_10px] bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 10%22><path d=%22M1 3l4 4 4-4%22 stroke=%22%23111%22 stroke-width=%221.2%22 fill=%22none%22/></svg>')]"
         >
           <option value="asc">{t.priceAsc}</option>
           <option value="desc">{t.priceDesc}</option>
@@ -201,7 +201,7 @@ export const Coleccion = () => {
         <select
           value={material}
           onChange={(e) => setMaterial(e.target.value)}
-          className="border-[0.5px] border-ink bg-white font-body text-[14px] font-light pl-3.5 pr-8 py-2.5 outline-none focus:border-ink transition-colors"
+          className="border-[0.5px] appearance-none border-ink bg-white font-body text-[14px] font-light pl-3.5 pr-10 py-2.5 outline-none focus:border-ink transition-colors bg-no-repeat bg-[right_0.75rem_center] bg-[length:10px_10px] bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 10%22><path d=%22M1 3l4 4 4-4%22 stroke=%22%23111%22 stroke-width=%221.2%22 fill=%22none%22/></svg>')]"
         >
           <option value="">{t.materialAll}</option>
           {materialOptions.map(m => <option key={m} value={m}>{m}</option>)}
@@ -209,7 +209,7 @@ export const Coleccion = () => {
         <select
           value={technique}
           onChange={(e) => setTechnique(e.target.value)}
-          className="border-[0.5px] border-ink bg-white font-body text-[14px] font-light pl-3.5 pr-8 py-2.5 outline-none focus:border-ink transition-colors"
+          className="border-[0.5px] appearance-none border-ink bg-white font-body text-[14px] font-light pl-3.5 pr-10 py-2.5 outline-none focus:border-ink transition-colors bg-no-repeat bg-[right_0.75rem_center] bg-[length:10px_10px] bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 10%22><path d=%22M1 3l4 4 4-4%22 stroke=%22%23111%22 stroke-width=%221.2%22 fill=%22none%22/></svg>')]"
         >
           <option value="">{t.techniqueAll}</option>
           {techniqueOptions.map(tk => <option key={tk} value={tk}>{tk}</option>)}
