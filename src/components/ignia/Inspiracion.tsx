@@ -4,7 +4,7 @@ import cristina from "@/assets/artist-cristina-iglesias-real.jpg";
 import jaume from "@/assets/artist-jaume-plensa-real.jpg";
 import barcelo from "@/assets/artist-miquel-barcelo-real.jpg";
 import chillida from "@/assets/artist-eduardo-chillida-real.jpg";
-import { slugify } from "@/lib/artistSlug";
+import { artistSlug as slugify } from "@/lib/artistSlug";
 
 const INSPIRATION = {
   es: [
