@@ -148,7 +148,7 @@ const ObraDetalle = () => {
           <div>
             <div className="eyebrow mb-3"><Link to="/coleccion" className="hover:text-ink">{t.back}</Link></div>
             <h1 className="font-display font-bold text-[clamp(32px,4vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-3">{o.title}</h1>
-            <div className="font-body text-[15px] font-light text-gray mb-6">
+            <div className="font-body text-[16px] font-light text-gray mb-6">
               <Link to={`/perfil/escultor/${o.artist.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} className="underline-offset-4 hover:underline">{o.artist}</Link> · {o.material} · {o.year} · {o.edition}
             </div>
             <div className="font-display font-bold text-[26px] text-ink mb-8">{o.price}</div>
@@ -177,7 +177,7 @@ const ObraDetalle = () => {
             </div>
 
             <div className="flex gap-3">
-              <button onClick={() => window.dispatchEvent(new Event("ignia:open-invite"))} className="flex-1 bg-ink text-white font-body text-[15px] tracking-[0.16em] uppercase py-5 hover:bg-ink/90 transition-colors">{t.buy}</button>
+              <button onClick={() => window.dispatchEvent(new Event("ignia:open-invite"))} className="flex-1 bg-ink text-white font-body text-[16px] tracking-[0.16em] uppercase py-5 hover:bg-ink/90 transition-colors">{t.buy}</button>
               <button
                 onClick={() => setChatOpen(true)}
                 aria-label={t.talk}
@@ -199,7 +199,7 @@ const ObraDetalle = () => {
             <header className="flex items-center justify-between px-5 h-14 border-b border-border">
               <div className="flex items-center gap-2">
                 <MessageCircle className="w-4 h-4 text-ink" />
-                <span className="font-display font-bold text-[15px] text-ink">{t.talk}</span>
+                <span className="font-display font-bold text-[16px] text-ink">{t.talk}</span>
               </div>
               <button onClick={() => setChatOpen(false)} className="text-gray hover:text-ink font-body text-[20px] leading-none">×</button>
             </header>

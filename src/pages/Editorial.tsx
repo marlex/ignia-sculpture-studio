@@ -46,7 +46,7 @@ const EditorialPage = () => {
               </div>
               <div className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line mb-3">{p.seccion}</div>
               <h2 className="font-display font-bold text-[clamp(20px,2vw,26px)] tracking-[-0.02em] text-ink leading-tight mb-3">{p.titulo}</h2>
-              <p className="font-body text-[15px] font-light text-gray leading-relaxed mb-3">{p.extracto}</p>
+              <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-3">{p.extracto}</p>
               <div className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line">{t.by} {p.autor}</div>
             </article>
           ))}
