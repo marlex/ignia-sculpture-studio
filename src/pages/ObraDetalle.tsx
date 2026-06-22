@@ -152,7 +152,11 @@ const ObraDetalle = () => {
               <Link to={`/perfil/escultor/${o.artist.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} className="underline-offset-4 hover:underline">{o.artist}</Link> · {o.material} · {o.year} · {o.edition}
             </div>
             <div className="font-display font-bold text-[26px] text-ink mb-8">{o.price}</div>
-            <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-10">{o.description}</p>
+            <div className="font-body text-[16px] font-light text-gray leading-relaxed mb-10 space-y-4">
+              {o.description.split(/\n\n+/).map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
 
             <div className="border border-border p-6 mb-6">
               <div className="flex items-center gap-2 mb-3">
