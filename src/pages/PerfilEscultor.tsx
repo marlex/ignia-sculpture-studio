@@ -142,7 +142,7 @@ export default function PerfilEscultor() {
   const bio = BIOS[slug] ?? DEFAULT_BIO(slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()));
 
   const obras = WORKS
-    .filter((w) => artistSlug(w.artist) === slug || artistSlug(w.es.artist) === slug)
+    .filter((w) => artistSlug(w.es.artist) === slug || artistSlug(w.en.artist) === slug)
     .map((w) => ({
       slug: w.slug,
       img: w.image,
