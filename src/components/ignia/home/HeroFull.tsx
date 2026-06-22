@@ -35,7 +35,7 @@ export const HeroFull = () => {
 
         .hf-title-el {
           font-family: 'Cormorant Garamond', serif;
-          font-weight: 300;
+          font-weight: 500;
           color: #FFFFFF;
           font-size: clamp(40px, 6vw, 72px);
           line-height: 1.05;
