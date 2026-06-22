@@ -45,17 +45,18 @@ export const HeroFull = () => {
         .hf-body-el {
           font-family: Manrope, sans-serif;
           font-weight: 400;
-          color: rgba(255,255,255,0.9);
-          font-size: 16px;
-          line-height: 1.55;
-          max-width: 760px;
-          margin: 24px auto 0;
+          color: #FFFFFF;
+          font-size: 19px;
+          line-height: 1.6;
+          max-width: 820px;
+          margin: 28px auto 0;
         }
 
         @media (max-width: 768px) {
           .hf-title-el { font-size: 56px; }
-          .hf-body-el { font-size: 15px; max-width: 92%; }
+          .hf-body-el { font-size: 17px; max-width: 92%; }
         }
+
       `}</style>
 
       {/* Background image */}
