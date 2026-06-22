@@ -141,12 +141,6 @@ export const Coleccion = () => {
         <h2 className="font-body text-[13px] sm:text-[14px] font-light uppercase tracking-[0.18em] text-gray">
           {t.h}
         </h2>
-        <p className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink leading-none mt-1">
-          {totalCount.toLocaleString(lang === "es" ? "es-ES" : "en-US")}{" "}
-          <span className="font-body font-light text-gray text-[16px] sm:text-[18px] tracking-normal normal-case">
-            {t.worksLabel}
-          </span>
-        </p>
       </div>
 
       {/* MOBILE: full-width search */}
