@@ -134,39 +134,7 @@ export const Artistas = () => {
         </div>
       </section>
 
-      <SectionSeparator
-        title="La escultura merece un escenario a su altura."
-        subtitle="Tridimensional, global y pensado para la experiencia completa desde el taller hasta el espacio del coleccionista."
-      />
-
-      <section className="px-6 md:px-12 py-[80px] bg-ink text-white">
-        <div className="max-w-3xl mb-14">
-          <div className="font-body text-[12px] font-light text-white/50 uppercase tracking-[0.18em] mb-4">{t.inspirationKicker}</div>
-          <h2 className="font-display font-bold text-[clamp(32px,4vw,52px)] tracking-[-0.02em] leading-[1.05] text-white mb-5">{t.inspiration}</h2>
-          <p className="font-body text-[18px] font-light text-white/70 leading-relaxed">{t.inspirationLead}</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
-          {inspiration.map((a) => (
-            <article key={a.nombre} className="group grid grid-cols-1 md:grid-cols-[40%_60%] gap-5 items-start">
-              <Link to={`/perfil/escultor/${slugify(a.nombre)}`} aria-label={a.nombre} className="block aspect-square overflow-hidden bg-white/5">
-                <img src={a.foto} alt={a.nombre} loading="lazy" width={800} height={800} className="w-full h-full object-cover object-[center_25%] transition-transform duration-[700ms] group-hover:scale-[1.03]" />
-              </Link>
-              <div>
-                <Link to={`/perfil/escultor/${slugify(a.nombre)}`} className="block hover:opacity-80 transition-opacity">
-                  <h3 className="font-display font-bold text-[28px] text-white leading-tight mb-1.5">{a.nombre}</h3>
-                  <div className="font-body text-[13px] font-light text-white/60 uppercase tracking-[0.14em] mb-3">
-                    {a.esp} · {a.obras}
-                  </div>
-                  <span className="font-body text-[12px] font-light uppercase tracking-[0.18em] text-white inline-flex items-center gap-1.5 border-b border-white/40 pb-0.5">
-                    {t.view}
-                  </span>
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
     </>
+
   );
 };
