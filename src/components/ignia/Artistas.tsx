@@ -75,8 +75,15 @@ export const Artistas = () => {
   const { featured, secundarios } = IGNIA_ARTISTS[lang];
   const inspiration = INSPIRATION[lang];
   const t = lang === "es"
-    ? { label: "ESCULTORES EN IGNIA", all: "Ver todos →", view: "Ver artista →", inspiration: "Referentes" }
-    : { label: "SCULPTORS ON IGNIA", all: "View all →", view: "View artist →", inspiration: "Referentes" };
+    ? { label: "ESCULTORES EN IGNIA", all: "Ver todos →", view: "Ver artista →",
+        inspiration: "Referentes que nos inspiran",
+        inspirationKicker: "INSPIRACIÓN",
+        inspirationLead: "Maestros contemporáneos cuya obra marca el camino que IGNIA quiere recorrer: una escultura que dialoga con el espacio, la materia y la memoria." }
+    : { label: "SCULPTORS ON IGNIA", all: "View all →", view: "View artist →",
+        inspiration: "References that inspire us",
+        inspirationKicker: "INSPIRATION",
+        inspirationLead: "Contemporary masters whose work charts the path IGNIA wants to follow: sculpture in dialogue with space, matter and memory." };
+
 
   return (
     <>
@@ -126,18 +133,17 @@ export const Artistas = () => {
         </div>
       </section>
 
-      <section className="px-6 md:px-12 py-[60px] bg-ink text-white">
-        <div className="mb-10">
-          <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-white">{t.inspiration}</h2>
+      <section className="px-6 md:px-12 py-[80px] bg-ink text-white">
+        <div className="max-w-3xl mb-14">
+          <div className="font-body text-[12px] font-light text-white/50 uppercase tracking-[0.18em] mb-4">{t.inspirationKicker}</div>
+          <h2 className="font-display font-bold text-[clamp(32px,4vw,52px)] tracking-[-0.02em] leading-[1.05] text-white mb-5">{t.inspiration}</h2>
+          <p className="font-body text-[18px] font-light text-white/70 leading-relaxed">{t.inspirationLead}</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
           {inspiration.map((a) => (
-            <article
-              key={a.nombre}
-              className="grid grid-cols-[96px_1fr] md:grid-cols-[120px_1fr] gap-5 items-center py-6"
-            >
+            <article key={a.nombre} className="group grid grid-cols-1 md:grid-cols-[40%_60%] gap-5 items-start">
               <Link to={`/perfil/escultor/${slugify(a.nombre)}`} aria-label={a.nombre} className="block aspect-square overflow-hidden bg-white/5">
-                <img src={a.foto} alt={a.nombre} loading="lazy" width={240} height={240} className="w-full h-full object-cover object-[center_35%]" />
+                <img src={a.foto} alt={a.nombre} loading="lazy" width={800} height={800} className="w-full h-full object-cover object-[center_25%] transition-transform duration-[700ms] group-hover:scale-[1.03]" />
               </Link>
               <div>
                 <Link to={`/perfil/escultor/${slugify(a.nombre)}`} className="block hover:opacity-80 transition-opacity">
@@ -154,6 +160,7 @@ export const Artistas = () => {
           ))}
         </div>
       </section>
+
     </>
   );
 };
