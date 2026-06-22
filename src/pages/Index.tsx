@@ -10,9 +10,7 @@ import { Ticker } from "@/components/ignia/home/Ticker";
 import { Reviews } from "@/components/ignia/home/Reviews";
 import { Aprende } from "@/components/ignia/Aprende";
 
-import { FollowIgnia } from "@/components/ignia/home/FollowIgnia";
-
-import { SeisPrincipios } from "@/components/ignia/home/SeisPrincipios";
+import { SectionSeparator } from "@/components/ignia/home/SectionSeparator";
 import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { Splash } from "@/components/ignia/home/Splash";
 import { useFadeUp } from "@/hooks/useFadeUp";
