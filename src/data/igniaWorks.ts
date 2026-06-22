@@ -35,6 +35,14 @@ import mujerNino2 from "@/assets/mujer-y-nino-2.jpg";
 import mujerNino3 from "@/assets/mujer-y-nino-3.jpg";
 import triadaGalleryAsset from "@/assets/triada-olimpias-gallery.png.asset.json";
 const triadaGallery = triadaGalleryAsset.url;
+import ulmukMainAsset from "@/assets/ulmuk-vase-main.jpeg.asset.json";
+import ulmuk2Asset from "@/assets/ulmuk-vase-2.jpeg.asset.json";
+import ulmuk3Asset from "@/assets/ulmuk-vase-3.jpeg.asset.json";
+import ulmuk4Asset from "@/assets/ulmuk-vase-4.jpeg.asset.json";
+const ulmukMain = ulmukMainAsset.url;
+const ulmuk2 = ulmuk2Asset.url;
+const ulmuk3 = ulmuk3Asset.url;
+const ulmuk4 = ulmuk4Asset.url;
 
 export type WorkModelKey =
   | "hero-flight"
