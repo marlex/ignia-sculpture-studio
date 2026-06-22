@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
 import { GlbViewer } from "./GlbViewer";
 import { getCatalogueWorks, type LocalizedWork } from "@/data/igniaWorks";
+import { artistSlug } from "@/lib/artistSlug";
 import { Maximize2, X } from "lucide-react";
 
 const parsePrice = (price: string): number => {
