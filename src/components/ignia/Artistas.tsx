@@ -76,11 +76,11 @@ export const Artistas = () => {
   const { featured, secundarios } = IGNIA_ARTISTS[lang];
   const inspiration = INSPIRATION[lang];
   const t = lang === "es"
-    ? { label: "ESCULTORES EN IGNIA", all: "Ver todos →", view: "Ver artista →",
+    ? { label: "Escultores", all: "Ver todos →", view: "Ver artista →",
         inspiration: "Referentes que nos inspiran",
         inspirationKicker: "INSPIRACIÓN",
         inspirationLead: "Maestros contemporáneos cuya obra marca el camino que IGNIA quiere recorrer: una escultura que dialoga con el espacio, la materia y la memoria." }
-    : { label: "SCULPTORS ON IGNIA", all: "View all →", view: "View artist →",
+    : { label: "Sculptors", all: "View all →", view: "View artist →",
         inspiration: "References that inspire us",
         inspirationKicker: "INSPIRATION",
         inspirationLead: "Contemporary masters whose work charts the path IGNIA wants to follow: sculpture in dialogue with space, matter and memory." };
@@ -90,7 +90,7 @@ export const Artistas = () => {
     <>
       <section className="px-6 md:px-12 py-[60px]" style={{ background: "#f5f5f5" }}>
         <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
-          <h2 className="font-body text-[12px] font-light text-muted-line uppercase tracking-[0.18em]">{t.label}</h2>
+          <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.label}</h2>
           <a href="#" className="link-arrow">{t.all}</a>
         </div>
 
