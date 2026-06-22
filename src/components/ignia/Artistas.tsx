@@ -76,11 +76,11 @@ export const Artistas = () => {
   const { featured, secundarios } = IGNIA_ARTISTS[lang];
   const inspiration = INSPIRATION[lang];
   const t = lang === "es"
-    ? { label: "ESCULTORES EN IGNIA", all: "Ver todos →", view: "Ver artista →",
+    ? { label: "Escultores", all: "Ver todos →", view: "Ver artista →",
         inspiration: "Referentes que nos inspiran",
         inspirationKicker: "INSPIRACIÓN",
         inspirationLead: "Maestros contemporáneos cuya obra marca el camino que IGNIA quiere recorrer: una escultura que dialoga con el espacio, la materia y la memoria." }
-    : { label: "SCULPTORS ON IGNIA", all: "View all →", view: "View artist →",
+    : { label: "Sculptors", all: "View all →", view: "View artist →",
         inspiration: "References that inspire us",
         inspirationKicker: "INSPIRATION",
         inspirationLead: "Contemporary masters whose work charts the path IGNIA wants to follow: sculpture in dialogue with space, matter and memory." };
