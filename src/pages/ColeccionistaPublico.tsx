@@ -221,7 +221,7 @@ export default function ColeccionistaPublico() {
             <h2 className="font-body text-[12px] uppercase tracking-[0.18em] text-muted-line mb-4">{t.bio}</h2>
             <div className="space-y-4 mb-10">
               {c.bio.map((p, i) => (
-                <p key={i} className="font-body text-[15px] font-light text-gray leading-relaxed">{p}</p>
+                <p key={i} className="font-body text-[16px] font-light text-gray leading-relaxed">{p}</p>
               ))}
             </div>
 

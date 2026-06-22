@@ -37,7 +37,7 @@ export const Aprende = () => {
                 <div className="md:w-[38%] flex flex-col justify-center md:justify-end order-2 md:order-1">
                   <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-2">{p.tag}</div>
                   <h3 className="font-display font-bold text-[clamp(22px,2.6vw,32px)] tracking-[-0.02em] text-ink mb-2 leading-tight">{p.titulo}</h3>
-                  <p className="font-body text-[15px] font-light text-gray mb-3 leading-snug">{p.entradilla}</p>
+                  <p className="font-body text-[16px] font-light text-gray mb-3 leading-snug">{p.entradilla}</p>
                   <div className="font-body text-[16px] font-light text-gray">{p.tiempo}</div>
                 </div>
                 <div className="md:w-[62%] overflow-hidden bg-secondary aspect-[21/9] order-1 md:order-2">

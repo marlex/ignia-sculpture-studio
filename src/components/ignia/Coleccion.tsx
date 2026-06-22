@@ -300,7 +300,7 @@ export const Coleccion = () => {
               </Link>
               <div className="px-0 pt-2 pb-3 sm:pt-3 sm:pb-5">
                 <h3 className="font-display font-bold text-[28px] text-ink mb-0.5 sm:mb-1"><Link to={`/obra/${o.slug}`} className="hover:underline underline-offset-4">{o.title}</Link></h3>
-                <Link to={`/perfil/escultor/${artistSlug(o.artist)}`} className="block font-body text-[15px] sm:text-[16px] font-light text-gray mb-0.5 sm:mb-1.5 hover:text-ink hover:underline underline-offset-4 transition-colors w-fit">{o.artist}</Link>
+                <Link to={`/perfil/escultor/${artistSlug(o.artist)}`} className="block font-body text-[16px] sm:text-[16px] font-light text-gray mb-0.5 sm:mb-1.5 hover:text-ink hover:underline underline-offset-4 transition-colors w-fit">{o.artist}</Link>
                 <div className="font-body text-[11px] sm:text-[12px] font-light text-muted-line uppercase tracking-[0.14em] mb-1 sm:mb-2">{o.material}</div>
                 <div className="flex items-center gap-1.5 mb-1.5 sm:mb-3 font-body text-[11px] font-light text-muted-line normal-case tracking-normal">
                   <span aria-hidden className="text-ink">◆</span>
@@ -384,7 +384,7 @@ export const Coleccion = () => {
                 ].map(opt => (
                   <li key={opt.v}>
                     <label className="flex items-center justify-between py-3.5 cursor-pointer">
-                      <span className="font-body text-[15px] font-light text-ink">{opt.label}</span>
+                      <span className="font-body text-[16px] font-light text-ink">{opt.label}</span>
                       <input
                         type="radio"
                         name="price-sort"
@@ -402,7 +402,7 @@ export const Coleccion = () => {
               <ul className="divide-y divide-border">
                 <li>
                   <label className="flex items-center justify-between py-3.5 cursor-pointer">
-                    <span className="font-body text-[15px] font-light text-ink">{t.materialAll}</span>
+                    <span className="font-body text-[16px] font-light text-ink">{t.materialAll}</span>
                     <input
                       type="radio"
                       name="material"
@@ -415,7 +415,7 @@ export const Coleccion = () => {
                 {materialOptions.map(m => (
                   <li key={m}>
                     <label className="flex items-center justify-between py-3.5 cursor-pointer">
-                      <span className="font-body text-[15px] font-light text-ink">{m}</span>
+                      <span className="font-body text-[16px] font-light text-ink">{m}</span>
                       <input
                         type="radio"
                         name="material"
@@ -433,7 +433,7 @@ export const Coleccion = () => {
               <ul className="divide-y divide-border">
                 <li>
                   <label className="flex items-center justify-between py-3.5 cursor-pointer">
-                    <span className="font-body text-[15px] font-light text-ink">{t.techniqueAll}</span>
+                    <span className="font-body text-[16px] font-light text-ink">{t.techniqueAll}</span>
                     <input
                       type="radio"
                       name="technique"
@@ -446,7 +446,7 @@ export const Coleccion = () => {
                 {techniqueOptions.map(tk => (
                   <li key={tk}>
                     <label className="flex items-center justify-between py-3.5 cursor-pointer">
-                      <span className="font-body text-[15px] font-light text-ink">{tk}</span>
+                      <span className="font-body text-[16px] font-light text-ink">{tk}</span>
                       <input
                         type="radio"
                         name="technique"
