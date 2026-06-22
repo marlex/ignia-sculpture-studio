@@ -4,7 +4,7 @@ import cristina from "@/assets/artist-cristina-iglesias-real.jpg";
 import jaume from "@/assets/artist-jaume-plensa-real.jpg";
 import barcelo from "@/assets/artist-miquel-barcelo-real.jpg";
 import chillida from "@/assets/artist-eduardo-chillida-real.jpg";
-import ulmukAsset from "@/assets/ulmuk-vase-main.jpeg.asset.json";
+import ulmukAsset from "@/assets/ada-la-cadena-taller.png.asset.json";
 import mujerNino from "@/assets/mujer-y-nino-1.jpg";
 import origen from "@/assets/obra-origen-new.jpg.asset.json";
 import eco from "@/assets/obra-eco.jpg";
@@ -88,7 +88,7 @@ export const Artistas = () => {
 
         <article className="grid grid-cols-1 md:grid-cols-[65%_35%] gap-8 md:gap-14 items-center mb-16">
           <Link to={`/perfil/escultor/${slugify(featured.nombre)}`} aria-label={featured.nombre} className="block aspect-[16/9] overflow-hidden bg-secondary group">
-            <img src={featured.foto} alt={featured.nombre} loading="lazy" width={1600} height={900} className="w-full h-full object-cover object-center transition-transform duration-[700ms] group-hover:scale-[1.02]" />
+            <img src={featured.foto} alt={featured.nombre} loading="lazy" width={1600} height={900} className="w-full h-full object-cover object-center transition-transform duration-[700ms] group-hover:scale-[1.02] scale-x-[-1]" />
           </Link>
           <div>
             <Link to={`/perfil/escultor/${slugify(featured.nombre)}`} className="block group">
