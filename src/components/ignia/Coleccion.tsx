@@ -138,7 +138,7 @@ export const Coleccion = () => {
     <section className="bg-white px-4 sm:px-8 md:px-16 lg:px-24 py-6 sm:py-10 md:py-[60px]">
       {/* Title + dynamic count (mobile + desktop) */}
       <div className="mb-3 sm:mb-6">
-        <h2 className="font-body text-[13px] sm:text-[14px] font-light uppercase tracking-[0.18em] text-gray">
+        <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">
           {t.h}
         </h2>
       </div>
