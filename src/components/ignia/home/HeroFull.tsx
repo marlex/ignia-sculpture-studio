@@ -48,7 +48,7 @@ export const HeroFull = () => {
           color: #FFFFFF;
           font-size: 19px;
           line-height: 1.6;
-          max-width: 820px;
+          max-width: 1040px;
           margin: 28px auto 0;
         }
 
