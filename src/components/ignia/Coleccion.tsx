@@ -221,7 +221,7 @@ export const Coleccion = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-stretch">
             <Link
               to={`/obra/${featured.slug}`}
-              className="block relative md:col-span-2 aspect-[16/10] overflow-hidden bg-secondary"
+              className="block relative md:col-span-2 aspect-[4/5] md:aspect-[16/10] overflow-hidden bg-secondary"
             >
               <img
                 src={featured.heroImage || featured.image}
