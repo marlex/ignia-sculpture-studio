@@ -37,7 +37,7 @@ export const SectionSeparator = ({ title, subtitle, cta }: SectionSeparatorProps
         style={{
           fontFamily: "'Manrope', sans-serif",
           fontWeight: 400,
-          fontSize: 16,
+          fontSize: 19,
           lineHeight: 1.6,
           color: "rgba(255,255,255,0.6)",
           margin: 0,
