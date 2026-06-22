@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
+import { SectionSeparator } from "@/components/ignia/home/SectionSeparator";
 import cristina from "@/assets/artist-cristina-iglesias-real.jpg";
 import jaume from "@/assets/artist-jaume-plensa-real.jpg";
 import barcelo from "@/assets/artist-miquel-barcelo-real.jpg";
