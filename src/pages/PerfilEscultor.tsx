@@ -11,7 +11,7 @@ import jaume from "@/assets/artist-jaume-plensa-real.jpg";
 import susana from "@/assets/artist-susana-solano-real.jpg";
 import barcelo from "@/assets/artist-miquel-barcelo-real.jpg";
 import chillida from "@/assets/artist-eduardo-chillida-real.jpg";
-import adaRetratoAsset from "@/assets/ada-la-cadena-retrato.jpeg.asset.json";
+import adaRetratoAsset from "@/assets/ada-la-cadena-retrato-2.png.asset.json";
 import { useLang } from "@/i18n/LanguageContext";
 import { WORKS } from "@/data/igniaWorks";
 import { artistSlug } from "@/lib/artistSlug";
