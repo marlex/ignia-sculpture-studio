@@ -152,14 +152,14 @@ export const Coleccion = () => {
             placeholder={t.search}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full border-[0.5px] border-border bg-white font-body text-[14px] font-light pl-9 pr-3 py-2.5 outline-none focus:border-ink transition-colors"
+            className="w-full border-[0.5px] border-ink bg-white font-body text-[14px] font-light pl-9 pr-3 py-2.5 outline-none focus:border-ink transition-colors"
           />
         </div>
       </div>
 
-      {/* MOBILE: scrollable filter chips */}
-      <div className="sm:hidden mb-5 -mx-4 px-4 overflow-x-auto scrollbar-none" style={{ scrollbarWidth: "none" }}>
-        <div className="flex gap-2 w-max">
+      {/* MOBILE: filter chips, three across full width */}
+      <div className="sm:hidden mb-5">
+        <div className="grid grid-cols-3 gap-2">
           {([
             { key: "price" as const, label: t.chipPrice },
             { key: "material" as const, label: t.chipMaterial },
@@ -169,10 +169,10 @@ export const Coleccion = () => {
               key={c.key}
               type="button"
               onClick={() => setActiveFilter(c.key)}
-              className={`font-body text-[11px] tracking-[0.18em] uppercase px-4 py-2 border-[0.5px] transition-colors whitespace-nowrap ${
+              className={`font-body text-[11px] tracking-[0.18em] uppercase py-2 border-[0.5px] border-ink transition-colors text-center ${
                 chipActive(c.key)
-                  ? "border-ink bg-ink text-white"
-                  : "border-ink bg-white text-ink"
+                  ? "bg-ink text-white"
+                  : "bg-white text-ink"
               }`}
             >
               {c.label}
