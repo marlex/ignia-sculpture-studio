@@ -237,7 +237,31 @@ export const Coleccion = () => {
                 <span aria-hidden className="text-ink">◆</span>
                 <span>{t.auth} <span className="font-mono text-ink/70">{featured.authenticity}</span></span>
               </div>
-              <div className="flex items-center justify-between gap-3 flex-wrap">
+              {/* Mobile: price + 3D on a row, Buy full-width below */}
+              <div className="flex sm:hidden items-center justify-between mb-3">
+                <span className="font-body text-[16px] font-normal text-ink">{featured.price}</span>
+                {featured.glbUrl && (
+                  <button
+                    type="button"
+                    onClick={() => setOpenFeatured3d(true)}
+                    aria-label={t.view3d}
+                    className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase text-ink px-4 py-2.5 hover:opacity-90 transition-opacity"
+                    style={{ backgroundColor: "#CCFF00" }}
+                  >
+                    <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
+                    3D
+                  </button>
+                )}
+              </div>
+              <Link
+                to={`/obra/${featured.slug}?buy=1`}
+                className="sm:hidden font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-5 py-3 hover:bg-ink hover:text-white transition-colors block w-full text-center"
+              >
+                {t.viewObra}
+              </Link>
+
+              {/* Desktop: unchanged */}
+              <div className="hidden sm:flex items-center justify-between gap-3 flex-wrap">
                 <span className="font-body text-[16px] font-normal text-ink">{featured.price}</span>
                 <div className="flex items-center gap-2">
                   {featured.glbUrl && (
