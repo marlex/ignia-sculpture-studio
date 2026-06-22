@@ -193,7 +193,7 @@ export const Coleccion = () => {
         <select
           value={priceSort}
           onChange={(e) => setPriceSort(e.target.value as "asc" | "desc")}
-          className="border-[0.5px] border-ink bg-white font-body text-[14px] font-light px-3.5 py-2.5 outline-none focus:border-ink transition-colors"
+          className="border-[0.5px] border-ink bg-white font-body text-[14px] font-light pl-3.5 pr-8 py-2.5 outline-none focus:border-ink transition-colors"
         >
           <option value="asc">{t.priceAsc}</option>
           <option value="desc">{t.priceDesc}</option>
@@ -201,7 +201,7 @@ export const Coleccion = () => {
         <select
           value={material}
           onChange={(e) => setMaterial(e.target.value)}
-          className="border-[0.5px] border-ink bg-white font-body text-[14px] font-light px-3.5 py-2.5 outline-none focus:border-ink transition-colors"
+          className="border-[0.5px] border-ink bg-white font-body text-[14px] font-light pl-3.5 pr-8 py-2.5 outline-none focus:border-ink transition-colors"
         >
           <option value="">{t.materialAll}</option>
           {materialOptions.map(m => <option key={m} value={m}>{m}</option>)}
@@ -209,7 +209,7 @@ export const Coleccion = () => {
         <select
           value={technique}
           onChange={(e) => setTechnique(e.target.value)}
-          className="border-[0.5px] border-ink bg-white font-body text-[14px] font-light px-3.5 py-2.5 outline-none focus:border-ink transition-colors"
+          className="border-[0.5px] border-ink bg-white font-body text-[14px] font-light pl-3.5 pr-8 py-2.5 outline-none focus:border-ink transition-colors"
         >
           <option value="">{t.techniqueAll}</option>
           {techniqueOptions.map(tk => <option key={tk} value={tk}>{tk}</option>)}
