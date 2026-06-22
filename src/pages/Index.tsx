@@ -65,7 +65,8 @@ const Index = () => {
       <Aprende />
       <SectionSeparator
         title="Solo escultura. Siempre."
-        subtitle="Un espacio construido enteramente alrededor de la escultura, el espacio que necesita."
+        subtitle="Un espacio construido enteramente para la escultura, únete a Ignia"
+        cta="Join Ignia"
       />
       <Footer />
       <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} />
