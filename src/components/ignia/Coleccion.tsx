@@ -85,8 +85,9 @@ export const Coleccion = () => {
     });
   }, [sorted, query, material, technique]);
 
-  const featured = filtered[0];
-  const gridWorks = filtered.slice(1);
+  const FEATURED_SLUG = "ulmuk-vase";
+  const featured = filtered.find(w => w.slug === FEATURED_SLUG) ?? filtered[0];
+  const gridWorks = filtered.filter(w => w.slug !== featured?.slug);
 
   const open = open3d !== null ? gridWorks[open3d] : null;
 
