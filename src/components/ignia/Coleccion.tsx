@@ -159,15 +159,6 @@ export const Coleccion = () => {
                 alt={featured.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
               />
-              {featured.glbUrl && (
-                <button
-                  type="button"
-                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setOpenFeatured3d(true); }}
-                  className="absolute top-4 right-4 z-10 bg-white/90 border border-border font-body text-[12px] uppercase tracking-[0.16em] px-4 py-2 hover:bg-white transition-colors"
-                >
-                  {t.view3d}
-                </button>
-              )}
             </Link>
             <div className="flex flex-col justify-end md:col-span-1">
               <h3 className="font-display font-bold text-[clamp(36px,4vw,52px)] leading-[1.05] text-ink mb-2">{featured.title}</h3>
@@ -177,23 +168,28 @@ export const Coleccion = () => {
                 <span aria-hidden className="text-ink">◆</span>
                 <span>{t.auth} <span className="font-mono text-ink/70">{featured.authenticity}</span></span>
               </div>
-              <div className="font-body text-[22px] font-normal text-ink mb-5">{featured.price}</div>
-              <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3 md:gap-4">
-                <Link
-                  to={`/obra/${featured.slug}?buy=1`}
-                  className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-7 py-3.5 hover:bg-ink hover:text-white transition-colors block w-full md:w-auto text-center"
-                >
-                  {t.viewObra}
-                </Link>
-                {featured.glbUrl && (
-                  <button
-                    type="button"
-                    onClick={() => setOpenFeatured3d(true)}
-                    className="link-arrow bg-transparent border-none p-0 cursor-pointer text-center md:text-left"
+              <div className="flex items-center justify-between gap-3 flex-wrap">
+                <span className="font-body text-[16px] font-normal text-ink">{featured.price}</span>
+                <div className="flex items-center gap-2">
+                  {featured.glbUrl && (
+                    <button
+                      type="button"
+                      onClick={() => setOpenFeatured3d(true)}
+                      aria-label={t.view3d}
+                      className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase text-ink px-4 py-2.5 hover:opacity-90 transition-opacity flex-shrink-0"
+                      style={{ backgroundColor: "#CCFF00" }}
+                    >
+                      <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
+                      3D
+                    </button>
+                  )}
+                  <Link
+                    to={`/obra/${featured.slug}?buy=1`}
+                    className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-5 py-2.5 hover:bg-ink hover:text-white transition-colors text-center"
                   >
-                    {t.view3d} →
-                  </button>
-                )}
+                    {t.viewObra}
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
