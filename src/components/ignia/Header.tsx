@@ -139,7 +139,7 @@ export const Header = () => {
           </button>
           <nav className="header-nav-links hidden md:flex items-center gap-9">
             {leftItems.map(item => (
-              <Link key={item.label} to={item.to} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+              <Link key={item.label} to={item.to} className="font-body text-[16px] font-light text-gray hover:text-ink transition-colors">
                 {item.label}
               </Link>
             ))}
@@ -155,20 +155,20 @@ export const Header = () => {
 
         {/* RIGHT: desktop cluster + mobile invite icon */}
         <div className="header-right-cluster col-start-3 flex items-center justify-end gap-4">
-          <Link to={galleryItem.to} className="header-gallery-link font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+          <Link to={galleryItem.to} className="header-gallery-link font-body text-[16px] font-light text-gray hover:text-ink transition-colors">
             {galleryItem.label}
           </Link>
           {SHOW_PUBLIC_AUTH && (user ? (
             <div className="header-user-links hidden md:flex items-center gap-3">
-              <Link to="/dashboard" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+              <Link to="/dashboard" className="font-body text-[16px] font-light text-gray hover:text-ink transition-colors">
                 {t.dashboard}
               </Link>
-              <button onClick={() => { logout(); navigate("/"); }} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+              <button onClick={() => { logout(); navigate("/"); }} className="font-body text-[16px] font-light text-gray hover:text-ink transition-colors">
                 {t.signout}
               </button>
             </div>
           ) : (
-            <Link to={`/login?redirect=${encodeURIComponent(location.pathname)}`} className="header-signin-link font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+            <Link to={`/login?redirect=${encodeURIComponent(location.pathname)}`} className="header-signin-link font-body text-[16px] font-light text-gray hover:text-ink transition-colors">
               {t.signin}
             </Link>
           ))}
