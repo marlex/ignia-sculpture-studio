@@ -56,12 +56,12 @@ const Index = () => {
       <div ref={fadeReviews}>
         <Reviews />
       </div>
-      <Colectores />
-      <Inspiracion />
       <SectionSeparator
         title="Cada obra, certificada para siempre."
         subtitle="Un certificado que garantiza la autenticidad de cada obra, para siempre."
       />
+      <Colectores />
+      <Inspiracion />
       <Aprende />
       <SectionSeparator
         title="Solo escultura. Siempre."
