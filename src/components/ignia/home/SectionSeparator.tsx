@@ -8,13 +8,14 @@ export const SectionSeparator = ({ title, subtitle }: SectionSeparatorProps) => 
     <section
       style={{
         background: "#0a0a0a",
-        padding: "100px 40px",
+        padding: "180px 40px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        gap: 24,
+        gap: 32,
+        minHeight: "60vh",
       }}
     >
       <h2
