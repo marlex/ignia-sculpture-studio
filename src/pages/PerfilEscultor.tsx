@@ -81,8 +81,8 @@ const BIOS: Record<string, Bio> = {
   },
   "ada-la-cadena": {
     nombre: "Ada La Cadena", retrato: quietud,
-    bioEs: "Lima, Perú. Cerámica esmaltada contemporánea. Su serie Ulmuk recupera memorias andinas y las traduce en vasijas escultóricas de gesto limpio.",
-    bioEn: "Lima, Peru. Contemporary glazed ceramic. Her Ulmuk series recovers Andean memory and translates it into sculptural vessels with a clean gesture.",
+    bioEs: "El Arte de lo Intangible\n\nAda La Cadena (España) es una artista multidisciplinaria cuya práctica se mueve entre la pintura y la escultura cerámica con una misma obsesión: hacer visible lo que no tiene forma. Sus obras nacen de un proceso subconsciente e intuitivo, sin bocetos previos, sin certezas, en el que la materia revela lo que la mente consciente no se atreve a nombrar.\n\nEn su cerámica, esa misma búsqueda se encarna en la arcilla. Cuerpos que son objetos, objetos que son rostros, superficies que son piel. La ornamentación no es decoración, es lenguaje. Los motivos florales que recorren sus piezas no embellecen: narran, ocultan, revelan.\n\nSu trabajo ha sido exhibido en galerías de prestigio y forma parte de colecciones privadas en varios países. Cada pieza es única e irrepetible, como lo es la emoción que la origina.",
+    bioEn: "The Art of the Intangible\n\nAda La Cadena (Spain) is a multidisciplinary artist whose practice moves between painting and ceramic sculpture with a single obsession: to make visible what has no form. Her works are born from a subconscious, intuitive process — without prior sketches, without certainties — in which matter reveals what the conscious mind does not dare to name.\n\nIn her ceramics, that same search is embodied in clay. Bodies that are objects, objects that are faces, surfaces that are skin. Ornamentation is not decoration, it is language. The floral motifs that run across her pieces do not embellish: they narrate, conceal, reveal.\n\nHer work has been exhibited in prestigious galleries and is part of private collections in several countries. Each piece is unique and unrepeatable, as is the emotion that gives rise to it.",
     espEs: "Cerámica contemporánea", espEn: "Contemporary ceramic",
   },
   "lucia-pardo": {
@@ -185,7 +185,9 @@ export default function PerfilEscultor() {
             <div className="eyebrow mb-3">{t.eyebrow}</div>
             <h1 className="font-display font-bold text-[clamp(36px,5vw,64px)] tracking-[-0.02em] text-ink mb-2 leading-[1.05]">{bio.nombre}</h1>
             <div className="font-body text-[14px] uppercase tracking-[0.14em] text-muted-line mb-5">{esp}</div>
-            <p className="font-body text-[16px] font-light text-gray max-w-[640px] mb-10">{bioText}</p>
+            <div className="font-body text-[16px] font-light text-gray max-w-[640px] mb-10 space-y-4">
+              {bioText.split(/\n\n+/).map((p, i) => <p key={i}>{p}</p>)}
+            </div>
             <div className="grid grid-cols-3 gap-6">
               {t.stats.map(([l, v]) => <Stat key={l} label={l} value={v} />)}
             </div>
