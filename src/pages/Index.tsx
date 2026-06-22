@@ -11,6 +11,7 @@ import { Reviews } from "@/components/ignia/home/Reviews";
 import { Aprende } from "@/components/ignia/Aprende";
 
 import { SectionSeparator } from "@/components/ignia/home/SectionSeparator";
+import { Inspiracion } from "@/components/ignia/Inspiracion";
 import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { Splash } from "@/components/ignia/home/Splash";
 import { useFadeUp } from "@/hooks/useFadeUp";
@@ -52,10 +53,6 @@ const Index = () => {
       <div ref={fadeArt}>
         <Artistas />
       </div>
-      <SectionSeparator
-        title="Cada obra, certificada para siempre."
-        subtitle="Un certificado que garantiza la autenticidad de cada obra, para siempre."
-      />
       <div ref={fadeReviews}>
         <Reviews />
       </div>
@@ -64,6 +61,11 @@ const Index = () => {
         subtitle="Comisiones transparentes, criterios abiertos y datos reales para escultores y coleccionistas."
       />
       <Colectores />
+      <Inspiracion />
+      <SectionSeparator
+        title="Cada obra, certificada para siempre."
+        subtitle="Un certificado que garantiza la autenticidad de cada obra, para siempre."
+      />
       <Aprende />
       <Footer />
       <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} />
