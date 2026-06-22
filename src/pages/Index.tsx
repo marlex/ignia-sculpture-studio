@@ -45,16 +45,26 @@ const Index = () => {
           <Coleccion />
         </div>
       </div>
-      <SeisPrincipios />
+      <SectionSeparator
+        title="Solo escultura. Siempre."
+        subtitle="Un espacio construido enteramente alrededor de la escultura, el espacio que necesita."
+      />
       <div ref={fadeArt}>
         <Artistas />
       </div>
+      <SectionSeparator
+        title="Cada obra, certificada para siempre."
+        subtitle="Un certificado que garantiza la autenticidad de cada obra, para siempre."
+      />
       <div ref={fadeReviews}>
         <Reviews />
       </div>
+      <SectionSeparator
+        title="El conocimiento que necesitas para decidir bien."
+        subtitle="Comisiones transparentes, criterios abiertos y datos reales para escultores y coleccionistas."
+      />
       <Colectores />
       <Aprende />
-      <FollowIgnia />
       <Footer />
       <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} />
     </main>
