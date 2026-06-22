@@ -108,7 +108,7 @@ export const Footer = () => {
               {SHOW_PUBLIC_AUTH && (
                 <div className="flex flex-col gap-2.5 mt-4">
                   {c.links.map(l => (
-                    <Link key={l.label} to={l.to} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">{l.label}</Link>
+                    <Link key={l.label} to={l.to} className="font-body text-[16px] font-light text-gray hover:text-ink transition-colors">{l.label}</Link>
                   ))}
                 </div>
               )}
@@ -131,7 +131,7 @@ export const Footer = () => {
               <CollapsibleContent>
                 <div className="flex flex-col gap-2.5 mt-4">
                   {c.links.map(l => (
-                    <Link key={l.label} to={l.to} className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">{l.label}</Link>
+                    <Link key={l.label} to={l.to} className="font-body text-[16px] font-light text-gray hover:text-ink transition-colors">{l.label}</Link>
                   ))}
                 </div>
               </CollapsibleContent>
@@ -155,13 +155,13 @@ export const Footer = () => {
         <div className="mt-5 flex justify-between flex-wrap gap-3 items-center">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <span className="font-body text-[14px] font-light text-gray">© 2026 Ignia Gallery</span>
-            <Link to="/legal/terminos" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+            <Link to="/legal/terminos" className="font-body text-[16px] font-light text-gray hover:text-ink transition-colors">
               {lang === "es" ? "Términos y Condiciones" : "Terms & Conditions"}
             </Link>
-            <Link to="/legal/privacidad" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+            <Link to="/legal/privacidad" className="font-body text-[16px] font-light text-gray hover:text-ink transition-colors">
               {lang === "es" ? "Política de Privacidad" : "Privacy Policy"}
             </Link>
-            <Link to="/legal/envios-y-devoluciones" className="font-body text-[14px] font-light text-gray hover:text-ink transition-colors">
+            <Link to="/legal/envios-y-devoluciones" className="font-body text-[16px] font-light text-gray hover:text-ink transition-colors">
               {lang === "es" ? "Envíos y Devoluciones" : "Shipping & Returns"}
             </Link>
           </div>
