@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { Logo } from "@/components/ignia/Logo";
+import { Header } from "@/components/ignia/Header";
 import caida from "@/assets/perfil-escultura-caida.jpg";
 import eco from "@/assets/perfil-escultura-eco.jpg";
 import umbral from "@/assets/perfil-escultura-umbral.jpg";
@@ -171,15 +171,8 @@ export default function PerfilEscultor() {
   const esp = lang === "es" ? bio.espEs : bio.espEn;
 
   return (
-    <main className="min-h-screen bg-white">
-      <header className="sticky top-0 z-50 h-14 bg-white border-b border-border flex items-center justify-between px-6 md:px-12">
-        <Link to="/" aria-label="Ignia Gallery"><Logo /></Link>
-        <div className="flex items-center gap-4">
-          <span className="font-body text-[13px] uppercase tracking-[0.14em] text-muted-line">{bio.nombre}</span>
-          <button className="btn-primary !py-2 !px-5">{t.publish}</button>
-          <Link to="/coleccion" className="font-body text-[14px] font-light text-gray hover:text-ink">{t.exit}</Link>
-        </div>
-      </header>
+    <main className="min-h-screen bg-white pt-14">
+      <Header />
 
       <section className="px-6 md:px-12 py-16 max-w-[1280px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 items-start mb-12">
