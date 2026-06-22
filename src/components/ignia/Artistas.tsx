@@ -11,7 +11,7 @@ import pabloPortrait from "@/assets/artist-pablo-reyes.jpg";
 import tomasPortrait from "@/assets/artist-tomas-vigo.jpg";
 
 const ulmuk = ulmukAsset.url;
-const origenImg = origen.url;
+
 
 const slugify = (s: string) =>
   s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-");
@@ -29,10 +29,10 @@ const IGNIA_ARTISTS = {
       tiempo: "12 min de lectura",
     },
     secundarios: [
-      { foto: mujerNino, nombre: "Helena Vázquez", esp: "Bronce, figura y materia", extracto: "Estudio de la figura humana en bronce patinado, con piezas que combinan presencia y silencio." },
-      { foto: origenImg, nombre: "Lucía Pardo", esp: "Cerámica esmaltada y origen", extracto: "Formas primarias en cerámica esmaltada que evocan el gesto fundacional del barro." },
-      { foto: eco, nombre: "Pablo Reyes", esp: "Bronce y figura esbelta", extracto: "Bronces de figura alargada que exploran la verticalidad y el eco del cuerpo en el espacio." },
-      { foto: luz, nombre: "Tomás Vigo", esp: "Vidrio soplado y luz", extracto: "Piezas de vidrio soplado donde la luz atraviesa la materia y construye volumen." },
+      { foto: helenaPortrait, nombre: "Helena Vázquez", esp: "Bronce, figura y materia", extracto: "Estudio de la figura humana en bronce patinado, con piezas que combinan presencia y silencio." },
+      { foto: luciaPortrait, nombre: "Lucía Pardo", esp: "Cerámica esmaltada y origen", extracto: "Formas primarias en cerámica esmaltada que evocan el gesto fundacional del barro." },
+      { foto: pabloPortrait, nombre: "Pablo Reyes", esp: "Bronce y figura esbelta", extracto: "Bronces de figura alargada que exploran la verticalidad y el eco del cuerpo en el espacio." },
+      { foto: tomasPortrait, nombre: "Tomás Vigo", esp: "Vidrio soplado y luz", extracto: "Piezas de vidrio soplado donde la luz atraviesa la materia y construye volumen." },
     ],
   },
   en: {
@@ -47,10 +47,10 @@ const IGNIA_ARTISTS = {
       tiempo: "12 min read",
     },
     secundarios: [
-      { foto: mujerNino, nombre: "Helena Vázquez", esp: "Bronze, figure and matter", extracto: "A study of the human figure in patinated bronze, with pieces that combine presence and silence." },
-      { foto: origenImg, nombre: "Lucía Pardo", esp: "Glazed ceramic and origin", extracto: "Primary forms in glazed ceramic that evoke the founding gesture of clay." },
-      { foto: eco, nombre: "Pablo Reyes", esp: "Bronze and slender figure", extracto: "Elongated bronze figures that explore verticality and the echo of the body in space." },
-      { foto: luz, nombre: "Tomás Vigo", esp: "Blown glass and light", extracto: "Blown-glass pieces where light passes through matter and builds volume." },
+      { foto: helenaPortrait, nombre: "Helena Vázquez", esp: "Bronze, figure and matter", extracto: "A study of the human figure in patinated bronze, with pieces that combine presence and silence." },
+      { foto: luciaPortrait, nombre: "Lucía Pardo", esp: "Glazed ceramic and origin", extracto: "Primary forms in glazed ceramic that evoke the founding gesture of clay." },
+      { foto: pabloPortrait, nombre: "Pablo Reyes", esp: "Bronze and slender figure", extracto: "Elongated bronze figures that explore verticality and the echo of the body in space." },
+      { foto: tomasPortrait, nombre: "Tomás Vigo", esp: "Blown glass and light", extracto: "Blown-glass pieces where light passes through matter and builds volume." },
     ],
   },
 } as const;
