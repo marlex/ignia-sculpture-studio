@@ -75,8 +75,8 @@ export const Artistas = () => {
   const { featured, secundarios } = IGNIA_ARTISTS[lang];
   const inspiration = INSPIRATION[lang];
   const t = lang === "es"
-    ? { label: "ESCULTORES EN IGNIA", all: "Ver todos →", view: "Ver artista →", inspiration: "INSPIRACIÓN" }
-    : { label: "SCULPTORS ON IGNIA", all: "View all →", view: "View artist →", inspiration: "INSPIRATION" };
+    ? { label: "ESCULTORES EN IGNIA", all: "Ver todos →", view: "Ver artista →", inspiration: "Referentes" }
+    : { label: "SCULPTORS ON IGNIA", all: "View all →", view: "View artist →", inspiration: "Referentes" };
 
   return (
     <>
