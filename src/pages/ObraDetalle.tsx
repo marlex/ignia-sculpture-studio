@@ -7,6 +7,8 @@ import { GlbViewer } from "@/components/ignia/GlbViewer";
 import { useLang } from "@/i18n/LanguageContext";
 import { getWorkBySlug } from "@/data/igniaWorks";
 import { ChevronLeft, ChevronRight, MessageCircle, Link2, Mail, ChevronDown } from "lucide-react";
+import { BIOS } from "@/pages/PerfilEscultor";
+import { artistSlug } from "@/lib/artistSlug";
 
 const T = {
   es: {
