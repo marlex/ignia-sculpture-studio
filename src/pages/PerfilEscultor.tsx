@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import caida from "@/assets/perfil-escultura-caida.jpg";
