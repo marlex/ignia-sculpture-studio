@@ -52,6 +52,7 @@ const ObraDetalle = () => {
   const [specsOpen, setSpecsOpen] = useState(false);
   const [scaleOpen, setScaleOpen] = useState(false);
   const [shipOpen, setShipOpen] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
   const [priceInfoOpen, setPriceInfoOpen] = useState(false);
 
   useEffect(() => {
@@ -368,23 +369,40 @@ const ObraDetalle = () => {
             })()}
 
 
-            <div className="border border-border p-6 mb-6">
-              <div className="flex items-center gap-2 mb-3">
-                <span aria-hidden className="text-ink">◆</span>
-                <h2 className="font-display font-bold text-[18px] text-ink">{t.auth}</h2>
+            <div className="border border-border mb-6">
+              <button
+                type="button"
+                onClick={() => setAuthOpen(v => !v)}
+                aria-expanded={authOpen}
+                className="w-full flex items-center justify-between px-6 py-4 text-left"
+              >
+                <span className="font-body text-[13px] text-muted-line uppercase tracking-[0.12em]">{t.auth}</span>
+                <ChevronDown
+                  size={16}
+                  className="text-gray transition-transform duration-200"
+                  style={{ transform: authOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+                />
+              </button>
+              <div
+                className="overflow-hidden transition-[max-height] duration-200 ease-out"
+                style={{ maxHeight: authOpen ? 600 : 0 }}
+              >
+                <div className="px-6 pb-5">
+                  <p className="font-body text-[14px] font-light text-gray leading-relaxed mb-4">{t.authP}</p>
+                  <dl className="grid grid-cols-2 gap-y-2.5 gap-x-4 font-body text-[13px]">
+                    <dt className="text-muted-line uppercase tracking-[0.12em]">{t.tokenId}</dt>
+                    <dd className="text-ink font-mono">{o.authenticity}</dd>
+                    <dt className="text-muted-line uppercase tracking-[0.12em]">{t.chain}</dt>
+                    <dd className="text-ink">Polygon</dd>
+                    <dt className="text-muted-line uppercase tracking-[0.12em]">{t.signed}</dt>
+                    <dd className="text-ink">{o.artist}</dd>
+                    <dt className="text-muted-line uppercase tracking-[0.12em]">{t.edition}</dt>
+                    <dd className="text-ink">{o.edition}</dd>
+                  </dl>
+                </div>
               </div>
-              <p className="font-body text-[14px] font-light text-gray leading-relaxed mb-4">{t.authP}</p>
-              <dl className="grid grid-cols-2 gap-y-2.5 gap-x-4 font-body text-[13px]">
-                <dt className="text-muted-line uppercase tracking-[0.12em]">{t.tokenId}</dt>
-                <dd className="text-ink font-mono">{o.authenticity}</dd>
-                <dt className="text-muted-line uppercase tracking-[0.12em]">{t.chain}</dt>
-                <dd className="text-ink">Polygon</dd>
-                <dt className="text-muted-line uppercase tracking-[0.12em]">{t.signed}</dt>
-                <dd className="text-ink">{o.artist}</dd>
-                <dt className="text-muted-line uppercase tracking-[0.12em]">{t.edition}</dt>
-                <dd className="text-ink">{o.edition}</dd>
-              </dl>
             </div>
+
 
             {(() => {
               const isEs = lang === "es";
