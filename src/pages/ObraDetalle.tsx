@@ -117,7 +117,7 @@ const ObraDetalle = () => {
 
             <div className="relative w-full aspect-square bg-secondary overflow-hidden">
               {mode === "3d" && has3d ? (
-                <GlbViewer url={o.glbUrl!} />
+                <Suspense fallback={<div className="absolute inset-0 bg-secondary" />}><GlbViewer url={o.glbUrl!} /></Suspense>
               ) : (
                 <>
                   {/* Crossfade stack */}
