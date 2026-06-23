@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
-import { GlbViewer } from "./GlbViewer";
+const GlbViewer = lazy(() => import("./GlbViewer").then(m => ({ default: m.GlbViewer })));
 import { getCatalogueWorks, type LocalizedWork } from "@/data/igniaWorks";
 import { artistSlug } from "@/lib/artistSlug";
 import { Maximize2, X, Search } from "lucide-react";
@@ -506,7 +506,7 @@ export const Coleccion = () => {
           </header>
           <div className="flex-1 flex items-center justify-center p-4 md:p-8">
             <div className="relative w-full max-w-[min(90vh,1100px)] aspect-square bg-secondary overflow-hidden">
-              <GlbViewer url={open.glbUrl} onClose={() => setOpen3d(null)} />
+              <Suspense fallback={<div className="absolute inset-0 bg-secondary" />}><GlbViewer url={open.glbUrl} onClose={() => setOpen3d(null)} /></Suspense>
               <div className="absolute top-4 left-1/2 -translate-x-1/2 text-ink/55 font-body text-[11px] uppercase tracking-[0.18em] pointer-events-none">
                 {t.hint}
               </div>
@@ -528,7 +528,7 @@ export const Coleccion = () => {
           </header>
           <div className="flex-1 flex items-center justify-center p-4 md:p-8">
             <div className="relative w-full max-w-[min(90vh,1100px)] aspect-square bg-secondary overflow-hidden">
-              <GlbViewer url={featured.glbUrl} onClose={() => setOpenFeatured3d(false)} />
+              <Suspense fallback={<div className="absolute inset-0 bg-secondary" />}><GlbViewer url={featured.glbUrl} onClose={() => setOpenFeatured3d(false)} /></Suspense>
               <div className="absolute top-4 left-1/2 -translate-x-1/2 text-ink/55 font-body text-[11px] uppercase tracking-[0.18em] pointer-events-none">
                 {t.hint}
               </div>

@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { InviteModal } from "@/components/ignia/home/InviteModal";
-import { GlbViewer } from "@/components/ignia/GlbViewer";
+const GlbViewer = lazy(() => import("@/components/ignia/GlbViewer").then(m => ({ default: m.GlbViewer })));
 import { useLang } from "@/i18n/LanguageContext";
 import { getWorkBySlug, WORKS } from "@/data/igniaWorks";
 import { ChevronLeft, ChevronRight, MessageCircle, Link2, Mail, ChevronDown, Info } from "lucide-react";
@@ -117,7 +117,7 @@ const ObraDetalle = () => {
 
             <div className="relative w-full aspect-square bg-secondary overflow-hidden">
               {mode === "3d" && has3d ? (
-                <GlbViewer url={o.glbUrl!} />
+                <Suspense fallback={<div className="absolute inset-0 bg-secondary" />}><GlbViewer url={o.glbUrl!} /></Suspense>
               ) : (
                 <>
                   {/* Crossfade stack */}
@@ -126,6 +126,9 @@ const ObraDetalle = () => {
                       key={i}
                       src={src}
                       alt={`${o.title} — ${i + 1}`}
+                      loading={i === 0 ? "eager" : "lazy"}
+                      fetchPriority={i === 0 ? "high" : "low"}
+                      decoding="async"
                       className="absolute inset-0 w-full h-full object-cover transition-opacity duration-200"
                       style={{ opacity: i === idx ? 1 : 0 }}
                     />
@@ -166,7 +169,7 @@ const ObraDetalle = () => {
                       }`}
                       aria-label={`Ángulo ${i + 1}`}
                     >
-                      <img src={src} alt="" className="w-full h-full object-cover" />
+                      <img src={src} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                     </button>
                   ))}
                 </div>
@@ -452,7 +455,7 @@ const ObraDetalle = () => {
                   <p className="font-body text-[12px] tracking-[0.18em] uppercase text-muted-line mb-4">{header}</p>
                   <div className="flex items-center gap-3 mb-4">
                     {bio.retrato ? (
-                      <img src={bio.retrato} alt={o.artist} className="w-12 h-12 rounded-full object-cover" />
+                      <img src={bio.retrato} alt={o.artist} loading="lazy" decoding="async" className="w-12 h-12 rounded-full object-cover" />
                     ) : (
                       <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center font-body text-[13px] text-ink">{initials}</div>
                     )}
@@ -490,7 +493,7 @@ const ObraDetalle = () => {
                 {others.map(w => (
                   <Link key={w.slug} to={`/obra/${w.slug}`} className="group block">
                     <div className="aspect-square bg-secondary overflow-hidden mb-3">
-                      <img src={w.image} alt={w.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+                      <img src={w.image} alt={w.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
                     </div>
                     <div className="font-body text-[14px] text-ink">{w.title}</div>
                     <div className="font-body text-[14px] text-ink">{w.price}</div>
