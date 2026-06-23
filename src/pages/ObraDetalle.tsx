@@ -391,7 +391,7 @@ const ObraDetalle = () => {
                   window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                 }}
                 aria-label="Enviar por email"
-                className="flex flex-col items-center gap-1 bg-white border border-[#E0E0E0] rounded-[4px] px-3 py-2 hover:border-ink transition-colors"
+                className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink rounded-[4px] px-3 py-2 hover:bg-secondary transition-colors"
               >
                 <Mail size={18} className="text-ink" />
                 <span className="font-body text-[10px] text-gray">Enviar por email</span>
