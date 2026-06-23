@@ -493,7 +493,7 @@ const ObraDetalle = () => {
                 {others.map(w => (
                   <Link key={w.slug} to={`/obra/${w.slug}`} className="group block">
                     <div className="aspect-square bg-secondary overflow-hidden mb-3">
-                      <img src={w.image} alt={w.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+                      <img src={w.image} alt={w.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
                     </div>
                     <div className="font-body text-[14px] text-ink">{w.title}</div>
                     <div className="font-body text-[14px] text-ink">{w.price}</div>
