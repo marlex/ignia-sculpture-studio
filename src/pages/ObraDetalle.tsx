@@ -5,7 +5,7 @@ import { Footer } from "@/components/ignia/Footer";
 import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { GlbViewer } from "@/components/ignia/GlbViewer";
 import { useLang } from "@/i18n/LanguageContext";
-import { getWorkBySlug } from "@/data/igniaWorks";
+import { getWorkBySlug, WORKS } from "@/data/igniaWorks";
 import { ChevronLeft, ChevronRight, MessageCircle, Link2, Mail, ChevronDown } from "lucide-react";
 import { BIOS } from "@/pages/PerfilEscultor";
 import { artistSlug } from "@/lib/artistSlug";
