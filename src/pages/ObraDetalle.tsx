@@ -63,6 +63,29 @@ const ObraDetalle = () => {
 
   useEffect(() => { setIdx(0); }, [slug]);
 
+  useEffect(() => {
+    if (!o) return;
+    const title = `${o.title} — ${o.artist} · Ignia Gallery`;
+    const rawDesc = (o.description || "").replace(/\s+/g, " ").trim();
+    const shortDesc = rawDesc.length > 140 ? rawDesc.slice(0, 137) + "…" : rawDesc;
+    const description = lang === "es"
+      ? `${shortDesc} ${o.material}, ${o.year}. ${o.price}.`
+      : `${shortDesc} ${o.material}, ${o.year}. ${o.price}.`;
+    const ogImage = o.image?.startsWith("http") ? o.image : `${window.location.origin}${o.image || ""}`;
+    document.title = title;
+    const setMeta = (sel: string, content: string) => {
+      const el = document.querySelector(sel) as HTMLMetaElement | null;
+      if (el) el.setAttribute("content", content);
+    };
+    setMeta('meta[name="description"]', description);
+    setMeta('meta[property="og:title"]', title);
+    setMeta('meta[property="og:description"]', description);
+    setMeta('meta[name="twitter:title"]', title);
+    setMeta('meta[name="twitter:description"]', description);
+    setMeta('meta[property="og:image"]', ogImage);
+    setMeta('meta[name="twitter:image"]', ogImage);
+  }, [slug, lang, o]);
+
 
   const next = () => setIdx((idx + 1) % photos.length);
   const prev = () => setIdx((idx + photos.length - 1) % photos.length);
