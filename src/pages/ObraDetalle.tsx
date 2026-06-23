@@ -6,7 +6,7 @@ import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { GlbViewer } from "@/components/ignia/GlbViewer";
 import { useLang } from "@/i18n/LanguageContext";
 import { getWorkBySlug, WORKS } from "@/data/igniaWorks";
-import { ChevronLeft, ChevronRight, MessageCircle, Link2, Mail, ChevronDown } from "lucide-react";
+import { ChevronLeft, ChevronRight, MessageCircle, Link2, Mail, ChevronDown, Info } from "lucide-react";
 import { BIOS } from "@/pages/PerfilEscultor";
 import { artistSlug } from "@/lib/artistSlug";
 
@@ -52,6 +52,7 @@ const ObraDetalle = () => {
   const [specsOpen, setSpecsOpen] = useState(false);
   const [scaleOpen, setScaleOpen] = useState(false);
   const [shipOpen, setShipOpen] = useState(false);
+  const [priceInfoOpen, setPriceInfoOpen] = useState(false);
 
   useEffect(() => {
     const open = () => setInviteOpen(true);
@@ -60,6 +61,16 @@ const ObraDetalle = () => {
   }, []);
 
   useEffect(() => { setIdx(0); }, [slug]);
+
+  useEffect(() => {
+    if (!priceInfoOpen) return;
+    const onDocClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest("[data-price-info]")) setPriceInfoOpen(false);
+    };
+    document.addEventListener("click", onDocClick);
+    return () => document.removeEventListener("click", onDocClick);
+  }, [priceInfoOpen]);
 
   const next = () => setIdx((idx + 1) % photos.length);
   const prev = () => setIdx((idx + photos.length - 1) % photos.length);
@@ -157,7 +168,42 @@ const ObraDetalle = () => {
             <div className="font-body text-[16px] font-light text-gray mb-6">
               <Link to={`/perfil/escultor/${o.artist.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} className="underline-offset-4 hover:underline">{o.artist}</Link> · {o.material} · {o.year} · {o.edition}
             </div>
-            <div className="font-display font-bold text-[26px] text-ink mb-8">{o.price}</div>
+            <div className="flex items-center gap-2 mb-8" data-price-info>
+              <div className="font-display font-bold text-[26px] text-ink">{o.price}</div>
+              <div className="relative">
+                <button
+                  type="button"
+                  aria-label={lang === "es" ? "¿Cómo se calcula este precio?" : "How is this price calculated?"}
+                  onClick={() => setPriceInfoOpen(v => !v)}
+                  onMouseEnter={() => { if (window.matchMedia("(hover: hover)").matches) setPriceInfoOpen(true); }}
+                  onMouseLeave={() => { if (window.matchMedia("(hover: hover)").matches) setPriceInfoOpen(false); }}
+                  className="cursor-pointer"
+                >
+                  <Info size={14} color="#AAAAAA" strokeWidth={1.5} />
+                </button>
+                {priceInfoOpen && (
+                  <div
+                    className="hidden md:block absolute left-1/2 -translate-x-1/2 top-full mt-2 z-50 font-body text-[13px] text-white"
+                    style={{ background: "#1A1A1A", padding: "10px 14px", borderRadius: 4, maxWidth: 260, width: "max-content" }}
+                  >
+                    {lang === "es"
+                      ? "El precio incluye el certificado de autenticidad en blockchain, la gestión logística especializada y la comisión de Ignia Gallery. Sin costes ocultos."
+                      : "The price includes the blockchain certificate of authenticity, specialised logistics handling and Ignia Gallery's commission. No hidden fees."}
+                  </div>
+                )}
+              </div>
+            </div>
+            {priceInfoOpen && (
+              <div
+                data-price-info
+                className="md:hidden font-body text-[13px] text-white mb-6"
+                style={{ background: "#1A1A1A", padding: "10px 14px", borderRadius: 4, maxWidth: 260 }}
+              >
+                {lang === "es"
+                  ? "El precio incluye el certificado de autenticidad en blockchain, la gestión logística especializada y la comisión de Ignia Gallery. Sin costes ocultos."
+                  : "The price includes the blockchain certificate of authenticity, specialised logistics handling and Ignia Gallery's commission. No hidden fees."}
+              </div>
+            )}
             <div className="font-body text-[16px] font-light text-gray leading-relaxed mb-10 space-y-4">
               {o.description.split(/\n\n+/).map((para, i) => (
                 <p key={i}>{para}</p>
