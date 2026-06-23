@@ -3,9 +3,8 @@ import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
-import { EDITORIAL_ARTICLES, getArticleBySlug } from "@/data/editorialArticles";
-import { EDITORIAL_RELATIONS } from "@/data/editorialRelations";
-import { WorksConversionBlock, RelatedArticlesBlock } from "@/components/ignia/ConversionBlocks";
+import { getAprendeArticleBySlug } from "@/data/aprendeArticles";
+import { WorksConversionBlock, ArtistsConversionBlock } from "@/components/ignia/ConversionBlocks";
 import NotFound from "@/pages/NotFound";
 
 const SITE_BASE = "https://igniagallery.com";
@@ -20,32 +19,34 @@ const upsertMeta = (key: "name" | "property", value: string, content: string) =>
   el.setAttribute("content", content);
 };
 
-const EditorialArticuloPage = () => {
+const AprendeArticuloPage = () => {
   const { slug = "" } = useParams();
   const lang = useLang();
-  const article = getArticleBySlug(slug);
+  const article = getAprendeArticleBySlug(slug);
 
   const t = lang === "es"
     ? {
         by: "Por",
-        back: "← Volver a Editorial",
-        worksTitle: "Obras relacionadas",
+        back: "← Volver a Ignia aprende",
+        worksTitle: "Explora la colección",
         worksCta: "Ver toda la colección →",
-        readMoreTitle: "Seguir leyendo",
+        artistsTitle: "Conoce a los escultores",
+        artistsCta: "Ver todos los escultores →",
       }
     : {
         by: "By",
-        back: "← Back to Editorial",
-        worksTitle: "Related works",
+        back: "← Back to Ignia learn",
+        worksTitle: "Explore the collection",
         worksCta: "See the full collection →",
-        readMoreTitle: "Keep reading",
+        artistsTitle: "Meet the sculptors",
+        artistsCta: "See all sculptors →",
       };
 
   const content = article ? article[lang] : null;
   const plainText = content ? content.body.filter((b) => b.type === "p").map((b) => b.text).join(" ") : "";
   const description = plainText.slice(0, 150);
   const title = content ? `${content.titulo} · Ignia Gallery` : "";
-  const url = `${SITE_BASE}/editorial/${slug}`;
+  const url = `${SITE_BASE}/aprende/${slug}`;
   const image = article ? (article.img.startsWith("http") ? article.img : `${SITE_BASE}${article.img}`) : "";
 
   useEffect(() => {
@@ -61,29 +62,16 @@ const EditorialArticuloPage = () => {
 
   if (!article || !content) return <NotFound />;
 
-  const relations = EDITORIAL_RELATIONS[slug] ?? { relatedWorks: [], relatedArticles: [] };
-
-  const relatedArticles = relations.relatedArticles
-    .map((s) => EDITORIAL_ARTICLES.find((a) => a.slug === s))
-    .filter((a): a is (typeof EDITORIAL_ARTICLES)[number] => Boolean(a))
-    .map((a) => ({
-      slug: a.slug,
-      img: a.img,
-      titulo: a[lang].titulo,
-      seccion: a[lang].seccion,
-      autor: a.autor,
-    }));
-
   return (
     <main className="pt-14">
       <Header />
       <article className="px-6 md:px-12 pt-16 pb-12 bg-white max-w-[820px] mx-auto">
-        <div className="eyebrow mb-3">{content.seccion}</div>
+        <div className="eyebrow mb-3">{content.tag}</div>
         <h1 className="font-display font-bold text-[clamp(32px,4.5vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-6">
           {content.titulo}
         </h1>
         <div className="font-body text-[14px] uppercase tracking-[0.14em] text-muted-line mb-8">
-          {t.by} {article.autor} · <time dateTime={article.fecha}>{content.fechaLabel}</time>
+          {t.by} {article.autor} · <time dateTime={article.fecha}>{content.fechaLabel}</time> · {content.tiempo}
         </div>
         <div className="aspect-[16/10] overflow-hidden bg-secondary mb-10">
           <img
@@ -109,23 +97,22 @@ const EditorialArticuloPage = () => {
           )}
         </div>
         <div className="mt-14">
-          <Link to="/editorial" className="link-arrow">{t.back}</Link>
+          <Link to="/aprende" className="link-arrow">{t.back}</Link>
         </div>
       </article>
 
-      {relations.relatedWorks.length > 0 && (
-        <WorksConversionBlock
-          slugs={relations.relatedWorks}
-          lang={lang}
-          heading={t.worksTitle}
-          cta={{ label: t.worksCta, to: "/coleccion" }}
-        />
-      )}
+      <WorksConversionBlock
+        slugs={article.featuredWorks}
+        lang={lang}
+        heading={t.worksTitle}
+        cta={{ label: t.worksCta, to: "/coleccion" }}
+      />
 
-      <RelatedArticlesBlock
-        articles={relatedArticles}
-        heading={t.readMoreTitle}
-        basePath="/editorial"
+      <ArtistsConversionBlock
+        names={article.featuredArtists}
+        lang={lang}
+        heading={t.artistsTitle}
+        cta={{ label: t.artistsCta, to: "/escultores" }}
       />
 
       <Footer />
@@ -133,4 +120,4 @@ const EditorialArticuloPage = () => {
   );
 };
 
-export default EditorialArticuloPage;
+export default AprendeArticuloPage;

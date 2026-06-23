@@ -1,30 +1,13 @@
 import { Header } from "@/components/ignia/Header";
 import { Aprende as AprendeSection } from "@/components/ignia/Aprende";
 import { Footer } from "@/components/ignia/Footer";
-import bronzePatina from "@/assets/aprende-bronce-patina.jpg";
-import sculpturePhoto from "@/assets/aprende-fotografiar-volumen.jpg";
-import limitedEdition from "@/assets/aprende-ediciones-limitadas.jpg";
 import { useLang } from "@/i18n/LanguageContext";
-
-const ART = {
-  es: [
-    { img: bronzePatina, tag: "Para coleccionistas", titulo: "Cómo leer la pátina de una pieza de bronce", tiempo: "8 min de lectura" },
-    { img: sculpturePhoto, tag: "Para escultores", titulo: "Fotografiar escultura sin distorsionar el volumen", tiempo: "12 min de lectura" },
-    { img: limitedEdition, tag: "Editorial", titulo: "Ediciones únicas vs ediciones limitadas en escultura", tiempo: "6 min de lectura" },
-  ],
-  en: [
-    { img: bronzePatina, tag: "For collectors", titulo: "How to read the patina of a bronze piece", tiempo: "8 min read" },
-    { img: sculpturePhoto, tag: "For sculptors", titulo: "Photographing sculpture without distorting volume", tiempo: "12 min read" },
-    { img: limitedEdition, tag: "Editorial", titulo: "Unique vs limited editions in sculpture", tiempo: "6 min read" },
-  ],
-};
 
 const AprendePage = () => {
   const lang = useLang();
-  const articulos = ART[lang];
   const t = lang === "es"
-    ? { eyebrow: "Conocimiento del oficio", h: "Ignia aprende", sub: "Guías para entender la escultura: materiales, procesos, conservación y mercado.", more: "Más artículos" }
-    : { eyebrow: "Craft knowledge", h: "Ignia learn", sub: "Guides to understand sculpture: materials, processes, conservation and market.", more: "More articles" };
+    ? { eyebrow: "Conocimiento del oficio", h: "Ignia aprende", sub: "Guías para entender la escultura: materiales, procesos, conservación y mercado." }
+    : { eyebrow: "Craft knowledge", h: "Ignia learn", sub: "Guides to understand sculpture: materials, processes, conservation and market." };
 
   return (
     <main className="pt-14">
@@ -35,21 +18,6 @@ const AprendePage = () => {
         <p className="font-body text-[16px] font-light text-gray max-w-[640px] mt-4">{t.sub}</p>
       </section>
       <AprendeSection />
-      <section className="bg-white px-6 md:px-12 py-20">
-        <h2 className="font-display font-bold text-[clamp(22px,2.4vw,32px)] tracking-[-0.02em] text-ink mb-10">{t.more}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {articulos.map(a => (
-            <article key={a.titulo} className="group cursor-pointer">
-              <div className="aspect-[16/10] overflow-hidden bg-secondary mb-4">
-                <img src={a.img} alt={a.titulo} loading="lazy" className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
-              </div>
-              <div className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line mb-2">{a.tag}</div>
-              <h3 className="font-display font-bold text-[18px] text-ink leading-tight mb-2">{a.titulo}</h3>
-              <div className="font-body text-[13px] text-gray">{a.tiempo}</div>
-            </article>
-          ))}
-        </div>
-      </section>
       <Footer />
     </main>
   );

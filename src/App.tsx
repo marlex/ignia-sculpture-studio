@@ -14,6 +14,7 @@ import ColeccionistaPublico from "./pages/ColeccionistaPublico.tsx";
 import ColeccionPage from "./pages/Coleccion.tsx";
 import EscultoresPage from "./pages/Escultores.tsx";
 import AprendePage from "./pages/Aprende.tsx";
+import AprendeArticuloPage from "./pages/AprendeArticulo.tsx";
 import EditorialPage from "./pages/Editorial.tsx";
 import EditorialArticuloPage from "./pages/EditorialArticulo.tsx";
 import IgniaGalleryPage from "./pages/IgniaGallery.tsx";
@@ -48,6 +49,7 @@ const App = () => (
               <Route path="/coleccion" element={<ColeccionPage />} />
               <Route path="/escultores" element={<EscultoresPage />} />
               <Route path="/aprende" element={<AprendePage />} />
+              <Route path="/aprende/:slug" element={<AprendeArticuloPage />} />
               <Route path="/editorial" element={<EditorialPage />} />
               <Route path="/editorial/:slug" element={<EditorialArticuloPage />} />
               <Route path="/ignia-gallery" element={<IgniaGalleryPage />} />
