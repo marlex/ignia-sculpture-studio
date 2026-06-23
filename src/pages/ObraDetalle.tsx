@@ -161,7 +161,7 @@ const ObraDetalle = () => {
               <Link to={`/perfil/escultor/${o.artist.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} className="underline-offset-4 hover:underline">{o.artist}</Link> · {o.material} · {o.year} · {o.edition}
             </div>
             <div className="mb-8">
-              <div className="font-display font-bold text-[28px] text-ink">{o.price}</div>
+              <div className="font-display font-bold text-[32px] text-ink">{o.price}</div>
               <button
                 type="button"
                 onClick={() => setPriceInfoOpen(true)}
