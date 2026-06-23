@@ -3,21 +3,12 @@ import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
-import { getArticleBySlug } from "@/data/editorialArticles";
+import { EDITORIAL_ARTICLES, getArticleBySlug } from "@/data/editorialArticles";
+import { EDITORIAL_RELATIONS } from "@/data/editorialRelations";
+import { WorksConversionBlock, RelatedArticlesBlock } from "@/components/ignia/ConversionBlocks";
 import NotFound from "@/pages/NotFound";
 
 const SITE_BASE = "https://igniagallery.com";
-
-const setMeta = (selector: string, attr: string, value: string) => {
-  let el = document.head.querySelector<HTMLMetaElement>(selector);
-  if (!el) {
-    el = document.createElement("meta");
-    const [type, name] = selector.replace(/[\[\]"']/g, "").split("=");
-    el.setAttribute(type === "meta[property" ? "property" : "name", name);
-    document.head.appendChild(el);
-  }
-  el.setAttribute(attr, value);
-};
 
 const upsertMeta = (key: "name" | "property", value: string, content: string) => {
   let el = document.head.querySelector<HTMLMetaElement>(`meta[${key}="${value}"]`);
@@ -35,11 +26,23 @@ const EditorialArticuloPage = () => {
   const article = getArticleBySlug(slug);
 
   const t = lang === "es"
-    ? { by: "Por", back: "← Volver a Editorial" }
-    : { by: "By", back: "← Back to Editorial" };
+    ? {
+        by: "Por",
+        back: "← Volver a Editorial",
+        worksTitle: "Obras relacionadas",
+        worksCta: "Ver toda la colección →",
+        readMoreTitle: "Seguir leyendo",
+      }
+    : {
+        by: "By",
+        back: "← Back to Editorial",
+        worksTitle: "Related works",
+        worksCta: "See the full collection →",
+        readMoreTitle: "Keep reading",
+      };
 
   const content = article ? article[lang] : null;
-  const plainText = content ? content.body.filter(b => b.type === "p").map(b => b.text).join(" ") : "";
+  const plainText = content ? content.body.filter((b) => b.type === "p").map((b) => b.text).join(" ") : "";
   const description = plainText.slice(0, 150);
   const title = content ? `${content.titulo} · Ignia Gallery` : "";
   const url = `${SITE_BASE}/editorial/${slug}`;
@@ -57,6 +60,19 @@ const EditorialArticuloPage = () => {
   }, [title, description, image, url, content]);
 
   if (!article || !content) return <NotFound />;
+
+  const relations = EDITORIAL_RELATIONS[slug] ?? { relatedWorks: [], relatedArticles: [] };
+
+  const relatedArticles = relations.relatedArticles
+    .map((s) => EDITORIAL_ARTICLES.find((a) => a.slug === s))
+    .filter((a): a is (typeof EDITORIAL_ARTICLES)[number] => Boolean(a))
+    .map((a) => ({
+      slug: a.slug,
+      img: a.img,
+      titulo: a[lang].titulo,
+      seccion: a[lang].seccion,
+      autor: a.autor,
+    }));
 
   return (
     <main className="pt-14">
@@ -82,17 +98,11 @@ const EditorialArticuloPage = () => {
         <div className="flex flex-col gap-6">
           {content.body.map((b, i) =>
             b.type === "h2" ? (
-              <h2
-                key={i}
-                className="font-display font-bold text-[clamp(22px,2.6vw,30px)] tracking-[-0.02em] text-ink leading-tight mt-4"
-              >
+              <h2 key={i} className="font-display font-bold text-[clamp(22px,2.6vw,30px)] tracking-[-0.02em] text-ink leading-tight mt-4">
                 {b.text}
               </h2>
             ) : (
-              <p
-                key={i}
-                className="font-body text-[17px] font-light text-ink leading-relaxed"
-              >
+              <p key={i} className="font-body text-[17px] font-light text-ink leading-relaxed">
                 {b.text}
               </p>
             )
@@ -102,6 +112,22 @@ const EditorialArticuloPage = () => {
           <Link to="/editorial" className="link-arrow">{t.back}</Link>
         </div>
       </article>
+
+      {relations.relatedWorks.length > 0 && (
+        <WorksConversionBlock
+          slugs={relations.relatedWorks}
+          lang={lang}
+          heading={t.worksTitle}
+          cta={{ label: t.worksCta, to: "/coleccion" }}
+        />
+      )}
+
+      <RelatedArticlesBlock
+        articles={relatedArticles}
+        heading={t.readMoreTitle}
+        basePath="/editorial"
+      />
+
       <Footer />
     </main>
   );
