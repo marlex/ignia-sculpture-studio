@@ -7,6 +7,8 @@ import { GlbViewer } from "@/components/ignia/GlbViewer";
 import { useLang } from "@/i18n/LanguageContext";
 import { getWorkBySlug } from "@/data/igniaWorks";
 import { ChevronLeft, ChevronRight, MessageCircle, Link2, Mail, ChevronDown } from "lucide-react";
+import { BIOS } from "@/pages/PerfilEscultor";
+import { artistSlug } from "@/lib/artistSlug";
 
 const T = {
   es: {
@@ -397,6 +399,46 @@ const ObraDetalle = () => {
                 <MessageCircle className="w-5 h-5" />
               </button>
             </div>
+
+            {(() => {
+              const slug = artistSlug(o.artist);
+              const bio = BIOS[slug];
+              if (!bio) return null;
+              const bioText = lang === "es" ? bio.bioEs : bio.bioEn;
+              const firstDot = bioText.indexOf(". ");
+              const location = firstDot > 0 && firstDot < 60 ? bioText.slice(0, firstDot) : "";
+              const rest = location ? bioText.slice(firstDot + 2) : bioText;
+              const short = rest.length > 180 ? rest.slice(0, 180).trimEnd() + "…" : rest;
+              const initials = o.artist.split(/\s+/).slice(0, 2).map(s => s[0]).join("").toUpperCase();
+              const female = /a$/i.test(o.artist.split(/\s+/)[0] || "");
+              const header = lang === "es"
+                ? (female ? "SOBRE LA ARTISTA" : "SOBRE EL ARTISTA")
+                : "ABOUT THE ARTIST";
+              const viewProfile = lang === "es" ? "Ver perfil completo →" : "View full profile →";
+              return (
+                <div className="mt-10 pt-8 border-t border-[#E8E8E8]">
+                  <p className="font-body text-[12px] tracking-[0.18em] uppercase text-muted-line mb-4">{header}</p>
+                  <div className="flex items-center gap-3 mb-4">
+                    {bio.retrato ? (
+                      <img src={bio.retrato} alt={o.artist} className="w-12 h-12 rounded-full object-cover" />
+                    ) : (
+                      <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center font-body text-[13px] text-ink">{initials}</div>
+                    )}
+                    <div>
+                      <div className="font-display font-bold text-[16px] text-ink leading-tight">{o.artist}</div>
+                      {location && <div className="font-body text-[13px] text-gray">{location}</div>}
+                    </div>
+                  </div>
+                  <p className="font-body text-[14px] font-light text-gray leading-relaxed mb-4">{short}</p>
+                  <Link
+                    to={`/perfil/escultor/${slug}`}
+                    className="font-body text-[14px] text-ink underline-offset-4 hover:underline"
+                  >
+                    {viewProfile}
+                  </Link>
+                </div>
+              );
+            })()}
           </div>
         </div>
       </section>
