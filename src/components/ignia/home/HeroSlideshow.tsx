@@ -58,6 +58,9 @@ export const HeroSlideshow = ({ onInvite, onCollection }: Props) => {
             <img
               src={src}
               alt=""
+              loading={i === 0 ? "eager" : "lazy"}
+              fetchPriority={i === 0 ? "high" : "low"}
+              decoding="async"
               className="w-full h-full object-cover"
               style={{
                 animation: `${i % 2 === 0 ? "kb-a" : "kb-b"} 8s linear forwards`,
