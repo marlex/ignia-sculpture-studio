@@ -169,7 +169,7 @@ const ObraDetalle = () => {
                       }`}
                       aria-label={`Ángulo ${i + 1}`}
                     >
-                      <img src={src} alt="" className="w-full h-full object-cover" />
+                      <img src={src} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                     </button>
                   ))}
                 </div>
