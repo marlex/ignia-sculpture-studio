@@ -443,6 +443,34 @@ const ObraDetalle = () => {
         </div>
       </section>
 
+      {(() => {
+        const others = WORKS
+          .filter(w => w.slug !== o.slug && w[lang].artist === o.artist)
+          .slice(0, 4)
+          .map(w => getWorkBySlug(w.slug, lang));
+        if (others.length < 2) return null;
+        const heading = lang === "es" ? `Más obras de ${o.artist}` : `More works by ${o.artist}`;
+        return (
+          <section className="px-6 md:px-12 pb-20">
+            <div className="max-w-[1280px] mx-auto">
+              <h2 className="font-display font-bold text-[clamp(22px,2.4vw,32px)] tracking-[-0.01em] text-ink mb-8">{heading}</h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {others.map(w => (
+                  <Link key={w.slug} to={`/obra/${w.slug}`} className="group block">
+                    <div className="aspect-square bg-secondary overflow-hidden mb-3">
+                      <img src={w.image} alt={w.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+                    </div>
+                    <div className="font-body text-[14px] text-ink">{w.title}</div>
+                    <div className="font-body text-[14px] text-ink">{w.price}</div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })()}
+
+
       {chatOpen && (
         <div className="fixed inset-0 z-[200] bg-black/50 flex items-end md:items-center md:justify-end" onClick={() => setChatOpen(false)}>
           <div
