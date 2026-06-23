@@ -29,7 +29,7 @@ type Bio = {
   espEn: string;
 };
 
-const BIOS: Record<string, Bio> = {
+export const BIOS: Record<string, Bio> = {
   "cristina-iglesias": {
     nombre: "Cristina Iglesias", retrato: cristina,
     bioEs: "San Sebastián, España. Espacio, agua y bronce. Su obra une arquitectura íntima y celosías que invitan a mirar desde dentro.",
