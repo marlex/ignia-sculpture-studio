@@ -527,7 +527,7 @@ const ObraDetalle = () => {
                       <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center font-body text-[13px] text-ink">{initials}</div>
                     )}
                     <div>
-                      <div className="font-display font-bold text-[16px] text-ink leading-tight">{o.artist}</div>
+                      <div className="font-display font-bold text-[28px] text-ink leading-tight">{o.artist}</div>
                       {location && <div className="font-body text-[13px] text-gray">{location}</div>}
                     </div>
                   </div>
