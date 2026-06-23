@@ -455,7 +455,7 @@ const ObraDetalle = () => {
                   <p className="font-body text-[12px] tracking-[0.18em] uppercase text-muted-line mb-4">{header}</p>
                   <div className="flex items-center gap-3 mb-4">
                     {bio.retrato ? (
-                      <img src={bio.retrato} alt={o.artist} className="w-12 h-12 rounded-full object-cover" />
+                      <img src={bio.retrato} alt={o.artist} loading="lazy" decoding="async" className="w-12 h-12 rounded-full object-cover" />
                     ) : (
                       <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center font-body text-[13px] text-ink">{initials}</div>
                     )}
