@@ -6,7 +6,7 @@ import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { GlbViewer } from "@/components/ignia/GlbViewer";
 import { useLang } from "@/i18n/LanguageContext";
 import { getWorkBySlug } from "@/data/igniaWorks";
-import { ChevronLeft, ChevronRight, MessageCircle, Link2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, MessageCircle, Link2, Mail } from "lucide-react";
 
 const T = {
   es: {
