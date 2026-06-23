@@ -86,7 +86,7 @@ const IgniaGalleryPage = () => {
       <Header />
 
       <section className="relative h-[58vh] min-h-[400px] overflow-hidden">
-        <img src={studio} alt="Ignia Gallery studio" className="absolute inset-0 w-full h-full object-cover" />
+        <img src={studio} alt="Ignia Gallery studio" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative h-full flex flex-col justify-end px-6 md:px-12 pb-12 max-w-[1280px] mx-auto">
           <div className="eyebrow text-white/80 mb-3">{t.eyebrow}</div>
