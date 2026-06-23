@@ -196,6 +196,21 @@ const ObraDetalle = () => {
                 </svg>
                 <span className="font-body text-[10px] text-gray">WhatsApp</span>
               </button>
+              <button
+                type="button"
+                onClick={async () => {
+                  try {
+                    await navigator.clipboard.writeText(window.location.href);
+                  } catch {}
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                }}
+                aria-label="Copiar enlace"
+                className="flex flex-col items-center gap-1 bg-white border border-[#E0E0E0] rounded-[4px] px-3 py-2 hover:border-ink transition-colors"
+              >
+                <Link2 size={18} className="text-ink" />
+                <span className="font-body text-[10px] text-gray">{copied ? "¡Copiado!" : "Copiar enlace"}</span>
+              </button>
             </div>
 
             <div className="flex gap-3">
