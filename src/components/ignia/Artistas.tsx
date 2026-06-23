@@ -100,10 +100,10 @@ export const Artistas = () => {
           </Link>
           <div>
             <Link to={`/perfil/escultor/${slugify(featured.nombre)}`} className="block group">
-              <div className="font-display text-[28px] font-bold text-ink mb-4 leading-tight">{featured.nombre}</div>
-              <h3 className="font-display font-bold text-[28px] tracking-[-0.02em] text-ink mb-5 leading-[1.15] group-hover:opacity-70 transition-opacity">
+              <h3 className="font-display text-[28px] font-bold text-ink mb-4 leading-tight">{featured.nombre}</h3>
+              <h4 className="font-display font-bold text-[28px] tracking-[-0.02em] text-ink mb-5 leading-[1.15] group-hover:opacity-70 transition-opacity">
                 {featured.titular}
-              </h3>
+              </h4>
               <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-6">{featured.extracto}</p>
               <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-6">
                 {featured.esp} · {featured.obras}
