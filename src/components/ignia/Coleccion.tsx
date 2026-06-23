@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
-import { GlbViewer } from "./GlbViewer";
+const GlbViewer = lazy(() => import("./GlbViewer").then(m => ({ default: m.GlbViewer })));
 import { getCatalogueWorks, type LocalizedWork } from "@/data/igniaWorks";
 import { artistSlug } from "@/lib/artistSlug";
 import { Maximize2, X, Search } from "lucide-react";
