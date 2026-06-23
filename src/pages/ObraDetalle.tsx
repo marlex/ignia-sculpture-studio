@@ -62,6 +62,16 @@ const ObraDetalle = () => {
 
   useEffect(() => { setIdx(0); }, [slug]);
 
+  useEffect(() => {
+    if (!priceInfoOpen) return;
+    const onDocClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest("[data-price-info]")) setPriceInfoOpen(false);
+    };
+    document.addEventListener("click", onDocClick);
+    return () => document.removeEventListener("click", onDocClick);
+  }, [priceInfoOpen]);
+
   const next = () => setIdx((idx + 1) % photos.length);
   const prev = () => setIdx((idx + photos.length - 1) % photos.length);
 
