@@ -6,7 +6,7 @@ import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { GlbViewer } from "@/components/ignia/GlbViewer";
 import { useLang } from "@/i18n/LanguageContext";
 import { getWorkBySlug } from "@/data/igniaWorks";
-import { ChevronLeft, ChevronRight, MessageCircle, Link2, Mail } from "lucide-react";
+import { ChevronLeft, ChevronRight, MessageCircle, Link2, Mail, ChevronDown } from "lucide-react";
 
 const T = {
   es: {
@@ -47,6 +47,7 @@ const ObraDetalle = () => {
   const [chatOpen, setChatOpen] = useState(false);
   const [inviteOpen, setInviteOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [specsOpen, setSpecsOpen] = useState(false);
 
   useEffect(() => {
     const open = () => setInviteOpen(true);
@@ -158,6 +159,59 @@ const ObraDetalle = () => {
                 <p key={i}>{para}</p>
               ))}
             </div>
+
+
+            {(() => {
+              const anyO = o as any;
+              const dims = anyO.dimensions
+                ? `${anyO.dimensions.h ?? "—"} × ${anyO.dimensions.w ?? "—"} × ${anyO.dimensions.d ?? "—"} cm`
+                : "—";
+              const weight = anyO.weight ? `${anyO.weight} kg` : "—";
+              const technique = anyO.technique ?? "—";
+              const specLabel = lang === "es" ? "Ficha técnica" : "Technical specs";
+              const rows: [string, string][] = [
+                [lang === "es" ? "Dimensiones" : "Dimensions", dims],
+                [lang === "es" ? "Peso" : "Weight", weight],
+                [lang === "es" ? "Material" : "Material", o.material],
+                [lang === "es" ? "Técnica / acabado" : "Technique / finish", technique],
+                [lang === "es" ? "Año" : "Year", o.year],
+                [lang === "es" ? "Edición" : "Edition", o.edition],
+              ];
+              return (
+                <div className="border border-border mb-6">
+                  <button
+                    type="button"
+                    onClick={() => setSpecsOpen(v => !v)}
+                    aria-expanded={specsOpen}
+                    className="w-full flex items-center justify-between px-6 py-4 text-left"
+                  >
+                    <span className="font-body text-[13px] text-muted-line uppercase tracking-[0.12em]">{specLabel}</span>
+                    <ChevronDown
+                      size={16}
+                      className="text-gray transition-transform duration-200"
+                      style={{ transform: specsOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+                    />
+                  </button>
+                  <div
+                    className="overflow-hidden transition-[max-height] duration-200 ease-out"
+                    style={{ maxHeight: specsOpen ? 600 : 0 }}
+                  >
+                    <dl className="px-6 pb-5 font-body text-[14px]">
+                      {rows.map(([k, v], i) => (
+                        <div
+                          key={k}
+                          className="grid grid-cols-2 gap-x-4 py-2.5"
+                          style={{ borderTop: i === 0 ? "none" : "1px solid #F0F0F0" }}
+                        >
+                          <dt className="text-gray">{k}</dt>
+                          <dd className="text-ink">{v}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                </div>
+              );
+            })()}
 
             <div className="border border-border p-6 mb-6">
               <div className="flex items-center gap-2 mb-3">
