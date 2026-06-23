@@ -47,6 +47,7 @@ const ObraDetalle = () => {
   const [chatOpen, setChatOpen] = useState(false);
   const [inviteOpen, setInviteOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [specsOpen, setSpecsOpen] = useState(false);
 
   useEffect(() => {
     const open = () => setInviteOpen(true);
