@@ -71,11 +71,23 @@ const ObraDetalle = () => {
     const description = lang === "es"
       ? `${shortDesc} ${o.material}, ${o.year}. ${o.price}.`
       : `${shortDesc} ${o.material}, ${o.year}. ${o.price}.`;
-    const ogImage = o.image?.startsWith("http") ? o.image : `${window.location.origin}${o.image || ""}`;
+    const SITE_BASE = "https://igniagallery.com";
+    const rawImage = o.image || "";
+    const ogImage = rawImage.startsWith("http")
+      ? rawImage
+      : `${SITE_BASE}${rawImage.startsWith("/") ? "" : "/"}${rawImage}`;
     document.title = title;
     const setMeta = (sel: string, content: string) => {
-      const el = document.querySelector(sel) as HTMLMetaElement | null;
-      if (el) el.setAttribute("content", content);
+      let el = document.querySelector(sel) as HTMLMetaElement | null;
+      if (!el) {
+        el = document.createElement("meta");
+        const nameMatch = sel.match(/\[name="([^"]+)"\]/);
+        const propMatch = sel.match(/\[property="([^"]+)"\]/);
+        if (nameMatch) el.setAttribute("name", nameMatch[1]);
+        if (propMatch) el.setAttribute("property", propMatch[1]);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", content);
     };
     setMeta('meta[name="description"]', description);
     setMeta('meta[property="og:title"]', title);
@@ -83,6 +95,8 @@ const ObraDetalle = () => {
     setMeta('meta[name="twitter:title"]', title);
     setMeta('meta[name="twitter:description"]', description);
     setMeta('meta[property="og:image"]', ogImage);
+    setMeta('meta[property="og:image:width"]', "1200");
+    setMeta('meta[property="og:image:height"]', "630");
     setMeta('meta[name="twitter:image"]', ogImage);
   }, [slug, lang, o]);
 
