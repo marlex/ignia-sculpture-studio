@@ -64,6 +64,9 @@ export const HeroFull = () => {
         src={bgUrl}
         alt=""
         aria-hidden
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
 
