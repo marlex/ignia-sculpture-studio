@@ -33,6 +33,33 @@ const SEPARATORS = {
 const Index = () => {
   const lang = useLang();
   const t = SEPARATORS[lang];
+
+  useEffect(() => {
+    const meta = {
+      es: {
+        title: "Ignia Gallery — El lugar de la escultura",
+        description:
+          "La primera galería digital dedicada exclusivamente a la escultura. Obras originales de artistas establecidos y emergentes.",
+      },
+      en: {
+        title: "Ignia Gallery — The place for sculpture",
+        description:
+          "The first digital gallery dedicated exclusively to sculpture. Original works by established and emerging artists.",
+      },
+    } as const;
+    const { title, description } = meta[lang];
+    document.title = title;
+    const setMeta = (selector: string, content: string) => {
+      const el = document.querySelector(selector) as HTMLMetaElement | null;
+      if (el) el.setAttribute("content", content);
+    };
+    setMeta('meta[name="description"]', description);
+    setMeta('meta[property="og:title"]', title);
+    setMeta('meta[property="og:description"]', description);
+    setMeta('meta[name="twitter:title"]', title);
+    setMeta('meta[name="twitter:description"]', description);
+  }, [lang]);
+
   const [inviteOpen, setInviteOpen] = useState(false);
   const coleccionRef = useRef<HTMLDivElement>(null);
   const scrollToColeccion = () => coleccionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
