@@ -50,7 +50,7 @@ const ObraDetalle = () => {
   const [inviteOpen, setInviteOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [specsOpen, setSpecsOpen] = useState(false);
-  const [scaleOpen, setScaleOpen] = useState(false);
+  
   const [shipOpen, setShipOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
   const [priceInfoOpen, setPriceInfoOpen] = useState(false);
