@@ -48,6 +48,7 @@ const ObraDetalle = () => {
   const [inviteOpen, setInviteOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [specsOpen, setSpecsOpen] = useState(false);
+  const [scaleOpen, setScaleOpen] = useState(false);
 
   useEffect(() => {
     const open = () => setInviteOpen(true);
