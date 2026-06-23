@@ -51,6 +51,7 @@ const ObraDetalle = () => {
   const [copied, setCopied] = useState(false);
   const [specsOpen, setSpecsOpen] = useState(false);
   const [scaleOpen, setScaleOpen] = useState(false);
+  const [shipOpen, setShipOpen] = useState(false);
 
   useEffect(() => {
     const open = () => setInviteOpen(true);
@@ -338,6 +339,61 @@ const ObraDetalle = () => {
                 <dd className="text-ink">{o.edition}</dd>
               </dl>
             </div>
+
+            {(() => {
+              const isEs = lang === "es";
+              const shipLabel = isEs ? "Envío y logística" : "Shipping & logistics";
+              const policyText = isEs ? "Ver política completa →" : "View full policy →";
+              const rows: [string, string][] = isEs ? [
+                ["Recogida", "Nuestro socio logístico coordina la recogida directamente con el artista. El artista solo debe dar acceso a la obra."],
+                ["Embalaje", "Embalaje especializado para escultura a cargo del equipo logístico, incluido en el proceso."],
+                ["Plazo estimado", "5–15 días hábiles según destino y disponibilidad del artista."],
+                ["Seguro", "Cada envío incluye cobertura de seguro durante todo el tránsito."],
+                ["Devoluciones", "Dispones de 14 días desde la entrega confirmada para ejercer tu derecho de devolución. Consulta nuestra Política de Envíos y Devoluciones para más detalles."],
+              ] : [
+                ["Pickup", "Our logistics partner coordinates pickup directly with the artist. The artist only needs to grant access to the work."],
+                ["Packaging", "Specialised sculpture packaging handled by the logistics team, included in the process."],
+                ["Estimated time", "5–15 business days depending on destination and artist availability."],
+                ["Insurance", "Every shipment includes insurance coverage throughout transit."],
+                ["Returns", "You have 14 days from confirmed delivery to exercise your right of return. See our Shipping & Returns Policy for details."],
+              ];
+              return (
+                <div className="border border-border mb-6">
+                  <button
+                    type="button"
+                    onClick={() => setShipOpen(v => !v)}
+                    aria-expanded={shipOpen}
+                    className="w-full flex items-center justify-between px-6 py-4 text-left"
+                  >
+                    <span className="font-body text-[13px] text-muted-line uppercase tracking-[0.12em]">{shipLabel}</span>
+                    <ChevronDown
+                      size={16}
+                      className="text-gray transition-transform duration-200"
+                      style={{ transform: shipOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+                    />
+                  </button>
+                  <div
+                    className="overflow-hidden transition-[max-height] duration-200 ease-out"
+                    style={{ maxHeight: shipOpen ? 900 : 0 }}
+                  >
+                    <div className="px-6 pb-5 font-body text-[14px] space-y-3">
+                      {rows.map(([k, v]) => (
+                        <p key={k} className="text-gray font-light leading-relaxed">
+                          <span className="text-ink font-normal">{k}:</span> {v}
+                        </p>
+                      ))}
+                      <Link
+                        to="/legal/envios-y-devoluciones"
+                        className="inline-block text-ink underline-offset-4 hover:underline pt-1"
+                      >
+                        {policyText}
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+
 
             <div className="flex gap-2 mb-4">
               <button
