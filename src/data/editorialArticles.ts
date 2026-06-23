@@ -33,7 +33,7 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
     slug: "bronce-contemporaneo",
     img: obra1,
     fecha: "2026-05-12",
-    autor: "Lucía Pardo",
+    autor: "Ignia Editorial",
     es: {
       seccion: "Ensayo",
       titulo: "Bronce contemporáneo: una tradición que se reinventa",
@@ -113,7 +113,7 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
     slug: "acero-corten-paisaje",
     img: obra3,
     fecha: "2026-04-28",
-    autor: "Marcos Iriarte",
+    autor: "Ignia Editorial",
     es: {
       seccion: "Reportaje",
       titulo: "Acero corten: el material que escribe el paisaje",
@@ -205,7 +205,7 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
     slug: "helena-vazquez-entrevista",
     img: obra6,
     fecha: "2026-04-10",
-    autor: "Redacción Ignia",
+    autor: "Ignia Editorial",
     es: {
       seccion: "Entrevista",
       titulo: "Helena Vázquez: tres décadas escuchando el bronce",
@@ -301,7 +301,7 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
     slug: "coleccionar-escultura-hoy",
     img: obra7,
     fecha: "2026-03-22",
-    autor: "Inés Ferrer",
+    autor: "Ignia Editorial",
     es: {
       seccion: "Mercado",
       titulo: "Coleccionar escultura hoy: criterios, precios y procedencia",
