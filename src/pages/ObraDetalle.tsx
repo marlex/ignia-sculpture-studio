@@ -377,7 +377,7 @@ const ObraDetalle = () => {
                   setTimeout(() => setCopied(false), 2000);
                 }}
                 aria-label="Copiar enlace"
-                className="flex flex-col items-center gap-1 bg-white border border-[#E0E0E0] rounded-[4px] px-3 py-2 hover:border-ink transition-colors"
+                className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink rounded-[4px] px-3 py-2 hover:bg-secondary transition-colors"
               >
                 <Link2 size={18} className="text-ink" />
                 <span className="font-body text-[10px] text-gray">{copied ? "¡Copiado!" : "Copiar enlace"}</span>
