@@ -19,47 +19,40 @@ import { useLang } from "@/i18n/LanguageContext";
 
 const SEPARATORS = {
   es: {
-    s1: { title: "El conocimiento que necesitas para decidir bien.", subtitle: "Comisiones transparentes, criterios abiertos y datos reales para escultores y coleccionistas." },
-    s2: { title: "Cada obra, certificada para siempre.", subtitle: "Un certificado que garantiza la autenticidad de cada obra, para siempre." },
-    s3: { title: "Solo escultura. Siempre.", subtitle: "Un espacio construido enteramente para la escultura, únete a Ignia", cta: "Unirme a Ignia" },
+    s1: {
+      title: "El conocimiento que necesitas para decidir bien.",
+      subtitle: "Comisiones transparentes, criterios abiertos y datos reales para escultores y coleccionistas.",
+    },
+    s2: {
+      title: "Cada obra, certificada para siempre.",
+      subtitle: "Un certificado que garantiza la autenticidad de cada obra, para siempre.",
+    },
+    s3: {
+      title: "Solo escultura. Siempre.",
+      subtitle: "Un espacio construido enteramente para la escultura, únete a Ignia",
+      cta: "Unirme a Ignia",
+    },
   },
   en: {
-    s1: { title: "The knowledge you need to decide well.", subtitle: "Transparent commissions, open criteria and real data for sculptors and collectors." },
-    s2: { title: "Every work, certified forever.", subtitle: "A certificate that guarantees the authenticity of every work, forever." },
-    s3: { title: "Only sculpture. Always.", subtitle: "A space built entirely for sculpture, join Ignia", cta: "Join Ignia" },
+    s1: {
+      title: "The knowledge you need to decide well.",
+      subtitle: "Transparent commissions, open criteria and real data for sculptors and collectors.",
+    },
+    s2: {
+      title: "Every work, certified forever.",
+      subtitle: "A certificate that guarantees the authenticity of every work, forever.",
+    },
+    s3: {
+      title: "Only sculpture. Always.",
+      subtitle: "A space built entirely for sculpture, join Ignia",
+      cta: "Join Ignia",
+    },
   },
 } as const;
 
 const Index = () => {
   const lang = useLang();
   const t = SEPARATORS[lang];
-
-  useEffect(() => {
-    const meta = {
-      es: {
-        title: "Ignia Gallery — El lugar de la escultura",
-        description:
-          "La primera galería digital dedicada exclusivamente a la escultura. Obras originales de artistas establecidos y emergentes.",
-      },
-      en: {
-        title: "Ignia Gallery — The place for sculpture",
-        description:
-          "The first digital gallery dedicated exclusively to sculpture. Original works by established and emerging artists.",
-      },
-    } as const;
-    const { title, description } = meta[lang];
-    document.title = title;
-    const setMeta = (selector: string, content: string) => {
-      const el = document.querySelector(selector) as HTMLMetaElement | null;
-      if (el) el.setAttribute("content", content);
-    };
-    setMeta('meta[name="description"]', description);
-    setMeta('meta[property="og:title"]', title);
-    setMeta('meta[property="og:description"]', description);
-    setMeta('meta[name="twitter:title"]', title);
-    setMeta('meta[name="twitter:description"]', description);
-  }, [lang]);
-
   const [inviteOpen, setInviteOpen] = useState(false);
   const coleccionRef = useRef<HTMLDivElement>(null);
   const scrollToColeccion = () => coleccionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
