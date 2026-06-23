@@ -50,7 +50,7 @@ const ObraDetalle = () => {
   const [inviteOpen, setInviteOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [specsOpen, setSpecsOpen] = useState(false);
-  const [scaleOpen, setScaleOpen] = useState(false);
+  
   const [shipOpen, setShipOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
   const [priceInfoOpen, setPriceInfoOpen] = useState(false);
@@ -252,110 +252,6 @@ const ObraDetalle = () => {
                         </div>
                       ))}
                     </dl>
-                  </div>
-                </div>
-              );
-            })()}
-
-            {(() => {
-              const anyO = o as any;
-              const d = anyO.dimensions;
-              const hasDims = d && typeof d.h === "number" && typeof d.w === "number";
-              const scaleLabel = lang === "es" ? "Escala real" : "Real scale";
-              const noDims = lang === "es" ? "Dimensiones no disponibles aún" : "Dimensions not available yet";
-              const note = lang === "es"
-                ? "Representación orientativa. Las dimensiones exactas están en la ficha técnica."
-                : "Indicative representation. Exact dimensions are in the technical specs.";
-
-              // SVG layout
-              const PAD = 20;
-              const FLOOR_Y = 280;
-              const HUMAN_CM = 170;
-              const CM_PER_PX = HUMAN_CM / 240; // human is 240px tall → 1px ≈ 0.708cm
-              const humanH = HUMAN_CM / CM_PER_PX; // 240
-              const humanW = 50;
-              const workH = hasDims ? d.h / CM_PER_PX : 0;
-              const workW = hasDims ? d.w / CM_PER_PX : 0;
-              const humanX = PAD;
-              const workX = humanX + humanW + 60;
-              const svgW = Math.max(400, workX + workW + PAD + 60);
-
-              return (
-                <div className="border border-border mb-6">
-                  <button
-                    type="button"
-                    onClick={() => setScaleOpen(v => !v)}
-                    aria-expanded={scaleOpen}
-                    className="w-full flex items-center justify-between px-6 py-4 text-left"
-                  >
-                    <span className="font-body text-[13px] text-muted-line uppercase tracking-[0.12em]">{scaleLabel}</span>
-                    <ChevronDown
-                      size={16}
-                      className="text-gray transition-transform duration-200"
-                      style={{ transform: scaleOpen ? "rotate(180deg)" : "rotate(0deg)" }}
-                    />
-                  </button>
-                  <div
-                    className="overflow-hidden transition-[max-height] duration-200 ease-out"
-                    style={{ maxHeight: scaleOpen ? 600 : 0 }}
-                  >
-                    <div className="px-6 pb-5">
-                      {!hasDims ? (
-                        <p className="font-body text-[14px] text-gray py-6 text-center">{noDims}</p>
-                      ) : (
-                        <div className="flex justify-center">
-                          <svg
-                            viewBox={`0 0 ${svgW} 320`}
-                            width="100%"
-                            style={{ maxWidth: 400 }}
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            {/* floor */}
-                            <line x1={0} y1={FLOOR_Y} x2={svgW} y2={FLOOR_Y} stroke="#E0E0E0" strokeWidth={1} />
-                            {/* human */}
-                            <rect
-                              x={humanX}
-                              y={FLOOR_Y - humanH}
-                              width={humanW}
-                              height={humanH}
-                              rx={humanW / 2}
-                              fill="#CCCCCC"
-                            />
-                            {/* human height label */}
-                            <line
-                              x1={humanX - 8}
-                              y1={FLOOR_Y - humanH}
-                              x2={humanX - 8}
-                              y2={FLOOR_Y}
-                              stroke="#999"
-                              strokeWidth={1}
-                            />
-                            <text x={humanX - 14} y={FLOOR_Y - humanH / 2} fill="#666" fontSize="11" textAnchor="end" dominantBaseline="middle">170 cm</text>
-                            {/* work */}
-                            <rect
-                              x={workX}
-                              y={FLOOR_Y - workH}
-                              width={workW}
-                              height={workH}
-                              fill="#1A1A1A"
-                            />
-                            {/* work height label */}
-                            <line
-                              x1={workX + workW + 8}
-                              y1={FLOOR_Y - workH}
-                              x2={workX + workW + 8}
-                              y2={FLOOR_Y}
-                              stroke="#999"
-                              strokeWidth={1}
-                            />
-                            <text x={workX + workW + 14} y={FLOOR_Y - workH / 2} fill="#1A1A1A" fontSize="11" dominantBaseline="middle">{d.h} cm</text>
-                            {/* work width label */}
-                            <text x={workX + workW / 2} y={FLOOR_Y + 14} fill="#1A1A1A" fontSize="11" textAnchor="middle">{d.w} cm</text>
-                          </svg>
-                        </div>
-                      )}
-                      <p className="font-body text-[12px] text-gray text-center mt-4">{note}</p>
-                    </div>
                   </div>
                 </div>
               );
