@@ -6,7 +6,7 @@ import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { GlbViewer } from "@/components/ignia/GlbViewer";
 import { useLang } from "@/i18n/LanguageContext";
 import { getWorkBySlug, WORKS } from "@/data/igniaWorks";
-import { ChevronLeft, ChevronRight, MessageCircle, Link2, Mail, ChevronDown } from "lucide-react";
+import { ChevronLeft, ChevronRight, MessageCircle, Link2, Mail, ChevronDown, Info } from "lucide-react";
 import { BIOS } from "@/pages/PerfilEscultor";
 import { artistSlug } from "@/lib/artistSlug";
 
