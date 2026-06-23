@@ -211,6 +211,20 @@ const ObraDetalle = () => {
                 <Link2 size={18} className="text-ink" />
                 <span className="font-body text-[10px] text-gray">{copied ? "¡Copiado!" : "Copiar enlace"}</span>
               </button>
+              <button
+                type="button"
+                onClick={() => {
+                  const priceNum = String(o.price).replace(/[^\d.,]/g, "");
+                  const subject = `${o.title} — Ignia Gallery`;
+                  const body = `Te comparto esta obra de ${o.artist}:\n\n${window.location.href}\n\n${o.title}\n${o.artist} · ${o.material} · ${o.year}\n€${priceNum}`;
+                  window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                }}
+                aria-label="Enviar por email"
+                className="flex flex-col items-center gap-1 bg-white border border-[#E0E0E0] rounded-[4px] px-3 py-2 hover:border-ink transition-colors"
+              >
+                <Mail size={18} className="text-ink" />
+                <span className="font-body text-[10px] text-gray">Enviar por email</span>
+              </button>
             </div>
 
             <div className="flex gap-3">
