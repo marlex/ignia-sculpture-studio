@@ -22,10 +22,12 @@ const SEPARATORS = {
     s1: {
       title: "El conocimiento que necesitas para decidir bien.",
       subtitle: "Comisiones transparentes, criterios abiertos y datos reales para escultores y coleccionistas.",
+      cta: "Unirme a Ignia",
     },
     s2: {
       title: "Cada obra, certificada para siempre.",
       subtitle: "Un certificado que garantiza la autenticidad de cada obra, para siempre.",
+      cta: "Unirme a Ignia",
     },
     s3: {
       title: "Solo escultura. Siempre.",
@@ -37,10 +39,12 @@ const SEPARATORS = {
     s1: {
       title: "The knowledge you need to decide well.",
       subtitle: "Transparent commissions, open criteria and real data for sculptors and collectors.",
+      cta: "Join Ignia",
     },
     s2: {
       title: "Every work, certified forever.",
       subtitle: "A certificate that guarantees the authenticity of every work, forever.",
+      cta: "Join Ignia",
     },
     s3: {
       title: "Only sculpture. Always.",
