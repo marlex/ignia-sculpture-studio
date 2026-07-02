@@ -31,14 +31,6 @@ const COLS = {
         { label: "Ignia Aprende", to: "/aprende" },
       ],
     },
-    {
-      label: "Para artistas",
-      links: [
-        { label: "Publicar obra", to: "/login" },
-        { label: "Guía 3D", to: "/aprende" },
-        { label: "Mi perfil", to: "/perfil/escultor" },
-      ],
-    },
   ],
   en: [
     {
@@ -61,14 +53,6 @@ const COLS = {
         { label: "Collection", to: "/coleccion" },
         { label: "Sculptors", to: "/escultores" },
         { label: "Ignia Learn", to: "/aprende" },
-      ],
-    },
-    {
-      label: "For artists",
-      links: [
-        { label: "Share your work", to: "/login" },
-        { label: "3D guide", to: "/aprende" },
-        { label: "My profile", to: "/perfil/escultor" },
       ],
     },
   ],
