@@ -485,7 +485,7 @@ export const Coleccion = () => {
             <button
               type="button"
               onClick={() => setActiveFilter(null)}
-              className="w-full font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-ink text-white py-3.5 hover:opacity-90 transition-opacity"
+              className="w-full font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-transparent text-ink border border-ink py-3.5 hover:opacity-60 transition-opacity"
             >
               {t.apply}
             </button>
