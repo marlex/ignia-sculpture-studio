@@ -258,7 +258,7 @@ export const Hero = () => {
           <div className="font-display font-bold tracking-[-0.01em] text-ink" style={{ fontSize: 24, marginBottom: 10 }}>{o.price}</div>
           <button
             onClick={(e) => { e.stopPropagation(); navigate(`/obra/${o.slug}?buy=1`); }}
-            className="w-full font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-ink text-white hover:opacity-90 transition-opacity"
+            className="w-full font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-transparent text-ink border border-ink hover:opacity-60 transition-opacity"
             style={{ padding: "12px 0", marginBottom: 10 }}
           >
             {t.buy}
