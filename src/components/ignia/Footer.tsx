@@ -83,7 +83,7 @@ export const Footer = () => {
 
   return (
     <footer className="footer-section bg-white border-t-[0.5px] border-border px-6 md:px-12 pt-14 pb-8">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
         {cols.map((c, i) => (
           i === 0 ? (
             <div key={c.label}>
