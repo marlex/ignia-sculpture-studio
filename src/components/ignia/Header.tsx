@@ -101,7 +101,7 @@ export const Header = () => {
             left: 12px !important;
             right: 12px !important;
             height: 52px !important;
-            border-radius: 9999px !important;
+            border-radius: 0 !important;
             border: 0.5px solid rgba(0,0,0,0.06) !important;
             background: rgba(255,255,255,0.72) !important;
             -webkit-backdrop-filter: saturate(180%) blur(14px) !important;
