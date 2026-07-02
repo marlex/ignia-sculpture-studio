@@ -439,7 +439,7 @@ const ObraDetalle = () => {
             </div>
 
             <div className="flex gap-3">
-              <button onClick={() => window.dispatchEvent(new Event("ignia:open-invite"))} className="flex-1 bg-ink text-white font-body text-[16px] tracking-[0.16em] uppercase py-5 hover:bg-ink/90 transition-colors">{t.buy}</button>
+              <button onClick={() => window.dispatchEvent(new Event("ignia:open-invite"))} className="flex-1 bg-transparent text-ink border border-ink font-body text-[16px] tracking-[0.16em] uppercase py-5 hover:opacity-60 transition-opacity">{t.buy}</button>
               <button
                 onClick={() => setChatOpen(true)}
                 aria-label={t.talk}
@@ -547,7 +547,7 @@ const ObraDetalle = () => {
                 placeholder="Escribe tu mensaje…"
                 className="flex-1 border border-border px-3 py-2.5 font-body text-[14px] outline-none focus:border-ink"
               />
-              <button type="submit" className="bg-ink text-white font-body text-[12px] uppercase tracking-[0.14em] px-4">
+              <button type="submit" className="bg-transparent text-ink border border-ink font-body text-[12px] uppercase tracking-[0.14em] px-4 hover:opacity-60 transition-opacity">
                 Enviar
               </button>
             </form>

@@ -98,9 +98,9 @@ export default function Publicar() {
           <button
             type="submit"
             disabled={loading}
-            style={{ width: "100%", background: "#111111", color: "#FFFFFF", fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 13, padding: 18, border: "none", borderRadius: 0, cursor: "pointer", marginTop: 24, transition: "background-color 250ms" }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "#333333")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "#111111")}
+            style={{ width: "100%", background: "transparent", color: "#111111", fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 13, padding: 18, border: "1px solid #111111", borderRadius: 0, cursor: "pointer", marginTop: 24, transition: "opacity 250ms" }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.6")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
             {loading ? "Enviando…" : "Enviar obra"}
           </button>

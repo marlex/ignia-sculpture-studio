@@ -80,22 +80,28 @@
     font-weight: 400;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    background: hsl(var(--black-pure));
-    color: #fff;
-    border: none;
+    background: transparent;
+    color: hsl(var(--black-pure));
+    border: 1px solid hsl(var(--black-pure));
     border-radius: 0;
     padding: 13px 28px;
     cursor: pointer;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, border-color 0.2s, color 0.2s;
     display: inline-flex;
     align-items: center;
     gap: 6px;
   }
-  .btn-primary:hover { opacity: 0.7; }
+  .btn-primary:hover { opacity: 0.6; }
 
   .btn-primary-inverse {
-    background: #fff;
-    color: hsl(var(--black-pure));
+    background: transparent;
+    color: #fff;
+    border-color: #fff;
+  }
+  .btn-primary-inverse:hover {
+    opacity: 1;
+    border-color: hsl(var(--verde));
+    color: hsl(var(--verde));
   }
 
   .btn-ghost {

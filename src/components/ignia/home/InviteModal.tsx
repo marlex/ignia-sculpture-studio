@@ -365,9 +365,9 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
                   type="submit"
                   disabled={loading}
                   className="font-body"
-                  style={{ width: "100%", background: "#111111", color: "#FFFFFF", fontWeight: 300, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 14, padding: "18px 36px", border: "none", borderRadius: 0, cursor: "pointer", transition: "background-color 250ms" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = "#333333")}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = "#111111")}
+                  style={{ width: "100%", background: "transparent", color: "#111111", fontWeight: 300, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 14, padding: "18px 36px", border: "1px solid #111111", borderRadius: 0, cursor: "pointer", transition: "opacity 250ms" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.6")}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
                 >
                   {loading ? t.sending : t.submit}
                 </button>
