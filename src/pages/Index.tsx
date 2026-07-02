@@ -93,7 +93,7 @@ const Index = () => {
       <div ref={fadeReviews}>
         <Reviews />
       </div>
-      <SectionSeparator title={t.s2.title} subtitle={t.s2.subtitle} />
+      <SectionSeparator title={t.s2.title} subtitle={t.s2.subtitle} cta={t.s2.cta} />
       <Colectores />
       <Inspiracion />
       <Aprende />
