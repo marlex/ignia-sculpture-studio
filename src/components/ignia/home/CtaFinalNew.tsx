@@ -24,7 +24,7 @@ export const CtaFinalNew = ({ onInvite, onCollection }: { onInvite: () => void; 
           <button
             onClick={onCollection}
             className="font-body"
-            style={{ fontWeight: 300, fontSize: 14, letterSpacing: "0.14em", textTransform: "uppercase", padding: "18px 36px", background: "#111111", color: "#FFFFFF", border: "1px solid #FFFFFF", borderRadius: 0, cursor: "pointer" }}
+            style={{ fontWeight: 300, fontSize: 14, letterSpacing: "0.14em", textTransform: "uppercase", padding: "18px 36px", background: "transparent", color: "#FFFFFF", border: "1px solid #FFFFFF", borderRadius: 0, cursor: "pointer" }}
           >
             {t.b}
           </button>
