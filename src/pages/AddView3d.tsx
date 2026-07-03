@@ -107,7 +107,7 @@ export default function AddView3d() {
                 ))}
               </ul>
 
-              <label className="block border border-dashed border-border p-8 text-center cursor-pointer hover:border-ink transition-colors">
+              <label className="block border border-dashed border-border p-8 text-center cursor-pointer hover:opacity-65 transition-opacity">
                 <input
                   type="file"
                   accept="image/jpeg,image/png"

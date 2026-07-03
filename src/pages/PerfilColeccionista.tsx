@@ -56,7 +56,7 @@ export default function PerfilColeccionista() {
         <Link to="/" aria-label="Ignia Gallery"><Logo /></Link>
         <div className="flex items-center gap-4">
           <span className="font-body text-[13px] uppercase tracking-[0.14em] text-muted-line">María García</span>
-          <Link to="/" className="font-body text-[14px] font-light text-gray hover:text-ink">{t.exit}</Link>
+          <Link to="/" className="font-body text-[14px] font-light text-gray hover:opacity-65 transition-opacity">{t.exit}</Link>
         </div>
       </header>
 
