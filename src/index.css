@@ -99,9 +99,7 @@
     border-color: #fff;
   }
   .btn-primary-inverse:hover {
-    opacity: 1;
-    border-color: hsl(var(--verde));
-    color: hsl(var(--verde));
+    opacity: 0.65;
   }
 
   .btn-ghost {
