@@ -178,7 +178,7 @@ export const Header = () => {
           <button
             type="button"
             onClick={openInvite}
-            className="header-invite-btn hidden sm:inline-flex btn-primary !py-2 !px-4 text-[11px]"
+            className="header-invite-btn hidden sm:inline-flex btn-primary !py-2 !px-4 text-[11px] font-semibold"
           >
             {t.publish}
           </button>
