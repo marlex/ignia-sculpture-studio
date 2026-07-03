@@ -35,7 +35,7 @@ export const HeroFull = () => {
         .hf-title { animation-delay: 0.1s; }
         .hf-body { animation-delay: 0.4s; }
         .hf-cta { animation-delay: 0.7s; }
-        .hf-cta-btn:hover { background: #F2F2F2 !important; }
+        .hf-cta-btn:hover { border-color: #7CFF6B !important; color: #7CFF6B !important; }
 
         .hf-title-el {
           font-family: 'Cormorant Garamond', serif;
@@ -117,12 +117,12 @@ export const HeroFull = () => {
               letterSpacing: "0.2em",
               textTransform: "uppercase",
               padding: "16px 32px",
-              background: "#FFFFFF",
-              color: "#111111",
-              border: "none",
+              background: "transparent",
+              color: "#FFFFFF",
+              border: "1px solid #FFFFFF",
               borderRadius: 0,
               cursor: "pointer",
-              transition: "background-color 250ms",
+              transition: "background-color 250ms, color 250ms, border-color 250ms",
             }}
           >
             {t.cta}
