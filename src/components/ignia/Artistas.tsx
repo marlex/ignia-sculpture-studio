@@ -121,7 +121,7 @@ export const Artistas = () => {
                   <img src={a.foto} alt={a.nombre} loading="lazy" width={800} height={800} className="w-full h-full object-cover object-center transition-transform duration-[700ms] group-hover:scale-[1.03]" />
                 </Link>
                 <div>
-                  <Link to={`/perfil/escultor/${slugify(a.nombre)}`} className="block hover:opacity-80 transition-opacity">
+                  <Link to={`/perfil/escultor/${slugify(a.nombre)}`} className="block hover:opacity-65 transition-opacity">
                     <h3 className="font-display font-bold text-[28px] text-ink mb-1.5 leading-tight">{a.nombre}</h3>
                     <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{a.esp}</div>
                     <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-3">{a.extracto}</p>
