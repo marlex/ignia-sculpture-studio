@@ -190,7 +190,7 @@ export default function ColeccionistaPublico() {
       <Header />
 
       <section className="px-6 md:px-12 pt-12 pb-8 max-w-[1280px] mx-auto">
-        <Link to="/" className="font-body text-[12px] uppercase tracking-[0.18em] text-muted-line hover:text-ink transition-colors">
+        <Link to="/" className="font-body text-[12px] uppercase tracking-[0.18em] text-muted-line hover:opacity-65 transition-opacity">
           {t.back}
         </Link>
       </section>

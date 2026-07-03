@@ -82,7 +82,7 @@ export default function PerfilColeccionista() {
                 <div className="flex items-center gap-4">
                   <Link
                     to={`/obra/${o.slug}`}
-                    className="font-body text-[12px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-60 transition-opacity"
+                    className="font-body text-[12px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-65 transition-opacity"
                   >
                     {t.viewObra}
                   </Link>
@@ -105,7 +105,7 @@ export default function PerfilColeccionista() {
                 <div className="flex items-center gap-3">
                   <Link
                     to={`/obra/${o.slug}`}
-                    className="font-body text-[11px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-60 transition-opacity"
+                    className="font-body text-[11px] font-normal text-ink uppercase tracking-[0.12em] border-b-[0.5px] border-ink pb-px hover:opacity-65 transition-opacity"
                   >
                     {t.viewObra}
                   </Link>

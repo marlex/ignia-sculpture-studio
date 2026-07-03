@@ -116,11 +116,11 @@ export default function ObraAnalytics() {
     <main className="min-h-screen bg-white">
       <header className="sticky top-0 z-50 h-14 bg-white border-b border-border flex items-center justify-between px-6 md:px-12">
         <Link to="/" aria-label="Ignia Gallery"><Logo /></Link>
-        <Link to={`/perfil/escultor/${slug}`} className="font-body text-[13px] text-gray hover:text-ink">Salir</Link>
+        <Link to={`/perfil/escultor/${slug}`} className="font-body text-[13px] text-gray hover:opacity-65 transition-opacity">Salir</Link>
       </header>
 
       <section className="max-w-[1120px] mx-auto px-6 py-10 md:py-14">
-        <Link to={`/perfil/escultor/${slug}`} className="font-body text-[12px] uppercase tracking-[0.16em] text-gray hover:text-ink inline-block mb-8">← Mis obras</Link>
+        <Link to={`/perfil/escultor/${slug}`} className="font-body text-[12px] uppercase tracking-[0.16em] text-gray hover:opacity-65 transition-opacity inline-block mb-8">← Mis obras</Link>
 
         {/* Cabecera obra */}
         <div className="flex flex-col sm:flex-row gap-6 items-start mb-12 pb-10 border-b border-border">
