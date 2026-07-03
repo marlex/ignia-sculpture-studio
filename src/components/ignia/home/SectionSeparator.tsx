@@ -57,16 +57,17 @@ export const SectionSeparator = ({ title, subtitle, cta }: SectionSeparatorProps
             letterSpacing: "0.2em",
             textTransform: "uppercase",
             padding: "16px 32px",
-            background: "#FFFFFF",
-            color: "#111111",
-            border: "none",
+            background: "transparent",
+            color: "#FFFFFF",
+            border: "1px solid #FFFFFF",
             borderRadius: 0,
             cursor: "pointer",
-            transition: "background-color 250ms",
+            transition: "background-color 250ms, color 250ms, border-color 250ms",
             marginTop: 8,
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = "#F2F2F2")}
-          onMouseLeave={(e) => (e.currentTarget.style.background = "#FFFFFF")}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#7CFF6B"; e.currentTarget.style.color = "#7CFF6B"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#FFFFFF"; e.currentTarget.style.color = "#FFFFFF"; }}
+
         >
           {cta}
         </button>
