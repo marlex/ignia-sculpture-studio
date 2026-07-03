@@ -205,7 +205,7 @@ const ObraDetalle = () => {
               <button
                 type="button"
                 onClick={() => setPriceInfoOpen(true)}
-                className="font-body text-[12px] text-muted-line underline-offset-4 hover:underline hover:text-gray transition-colors mt-1"
+                className="font-body text-[12px] text-muted-line underline-offset-4 hover:underline hover:opacity-65 transition-opacity mt-1"
               >
                 {lang === "es" ? "Cómo se calcula este precio" : "How this price is calculated"}
               </button>
