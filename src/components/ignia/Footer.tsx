@@ -20,7 +20,6 @@ const COLS = {
       links: [
         { label: "Sobre Ignia", to: "/ignia-gallery" },
         { label: "Contacto", to: "/ignia-gallery" },
-        { label: "Editorial", to: "/editorial" },
       ],
     },
     {
@@ -28,6 +27,12 @@ const COLS = {
       links: [
         { label: "Colección", to: "/coleccion" },
         { label: "Escultores", to: "/escultores" },
+      ],
+    },
+    {
+      label: "News",
+      links: [
+        { label: "Editorial", to: "/editorial" },
         { label: "Ignia Aprende", to: "/aprende" },
       ],
     },
@@ -44,7 +49,6 @@ const COLS = {
       links: [
         { label: "About Ignia", to: "/ignia-gallery" },
         { label: "Contact", to: "/ignia-gallery" },
-        { label: "Editorial", to: "/editorial" },
       ],
     },
     {
@@ -52,6 +56,12 @@ const COLS = {
       links: [
         { label: "Collection", to: "/coleccion" },
         { label: "Sculptors", to: "/escultores" },
+      ],
+    },
+    {
+      label: "News",
+      links: [
+        { label: "Editorial", to: "/editorial" },
         { label: "Ignia Learn", to: "/aprende" },
       ],
     },
