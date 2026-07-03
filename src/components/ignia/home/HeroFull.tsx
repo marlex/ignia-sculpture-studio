@@ -13,12 +13,12 @@ export const HeroFull = () => {
     ? {
         title: "El mundo de la escultura, de cerca.",
         body: "La primera galería global dedicada exclusivamente a la escultura. Compra, vende y descubre obras de gran valor, con visualización 3D, certificados de autenticidad en blockchain y comisiones justas.",
-        cta: "Únete a Ignia",
+        cta: "Descubre La Colección",
       }
     : {
         title: "The sculpture world, up close.",
         body: "The first global sculpture gallery dedicated exclusively to sculpture. Buy, sell and discover high-value works, with 3D visualization, blockchain authenticity certificates and fair commissions.",
-        cta: "Join Ignia",
+        cta: "Discover The Collection",
       };
 
   return (
@@ -111,7 +111,7 @@ export const HeroFull = () => {
         <div className="hf-anim hf-cta" style={{ marginTop: 32 }}>
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new Event("ignia:open-invite"))}
+            onClick={() => window.dispatchEvent(new Event("ignia:scroll-to-collection"))}
             className="hf-cta-btn"
             style={{
               fontFamily: "Manrope, sans-serif",

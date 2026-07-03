@@ -63,8 +63,13 @@ const Index = () => {
 
   useEffect(() => {
     const open = () => setInviteOpen(true);
+    const scroll = () => scrollToColeccion();
     window.addEventListener("ignia:open-invite", open);
-    return () => window.removeEventListener("ignia:open-invite", open);
+    window.addEventListener("ignia:scroll-to-collection", scroll);
+    return () => {
+      window.removeEventListener("ignia:open-invite", open);
+      window.removeEventListener("ignia:scroll-to-collection", scroll);
+    };
   }, []);
 
   const fadeTicker = useFadeUp<HTMLDivElement>();

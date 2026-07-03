@@ -54,7 +54,7 @@ const COLS = {
     {
       label: "Sculpture",
       links: [
-        { label: "Collection", to: "/coleccion" },
+        { label: "The Collection", to: "/coleccion" },
         { label: "Sculptors", to: "/escultores" },
       ],
     },
