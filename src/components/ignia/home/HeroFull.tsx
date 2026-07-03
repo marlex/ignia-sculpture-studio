@@ -90,12 +90,12 @@ export const HeroFull = () => {
         />
       ))}
 
-      {/* Floor-fade overlay */}
+      {/* Fixed overlay — stays constant, does not crossfade */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 75%, rgba(0,0,0,0.85) 100%)",
+            "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 100%)",
         }}
       />
 
