@@ -219,7 +219,7 @@ export const Hero = () => {
           <Link
             to={`/obra/${o.slug}`}
             onClick={(e) => e.stopPropagation()}
-            className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink py-3.5 hover:bg-ink hover:text-white transition-colors text-ink mb-2.5"
+            className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink py-3.5 hover:opacity-65 transition-opacity text-ink mb-2.5"
           >
             {o.glbUrl ? t.view3d : t.viewObra}
           </Link>
@@ -266,7 +266,7 @@ export const Hero = () => {
           <Link
             to={`/obra/${o.slug}`}
             onClick={(e) => e.stopPropagation()}
-            className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink hover:bg-ink hover:text-white transition-colors"
+            className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink hover:opacity-65 transition-opacity"
             style={{ padding: "12px 0", marginBottom: 10 }}
           >
             {o.glbUrl ? t.view3d : t.viewObra}
