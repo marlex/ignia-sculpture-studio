@@ -276,7 +276,7 @@ style={{ backgroundColor: "#FF9C00" }}
               </div>
               <Link
                 to={`/obra/${featured.slug}?buy=1`}
-                className="sm:hidden font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-5 py-3 hover:bg-ink hover:text-white transition-colors block w-full text-center"
+className="sm:hidden font-body text-[12px] font-medium tracking-[0.22em] uppercase border border-ink text-ink px-5 py-3 hover:bg-ink hover:text-white transition-colors block w-full text-center"
               >
                 {t.viewObra}
               </Link>
@@ -299,7 +299,7 @@ style={{ backgroundColor: "#FF9C00" }}
                   )}
                   <Link
                     to={`/obra/${featured.slug}?buy=1`}
-                    className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-5 py-2.5 hover:bg-ink hover:text-white transition-colors text-center"
+className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border border-ink text-ink px-5 py-2.5 hover:bg-ink hover:text-white transition-colors text-center"
                   >
                     {t.viewObra}
                   </Link>
@@ -345,7 +345,7 @@ style={{ backgroundColor: "#FF9C00" }}
                   </div>
                   <Link
                     to={`/obra/${o.slug}`}
-                    className="sm:hidden font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-5 py-3 hover:bg-ink hover:text-white transition-colors block w-full text-center"
+                    className="sm:hidden font-body text-[12px] font-medium tracking-[0.22em] uppercase border border-ink text-ink px-5 py-3 hover:bg-ink hover:text-white transition-colors block w-full text-center"
                   >
                     {t.viewObra}
                   </Link>
@@ -368,7 +368,7 @@ style={{ backgroundColor: "#FF9C00" }}
                       )}
                       <Link
                         to={`/obra/${o.slug}`}
-                        className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink px-5 py-2.5 hover:bg-ink hover:text-white transition-colors text-center"
+                        className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border border-ink text-ink px-5 py-2.5 hover:bg-ink hover:text-white transition-colors text-center"
                       >
                         {t.viewObra}
                       </Link>
