@@ -16,7 +16,7 @@ const NAV_LEFT = {
   ],
   en: [
     { label: "Sculptors", to: "/escultores" },
-    { label: "Collection", to: "/coleccion" },
+    { label: "The Collection", to: "/coleccion" },
     { label: "Learn", to: "/aprende" },
     { label: "Editorial", to: "/editorial" },
   ],
