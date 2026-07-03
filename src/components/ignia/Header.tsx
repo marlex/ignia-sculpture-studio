@@ -139,7 +139,7 @@ export const Header = () => {
           </button>
           <nav className="header-nav-links hidden md:flex items-center gap-9">
             {leftItems.map(item => (
-              <Link key={item.label} to={item.to} className="font-body text-[16px] font-light text-gray hover:text-ink transition-colors">
+              <Link key={item.label} to={item.to} className="font-body text-[16px] font-light text-gray hover:opacity-65 transition-opacity">
                 {item.label}
               </Link>
             ))}
@@ -155,20 +155,20 @@ export const Header = () => {
 
         {/* RIGHT: desktop cluster + mobile invite icon */}
         <div className="header-right-cluster col-start-3 flex items-center justify-end gap-4">
-          <Link to={galleryItem.to} className="header-gallery-link font-body text-[16px] font-light text-gray hover:text-ink transition-colors">
+          <Link to={galleryItem.to} className="header-gallery-link font-body text-[16px] font-light text-gray hover:opacity-65 transition-opacity">
             {galleryItem.label}
           </Link>
           {SHOW_PUBLIC_AUTH && (user ? (
             <div className="header-user-links hidden md:flex items-center gap-3">
-              <Link to="/dashboard" className="font-body text-[16px] font-light text-gray hover:text-ink transition-colors">
+              <Link to="/dashboard" className="font-body text-[16px] font-light text-gray hover:opacity-65 transition-opacity">
                 {t.dashboard}
               </Link>
-              <button onClick={() => { logout(); navigate("/"); }} className="font-body text-[16px] font-light text-gray hover:text-ink transition-colors">
+              <button onClick={() => { logout(); navigate("/"); }} className="font-body text-[16px] font-light text-gray hover:opacity-65 transition-opacity">
                 {t.signout}
               </button>
             </div>
           ) : (
-            <Link to={`/login?redirect=${encodeURIComponent(location.pathname)}`} className="header-signin-link font-body text-[16px] font-light text-gray hover:text-ink transition-colors">
+            <Link to={`/login?redirect=${encodeURIComponent(location.pathname)}`} className="header-signin-link font-body text-[16px] font-light text-gray hover:opacity-65 transition-opacity">
               {t.signin}
             </Link>
           ))}
@@ -332,7 +332,7 @@ const LangDropdown = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => voi
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="flex items-center gap-1.5 text-ink hover:opacity-70 transition-opacity"
+        className="flex items-center gap-1.5 text-ink hover:opacity-65 transition-opacity"
       >
         {LANGS.find((l) => l.code === lang)?.label}
         <span aria-hidden className={`text-[10px] transition-transform ${open ? "rotate-180" : ""}`}>▾</span>
@@ -347,7 +347,7 @@ const LangDropdown = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => voi
                   setLang(l.code);
                   setOpen(false);
                 }}
-                className="w-full text-left px-3 py-2 text-gray hover:text-ink hover:bg-secondary transition-colors"
+                className="w-full text-left px-3 py-2 text-gray hover:opacity-65 transition-opacity"
               >
                 {l.label}
               </button>

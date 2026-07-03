@@ -212,14 +212,14 @@ export const Hero = () => {
           <div className="font-display font-bold text-[28px] tracking-[-0.01em] text-ink mb-2.5">{o.price}</div>
           <button
             onClick={(e) => { e.stopPropagation(); navigate(`/obra/${o.slug}?buy=1`); }}
-            className="w-full font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-transparent text-ink border border-ink py-3.5 hover:opacity-60 transition-opacity mb-2.5"
+            className="w-full font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-transparent text-ink border border-ink py-3.5 hover:opacity-65 transition-opacity mb-2.5"
           >
             {t.buy}
           </button>
           <Link
             to={`/obra/${o.slug}`}
             onClick={(e) => e.stopPropagation()}
-            className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink py-3.5 hover:bg-ink hover:text-white transition-colors text-ink mb-2.5"
+            className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink py-3.5 hover:opacity-65 transition-opacity text-ink mb-2.5"
           >
             {o.glbUrl ? t.view3d : t.viewObra}
           </Link>
@@ -258,7 +258,7 @@ export const Hero = () => {
           <div className="font-display font-bold tracking-[-0.01em] text-ink" style={{ fontSize: 24, marginBottom: 10 }}>{o.price}</div>
           <button
             onClick={(e) => { e.stopPropagation(); navigate(`/obra/${o.slug}?buy=1`); }}
-            className="w-full font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-transparent text-ink border border-ink hover:opacity-60 transition-opacity"
+            className="w-full font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-transparent text-ink border border-ink hover:opacity-65 transition-opacity"
             style={{ padding: "12px 0", marginBottom: 10 }}
           >
             {t.buy}
@@ -266,7 +266,7 @@ export const Hero = () => {
           <Link
             to={`/obra/${o.slug}`}
             onClick={(e) => e.stopPropagation()}
-            className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink hover:bg-ink hover:text-white transition-colors"
+            className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink hover:opacity-65 transition-opacity"
             style={{ padding: "12px 0", marginBottom: 10 }}
           >
             {o.glbUrl ? t.view3d : t.viewObra}

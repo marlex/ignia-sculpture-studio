@@ -80,7 +80,7 @@ export const SculptureIntro = () => {
               display: "inline-block",
               transition: "opacity 0.2s",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.65")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
             {t.cta}

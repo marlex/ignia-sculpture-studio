@@ -86,12 +86,12 @@
     border-radius: 0;
     padding: 13px 28px;
     cursor: pointer;
-    transition: opacity 0.2s, border-color 0.2s, color 0.2s;
+    transition: opacity 0.2s;
     display: inline-flex;
     align-items: center;
     gap: 6px;
   }
-  .btn-primary:hover { opacity: 0.6; }
+  .btn-primary:hover { opacity: 0.65; }
 
   .btn-primary-inverse {
     background: transparent;
@@ -99,9 +99,7 @@
     border-color: #fff;
   }
   .btn-primary-inverse:hover {
-    opacity: 1;
-    border-color: hsl(var(--verde));
-    color: hsl(var(--verde));
+    opacity: 0.65;
   }
 
   .btn-ghost {
@@ -116,15 +114,15 @@
     border-radius: 0;
     padding: 13px 28px;
     cursor: pointer;
-    transition: border-color 0.2s, color 0.2s;
+    transition: opacity 0.2s;
   }
-  .btn-ghost:hover { border-color: hsl(var(--black-pure)); }
+  .btn-ghost:hover { opacity: 0.65; }
 
   .btn-ghost-dark {
     color: #fff;
     border-color: #444;
   }
-  .btn-ghost-dark:hover { border-color: #fff; }
+  .btn-ghost-dark:hover { opacity: 0.65; }
 
   .link-arrow {
     font-family: var(--f-body);

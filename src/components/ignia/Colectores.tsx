@@ -107,7 +107,7 @@ export const Colectores = () => {
                 <img src={c.foto} alt={c.nombre} loading="lazy" width={800} height={800} className="w-full h-full object-cover object-[center_35%] transition-transform duration-[700ms] group-hover:scale-[1.03]" />
               </Link>
               <div>
-                <Link to={`/coleccionista/${slug(c.nombre)}`} className="block hover:opacity-80 transition-opacity">
+                <Link to={`/coleccionista/${slug(c.nombre)}`} className="block hover:opacity-65 transition-opacity">
                   <h3 className="font-display font-bold text-[28px] text-ink mb-1.5 leading-tight">{c.nombre}</h3>
                   <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{c.ubicacion} · {c.foco}</div>
                   <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-3">{c.extracto}</p>

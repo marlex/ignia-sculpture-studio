@@ -44,7 +44,7 @@ export const Inspiracion = () => {
               <img src={a.foto} alt={a.nombre} loading="lazy" width={800} height={800} className="w-full h-full object-cover object-[center_25%] transition-transform duration-[700ms] group-hover:scale-[1.03]" />
             </Link>
             <div>
-              <Link to={`/perfil/escultor/${slugify(a.nombre)}`} className="block hover:opacity-80 transition-opacity">
+              <Link to={`/perfil/escultor/${slugify(a.nombre)}`} className="block hover:opacity-65 transition-opacity">
                 <h3 className="font-display font-medium text-[28px] text-white leading-tight mb-1.5">{a.nombre}</h3>
                 <div className="font-body text-[13px] font-light text-white/60 uppercase tracking-[0.14em] mb-3">
                   {a.esp} · {a.obras}

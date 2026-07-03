@@ -16,15 +16,19 @@ export const CtaFinalNew = ({ onInvite, onCollection }: { onInvite: () => void; 
         <div style={{ marginTop: 48, display: "flex", gap: 32, justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}>
           <button
             onClick={onInvite}
+            onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.65"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}
             className="font-body"
-            style={{ fontWeight: 300, fontSize: 14, letterSpacing: "0.14em", textTransform: "uppercase", padding: "18px 36px", background: "transparent", color: "#FFFFFF", border: "1px solid #FFFFFF", borderRadius: 0, cursor: "pointer", transition: "opacity 250ms, color 250ms, border-color 250ms" }}
+            style={{ fontWeight: 300, fontSize: 14, letterSpacing: "0.14em", textTransform: "uppercase", padding: "18px 36px", background: "transparent", color: "#FFFFFF", border: "1px solid #FFFFFF", borderRadius: 0, cursor: "pointer", transition: "opacity 250ms" }}
           >
             {t.a}
           </button>
           <button
             onClick={onCollection}
+            onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.65"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}
             className="font-body"
-            style={{ fontWeight: 300, fontSize: 14, letterSpacing: "0.14em", textTransform: "uppercase", padding: "18px 36px", background: "transparent", color: "#FFFFFF", border: "1px solid #FFFFFF", borderRadius: 0, cursor: "pointer" }}
+            style={{ fontWeight: 300, fontSize: 14, letterSpacing: "0.14em", textTransform: "uppercase", padding: "18px 36px", background: "transparent", color: "#FFFFFF", border: "1px solid #FFFFFF", borderRadius: 0, cursor: "pointer", transition: "opacity 250ms" }}
           >
             {t.b}
           </button>

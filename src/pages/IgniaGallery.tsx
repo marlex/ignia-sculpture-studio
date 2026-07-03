@@ -141,13 +141,13 @@ const IgniaGalleryPage = () => {
           <ul className="font-body text-[16px] font-light text-gray leading-relaxed space-y-1">
             <li>
               Instagram:{" "}
-              <a href="https://www.instagram.com/igniagallery/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-ink transition-colors">
+              <a href="https://www.instagram.com/igniagallery/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:opacity-65 transition-opacity">
                 @igniagallery
               </a>
             </li>
             <li>
               LinkedIn:{" "}
-              <a href="https://www.linkedin.com/company/ignia-gallery/about/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-ink transition-colors">
+              <a href="https://www.linkedin.com/company/ignia-gallery/about/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:opacity-65 transition-opacity">
                 Ignia Gallery
               </a>
             </li>

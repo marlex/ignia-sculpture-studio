@@ -59,7 +59,7 @@ export default function AddView3d() {
     <main className="min-h-screen bg-white">
       <header className="sticky top-0 z-50 h-14 bg-white border-b border-border flex items-center justify-between px-6 md:px-12">
         <Link to="/" aria-label="Ignia Gallery"><Logo /></Link>
-        <Link to="/dashboard/obras" className="font-body text-[13px] text-gray hover:text-ink">Cancelar</Link>
+        <Link to="/dashboard/obras" className="font-body text-[13px] text-gray hover:opacity-65 transition-opacity">Cancelar</Link>
       </header>
 
       <section className="max-w-[880px] mx-auto px-6 py-10 md:py-14">
@@ -107,7 +107,7 @@ export default function AddView3d() {
                 ))}
               </ul>
 
-              <label className="block border border-dashed border-border p-8 text-center cursor-pointer hover:border-ink transition-colors">
+              <label className="block border border-dashed border-border p-8 text-center cursor-pointer hover:opacity-65 transition-opacity">
                 <input
                   type="file"
                   accept="image/jpeg,image/png"
@@ -134,7 +134,7 @@ export default function AddView3d() {
                   {totalCount} fotos seleccionadas <span className="text-muted-line">(mínimo 20)</span>
                 </div>
                 {totalCount < 20 && (
-                  <button onClick={() => setSimCount(24)} className="font-body text-[11px] uppercase tracking-[0.14em] text-muted-line hover:text-ink">
+                  <button onClick={() => setSimCount(24)} className="font-body text-[11px] uppercase tracking-[0.14em] text-muted-line hover:opacity-65 transition-opacity">
                     Simular 24 fotos
                   </button>
                 )}
@@ -163,7 +163,7 @@ export default function AddView3d() {
               <span className="font-body text-[14px] text-ink flex items-center gap-2"><Mail className="w-4 h-4" /> Avisarme por email cuando esté listo</span>
             </label>
 
-            <Link to="/dashboard/obras" className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line hover:text-ink inline-block">
+            <Link to="/dashboard/obras" className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line hover:opacity-65 transition-opacity inline-block">
               Cerrar — el procesamiento continúa en segundo plano
             </Link>
           </div>
@@ -179,10 +179,10 @@ export default function AddView3d() {
             </div>
             <div className="flex items-center gap-3">
               <button onClick={publish3d} className="btn-primary">Publicar vista 3D en mi obra</button>
-              <button onClick={() => { setStage("A"); setPhotos([]); setSimCount(0); }} className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line hover:text-ink">
+              <button onClick={() => { setStage("A"); setPhotos([]); setSimCount(0); }} className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line hover:opacity-65 transition-opacity">
                 Repetir con mejores fotos
               </button>
-              <button onClick={() => setSuccess(false)} className="ml-auto font-body text-[10px] uppercase tracking-[0.14em] text-muted-line/60 hover:text-muted-line">
+              <button onClick={() => setSuccess(false)} className="ml-auto font-body text-[10px] uppercase tracking-[0.14em] text-muted-line/60 hover:opacity-65 transition-opacity">
                 Simular fallo
               </button>
             </div>
