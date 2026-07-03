@@ -7,14 +7,24 @@ const Ctx = createContext<{ lang: Lang; setLang: (l: Lang) => void }>({
   setLang: () => {},
 });
 
+const STORAGE_KEY = "ignia:lang";
+
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [lang, setLangState] = useState<Lang>(() => {
     if (typeof window === "undefined") return "en";
-    return "en";
+    try {
+      const stored = window.localStorage.getItem(STORAGE_KEY);
+      if (stored === "es" || stored === "en") return stored;
+    } catch {}
+    const nav = typeof navigator !== "undefined" ? navigator.language : "";
+    return nav && nav.toLowerCase().startsWith("es") ? "es" : "en";
   });
 
   const setLang = (l: Lang) => {
     setLangState(l);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, l);
+    } catch {}
   };
 
   useEffect(() => {
