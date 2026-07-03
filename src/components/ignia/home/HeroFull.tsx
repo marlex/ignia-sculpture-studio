@@ -86,7 +86,10 @@ export const HeroFull = () => {
           fetchPriority={i === 0 ? "high" : "low"}
           decoding="async"
           className="hero-slide absolute inset-0 w-full h-full object-cover z-0"
-          style={{ animationDelay: `${i * 5.5}s` }}
+          style={{
+            animationDelay: `${i * 5.5}s`,
+            objectPosition: src === hero01.url ? "center bottom" : "center",
+          }}
         />
       ))}
 
