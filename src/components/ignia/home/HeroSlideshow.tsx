@@ -43,7 +43,7 @@ export const HeroSlideshow = ({ onInvite, onCollection }: Props) => {
       <style>{`
         @keyframes kb-a { 0%{transform:scale(1) translate(0,0)} 100%{transform:scale(1.08) translate(-16px,0)} }
         @keyframes kb-b { 0%{transform:scale(1) translate(0,0)} 100%{transform:scale(1.08) translate(0,-12px)} }
-        .hero-cta-light:hover { background:#F2F2F2 !important; }
+        .hero-cta-light:hover { opacity: 0.65 !important; }
       `}</style>
 
       {/* Slideshow background */}
