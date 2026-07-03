@@ -20,7 +20,6 @@ const COLS = {
       links: [
         { label: "Sobre Ignia", to: "/ignia-gallery" },
         { label: "Contacto", to: "/ignia-gallery" },
-        { label: "Editorial", to: "/editorial" },
       ],
     },
     {
@@ -28,6 +27,12 @@ const COLS = {
       links: [
         { label: "Colección", to: "/coleccion" },
         { label: "Escultores", to: "/escultores" },
+      ],
+    },
+    {
+      label: "News",
+      links: [
+        { label: "Editorial", to: "/editorial" },
         { label: "Ignia Aprende", to: "/aprende" },
       ],
     },
@@ -44,7 +49,6 @@ const COLS = {
       links: [
         { label: "About Ignia", to: "/ignia-gallery" },
         { label: "Contact", to: "/ignia-gallery" },
-        { label: "Editorial", to: "/editorial" },
       ],
     },
     {
@@ -52,6 +56,12 @@ const COLS = {
       links: [
         { label: "Collection", to: "/coleccion" },
         { label: "Sculptors", to: "/escultores" },
+      ],
+    },
+    {
+      label: "News",
+      links: [
+        { label: "Editorial", to: "/editorial" },
         { label: "Ignia Learn", to: "/aprende" },
       ],
     },
@@ -83,7 +93,7 @@ export const Footer = () => {
 
   return (
     <footer className="footer-section bg-white border-t-[0.5px] border-border px-6 md:px-12 pt-14 pb-0">
-      <div className="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1fr] gap-10 md:gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1fr_1fr] gap-10 md:gap-6">
         {cols.map((c, i) => (
           i === 0 ? (
             <div key={c.label}>
