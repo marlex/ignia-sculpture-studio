@@ -1,7 +1,11 @@
 import { useLang } from "@/i18n/LanguageContext";
-import heroSculptureAsset from "@/assets/hero-sculpture-gallery.webp.asset.json";
+import hero01 from "@/assets/hero-01-hands.jpg.asset.json";
+import hero02 from "@/assets/hero-02-marble.jpg.asset.json";
+import hero03 from "@/assets/hero-03-metal.jpg.asset.json";
+import hero04 from "@/assets/hero-04-bronze.jpg.asset.json";
+import hero05 from "@/assets/hero-05-ceramic.jpg.asset.json";
 
-const bgUrl = heroSculptureAsset.url;
+const heroImages = [hero01.url, hero02.url, hero03.url, hero04.url, hero05.url];
 
 export const HeroFull = () => {
   const lang = useLang();
