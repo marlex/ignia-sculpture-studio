@@ -267,7 +267,7 @@ export const Coleccion = () => {
                     onClick={() => setOpenFeatured3d(true)}
                     aria-label={t.view3d}
                     className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase text-ink px-4 py-2.5 hover:opacity-90 transition-opacity"
-                    style={{ backgroundColor: "#CCFF00" }}
+style={{ backgroundColor: "#FF9C00" }}
                   >
                     <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
                     3D
@@ -291,7 +291,7 @@ export const Coleccion = () => {
                       onClick={() => setOpenFeatured3d(true)}
                       aria-label={t.view3d}
                       className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase text-ink px-4 py-2.5 hover:opacity-90 transition-opacity flex-shrink-0"
-                      style={{ backgroundColor: "#CCFF00" }}
+style={{ backgroundColor: "#FF9C00" }}
                     >
                       <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
                       3D
@@ -336,7 +336,7 @@ export const Coleccion = () => {
                         onClick={() => setOpen3d(i)}
                         aria-label={t.view3d}
                         className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase text-ink px-4 py-2.5 hover:opacity-90 transition-opacity"
-                        style={{ backgroundColor: "#CCFF00" }}
+style={{ backgroundColor: "#FF9C00" }}
                       >
                         <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
                         3D
@@ -360,7 +360,7 @@ export const Coleccion = () => {
                           onClick={() => setOpen3d(i)}
                           aria-label={t.view3d}
                           className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase text-ink px-4 py-2.5 hover:opacity-90 transition-opacity flex-shrink-0"
-                          style={{ backgroundColor: "#CCFF00" }}
+                          style={{ backgroundColor: "#FF9C00" }}
                         >
                           <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
                           3D
