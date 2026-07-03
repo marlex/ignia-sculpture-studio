@@ -60,26 +60,42 @@ export const HeroFull = () => {
           .hf-title-el { font-size: 56px; }
           .hf-body-el { font-size: 17px; max-width: 92%; }
         }
+        @keyframes hero-slide {
+          0%      { opacity: 1; transform: scale(1.0); }
+          14.545% { opacity: 1; transform: scale(1.05); }
+          20%     { opacity: 0; transform: scale(1.05); }
+          94.545% { opacity: 0; transform: scale(1.0); }
+          100%    { opacity: 1; transform: scale(1.0); }
+        }
+        .hero-slide {
+          opacity: 0;
+          animation: hero-slide 27.5s ease-in-out infinite;
+          will-change: opacity, transform;
+        }
 
       `}</style>
 
-      {/* Background image */}
-      <img
-        src={bgUrl}
-        alt=""
-        aria-hidden
-        loading="eager"
-        fetchPriority="high"
-        decoding="async"
-        className="absolute inset-0 w-full h-full object-cover z-0"
-      />
+      {/* Background slideshow */}
+      {heroImages.map((src, i) => (
+        <img
+          key={src}
+          src={src}
+          alt=""
+          aria-hidden
+          loading={i === 0 ? "eager" : "lazy"}
+          fetchPriority={i === 0 ? "high" : "low"}
+          decoding="async"
+          className="hero-slide absolute inset-0 w-full h-full object-cover z-0"
+          style={{ animationDelay: `${i * 5.5}s` }}
+        />
+      ))}
 
       {/* Floor-fade overlay */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.7) 70%, rgba(0,0,0,0.85) 100%)",
+            "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 75%, rgba(0,0,0,0.85) 100%)",
         }}
       />
 
