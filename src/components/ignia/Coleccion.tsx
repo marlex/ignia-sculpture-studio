@@ -485,7 +485,7 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tr
             <button
               type="button"
               onClick={() => setActiveFilter(null)}
-              className="w-full font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-transparent text-ink border border-ink py-3.5 hover:opacity-60 transition-opacity"
+              className="w-full font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-transparent text-ink border border-ink py-3.5 hover:opacity-65 transition-opacity"
             >
               {t.apply}
             </button>
