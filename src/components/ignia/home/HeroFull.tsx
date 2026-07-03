@@ -35,7 +35,7 @@ export const HeroFull = () => {
         .hf-title { animation-delay: 0.1s; }
         .hf-body { animation-delay: 0.4s; }
         .hf-cta { animation-delay: 0.7s; }
-        .hf-cta-btn:hover { border-color: #7CFF6B !important; color: #7CFF6B !important; }
+        .hf-cta-btn:hover { border-color: #FF9C00 !important; color: #FF9C00 !important; }
 
         .hf-title-el {
           font-family: 'Cormorant Garamond', serif;
