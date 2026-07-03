@@ -266,8 +266,8 @@ export const Coleccion = () => {
                     type="button"
                     onClick={() => setOpenFeatured3d(true)}
                     aria-label={t.view3d}
-                    className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase text-ink px-4 py-2.5 hover:opacity-90 transition-opacity"
-style={{ backgroundColor: "#FF9C00" }}
+className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase px-4 py-2.5 hover:bg-ink hover:text-white hover:border-ink transition-colors"
+                    style={{ border: "1px solid #FF9C00", color: "#FF9C00", backgroundColor: "transparent" }}
                   >
                     <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
                     3D
@@ -290,8 +290,8 @@ className="sm:hidden font-body text-[12px] font-medium tracking-[0.22em] upperca
                       type="button"
                       onClick={() => setOpenFeatured3d(true)}
                       aria-label={t.view3d}
-                      className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase text-ink px-4 py-2.5 hover:opacity-90 transition-opacity flex-shrink-0"
-style={{ backgroundColor: "#FF9C00" }}
+className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase px-4 py-2.5 hover:bg-ink hover:text-white hover:border-ink transition-colors flex-shrink-0"
+                    style={{ border: "1px solid #FF9C00", color: "#FF9C00", backgroundColor: "transparent" }}
                     >
                       <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
                       3D
@@ -335,8 +335,8 @@ className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border 
                         type="button"
                         onClick={() => setOpen3d(i)}
                         aria-label={t.view3d}
-                        className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase text-ink px-4 py-2.5 hover:opacity-90 transition-opacity"
-style={{ backgroundColor: "#FF9C00" }}
+className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase px-4 py-2.5 hover:bg-ink hover:text-white hover:border-ink transition-colors"
+                    style={{ border: "1px solid #FF9C00", color: "#FF9C00", backgroundColor: "transparent" }}
                       >
                         <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
                         3D
@@ -359,8 +359,8 @@ style={{ backgroundColor: "#FF9C00" }}
                           type="button"
                           onClick={() => setOpen3d(i)}
                           aria-label={t.view3d}
-                          className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase text-ink px-4 py-2.5 hover:opacity-90 transition-opacity flex-shrink-0"
-                          style={{ backgroundColor: "#FF9C00" }}
+className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase px-4 py-2.5 hover:bg-ink hover:text-white hover:border-ink transition-colors flex-shrink-0"
+                          style={{ border: "1px solid #FF9C00", color: "#FF9C00", backgroundColor: "transparent" }}
                         >
                           <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
                           3D
