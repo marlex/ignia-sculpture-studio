@@ -65,7 +65,7 @@ export const SectionSeparator = ({ title, subtitle, cta }: SectionSeparatorProps
             transition: "background-color 250ms, color 250ms, border-color 250ms",
             marginTop: 8,
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#7CFF6B"; e.currentTarget.style.color = "#7CFF6B"; }}
+onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#FF9C00"; e.currentTarget.style.color = "#FF9C00"; }}
           onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#FFFFFF"; e.currentTarget.style.color = "#FFFFFF"; }}
 
         >
