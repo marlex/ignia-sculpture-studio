@@ -134,7 +134,7 @@ export const Footer = () => {
         ))}
       </div>
 
-      <div className="mt-14 pb-10">
+      <div className="mt-20 pt-10 pb-12 border-t border-border">
         <div className="font-body text-[14px] font-light text-muted-line uppercase tracking-[0.14em] mb-5">Connect</div>
         <div className="flex flex-wrap items-center gap-x-14 gap-y-4">
           <a href="https://www.instagram.com/igniagallery/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex items-center gap-3 text-ink hover:opacity-60 transition-opacity duration-200">
