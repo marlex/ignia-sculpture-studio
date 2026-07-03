@@ -62,11 +62,11 @@ export const SectionSeparator = ({ title, subtitle, cta }: SectionSeparatorProps
             border: "1px solid #FFFFFF",
             borderRadius: 0,
             cursor: "pointer",
-            transition: "background-color 250ms, color 250ms, border-color 250ms",
+transition: "opacity 250ms",
             marginTop: 8,
           }}
-onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#FF9C00"; e.currentTarget.style.color = "#FF9C00"; }}
-          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#FFFFFF"; e.currentTarget.style.color = "#FFFFFF"; }}
+onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.65"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}
 
         >
           {cta}

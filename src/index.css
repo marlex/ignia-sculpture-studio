@@ -91,7 +91,7 @@
     align-items: center;
     gap: 6px;
   }
-  .btn-primary:hover { opacity: 0.6; }
+  .btn-primary:hover { opacity: 0.65; }
 
   .btn-primary-inverse {
     background: transparent;
