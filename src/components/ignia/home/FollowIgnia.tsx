@@ -55,8 +55,8 @@ export const FollowIgnia = () => {
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            background: "#fff",
-            color: "#111111",
+            background: "transparent",
+            color: "#FFFFFF",
             fontFamily: "'Manrope', sans-serif",
             fontWeight: 500,
             textTransform: "uppercase",
