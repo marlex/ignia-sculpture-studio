@@ -94,11 +94,11 @@ export const HeroFull = () => {
         />
       ))}
 
-      {/* Fixed overlay at 0.45 opacity — does not crossfade */}
+      {/* Fixed overlay at 0.60 opacity — does not crossfade */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
-          background: "rgba(34,34,34,0.45)",
+          background: "rgba(34,34,34,0.60)",
         }}
       />
 
