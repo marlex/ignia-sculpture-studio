@@ -75,7 +75,7 @@ export const HeroFull = () => {
 
       `}</style>
 
-      {/* Background slideshow */}
+      {/* Background slideshow — images are softened so the text reads clearly */}
       {heroImages.map((src, i) => (
         <img
           key={src}
@@ -89,16 +89,16 @@ export const HeroFull = () => {
           style={{
             animationDelay: `${i * 5.5}s`,
             objectPosition: src === hero01.url ? "center bottom" : "center",
+            opacity: 0.55,
           }}
         />
       ))}
 
-      {/* Fixed overlay — stays constant, does not crossfade */}
+      {/* Fixed overlay at 0.45 opacity — does not crossfade */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
-          background:
-            "linear-gradient(to bottom, rgba(34,34,34,0.10) 0%, rgba(34,34,34,0.25) 100%)",
+          background: "rgba(34,34,34,0.45)",
         }}
       />
 
