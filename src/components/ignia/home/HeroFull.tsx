@@ -98,7 +98,7 @@ export const HeroFull = () => {
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
-          background: "rgba(34,34,34,0.70)",
+          background: "rgba(0,0,0,0.70)",
         }}
       />
 
