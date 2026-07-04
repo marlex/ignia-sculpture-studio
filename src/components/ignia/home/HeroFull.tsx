@@ -98,7 +98,7 @@ export const HeroFull = () => {
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(34,34,34,0.20) 0%, rgba(34,34,34,0.40) 100%)",
+            "linear-gradient(to bottom, rgba(34,34,34,0.35) 0%, rgba(34,34,34,0.55) 100%)",
         }}
       />
 
