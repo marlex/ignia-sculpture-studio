@@ -24,7 +24,7 @@ export const HeroFull = () => {
   return (
     <section
       className="hero-full relative w-full overflow-hidden"
-      style={{ height: "calc(100vh - 56px)", background: "#0A0A0A" }}
+      style={{ height: "calc(100vh - 56px)", background: "#222222" }}
     >
       <style>{`
         @keyframes hf-rise {
@@ -98,7 +98,7 @@ export const HeroFull = () => {
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 100%)",
+            "linear-gradient(to bottom, rgba(34,34,34,0.20) 0%, rgba(34,34,34,0.40) 100%)",
         }}
       />
 
