@@ -42,7 +42,7 @@ export const Ticker = () => {
   );
 
   return (
-    <section className="ticker-section" style={{ background: "#f5f5f5", padding: "72px 0" }}>
+    <section className="ticker-section" style={{ background: "#EAE3DA", padding: "72px 0" }}>
       <div className="flex items-center" style={{ width: "100%" }}>
         {/* Static title */}
         <div
