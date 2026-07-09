@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useLang } from "@/i18n/LanguageContext";
 import heroPiedra from "@/assets/hero-piedra.png.asset.json";
 import heroManos from "@/assets/hero-manos.png.asset.json";
@@ -5,8 +6,18 @@ import heroMetal from "@/assets/hero-metal.png.asset.json";
 import heroMarmol from "@/assets/hero-marmol.png.asset.json";
 
 const heroImages = [heroPiedra.url, heroManos.url, heroMetal.url, heroMarmol.url];
+const SLIDE_MS = 5500;
 
 export const HeroFull = () => {
+  const [active, setActive] = useState(0);
+  useEffect(() => {
+    const id = window.setInterval(
+      () => setActive((i) => (i + 1) % heroImages.length),
+      SLIDE_MS,
+    );
+    return () => window.clearInterval(id);
+  }, []);
+
   const lang = useLang();
   const t = lang === "es"
     ? {
