@@ -6,12 +6,13 @@ import jaume from "@/assets/artist-jaume-plensa-real.jpg";
 import barcelo from "@/assets/artist-miquel-barcelo-real.jpg";
 import chillida from "@/assets/artist-eduardo-chillida-real.jpg";
 import ulmukAsset from "@/assets/ada-la-cadena-taller.png.asset.json";
-import helenaPortrait from "@/assets/artist-helena-vazquez.jpg";
+import helenaPortrait from "@/assets/artist-helena-vazquez-new.png.asset.json";
 import luciaPortrait from "@/assets/artist-lucia-pardo.jpg";
 import pabloPortrait from "@/assets/artist-pablo-reyes.jpg";
 import tomasPortrait from "@/assets/artist-tomas-vigo.jpg";
 
 const ulmuk = ulmukAsset.url;
+const helena = helenaPortrait.url;
 
 
 const slugify = (s: string) =>
@@ -20,17 +21,17 @@ const slugify = (s: string) =>
 const IGNIA_ARTISTS = {
   es: {
     featured: {
-      foto: ulmuk,
-      nombre: "Ada La Cadena",
-      esp: "Cerámica, figura y ornamento",
-      obras: "Obra cerámica esmaltada",
-      titular: "“La arcilla deja de ser materia para convertirse en memoria.”",
+      foto: helena,
+      nombre: "Helena Vázquez",
+      esp: "Bronce, figura y materia",
+      obras: "Estudio de la figura en bronce",
+      titular: "“El bronce guarda el silencio del cuerpo.”",
       extracto:
-        "Ada La Cadena modela jarrones antropomorfos donde el ornamento florece sobre el rostro. Su obra dialoga con la talavera, el azulejo y la mayólica, llevando la cerámica mediterránea a un territorio íntimo y contemporáneo.",
-      tiempo: "12 min de lectura",
+        "Helena Vázquez modela la figura humana en bronce patinado con una economía de gestos que potencia su presencia. Sus piezas dialogan con el espacio a través del silencio, de la tensión entre la piel del metal y la memoria del cuerpo.",
+      tiempo: "10 min de lectura",
     },
     secundarios: [
-      { foto: helenaPortrait, nombre: "Helena Vázquez", esp: "Bronce, figura y materia", extracto: "Estudio de la figura humana en bronce patinado, con piezas que combinan presencia y silencio." },
+      { foto: ulmuk, nombre: "Ada La Cadena", esp: "Cerámica, figura y ornamento", extracto: "Jarrones antropomorfos donde el ornamento florece sobre el rostro, llevando la cerámica mediterránea a un territorio íntimo y contemporáneo." },
       { foto: luciaPortrait, nombre: "Lucía Pardo", esp: "Cerámica esmaltada y origen", extracto: "Formas primarias en cerámica esmaltada que evocan el gesto fundacional del barro." },
       { foto: pabloPortrait, nombre: "Pablo Reyes", esp: "Bronce y figura esbelta", extracto: "Bronces de figura alargada que exploran la verticalidad y el eco del cuerpo en el espacio." },
       { foto: tomasPortrait, nombre: "Tomás Vigo", esp: "Vidrio soplado y luz", extracto: "Piezas de vidrio soplado donde la luz atraviesa la materia y construye volumen." },
@@ -38,23 +39,24 @@ const IGNIA_ARTISTS = {
   },
   en: {
     featured: {
-      foto: ulmuk,
-      nombre: "Ada La Cadena",
-      esp: "Ceramic, figure and ornament",
-      obras: "Glazed ceramic work",
-      titular: "“Clay ceases to be matter and becomes memory.”",
+      foto: helena,
+      nombre: "Helena Vázquez",
+      esp: "Bronze, figure and matter",
+      obras: "Study of the bronze figure",
+      titular: "“Bronze keeps the silence of the body.”",
       extracto:
-        "Ada La Cadena models anthropomorphic vases where ornament blossoms across the face. Her work dialogues with Talavera, azulejo and maiolica, bringing Mediterranean ceramics into intimate, contemporary territory.",
-      tiempo: "12 min read",
+        "Helena Vázquez models the human figure in patinated bronze with an economy of gesture that heightens its presence. Her pieces dialogue with space through silence, through the tension between the skin of metal and the memory of the body.",
+      tiempo: "10 min read",
     },
     secundarios: [
-      { foto: helenaPortrait, nombre: "Helena Vázquez", esp: "Bronze, figure and matter", extracto: "A study of the human figure in patinated bronze, with pieces that combine presence and silence." },
+      { foto: ulmuk, nombre: "Ada La Cadena", esp: "Ceramic, figure and ornament", extracto: "Anthropomorphic vases where ornament blossoms across the face, bringing Mediterranean ceramics into intimate, contemporary territory." },
       { foto: luciaPortrait, nombre: "Lucía Pardo", esp: "Glazed ceramic and origin", extracto: "Primary forms in glazed ceramic that evoke the founding gesture of clay." },
       { foto: pabloPortrait, nombre: "Pablo Reyes", esp: "Bronze and slender figure", extracto: "Elongated bronze figures that explore verticality and the echo of the body in space." },
       { foto: tomasPortrait, nombre: "Tomás Vigo", esp: "Blown glass and light", extracto: "Blown-glass pieces where light passes through matter and builds volume." },
     ],
   },
 } as const;
+
 
 const INSPIRATION = {
   es: [
