@@ -90,6 +90,7 @@ export const HeroFull = () => {
             animationDelay: `${i * 5.5}s`,
             objectPosition: src === hero01.url ? "center bottom" : "center",
             opacity: 0.55,
+            filter: i % 2 === 1 ? "grayscale(100%)" : "none",
           }}
         />
       ))}
