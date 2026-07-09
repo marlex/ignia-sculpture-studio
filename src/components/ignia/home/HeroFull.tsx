@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useLang } from "@/i18n/LanguageContext";
 import heroPiedra from "@/assets/hero-piedra.png.asset.json";
 import heroManos from "@/assets/hero-manos.png.asset.json";
@@ -5,8 +6,18 @@ import heroMetal from "@/assets/hero-metal.png.asset.json";
 import heroMarmol from "@/assets/hero-marmol.png.asset.json";
 
 const heroImages = [heroPiedra.url, heroManos.url, heroMetal.url, heroMarmol.url];
+const SLIDE_MS = 5500;
 
 export const HeroFull = () => {
+  const [active, setActive] = useState(0);
+  useEffect(() => {
+    const id = window.setInterval(
+      () => setActive((i) => (i + 1) % heroImages.length),
+      SLIDE_MS,
+    );
+    return () => window.clearInterval(id);
+  }, []);
+
   const lang = useLang();
   const t = lang === "es"
     ? {
@@ -59,40 +70,45 @@ export const HeroFull = () => {
           .hf-title-el { font-size: 56px; }
           .hf-body-el { font-size: 17px; max-width: 92%; }
         }
-        @keyframes hero-slide {
-          0%      { opacity: 1; transform: scale(1.0); }
-          14.545% { opacity: 1; transform: scale(1.05); }
-          20%     { opacity: 0; transform: scale(1.05); }
-          94.545% { opacity: 0; transform: scale(1.0); }
-          100%    { opacity: 1; transform: scale(1.0); }
+        @keyframes hf-kenburns {
+          from { transform: scale(1.0); }
+          to   { transform: scale(1.06); }
         }
         .hero-slide {
-          opacity: 0;
-          animation: hero-slide 27.5s ease-in-out infinite;
-          will-change: opacity, transform;
+          transition: opacity 1600ms ease-in-out;
+          will-change: opacity;
+        }
+        .hero-slide-inner {
+          width: 100%;
+          height: 100%;
+          animation: hf-kenburns 12s ease-out both;
         }
 
       `}</style>
 
-      {/* Background slideshow — images are softened so the text reads clearly */}
+      {/* Background slideshow — crossfade driven by React state (no CSS drift) */}
       {heroImages.map((src, i) => (
-        <img
+        <div
           key={src}
-          src={src}
-          alt=""
           aria-hidden
-          loading={i === 0 ? "eager" : "lazy"}
-          fetchPriority={i === 0 ? "high" : "low"}
-          decoding="async"
-          className="hero-slide absolute inset-0 w-full h-full object-cover z-0"
-          style={{
-            animationDelay: `${i * 5.5}s`,
-            objectPosition: src === heroManos.url ? "center bottom" : "center",
-            opacity: 0.55,
-            filter: i % 2 === 1 ? "grayscale(100%)" : "none",
-          }}
-        />
+          className="hero-slide absolute inset-0 z-0"
+          style={{ opacity: i === active ? 0.55 : 0 }}
+        >
+          <img
+            src={src}
+            alt=""
+            loading={i === 0 ? "eager" : "lazy"}
+            fetchPriority={i === 0 ? "high" : "low"}
+            decoding="async"
+            className="hero-slide-inner absolute inset-0 w-full h-full object-cover"
+            style={{
+              objectPosition: src === heroManos.url ? "center bottom" : "center",
+              filter: i % 2 === 1 ? "grayscale(100%)" : "none",
+            }}
+          />
+        </div>
       ))}
+
 
       {/* Fixed overlay at 0.70 opacity — does not crossfade */}
       <div
