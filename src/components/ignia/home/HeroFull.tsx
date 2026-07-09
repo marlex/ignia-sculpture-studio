@@ -5,7 +5,7 @@ import hero03 from "@/assets/hero-03-metal.jpg.asset.json";
 import hero04 from "@/assets/hero-04-bronze.jpg.asset.json";
 import hero05 from "@/assets/hero-05-ceramic.jpg.asset.json";
 
-const heroImages = [hero02.url, hero01.url, hero03.url, hero04.url, hero05.url];
+const heroImages = [hero01.url, hero02.url, hero03.url, hero04.url, hero05.url];
 
 export const HeroFull = () => {
   const lang = useLang();
@@ -90,6 +90,7 @@ export const HeroFull = () => {
             animationDelay: `${i * 5.5}s`,
             objectPosition: src === hero01.url ? "center bottom" : "center",
             opacity: 0.55,
+            filter: i % 2 === 1 ? "grayscale(100%)" : "none",
           }}
         />
       ))}
