@@ -110,11 +110,11 @@ export const HeroFull = () => {
       ))}
 
 
-      {/* Fixed overlay at 0.70 opacity — does not crossfade */}
+      {/* Fixed overlay — lighter to let images breathe while keeping text readable */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
-          background: "rgba(0,0,0,0.70)",
+          background: "linear-gradient(to bottom, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.52) 60%, rgba(0,0,0,0.46) 100%)",
         }}
       />
 
