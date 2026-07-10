@@ -1,18 +1,24 @@
 import { useLang } from "@/i18n/LanguageContext";
 import { APRENDE_ARTICLES } from "@/data/aprendeArticles";
 
-export const Aprende = () => {
+interface AprendeProps {
+  showHeader?: boolean;
+}
+
+export const Aprende = ({ showHeader = true }: AprendeProps) => {
   const lang = useLang();
   const t = lang === "es"
     ? { title: "Ignia aprende", more: "Ver todos →", list: "Listado de artículos de Ignia aprende" }
     : { title: "Ignia learn", more: "See all →", list: "Ignia learn article list" };
 
   return (
-    <section className="bg-surface px-6 md:px-12 py-16 md:py-20" aria-labelledby="ignia-aprende-title">
-      <div className="flex items-end justify-between mb-8">
-        <h2 id="ignia-aprende-title" className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.title}</h2>
-        <a href="/aprende" className="link-arrow">{t.more}</a>
-      </div>
+    <section className="bg-surface px-6 md:px-12 py-16 md:py-20" aria-labelledby={showHeader ? "ignia-aprende-title" : undefined}>
+      {showHeader && (
+        <div className="flex items-end justify-between mb-8">
+          <h2 id="ignia-aprende-title" className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.title}</h2>
+          <a href="/aprende" className="link-arrow">{t.more}</a>
+        </div>
+      )}
       <ul className="flex flex-col gap-12 md:gap-14" aria-label={t.list}>
         {APRENDE_ARTICLES.map((a) => {
           const c = a[lang];

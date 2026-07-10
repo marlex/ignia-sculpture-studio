@@ -17,7 +17,7 @@ const AprendePage = () => {
         <h1 className="font-display font-bold text-[clamp(36px,5vw,64px)] tracking-[-0.02em] text-ink leading-[1.05]">{t.h}</h1>
         <p className="font-body text-[16px] font-light text-gray max-w-[640px] mt-4">{t.sub}</p>
       </section>
-      <AprendeSection />
+      <AprendeSection showHeader={false} />
       <Footer />
     </main>
   );
