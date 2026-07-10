@@ -1,7 +1,11 @@
 import { useLang } from "@/i18n/LanguageContext";
 import { APRENDE_ARTICLES } from "@/data/aprendeArticles";
 
-export const Aprende = () => {
+interface AprendeProps {
+  showHeader?: boolean;
+}
+
+export const Aprende = ({ showHeader = true }: AprendeProps) => {
   const lang = useLang();
   const t = lang === "es"
     ? { title: "Ignia aprende", more: "Ver todos →", list: "Listado de artículos de Ignia aprende" }
