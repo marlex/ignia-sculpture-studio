@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLang } from "@/i18n/LanguageContext";
 
-type Props = { open: boolean; onClose: () => void; defaultProfile?: "collector" };
+type Props = { open: boolean; onClose: () => void; defaultProfile?: "collector" | "artist" };
 type Profile = "artista" | "coleccionista" | "empresa";
 
 export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
@@ -123,6 +123,8 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
   useEffect(() => {
     if (open && defaultProfile === "collector") {
       setProfile("coleccionista");
+    } else if (open && defaultProfile === "artist") {
+      setProfile("artista");
     }
   }, [open, defaultProfile]);
 

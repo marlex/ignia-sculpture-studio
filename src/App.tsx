@@ -24,6 +24,7 @@ import Dashboard from "./pages/Dashboard.tsx";
 import AddView3d from "./pages/AddView3d.tsx";
 import ObraAnalytics from "./pages/ObraAnalytics.tsx";
 import Legal from "./pages/Legal.tsx";
+import JoinEscultores from "./pages/JoinEscultores.tsx";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +57,7 @@ const App = () => (
               <Route path="/obra/:slug" element={<ObraDetalle />} />
               <Route path="/analiticas/:slug/:obraSlug" element={<ObraAnalytics />} />
               <Route path="/legal/:slug" element={<Legal />} />
+              <Route path="/join/escultores" element={<JoinEscultores />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
