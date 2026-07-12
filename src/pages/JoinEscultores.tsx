@@ -514,10 +514,9 @@ const JoinEscultores = () => {
 
       <style>{`
         @media (max-width: 768px) {
-          .join-2col { grid-template-columns: 1fr !important; }
-          .join-2col-rev { grid-template-columns: 1fr !important; }
-          .join-2col-rev > div { order: 2; }
-          .join-2col-rev > img { order: 1; }
+          .join-bleed { grid-template-columns: 1fr !important; }
+          .join-bleed-rev > div { order: 2; }
+          .join-bleed-rev > img { order: 1; }
         }
       `}</style>
     </div>
