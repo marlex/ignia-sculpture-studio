@@ -57,6 +57,7 @@ const App = () => (
               <Route path="/obra/:slug" element={<ObraDetalle />} />
               <Route path="/analiticas/:slug/:obraSlug" element={<ObraAnalytics />} />
               <Route path="/legal/:slug" element={<Legal />} />
+              <Route path="/join/escultores" element={<JoinEscultores />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
