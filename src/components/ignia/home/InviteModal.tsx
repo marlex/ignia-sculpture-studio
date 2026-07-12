@@ -123,6 +123,8 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
   useEffect(() => {
     if (open && defaultProfile === "collector") {
       setProfile("coleccionista");
+    } else if (open && defaultProfile === "artist") {
+      setProfile("artista");
     }
   }, [open, defaultProfile]);
 
