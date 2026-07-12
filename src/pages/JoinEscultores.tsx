@@ -337,48 +337,52 @@ const JoinEscultores = () => {
         </div>
       </section>
 
-      {/* 5. HUELLA PERMANENTE */}
-      <section style={{ padding: "120px 24px", background: "#FAFAFA" }}>
-        <div style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "minmax(0, 2fr) minmax(0, 3fr)",
-          gap: 64,
-          alignItems: "center",
-        }} className="join-2col">
+      {/* 5. HUELLA PERMANENTE — imagen a sangre */}
+      <section style={{ background: "#FAFAFA" }}>
+        <div
+          className="join-bleed"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)",
+            alignItems: "stretch",
+          }}
+        >
           <img
             src={heroMarmol.url}
             alt="sculpture with permanent blockchain certificate"
             loading="lazy"
-            style={{ width: "100%", height: "auto", aspectRatio: "4/5", objectFit: "cover", display: "block" }}
+            style={{ width: "100%", height: "100%", minHeight: 480, objectFit: "cover", display: "block" }}
           />
-          <div>
-            <h2 style={{ ...H2_STYLE, marginBottom: 24 }}>{t.permTitle}</h2>
-            <p style={{ ...BODY_STYLE, margin: 0 }}>{t.permBody}</p>
+          <div style={{ display: "flex", alignItems: "center", padding: "clamp(64px, 8vw, 120px) clamp(24px, 5vw, 88px)" }}>
+            <div style={{ maxWidth: 520 }}>
+              <h2 style={{ ...H2_STYLE, marginBottom: 24 }}>{t.permTitle}</h2>
+              <p style={{ ...BODY_STYLE, margin: 0 }}>{t.permBody}</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 6. CÓMO CUIDAMOS TU OBRA (reversed) */}
-      <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
-        <div style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "minmax(0, 3fr) minmax(0, 2fr)",
-          gap: 64,
-          alignItems: "center",
-        }} className="join-2col-rev">
-          <div>
-            <h2 style={{ ...H2_STYLE, marginBottom: 24 }}>{t.careTitle}</h2>
-            <p style={{ ...BODY_STYLE, margin: 0 }}>{t.careBody}</p>
+      {/* 6. CÓMO CUIDAMOS TU OBRA — imagen a sangre (invertido) */}
+      <section style={{ background: "#FFFFFF" }}>
+        <div
+          className="join-bleed join-bleed-rev"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)",
+            alignItems: "stretch",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", padding: "clamp(64px, 8vw, 120px) clamp(24px, 5vw, 88px)" }}>
+            <div style={{ maxWidth: 520, marginLeft: "auto" }}>
+              <h2 style={{ ...H2_STYLE, marginBottom: 24 }}>{t.careTitle}</h2>
+              <p style={{ ...BODY_STYLE, margin: 0 }}>{t.careBody}</p>
+            </div>
           </div>
           <img
             src={heroMetal.url}
             alt="sculpture packaging by Ignia logistics partner"
             loading="lazy"
-            style={{ width: "100%", height: "auto", aspectRatio: "4/5", objectFit: "cover", display: "block" }}
+            style={{ width: "100%", height: "100%", minHeight: 480, objectFit: "cover", display: "block" }}
           />
         </div>
       </section>
