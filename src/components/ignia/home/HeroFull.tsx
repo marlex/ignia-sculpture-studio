@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useLang } from "@/i18n/LanguageContext";
-import heroPiedra from "@/assets/hero-piedra.png.asset.json";
-import heroManos from "@/assets/hero-manos.png.asset.json";
-import heroMetal from "@/assets/hero-metal.png.asset.json";
-import heroMarmol from "@/assets/hero-marmol.png.asset.json";
+import heroPiedra from "@/assets/hero-piedra.jpg.asset.json";
+import heroManos from "@/assets/hero-manos.jpg.asset.json";
+import heroMetal from "@/assets/hero-metal.jpg.asset.json";
+import heroMarmol from "@/assets/hero-marmol.jpg.asset.json";
 
 const heroImages = [heroPiedra.url, heroManos.url, heroMetal.url, heroMarmol.url];
 const SLIDE_MS = 5500;
