@@ -34,20 +34,20 @@ const hoverOut = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.o
 
 const H2_STYLE: React.CSSProperties = {
   fontFamily: "'Cormorant Garamond', serif",
-  fontWeight: 300,
+  fontWeight: 700,
   color: "#111111",
-  fontSize: "clamp(32px, 4.2vw, 52px)",
-  lineHeight: 1.1,
-  letterSpacing: "0.005em",
+  fontSize: "clamp(40px, 5vw, 60px)",
+  lineHeight: 1.05,
+  letterSpacing: "-0.02em",
   margin: 0,
 };
 
 const BODY_STYLE: React.CSSProperties = {
   fontFamily: "Manrope, sans-serif",
-  fontWeight: 500,
-  color: "#333333",
-  fontSize: 18,
-  lineHeight: 1.65,
+  fontWeight: 400,
+  color: "#5a5648",
+  fontSize: 16,
+  lineHeight: 1.7,
 };
 
 const JoinEscultores = () => {
@@ -261,24 +261,43 @@ const JoinEscultores = () => {
 
       {/* 3. CÓMO FUNCIONA */}
       <section style={{ padding: "120px 24px", background: "#FAFAFA" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 80 }}>{t.howTitle}</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 48 }}>
-            {[["01", t.step1], ["02", t.step2], ["03", t.step3]].map(([n, s], i) => (
-              <div key={i} style={{ textAlign: "left" }}>
-                <div style={{
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <h2 style={{ ...H2_STYLE, marginBottom: 80 }}>{t.howTitle}</h2>
+          <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
+            {[["I", t.step1], ["II", t.step2], ["III", t.step3]].map(([n, s], i) => (
+              <li
+                key={i}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "80px 1fr",
+                  columnGap: 32,
+                  alignItems: "baseline",
+                  padding: "32px 0",
+                  borderTop: "1px solid rgba(17,17,17,0.12)",
+                  borderBottom: i === 2 ? "1px solid rgba(17,17,17,0.12)" : "none",
+                }}
+              >
+                <span style={{
                   fontFamily: "'Cormorant Garamond', serif",
-                  fontWeight: 300,
-                  fontSize: 96,
+                  fontWeight: 400,
+                  fontStyle: "italic",
+                  fontSize: 44,
                   lineHeight: 1,
-                  color: "rgba(17,17,17,0.15)",
-                  marginBottom: 16,
-                }}>{n}</div>
-                <p style={{ ...BODY_STYLE, fontSize: 19, margin: 0 }}>{s}</p>
-              </div>
+                  color: "#c9c0ac",
+                }}>{n}</span>
+                <p style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontWeight: 500,
+                  fontSize: 26,
+                  lineHeight: 1.3,
+                  letterSpacing: "-0.01em",
+                  color: "#111111",
+                  margin: 0,
+                }}>{s}</p>
+              </li>
             ))}
-          </div>
-          <div style={{ textAlign: "center", marginTop: 80 }}>
+          </ol>
+          <div style={{ textAlign: "center", marginTop: 72 }}>
             <button type="button" onClick={openModal} style={OUTLINE_BTN_DARK} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
               {t.cta}
             </button>
@@ -318,48 +337,52 @@ const JoinEscultores = () => {
         </div>
       </section>
 
-      {/* 5. HUELLA PERMANENTE */}
-      <section style={{ padding: "120px 24px", background: "#FAFAFA" }}>
-        <div style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "minmax(0, 2fr) minmax(0, 3fr)",
-          gap: 64,
-          alignItems: "center",
-        }} className="join-2col">
+      {/* 5. HUELLA PERMANENTE — imagen a sangre */}
+      <section style={{ background: "#FAFAFA" }}>
+        <div
+          className="join-bleed"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)",
+            alignItems: "stretch",
+          }}
+        >
           <img
             src={heroMarmol.url}
             alt="sculpture with permanent blockchain certificate"
             loading="lazy"
-            style={{ width: "100%", height: "auto", aspectRatio: "4/5", objectFit: "cover", display: "block" }}
+            style={{ width: "100%", height: "100%", minHeight: 480, objectFit: "cover", display: "block" }}
           />
-          <div>
-            <h2 style={{ ...H2_STYLE, marginBottom: 24 }}>{t.permTitle}</h2>
-            <p style={{ ...BODY_STYLE, margin: 0 }}>{t.permBody}</p>
+          <div style={{ display: "flex", alignItems: "center", padding: "clamp(64px, 8vw, 120px) clamp(24px, 5vw, 88px)" }}>
+            <div style={{ maxWidth: 520 }}>
+              <h2 style={{ ...H2_STYLE, marginBottom: 24 }}>{t.permTitle}</h2>
+              <p style={{ ...BODY_STYLE, margin: 0 }}>{t.permBody}</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 6. CÓMO CUIDAMOS TU OBRA (reversed) */}
-      <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
-        <div style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "minmax(0, 3fr) minmax(0, 2fr)",
-          gap: 64,
-          alignItems: "center",
-        }} className="join-2col-rev">
-          <div>
-            <h2 style={{ ...H2_STYLE, marginBottom: 24 }}>{t.careTitle}</h2>
-            <p style={{ ...BODY_STYLE, margin: 0 }}>{t.careBody}</p>
+      {/* 6. CÓMO CUIDAMOS TU OBRA — imagen a sangre (invertido) */}
+      <section style={{ background: "#FFFFFF" }}>
+        <div
+          className="join-bleed join-bleed-rev"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)",
+            alignItems: "stretch",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", padding: "clamp(64px, 8vw, 120px) clamp(24px, 5vw, 88px)" }}>
+            <div style={{ maxWidth: 520, marginLeft: "auto" }}>
+              <h2 style={{ ...H2_STYLE, marginBottom: 24 }}>{t.careTitle}</h2>
+              <p style={{ ...BODY_STYLE, margin: 0 }}>{t.careBody}</p>
+            </div>
           </div>
           <img
             src={heroMetal.url}
             alt="sculpture packaging by Ignia logistics partner"
             loading="lazy"
-            style={{ width: "100%", height: "auto", aspectRatio: "4/5", objectFit: "cover", display: "block" }}
+            style={{ width: "100%", height: "100%", minHeight: 480, objectFit: "cover", display: "block" }}
           />
         </div>
       </section>
@@ -491,10 +514,9 @@ const JoinEscultores = () => {
 
       <style>{`
         @media (max-width: 768px) {
-          .join-2col { grid-template-columns: 1fr !important; }
-          .join-2col-rev { grid-template-columns: 1fr !important; }
-          .join-2col-rev > div { order: 2; }
-          .join-2col-rev > img { order: 1; }
+          .join-bleed { grid-template-columns: 1fr !important; }
+          .join-bleed-rev > div { order: 2; }
+          .join-bleed-rev > img { order: 1; }
         }
       `}</style>
     </div>
