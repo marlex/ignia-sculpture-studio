@@ -34,20 +34,20 @@ const hoverOut = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.o
 
 const H2_STYLE: React.CSSProperties = {
   fontFamily: "'Cormorant Garamond', serif",
-  fontWeight: 300,
+  fontWeight: 700,
   color: "#111111",
-  fontSize: "clamp(32px, 4.2vw, 52px)",
-  lineHeight: 1.1,
-  letterSpacing: "0.005em",
+  fontSize: "clamp(40px, 5vw, 60px)",
+  lineHeight: 1.05,
+  letterSpacing: "-0.02em",
   margin: 0,
 };
 
 const BODY_STYLE: React.CSSProperties = {
   fontFamily: "Manrope, sans-serif",
-  fontWeight: 500,
-  color: "#333333",
-  fontSize: 18,
-  lineHeight: 1.65,
+  fontWeight: 400,
+  color: "#5a5648",
+  fontSize: 16,
+  lineHeight: 1.7,
 };
 
 const JoinEscultores = () => {
