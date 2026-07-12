@@ -24,6 +24,7 @@ import Dashboard from "./pages/Dashboard.tsx";
 import AddView3d from "./pages/AddView3d.tsx";
 import ObraAnalytics from "./pages/ObraAnalytics.tsx";
 import Legal from "./pages/Legal.tsx";
+import JoinEscultores from "./pages/JoinEscultores.tsx";
 
 const queryClient = new QueryClient();
 
