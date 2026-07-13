@@ -301,11 +301,11 @@ const JoinEscultores = () => {
             <tbody>
               <tr style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
                 <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 16 }}>{t.planFree}</td>
-                <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 18, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>18%</td>
+                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>18%</td>
               </tr>
               <tr style={{ borderBottom: "1px solid #111111" }}>
                 <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 16 }}>{t.planPro}</td>
-                <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 18, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>15%</td>
+                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>15%</td>
               </tr>
             </tbody>
           </table>
