@@ -87,9 +87,11 @@ const JoinEscultores = () => {
     why2: "Comisiones justas, las mismas para todos.",
     why3: "Tus obras, certificadas para siempre.",
     howTitle: "Cómo funciona",
-    step1: "Solicitas acceso.",
-    step2: "Revisamos tu obra. Mismos criterios para todos.",
-    step3: "Publicas y vendes. Tú eliges tu plan.",
+    steps: [
+      { label: "Paso 1", desc: "Solicitas acceso." },
+      { label: "Paso 2", desc: "Revisamos tu obra. Mismos criterios para todos." },
+      { label: "Paso 3", desc: "Publicas y vendes. Tú eliges tu plan." },
+    ],
     modelTitle: "El modelo económico",
     planFree: "Plan gratuito",
     planPro: "Plan Pro (9,90€/mes)",
@@ -124,9 +126,11 @@ const JoinEscultores = () => {
     why2: "Fair commissions, the same for everyone.",
     why3: "Your works, certified forever.",
     howTitle: "How it works",
-    step1: "You request access.",
-    step2: "We review your work. Same criteria for everyone.",
-    step3: "You publish and sell. You choose your plan.",
+    steps: [
+      { label: "Step 1", desc: "You request access." },
+      { label: "Step 2", desc: "We review your work. Same criteria for everyone." },
+      { label: "Step 3", desc: "You publish and sell. You choose your plan." },
+    ],
     modelTitle: "The economic model",
     planFree: "Free plan",
     planPro: "Pro plan (€9.90/month)",
@@ -260,42 +264,23 @@ const JoinEscultores = () => {
 
       {/* 3. CÓMO FUNCIONA */}
       <section style={{ padding: "120px 24px", background: "#FAFAFA" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 80 }}>{t.howTitle}</h2>
-          <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
-            {[["I", t.step1], ["II", t.step2], ["III", t.step3]].map(([n, s], i) => (
-              <li
-                key={i}
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "80px 1fr",
-                  columnGap: 32,
-                  alignItems: "baseline",
-                  padding: "32px 0",
-                  borderTop: "1px solid rgba(17,17,17,0.12)",
-                  borderBottom: i === 2 ? "1px solid rgba(17,17,17,0.12)" : "none",
-                }}
-              >
-                <span style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontWeight: 400,
-                  fontStyle: "italic",
-                  fontSize: 44,
-                  lineHeight: 1,
-                  color: "#c9c0ac",
-                }}>{n}</span>
-                <p style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontWeight: 500,
-                  fontSize: 26,
-                  lineHeight: 1.3,
-                  letterSpacing: "-0.01em",
-                  color: "#111111",
-                  margin: 0,
-                }}>{s}</p>
-              </li>
-            ))}
-          </ol>
+        <div style={{ maxWidth: 780, margin: "0 auto" }}>
+          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 56 }}>{t.howTitle}</h2>
+          <table style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            fontFamily: "Manrope, sans-serif",
+            color: "#111111",
+          }}>
+            <tbody>
+              {t.steps.map((step, i) => (
+                <tr key={i} style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
+                  <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 18 }}>{step.label}</td>
+                  <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 24, textAlign: "right" }}>{step.desc}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
           <div style={{ textAlign: "center", marginTop: 72 }}>
             <button type="button" onClick={openModal} style={OUTLINE_BTN_DARK} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
               {t.cta}
