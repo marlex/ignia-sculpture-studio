@@ -235,7 +235,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
         .invite-field { margin-bottom:28px; }
         .role-btn { display:block; width:100%; text-align:left; padding:20px 24px; background:#FFFFFF; border:1px solid #111111; color:#111111; font-family:Manrope,sans-serif; font-weight:500; font-size:16px; letter-spacing:0.04em; cursor:pointer; transition: background 200ms, color 200ms; margin-bottom:12px; }
         .role-btn:hover { background:#111111; color:#FFFFFF; }
-        .role-sub { display:block; font-size:13px; font-weight:400; color:#666666; margin-top:4px; transition: color 200ms; }
+        .role-sub { display:block; font-size:13px; font-weight:500; color:#666666; margin-top:4px; transition: color 200ms; }
         .role-btn:hover .role-sub { color:#AAAAAA; }
         .chip { display:inline-block; padding:8px 14px; margin:0 8px 8px 0; border:1px solid #111111; background:#FFFFFF; color:#111111; font-family:Manrope,sans-serif; font-weight:500; font-size:13px; cursor:pointer; transition: background 200ms, color 200ms; }
         .chip.active { background:#111111; color:#FFFFFF; }

@@ -44,7 +44,7 @@ const H2_STYLE: React.CSSProperties = {
 
 const BODY_STYLE: React.CSSProperties = {
   fontFamily: "Manrope, sans-serif",
-  fontWeight: 400,
+  fontWeight: 500,
   color: "#5a5648",
   fontSize: 16,
   lineHeight: 1.7,
@@ -245,7 +245,7 @@ const JoinEscultores = () => {
           }}>{t.heroTitle}</h1>
           <p style={{
             fontFamily: "Manrope, sans-serif",
-            fontWeight: 400,
+            fontWeight: 500,
             color: "#FFFFFF",
             fontSize: 19,
             lineHeight: 1.6,

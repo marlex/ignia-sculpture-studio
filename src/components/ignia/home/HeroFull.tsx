@@ -58,7 +58,7 @@ export const HeroFull = () => {
         }
         .hf-body-el {
           font-family: Manrope, sans-serif;
-          font-weight: 400;
+          font-weight: 500;
           color: #FFFFFF;
           font-size: 19px;
           line-height: 1.6;
