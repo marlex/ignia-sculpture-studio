@@ -454,7 +454,7 @@ const JoinEscultores = () => {
       {/* 9. FAQ */}
       <section style={{ padding: "120px 24px 160px", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 56 }}>{t.faqTitle}</h2>
+          <h2 style={{ ...H2_STYLE, marginBottom: 56 }}>{t.faqTitle}</h2>
           <div style={{ borderTop: "1px solid #111111" }}>
             {t.faqs.map((f, i) => {
               const isOpen = openFaq === i;
