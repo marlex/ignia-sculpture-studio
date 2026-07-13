@@ -199,7 +199,7 @@ export const Header = () => {
             type="button"
             onClick={openInvite}
             aria-label={t.publish}
-            className="header-invite-icon-mobile font-body text-[13px] font-medium text-ink"
+            className="header-invite-icon-mobile font-body text-[14px] font-medium text-ink"
             style={{
               display: "flex",
               alignItems: "center",
