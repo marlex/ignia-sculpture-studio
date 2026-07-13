@@ -78,6 +78,12 @@ const JoinEscultores = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const open = () => setInviteOpen(true);
+    window.addEventListener("ignia:open-invite", open);
+    return () => window.removeEventListener("ignia:open-invite", open);
+  }, []);
+
   const t = lang === "es" ? {
     heroTitle: "Escultores, bienvenidos a casa.",
     heroSub: "Comisión justa. Sin cuotas. No pedimos exclusividad.",
