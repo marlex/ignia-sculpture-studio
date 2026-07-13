@@ -103,7 +103,7 @@ const FORM_LABEL_STYLE: React.CSSProperties = {
   fontWeight: 500,
   textTransform: "uppercase",
   letterSpacing: "0.1em",
-  fontSize: 14,
+  fontSize: 16,
   color: "#111111",
   marginBottom: 12,
 };
