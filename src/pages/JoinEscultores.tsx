@@ -262,7 +262,7 @@ const JoinEscultores = () => {
       {/* 3. CÓMO FUNCIONA */}
       <section style={{ padding: "120px 24px", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, marginBottom: 80 }}>{t.howTitle}</h2>
+          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 80 }}>{t.howTitle}</h2>
           <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
             {[["I", t.step1], ["II", t.step2], ["III", t.step3]].map(([n, s], i) => (
               <li
