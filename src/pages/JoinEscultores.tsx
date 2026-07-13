@@ -409,17 +409,7 @@ const JoinEscultores = () => {
 
       {/* 7. BANNER */}
       <section style={{ background: "#000000", padding: "120px 24px" }}>
-        <p style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontWeight: 300,
-          color: "#FFFFFF",
-          fontSize: "clamp(28px, 3.6vw, 44px)",
-          lineHeight: 1.2,
-          letterSpacing: "0.005em",
-          textAlign: "center",
-          maxWidth: 900,
-          margin: "0 auto",
-        }}>{t.banner}</p>
+        <p style={{ ...BANNER_STYLE, textAlign: "center", maxWidth: 900, margin: "0 auto" }}>{t.banner}</p>
       </section>
 
       {/* 8. CTA FINAL + FORMULARIO */}
