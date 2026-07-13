@@ -62,6 +62,7 @@ const App = () => (
               <Route path="/join/sculptors" element={<JoinEscultores />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <GlobalInviteModal />
           </BrowserRouter>
         </AuthProvider>
       </LanguageProvider>
