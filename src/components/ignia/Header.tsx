@@ -333,7 +333,7 @@ const LangDropdown = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => voi
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="flex items-center gap-1.5 text-ink hover:opacity-65 transition-opacity"
+        className="flex items-center gap-1.5 text-ink font-normal hover:opacity-65 transition-opacity"
       >
         {LANGS.find((l) => l.code === lang)?.label}
         <span aria-hidden className={`text-[10px] transition-transform ${open ? "rotate-180" : ""}`}>▾</span>
