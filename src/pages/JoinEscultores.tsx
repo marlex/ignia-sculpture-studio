@@ -32,22 +32,95 @@ const OUTLINE_BTN_DARK: React.CSSProperties = {
 const hoverIn = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.opacity = "0.65"; };
 const hoverOut = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.opacity = "1"; };
 
-const H2_STYLE: React.CSSProperties = {
-  fontFamily: "'Cormorant Garamond', serif",
-  fontWeight: 700,
+const FONT_DISPLAY = "'Cormorant Garamond', serif";
+const FONT_BODY = "Manrope, sans-serif";
+
+// Typography rules for /join/escultores
+// 1. Titles — homepage style (large Cormorant Garamond)
+const TITLE_STYLE: React.CSSProperties = {
+  fontFamily: FONT_DISPLAY,
+  fontWeight: 300,
   color: "#111111",
   fontSize: "clamp(40px, 5vw, 60px)",
   lineHeight: 1.05,
-  letterSpacing: "-0.02em",
+  letterSpacing: "-0.01em",
   margin: 0,
 };
 
+// 2. Banner & feature info — medium display size
+const BANNER_STYLE: React.CSSProperties = {
+  fontFamily: FONT_DISPLAY,
+  fontWeight: 300,
+  color: "#FFFFFF",
+  fontSize: "clamp(28px, 3.6vw, 44px)",
+  lineHeight: 1.2,
+  letterSpacing: "0.005em",
+};
+
+// 3. Regular body content
 const BODY_STYLE: React.CSSProperties = {
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: FONT_BODY,
   fontWeight: 400,
-  color: "#5a5648",
-  fontSize: 16,
+  color: "#444444",
+  fontSize: 18,
   lineHeight: 1.7,
+};
+
+// 3b. Feature info — why blocks, banner quotes, etc.
+const FEATURE_INFO_STYLE: React.CSSProperties = {
+  fontFamily: FONT_BODY,
+  fontWeight: 500,
+  color: "#111111",
+  fontSize: 22,
+  lineHeight: 1.5,
+};
+
+// Hero title — exact homepage style
+const HERO_TITLE_STYLE: React.CSSProperties = {
+  fontFamily: FONT_DISPLAY,
+  fontWeight: 300,
+  color: "#FFFFFF",
+  fontSize: "clamp(40px, 6vw, 72px)",
+  lineHeight: 1.05,
+  letterSpacing: "0.005em",
+  margin: 0,
+};
+
+const HERO_SUBTITLE_STYLE: React.CSSProperties = {
+  fontFamily: FONT_BODY,
+  fontWeight: 400,
+  color: "#FFFFFF",
+  fontSize: 19,
+  lineHeight: 1.6,
+  maxWidth: 720,
+  margin: "28px auto 0",
+};
+
+// 4. Form labels
+const FORM_LABEL_STYLE: React.CSSProperties = {
+  display: "block",
+  fontFamily: FONT_BODY,
+  fontWeight: 500,
+  textTransform: "uppercase",
+  letterSpacing: "0.1em",
+  fontSize: 16,
+  color: "#111111",
+  marginBottom: 12,
+};
+
+// 5. Form inputs
+const FORM_INPUT_STYLE: React.CSSProperties = {
+  width: "100%",
+  background: "transparent",
+  border: "none",
+  borderBottom: "1px solid #111111",
+  outline: "none",
+  fontFamily: FONT_BODY,
+  fontWeight: 500,
+  color: "#111111",
+  fontSize: 18,
+  padding: "0 0 10px",
+  borderRadius: 0,
 };
 
 const JoinEscultores = () => {
@@ -179,32 +252,11 @@ const JoinEscultores = () => {
     finally { setLoading(false); }
   };
 
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    background: "transparent",
-    border: "none",
-    borderBottom: "1px solid #111111",
-    outline: "none",
-    fontFamily: "Manrope, sans-serif",
-    fontWeight: 500,
-    color: "#111111",
-    fontSize: 16,
-    padding: "0 0 8px",
-    borderRadius: 0,
-  };
-  const labelStyle: React.CSSProperties = {
-    display: "block",
-    fontFamily: "Manrope, sans-serif",
-    fontWeight: 400,
-    textTransform: "uppercase",
-    letterSpacing: "0.14em",
-    fontSize: 11,
-    color: "#111111",
-    marginBottom: 12,
-  };
+  const inputStyle = FORM_INPUT_STYLE;
+  const labelStyle = FORM_LABEL_STYLE;
 
   return (
-    <div style={{ background: "#FFFFFF" }}>
+    <main style={{ background: "#FFFFFF" }}>
       <Header />
 
       {/* 1. HERO */}
@@ -225,24 +277,8 @@ const JoinEscultores = () => {
           style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.40) 60%, rgba(0,0,0,0.55) 100%)" }}
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-          <h1 style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontWeight: 300,
-            color: "#FFFFFF",
-            fontSize: "clamp(40px, 6vw, 72px)",
-            lineHeight: 1.05,
-            letterSpacing: "0.005em",
-            margin: 0,
-          }}>{t.heroTitle}</h1>
-          <p style={{
-            fontFamily: "Manrope, sans-serif",
-            fontWeight: 400,
-            color: "#FFFFFF",
-            fontSize: 19,
-            lineHeight: 1.6,
-            maxWidth: 720,
-            margin: "28px auto 0",
-          }}>{t.heroSub}</p>
+          <h1 style={HERO_TITLE_STYLE}>{t.heroTitle}</h1>
+          <p style={HERO_SUBTITLE_STYLE}>{t.heroSub}</p>
           <div style={{ marginTop: 32 }}>
             <button type="button" onClick={openModal} style={OUTLINE_BTN} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
               {t.cta}
@@ -256,7 +292,7 @@ const JoinEscultores = () => {
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 64 }}>
           {[t.why1, t.why2, t.why3].map((line, i) => (
             <div key={i} style={{ textAlign: "center" }}>
-              <p style={{ ...BODY_STYLE, fontSize: 22, lineHeight: 1.5, margin: 0 }}>{line}</p>
+              <p style={{ ...FEATURE_INFO_STYLE, margin: 0 }}>{line}</p>
             </div>
           ))}
         </div>
@@ -265,7 +301,7 @@ const JoinEscultores = () => {
       {/* 3. CÓMO FUNCIONA */}
       <section style={{ padding: "120px 24px", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 56 }}>{t.howTitle}</h2>
+          <h2 style={{ ...TITLE_STYLE, textAlign: "center", marginBottom: 56 }}>{t.howTitle}</h2>
           <table style={{
             width: "100%",
             borderCollapse: "collapse",
@@ -275,8 +311,8 @@ const JoinEscultores = () => {
             <tbody>
               {t.steps.map((step, i) => (
                 <tr key={i} style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
-                  <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 24 }}>{step.label}</td>
-                  <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 18, textAlign: "right" }}>{step.desc}</td>
+                  <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 18 }}>{step.label}</td>
+                  <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 24, textAlign: "right" }}>{step.desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -292,7 +328,7 @@ const JoinEscultores = () => {
       {/* 4. MODELO ECONÓMICO */}
       <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 56 }}>{t.modelTitle}</h2>
+          <h2 style={{ ...TITLE_STYLE, textAlign: "center", marginBottom: 56 }}>{t.modelTitle}</h2>
           <table style={{
             width: "100%",
             borderCollapse: "collapse",
@@ -339,7 +375,7 @@ const JoinEscultores = () => {
           />
           <div style={{ display: "flex", alignItems: "center", padding: "clamp(64px, 8vw, 120px) clamp(24px, 5vw, 88px)" }}>
             <div style={{ maxWidth: 520 }}>
-              <h2 style={{ ...H2_STYLE, marginBottom: 24 }}>{t.permTitle}</h2>
+              <h2 style={{ ...TITLE_STYLE, marginBottom: 24 }}>{t.permTitle}</h2>
               <p style={{ ...BODY_STYLE, margin: 0 }}>{t.permBody}</p>
             </div>
           </div>
@@ -358,7 +394,7 @@ const JoinEscultores = () => {
         >
           <div style={{ display: "flex", alignItems: "center", padding: "clamp(64px, 8vw, 120px) clamp(24px, 5vw, 88px)" }}>
             <div style={{ maxWidth: 520, marginLeft: "auto" }}>
-              <h2 style={{ ...H2_STYLE, marginBottom: 24 }}>{t.careTitle}</h2>
+              <h2 style={{ ...TITLE_STYLE, marginBottom: 24 }}>{t.careTitle}</h2>
               <p style={{ ...BODY_STYLE, margin: 0 }}>{t.careBody}</p>
             </div>
           </div>
@@ -373,33 +409,17 @@ const JoinEscultores = () => {
 
       {/* 7. BANNER */}
       <section style={{ background: "#000000", padding: "120px 24px" }}>
-        <p style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontWeight: 300,
-          color: "#FFFFFF",
-          fontSize: "clamp(28px, 3.6vw, 44px)",
-          lineHeight: 1.2,
-          letterSpacing: "0.005em",
-          textAlign: "center",
-          maxWidth: 900,
-          margin: "0 auto",
-        }}>{t.banner}</p>
+        <p style={{ ...BANNER_STYLE, textAlign: "center", maxWidth: 900, margin: "0 auto" }}>{t.banner}</p>
       </section>
 
       {/* 8. CTA FINAL + FORMULARIO */}
       <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 480, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 48 }}>{t.finalTitle}</h2>
+          <h2 style={{ ...TITLE_STYLE, textAlign: "center", marginBottom: 48 }}>{t.finalTitle}</h2>
           {submitted ? (
             <div style={{ textAlign: "center" }}>
-              <p style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontWeight: 400,
-                color: "#111111",
-                fontSize: 24,
-                marginBottom: 12,
-              }}>{t.okTitle}</p>
-              <p style={{ ...BODY_STYLE, fontSize: 16, color: "#666666" }}>{t.okMsg}</p>
+              <p style={{ ...FEATURE_INFO_STYLE, marginBottom: 12 }}>{t.okTitle}</p>
+              <p style={BODY_STYLE}>{t.okMsg}</p>
             </div>
           ) : (
             <form onSubmit={handleEmbeddedSubmit}>
@@ -416,21 +436,14 @@ const JoinEscultores = () => {
                 <input id="je-social" name="social" required value={social} onChange={(e) => setSocial(e.target.value)} style={inputStyle} />
               </div>
               {error && (
-                <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#B00020", fontSize: 14, marginBottom: 16 }}>{error}</p>
+                <p style={{ fontFamily: FONT_BODY, fontWeight: 500, color: "#B00020", fontSize: 16, marginBottom: 16 }}>{error}</p>
               )}
               <div style={{ textAlign: "center" }}>
                 <button type="submit" disabled={loading} style={{ ...OUTLINE_BTN_DARK, opacity: loading ? 0.5 : 1 }} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
                   {loading ? t.sending : t.cta}
                 </button>
               </div>
-              <p style={{
-                fontFamily: "Manrope, sans-serif",
-                fontWeight: 400,
-                color: "#666666",
-                fontSize: 14,
-                textAlign: "center",
-                marginTop: 24,
-              }}>{t.reply}</p>
+              <p style={{ ...BODY_STYLE, textAlign: "center", marginTop: 24 }}>{t.reply}</p>
             </form>
           )}
         </div>
@@ -439,7 +452,7 @@ const JoinEscultores = () => {
       {/* 9. FAQ */}
       <section style={{ padding: "120px 24px 160px", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 56 }}>{t.faqTitle}</h2>
+          <h2 style={{ ...TITLE_STYLE, textAlign: "center", marginBottom: 56 }}>{t.faqTitle}</h2>
           <div style={{ borderTop: "1px solid #111111" }}>
             {t.faqs.map((f, i) => {
               const isOpen = openFaq === i;
@@ -460,7 +473,7 @@ const JoinEscultores = () => {
                       justifyContent: "space-between",
                       alignItems: "center",
                       gap: 16,
-                      fontFamily: "Manrope, sans-serif",
+                      fontFamily: FONT_BODY,
                       fontWeight: 500,
                       color: "#111111",
                       fontSize: 18,
@@ -469,7 +482,7 @@ const JoinEscultores = () => {
                   >
                     <span>{f.q}</span>
                     <span style={{
-                      fontFamily: "'Cormorant Garamond', serif",
+                      fontFamily: FONT_DISPLAY,
                       fontWeight: 300,
                       fontSize: 28,
                       lineHeight: 1,
@@ -480,8 +493,6 @@ const JoinEscultores = () => {
                   {isOpen && (
                     <p style={{
                       ...BODY_STYLE,
-                      fontSize: 17,
-                      color: "#444444",
                       margin: 0,
                       padding: "0 0 24px",
                     }}>{f.a}</p>
@@ -497,13 +508,34 @@ const JoinEscultores = () => {
       <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} defaultProfile="artist" />
 
       <style>{`
+        /* Accessible focus indicators */
+        input:focus, textarea:focus, select:focus {
+          outline: 2px solid #111111;
+          outline-offset: 2px;
+          border-bottom-color: #111111;
+        }
+        button:focus-visible {
+          outline: 2px solid #111111;
+          outline-offset: 2px;
+        }
+        a:focus-visible {
+          outline: 2px solid #111111;
+          outline-offset: 2px;
+        }
         @media (max-width: 768px) {
           .join-bleed { grid-template-columns: 1fr !important; }
           .join-bleed-rev > div { order: 2; }
           .join-bleed-rev > img { order: 1; }
         }
+        @media (prefers-reduced-motion: reduce) {
+          *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+          }
+        }
       `}</style>
-    </div>
+    </main>
   );
 };
 
