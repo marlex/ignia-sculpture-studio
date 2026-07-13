@@ -139,7 +139,7 @@ export const Header = () => {
           </button>
           <nav className="header-nav-links hidden md:flex items-center gap-9">
             {leftItems.map(item => (
-              <Link key={item.label} to={item.to} className="font-body text-[16px] font-light text-gray hover:opacity-65 transition-opacity">
+              <Link key={item.label} to={item.to} className="font-body text-[16px] font-medium text-gray hover:opacity-65 transition-opacity">
                 {item.label}
               </Link>
             ))}
