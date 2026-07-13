@@ -187,9 +187,6 @@ export const Header = () => {
               {t.signin}
             </Link>
           ))}
-          <div className="header-lang">
-            <LangDropdown lang={lang} setLang={setLang} />
-          </div>
           <button
             type="button"
             onClick={openInvite}
