@@ -547,7 +547,6 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
         </div>
       )}
 
-      <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} defaultProfile="collector" />
       <Footer />
     </main>
   );
