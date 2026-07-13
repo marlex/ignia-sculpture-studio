@@ -292,7 +292,7 @@ const JoinEscultores = () => {
       {/* 4. MODELO ECONÓMICO */}
       <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 56 }}>{t.modelTitle}</h2>
+          <h2 style={{ ...H2_STYLE, marginBottom: 56 }}>{t.modelTitle}</h2>
           <table style={{
             width: "100%",
             borderCollapse: "collapse",
