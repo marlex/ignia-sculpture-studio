@@ -315,7 +315,6 @@ const JoinEscultores = () => {
           }}>
             <tbody>
               <tr style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
-                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, fontFamily: "'Cormorant Garamond', serif", verticalAlign: "top" }}>{t.planFree}</td>
                 <td style={{ padding: "24px 8px", verticalAlign: "top" }}>
                   <ul style={{ margin: 0, paddingLeft: 18, listStyle: "none" }}>
                     {t.planFreeBullets.map((bullet, i) => (
@@ -326,9 +325,9 @@ const JoinEscultores = () => {
                     ))}
                   </ul>
                 </td>
+                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, fontFamily: "'Cormorant Garamond', serif", verticalAlign: "top", textAlign: "right" }}>{t.planFree}</td>
               </tr>
               <tr style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
-                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, fontFamily: "'Cormorant Garamond', serif", verticalAlign: "top" }}>{t.planPro}</td>
                 <td style={{ padding: "24px 8px", verticalAlign: "top" }}>
                   <ul style={{ margin: 0, paddingLeft: 18, listStyle: "none" }}>
                     {t.planProBullets.map((bullet, i) => (
@@ -339,6 +338,7 @@ const JoinEscultores = () => {
                     ))}
                   </ul>
                 </td>
+                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, fontFamily: "'Cormorant Garamond', serif", verticalAlign: "top", textAlign: "right" }}>{t.planPro}</td>
               </tr>
             </tbody>
           </table>
