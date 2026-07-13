@@ -254,7 +254,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
 
         {submitted ? (
           <div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 24, marginBottom: 16 }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 24, marginBottom: 16 }}>
               {t.successTitle}
             </h2>
             <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>

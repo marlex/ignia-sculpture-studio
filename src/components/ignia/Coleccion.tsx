@@ -163,7 +163,7 @@ export const Coleccion = () => {
               key={c.key}
               type="button"
               onClick={() => setActiveFilter(c.key)}
-              className={`font-body text-[11px] tracking-[0.18em] uppercase py-2 border-[0.5px] border-ink transition-colors text-center ${
+              className={`font-body text-[13px] font-medium tracking-[0.18em] uppercase py-2 border-[0.5px] border-ink transition-colors text-center ${
                 chipActive(c.key)
                   ? "bg-ink text-white"
                   : "bg-white text-ink"
