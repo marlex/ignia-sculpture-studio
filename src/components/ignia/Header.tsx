@@ -6,38 +6,43 @@ import { useLang, useSetLang, type Lang } from "@/i18n/LanguageContext";
 import { useAuth } from "@/auth/AuthContext";
 import { SHOW_PUBLIC_AUTH } from "@/config/featureFlags";
 
-// Left nav (without Ignia gallery, which moves to the right cluster)
+// Left nav (desktop): Sculptors, Community, Ignia Gallery
 const NAV_LEFT = {
   es: [
     { label: "Escultores", to: "/escultores" },
-    { label: "Colección", to: "/coleccion" },
-    { label: "Aprende", to: "/aprende" },
     { label: "Comunidad", to: "/editorial" },
+    { label: "Ignia Gallery", to: "/ignia-gallery" },
   ],
   en: [
     { label: "Sculptors", to: "/escultores" },
-    { label: "The Collection", to: "/coleccion" },
-    { label: "Learn", to: "/aprende" },
     { label: "Community", to: "/editorial" },
+    { label: "Ignia Gallery", to: "/ignia-gallery" },
   ],
 };
 
-const IGNIA_GALLERY = {
-  es: { label: "Ignia gallery", to: "/ignia-gallery" },
-  en: { label: "Ignia gallery", to: "/ignia-gallery" },
+// Right nav (desktop): The Collection, Learn
+const NAV_RIGHT = {
+  es: [
+    { label: "Colección", to: "/coleccion" },
+    { label: "Aprende", to: "/aprende" },
+  ],
+  en: [
+    { label: "The Collection", to: "/coleccion" },
+    { label: "Learn", to: "/aprende" },
+  ],
 };
 
 // Full nav order for mobile drawer
 const NAV_ALL = {
-  es: [...NAV_LEFT.es, IGNIA_GALLERY.es],
-  en: [...NAV_LEFT.en, IGNIA_GALLERY.en],
+  es: [NAV_LEFT.es[0], NAV_RIGHT.es[0], NAV_RIGHT.es[1], NAV_LEFT.es[1], NAV_LEFT.es[2]],
+  en: [NAV_LEFT.en[0], NAV_RIGHT.en[0], NAV_RIGHT.en[1], NAV_LEFT.en[1], NAV_LEFT.en[2]],
 };
 
 export const Header = () => {
   const lang = useLang();
   const setLang = useSetLang();
   const leftItems = NAV_LEFT[lang];
-  const galleryItem = IGNIA_GALLERY[lang];
+  const rightItems = NAV_RIGHT[lang];
   const allItems = NAV_ALL[lang];
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -156,9 +161,13 @@ export const Header = () => {
 
         {/* RIGHT: desktop cluster + mobile invite icon */}
         <div className="header-right-cluster col-start-3 flex items-center justify-end gap-4">
-          <Link to={galleryItem.to} className="header-gallery-link font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
-            {galleryItem.label}
-          </Link>
+          <nav className="header-nav-links hidden md:flex items-center gap-9">
+            {rightItems.map(item => (
+              <Link key={item.label} to={item.to} className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
+                {item.label}
+              </Link>
+            ))}
+          </nav>
           {SHOW_PUBLIC_AUTH && (user ? (
             <div className="header-user-links hidden md:flex items-center gap-3">
               <Link to="/dashboard" className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
