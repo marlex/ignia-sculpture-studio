@@ -308,7 +308,7 @@ const JoinEscultores = () => {
       {/* 3. CÓMO FUNCIONA */}
       <section style={{ padding: "120px 24px", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 56 }}>{t.howTitle}</h2>
+          <h2 style={{ ...TITLE_STYLE, textAlign: "center", marginBottom: 56 }}>{t.howTitle}</h2>
           <table style={{
             width: "100%",
             borderCollapse: "collapse",
@@ -335,7 +335,7 @@ const JoinEscultores = () => {
       {/* 4. MODELO ECONÓMICO */}
       <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 56 }}>{t.modelTitle}</h2>
+          <h2 style={{ ...TITLE_STYLE, textAlign: "center", marginBottom: 56 }}>{t.modelTitle}</h2>
           <table style={{
             width: "100%",
             borderCollapse: "collapse",
@@ -382,7 +382,7 @@ const JoinEscultores = () => {
           />
           <div style={{ display: "flex", alignItems: "center", padding: "clamp(64px, 8vw, 120px) clamp(24px, 5vw, 88px)" }}>
             <div style={{ maxWidth: 520 }}>
-              <h2 style={{ ...H2_STYLE, marginBottom: 24 }}>{t.permTitle}</h2>
+              <h2 style={{ ...TITLE_STYLE, marginBottom: 24 }}>{t.permTitle}</h2>
               <p style={{ ...BODY_STYLE, margin: 0 }}>{t.permBody}</p>
             </div>
           </div>
@@ -401,7 +401,7 @@ const JoinEscultores = () => {
         >
           <div style={{ display: "flex", alignItems: "center", padding: "clamp(64px, 8vw, 120px) clamp(24px, 5vw, 88px)" }}>
             <div style={{ maxWidth: 520, marginLeft: "auto" }}>
-              <h2 style={{ ...H2_STYLE, marginBottom: 24 }}>{t.careTitle}</h2>
+              <h2 style={{ ...TITLE_STYLE, marginBottom: 24 }}>{t.careTitle}</h2>
               <p style={{ ...BODY_STYLE, margin: 0 }}>{t.careBody}</p>
             </div>
           </div>
@@ -432,7 +432,7 @@ const JoinEscultores = () => {
       {/* 8. CTA FINAL + FORMULARIO */}
       <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 480, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 48 }}>{t.finalTitle}</h2>
+          <h2 style={{ ...TITLE_STYLE, textAlign: "center", marginBottom: 48 }}>{t.finalTitle}</h2>
           {submitted ? (
             <div style={{ textAlign: "center" }}>
               <p style={{
@@ -482,7 +482,7 @@ const JoinEscultores = () => {
       {/* 9. FAQ */}
       <section style={{ padding: "120px 24px 160px", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 56 }}>{t.faqTitle}</h2>
+          <h2 style={{ ...TITLE_STYLE, textAlign: "center", marginBottom: 56 }}>{t.faqTitle}</h2>
           <div style={{ borderTop: "1px solid #111111" }}>
             {t.faqs.map((f, i) => {
               const isOpen = openFaq === i;
