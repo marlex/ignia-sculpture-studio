@@ -20,14 +20,14 @@ const NAV_LEFT = {
   ],
 };
 
-// Right nav (desktop): The Collection, Learn
+// Right nav (desktop): Collection, Learn
 const NAV_RIGHT = {
   es: [
     { label: "Colección", to: "/coleccion" },
     { label: "Aprende", to: "/aprende" },
   ],
   en: [
-    { label: "The Collection", to: "/coleccion" },
+    { label: "Collection", to: "/coleccion" },
     { label: "Learn", to: "/aprende" },
   ],
 };
