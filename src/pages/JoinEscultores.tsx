@@ -254,11 +254,11 @@ const JoinEscultores = () => {
       <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
         <div className="why-grid" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 64 }}>
           {[t.why1, t.why2, t.why3].map((item, i) => (
-            <div key={i} className="why-col" style={{ position: "relative" }}>
-              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, color: "#111111", fontSize: 26, lineHeight: 1.2, margin: 0 }}>
+            <div key={i} className="why-col" style={{ position: "relative", textAlign: "center" }}>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, color: "#111111", fontSize: 26, lineHeight: 1.2, margin: 0, textAlign: "center" }}>
                 {item.title}
               </h3>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#5a5648", fontSize: 16, lineHeight: 1.7, textAlign: "right", margin: "12px 0 0" }}>
+              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#5a5648", fontSize: 16, lineHeight: 1.7, textAlign: "center", margin: "12px 0 0" }}>
                 {item.text}
               </p>
             </div>
