@@ -83,9 +83,9 @@ const JoinEscultores = () => {
     heroSub: "Comisión justa. Sin cuotas. No pedimos exclusividad.",
     cta: "Solicitar acceso →",
     whyTitle: "Por qué Ignia",
-    why1: "Pertenece a una gran comunidad de escultores.",
-    why2: "Comisiones justas, las mismas para todos.",
-    why3: "Tus obras, certificadas para siempre.",
+    why1: { title: "Pertenece a una gran comunidad de escultores.", text: "No importa si empiezas ahora o llevas años en esto." },
+    why2: { title: "Comisiones justas que respetan tu trabajo.", text: "Nadie decide cuánto vale tu obra. Solo tú." },
+    why3: { title: "Tus obras, certificadas para siempre.", text: "Prueba de que son tuyas, para siempre." },
     howTitle: "Cómo funciona",
     steps: [
       { label: "Paso 1", desc: "Solicitas acceso." },
@@ -122,9 +122,9 @@ const JoinEscultores = () => {
     heroSub: "Fair commission. No fees. No exclusivity required.",
     cta: "Request access →",
     whyTitle: "Why Ignia",
-    why1: "Belong to a great community of sculptors.",
-    why2: "Fair commissions, the same for everyone.",
-    why3: "Your works, certified forever.",
+    why1: { title: "Belong to a great community of sculptors.", text: "Whether you're just starting or have years of experience." },
+    why2: { title: "Fair commissions that respect your work.", text: "Nobody decides what your work is worth. Only you." },
+    why3: { title: "Your works, certified forever.", text: "Proof that they are yours, forever." },
     howTitle: "How it works",
     steps: [
       { label: "Step 1", desc: "You request access." },
@@ -252,10 +252,15 @@ const JoinEscultores = () => {
 
       {/* 2. POR QUÉ IGNIA */}
       <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 64 }}>
-          {[t.why1, t.why2, t.why3].map((line, i) => (
-            <div key={i} style={{ textAlign: "center" }}>
-              <p style={{ ...BODY_STYLE, fontSize: 22, lineHeight: 1.5, margin: 0 }}>{line}</p>
+        <div className="why-grid" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 64 }}>
+          {[t.why1, t.why2, t.why3].map((item, i) => (
+            <div key={i} className="why-col" style={{ position: "relative" }}>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, color: "#111111", fontSize: 26, lineHeight: 1.2, margin: 0 }}>
+                {item.title}
+              </h3>
+              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#5a5648", fontSize: 16, lineHeight: 1.7, textAlign: "right", margin: "12px 0 0" }}>
+                {item.text}
+              </p>
             </div>
           ))}
         </div>
@@ -511,7 +516,18 @@ const JoinEscultores = () => {
       <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} defaultProfile="artist" />
 
       <style>{`
+        .why-col:not(:last-child)::after {
+          content: "";
+          position: absolute;
+          top: 10%;
+          right: -32px;
+          width: 1px;
+          height: 80%;
+          background-color: #e5e5e5;
+        }
         @media (max-width: 768px) {
+          .why-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+          .why-col:not(:last-child)::after { display: none; }
           .join-bleed { grid-template-columns: 1fr !important; }
           .join-bleed-rev > div { order: 2; }
           .join-bleed-rev > img { order: 1; }
