@@ -180,7 +180,7 @@ export const Hero = () => {
                 borderRadius: "50%",
                 border: "none",
                 padding: 0,
-                background: i === actual ? "#111111" : "rgba(0,0,0,0.2)",
+                background: i === actual ? "#121212" : "rgba(0,0,0,0.2)",
                 cursor: "pointer",
               }}
             />

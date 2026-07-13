@@ -134,9 +134,9 @@ export const Header = () => {
               cursor: "pointer",
             }}
           >
-            <span style={{ width: 18, height: 1, background: "#111111", display: "block" }} />
-            <span style={{ width: 18, height: 1, background: "#111111", display: "block" }} />
-            <span style={{ width: 18, height: 1, background: "#111111", display: "block" }} />
+            <span style={{ width: 18, height: 1, background: "#121212", display: "block" }} />
+            <span style={{ width: 18, height: 1, background: "#121212", display: "block" }} />
+            <span style={{ width: 18, height: 1, background: "#121212", display: "block" }} />
           </button>
           <nav className="header-nav-links hidden md:flex items-center gap-9">
             {leftItems.map(item => (
@@ -199,7 +199,7 @@ export const Header = () => {
               border: "none",
               padding: 0,
               cursor: "pointer",
-              color: "#111111",
+              color: "#121212",
             }}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
