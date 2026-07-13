@@ -129,7 +129,7 @@ export default function ObraAnalytics() {
           </div>
           <div>
             <div className="eyebrow mb-2">Analítica de obra</div>
-            <h1 className="font-display font-bold text-[clamp(32px,4vw,52px)] tracking-[-0.02em] text-ink leading-[1.05] mb-2">{obra.titulo}</h1>
+            <h1 className="font-display font-semibold text-[clamp(32px,4vw,52px)] tracking-[-0.02em] text-ink leading-[1.05] mb-2">{obra.titulo}</h1>
             <div className="font-body text-[14px] text-gray">{obra.anyo} · {obra.tecnica}</div>
           </div>
         </div>
@@ -193,7 +193,7 @@ export default function ObraAnalytics() {
 const Metric = ({ icon, label, value, delta, sublabel }: { icon: React.ReactNode; label: string; value: string; delta?: number; sublabel?: string }) => (
   <div className="border-t border-ink pt-4">
     <div className="flex items-center gap-2 font-body text-[11px] uppercase tracking-[0.16em] text-muted-line mb-3">{icon} {label}</div>
-    <div className="font-display font-bold text-[clamp(28px,3vw,40px)] text-ink leading-none mb-2">{value}</div>
+    <div className="font-display font-semibold text-[clamp(28px,3vw,40px)] text-ink leading-none mb-2">{value}</div>
     {delta !== undefined && (
       <div className={`inline-flex items-center gap-1 font-body text-[12px] ${delta >= 0 ? "text-green-600" : "text-amber-600"}`}>
         {delta >= 0 ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />}
@@ -206,7 +206,7 @@ const Metric = ({ icon, label, value, delta, sublabel }: { icon: React.ReactNode
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="mb-12">
-    <h2 className="font-display font-bold text-[20px] text-ink mb-5">{title}</h2>
+    <h2 className="font-display font-semibold text-[20px] text-ink mb-5">{title}</h2>
     {children}
   </div>
 );

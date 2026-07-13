@@ -64,7 +64,7 @@ export default function AddView3d() {
 
       <section className="max-w-[880px] mx-auto px-6 py-10 md:py-14">
         <div className="eyebrow mb-2">Añadir vista 3D</div>
-        <h1 className="font-display font-bold text-[clamp(26px,3vw,38px)] tracking-[-0.02em] text-ink mb-2 leading-tight">
+        <h1 className="font-display font-semibold text-[clamp(26px,3vw,38px)] tracking-[-0.02em] text-ink mb-2 leading-tight">
           {obra.titulo}
         </h1>
         <p className="font-body text-[14px] text-gray mb-10">Genera la vista 3D de tu escultura a partir de fotografías.</p>
@@ -92,7 +92,7 @@ export default function AddView3d() {
         {stage === "A" && (
           <div className="space-y-8">
             <div>
-              <h2 className="font-display font-bold text-[20px] text-ink mb-4">Sube entre 20 y 40 fotografías</h2>
+              <h2 className="font-display font-semibold text-[20px] text-ink mb-4">Sube entre 20 y 40 fotografías</h2>
               <ul className="space-y-2 font-body text-[13px] text-gray mb-6">
                 {[
                   { i: Camera, t: "Fotografía la escultura desde todos los ángulos posibles" },
@@ -149,7 +149,7 @@ export default function AddView3d() {
 
         {stage === "B" && (
           <div className="space-y-6">
-            <h2 className="font-display font-bold text-[20px] text-ink">Procesando tu vista 3D</h2>
+            <h2 className="font-display font-semibold text-[20px] text-ink">Procesando tu vista 3D</h2>
             <p className="font-body text-[14px] text-gray">
               Estamos procesando tus fotografías para generar la vista 3D. Esto puede tardar entre 5 y 15 minutos.
             </p>
@@ -171,7 +171,7 @@ export default function AddView3d() {
 
         {stage === "C" && success && (
           <div className="space-y-6">
-            <h2 className="font-display font-bold text-[20px] text-ink flex items-center gap-2">
+            <h2 className="font-display font-semibold text-[20px] text-ink flex items-center gap-2">
               <Check className="w-5 h-5" /> Vista 3D lista
             </h2>
             <div className="aspect-square bg-secondary">
@@ -193,7 +193,7 @@ export default function AddView3d() {
           <div className="space-y-6">
             <div className="flex items-center gap-3 text-ink">
               <AlertTriangle className="w-5 h-5" />
-              <h2 className="font-display font-bold text-[20px]">No hemos podido generar la vista 3D</h2>
+              <h2 className="font-display font-semibold text-[20px]">No hemos podido generar la vista 3D</h2>
             </div>
             <p className="font-body text-[14px] text-gray">
               Revisa las recomendaciones de fotografía e inténtalo de nuevo.

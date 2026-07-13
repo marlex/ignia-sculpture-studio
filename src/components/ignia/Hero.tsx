@@ -195,7 +195,7 @@ export const Hero = () => {
           <div className="font-body text-[11px] font-normal tracking-[0.22em] uppercase text-gray mb-2">
             {o.artist}
           </div>
-          <h1 className="leading-[1.05] tracking-[0.01em] mb-2 text-ink" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(32px, 3.4vw, 46px)" }}>
+          <h1 className="leading-[1.05] tracking-[0.01em] mb-2 text-ink" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(32px, 3.4vw, 46px)" }}>
             {o.title}
           </h1>
           <div className="font-body text-[13px] font-normal tracking-wide text-gray mb-2.5">
@@ -209,7 +209,7 @@ export const Hero = () => {
             <span className="font-body text-[10px] font-normal tracking-[0.18em] uppercase text-ink">{t.certified}</span>
             <span className="font-body text-[11px] font-normal tracking-wide text-gray ml-auto">{o.authenticity}</span>
           </div>
-          <div className="font-display font-bold text-[28px] tracking-[-0.01em] text-ink mb-2.5">{o.price}</div>
+          <div className="font-display font-semibold text-[28px] tracking-[-0.01em] text-ink mb-2.5">{o.price}</div>
           <button
             onClick={(e) => { e.stopPropagation(); navigate(`/obra/${o.slug}?buy=1`); }}
             className="w-full font-body text-[12px] font-normal tracking-[0.22em] uppercase bg-transparent text-ink border border-ink py-3.5 hover:opacity-65 transition-opacity mb-2.5"
@@ -240,7 +240,7 @@ export const Hero = () => {
           </div>
           <h1
             className="text-ink"
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: 26, lineHeight: 1.1, letterSpacing: "0.01em", margin: 0, marginBottom: 6 }}
+            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: 26, lineHeight: 1.1, letterSpacing: "0.01em", margin: 0, marginBottom: 6 }}
           >
             {o.title}
           </h1>
@@ -255,7 +255,7 @@ export const Hero = () => {
             <span className="font-body text-[9px] font-normal tracking-[0.18em] uppercase text-ink">{t.certified}</span>
             <span className="font-body text-[10px] font-normal tracking-wide text-gray ml-auto">{o.authenticity}</span>
           </div>
-          <div className="font-display font-bold tracking-[-0.01em] text-ink" style={{ fontSize: 24, marginBottom: 10 }}>{o.price}</div>
+          <div className="font-display font-semibold tracking-[-0.01em] text-ink" style={{ fontSize: 24, marginBottom: 10 }}>{o.price}</div>
           <button
             onClick={(e) => { e.stopPropagation(); navigate(`/obra/${o.slug}?buy=1`); }}
             className="w-full font-body text-[12px] font-normal tracking-[0.22em] uppercase bg-transparent text-ink border border-ink hover:opacity-65 transition-opacity"

@@ -60,7 +60,7 @@ export default function Login() {
 
       <section className="max-w-[560px] mx-auto px-6 py-16 md:py-20">
         <div className="eyebrow mb-3">{t.enter}</div>
-        <h1 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-8 leading-tight">{t.access}</h1>
+        <h1 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-8 leading-tight">{t.access}</h1>
 
         <form onSubmit={(e) => goToProfile(e, role)} className="space-y-5">
           <Field label={t.email} type="email" placeholder={t.emailPh} inputRef={emailRef} />

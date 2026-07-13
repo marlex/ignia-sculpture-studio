@@ -26,7 +26,7 @@ export const Testimonials = () => {
         <h2
           style={{
             fontFamily: "'Urbanist', sans-serif",
-            fontWeight: 700,
+            fontWeight: 600,
             fontSize: "11px",
             textTransform: "uppercase",
             letterSpacing: "0.2em",
@@ -59,7 +59,7 @@ export const Testimonials = () => {
               <p
                 style={{
                   fontFamily: "'Urbanist', sans-serif",
-                  fontWeight: 700,
+                  fontWeight: 600,
                   fontSize: "16px",
                   textTransform: "uppercase",
                   letterSpacing: "0.12em",

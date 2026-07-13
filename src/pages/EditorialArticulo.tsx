@@ -79,7 +79,7 @@ const EditorialArticuloPage = () => {
       <Header />
       <article className="px-6 md:px-12 pt-16 pb-12 bg-white max-w-[820px] mx-auto">
         <div className="eyebrow mb-3">{content.seccion}</div>
-        <h1 className="font-display font-bold text-[clamp(32px,4.5vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-6">
+        <h1 className="font-display font-semibold text-[clamp(32px,4.5vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-6">
           {content.titulo}
         </h1>
         <div className="font-body text-[14px] uppercase tracking-[0.14em] text-muted-line mb-8">
@@ -98,7 +98,7 @@ const EditorialArticuloPage = () => {
         <div className="flex flex-col gap-6">
           {content.body.map((b, i) =>
             b.type === "h2" ? (
-              <h2 key={i} className="font-display font-bold text-[clamp(22px,2.6vw,30px)] tracking-[-0.02em] text-ink leading-tight mt-4">
+              <h2 key={i} className="font-display font-semibold text-[clamp(22px,2.6vw,30px)] tracking-[-0.02em] text-ink leading-tight mt-4">
                 {b.text}
               </h2>
             ) : (

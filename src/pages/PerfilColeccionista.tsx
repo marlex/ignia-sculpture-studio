@@ -62,7 +62,7 @@ export default function PerfilColeccionista() {
 
       <section className="px-6 md:px-12 py-16 max-w-[1280px] mx-auto">
         <div className="eyebrow mb-3">{t.eyebrow}</div>
-        <h1 className="font-display font-bold text-[clamp(36px,5vw,64px)] tracking-[-0.02em] text-ink mb-4 leading-[1.05]">María García</h1>
+        <h1 className="font-display font-semibold text-[clamp(36px,5vw,64px)] tracking-[-0.02em] text-ink mb-4 leading-[1.05]">María García</h1>
         <p className="font-body text-[16px] font-normal text-gray max-w-[640px] mb-12">{t.sub}</p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
@@ -70,14 +70,14 @@ export default function PerfilColeccionista() {
         </div>
 
         <div className="mb-16">
-          <h2 className="font-display font-bold text-[clamp(22px,2.4vw,32px)] tracking-[-0.02em] text-ink mb-8">{t.mine}</h2>
+          <h2 className="font-display font-semibold text-[clamp(22px,2.4vw,32px)] tracking-[-0.02em] text-ink mb-8">{t.mine}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {t.coleccion.map((o, i) => (
               <article key={o.titulo} className="group">
                 <Link to={`/obra/${o.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary mb-4">
                   <img src={o.img} alt={o.titulo} loading="lazy" width={1024} height={1280} className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
                 </Link>
-                <h3 className="font-display font-bold text-[16px] text-ink mb-1">{o.titulo}</h3>
+                <h3 className="font-display font-semibold text-[16px] text-ink mb-1">{o.titulo}</h3>
                 <div className="font-body text-[13px] text-muted-line uppercase tracking-[0.14em] mb-3">{o.artista}</div>
                 <div className="flex items-center gap-4">
                   <Link
@@ -93,14 +93,14 @@ export default function PerfilColeccionista() {
         </div>
 
         <div>
-          <h2 className="font-display font-bold text-[clamp(22px,2.4vw,32px)] tracking-[-0.02em] text-ink mb-8">{t.reco}</h2>
+          <h2 className="font-display font-semibold text-[clamp(22px,2.4vw,32px)] tracking-[-0.02em] text-ink mb-8">{t.reco}</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {t.recomendados.map((o, i) => (
               <article key={o.titulo} className="group">
                 <Link to={`/obra/${o.slug}`} className="block relative aspect-square overflow-hidden bg-secondary mb-3">
                   <img src={o.img} alt={o.titulo} loading="lazy" width={1024} height={1024} className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
                 </Link>
-                <h3 className="font-display font-bold text-[14px] text-ink">{o.titulo}</h3>
+                <h3 className="font-display font-semibold text-[14px] text-ink">{o.titulo}</h3>
                 <div className="font-body text-[12px] text-muted-line uppercase tracking-[0.14em] mb-2">{o.artista}</div>
                 <div className="flex items-center gap-3">
                   <Link
@@ -122,7 +122,7 @@ export default function PerfilColeccionista() {
 
 const Stat = ({ label, value }: { label: string; value: string }) => (
   <div className="border-t border-border pt-5">
-    <div className="font-display font-bold text-[40px] text-ink leading-none mb-2">{value}</div>
+    <div className="font-display font-semibold text-[40px] text-ink leading-none mb-2">{value}</div>
     <div className="font-body text-[12px] uppercase tracking-[0.18em] text-muted-line">{label}</div>
   </div>
 );

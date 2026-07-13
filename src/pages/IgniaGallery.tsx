@@ -90,14 +90,14 @@ const IgniaGalleryPage = () => {
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative h-full flex flex-col justify-end px-6 md:px-12 pb-12 max-w-[1280px] mx-auto">
           <div className="eyebrow text-white/80 mb-3">{t.eyebrow}</div>
-          <h1 className="font-display font-bold text-white text-[clamp(40px,6vw,76px)] tracking-[-0.02em] leading-[1.02] max-w-[900px]">{t.h}</h1>
+          <h1 className="font-display font-semibold text-white text-[clamp(40px,6vw,76px)] tracking-[-0.02em] leading-[1.02] max-w-[900px]">{t.h}</h1>
           <p className="font-body text-[16px] md:text-[18px] font-normal text-white/85 max-w-[640px] mt-5 italic">{t.cite}</p>
         </div>
       </section>
 
       <section className="bg-white px-6 md:px-12 py-20">
         <div className="max-w-[860px] mx-auto">
-          <h2 className="font-display font-bold text-[clamp(28px,3.4vw,44px)] tracking-[-0.02em] text-ink leading-[1.1] mb-6">{t.nameH}</h2>
+          <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,44px)] tracking-[-0.02em] text-ink leading-[1.1] mb-6">{t.nameH}</h2>
           <p className="font-body text-[17px] font-normal text-gray leading-relaxed mb-5">{t.nameP}</p>
         </div>
       </section>
@@ -106,11 +106,11 @@ const IgniaGalleryPage = () => {
       <section className="px-6 md:px-12 py-20" style={{ backgroundColor: '#F5F5F5' }}>
         <div className="max-w-[1080px] mx-auto">
           <div className="eyebrow mb-4">{t.pillEy}</div>
-          <h2 className="font-display font-bold text-[clamp(26px,3vw,40px)] tracking-[-0.02em] text-ink leading-[1.1] mb-10">{t.pillH}</h2>
+          <h2 className="font-display font-semibold text-[clamp(26px,3vw,40px)] tracking-[-0.02em] text-ink leading-[1.1] mb-10">{t.pillH}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
             {t.pilares.map(p => (
               <div key={p.titulo} className="border-t border-border pt-5">
-                <h3 className="font-display font-bold text-[20px] text-ink mb-2">{p.titulo}</h3>
+                <h3 className="font-display font-semibold text-[20px] text-ink mb-2">{p.titulo}</h3>
                 <p className="font-body text-[16px] font-normal text-gray leading-relaxed">{p.cuerpo}</p>
               </div>
             ))}
