@@ -144,6 +144,8 @@ const JoinEscultores = () => {
     modelTitle: "The economic model",
     planFree: "Free plan",
     planPro: "Pro plan (€9.90/month)",
+    planFreeBullets: ["Full platform access", "Up to 5 active works", "Everything you need to start selling"],
+    planProBullets: ["More than 5 active works", "Audience analytics: who sees your work and from where", "Verified artist badge", "Preferred placement in searches and collections"],
     modelFoot: "You decide. Nobody assigns you a tier.",
     permTitle: "Your mark, permanent",
     permBody: "Every sold work is registered forever: authorship, materials, origin. Verifiable by anyone, anywhere.",
