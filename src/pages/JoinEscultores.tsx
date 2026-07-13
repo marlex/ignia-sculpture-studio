@@ -128,9 +128,9 @@ const JoinEscultores = () => {
     heroSub: "Fair commission. No fees. No exclusivity required.",
     cta: "Request access →",
     whyTitle: "Why Ignia",
-    why1: { title: "A community for sculptors.", text: "Whether you're just starting or have years of experience." },
-    why2: { title: "Fair commissions. Real respect.", text: "Nobody decides what your work is worth. Only you." },
-    why3: { title: "Your works, certified forever.", text: "Proof that they are yours, forever." },
+    why1: { title: "A community for sculptors.", text: "Whether you're just starting or have years of experience, we help you grow." },
+    why2: { title: "Fair commissions. Real respect.", text: "Nobody decides what your work is worth, only you and the value of your piece." },
+    why3: { title: "Your works, certified forever.", text: "Proof they're yours, forever, and the best experience for your collectors." },
     howTitle: "How it works",
     steps: [
       { label: "Step 1", desc: "You request access." },
