@@ -404,7 +404,7 @@ const JoinEscultores = () => {
       {/* 8. CTA FINAL + FORMULARIO */}
       <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 480, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 48 }}>{t.finalTitle}</h2>
+          <h2 style={{ ...H2_STYLE, marginBottom: 48 }}>{t.finalTitle}</h2>
           {submitted ? (
             <div style={{ textAlign: "center" }}>
               <p style={{
