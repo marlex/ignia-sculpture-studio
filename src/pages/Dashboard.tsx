@@ -74,7 +74,7 @@ export default function Dashboard() {
               <thead>
                 <tr>
                   {["Título", "Material", "Precio", "Visitas", "Estado"].map((h) => (
-                    <th key={h} style={{ textAlign: "left", fontFamily: "Manrope, sans-serif", fontWeight: 700, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "#666666", padding: "16px 8px", borderBottom: "1px solid #E5E5E5" }}>{h}</th>
+                    <th key={h} style={{ textAlign: "left", fontFamily: "Manrope, sans-serif", fontWeight: 600, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "#666666", padding: "16px 8px", borderBottom: "1px solid #E5E5E5" }}>{h}</th>
                   ))}
                 </tr>
               </thead>

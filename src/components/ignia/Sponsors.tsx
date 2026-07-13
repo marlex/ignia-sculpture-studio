@@ -13,7 +13,7 @@ export const Sponsors = () => {
         <p
           style={{
             fontFamily: "'Urbanist', sans-serif",
-            fontWeight: 700,
+            fontWeight: 600,
             fontSize: "11px",
             textTransform: "uppercase",
             letterSpacing: "0.2em",
