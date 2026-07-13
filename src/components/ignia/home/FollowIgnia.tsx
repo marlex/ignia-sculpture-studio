@@ -110,7 +110,7 @@ export const FollowIgnia = () => {
       <span
         style={{
           fontFamily: "'Manrope', sans-serif",
-          fontWeight: 400,
+          fontWeight: 500,
           fontSize: 11,
           color: "rgba(255,255,255,0.2)",
           letterSpacing: "0.04em",

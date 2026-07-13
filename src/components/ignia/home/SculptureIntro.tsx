@@ -40,7 +40,7 @@ export const SculptureIntro = () => {
         <p
           style={{
             fontFamily: "Manrope, sans-serif",
-            fontWeight: 400,
+            fontWeight: 500,
             color: "rgba(255,255,255,0.8)",
             fontSize: 16,
             lineHeight: 1.55,
