@@ -134,7 +134,7 @@ export default function AddView3d() {
                   {totalCount} fotos seleccionadas <span className="text-muted-line">(mínimo 20)</span>
                 </div>
                 {totalCount < 20 && (
-                  <button onClick={() => setSimCount(24)} className="font-body text-[11px] uppercase tracking-[0.14em] text-muted-line hover:opacity-65 transition-opacity">
+                  <button onClick={() => setSimCount(24)} className="font-body text-[13px] font-medium uppercase tracking-[0.14em] text-muted-line hover:opacity-65 transition-opacity">
                     Simular 24 fotos
                   </button>
                 )}
