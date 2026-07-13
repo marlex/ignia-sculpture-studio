@@ -36,7 +36,7 @@ const H2_STYLE: React.CSSProperties = {
   fontFamily: "'Cormorant Garamond', serif",
   fontWeight: 700,
   color: "#111111",
-  fontSize: "clamp(40px, 5vw, 60px)",
+  fontSize: "clamp(28px, 3.4vw, 40px)",
   lineHeight: 1.05,
   letterSpacing: "-0.02em",
   margin: 0,
