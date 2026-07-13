@@ -66,6 +66,36 @@ const BODY_STYLE: React.CSSProperties = {
   lineHeight: 1.7,
 };
 
+// 3b. Feature info — why blocks, banner quotes, etc.
+const FEATURE_INFO_STYLE: React.CSSProperties = {
+  fontFamily: FONT_BODY,
+  fontWeight: 500,
+  color: "#111111",
+  fontSize: 22,
+  lineHeight: 1.5,
+};
+
+// Hero title — exact homepage style
+const HERO_TITLE_STYLE: React.CSSProperties = {
+  fontFamily: FONT_DISPLAY,
+  fontWeight: 300,
+  color: "#FFFFFF",
+  fontSize: "clamp(40px, 6vw, 72px)",
+  lineHeight: 1.05,
+  letterSpacing: "0.005em",
+  margin: 0,
+};
+
+const HERO_SUBTITLE_STYLE: React.CSSProperties = {
+  fontFamily: FONT_BODY,
+  fontWeight: 400,
+  color: "#FFFFFF",
+  fontSize: 19,
+  lineHeight: 1.6,
+  maxWidth: 720,
+  margin: "28px auto 0",
+};
+
 // 4. Form labels
 const FORM_LABEL_STYLE: React.CSSProperties = {
   display: "block",
