@@ -317,8 +317,8 @@ const JoinEscultores = () => {
           }}>
             <tbody>
               <tr style={{ borderTop: "1px solid #111111" }}>
-                <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 16 }}>{t.planFree}</td>
-                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>18% {t.commission}</td>
+                <td style={{ padding: "24px 8px" }}></td>
+                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>{t.planFree}</td>
               </tr>
               <tr style={{ borderBottom: "1px solid #111111" }}>
                 <td colSpan={2} style={{ padding: "0 8px 24px" }}>
@@ -333,8 +333,8 @@ const JoinEscultores = () => {
                 </td>
               </tr>
               <tr style={{ borderTop: "1px solid #111111" }}>
-                <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 16 }}>{t.planPro}</td>
-                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>15% {t.commission}</td>
+                <td style={{ padding: "24px 8px" }}></td>
+                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>{t.planPro}</td>
               </tr>
               <tr style={{ borderBottom: "1px solid #111111" }}>
                 <td colSpan={2} style={{ padding: "0 8px 24px" }}>
