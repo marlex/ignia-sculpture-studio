@@ -263,7 +263,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
           </div>
         ) : (
           <>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 32, lineHeight: 1.1, marginBottom: 28 }}>
+            <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-7">
               {defaultProfile === "collector" ? "Adquirir esta obra" : t.title}
             </h2>
 
