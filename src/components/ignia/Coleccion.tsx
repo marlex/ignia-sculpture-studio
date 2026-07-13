@@ -136,12 +136,6 @@ export const Coleccion = () => {
 
   return (
     <section className="bg-white px-6 md:px-12 py-6 sm:py-10 md:py-[60px]">
-      {/* Title + dynamic count (mobile + desktop) */}
-      <div className="mb-3 sm:mb-6">
-        <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">
-          {t.h}
-        </h2>
-      </div>
 
       {/* MOBILE: full-width search */}
       <div className="sm:hidden mb-3">
