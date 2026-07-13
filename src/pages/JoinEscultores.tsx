@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
-import { InviteModal } from "@/components/ignia/home/InviteModal";
+
 import { useLang } from "@/i18n/LanguageContext";
 import heroSculptors from "@/assets/hero-sculptors.jpg.asset.json";
 import heroMarmol from "@/assets/hero-marmol.jpg.asset.json";
@@ -525,9 +525,63 @@ const JoinEscultores = () => {
       </section>
 
       <Footer />
-      <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} defaultProfile="artist" />
+      {inviteOpen && (
+        <div
+          style={{ position: "fixed", inset: 0, zIndex: 1000, background: "rgba(0,0,0,0.7)", display: "flex", alignItems: "center", justifyContent: "center", padding: 24, animation: "fadeIn 300ms ease both" }}
+          onClick={() => setInviteOpen(false)}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{ background: "#FFFFFF", maxWidth: 560, width: "100%", padding: 48, borderRadius: 0, position: "relative", maxHeight: "92vh", overflowY: "auto", animation: "modalIn 300ms cubic-bezier(0.16,1,0.3,1) both" }}
+          >
+            <button
+              onClick={() => setInviteOpen(false)}
+              aria-label="Close"
+              style={{ position: "absolute", top: 16, right: 20, background: "transparent", border: "none", cursor: "pointer", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 24, lineHeight: 1 }}
+            >×</button>
+            <h2 style={{ ...H2_STYLE, marginBottom: 32, textAlign: "center" }}>{t.finalTitle}</h2>
+            {submitted ? (
+              <div style={{ textAlign: "center" }}>
+                <p style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontWeight: 400,
+                  color: "#121212",
+                  fontSize: 24,
+                  marginBottom: 12,
+                }}>{t.okTitle}</p>
+                <p style={{ ...BODY_STYLE, fontSize: 16, color: "#666666" }}>{t.okMsg}</p>
+              </div>
+            ) : (
+              <form onSubmit={handleEmbeddedSubmit}>
+                <div style={{ marginBottom: 28 }}>
+                  <label style={labelStyle} htmlFor="je-modal-nombre">{t.fName}</label>
+                  <input id="je-modal-nombre" name="nombre" required value={name} onChange={(e) => setName(e.target.value)} style={inputStyle} />
+                </div>
+                <div style={{ marginBottom: 28 }}>
+                  <label style={labelStyle} htmlFor="je-modal-email">{t.fEmail}</label>
+                  <input id="je-modal-email" name="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} style={inputStyle} />
+                </div>
+                <div style={{ marginBottom: 40 }}>
+                  <label style={labelStyle} htmlFor="je-modal-social">{t.fSocial}</label>
+                  <input id="je-modal-social" name="social" required value={social} onChange={(e) => setSocial(e.target.value)} style={inputStyle} />
+                </div>
+                {error && (
+                  <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#B00020", fontSize: 14, marginBottom: 16 }}>{error}</p>
+                )}
+                <div style={{ textAlign: "center" }}>
+                  <button type="submit" disabled={loading} style={{ ...OUTLINE_BTN_DARK, opacity: loading ? 0.5 : 1 }} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
+                    {loading ? t.sending : t.cta}
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
 
       <style>{`
+        @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
+        @keyframes modalIn { from { opacity:0; transform: translateY(16px) } to { opacity:1; transform:translateY(0) } }
         .why-col:not(:last-child)::after {
           content: "";
           position: absolute;
