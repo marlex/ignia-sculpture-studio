@@ -292,7 +292,7 @@ const JoinEscultores = () => {
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 64 }}>
           {[t.why1, t.why2, t.why3].map((line, i) => (
             <div key={i} style={{ textAlign: "center" }}>
-              <p style={{ ...BODY_STYLE, fontSize: 22, lineHeight: 1.5, margin: 0 }}>{line}</p>
+              <p style={{ ...FEATURE_INFO_STYLE, margin: 0 }}>{line}</p>
             </div>
           ))}
         </div>
