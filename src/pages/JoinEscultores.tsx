@@ -36,7 +36,7 @@ const H2_STYLE: React.CSSProperties = {
   fontFamily: "'Cormorant Garamond', serif",
   fontWeight: 700,
   color: "#111111",
-  fontSize: "clamp(40px, 5vw, 60px)",
+  fontSize: "clamp(28px, 3.4vw, 40px)",
   lineHeight: 1.05,
   letterSpacing: "-0.02em",
   margin: 0,
@@ -217,7 +217,6 @@ const JoinEscultores = () => {
           alt=""
           aria-hidden
           loading="eager"
-          fetchPriority="high"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div
@@ -265,7 +264,7 @@ const JoinEscultores = () => {
       {/* 3. CÓMO FUNCIONA */}
       <section style={{ padding: "120px 24px", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 56 }}>{t.howTitle}</h2>
+          <h2 style={{ ...H2_STYLE, marginBottom: 56 }}>{t.howTitle}</h2>
           <table style={{
             width: "100%",
             borderCollapse: "collapse",
@@ -275,8 +274,8 @@ const JoinEscultores = () => {
             <tbody>
               {t.steps.map((step, i) => (
                 <tr key={i} style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
-                  <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 24 }}>{step.label}</td>
-                  <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 18, textAlign: "right" }}>{step.desc}</td>
+                  <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 18 }}>{step.label}</td>
+                  <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 24, textAlign: "right" }}>{step.desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -292,7 +291,7 @@ const JoinEscultores = () => {
       {/* 4. MODELO ECONÓMICO */}
       <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 56 }}>{t.modelTitle}</h2>
+          <h2 style={{ ...H2_STYLE, marginBottom: 56 }}>{t.modelTitle}</h2>
           <table style={{
             width: "100%",
             borderCollapse: "collapse",
@@ -372,24 +371,39 @@ const JoinEscultores = () => {
       </section>
 
       {/* 7. BANNER */}
-      <section style={{ background: "#000000", padding: "120px 24px" }}>
-        <p style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontWeight: 300,
-          color: "#FFFFFF",
-          fontSize: "clamp(28px, 3.6vw, 44px)",
-          lineHeight: 1.2,
-          letterSpacing: "0.005em",
+      <section
+        style={{
+          background: "#0a0a0a",
+          padding: "180px 40px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
           textAlign: "center",
-          maxWidth: 900,
-          margin: "0 auto",
-        }}>{t.banner}</p>
+          gap: 32,
+          minHeight: "60vh",
+        }}
+      >
+        <h2
+          style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontWeight: 300,
+            fontSize: "clamp(36px, 4.5vw, 56px)",
+            color: "rgba(255,255,255,0.92)",
+            lineHeight: 1.1,
+            letterSpacing: "0.01em",
+            margin: 0,
+            maxWidth: 900,
+          }}
+        >
+          {t.banner}
+        </h2>
       </section>
 
       {/* 8. CTA FINAL + FORMULARIO */}
       <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 480, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 48 }}>{t.finalTitle}</h2>
+          <h2 style={{ ...H2_STYLE, marginBottom: 48 }}>{t.finalTitle}</h2>
           {submitted ? (
             <div style={{ textAlign: "center" }}>
               <p style={{
@@ -439,7 +453,7 @@ const JoinEscultores = () => {
       {/* 9. FAQ */}
       <section style={{ padding: "120px 24px 160px", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, textAlign: "center", marginBottom: 56 }}>{t.faqTitle}</h2>
+          <h2 style={{ ...H2_STYLE, marginBottom: 56 }}>{t.faqTitle}</h2>
           <div style={{ borderTop: "1px solid #111111" }}>
             {t.faqs.map((f, i) => {
               const isOpen = openFaq === i;
