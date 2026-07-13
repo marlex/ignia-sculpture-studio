@@ -316,12 +316,9 @@ const JoinEscultores = () => {
             color: "#111111",
           }}>
             <tbody>
-              <tr style={{ borderTop: "1px solid #111111" }}>
-                <td style={{ padding: "24px 8px" }}></td>
-                <td style={{ padding: "24px 8px 0", fontWeight: 700, fontSize: 26, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>{t.planFree}</td>
-              </tr>
-              <tr style={{ borderBottom: "1px solid #111111" }}>
-                <td colSpan={2} style={{ padding: "0 8px 24px" }}>
+              <tr style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
+                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, fontFamily: "'Cormorant Garamond', serif", verticalAlign: "top" }}>{t.planFree}</td>
+                <td style={{ padding: "24px 8px", verticalAlign: "top" }}>
                   <ul style={{ margin: 0, paddingLeft: 18, listStyle: "none" }}>
                     {t.planFreeBullets.map((bullet, i) => (
                       <li key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, fontSize: 16, color: "#111111", lineHeight: 1.7, marginBottom: 4, position: "relative" }}>
@@ -332,12 +329,9 @@ const JoinEscultores = () => {
                   </ul>
                 </td>
               </tr>
-              <tr style={{ borderTop: "1px solid #111111" }}>
-                <td style={{ padding: "24px 8px" }}></td>
-                <td style={{ padding: "24px 8px 0", fontWeight: 700, fontSize: 26, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>{t.planPro}</td>
-              </tr>
-              <tr style={{ borderBottom: "1px solid #111111" }}>
-                <td colSpan={2} style={{ padding: "0 8px 24px" }}>
+              <tr style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
+                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, fontFamily: "'Cormorant Garamond', serif", verticalAlign: "top" }}>{t.planPro}</td>
+                <td style={{ padding: "24px 8px", verticalAlign: "top" }}>
                   <ul style={{ margin: 0, paddingLeft: 18, listStyle: "none" }}>
                     {t.planProBullets.map((bullet, i) => (
                       <li key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, fontSize: 16, color: "#111111", lineHeight: 1.7, marginBottom: 4, position: "relative" }}>
