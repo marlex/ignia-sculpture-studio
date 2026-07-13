@@ -110,7 +110,7 @@ const ObraDetalle = () => {
                   <button
                     key={m}
                     onClick={() => setMode(m)}
-                    className={`font-body text-[11px] uppercase tracking-[0.18em] px-4 py-2 border transition-colors ${
+                    className={`font-body text-[13px] font-medium uppercase tracking-[0.18em] px-4 py-2 border transition-colors ${
                       mode === m ? "bg-ink text-white border-ink" : "border-border text-gray hover:opacity-65 transition-opacity"
                     }`}
                   >
