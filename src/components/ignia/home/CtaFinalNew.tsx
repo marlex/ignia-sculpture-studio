@@ -10,7 +10,7 @@ export const CtaFinalNew = ({ onInvite, onCollection }: { onInvite: () => void; 
   return (
     <section className="cta-final-section" style={{ background: "#121212", padding: "120px 24px" }}>
       <div ref={ref} className="max-w-[1280px] mx-auto" style={{ textAlign: "center" }}>
-        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#FFFFFF", fontSize: "clamp(33px,6vw,65px)", lineHeight: 1, letterSpacing: "-0.03em", whiteSpace: "nowrap" }}>
+        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#FFFFFF", fontSize: "clamp(33px,6vw,65px)", lineHeight: 1, letterSpacing: "-0.03em", whiteSpace: "nowrap" }}>
           {t.h}
         </h2>
         <div style={{ marginTop: 48, display: "flex", gap: 32, justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}>
