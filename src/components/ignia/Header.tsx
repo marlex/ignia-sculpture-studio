@@ -194,29 +194,24 @@ export const Header = () => {
           >
             {t.publish}
           </button>
-          {/* Mobile-only invitation icon (envelope) */}
+          {/* Mobile-only invitation text */}
           <button
             type="button"
             onClick={openInvite}
             aria-label={t.publish}
-            className="header-invite-icon-mobile"
+            className="header-invite-icon-mobile font-body text-[13px] font-medium text-ink"
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              width: 32,
-              height: 32,
               background: "transparent",
               border: "none",
-              padding: 0,
+              padding: "0 2px",
               cursor: "pointer",
               color: "#121212",
             }}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-              <rect x="3" y="5" width="18" height="14" rx="1.5" />
-              <path d="M3.5 6.5l8.5 6.5 8.5-6.5" />
-            </svg>
+            {t.joinMobile}
           </button>
         </div>
       </div>
