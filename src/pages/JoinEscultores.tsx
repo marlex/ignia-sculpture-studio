@@ -325,7 +325,7 @@ const JoinEscultores = () => {
                     ))}
                   </ul>
                 </td>
-                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, fontFamily: "'Cormorant Garamond', serif", verticalAlign: "top", textAlign: "right" }}>{t.planFree}</td>
+                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, fontFamily: "'Cormorant Garamond', serif", verticalAlign: "bottom", textAlign: "right" }}>{t.planFree}</td>
               </tr>
               <tr style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
                 <td style={{ padding: "24px 8px", verticalAlign: "top" }}>
@@ -338,7 +338,7 @@ const JoinEscultores = () => {
                     ))}
                   </ul>
                 </td>
-                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, fontFamily: "'Cormorant Garamond', serif", verticalAlign: "top", textAlign: "right" }}>{t.planPro}</td>
+                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, fontFamily: "'Cormorant Garamond', serif", verticalAlign: "bottom", textAlign: "right" }}>{t.planPro}</td>
               </tr>
             </tbody>
           </table>
