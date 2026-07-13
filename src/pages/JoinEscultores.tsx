@@ -436,7 +436,7 @@ const JoinEscultores = () => {
                 <input id="je-social" name="social" required value={social} onChange={(e) => setSocial(e.target.value)} style={inputStyle} />
               </div>
               {error && (
-                <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#B00020", fontSize: 14, marginBottom: 16 }}>{error}</p>
+                <p style={{ fontFamily: FONT_BODY, fontWeight: 500, color: "#B00020", fontSize: 16, marginBottom: 16 }}>{error}</p>
               )}
               <div style={{ textAlign: "center" }}>
                 <button type="submit" disabled={loading} style={{ ...OUTLINE_BTN_DARK, opacity: loading ? 0.5 : 1 }} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
