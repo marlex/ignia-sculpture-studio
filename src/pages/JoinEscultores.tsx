@@ -83,8 +83,8 @@ const JoinEscultores = () => {
     heroSub: "Comisión justa. Sin cuotas. No pedimos exclusividad.",
     cta: "Solicitar acceso →",
     whyTitle: "Por qué Ignia",
-    why1: { title: "Pertenece a una gran comunidad de escultores.", text: "No importa si empiezas ahora o llevas años en esto." },
-    why2: { title: "Comisiones justas que respetan tu trabajo.", text: "Nadie decide cuánto vale tu obra. Solo tú." },
+    why1: { title: "Una comunidad para escultores.", text: "Si empiezas ahora o llevas años en esto." },
+    why2: { title: "Comisiones justas. Respeto real.", text: "Nadie decide cuánto vale tu obra. Solo tú." },
     why3: { title: "Tus obras, certificadas para siempre.", text: "Prueba de que son tuyas, para siempre." },
     howTitle: "Cómo funciona",
     steps: [
@@ -122,8 +122,8 @@ const JoinEscultores = () => {
     heroSub: "Fair commission. No fees. No exclusivity required.",
     cta: "Request access →",
     whyTitle: "Why Ignia",
-    why1: { title: "Belong to a great community of sculptors.", text: "Whether you're just starting or have years of experience." },
-    why2: { title: "Fair commissions that respect your work.", text: "Nobody decides what your work is worth. Only you." },
+    why1: { title: "A community for sculptors.", text: "Whether you're just starting or have years of experience." },
+    why2: { title: "Fair commissions. Real respect.", text: "Nobody decides what your work is worth. Only you." },
     why3: { title: "Your works, certified forever.", text: "Proof that they are yours, forever." },
     howTitle: "How it works",
     steps: [
