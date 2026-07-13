@@ -32,22 +32,65 @@ const OUTLINE_BTN_DARK: React.CSSProperties = {
 const hoverIn = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.opacity = "0.65"; };
 const hoverOut = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.opacity = "1"; };
 
-const H2_STYLE: React.CSSProperties = {
-  fontFamily: "'Cormorant Garamond', serif",
-  fontWeight: 700,
+const FONT_DISPLAY = "'Cormorant Garamond', serif";
+const FONT_BODY = "Manrope, sans-serif";
+
+// Typography rules for /join/escultores
+// 1. Titles — homepage style (large Cormorant Garamond)
+const TITLE_STYLE: React.CSSProperties = {
+  fontFamily: FONT_DISPLAY,
+  fontWeight: 300,
   color: "#111111",
   fontSize: "clamp(40px, 5vw, 60px)",
   lineHeight: 1.05,
-  letterSpacing: "-0.02em",
+  letterSpacing: "-0.01em",
   margin: 0,
 };
 
+// 2. Banner & feature info — medium display size
+const BANNER_STYLE: React.CSSProperties = {
+  fontFamily: FONT_DISPLAY,
+  fontWeight: 300,
+  color: "#FFFFFF",
+  fontSize: "clamp(28px, 3.6vw, 44px)",
+  lineHeight: 1.2,
+  letterSpacing: "0.005em",
+};
+
+// 3. Regular body content
 const BODY_STYLE: React.CSSProperties = {
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: FONT_BODY,
   fontWeight: 400,
-  color: "#5a5648",
-  fontSize: 16,
+  color: "#444444",
+  fontSize: 18,
   lineHeight: 1.7,
+};
+
+// 4. Form labels
+const FORM_LABEL_STYLE: React.CSSProperties = {
+  display: "block",
+  fontFamily: FONT_BODY,
+  fontWeight: 500,
+  textTransform: "uppercase",
+  letterSpacing: "0.1em",
+  fontSize: 14,
+  color: "#111111",
+  marginBottom: 12,
+};
+
+// 5. Form inputs
+const FORM_INPUT_STYLE: React.CSSProperties = {
+  width: "100%",
+  background: "transparent",
+  border: "none",
+  borderBottom: "1px solid #111111",
+  outline: "none",
+  fontFamily: FONT_BODY,
+  fontWeight: 500,
+  color: "#111111",
+  fontSize: 18,
+  padding: "0 0 10px",
+  borderRadius: 0,
 };
 
 const JoinEscultores = () => {
