@@ -256,7 +256,7 @@ const JoinEscultores = () => {
   const labelStyle = FORM_LABEL_STYLE;
 
   return (
-    <div style={{ background: "#FFFFFF" }}>
+    <main style={{ background: "#FFFFFF" }}>
       <Header />
 
       {/* 1. HERO */}
