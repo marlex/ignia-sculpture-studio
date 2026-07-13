@@ -2,7 +2,6 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
-import { InviteModal } from "@/components/ignia/home/InviteModal";
 const GlbViewer = lazy(() => import("@/components/ignia/GlbViewer").then(m => ({ default: m.GlbViewer })));
 import { useLang } from "@/i18n/LanguageContext";
 import { getWorkBySlug, WORKS } from "@/data/igniaWorks";
@@ -47,19 +46,12 @@ const ObraDetalle = () => {
   const [mode, setMode] = useState<"photos" | "3d">("photos");
   const [idx, setIdx] = useState(0);
   const [chatOpen, setChatOpen] = useState(false);
-  const [inviteOpen, setInviteOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [specsOpen, setSpecsOpen] = useState(false);
   
   const [shipOpen, setShipOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
   const [priceInfoOpen, setPriceInfoOpen] = useState(false);
-
-  useEffect(() => {
-    const open = () => setInviteOpen(true);
-    window.addEventListener("ignia:open-invite", open);
-    return () => window.removeEventListener("ignia:open-invite", open);
-  }, []);
 
   useEffect(() => { setIdx(0); }, [slug]);
 
@@ -439,7 +431,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
             </div>
 
             <div className="flex gap-3">
-              <button onClick={() => window.dispatchEvent(new Event("ignia:open-invite"))} className="flex-1 bg-transparent text-ink border border-ink font-body text-[16px] tracking-[0.16em] uppercase py-5 hover:opacity-65 transition-opacity">{t.buy}</button>
+              <button onClick={() => window.dispatchEvent(new CustomEvent("ignia:open-invite", { detail: { defaultProfile: "collector" } }))} className="flex-1 bg-transparent text-ink border border-ink font-body text-[16px] tracking-[0.16em] uppercase py-5 hover:opacity-65 transition-opacity">{t.buy}</button>
               <button
                 onClick={() => setChatOpen(true)}
                 aria-label={t.talk}
@@ -555,7 +547,6 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
         </div>
       )}
 
-      <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} defaultProfile="collector" />
       <Footer />
     </main>
   );

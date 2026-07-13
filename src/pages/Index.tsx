@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { Header } from "@/components/ignia/Header";
 import { Coleccion } from "@/components/ignia/Coleccion";
 import { Artistas } from "@/components/ignia/Artistas";
@@ -12,7 +12,6 @@ import { Aprende } from "@/components/ignia/Aprende";
 
 import { SectionSeparator } from "@/components/ignia/home/SectionSeparator";
 import { Inspiracion } from "@/components/ignia/Inspiracion";
-import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { Splash } from "@/components/ignia/home/Splash";
 import { useFadeUp } from "@/hooks/useFadeUp";
 import { useLang } from "@/i18n/LanguageContext";
@@ -57,17 +56,13 @@ const SEPARATORS = {
 const Index = () => {
   const lang = useLang();
   const t = SEPARATORS[lang];
-  const [inviteOpen, setInviteOpen] = useState(false);
   const coleccionRef = useRef<HTMLDivElement>(null);
   const scrollToColeccion = () => coleccionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 
   useEffect(() => {
-    const open = () => setInviteOpen(true);
     const scroll = () => scrollToColeccion();
-    window.addEventListener("ignia:open-invite", open);
     window.addEventListener("ignia:scroll-to-collection", scroll);
     return () => {
-      window.removeEventListener("ignia:open-invite", open);
       window.removeEventListener("ignia:scroll-to-collection", scroll);
     };
   }, []);
@@ -104,7 +99,6 @@ const Index = () => {
       <Aprende />
       <SectionSeparator title={t.s3.title} subtitle={t.s3.subtitle} cta={t.s3.cta} />
       <Footer />
-      <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} />
     </main>
   );
 };
