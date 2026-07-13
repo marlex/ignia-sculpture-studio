@@ -222,29 +222,8 @@ const JoinEscultores = () => {
     finally { setLoading(false); }
   };
 
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    background: "transparent",
-    border: "none",
-    borderBottom: "1px solid #111111",
-    outline: "none",
-    fontFamily: "Manrope, sans-serif",
-    fontWeight: 500,
-    color: "#111111",
-    fontSize: 16,
-    padding: "0 0 8px",
-    borderRadius: 0,
-  };
-  const labelStyle: React.CSSProperties = {
-    display: "block",
-    fontFamily: "Manrope, sans-serif",
-    fontWeight: 400,
-    textTransform: "uppercase",
-    letterSpacing: "0.14em",
-    fontSize: 11,
-    color: "#111111",
-    marginBottom: 12,
-  };
+  const inputStyle = FORM_INPUT_STYLE;
+  const labelStyle = FORM_LABEL_STYLE;
 
   return (
     <div style={{ background: "#FFFFFF" }}>
