@@ -2,7 +2,6 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
-import { InviteModal } from "@/components/ignia/home/InviteModal";
 const GlbViewer = lazy(() => import("@/components/ignia/GlbViewer").then(m => ({ default: m.GlbViewer })));
 import { useLang } from "@/i18n/LanguageContext";
 import { getWorkBySlug, WORKS } from "@/data/igniaWorks";
