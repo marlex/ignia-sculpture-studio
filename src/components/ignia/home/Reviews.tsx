@@ -33,16 +33,16 @@ const Block = ({ title, citas }: { title: string; citas: { q: string; n: string;
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {citas.map((c, i) => (
           <figure key={i} style={{ position: "relative", paddingLeft: 4 }}>
-            <div aria-hidden style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 72, lineHeight: 0.6, marginBottom: 24, opacity: 0.25 }}>
+            <div aria-hidden style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 72, lineHeight: 0.6, marginBottom: 24, opacity: 0.25 }}>
               &ldquo;
             </div>
-            <blockquote style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: "clamp(22px,2vw,30px)", lineHeight: 1.45, letterSpacing: "-0.005em", margin: 0 }}>
+            <blockquote style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: "clamp(22px,2vw,30px)", lineHeight: 1.45, letterSpacing: "-0.005em", margin: 0 }}>
               {c.q}
             </blockquote>
 
-            <div style={{ height: 1, background: "#111111", opacity: 0.12, width: 48, margin: "40px 0 20px" }} />
+            <div style={{ height: 1, background: "#121212", opacity: 0.12, width: 48, margin: "40px 0 20px" }} />
             <figcaption>
-              <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 600, color: "#111111", fontSize: 16, letterSpacing: "0.08em", textTransform: "uppercase" }}>{c.n}</div>
+              <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 600, color: "#121212", fontSize: 16, letterSpacing: "0.08em", textTransform: "uppercase" }}>{c.n}</div>
               <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, marginTop: 6, letterSpacing: "0.02em" }}>{c.r}</div>
             </figcaption>
           </figure>

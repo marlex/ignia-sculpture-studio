@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 const fieldLabel: React.CSSProperties = {
   display: "block", fontFamily: "Manrope, sans-serif", fontWeight: 400,
   textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 14,
-  color: "#111111", marginBottom: 12,
+  color: "#121212", marginBottom: 12,
 };
 const fieldInput: React.CSSProperties = {
   width: "100%", background: "transparent", border: "none",
-  borderBottom: "1px solid #111111", outline: "none",
-  fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#111111",
+  borderBottom: "1px solid #121212", outline: "none",
+  fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#121212",
   fontSize: 16, padding: "0 0 8px", borderRadius: 0,
 };
 const fieldWrap: React.CSSProperties = { marginBottom: 28 };
@@ -42,12 +42,12 @@ export default function Publicar() {
   return (
     <main style={{ background: "#FFFFFF", minHeight: "100vh" }}>
       <header style={{ borderBottom: "1px solid #E5E5E5", padding: "20px 40px" }}>
-        <Link to="/" style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 400, color: "#111111", fontSize: 20, letterSpacing: "0.12em", textDecoration: "none", textTransform: "uppercase" }}>
+        <Link to="/" style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 400, color: "#121212", fontSize: 20, letterSpacing: "0.12em", textDecoration: "none", textTransform: "uppercase" }}>
           IGNIA
         </Link>
       </header>
       <section style={{ maxWidth: 720, margin: "0 auto", padding: "80px 24px 120px" }}>
-        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 40, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 16 }}>
+        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 40, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 16 }}>
           Publicar una obra
         </h1>
         <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 17, lineHeight: 1.5, marginBottom: 56 }}>
@@ -56,7 +56,7 @@ export default function Publicar() {
 
         {submitted ? (
           <div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 28, marginBottom: 16 }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 28, marginBottom: 16 }}>
               Obra recibida.
             </h2>
             <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>
@@ -98,7 +98,7 @@ export default function Publicar() {
           <button
             type="submit"
             disabled={loading}
-            style={{ width: "100%", background: "transparent", color: "#111111", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 13, padding: 18, border: "1px solid #111111", borderRadius: 0, cursor: "pointer", marginTop: 24, transition: "opacity 250ms" }}
+            style={{ width: "100%", background: "transparent", color: "#121212", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 13, padding: 18, border: "1px solid #121212", borderRadius: 0, cursor: "pointer", marginTop: 24, transition: "opacity 250ms" }}
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.6")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >

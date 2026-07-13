@@ -25,8 +25,8 @@ const OUTLINE_BTN: React.CSSProperties = {
 
 const OUTLINE_BTN_DARK: React.CSSProperties = {
   ...OUTLINE_BTN,
-  color: "#111111",
-  border: "1px solid #111111",
+  color: "#121212",
+  border: "1px solid #121212",
 };
 
 const hoverIn = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.opacity = "0.65"; };
@@ -35,7 +35,7 @@ const hoverOut = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.o
 const H2_STYLE: React.CSSProperties = {
   fontFamily: "'Cormorant Garamond', serif",
   fontWeight: 700,
-  color: "#111111",
+  color: "#121212",
   fontSize: "clamp(28px, 3.4vw, 40px)",
   lineHeight: 1.05,
   letterSpacing: "-0.02em",
@@ -45,7 +45,7 @@ const H2_STYLE: React.CSSProperties = {
 const BODY_STYLE: React.CSSProperties = {
   fontFamily: "Manrope, sans-serif",
   fontWeight: 400,
-  color: "#212121",
+  color: "#121212",
   fontSize: 16,
   lineHeight: 1.7,
 };
@@ -193,11 +193,11 @@ const JoinEscultores = () => {
     width: "100%",
     background: "transparent",
     border: "none",
-    borderBottom: "1px solid #111111",
+    borderBottom: "1px solid #121212",
     outline: "none",
     fontFamily: "Manrope, sans-serif",
     fontWeight: 400,
-    color: "#111111",
+    color: "#121212",
     fontSize: 16,
     padding: "0 0 8px",
     borderRadius: 0,
@@ -209,7 +209,7 @@ const JoinEscultores = () => {
     textTransform: "uppercase",
     letterSpacing: "0.14em",
     fontSize: 14,
-    color: "#111111",
+    color: "#121212",
     marginBottom: 12,
   };
 
@@ -265,10 +265,10 @@ const JoinEscultores = () => {
         <div className="why-grid" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 64 }}>
           {[t.why1, t.why2, t.why3].map((item, i) => (
             <div key={i} className="why-col" style={{ position: "relative", textAlign: "center" }}>
-              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, color: "#111111", fontSize: 26, lineHeight: 1.2, margin: 0, textAlign: "center" }}>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, color: "#121212", fontSize: 26, lineHeight: 1.2, margin: 0, textAlign: "center" }}>
                 {item.title}
               </h3>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#212121", fontSize: 16, lineHeight: 1.7, textAlign: "center", margin: "12px 0 0" }}>
+              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#121212", fontSize: 16, lineHeight: 1.7, textAlign: "center", margin: "12px 0 0" }}>
                 {item.text}
               </p>
             </div>
@@ -284,11 +284,11 @@ const JoinEscultores = () => {
             width: "100%",
             borderCollapse: "collapse",
             fontFamily: "Manrope, sans-serif",
-            color: "#111111",
+            color: "#121212",
           }}>
             <tbody>
               {t.steps.map((step, i) => (
-                <tr key={i} style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
+                <tr key={i} style={{ borderTop: "1px solid #121212", borderBottom: "1px solid #121212" }}>
                   <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, fontFamily: "'Cormorant Garamond', serif" }}>{step.label}</td>
                   <td style={{ padding: "24px 8px", fontWeight: 400, fontSize: 16, textAlign: "right" }}>{step.desc}</td>
                 </tr>
@@ -311,15 +311,15 @@ const JoinEscultores = () => {
             width: "100%",
             borderCollapse: "collapse",
             fontFamily: "Manrope, sans-serif",
-            color: "#111111",
+            color: "#121212",
           }}>
             <tbody>
-              <tr style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
+              <tr style={{ borderTop: "1px solid #121212", borderBottom: "1px solid #121212" }}>
                 <td style={{ padding: "24px 8px", verticalAlign: "top" }}>
                   <ul style={{ margin: 0, paddingLeft: 18, listStyle: "none" }}>
                     {t.planFreeBullets.map((bullet, i) => (
-                      <li key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: 16, color: "#111111", lineHeight: 1.7, marginBottom: 4, position: "relative" }}>
-                        <span style={{ position: "absolute", left: -16, top: 9, width: 4, height: 4, borderRadius: "50%", background: "#111111" }} />
+                      <li key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: 16, color: "#121212", lineHeight: 1.7, marginBottom: 4, position: "relative" }}>
+                        <span style={{ position: "absolute", left: -16, top: 9, width: 4, height: 4, borderRadius: "50%", background: "#121212" }} />
                         {bullet}
                       </li>
                     ))}
@@ -327,12 +327,12 @@ const JoinEscultores = () => {
                 </td>
                 <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, fontFamily: "'Cormorant Garamond', serif", verticalAlign: "bottom", textAlign: "right" }}>{t.planFree}</td>
               </tr>
-              <tr style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
+              <tr style={{ borderTop: "1px solid #121212", borderBottom: "1px solid #121212" }}>
                 <td style={{ padding: "24px 8px", verticalAlign: "top" }}>
                   <ul style={{ margin: 0, paddingLeft: 18, listStyle: "none" }}>
                     {t.planProBullets.map((bullet, i) => (
-                      <li key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: 16, color: "#111111", lineHeight: 1.7, marginBottom: 4, position: "relative" }}>
-                        <span style={{ position: "absolute", left: -16, top: 9, width: 4, height: 4, borderRadius: "50%", background: "#111111" }} />
+                      <li key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: 16, color: "#121212", lineHeight: 1.7, marginBottom: 4, position: "relative" }}>
+                        <span style={{ position: "absolute", left: -16, top: 9, width: 4, height: 4, borderRadius: "50%", background: "#121212" }} />
                         {bullet}
                       </li>
                     ))}
@@ -434,7 +434,7 @@ const JoinEscultores = () => {
               <p style={{
                 fontFamily: "'Cormorant Garamond', serif",
                 fontWeight: 400,
-                color: "#111111",
+                color: "#121212",
                 fontSize: 24,
                 marginBottom: 12,
               }}>{t.okTitle}</p>
@@ -471,11 +471,11 @@ const JoinEscultores = () => {
       <section style={{ padding: "120px 24px 160px", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
           <h2 style={{ ...H2_STYLE, marginBottom: 56, textAlign: "center" }}>{t.faqTitle}</h2>
-          <div style={{ width: "100%", borderTop: "1px solid #111111" }}>
+          <div style={{ width: "100%", borderTop: "1px solid #121212" }}>
             {t.faqs.map((f, i) => {
               const isOpen = openFaq === i;
               return (
-                <div key={i} style={{ width: "100%", borderBottom: "1px solid #111111" }}>
+                <div key={i} style={{ width: "100%", borderBottom: "1px solid #121212" }}>
                   <button
                     type="button"
                     onClick={() => setOpenFaq(isOpen ? null : i)}
@@ -493,7 +493,7 @@ const JoinEscultores = () => {
                       gap: 16,
                       fontFamily: "Manrope, sans-serif",
                       fontWeight: 400,
-                      color: "#111111",
+                      color: "#121212",
                       fontSize: 18,
                       borderRadius: 0,
                     }}

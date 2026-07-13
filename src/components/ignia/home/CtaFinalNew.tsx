@@ -8,7 +8,7 @@ export const CtaFinalNew = ({ onInvite, onCollection }: { onInvite: () => void; 
     ? { h: "Tu escultura empieza aquí.", a: "Únete a Ignia", b: "Ver la colección" }
     : { h: "Your sculpture starts here.", a: "Join Ignia", b: "View the collection" };
   return (
-    <section className="cta-final-section" style={{ background: "#111111", padding: "120px 24px" }}>
+    <section className="cta-final-section" style={{ background: "#121212", padding: "120px 24px" }}>
       <div ref={ref} className="max-w-[1280px] mx-auto" style={{ textAlign: "center" }}>
         <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#FFFFFF", fontSize: "clamp(33px,6vw,65px)", lineHeight: 1, letterSpacing: "-0.03em", whiteSpace: "nowrap" }}>
           {t.h}

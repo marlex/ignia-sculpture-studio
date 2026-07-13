@@ -133,7 +133,7 @@ export const HeroSlideshow = ({ onInvite, onCollection }: Props) => {
               textTransform: "uppercase",
               padding: "14px 28px",
               background: "#FFFFFF",
-              color: "#111111",
+              color: "#121212",
               border: "none",
               borderRadius: 0,
               cursor: "pointer",

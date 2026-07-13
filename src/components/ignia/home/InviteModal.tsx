@@ -229,18 +229,18 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
       <style>{`
         @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
         @keyframes modalIn { from { opacity:0; transform: translateY(16px) } to { opacity:1; transform:translateY(0) } }
-        .invite-input { width:100%; background:transparent; border:none; border-bottom:1px solid #111111; outline:none; font-family:Manrope,sans-serif; font-weight:400; color:#111111; font-size:16px; padding:0 0 8px; border-radius:0; }
-        .invite-input:focus { border-bottom-color:#111111; }
-        .invite-label { display:block; font-family:Manrope,sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:0.14em; font-size:14px; color:#111111; margin-bottom:12px; }
+        .invite-input { width:100%; background:transparent; border:none; border-bottom:1px solid #121212; outline:none; font-family:Manrope,sans-serif; font-weight:400; color:#121212; font-size:16px; padding:0 0 8px; border-radius:0; }
+        .invite-input:focus { border-bottom-color:#121212; }
+        .invite-label { display:block; font-family:Manrope,sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:0.14em; font-size:14px; color:#121212; margin-bottom:12px; }
         .invite-field { margin-bottom:28px; }
-        .role-btn { display:block; width:100%; text-align:left; padding:20px 24px; background:#FFFFFF; border:1px solid #111111; color:#111111; font-family:Manrope,sans-serif; font-weight:400; font-size:16px; letter-spacing:0.04em; cursor:pointer; transition: background 200ms, color 200ms; margin-bottom:12px; }
-        .role-btn:hover { background:#111111; color:#FFFFFF; }
+        .role-btn { display:block; width:100%; text-align:left; padding:20px 24px; background:#FFFFFF; border:1px solid #121212; color:#121212; font-family:Manrope,sans-serif; font-weight:400; font-size:16px; letter-spacing:0.04em; cursor:pointer; transition: background 200ms, color 200ms; margin-bottom:12px; }
+        .role-btn:hover { background:#121212; color:#FFFFFF; }
         .role-sub { display:block; font-size:13px; font-weight:400; color:#666666; margin-top:4px; transition: color 200ms; }
         .role-btn:hover .role-sub { color:#AAAAAA; }
-        .chip { display:inline-block; padding:8px 14px; margin:0 8px 8px 0; border:1px solid #111111; background:#FFFFFF; color:#111111; font-family:Manrope,sans-serif; font-weight:400; font-size:13px; cursor:pointer; transition: background 200ms, color 200ms; }
-        .chip.active { background:#111111; color:#FFFFFF; }
+        .chip { display:inline-block; padding:8px 14px; margin:0 8px 8px 0; border:1px solid #121212; background:#FFFFFF; color:#121212; font-family:Manrope,sans-serif; font-weight:400; font-size:13px; cursor:pointer; transition: background 200ms, color 200ms; }
+        .chip.active { background:#121212; color:#FFFFFF; }
         .back-btn { background:transparent; border:none; padding:0; margin-bottom:20px; cursor:pointer; font-family:Manrope,sans-serif; font-weight:400; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#666666; }
-        .back-btn:hover { color:#111111; }
+        .back-btn:hover { color:#121212; }
       `}</style>
       <div
         onClick={(e) => e.stopPropagation()}
@@ -249,12 +249,12 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
         <button
           onClick={onClose}
           aria-label={t.close}
-          style={{ position: "absolute", top: 16, right: 20, background: "transparent", border: "none", cursor: "pointer", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 24, lineHeight: 1 }}
+          style={{ position: "absolute", top: 16, right: 20, background: "transparent", border: "none", cursor: "pointer", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 24, lineHeight: 1 }}
         >×</button>
 
         {submitted ? (
           <div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 24, marginBottom: 16 }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 24, marginBottom: 16 }}>
               {t.successTitle}
             </h2>
             <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>
@@ -367,7 +367,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
                   type="submit"
                   disabled={loading}
                   className="font-body"
-                  style={{ width: "100%", background: "transparent", color: "#111111", fontWeight: 400, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 14, padding: "18px 36px", border: "1px solid #111111", borderRadius: 0, cursor: "pointer", transition: "opacity 250ms" }}
+                  style={{ width: "100%", background: "transparent", color: "#121212", fontWeight: 400, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 14, padding: "18px 36px", border: "1px solid #121212", borderRadius: 0, cursor: "pointer", transition: "opacity 250ms" }}
                   onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.6")}
                   onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
                 >
