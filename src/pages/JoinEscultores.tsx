@@ -454,11 +454,11 @@ const JoinEscultores = () => {
       <section style={{ padding: "120px 24px 160px", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
           <h2 style={{ ...H2_STYLE, marginBottom: 56, textAlign: "center" }}>{t.faqTitle}</h2>
-          <div style={{ borderTop: "1px solid #111111" }}>
+          <div style={{ width: "100%", borderTop: "1px solid #111111" }}>
             {t.faqs.map((f, i) => {
               const isOpen = openFaq === i;
               return (
-                <div key={i} style={{ borderBottom: "1px solid #111111" }}>
+                <div key={i} style={{ width: "100%", borderBottom: "1px solid #111111" }}>
                   <button
                     type="button"
                     onClick={() => setOpenFaq(isOpen ? null : i)}
