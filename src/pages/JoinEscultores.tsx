@@ -264,7 +264,7 @@ const JoinEscultores = () => {
       {/* 3. CÓMO FUNCIONA */}
       <section style={{ padding: "120px 24px", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
-          <h2 style={{ ...H2_STYLE, marginBottom: 56 }}>{t.howTitle}</h2>
+          <h2 style={{ ...H2_STYLE, marginBottom: 56, textAlign: "center" }}>{t.howTitle}</h2>
           <table style={{
             width: "100%",
             borderCollapse: "collapse",
@@ -274,7 +274,7 @@ const JoinEscultores = () => {
             <tbody>
               {t.steps.map((step, i) => (
                 <tr key={i} style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
-                  <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 18, fontFamily: "'Cormorant Garamond', serif" }}>{step.label}</td>
+                  <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, fontFamily: "'Cormorant Garamond', serif" }}>{step.label}</td>
                   <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 16, textAlign: "right" }}>{step.desc}</td>
                 </tr>
               ))}
@@ -301,11 +301,11 @@ const JoinEscultores = () => {
             <tbody>
               <tr style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
                 <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 16 }}>{t.planFree}</td>
-                <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 18, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>18%</td>
+                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>18%</td>
               </tr>
               <tr style={{ borderBottom: "1px solid #111111" }}>
                 <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 16 }}>{t.planPro}</td>
-                <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 18, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>15%</td>
+                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>15%</td>
               </tr>
             </tbody>
           </table>
