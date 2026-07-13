@@ -99,7 +99,6 @@ const Index = () => {
       <Aprende />
       <SectionSeparator title={t.s3.title} subtitle={t.s3.subtitle} cta={t.s3.cta} />
       <Footer />
-      <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} />
     </main>
   );
 };
