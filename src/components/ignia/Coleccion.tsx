@@ -51,7 +51,7 @@ export const Coleccion = () => {
     close: "Cerrar",
     hint: "Arrastra para rotar · Scroll para zoom",
   } : {
-    h: "The Collection",
+    h: "Collection",
     worksLabel: "works",
     search: "Search artist, work, material…",
     priceAsc: "Price: low to high",
