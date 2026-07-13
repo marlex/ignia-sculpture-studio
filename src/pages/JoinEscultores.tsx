@@ -372,18 +372,33 @@ const JoinEscultores = () => {
       </section>
 
       {/* 7. BANNER */}
-      <section style={{ background: "#000000", padding: "120px 24px" }}>
-        <p style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontWeight: 300,
-          color: "#FFFFFF",
-          fontSize: "clamp(28px, 3.6vw, 44px)",
-          lineHeight: 1.2,
-          letterSpacing: "0.005em",
+      <section
+        style={{
+          background: "#0a0a0a",
+          padding: "180px 40px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
           textAlign: "center",
-          maxWidth: 900,
-          margin: "0 auto",
-        }}>{t.banner}</p>
+          gap: 32,
+          minHeight: "60vh",
+        }}
+      >
+        <h2
+          style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontWeight: 300,
+            fontSize: "clamp(36px, 4.5vw, 56px)",
+            color: "rgba(255,255,255,0.92)",
+            lineHeight: 1.1,
+            letterSpacing: "0.01em",
+            margin: 0,
+            maxWidth: 900,
+          }}
+        >
+          {t.banner}
+        </h2>
       </section>
 
       {/* 8. CTA FINAL + FORMULARIO */}
