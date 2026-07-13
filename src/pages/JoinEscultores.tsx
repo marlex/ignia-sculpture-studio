@@ -217,7 +217,6 @@ const JoinEscultores = () => {
           alt=""
           aria-hidden
           loading="eager"
-          fetchpriority="high"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div
