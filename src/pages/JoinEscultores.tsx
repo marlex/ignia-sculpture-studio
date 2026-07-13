@@ -102,6 +102,7 @@ const JoinEscultores = () => {
     modelTitle: "El modelo económico",
     planFree: "Plan gratuito",
     planPro: "Plan Pro (9,90€/mes)",
+    commission: "de comisión",
     planFreeBullets: ["Acceso completo a la plataforma", "Hasta 5 obras activas", "Todo lo necesario para empezar a vender"],
     planProBullets: ["Más de 5 obras activas", "Analytics de audiencia: quién ve tu obra y desde dónde", "Insignia de artista verificado", "Posicionamiento preferente en búsquedas y colecciones"],
     modelFoot: "Tú decides. Nadie te asigna un nivel.",
@@ -144,6 +145,7 @@ const JoinEscultores = () => {
     modelTitle: "The economic model",
     planFree: "Free plan",
     planPro: "Pro plan (€9.90/month)",
+    commission: "commission",
     planFreeBullets: ["Full platform access", "Up to 5 active works", "Everything you need to start selling"],
     planProBullets: ["More than 5 active works", "Audience analytics: who sees your work and from where", "Verified artist badge", "Preferred placement in searches and collections"],
     modelFoot: "You decide. Nobody assigns you a tier.",
@@ -316,9 +318,9 @@ const JoinEscultores = () => {
             color: "#111111",
           }}>
             <tbody>
-              <tr style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
+              <tr style={{ borderTop: "1px solid #111111" }}>
                 <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 16 }}>{t.planFree}</td>
-                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>18%</td>
+                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>18% {t.commission}</td>
               </tr>
               <tr style={{ borderBottom: "1px solid #111111" }}>
                 <td colSpan={2} style={{ padding: "0 8px 24px" }}>
@@ -332,9 +334,9 @@ const JoinEscultores = () => {
                   </ul>
                 </td>
               </tr>
-              <tr style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
+              <tr style={{ borderTop: "1px solid #111111" }}>
                 <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 16 }}>{t.planPro}</td>
-                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>15%</td>
+                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>15% {t.commission}</td>
               </tr>
               <tr style={{ borderBottom: "1px solid #111111" }}>
                 <td colSpan={2} style={{ padding: "0 8px 24px" }}>
