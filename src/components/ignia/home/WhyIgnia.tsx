@@ -11,7 +11,7 @@ export const WhyIgnia = () => {
   return (
     <section style={{ background: "#121212", padding: "100px 24px" }}>
       <div ref={ref} className="max-w-[1280px] mx-auto">
-        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#FFFFFF", fontSize: "clamp(32px,4.5vw,48px)", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 72, maxWidth: 780 }}>
+        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#FFFFFF", fontSize: "clamp(32px,4.5vw,48px)", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 72, maxWidth: 780 }}>
           Construida para la escultura. Solo para eso.
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3">
