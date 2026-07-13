@@ -311,8 +311,8 @@ const JoinEscultores = () => {
             <tbody>
               {t.steps.map((step, i) => (
                 <tr key={i} style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
-                  <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 24 }}>{step.label}</td>
-                  <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 18, textAlign: "right" }}>{step.desc}</td>
+                  <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 18 }}>{step.label}</td>
+                  <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 24, textAlign: "right" }}>{step.desc}</td>
                 </tr>
               ))}
             </tbody>
