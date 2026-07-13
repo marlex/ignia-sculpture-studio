@@ -15,7 +15,7 @@ const EditorialPage = () => {
       <Header />
       <section className="px-6 md:px-12 pt-16 pb-12 bg-white">
         <div className="eyebrow mb-3">{t.eyebrow}</div>
-        <h1 className="font-display font-bold text-[clamp(36px,5vw,64px)] tracking-[-0.02em] text-ink leading-[1.05]">{t.h}</h1>
+        <h1 className="font-display font-semibold text-[clamp(36px,5vw,64px)] tracking-[-0.02em] text-ink leading-[1.05]">{t.h}</h1>
         <p className="font-body text-[16px] font-normal text-gray max-w-[640px] mt-4">{t.sub}</p>
       </section>
 
@@ -30,7 +30,7 @@ const EditorialPage = () => {
                     <img src={a.img} alt={c.titulo} loading="lazy" className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
                   </div>
                   <div className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line mb-3">{c.seccion}</div>
-                  <h2 className="font-display font-bold text-[clamp(20px,2vw,26px)] tracking-[-0.02em] text-ink leading-tight mb-3">{c.titulo}</h2>
+                  <h2 className="font-display font-semibold text-[clamp(20px,2vw,26px)] tracking-[-0.02em] text-ink leading-tight mb-3">{c.titulo}</h2>
                   <p className="font-body text-[16px] font-normal text-gray leading-relaxed mb-3">{c.extracto}</p>
                   <div className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line">{t.by} {a.autor}</div>
                 </Link>

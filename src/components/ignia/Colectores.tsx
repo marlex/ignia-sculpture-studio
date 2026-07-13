@@ -76,7 +76,7 @@ export const Colectores = () => {
   return (
     <section className="px-6 md:px-12 py-[60px]" style={{ background: "#f5f5f5" }}>
       <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
-        <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.h}</h2>
+        <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.h}</h2>
         <a href="#" className="link-arrow">{t.all}</a>
       </div>
 
@@ -86,7 +86,7 @@ export const Colectores = () => {
         </Link>
         <div>
           <Link to={`/coleccionista/${slug(principal.nombre)}`} className="block group">
-            <h3 className="font-display text-[28px] font-bold text-ink mb-4 leading-tight">
+            <h3 className="font-display text-[28px] font-semibold text-ink mb-4 leading-tight">
               {principal.nombre}
             </h3>
             <p className="font-body text-[16px] font-normal text-gray leading-relaxed mb-6">{principal.extracto}</p>
@@ -108,7 +108,7 @@ export const Colectores = () => {
               </Link>
               <div>
                 <Link to={`/coleccionista/${slug(c.nombre)}`} className="block hover:opacity-65 transition-opacity">
-                  <h3 className="font-display font-bold text-[28px] text-ink mb-1.5 leading-tight">{c.nombre}</h3>
+                  <h3 className="font-display font-semibold text-[28px] text-ink mb-1.5 leading-tight">{c.nombre}</h3>
                   <div className="font-body text-[13px] font-normal text-muted-line uppercase tracking-[0.14em] mb-3">{c.ubicacion} · {c.foco}</div>
                   <p className="font-body text-[16px] font-normal text-gray leading-relaxed mb-3">{c.extracto}</p>
                   <span className="link-arrow text-[12px]">{t.view}</span>

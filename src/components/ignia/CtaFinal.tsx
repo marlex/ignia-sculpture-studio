@@ -12,7 +12,7 @@ export const CtaFinal = ({ lang = "es" }: { lang?: "es" | "en" }) => {
   };
   return (
     <section className="px-6 md:px-12 py-32 text-center" style={{ background: "hsl(var(--black-pure))" }}>
-      <h2 className="font-display font-bold text-white tracking-[-0.02em]" style={{ fontSize: "clamp(32px, 4vw, 52px)" }}>
+      <h2 className="font-display font-semibold text-white tracking-[-0.02em]" style={{ fontSize: "clamp(32px, 4vw, 52px)" }}>
         {t.title}
       </h2>
       <p className="font-body text-[16px] font-normal mt-5 mb-12 text-white">{t.sub}</p>

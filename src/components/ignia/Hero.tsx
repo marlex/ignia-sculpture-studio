@@ -209,7 +209,7 @@ export const Hero = () => {
             <span className="font-body text-[10px] font-normal tracking-[0.18em] uppercase text-ink">{t.certified}</span>
             <span className="font-body text-[11px] font-normal tracking-wide text-gray ml-auto">{o.authenticity}</span>
           </div>
-          <div className="font-display font-bold text-[28px] tracking-[-0.01em] text-ink mb-2.5">{o.price}</div>
+          <div className="font-display font-semibold text-[28px] tracking-[-0.01em] text-ink mb-2.5">{o.price}</div>
           <button
             onClick={(e) => { e.stopPropagation(); navigate(`/obra/${o.slug}?buy=1`); }}
             className="w-full font-body text-[12px] font-normal tracking-[0.22em] uppercase bg-transparent text-ink border border-ink py-3.5 hover:opacity-65 transition-opacity mb-2.5"
@@ -255,7 +255,7 @@ export const Hero = () => {
             <span className="font-body text-[9px] font-normal tracking-[0.18em] uppercase text-ink">{t.certified}</span>
             <span className="font-body text-[10px] font-normal tracking-wide text-gray ml-auto">{o.authenticity}</span>
           </div>
-          <div className="font-display font-bold tracking-[-0.01em] text-ink" style={{ fontSize: 24, marginBottom: 10 }}>{o.price}</div>
+          <div className="font-display font-semibold tracking-[-0.01em] text-ink" style={{ fontSize: 24, marginBottom: 10 }}>{o.price}</div>
           <button
             onClick={(e) => { e.stopPropagation(); navigate(`/obra/${o.slug}?buy=1`); }}
             className="w-full font-body text-[12px] font-normal tracking-[0.22em] uppercase bg-transparent text-ink border border-ink hover:opacity-65 transition-opacity"

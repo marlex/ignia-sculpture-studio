@@ -199,7 +199,7 @@ export default function PerfilEscultor() {
           </div>
           <div>
             <div className="eyebrow mb-3">{t.eyebrow}</div>
-            <h1 className="font-display font-bold text-[clamp(36px,5vw,64px)] tracking-[-0.02em] text-ink mb-2 leading-[1.05]">{bio.nombre}</h1>
+            <h1 className="font-display font-semibold text-[clamp(36px,5vw,64px)] tracking-[-0.02em] text-ink mb-2 leading-[1.05]">{bio.nombre}</h1>
             <div className="font-body text-[14px] uppercase tracking-[0.14em] text-muted-line mb-5">{esp}</div>
             <div className="font-body text-[16px] font-normal text-gray max-w-[640px] mb-10 space-y-4">
               {bioText.split(/\n\n+/).map((p, i) => <p key={i}>{p}</p>)}
@@ -211,7 +211,7 @@ export default function PerfilEscultor() {
         </div>
 
         <div className="mb-8">
-          <h2 className="font-display font-bold text-[clamp(22px,2.4vw,32px)] tracking-[-0.02em] text-ink">{t.mine}</h2>
+          <h2 className="font-display font-semibold text-[clamp(22px,2.4vw,32px)] tracking-[-0.02em] text-ink">{t.mine}</h2>
         </div>
 
         {obras.length > 0 ? (
@@ -223,7 +223,7 @@ export default function PerfilEscultor() {
                   <Link to={`/obra/${o.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary mb-4">
                     <img src={o.img} alt={titulo} loading="lazy" width={1024} height={1280} className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
                   </Link>
-                  <h3 className="font-display font-bold text-[16px] text-ink mb-0.5">
+                  <h3 className="font-display font-semibold text-[16px] text-ink mb-0.5">
                     {titulo} {o.anyo && <span className="text-muted-line font-normal">· {o.anyo}</span>}
                   </h3>
                   <div className="font-body text-[11px] text-muted-line uppercase tracking-[0.14em] mb-3">{o.estado[lang]}</div>
@@ -246,7 +246,7 @@ export default function PerfilEscultor() {
 
 const Stat = ({ label, value }: { label: string; value: string }) => (
   <div className="border-t border-border pt-5">
-    <div className="font-display font-bold text-[clamp(24px,3vw,40px)] text-ink leading-none mb-2">{value}</div>
+    <div className="font-display font-semibold text-[clamp(24px,3vw,40px)] text-ink leading-none mb-2">{value}</div>
     <div className="font-body text-[11px] uppercase tracking-[0.16em] text-muted-line">{label}</div>
   </div>
 );

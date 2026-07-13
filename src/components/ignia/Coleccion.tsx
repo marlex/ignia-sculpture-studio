@@ -245,7 +245,7 @@ export const Coleccion = () => {
               />
             </Link>
             <div className="flex flex-col justify-end md:col-span-1">
-              <h3 className="font-display font-bold text-[30px] md:text-[clamp(36px,4vw,52px)] leading-[1.05] text-ink mb-0.5 md:mb-2"><Link to={`/obra/${featured.slug}`} className="hover:underline underline-offset-4">{featured.title}</Link></h3>
+              <h3 className="font-display font-semibold text-[30px] md:text-[clamp(36px,4vw,52px)] leading-[1.05] text-ink mb-0.5 md:mb-2"><Link to={`/obra/${featured.slug}`} className="hover:underline underline-offset-4">{featured.title}</Link></h3>
               <Link to={`/perfil/escultor/${artistSlug(featured.artist)}`} className="font-body text-[18px] font-normal text-gray mb-1.5 hover:opacity-65 transition-opacity w-fit">{featured.artist}</Link>
               <div className="font-body text-[13px] font-normal text-muted-line uppercase tracking-[0.14em] mb-3">{featured.material}</div>
               <div className="flex items-center gap-1.5 mb-5 font-body text-[12px] font-normal text-muted-line">
@@ -313,7 +313,7 @@ className="font-body text-[12px] font-normal tracking-[0.22em] uppercase border 
                 <img src={o.image} alt={o.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
               </Link>
               <div className="px-0 pt-2 pb-3 sm:pt-3 sm:pb-5">
-                <h3 className="font-display font-bold text-[28px] text-ink mb-0.5 sm:mb-1"><Link to={`/obra/${o.slug}`} className="hover:underline underline-offset-4">{o.title}</Link></h3>
+                <h3 className="font-display font-semibold text-[28px] text-ink mb-0.5 sm:mb-1"><Link to={`/obra/${o.slug}`} className="hover:underline underline-offset-4">{o.title}</Link></h3>
                 <Link to={`/perfil/escultor/${artistSlug(o.artist)}`} className="block font-body text-[16px] sm:text-[16px] font-normal text-gray mb-0.5 sm:mb-1.5 hover:opacity-65 transition-opacity w-fit">{o.artist}</Link>
                 <div className="font-body text-[11px] sm:text-[12px] font-normal text-muted-line uppercase tracking-[0.14em] mb-1 sm:mb-2">{o.material}</div>
                 <div className="flex items-center gap-1.5 mb-1.5 sm:mb-3 font-body text-[11px] font-normal text-muted-line normal-case tracking-normal">
@@ -491,7 +491,7 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-normal tr
         <div className="fixed inset-0 z-[200] bg-black/95 flex flex-col">
           <header className="flex items-center justify-between px-6 md:px-10 h-14 border-b border-white/10 text-white">
             <div className="flex items-baseline gap-3">
-              <span className="font-display font-bold text-[16px]">{open.title}</span>
+              <span className="font-display font-semibold text-[16px]">{open.title}</span>
               <span className="font-body text-[12px] uppercase tracking-[0.14em] text-white/55">{open.artist} · {open.material}</span>
             </div>
             <button onClick={() => setOpen3d(null)} aria-label={t.close} className="text-white/80 hover:opacity-65 transition-opacity">
@@ -513,7 +513,7 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-normal tr
         <div className="fixed inset-0 z-[200] bg-black/95 flex flex-col">
           <header className="flex items-center justify-between px-6 md:px-10 h-14 border-b border-white/10 text-white">
             <div className="flex items-baseline gap-3">
-              <span className="font-display font-bold text-[16px]">{featured.title}</span>
+              <span className="font-display font-semibold text-[16px]">{featured.title}</span>
               <span className="font-body text-[12px] uppercase tracking-[0.14em] text-white/55">{featured.artist} · {featured.material}</span>
             </div>
             <button onClick={() => setOpenFeatured3d(false)} aria-label={t.close} className="text-white/80 hover:opacity-65 transition-opacity">

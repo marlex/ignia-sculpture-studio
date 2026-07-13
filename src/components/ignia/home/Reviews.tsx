@@ -27,7 +27,7 @@ const Block = ({ title, citas }: { title: string; citas: { q: string; n: string;
   const ref = useFadeUp<HTMLDivElement>();
   return (
     <div ref={ref}>
-      <h2 className="font-display font-bold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-8">
+      <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-8">
         {title}
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

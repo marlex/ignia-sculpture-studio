@@ -188,12 +188,12 @@ const ObraDetalle = () => {
 
           <div>
             <div className="eyebrow mb-3"><Link to="/coleccion" className="hover:opacity-65 transition-opacity">{t.back}</Link></div>
-            <h1 className="font-display font-bold text-[clamp(32px,4vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-3">{o.title}</h1>
+            <h1 className="font-display font-semibold text-[clamp(32px,4vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-3">{o.title}</h1>
             <div className="font-body text-[16px] font-normal text-gray mb-6">
               <Link to={`/perfil/escultor/${o.artist.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} className="underline-offset-4 hover:underline">{o.artist}</Link> · {o.material} · {o.year} · {o.edition}
             </div>
             <div className="mb-8">
-              <div className="font-display font-bold text-[32px] text-ink">{o.price}</div>
+              <div className="font-display font-semibold text-[32px] text-ink">{o.price}</div>
               <button
                 type="button"
                 onClick={() => setPriceInfoOpen(true)}
@@ -219,7 +219,7 @@ const ObraDetalle = () => {
                   >
                     ×
                   </button>
-                  <h3 className="font-display font-bold text-[20px] text-ink mb-4">
+                  <h3 className="font-display font-semibold text-[20px] text-ink mb-4">
                     {lang === "es" ? "Cómo se calcula este precio" : "How this price is calculated"}
                   </h3>
                   <p className="font-body text-[14px] font-normal text-gray leading-relaxed">
@@ -466,7 +466,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
                       <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center font-body text-[13px] text-ink">{initials}</div>
                     )}
                     <div>
-                      <div className="font-display font-bold text-[28px] text-ink leading-tight">{o.artist}</div>
+                      <div className="font-display font-semibold text-[28px] text-ink leading-tight">{o.artist}</div>
                       {location && <div className="font-body text-[13px] text-gray">{location}</div>}
                     </div>
                   </div>
@@ -494,7 +494,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
         return (
           <section className="px-6 md:px-12 pb-20">
             <div className="max-w-[1280px] mx-auto">
-              <h2 className="font-display font-bold text-[clamp(22px,2.4vw,32px)] tracking-[-0.01em] text-ink mb-8">{heading}</h2>
+              <h2 className="font-display font-semibold text-[clamp(22px,2.4vw,32px)] tracking-[-0.01em] text-ink mb-8">{heading}</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {others.map(w => (
                   <Link key={w.slug} to={`/obra/${w.slug}`} className="group block">
@@ -521,7 +521,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
             <header className="flex items-center justify-between px-5 h-14 border-b border-border">
               <div className="flex items-center gap-2">
                 <MessageCircle className="w-4 h-4 text-ink" />
-                <span className="font-display font-bold text-[16px] text-ink">{t.talk}</span>
+                <span className="font-display font-semibold text-[16px] text-ink">{t.talk}</span>
               </div>
               <button onClick={() => setChatOpen(false)} className="text-gray hover:opacity-65 transition-opacity font-body text-[20px] leading-none">×</button>
             </header>
