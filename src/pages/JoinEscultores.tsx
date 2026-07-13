@@ -316,9 +316,9 @@ const JoinEscultores = () => {
             color: "#111111",
           }}>
             <tbody>
-              <tr style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
+              <tr style={{ borderTop: "1px solid #111111" }}>
                 <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 16 }}>{t.planFree}</td>
-                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>18%</td>
+                <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, textAlign: "right", fontFamily: "'Cormorant Garamond', serif" }}>18% {t.commission}</td>
               </tr>
               <tr style={{ borderBottom: "1px solid #111111" }}>
                 <td colSpan={2} style={{ padding: "0 8px 24px" }}>
