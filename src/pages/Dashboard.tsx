@@ -56,14 +56,14 @@ export default function Dashboard() {
         </aside>
 
         <section style={{ padding: "56px 56px 80px" }}>
-          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 48 }}>
+          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 48 }}>
             Bienvenida, Helena.
           </h1>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 56 }}>
             {METRICS.map((m) => (
               <div key={m.l} style={{ border: "1px solid #E5E5E5", padding: 28, borderRadius: 0 }}>
-                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: 40, lineHeight: 1 }}>{m.v}</div>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 40, lineHeight: 1 }}>{m.v}</div>
                 <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 14, marginTop: 12 }}>{m.l}</div>
               </div>
             ))}
@@ -91,7 +91,7 @@ export default function Dashboard() {
           </div>
 
           <div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: 22, marginBottom: 24 }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 22, marginBottom: 24 }}>
               Actividad reciente
             </h2>
             <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>

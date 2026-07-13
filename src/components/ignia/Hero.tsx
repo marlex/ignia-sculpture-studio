@@ -130,7 +130,7 @@ export const Hero = () => {
 
       {/* hint chip */}
       <div
-        className="absolute top-6 left-1/2 -translate-x-1/2 font-body text-[11px] font-light tracking-[0.2em] uppercase z-[5] pointer-events-none whitespace-nowrap transition-opacity duration-[1200ms] bg-white/85 backdrop-blur px-4 py-2 border-[0.5px] border-border text-ink"
+        className="absolute top-6 left-1/2 -translate-x-1/2 font-body text-[11px] font-normal tracking-[0.2em] uppercase z-[5] pointer-events-none whitespace-nowrap transition-opacity duration-[1200ms] bg-white/85 backdrop-blur px-4 py-2 border-[0.5px] border-border text-ink"
         style={{ opacity: showHint ? 0.95 : 0 }}
       >
         ◆ {t.hint}
@@ -192,13 +192,13 @@ export const Hero = () => {
           className="hero-info-desktop text-ink w-full max-w-[460px] pt-5 px-6 pb-5 backdrop-blur-md"
           style={{ background: "rgba(255,255,255,0.82)", border: "0.5px solid hsl(var(--border))" }}
         >
-          <div className="font-body text-[11px] font-light tracking-[0.22em] uppercase text-gray mb-2">
+          <div className="font-body text-[11px] font-normal tracking-[0.22em] uppercase text-gray mb-2">
             {o.artist}
           </div>
           <h1 className="leading-[1.05] tracking-[0.01em] mb-2 text-ink" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(32px, 3.4vw, 46px)" }}>
             {o.title}
           </h1>
-          <div className="font-body text-[13px] font-light tracking-wide text-gray mb-2.5">
+          <div className="font-body text-[13px] font-normal tracking-wide text-gray mb-2.5">
             {o.material} · {o.year}
           </div>
           <div className="flex items-center gap-2 border-[0.5px] border-border px-4 py-2 mb-2.5">
@@ -206,8 +206,8 @@ export const Hero = () => {
               <path d="M10 13a5 5 0 007.07 0l3-3a5 5 0 00-7.07-7.07l-1 1" />
               <path d="M14 11a5 5 0 00-7.07 0l-3 3a5 5 0 007.07 7.07l1-1" />
             </svg>
-            <span className="font-body text-[10px] font-light tracking-[0.18em] uppercase text-ink">{t.certified}</span>
-            <span className="font-body text-[11px] font-light tracking-wide text-gray ml-auto">{o.authenticity}</span>
+            <span className="font-body text-[10px] font-normal tracking-[0.18em] uppercase text-ink">{t.certified}</span>
+            <span className="font-body text-[11px] font-normal tracking-wide text-gray ml-auto">{o.authenticity}</span>
           </div>
           <div className="font-display font-bold text-[28px] tracking-[-0.01em] text-ink mb-2.5">{o.price}</div>
           <button
@@ -219,11 +219,11 @@ export const Hero = () => {
           <Link
             to={`/obra/${o.slug}`}
             onClick={(e) => e.stopPropagation()}
-            className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink py-3.5 hover:opacity-65 transition-opacity text-ink mb-2.5"
+            className="block w-full text-center font-body text-[12px] font-normal tracking-[0.22em] uppercase border-[0.5px] border-ink py-3.5 hover:opacity-65 transition-opacity text-ink mb-2.5"
           >
             {o.glbUrl ? t.view3d : t.viewObra}
           </Link>
-          <div className="flex items-center justify-between gap-3 font-body text-[11px] font-light tracking-wide text-gray flex-wrap">
+          <div className="flex items-center justify-between gap-3 font-body text-[11px] font-normal tracking-wide text-gray flex-wrap">
             <span className="inline-flex items-center gap-1.5"><span>✓</span>{t.insured}</span>
             <span className="inline-flex items-center gap-1.5"><span>✓</span>{t.certificate}</span>
             <span className="inline-flex items-center gap-1.5"><span>✓</span>{t.returns}</span>
@@ -235,7 +235,7 @@ export const Hero = () => {
           className="hero-info-mobile text-ink"
           style={{ padding: "16px 20px 20px", background: "rgba(255,255,255,0.92)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)", borderTop: "0.5px solid hsl(var(--border))" }}
         >
-          <div className="font-body text-[10px] font-light tracking-[0.22em] uppercase text-gray" style={{ marginBottom: 6 }}>
+          <div className="font-body text-[10px] font-normal tracking-[0.22em] uppercase text-gray" style={{ marginBottom: 6 }}>
             {o.artist}
           </div>
           <h1
@@ -244,7 +244,7 @@ export const Hero = () => {
           >
             {o.title}
           </h1>
-          <div className="font-body text-[12px] font-light tracking-wide text-gray" style={{ marginBottom: 10 }}>
+          <div className="font-body text-[12px] font-normal tracking-wide text-gray" style={{ marginBottom: 10 }}>
             {o.material} · {o.year}
           </div>
           <div className="flex items-center gap-2 border-[0.5px] border-border px-3 py-2" style={{ marginBottom: 10 }}>
@@ -252,8 +252,8 @@ export const Hero = () => {
               <path d="M10 13a5 5 0 007.07 0l3-3a5 5 0 00-7.07-7.07l-1 1" />
               <path d="M14 11a5 5 0 00-7.07 0l-3 3a5 5 0 007.07 7.07l1-1" />
             </svg>
-            <span className="font-body text-[9px] font-light tracking-[0.18em] uppercase text-ink">{t.certified}</span>
-            <span className="font-body text-[10px] font-light tracking-wide text-gray ml-auto">{o.authenticity}</span>
+            <span className="font-body text-[9px] font-normal tracking-[0.18em] uppercase text-ink">{t.certified}</span>
+            <span className="font-body text-[10px] font-normal tracking-wide text-gray ml-auto">{o.authenticity}</span>
           </div>
           <div className="font-display font-bold tracking-[-0.01em] text-ink" style={{ fontSize: 24, marginBottom: 10 }}>{o.price}</div>
           <button
@@ -266,12 +266,12 @@ export const Hero = () => {
           <Link
             to={`/obra/${o.slug}`}
             onClick={(e) => e.stopPropagation()}
-            className="block w-full text-center font-body text-[12px] font-light tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink hover:opacity-65 transition-opacity"
+            className="block w-full text-center font-body text-[12px] font-normal tracking-[0.22em] uppercase border-[0.5px] border-ink text-ink hover:opacity-65 transition-opacity"
             style={{ padding: "12px 0", marginBottom: 10 }}
           >
             {o.glbUrl ? t.view3d : t.viewObra}
           </Link>
-          <div className="flex items-center justify-between gap-2 font-body text-[11px] font-light tracking-wide text-gray flex-wrap">
+          <div className="flex items-center justify-between gap-2 font-body text-[11px] font-normal tracking-wide text-gray flex-wrap">
             <span className="inline-flex items-center gap-1"><span>✓</span>{t.insured}</span>
             <span className="inline-flex items-center gap-1"><span>✓</span>{t.certificate}</span>
             <span className="inline-flex items-center gap-1"><span>✓</span>{t.returns}</span>

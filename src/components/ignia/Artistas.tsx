@@ -106,8 +106,8 @@ export const Artistas = () => {
               <h4 className="font-display font-bold text-[28px] tracking-[-0.02em] text-ink mb-5 leading-[1.15] group-hover:opacity-70 transition-opacity">
                 {featured.titular}
               </h4>
-              <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-6">{featured.extracto}</p>
-              <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-6">
+              <p className="font-body text-[16px] font-normal text-gray leading-relaxed mb-6">{featured.extracto}</p>
+              <div className="font-body text-[13px] font-normal text-muted-line uppercase tracking-[0.14em] mb-6">
                 {featured.esp} · {featured.obras}
               </div>
               <span className="link-arrow">{t.view}</span>
@@ -125,8 +125,8 @@ export const Artistas = () => {
                 <div>
                   <Link to={`/perfil/escultor/${slugify(a.nombre)}`} className="block hover:opacity-65 transition-opacity">
                     <h3 className="font-display font-bold text-[28px] text-ink mb-1.5 leading-tight">{a.nombre}</h3>
-                    <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{a.esp}</div>
-                    <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-3">{a.extracto}</p>
+                    <div className="font-body text-[13px] font-normal text-muted-line uppercase tracking-[0.14em] mb-3">{a.esp}</div>
+                    <p className="font-body text-[16px] font-normal text-gray leading-relaxed mb-3">{a.extracto}</p>
                     <span className="link-arrow text-[12px]">{t.view}</span>
                   </Link>
                 </div>

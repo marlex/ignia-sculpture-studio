@@ -91,14 +91,14 @@ const IgniaGalleryPage = () => {
         <div className="relative h-full flex flex-col justify-end px-6 md:px-12 pb-12 max-w-[1280px] mx-auto">
           <div className="eyebrow text-white/80 mb-3">{t.eyebrow}</div>
           <h1 className="font-display font-bold text-white text-[clamp(40px,6vw,76px)] tracking-[-0.02em] leading-[1.02] max-w-[900px]">{t.h}</h1>
-          <p className="font-body text-[16px] md:text-[18px] font-light text-white/85 max-w-[640px] mt-5 italic">{t.cite}</p>
+          <p className="font-body text-[16px] md:text-[18px] font-normal text-white/85 max-w-[640px] mt-5 italic">{t.cite}</p>
         </div>
       </section>
 
       <section className="bg-white px-6 md:px-12 py-20">
         <div className="max-w-[860px] mx-auto">
           <h2 className="font-display font-bold text-[clamp(28px,3.4vw,44px)] tracking-[-0.02em] text-ink leading-[1.1] mb-6">{t.nameH}</h2>
-          <p className="font-body text-[17px] font-light text-gray leading-relaxed mb-5">{t.nameP}</p>
+          <p className="font-body text-[17px] font-normal text-gray leading-relaxed mb-5">{t.nameP}</p>
         </div>
       </section>
 
@@ -111,7 +111,7 @@ const IgniaGalleryPage = () => {
             {t.pilares.map(p => (
               <div key={p.titulo} className="border-t border-border pt-5">
                 <h3 className="font-display font-bold text-[20px] text-ink mb-2">{p.titulo}</h3>
-                <p className="font-body text-[16px] font-light text-gray leading-relaxed">{p.cuerpo}</p>
+                <p className="font-body text-[16px] font-normal text-gray leading-relaxed">{p.cuerpo}</p>
               </div>
             ))}
           </div>
@@ -122,13 +122,13 @@ const IgniaGalleryPage = () => {
         <div className="max-w-[1080px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
           <div>
             <div className="eyebrow mb-3">{t.forSculptor}</div>
-            <ul className="space-y-3 font-body text-[16px] font-light text-gray leading-relaxed">
+            <ul className="space-y-3 font-body text-[16px] font-normal text-gray leading-relaxed">
               {t.sculptorList.map(l => <li key={l}>{l}</li>)}
             </ul>
           </div>
           <div>
             <div className="eyebrow mb-3">{t.forCollector}</div>
-            <ul className="space-y-3 font-body text-[16px] font-light text-gray leading-relaxed">
+            <ul className="space-y-3 font-body text-[16px] font-normal text-gray leading-relaxed">
               {t.collectorList.map(l => <li key={l}>{l}</li>)}
             </ul>
           </div>
@@ -138,7 +138,7 @@ const IgniaGalleryPage = () => {
       <section className="bg-white px-6 md:px-12 py-20">
         <div className="max-w-[1080px] mx-auto">
           <div className="eyebrow mb-3">{t.contactEy}</div>
-          <ul className="font-body text-[16px] font-light text-gray leading-relaxed space-y-1">
+          <ul className="font-body text-[16px] font-normal text-gray leading-relaxed space-y-1">
             <li>
               Instagram:{" "}
               <a href="https://www.instagram.com/igniagallery/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:opacity-65 transition-opacity">

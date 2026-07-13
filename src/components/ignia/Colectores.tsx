@@ -89,8 +89,8 @@ export const Colectores = () => {
             <h3 className="font-display text-[28px] font-bold text-ink mb-4 leading-tight">
               {principal.nombre}
             </h3>
-            <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-6">{principal.extracto}</p>
-            <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-6">
+            <p className="font-body text-[16px] font-normal text-gray leading-relaxed mb-6">{principal.extracto}</p>
+            <div className="font-body text-[13px] font-normal text-muted-line uppercase tracking-[0.14em] mb-6">
               {principal.ubicacion} · {principal.foco}
             </div>
             <span className="link-arrow">{t.view}</span>
@@ -99,7 +99,7 @@ export const Colectores = () => {
       </article>
 
       <div className="border-t border-border pt-10">
-        <div className="font-body text-[12px] font-light text-muted-line uppercase tracking-[0.18em] mb-6">{t.featured}</div>
+        <div className="font-body text-[12px] font-normal text-muted-line uppercase tracking-[0.18em] mb-6">{t.featured}</div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {data.secundarios.map((c) => (
             <article key={c.nombre} className="group grid grid-cols-1 md:grid-cols-[40%_60%] gap-5 items-start">
@@ -109,8 +109,8 @@ export const Colectores = () => {
               <div>
                 <Link to={`/coleccionista/${slug(c.nombre)}`} className="block hover:opacity-65 transition-opacity">
                   <h3 className="font-display font-bold text-[28px] text-ink mb-1.5 leading-tight">{c.nombre}</h3>
-                  <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{c.ubicacion} · {c.foco}</div>
-                  <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-3">{c.extracto}</p>
+                  <div className="font-body text-[13px] font-normal text-muted-line uppercase tracking-[0.14em] mb-3">{c.ubicacion} · {c.foco}</div>
+                  <p className="font-body text-[16px] font-normal text-gray leading-relaxed mb-3">{c.extracto}</p>
                   <span className="link-arrow text-[12px]">{t.view}</span>
                 </Link>
               </div>

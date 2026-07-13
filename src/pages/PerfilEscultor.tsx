@@ -201,7 +201,7 @@ export default function PerfilEscultor() {
             <div className="eyebrow mb-3">{t.eyebrow}</div>
             <h1 className="font-display font-bold text-[clamp(36px,5vw,64px)] tracking-[-0.02em] text-ink mb-2 leading-[1.05]">{bio.nombre}</h1>
             <div className="font-body text-[14px] uppercase tracking-[0.14em] text-muted-line mb-5">{esp}</div>
-            <div className="font-body text-[16px] font-light text-gray max-w-[640px] mb-10 space-y-4">
+            <div className="font-body text-[16px] font-normal text-gray max-w-[640px] mb-10 space-y-4">
               {bioText.split(/\n\n+/).map((p, i) => <p key={i}>{p}</p>)}
             </div>
             <div className="grid grid-cols-3 gap-6">
@@ -235,7 +235,7 @@ export default function PerfilEscultor() {
             })}
           </div>
         ) : (
-          <p className="font-body text-[14px] font-light text-muted-line">
+          <p className="font-body text-[14px] font-normal text-muted-line">
             {lang === "es" ? "Sin obras publicadas todavía." : "No works published yet."}
           </p>
         )}

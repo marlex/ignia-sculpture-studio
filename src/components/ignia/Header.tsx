@@ -239,7 +239,7 @@ export const Header = () => {
               lineHeight: 1,
               cursor: "pointer",
               fontFamily: "'Cormorant Garamond', serif",
-              fontWeight: 300,
+              fontWeight: 400,
             }}
           >
             ×
@@ -251,7 +251,7 @@ export const Header = () => {
               onClick={() => setMobileOpen(false)}
               style={{
                 fontFamily: "'Cormorant Garamond', serif",
-                fontWeight: 300,
+                fontWeight: 400,
                 fontSize: 32,
                 color: "#FFFFFF",
                 textAlign: "center",
@@ -266,7 +266,7 @@ export const Header = () => {
             onClick={() => { setMobileOpen(false); openInvite(); }}
             style={{
               fontFamily: "'Cormorant Garamond', serif",
-              fontWeight: 300,
+              fontWeight: 400,
               fontSize: 32,
               color: "#FFFFFF",
               background: "transparent",

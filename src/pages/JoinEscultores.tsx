@@ -412,7 +412,7 @@ const JoinEscultores = () => {
         <h2
           style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontWeight: 300,
+            fontWeight: 400,
             fontSize: "clamp(36px, 4.5vw, 56px)",
             color: "rgba(255,255,255,0.92)",
             lineHeight: 1.1,
@@ -501,7 +501,7 @@ const JoinEscultores = () => {
                     <span>{f.q}</span>
                     <span style={{
                       fontFamily: "'Cormorant Garamond', serif",
-                      fontWeight: 300,
+                      fontWeight: 400,
                       fontSize: 28,
                       lineHeight: 1,
                       transition: "transform 250ms",
