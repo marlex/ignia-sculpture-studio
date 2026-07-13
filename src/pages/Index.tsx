@@ -56,17 +56,13 @@ const SEPARATORS = {
 const Index = () => {
   const lang = useLang();
   const t = SEPARATORS[lang];
-  const [inviteOpen, setInviteOpen] = useState(false);
   const coleccionRef = useRef<HTMLDivElement>(null);
   const scrollToColeccion = () => coleccionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 
   useEffect(() => {
-    const open = () => setInviteOpen(true);
     const scroll = () => scrollToColeccion();
-    window.addEventListener("ignia:open-invite", open);
     window.addEventListener("ignia:scroll-to-collection", scroll);
     return () => {
-      window.removeEventListener("ignia:open-invite", open);
       window.removeEventListener("ignia:scroll-to-collection", scroll);
     };
   }, []);
