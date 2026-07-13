@@ -91,7 +91,7 @@ export default function Dashboard() {
           </div>
 
           <div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 22, marginBottom: 24 }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 22, marginBottom: 24 }}>
               Actividad reciente
             </h2>
             <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
