@@ -96,7 +96,8 @@ const JoinEscultores = () => {
     steps: [
       { label: "Paso 1", desc: "Solicitas acceso." },
       { label: "Paso 2", desc: "Revisamos tu obra. Mismos criterios para todos." },
-      { label: "Paso 3", desc: "Publicas y vendes. Tú eliges tu plan." },
+      { label: "Paso 3", desc: "Publica y vende. Tú eliges tu plan." },
+      { label: "Paso 4", desc: "Nosotros gestionamos la venta. Atención personalizada y envío para tus coleccionistas." },
     ],
     modelTitle: "El modelo económico",
     planFree: "Plan gratuito",
@@ -135,7 +136,8 @@ const JoinEscultores = () => {
     steps: [
       { label: "Step 1", desc: "You request access." },
       { label: "Step 2", desc: "We review your work. Same criteria for everyone." },
-      { label: "Step 3", desc: "You publish and sell. You choose your plan." },
+      { label: "Step 3", desc: "Publish and sell. You choose your plan." },
+      { label: "Step 4", desc: "We handle the sale. Personalized support and shipping for your collectors." },
     ],
     modelTitle: "The economic model",
     planFree: "Free plan",
