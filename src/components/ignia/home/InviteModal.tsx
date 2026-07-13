@@ -231,7 +231,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
         @keyframes modalIn { from { opacity:0; transform: translateY(16px) } to { opacity:1; transform:translateY(0) } }
         .invite-input { width:100%; background:transparent; border:none; border-bottom:1px solid #111111; outline:none; font-family:Manrope,sans-serif; font-weight:500; color:#111111; font-size:16px; padding:0 0 8px; border-radius:0; }
         .invite-input:focus { border-bottom-color:#111111; }
-        .invite-label { display:block; font-family:Manrope,sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:0.14em; font-size:11px; color:#111111; margin-bottom:12px; }
+        .invite-label { display:block; font-family:Manrope,sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:0.14em; font-size:14px; color:#111111; margin-bottom:12px; }
         .invite-field { margin-bottom:28px; }
         .role-btn { display:block; width:100%; text-align:left; padding:20px 24px; background:#FFFFFF; border:1px solid #111111; color:#111111; font-family:Manrope,sans-serif; font-weight:500; font-size:16px; letter-spacing:0.04em; cursor:pointer; transition: background 200ms, color 200ms; margin-bottom:12px; }
         .role-btn:hover { background:#111111; color:#FFFFFF; }
