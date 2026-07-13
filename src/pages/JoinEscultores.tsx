@@ -514,7 +514,7 @@ const JoinEscultores = () => {
           .join-bleed-rev > img { order: 1; }
         }
       `}</style>
-    </div>
+    </main>
   );
 };
 
