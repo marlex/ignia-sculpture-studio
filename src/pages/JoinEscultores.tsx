@@ -3,7 +3,7 @@ import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { InviteModal } from "@/components/ignia/home/InviteModal";
 import { useLang } from "@/i18n/LanguageContext";
-import heroPiedra from "@/assets/hero-piedra.jpg.asset.json";
+import heroSculptors from "@/assets/hero-sculptors.jpg.asset.json";
 import heroMarmol from "@/assets/hero-marmol.jpg.asset.json";
 import heroMetal from "@/assets/hero-metal.jpg.asset.json";
 
