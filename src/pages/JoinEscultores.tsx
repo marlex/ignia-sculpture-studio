@@ -473,7 +473,7 @@ const JoinEscultores = () => {
                       justifyContent: "space-between",
                       alignItems: "center",
                       gap: 16,
-                      fontFamily: "Manrope, sans-serif",
+                      fontFamily: FONT_BODY,
                       fontWeight: 500,
                       color: "#111111",
                       fontSize: 18,
@@ -482,7 +482,7 @@ const JoinEscultores = () => {
                   >
                     <span>{f.q}</span>
                     <span style={{
-                      fontFamily: "'Cormorant Garamond', serif",
+                      fontFamily: FONT_DISPLAY,
                       fontWeight: 300,
                       fontSize: 28,
                       lineHeight: 1,
@@ -493,8 +493,6 @@ const JoinEscultores = () => {
                   {isOpen && (
                     <p style={{
                       ...BODY_STYLE,
-                      fontSize: 17,
-                      color: "#444444",
                       margin: 0,
                       padding: "0 0 24px",
                     }}>{f.a}</p>
