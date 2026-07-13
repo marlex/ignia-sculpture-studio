@@ -45,7 +45,7 @@ const H2_STYLE: React.CSSProperties = {
 const BODY_STYLE: React.CSSProperties = {
   fontFamily: "Manrope, sans-serif",
   fontWeight: 400,
-  color: "#5a5648",
+  color: "#212121",
   fontSize: 16,
   lineHeight: 1.7,
 };
@@ -268,7 +268,7 @@ const JoinEscultores = () => {
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, color: "#111111", fontSize: 26, lineHeight: 1.2, margin: 0, textAlign: "center" }}>
                 {item.title}
               </h3>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#5a5648", fontSize: 16, lineHeight: 1.7, textAlign: "center", margin: "12px 0 0" }}>
+              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#212121", fontSize: 16, lineHeight: 1.7, textAlign: "center", margin: "12px 0 0" }}>
                 {item.text}
               </p>
             </div>
