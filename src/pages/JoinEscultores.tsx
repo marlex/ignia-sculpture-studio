@@ -462,14 +462,6 @@ const JoinEscultores = () => {
                   {loading ? t.sending : t.cta}
                 </button>
               </div>
-              <p style={{
-                fontFamily: "Manrope, sans-serif",
-                fontWeight: 400,
-                color: "#666666",
-                fontSize: 14,
-                textAlign: "center",
-                marginTop: 24,
-              }}>{t.reply}</p>
             </form>
           )}
         </div>
