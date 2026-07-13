@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const fieldLabel: React.CSSProperties = {
-  display: "block", fontFamily: "Manrope, sans-serif", fontWeight: 700,
-  textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 11,
+  display: "block", fontFamily: "Manrope, sans-serif", fontWeight: 500,
+  textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 14,
   color: "#111111", marginBottom: 12,
 };
 const fieldInput: React.CSSProperties = {

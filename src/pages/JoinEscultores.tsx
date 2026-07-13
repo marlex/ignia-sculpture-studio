@@ -205,10 +205,10 @@ const JoinEscultores = () => {
   const labelStyle: React.CSSProperties = {
     display: "block",
     fontFamily: "Manrope, sans-serif",
-    fontWeight: 400,
+    fontWeight: 500,
     textTransform: "uppercase",
     letterSpacing: "0.14em",
-    fontSize: 11,
+    fontSize: 14,
     color: "#111111",
     marginBottom: 12,
   };
