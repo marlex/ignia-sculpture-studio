@@ -102,6 +102,7 @@ const JoinEscultores = () => {
     modelTitle: "El modelo económico",
     planFree: "Plan gratuito",
     planPro: "Plan Pro (9,90€/mes)",
+    commission: "de comisión",
     planFreeBullets: ["Acceso completo a la plataforma", "Hasta 5 obras activas", "Todo lo necesario para empezar a vender"],
     planProBullets: ["Más de 5 obras activas", "Analytics de audiencia: quién ve tu obra y desde dónde", "Insignia de artista verificado", "Posicionamiento preferente en búsquedas y colecciones"],
     modelFoot: "Tú decides. Nadie te asigna un nivel.",
