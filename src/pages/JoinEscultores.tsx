@@ -508,10 +508,31 @@ const JoinEscultores = () => {
       <InviteModal open={inviteOpen} onClose={() => setInviteOpen(false)} defaultProfile="artist" />
 
       <style>{`
+        /* Accessible focus indicators */
+        input:focus, textarea:focus, select:focus {
+          outline: 2px solid #111111;
+          outline-offset: 2px;
+          border-bottom-color: #111111;
+        }
+        button:focus-visible {
+          outline: 2px solid #111111;
+          outline-offset: 2px;
+        }
+        a:focus-visible {
+          outline: 2px solid #111111;
+          outline-offset: 2px;
+        }
         @media (max-width: 768px) {
           .join-bleed { grid-template-columns: 1fr !important; }
           .join-bleed-rev > div { order: 2; }
           .join-bleed-rev > img { order: 1; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+          }
         }
       `}</style>
     </main>
