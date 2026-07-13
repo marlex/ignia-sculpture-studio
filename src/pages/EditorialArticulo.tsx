@@ -28,14 +28,14 @@ const EditorialArticuloPage = () => {
   const t = lang === "es"
     ? {
         by: "Por",
-        back: "← Volver a Editorial",
+        back: "← Volver a Comunidad",
         worksTitle: "Obras relacionadas",
         worksCta: "Ver toda la colección →",
         readMoreTitle: "Seguir leyendo",
       }
     : {
         by: "By",
-        back: "← Back to Editorial",
+        back: "← Back to Community",
         worksTitle: "Related works",
         worksCta: "See the full collection →",
         readMoreTitle: "Keep reading",

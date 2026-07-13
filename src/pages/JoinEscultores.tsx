@@ -104,7 +104,6 @@ const JoinEscultores = () => {
     planPro: "Plan Pro (9,90€/mes)",
     planFreeBullets: ["Hasta 5 obras activas", "Todo lo necesario para empezar a vender", "18% de comisión"],
     planProBullets: ["Más de 5 obras activas", "Acceso completo a la plataforma: quién ve tu obra y desde dónde", "Insignia de artista verificado", "Posicionamiento preferente en búsquedas y colecciones", "15% de comisión"],
-    modelFoot: "Tú decides. Nadie te asigna un nivel.",
     permTitle: "Tu huella, permanente",
     permBody: "Cada obra vendida queda registrada para siempre: autoría, materiales, origen. Verificable por cualquiera, en cualquier lugar.",
     careTitle: "Cómo cuidamos tu obra",
@@ -146,7 +145,6 @@ const JoinEscultores = () => {
     planPro: "Pro plan (€9.90/month)",
     planFreeBullets: ["Up to 5 active works", "Everything you need to start selling", "18% commission"],
     planProBullets: ["More than 5 active works", "Full platform access: who sees your work and from where", "Verified artist badge", "Preferred placement in searches and collections", "15% commission"],
-    modelFoot: "You decide. Nobody assigns you a tier.",
     permTitle: "Your mark, permanent",
     permBody: "Every sold work is registered forever: authorship, materials, origin. Verifiable by anyone, anywhere.",
     careTitle: "How we care for your work",
@@ -344,14 +342,6 @@ const JoinEscultores = () => {
               </tr>
             </tbody>
           </table>
-          <p style={{
-            fontFamily: "Manrope, sans-serif",
-            fontWeight: 400,
-            fontSize: 15,
-            color: "#666666",
-            textAlign: "center",
-            marginTop: 32,
-          }}>{t.modelFoot}</p>
         </div>
       </section>
 

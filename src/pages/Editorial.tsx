@@ -7,8 +7,8 @@ import { EDITORIAL_ARTICLES } from "@/data/editorialArticles";
 const EditorialPage = () => {
   const lang = useLang();
   const t = lang === "es"
-    ? { eyebrow: "Pensar la escultura", h: "Editorial", sub: "Ensayos, reportajes y entrevistas en torno a la escultura, el oficio y su mercado.", by: "Por" }
-    : { eyebrow: "Thinking sculpture", h: "Editorial", sub: "Essays, reports and interviews on sculpture, craft and its market.", by: "By" };
+    ? { eyebrow: "Pensar la escultura", h: "Comunidad", sub: "Ensayos, reportajes y entrevistas en torno a la escultura, el oficio y su mercado.", by: "Por" }
+    : { eyebrow: "Thinking sculpture", h: "Community", sub: "Essays, reports and interviews on sculpture, craft and its market.", by: "By" };
 
   return (
     <main className="pt-14">

@@ -12,13 +12,13 @@ const NAV_LEFT = {
     { label: "Escultores", to: "/escultores" },
     { label: "Colección", to: "/coleccion" },
     { label: "Aprende", to: "/aprende" },
-    { label: "Editorial", to: "/editorial" },
+    { label: "Comunidad", to: "/editorial" },
   ],
   en: [
     { label: "Sculptors", to: "/escultores" },
     { label: "The Collection", to: "/coleccion" },
     { label: "Learn", to: "/aprende" },
-    { label: "Editorial", to: "/editorial" },
+    { label: "Community", to: "/editorial" },
   ],
 };
 
