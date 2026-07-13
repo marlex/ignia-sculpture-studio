@@ -20,7 +20,7 @@ export const WhyIgnia = () => {
               <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#FFFFFF", opacity: 0.15, fontSize: 80, lineHeight: 1, marginBottom: 24 }}>
                 {b.n}
               </div>
-              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#FFFFFF", fontSize: 22, lineHeight: 1.25, marginBottom: 16 }}>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#FFFFFF", fontSize: 22, lineHeight: 1.25, marginBottom: 16 }}>
                 {b.t}
               </h3>
               <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "rgba(255,255,255,0.7)", fontSize: 16, lineHeight: 1.7 }}>
