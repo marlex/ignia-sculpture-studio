@@ -140,7 +140,7 @@ export const Header = () => {
           </button>
           <nav className="header-nav-links hidden md:flex items-center gap-9">
             {leftItems.map(item => (
-              <Link key={item.label} to={item.to} className="font-body text-[16px] font-medium text-gray hover:opacity-65 transition-opacity">
+              <Link key={item.label} to={item.to} className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
                 {item.label}
               </Link>
             ))}
@@ -156,20 +156,20 @@ export const Header = () => {
 
         {/* RIGHT: desktop cluster + mobile invite icon */}
         <div className="header-right-cluster col-start-3 flex items-center justify-end gap-4">
-          <Link to={galleryItem.to} className="header-gallery-link font-body text-[16px] font-medium text-gray hover:opacity-65 transition-opacity">
+          <Link to={galleryItem.to} className="header-gallery-link font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
             {galleryItem.label}
           </Link>
           {SHOW_PUBLIC_AUTH && (user ? (
             <div className="header-user-links hidden md:flex items-center gap-3">
-              <Link to="/dashboard" className="font-body text-[16px] font-medium text-gray hover:opacity-65 transition-opacity">
+              <Link to="/dashboard" className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
                 {t.dashboard}
               </Link>
-              <button onClick={() => { logout(); navigate("/"); }} className="font-body text-[16px] font-medium text-gray hover:opacity-65 transition-opacity">
+              <button onClick={() => { logout(); navigate("/"); }} className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
                 {t.signout}
               </button>
             </div>
           ) : (
-            <Link to={`/login?redirect=${encodeURIComponent(location.pathname)}`} className="header-signin-link font-body text-[16px] font-medium text-gray hover:opacity-65 transition-opacity">
+            <Link to={`/login?redirect=${encodeURIComponent(location.pathname)}`} className="header-signin-link font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
               {t.signin}
             </Link>
           ))}

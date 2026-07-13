@@ -50,7 +50,7 @@ export const Testimonials = () => {
                   fontSize: "16px",
                   color: "#1A1A1A",
                   lineHeight: 1.7,
-                  fontWeight: 500,
+                  fontWeight: 400,
                 }}
               >
                 {t.quote}
@@ -71,7 +71,7 @@ export const Testimonials = () => {
               <p
                 style={{
                   fontFamily: "'Manrope', sans-serif",
-                  fontWeight: 500,
+                  fontWeight: 400,
                   fontSize: "16px",
                   color: "#999999",
                   marginTop: "4px",

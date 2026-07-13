@@ -49,7 +49,7 @@ export const HeroFull = () => {
 
         .hf-title-el {
           font-family: 'Cormorant Garamond', serif;
-          font-weight: 500;
+          font-weight: 400;
           color: #FFFFFF;
           font-size: clamp(40px, 6vw, 72px);
           line-height: 1.05;
@@ -58,7 +58,7 @@ export const HeroFull = () => {
         }
         .hf-body-el {
           font-family: Manrope, sans-serif;
-          font-weight: 500;
+          font-weight: 400;
           color: #FFFFFF;
           font-size: 19px;
           line-height: 1.6;

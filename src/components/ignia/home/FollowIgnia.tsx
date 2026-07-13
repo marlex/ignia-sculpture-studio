@@ -15,7 +15,7 @@ export const FollowIgnia = () => {
       <span
         style={{
           fontFamily: "'Manrope', sans-serif",
-          fontWeight: 500,
+          fontWeight: 400,
           textTransform: "uppercase",
           letterSpacing: "0.2em",
           fontSize: 10,
@@ -58,7 +58,7 @@ export const FollowIgnia = () => {
             background: "transparent",
             color: "#FFFFFF",
             fontFamily: "'Manrope', sans-serif",
-            fontWeight: 500,
+            fontWeight: 400,
             textTransform: "uppercase",
             letterSpacing: "0.18em",
             fontSize: 12,
@@ -82,7 +82,7 @@ export const FollowIgnia = () => {
             border: "1px solid rgba(255,255,255,0.35)",
             color: "rgba(255,255,255,0.7)",
             fontFamily: "'Manrope', sans-serif",
-            fontWeight: 500,
+            fontWeight: 400,
             textTransform: "uppercase",
             letterSpacing: "0.18em",
             fontSize: 12,
@@ -110,7 +110,7 @@ export const FollowIgnia = () => {
       <span
         style={{
           fontFamily: "'Manrope', sans-serif",
-          fontWeight: 500,
+          fontWeight: 400,
           fontSize: 11,
           color: "rgba(255,255,255,0.2)",
           letterSpacing: "0.04em",

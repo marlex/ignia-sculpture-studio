@@ -40,7 +40,7 @@ export const SculptureIntro = () => {
         <p
           style={{
             fontFamily: "Manrope, sans-serif",
-            fontWeight: 500,
+            fontWeight: 400,
             color: "rgba(255,255,255,0.8)",
             fontSize: 16,
             lineHeight: 1.55,
@@ -67,7 +67,7 @@ export const SculptureIntro = () => {
             onClick={() => window.dispatchEvent(new Event("ignia:open-invite"))}
             style={{
               fontFamily: "Manrope, sans-serif",
-              fontWeight: 500,
+              fontWeight: 400,
               fontSize: 12,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
