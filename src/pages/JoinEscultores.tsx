@@ -209,7 +209,7 @@ const JoinEscultores = () => {
         style={{ height: "calc(100vh - 56px)", background: "#222222" }}
       >
         <img
-          src={heroPiedra.url}
+          src={heroSculptors.url}
           alt=""
           aria-hidden
           loading="eager"
