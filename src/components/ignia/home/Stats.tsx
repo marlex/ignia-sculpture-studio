@@ -51,7 +51,7 @@ export const Stats = () => {
       <div ref={ref} className="max-w-[1280px] mx-auto grid grid-cols-2 md:grid-cols-4">
         {ITEMS.map((it, i) => (
           <div key={i} style={{ padding: "24px 28px", borderLeft: i === 0 ? "none" : "1px solid #E5E5E5" }}>
-            <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: "clamp(40px,5vw,64px)", lineHeight: 1, letterSpacing: "-0.02em" }}>
+            <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: "clamp(40px,5vw,64px)", lineHeight: 1, letterSpacing: "-0.02em" }}>
               <AnimNum raw={it.value} />
             </div>
             <div style={{ marginTop: 16, fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 16, lineHeight: 1.5 }}>

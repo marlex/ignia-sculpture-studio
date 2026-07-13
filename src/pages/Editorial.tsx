@@ -16,7 +16,7 @@ const EditorialPage = () => {
       <section className="px-6 md:px-12 pt-16 pb-12 bg-white">
         <div className="eyebrow mb-3">{t.eyebrow}</div>
         <h1 className="font-display font-bold text-[clamp(36px,5vw,64px)] tracking-[-0.02em] text-ink leading-[1.05]">{t.h}</h1>
-        <p className="font-body text-[16px] font-light text-gray max-w-[640px] mt-4">{t.sub}</p>
+        <p className="font-body text-[16px] font-normal text-gray max-w-[640px] mt-4">{t.sub}</p>
       </section>
 
       <section className="bg-surface px-6 md:px-12 py-20">
@@ -31,7 +31,7 @@ const EditorialPage = () => {
                   </div>
                   <div className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line mb-3">{c.seccion}</div>
                   <h2 className="font-display font-bold text-[clamp(20px,2vw,26px)] tracking-[-0.02em] text-ink leading-tight mb-3">{c.titulo}</h2>
-                  <p className="font-body text-[16px] font-light text-gray leading-relaxed mb-3">{c.extracto}</p>
+                  <p className="font-body text-[16px] font-normal text-gray leading-relaxed mb-3">{c.extracto}</p>
                   <div className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line">{t.by} {a.autor}</div>
                 </Link>
               </article>

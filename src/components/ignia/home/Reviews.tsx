@@ -33,7 +33,7 @@ const Block = ({ title, citas }: { title: string; citas: { q: string; n: string;
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {citas.map((c, i) => (
           <figure key={i} style={{ position: "relative", paddingLeft: 4 }}>
-            <div aria-hidden style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "#111111", fontSize: 72, lineHeight: 0.6, marginBottom: 24, opacity: 0.25 }}>
+            <div aria-hidden style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 72, lineHeight: 0.6, marginBottom: 24, opacity: 0.25 }}>
               &ldquo;
             </div>
             <blockquote style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: "clamp(22px,2vw,30px)", lineHeight: 1.45, letterSpacing: "-0.005em", margin: 0 }}>

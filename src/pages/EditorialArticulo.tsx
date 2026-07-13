@@ -102,7 +102,7 @@ const EditorialArticuloPage = () => {
                 {b.text}
               </h2>
             ) : (
-              <p key={i} className="font-body text-[17px] font-light text-ink leading-relaxed">
+              <p key={i} className="font-body text-[17px] font-normal text-ink leading-relaxed">
                 {b.text}
               </p>
             )

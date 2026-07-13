@@ -197,7 +197,7 @@ const ObraDetalle = () => {
           <div>
             <div className="eyebrow mb-3"><Link to="/coleccion" className="hover:opacity-65 transition-opacity">{t.back}</Link></div>
             <h1 className="font-display font-bold text-[clamp(32px,4vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-3">{o.title}</h1>
-            <div className="font-body text-[16px] font-light text-gray mb-6">
+            <div className="font-body text-[16px] font-normal text-gray mb-6">
               <Link to={`/perfil/escultor/${o.artist.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} className="underline-offset-4 hover:underline">{o.artist}</Link> · {o.material} · {o.year} · {o.edition}
             </div>
             <div className="mb-8">
@@ -230,7 +230,7 @@ const ObraDetalle = () => {
                   <h3 className="font-display font-bold text-[20px] text-ink mb-4">
                     {lang === "es" ? "Cómo se calcula este precio" : "How this price is calculated"}
                   </h3>
-                  <p className="font-body text-[14px] font-light text-gray leading-relaxed">
+                  <p className="font-body text-[14px] font-normal text-gray leading-relaxed">
                     {lang === "es"
                       ? "El precio incluye el certificado de autenticidad en blockchain, la gestión logística especializada y la comisión de Ignia Gallery. Sin costes ocultos."
                       : "The price includes the blockchain certificate of authenticity, specialised logistics handling and Ignia Gallery's commission. No hidden fees."}
@@ -238,7 +238,7 @@ const ObraDetalle = () => {
                 </div>
               </div>
             )}
-            <div className="font-body text-[16px] font-light text-gray leading-relaxed mb-10 space-y-4">
+            <div className="font-body text-[16px] font-normal text-gray leading-relaxed mb-10 space-y-4">
               {o.description.split(/\n\n+/).map((para, i) => (
                 <p key={i}>{para}</p>
               ))}
@@ -317,7 +317,7 @@ const ObraDetalle = () => {
                 style={{ maxHeight: authOpen ? 600 : 0 }}
               >
                 <div className="px-6 pb-5">
-                  <p className="font-body text-[14px] font-light text-gray leading-relaxed mb-4">{t.authP}</p>
+                  <p className="font-body text-[14px] font-normal text-gray leading-relaxed mb-4">{t.authP}</p>
                   <dl className="grid grid-cols-2 gap-y-2.5 gap-x-4 font-body text-[13px]">
                     <dt className="text-muted-line uppercase tracking-[0.12em]">{t.tokenId}</dt>
                     <dd className="text-ink font-mono">{o.authenticity}</dd>
@@ -371,7 +371,7 @@ const ObraDetalle = () => {
                   >
                     <div className="px-6 pb-5 font-body text-[14px] space-y-3">
                       {rows.map(([k, v]) => (
-                        <p key={k} className="text-gray font-light leading-relaxed">
+                        <p key={k} className="text-gray font-normal leading-relaxed">
                           <span className="text-ink font-normal">{k}:</span> {v}
                         </p>
                       ))}
@@ -478,7 +478,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
                       {location && <div className="font-body text-[13px] text-gray">{location}</div>}
                     </div>
                   </div>
-                  <p className="font-body text-[14px] font-light text-gray leading-relaxed mb-4">{short}</p>
+                  <p className="font-body text-[14px] font-normal text-gray leading-relaxed mb-4">{short}</p>
                   <Link
                     to={`/perfil/escultor/${slug}`}
                     className="font-body text-[14px] text-ink underline-offset-4 hover:underline"

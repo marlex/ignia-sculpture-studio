@@ -91,7 +91,7 @@ export const HeroSlideshow = ({ onInvite, onCollection }: Props) => {
           top: "10vh",
           transform: "translateX(-50%)",
           fontFamily: "'Cormorant Garamond', serif",
-          fontWeight: 300,
+          fontWeight: 400,
           color: "#FFFFFF",
           fontSize: 28,
           textTransform: "uppercase",

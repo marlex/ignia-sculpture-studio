@@ -95,7 +95,7 @@ export const Splash = () => {
         <p
           style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontWeight: 300,
+            fontWeight: 400,
             fontSize: "clamp(34px, 5.2vw, 64px)",
             color: "rgba(255,255,255,0.84)",
             letterSpacing: "0.04em",

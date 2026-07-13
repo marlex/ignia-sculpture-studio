@@ -56,14 +56,14 @@ export default function PerfilColeccionista() {
         <Link to="/" aria-label="Ignia Gallery"><Logo /></Link>
         <div className="flex items-center gap-4">
           <span className="font-body text-[13px] uppercase tracking-[0.14em] text-muted-line">María García</span>
-          <Link to="/" className="font-body text-[14px] font-light text-gray hover:opacity-65 transition-opacity">{t.exit}</Link>
+          <Link to="/" className="font-body text-[14px] font-normal text-gray hover:opacity-65 transition-opacity">{t.exit}</Link>
         </div>
       </header>
 
       <section className="px-6 md:px-12 py-16 max-w-[1280px] mx-auto">
         <div className="eyebrow mb-3">{t.eyebrow}</div>
         <h1 className="font-display font-bold text-[clamp(36px,5vw,64px)] tracking-[-0.02em] text-ink mb-4 leading-[1.05]">María García</h1>
-        <p className="font-body text-[16px] font-light text-gray max-w-[640px] mb-12">{t.sub}</p>
+        <p className="font-body text-[16px] font-normal text-gray max-w-[640px] mb-12">{t.sub}</p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {t.stats.map(([l, v]) => <Stat key={l} label={l} value={v} />)}

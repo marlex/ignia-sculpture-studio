@@ -28,7 +28,7 @@ export const FollowIgnia = () => {
       <p
         style={{
           fontFamily: "'Cormorant Garamond', serif",
-          fontWeight: 300,
+          fontWeight: 400,
           fontSize: 56,
           color: "rgba(255,255,255,0.88)",
           lineHeight: 1.1,

@@ -152,7 +152,7 @@ export const Coleccion = () => {
             placeholder={t.search}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full border-[0.5px] border-ink bg-white font-body text-[14px] font-light pl-9 pr-3 py-2.5 outline-none focus:border-ink transition-colors"
+            className="w-full border-[0.5px] border-ink bg-white font-body text-[14px] font-normal pl-9 pr-3 py-2.5 outline-none focus:border-ink transition-colors"
           />
         </div>
       </div>
@@ -188,7 +188,7 @@ export const Coleccion = () => {
           placeholder={t.search}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-60 border-[0.5px] border-ink bg-white font-body text-[14px] font-light px-3.5 py-2.5 outline-none focus:border-ink transition-colors"
+          className="w-60 border-[0.5px] border-ink bg-white font-body text-[14px] font-normal px-3.5 py-2.5 outline-none focus:border-ink transition-colors"
         />
         {(() => {
           const selectStyle: React.CSSProperties = {
@@ -207,7 +207,7 @@ export const Coleccion = () => {
               <select
                 value={priceSort}
                 onChange={(e) => setPriceSort(e.target.value as "asc" | "desc")}
-                className="border-[0.5px] border-ink bg-white font-body text-[14px] font-light pl-3.5 py-2.5 outline-none focus:border-ink transition-colors"
+                className="border-[0.5px] border-ink bg-white font-body text-[14px] font-normal pl-3.5 py-2.5 outline-none focus:border-ink transition-colors"
                 style={selectStyle}
               >
                 <option value="asc">{t.priceAsc}</option>
@@ -216,7 +216,7 @@ export const Coleccion = () => {
               <select
                 value={material}
                 onChange={(e) => setMaterial(e.target.value)}
-                className="border-[0.5px] border-ink bg-white font-body text-[14px] font-light pl-3.5 py-2.5 outline-none focus:border-ink transition-colors"
+                className="border-[0.5px] border-ink bg-white font-body text-[14px] font-normal pl-3.5 py-2.5 outline-none focus:border-ink transition-colors"
                 style={selectStyle}
               >
                 <option value="">{t.materialAll}</option>
@@ -225,7 +225,7 @@ export const Coleccion = () => {
               <select
                 value={technique}
                 onChange={(e) => setTechnique(e.target.value)}
-                className="border-[0.5px] border-ink bg-white font-body text-[14px] font-light pl-3.5 py-2.5 outline-none focus:border-ink transition-colors"
+                className="border-[0.5px] border-ink bg-white font-body text-[14px] font-normal pl-3.5 py-2.5 outline-none focus:border-ink transition-colors"
                 style={selectStyle}
               >
                 <option value="">{t.techniqueAll}</option>
@@ -252,9 +252,9 @@ export const Coleccion = () => {
             </Link>
             <div className="flex flex-col justify-end md:col-span-1">
               <h3 className="font-display font-bold text-[30px] md:text-[clamp(36px,4vw,52px)] leading-[1.05] text-ink mb-0.5 md:mb-2"><Link to={`/obra/${featured.slug}`} className="hover:underline underline-offset-4">{featured.title}</Link></h3>
-              <Link to={`/perfil/escultor/${artistSlug(featured.artist)}`} className="font-body text-[18px] font-light text-gray mb-1.5 hover:opacity-65 transition-opacity w-fit">{featured.artist}</Link>
-              <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-3">{featured.material}</div>
-              <div className="flex items-center gap-1.5 mb-5 font-body text-[12px] font-light text-muted-line">
+              <Link to={`/perfil/escultor/${artistSlug(featured.artist)}`} className="font-body text-[18px] font-normal text-gray mb-1.5 hover:opacity-65 transition-opacity w-fit">{featured.artist}</Link>
+              <div className="font-body text-[13px] font-normal text-muted-line uppercase tracking-[0.14em] mb-3">{featured.material}</div>
+              <div className="flex items-center gap-1.5 mb-5 font-body text-[12px] font-normal text-muted-line">
                 <span aria-hidden className="text-ink">◆</span>
                 <span>{t.auth} <span className="font-mono text-ink/70">{featured.authenticity}</span></span>
               </div>
@@ -320,9 +320,9 @@ className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border 
               </Link>
               <div className="px-0 pt-2 pb-3 sm:pt-3 sm:pb-5">
                 <h3 className="font-display font-bold text-[28px] text-ink mb-0.5 sm:mb-1"><Link to={`/obra/${o.slug}`} className="hover:underline underline-offset-4">{o.title}</Link></h3>
-                <Link to={`/perfil/escultor/${artistSlug(o.artist)}`} className="block font-body text-[16px] sm:text-[16px] font-light text-gray mb-0.5 sm:mb-1.5 hover:opacity-65 transition-opacity w-fit">{o.artist}</Link>
-                <div className="font-body text-[11px] sm:text-[12px] font-light text-muted-line uppercase tracking-[0.14em] mb-1 sm:mb-2">{o.material}</div>
-                <div className="flex items-center gap-1.5 mb-1.5 sm:mb-3 font-body text-[11px] font-light text-muted-line normal-case tracking-normal">
+                <Link to={`/perfil/escultor/${artistSlug(o.artist)}`} className="block font-body text-[16px] sm:text-[16px] font-normal text-gray mb-0.5 sm:mb-1.5 hover:opacity-65 transition-opacity w-fit">{o.artist}</Link>
+                <div className="font-body text-[11px] sm:text-[12px] font-normal text-muted-line uppercase tracking-[0.14em] mb-1 sm:mb-2">{o.material}</div>
+                <div className="flex items-center gap-1.5 mb-1.5 sm:mb-3 font-body text-[11px] font-normal text-muted-line normal-case tracking-normal">
                   <span aria-hidden className="text-ink">◆</span>
                    <span>{t.auth} <span className="font-mono text-ink/70">{o.authenticity}</span></span>
                 </div>
@@ -404,7 +404,7 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tr
                 ].map(opt => (
                   <li key={opt.v}>
                     <label className="flex items-center justify-between py-3.5 cursor-pointer">
-                      <span className="font-body text-[16px] font-light text-ink">{opt.label}</span>
+                      <span className="font-body text-[16px] font-normal text-ink">{opt.label}</span>
                       <input
                         type="radio"
                         name="price-sort"
@@ -422,7 +422,7 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tr
               <ul className="divide-y divide-border">
                 <li>
                   <label className="flex items-center justify-between py-3.5 cursor-pointer">
-                    <span className="font-body text-[16px] font-light text-ink">{t.materialAll}</span>
+                    <span className="font-body text-[16px] font-normal text-ink">{t.materialAll}</span>
                     <input
                       type="radio"
                       name="material"
@@ -435,7 +435,7 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tr
                 {materialOptions.map(m => (
                   <li key={m}>
                     <label className="flex items-center justify-between py-3.5 cursor-pointer">
-                      <span className="font-body text-[16px] font-light text-ink">{m}</span>
+                      <span className="font-body text-[16px] font-normal text-ink">{m}</span>
                       <input
                         type="radio"
                         name="material"
@@ -453,7 +453,7 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tr
               <ul className="divide-y divide-border">
                 <li>
                   <label className="flex items-center justify-between py-3.5 cursor-pointer">
-                    <span className="font-body text-[16px] font-light text-ink">{t.techniqueAll}</span>
+                    <span className="font-body text-[16px] font-normal text-ink">{t.techniqueAll}</span>
                     <input
                       type="radio"
                       name="technique"
@@ -466,7 +466,7 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tr
                 {techniqueOptions.map(tk => (
                   <li key={tk}>
                     <label className="flex items-center justify-between py-3.5 cursor-pointer">
-                      <span className="font-body text-[16px] font-light text-ink">{tk}</span>
+                      <span className="font-body text-[16px] font-normal text-ink">{tk}</span>
                       <input
                         type="radio"
                         name="technique"

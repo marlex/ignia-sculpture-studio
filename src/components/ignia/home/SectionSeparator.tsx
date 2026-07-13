@@ -22,7 +22,7 @@ export const SectionSeparator = ({ title, subtitle, cta }: SectionSeparatorProps
       <h2
         style={{
           fontFamily: "'Cormorant Garamond', serif",
-          fontWeight: 300,
+          fontWeight: 400,
           fontSize: "clamp(36px, 4.5vw, 56px)",
           color: "rgba(255,255,255,0.92)",
           lineHeight: 1.1,

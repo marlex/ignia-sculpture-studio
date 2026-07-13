@@ -205,7 +205,7 @@ export default function ColeccionistaPublico() {
             <h1 className="font-display font-bold text-[clamp(32px,4.4vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-4">
               {c.nombre}
             </h1>
-            <div className="font-body text-[13px] font-light text-muted-line uppercase tracking-[0.14em] mb-8">
+            <div className="font-body text-[13px] font-normal text-muted-line uppercase tracking-[0.14em] mb-8">
               {c.ubicacion} · {c.foco}
             </div>
 
@@ -221,7 +221,7 @@ export default function ColeccionistaPublico() {
             <h2 className="font-body text-[12px] uppercase tracking-[0.18em] text-muted-line mb-4">{t.bio}</h2>
             <div className="space-y-4 mb-10">
               {c.bio.map((p, i) => (
-                <p key={i} className="font-body text-[16px] font-light text-gray leading-relaxed">{p}</p>
+                <p key={i} className="font-body text-[16px] font-normal text-gray leading-relaxed">{p}</p>
               ))}
             </div>
 
