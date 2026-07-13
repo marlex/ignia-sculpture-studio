@@ -16,7 +16,7 @@ export const LogosTicker = () => {
       <div
         style={{
           fontFamily: "Manrope, sans-serif",
-          fontWeight: 500,
+          fontWeight: 400,
           textTransform: "uppercase",
           letterSpacing: "0.18em",
           fontSize: 10,

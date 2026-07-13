@@ -228,7 +228,7 @@ export default function PerfilEscultor() {
                   </h3>
                   <div className="font-body text-[11px] text-muted-line uppercase tracking-[0.14em] mb-3">{o.estado[lang]}</div>
                   {o.tiene3D && (
-                    <span className="inline-block px-2 py-1 font-body text-[10px] uppercase tracking-[0.16em] font-medium" style={{ backgroundColor: "#FF9C00", color: "#000" }}>3D activo</span>
+                    <span className="inline-block px-2 py-1 font-body text-[10px] uppercase tracking-[0.16em] font-normal" style={{ backgroundColor: "#FF9C00", color: "#000" }}>3D activo</span>
                   )}
                 </article>
               );

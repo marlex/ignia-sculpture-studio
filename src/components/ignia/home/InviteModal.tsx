@@ -257,7 +257,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 24, marginBottom: 16 }}>
               {t.successTitle}
             </h2>
-            <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>
+            <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>
               {t.successMsg}
             </p>
           </div>
@@ -282,7 +282,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
                 )}
 
                 {profile && (
-                  <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 16, lineHeight: 1.5, marginBottom: 36 }}>
+                  <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.5, marginBottom: 36 }}>
                     {profile === "artista" ? t.subtitleArtista : profile === "coleccionista" ? t.subtitleColeccionista : t.subtitleEmpresa}
                   </p>
                 )}
@@ -304,7 +304,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
                         value={bio} onChange={(e) => setBio(e.target.value)}
                         className="invite-input" style={{ resize: "vertical", minHeight: 80 }}
                       />
-                      <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 12, marginTop: 6 }}>
+                      <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 12, marginTop: 6 }}>
                         {bio.length}/300
                       </div>
                     </div>
@@ -356,7 +356,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
                         value={message} onChange={(e) => setMessage(e.target.value)}
                         className="invite-input" style={{ resize: "vertical", minHeight: 80 }}
                       />
-                      <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 12, marginTop: 6 }}>
+                      <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 12, marginTop: 6 }}>
                         {message.length}/300
                       </div>
                     </div>
@@ -374,7 +374,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
                   {loading ? t.sending : t.submit}
                 </button>
                 {error && (
-                  <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#b91c1c", fontSize: 13, marginTop: 16, textAlign: "center" }}>
+                  <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#b91c1c", fontSize: 13, marginTop: 16, textAlign: "center" }}>
                     {error}
                   </p>
                 )}

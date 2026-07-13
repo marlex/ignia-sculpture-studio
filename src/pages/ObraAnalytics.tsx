@@ -181,7 +181,7 @@ export default function ObraAnalytics() {
         {/* Rendimiento */}
         <Section title="Rendimiento comparado">
           <p className="font-body text-[16px] text-gray">
-            Esta obra recibe un <span className={`font-medium ${obra.vsMedia >= 0 ? "text-ink" : "text-amber-600"}`}>{Math.abs(obra.vsMedia)} %</span>{" "}
+            Esta obra recibe un <span className={`font-normal ${obra.vsMedia >= 0 ? "text-ink" : "text-amber-600"}`}>{Math.abs(obra.vsMedia)} %</span>{" "}
             {obra.vsMedia >= 0 ? "más" : "menos"} de visitas que la media de tu catálogo.
           </p>
         </Section>

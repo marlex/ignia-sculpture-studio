@@ -266,7 +266,7 @@ export const Coleccion = () => {
                     type="button"
                     onClick={() => setOpenFeatured3d(true)}
                     aria-label={t.view3d}
-className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase px-4 py-2.5 hover:opacity-65 transition-opacity"
+className="inline-flex items-center gap-1.5 font-body text-[12px] font-normal tracking-[0.22em] uppercase px-4 py-2.5 hover:opacity-65 transition-opacity"
                     style={{ border: "1px solid #FF9C00", color: "#FF9C00", backgroundColor: "transparent" }}
                   >
                     <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
@@ -276,7 +276,7 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tr
               </div>
               <Link
                 to={`/obra/${featured.slug}?buy=1`}
-className="sm:hidden font-body text-[12px] font-medium tracking-[0.22em] uppercase border border-ink text-ink px-5 py-3 hover:opacity-65 transition-opacity block w-full text-center"
+className="sm:hidden font-body text-[12px] font-normal tracking-[0.22em] uppercase border border-ink text-ink px-5 py-3 hover:opacity-65 transition-opacity block w-full text-center"
               >
                 {t.viewObra}
               </Link>
@@ -290,7 +290,7 @@ className="sm:hidden font-body text-[12px] font-medium tracking-[0.22em] upperca
                       type="button"
                       onClick={() => setOpenFeatured3d(true)}
                       aria-label={t.view3d}
-className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase px-4 py-2.5 hover:opacity-65 transition-opacity flex-shrink-0"
+className="inline-flex items-center gap-1.5 font-body text-[12px] font-normal tracking-[0.22em] uppercase px-4 py-2.5 hover:opacity-65 transition-opacity flex-shrink-0"
                     style={{ border: "1px solid #FF9C00", color: "#FF9C00", backgroundColor: "transparent" }}
                     >
                       <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
@@ -299,7 +299,7 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tr
                   )}
                   <Link
                     to={`/obra/${featured.slug}?buy=1`}
-className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border border-ink text-ink px-5 py-2.5 hover:opacity-65 transition-opacity text-center"
+className="font-body text-[12px] font-normal tracking-[0.22em] uppercase border border-ink text-ink px-5 py-2.5 hover:opacity-65 transition-opacity text-center"
                   >
                     {t.viewObra}
                   </Link>
@@ -335,7 +335,7 @@ className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border 
                         type="button"
                         onClick={() => setOpen3d(i)}
                         aria-label={t.view3d}
-className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase px-4 py-2.5 hover:opacity-65 transition-opacity"
+className="inline-flex items-center gap-1.5 font-body text-[12px] font-normal tracking-[0.22em] uppercase px-4 py-2.5 hover:opacity-65 transition-opacity"
                     style={{ border: "1px solid #FF9C00", color: "#FF9C00", backgroundColor: "transparent" }}
                       >
                         <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
@@ -345,7 +345,7 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tr
                   </div>
                   <Link
                     to={`/obra/${o.slug}`}
-                    className="sm:hidden font-body text-[12px] font-medium tracking-[0.22em] uppercase border border-ink text-ink px-5 py-3 hover:opacity-65 transition-opacity block w-full text-center"
+                    className="sm:hidden font-body text-[12px] font-normal tracking-[0.22em] uppercase border border-ink text-ink px-5 py-3 hover:opacity-65 transition-opacity block w-full text-center"
                   >
                     {t.viewObra}
                   </Link>
@@ -359,7 +359,7 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tr
                           type="button"
                           onClick={() => setOpen3d(i)}
                           aria-label={t.view3d}
-className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tracking-[0.22em] uppercase px-4 py-2.5 hover:opacity-65 transition-opacity flex-shrink-0"
+className="inline-flex items-center gap-1.5 font-body text-[12px] font-normal tracking-[0.22em] uppercase px-4 py-2.5 hover:opacity-65 transition-opacity flex-shrink-0"
                           style={{ border: "1px solid #FF9C00", color: "#FF9C00", backgroundColor: "transparent" }}
                         >
                           <Maximize2 className="w-3.5 h-3.5" strokeWidth={2} />
@@ -368,7 +368,7 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tr
                       )}
                       <Link
                         to={`/obra/${o.slug}`}
-                        className="font-body text-[12px] font-medium tracking-[0.22em] uppercase border border-ink text-ink px-5 py-2.5 hover:opacity-65 transition-opacity text-center"
+                        className="font-body text-[12px] font-normal tracking-[0.22em] uppercase border border-ink text-ink px-5 py-2.5 hover:opacity-65 transition-opacity text-center"
                       >
                         {t.viewObra}
                       </Link>
@@ -390,7 +390,7 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tr
         >
           <SheetHeader className="px-5 pt-5 pb-3 border-b border-border text-left">
             <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-border" aria-hidden />
-            <SheetTitle className="font-body text-[12px] font-medium tracking-[0.22em] uppercase text-ink">
+            <SheetTitle className="font-body text-[12px] font-normal tracking-[0.22em] uppercase text-ink">
               {sheetTitle}
             </SheetTitle>
           </SheetHeader>
@@ -485,7 +485,7 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium tr
             <button
               type="button"
               onClick={() => setActiveFilter(null)}
-              className="w-full font-body text-[12px] font-medium tracking-[0.22em] uppercase bg-transparent text-ink border border-ink py-3.5 hover:opacity-65 transition-opacity"
+              className="w-full font-body text-[12px] font-normal tracking-[0.22em] uppercase bg-transparent text-ink border border-ink py-3.5 hover:opacity-65 transition-opacity"
             >
               {t.apply}
             </button>

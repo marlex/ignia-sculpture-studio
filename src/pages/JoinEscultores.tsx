@@ -44,7 +44,7 @@ const H2_STYLE: React.CSSProperties = {
 
 const BODY_STYLE: React.CSSProperties = {
   fontFamily: "Manrope, sans-serif",
-  fontWeight: 500,
+  fontWeight: 400,
   color: "#5a5648",
   fontSize: 16,
   lineHeight: 1.7,
@@ -196,7 +196,7 @@ const JoinEscultores = () => {
     borderBottom: "1px solid #111111",
     outline: "none",
     fontFamily: "Manrope, sans-serif",
-    fontWeight: 500,
+    fontWeight: 400,
     color: "#111111",
     fontSize: 16,
     padding: "0 0 8px",
@@ -205,7 +205,7 @@ const JoinEscultores = () => {
   const labelStyle: React.CSSProperties = {
     display: "block",
     fontFamily: "Manrope, sans-serif",
-    fontWeight: 500,
+    fontWeight: 400,
     textTransform: "uppercase",
     letterSpacing: "0.14em",
     fontSize: 14,
@@ -236,7 +236,7 @@ const JoinEscultores = () => {
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
           <h1 style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontWeight: 500,
+            fontWeight: 400,
             color: "#FFFFFF",
             fontSize: "clamp(40px, 6vw, 72px)",
             lineHeight: 1.05,
@@ -245,7 +245,7 @@ const JoinEscultores = () => {
           }}>{t.heroTitle}</h1>
           <p style={{
             fontFamily: "Manrope, sans-serif",
-            fontWeight: 500,
+            fontWeight: 400,
             color: "#FFFFFF",
             fontSize: 19,
             lineHeight: 1.6,
@@ -268,7 +268,7 @@ const JoinEscultores = () => {
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, color: "#111111", fontSize: 26, lineHeight: 1.2, margin: 0, textAlign: "center" }}>
                 {item.title}
               </h3>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#5a5648", fontSize: 16, lineHeight: 1.7, textAlign: "center", margin: "12px 0 0" }}>
+              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#5a5648", fontSize: 16, lineHeight: 1.7, textAlign: "center", margin: "12px 0 0" }}>
                 {item.text}
               </p>
             </div>
@@ -290,7 +290,7 @@ const JoinEscultores = () => {
               {t.steps.map((step, i) => (
                 <tr key={i} style={{ borderTop: "1px solid #111111", borderBottom: "1px solid #111111" }}>
                   <td style={{ padding: "24px 8px", fontWeight: 700, fontSize: 26, fontFamily: "'Cormorant Garamond', serif" }}>{step.label}</td>
-                  <td style={{ padding: "24px 8px", fontWeight: 500, fontSize: 16, textAlign: "right" }}>{step.desc}</td>
+                  <td style={{ padding: "24px 8px", fontWeight: 400, fontSize: 16, textAlign: "right" }}>{step.desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -318,7 +318,7 @@ const JoinEscultores = () => {
                 <td style={{ padding: "24px 8px", verticalAlign: "top" }}>
                   <ul style={{ margin: 0, paddingLeft: 18, listStyle: "none" }}>
                     {t.planFreeBullets.map((bullet, i) => (
-                      <li key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, fontSize: 16, color: "#111111", lineHeight: 1.7, marginBottom: 4, position: "relative" }}>
+                      <li key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: 16, color: "#111111", lineHeight: 1.7, marginBottom: 4, position: "relative" }}>
                         <span style={{ position: "absolute", left: -16, top: 9, width: 4, height: 4, borderRadius: "50%", background: "#111111" }} />
                         {bullet}
                       </li>
@@ -331,7 +331,7 @@ const JoinEscultores = () => {
                 <td style={{ padding: "24px 8px", verticalAlign: "top" }}>
                   <ul style={{ margin: 0, paddingLeft: 18, listStyle: "none" }}>
                     {t.planProBullets.map((bullet, i) => (
-                      <li key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, fontSize: 16, color: "#111111", lineHeight: 1.7, marginBottom: 4, position: "relative" }}>
+                      <li key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: 16, color: "#111111", lineHeight: 1.7, marginBottom: 4, position: "relative" }}>
                         <span style={{ position: "absolute", left: -16, top: 9, width: 4, height: 4, borderRadius: "50%", background: "#111111" }} />
                         {bullet}
                       </li>
@@ -455,7 +455,7 @@ const JoinEscultores = () => {
                 <input id="je-social" name="social" required value={social} onChange={(e) => setSocial(e.target.value)} style={inputStyle} />
               </div>
               {error && (
-                <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#B00020", fontSize: 14, marginBottom: 16 }}>{error}</p>
+                <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#B00020", fontSize: 14, marginBottom: 16 }}>{error}</p>
               )}
               <div style={{ textAlign: "center" }}>
                 <button type="submit" disabled={loading} style={{ ...OUTLINE_BTN_DARK, opacity: loading ? 0.5 : 1 }} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
@@ -492,7 +492,7 @@ const JoinEscultores = () => {
                       alignItems: "center",
                       gap: 16,
                       fontFamily: "Manrope, sans-serif",
-                      fontWeight: 500,
+                      fontWeight: 400,
                       color: "#111111",
                       fontSize: 18,
                       borderRadius: 0,

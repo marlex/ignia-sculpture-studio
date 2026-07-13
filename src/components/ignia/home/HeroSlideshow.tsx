@@ -110,7 +110,7 @@ export const HeroSlideshow = ({ onInvite, onCollection }: Props) => {
         <p
           style={{
             fontFamily: "Manrope, sans-serif",
-            fontWeight: 500,
+            fontWeight: 400,
             color: "#FFFFFF",
             opacity: 0.75,
             fontSize: 16,
@@ -146,7 +146,7 @@ export const HeroSlideshow = ({ onInvite, onCollection }: Props) => {
             onClick={onCollection}
             style={{
               fontFamily: "Manrope, sans-serif",
-              fontWeight: 500,
+              fontWeight: 400,
               fontSize: 12,
               letterSpacing: "0.2em",
               textTransform: "uppercase",

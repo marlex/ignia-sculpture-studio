@@ -30,7 +30,7 @@ export default function Dashboard() {
         <Link to="/" style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 400, color: "#111111", fontSize: 20, letterSpacing: "0.12em", textDecoration: "none", textTransform: "uppercase" }}>
           IGNIA
         </Link>
-        <span style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 14 }}>
+        <span style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14 }}>
           Helena Vásquez · Artista Fundadora
         </span>
       </header>
@@ -44,7 +44,7 @@ export default function Dashboard() {
               style={{
                 display: "block", width: "100%", textAlign: "left",
                 padding: "14px 32px",
-                fontFamily: "Manrope, sans-serif", fontWeight: 500, fontSize: 15,
+                fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: 15,
                 color: "#111111", background: "transparent",
                 border: "none", borderLeft: active === i ? "2px solid #111111" : "2px solid transparent",
                 cursor: "pointer", borderRadius: 0,
@@ -64,7 +64,7 @@ export default function Dashboard() {
             {METRICS.map((m) => (
               <div key={m.l} style={{ border: "1px solid #E5E5E5", padding: 28, borderRadius: 0 }}>
                 <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 40, lineHeight: 1 }}>{m.v}</div>
-                <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 14, marginTop: 12 }}>{m.l}</div>
+                <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14, marginTop: 12 }}>{m.l}</div>
               </div>
             ))}
           </div>
@@ -82,7 +82,7 @@ export default function Dashboard() {
                 {OBRAS.map((o) => (
                   <tr key={o.titulo}>
                     {[o.titulo, o.material, o.precio, o.visitas, o.estado].map((c, i) => (
-                      <td key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, fontSize: 15, color: "#111111", padding: "20px 8px", borderBottom: "1px solid #E5E5E5" }}>{c}</td>
+                      <td key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: 15, color: "#111111", padding: "20px 8px", borderBottom: "1px solid #E5E5E5" }}>{c}</td>
                     ))}
                   </tr>
                 ))}
@@ -97,8 +97,8 @@ export default function Dashboard() {
             <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
               {ACT.map((a, i) => (
                 <li key={i} style={{ padding: "20px 0", borderBottom: i < ACT.length - 1 ? "1px solid #E5E5E5" : "none" }}>
-                  <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 14, marginBottom: 4 }}>{a.f}</div>
-                  <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#111111", fontSize: 15, lineHeight: 1.5 }}>{a.d}</div>
+                  <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14, marginBottom: 4 }}>{a.f}</div>
+                  <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#111111", fontSize: 15, lineHeight: 1.5 }}>{a.d}</div>
                 </li>
               ))}
             </ul>

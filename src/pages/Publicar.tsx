@@ -2,14 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const fieldLabel: React.CSSProperties = {
-  display: "block", fontFamily: "Manrope, sans-serif", fontWeight: 500,
+  display: "block", fontFamily: "Manrope, sans-serif", fontWeight: 400,
   textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 14,
   color: "#111111", marginBottom: 12,
 };
 const fieldInput: React.CSSProperties = {
   width: "100%", background: "transparent", border: "none",
   borderBottom: "1px solid #111111", outline: "none",
-  fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#111111",
+  fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#111111",
   fontSize: 16, padding: "0 0 8px", borderRadius: 0,
 };
 const fieldWrap: React.CSSProperties = { marginBottom: 28 };
@@ -50,7 +50,7 @@ export default function Publicar() {
         <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 40, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 16 }}>
           Publicar una obra
         </h1>
-        <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 17, lineHeight: 1.5, marginBottom: 56 }}>
+        <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 17, lineHeight: 1.5, marginBottom: 56 }}>
           Completa todos los campos. Activamos tu obra en el visor 3D en un máximo de 48 horas.
         </p>
 
@@ -59,7 +59,7 @@ export default function Publicar() {
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#111111", fontSize: 28, marginBottom: 16 }}>
               Obra recibida.
             </h2>
-            <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>
+            <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>
               La activamos en el visor 3D en un máximo de 48 horas.
             </p>
           </div>
