@@ -161,13 +161,18 @@ export const Header = () => {
 
         {/* RIGHT: desktop cluster + mobile invite icon */}
         <div className="header-right-cluster col-start-3 flex items-center justify-end gap-4">
-          <nav className="header-nav-links hidden md:flex items-center gap-9">
-            {rightItems.map(item => (
-              <Link key={item.label} to={item.to} className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          <div className="hidden md:flex items-center gap-9">
+            <nav className="header-nav-links flex items-center gap-9">
+              {rightItems.map(item => (
+                <Link key={item.label} to={item.to} className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+            <div className="header-lang">
+              <LangDropdown lang={lang} setLang={setLang} />
+            </div>
+          </div>
           {SHOW_PUBLIC_AUTH && (user ? (
             <div className="header-user-links hidden md:flex items-center gap-3">
               <Link to="/dashboard" className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
