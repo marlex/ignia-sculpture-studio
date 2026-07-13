@@ -418,14 +418,8 @@ const JoinEscultores = () => {
           <h2 style={{ ...TITLE_STYLE, textAlign: "center", marginBottom: 48 }}>{t.finalTitle}</h2>
           {submitted ? (
             <div style={{ textAlign: "center" }}>
-              <p style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontWeight: 400,
-                color: "#111111",
-                fontSize: 24,
-                marginBottom: 12,
-              }}>{t.okTitle}</p>
-              <p style={{ ...BODY_STYLE, fontSize: 16, color: "#666666" }}>{t.okMsg}</p>
+              <p style={{ ...FEATURE_INFO_STYLE, marginBottom: 12 }}>{t.okTitle}</p>
+              <p style={BODY_STYLE}>{t.okMsg}</p>
             </div>
           ) : (
             <form onSubmit={handleEmbeddedSubmit}>
