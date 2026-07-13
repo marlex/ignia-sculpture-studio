@@ -319,7 +319,7 @@ const JoinEscultores = () => {
                   <ul style={{ margin: 0, paddingLeft: 18, listStyle: "none" }}>
                     {t.planFreeBullets.map((bullet, i) => (
                       <li key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, fontSize: 16, color: "#111111", lineHeight: 1.7, marginBottom: 4, position: "relative" }}>
-                        <span style={{ position: "absolute", left: -16, top: 1, fontSize: 10, color: "#111111" }}>•</span>
+                        <span style={{ position: "absolute", left: -16, top: 9, width: 4, height: 4, borderRadius: "50%", background: "#111111" }} />
                         {bullet}
                       </li>
                     ))}
@@ -332,7 +332,7 @@ const JoinEscultores = () => {
                   <ul style={{ margin: 0, paddingLeft: 18, listStyle: "none" }}>
                     {t.planProBullets.map((bullet, i) => (
                       <li key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, fontSize: 16, color: "#111111", lineHeight: 1.7, marginBottom: 4, position: "relative" }}>
-                        <span style={{ position: "absolute", left: -16, top: 1, fontSize: 10, color: "#111111" }}>•</span>
+                        <span style={{ position: "absolute", left: -16, top: 9, width: 4, height: 4, borderRadius: "50%", background: "#111111" }} />
                         {bullet}
                       </li>
                     ))}
