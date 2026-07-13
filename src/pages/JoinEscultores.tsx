@@ -277,24 +277,8 @@ const JoinEscultores = () => {
           style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.40) 60%, rgba(0,0,0,0.55) 100%)" }}
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-          <h1 style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontWeight: 300,
-            color: "#FFFFFF",
-            fontSize: "clamp(40px, 6vw, 72px)",
-            lineHeight: 1.05,
-            letterSpacing: "0.005em",
-            margin: 0,
-          }}>{t.heroTitle}</h1>
-          <p style={{
-            fontFamily: "Manrope, sans-serif",
-            fontWeight: 400,
-            color: "#FFFFFF",
-            fontSize: 19,
-            lineHeight: 1.6,
-            maxWidth: 720,
-            margin: "28px auto 0",
-          }}>{t.heroSub}</p>
+          <h1 style={HERO_TITLE_STYLE}>{t.heroTitle}</h1>
+          <p style={HERO_SUBTITLE_STYLE}>{t.heroSub}</p>
           <div style={{ marginTop: 32 }}>
             <button type="button" onClick={openModal} style={OUTLINE_BTN} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
               {t.cta}
