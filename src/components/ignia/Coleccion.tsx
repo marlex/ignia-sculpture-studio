@@ -494,8 +494,8 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-normal tr
               <span className="font-display font-semibold text-[16px]">{open.title}</span>
               <span className="font-body text-[12px] uppercase tracking-[0.14em] text-white/55">{open.artist} · {open.material}</span>
             </div>
-            <button onClick={() => setOpen3d(null)} aria-label={t.close} className="text-white/80 hover:opacity-65 transition-opacity">
-              <X className="w-5 h-5" />
+            <button onClick={() => setOpen3d(null)} aria-label={t.close} className="text-white/80 hover:opacity-65 transition-opacity w-11 h-11 flex items-center justify-center">
+              <X className="w-7 h-7" />
             </button>
           </header>
           <div className="flex-1 flex items-center justify-center p-4 md:p-8">
@@ -516,8 +516,8 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-normal tr
               <span className="font-display font-semibold text-[16px]">{featured.title}</span>
               <span className="font-body text-[12px] uppercase tracking-[0.14em] text-white/55">{featured.artist} · {featured.material}</span>
             </div>
-            <button onClick={() => setOpenFeatured3d(false)} aria-label={t.close} className="text-white/80 hover:opacity-65 transition-opacity">
-              <X className="w-5 h-5" />
+            <button onClick={() => setOpenFeatured3d(false)} aria-label={t.close} className="text-white/80 hover:opacity-65 transition-opacity w-11 h-11 flex items-center justify-center">
+              <X className="w-7 h-7" />
             </button>
           </header>
           <div className="flex-1 flex items-center justify-center p-4 md:p-8">

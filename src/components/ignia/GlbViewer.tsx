@@ -123,9 +123,9 @@ export function GlbViewer({
             type="button"
             onClick={(e) => { e.stopPropagation(); onClose(); }}
             aria-label="Cerrar"
-className="absolute top-3 right-3 z-20 w-10 h-10 bg-white/90 border border-border flex items-center justify-center hover:opacity-65 transition-opacity"
+            className="absolute top-3 right-3 z-20 w-11 h-11 bg-white/90 border border-border flex items-center justify-center hover:opacity-65 transition-opacity"
           >
-            <X className="w-4 h-4" />
+            <X className="w-6 h-6" />
           </button>
         ) : enableFullscreen && (
           <button
@@ -145,9 +145,9 @@ className="absolute top-3 right-3 z-20 w-10 h-10 bg-white/90 border border-borde
             type="button"
             onClick={() => setFs(false)}
             aria-label="Cerrar"
-            className="absolute top-4 right-4 z-10 w-11 h-11 bg-white/90 border border-border flex items-center justify-center hover:opacity-65 transition-opacity"
+            className="absolute top-4 right-4 z-10 w-12 h-12 bg-white/90 border border-border flex items-center justify-center hover:opacity-65 transition-opacity"
           >
-            <X className="w-5 h-5" />
+            <X className="w-7 h-7" />
           </button>
           <div className="w-full h-full">
             <ModelViewerContent url={url} alt={alt} poster={poster} minHeight="100vh" bgColor={bgColor} />
