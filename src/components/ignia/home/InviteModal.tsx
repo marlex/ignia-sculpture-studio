@@ -32,6 +32,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
         org: "Nombre de la organización",
         email: "Email",
         country: "País",
+        countryPlaceholder: "Selecciona...",
         social: "Instagram o web",
         socialOpt: "Instagram o web (opcional)",
         contact: "Persona de contacto",
@@ -75,6 +76,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
         org: "Organization name",
         email: "Email",
         country: "Country",
+        countryPlaceholder: "Select...",
         social: "Instagram or website",
         socialOpt: "Instagram or website (optional)",
         contact: "Contact person",
@@ -216,11 +218,12 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
       </div>
     ));
 
-  const selectField = (id: string, label: string, options: string[]) => (
+  const selectField = (id: string, label: string, options: string[], placeholder?: string) => (
     <div className="invite-field">
       <label className="invite-label" htmlFor={id}>{label}</label>
-      <select id={id} name={id} className="invite-input">
-        {options.map(o => <option key={o}>{o}</option>)}
+      <select id={id} name={id} className="invite-input" defaultValue={placeholder ? "" : undefined} required={!!placeholder}>
+        {placeholder && <option value="" disabled>{placeholder}</option>}
+        {options.map(o => <option key={o} value={o}>{o}</option>)}
       </select>
     </div>
   );
@@ -321,7 +324,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
                       { l: t.name, n: "nombre" },
                       { l: t.email, n: "email", type: "email" },
                     ])}
-                    {selectField("pais", t.country, countryOptions)}
+                    {selectField("pais", t.country, countryOptions, t.countryPlaceholder)}
                     <div className="invite-field">
                       <label className="invite-label">{t.interestsLabel}</label>
                       <div>
