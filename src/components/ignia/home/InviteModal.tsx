@@ -320,8 +320,8 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
                     {textInputs([
                       { l: t.name, n: "nombre" },
                       { l: t.email, n: "email", type: "email" },
-                      { l: t.country, n: "pais" },
                     ])}
+                    {selectField("pais", t.country, countryOptions)}
                     <div className="invite-field">
                       <label className="invite-label">{t.interestsLabel}</label>
                       <div>
