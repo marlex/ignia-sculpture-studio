@@ -317,7 +317,6 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
                       { l: t.name, n: "nombre" },
                       { l: t.email, n: "email", type: "email" },
                       { l: t.country, n: "pais" },
-                      { l: t.socialOpt, n: "social" },
                     ])}
                     <div className="invite-field">
                       <label className="invite-label">{t.interestsLabel}</label>
@@ -334,6 +333,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
                         ))}
                       </div>
                     </div>
+                    {textInputs([{ l: t.socialOpt, n: "social" }])}
                     {selectField("presupuesto", t.budgetCol, t.budgetColOptions)}
                     {selectField("conocio", t.howKnow, t.howKnowOptions)}
                   </>
