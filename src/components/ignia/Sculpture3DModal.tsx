@@ -46,7 +46,7 @@ export const Sculpture3DModal = ({ open, onClose, obraIndex, titulo, artista, ma
           <span className="font-display font-semibold text-[16px]">{titulo}</span>
           <span className="font-body text-[12px] font-normal uppercase tracking-[0.14em] text-white/55">{artista} · {material}</span>
         </div>
-        <button onClick={onClose} aria-label={t.close} className="font-body text-[13px] uppercase tracking-[0.14em] text-white/80 hover:opacity-65 transition-opacity">
+        <button onClick={onClose} aria-label={t.close} className="font-body text-[18px] uppercase tracking-[0.14em] text-white/80 hover:opacity-65 transition-opacity w-11 h-11 flex items-center justify-center">
           {t.close} ✕
         </button>
       </header>

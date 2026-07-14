@@ -537,7 +537,7 @@ const JoinEscultores = () => {
             <button
               onClick={() => setInviteOpen(false)}
               aria-label="Close"
-              style={{ position: "absolute", top: 16, right: 20, background: "transparent", border: "none", cursor: "pointer", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 24, lineHeight: 1 }}
+              style={{ position: "absolute", top: 12, right: 16, background: "transparent", border: "none", cursor: "pointer", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 32, lineHeight: 1, width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center" }}
             >×</button>
             <h2 style={{ ...H2_STYLE, marginBottom: 32, textAlign: "center" }}>{t.finalTitle}</h2>
             {submitted ? (

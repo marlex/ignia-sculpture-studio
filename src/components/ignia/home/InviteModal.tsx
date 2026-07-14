@@ -256,7 +256,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
         <button
           onClick={onClose}
           aria-label={t.close}
-          style={{ position: "absolute", top: 16, right: 20, background: "transparent", border: "none", cursor: "pointer", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 24, lineHeight: 1 }}
+          style={{ position: "absolute", top: 12, right: 16, background: "transparent", border: "none", cursor: "pointer", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 32, lineHeight: 1, width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center" }}
         >×</button>
 
         {submitted ? (
