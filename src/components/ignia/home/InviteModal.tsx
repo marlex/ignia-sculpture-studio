@@ -42,7 +42,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
         bioLabel: "Cuéntanos tu práctica",
         interestsLabel: "Intereses de colección",
         interestsOptions: ["Escultura figurativa", "Abstracta", "Contemporánea", "Clásica/histórica", "Arte público/gran escala"],
-        budgetCol: "Presupuesto orientativo por pieza",
+        budgetCol: "Rango que sueles considerar (opcional)",
         budgetColOptions: ["Menos de 1.500€", "1.500–5.000€", "5.000–15.000€", "Más de 15.000€", "Prefiero no decirlo"],
         howKnow: "Cómo conociste Ignia (opcional)",
         howKnowOptions: ["Instagram", "Recomendación", "Búsqueda en Google", "Otro"],
@@ -51,7 +51,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
         budgetEmp: "Presupuesto orientativo",
         budgetEmpOptions: ["A definir", "Hasta 10.000€", "10.000–50.000€", "Más de 50.000€"],
         msgLabel: "Mensaje breve",
-        submit: "Enviar solicitud",
+        submit: "Unirme a Ignia",
         sending: "Enviando…",
         successTitle: "Solicitud recibida.",
         successMsg: "Revisamos cada solicitud personalmente y te contactamos en 48 horas.",
@@ -85,7 +85,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
         bioLabel: "Tell us about your practice",
         interestsLabel: "Collection interests",
         interestsOptions: ["Figurative sculpture", "Abstract", "Contemporary", "Classical/historical", "Public/large-scale art"],
-        budgetCol: "Indicative budget per piece",
+        budgetCol: "Range you usually consider (optional)",
         budgetColOptions: ["Less than €1,500", "€1,500–5,000", "€5,000–15,000", "More than €15,000", "Prefer not to say"],
         howKnow: "How did you hear about Ignia (optional)",
         howKnowOptions: ["Instagram", "Referral", "Google search", "Other"],
@@ -94,7 +94,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
         budgetEmp: "Indicative budget",
         budgetEmpOptions: ["To be defined", "Up to €10,000", "€10,000–50,000", "More than €50,000"],
         msgLabel: "Brief message",
-        submit: "Send request",
+        submit: "Join Ignia",
         sending: "Sending…",
         successTitle: "Request received.",
         successMsg: "We review every request personally and will contact you within 48 hours.",
@@ -367,7 +367,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
                   type="submit"
                   disabled={loading}
                   className="font-body"
-                  style={{ width: "100%", background: "transparent", color: "#121212", fontWeight: 400, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 14, padding: "18px 36px", border: "1px solid #121212", borderRadius: 0, cursor: "pointer", transition: "opacity 250ms" }}
+                  style={{ width: "100%", background: "#000000", color: "#FFFFFF", fontWeight: 400, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 14, padding: "18px 36px", border: "1px solid #000000", borderRadius: 0, cursor: "pointer", transition: "opacity 250ms" }}
                   onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.6")}
                   onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
                 >
