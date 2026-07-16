@@ -344,7 +344,7 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
     en: {
       tag: "Sculpture masters",
       titulo: "Eduardo Chillida: the sculptor who gave form to emptiness",
-      extracto: "How a Basque blacksmith turned iron, corten steel and the void into the most influential vocabulary in contemporary Spanish sculpture.",
+      extracto: "The Basque sculptor who turned iron and the void into a universal language.",
       tiempo: "9 min read",
       fechaLabel: "July 10, 2026",
       body: [
