@@ -1,54 +1,35 @@
-## Resumen
-La mayor parte de la experiencia ya existe (top bar con "Publicar escultura" a la derecha, login con redirect, wizard de 4 pasos, dashboard del artista, certificado, perfil del escultor). Esta entrega cubre los huecos reales: visor de obra con 3 estados, dos piezas demo con `.glb` real, botones contextuales en las cards, flujo "Añadir vista 3D", validación restaurada y Poppins global.
-
 ## Cambios
 
-### 1. Tipografía Poppins global
-- `index.html`: añadir Google Fonts Poppins (300/400/500/600/700).
-- `tailwind.config.ts`: `fontFamily.display` y `fontFamily.body` apuntando a `Poppins`.
+### 1. Eliminar sección "Referentes que nos inspiran"
+- En `src/pages/Index.tsx`: quitar el import `Inspiracion` y su uso `<Inspiracion />` (línea 98).
+- Eliminar el archivo `src/components/ignia/Inspiracion.tsx` (ya no se usará en otras rutas — es la única referencia).
 
-### 2. Datos: GLB real en 2 obras demo
-- `src/data/igniaWorks.ts`: añadir campo opcional `glbUrl` y `extraImages?: string[]` al tipo `WorkRecord`.
-  - "vertigo" → `glbUrl = https://threejs.org/examples/models/gltf/DamagedHelmet/glTF/DamagedHelmet.gltf`
-  - "confluencia" → `glbUrl = https://threejs.org/examples/models/gltf/Michelle.glb`
-- Para 2-3 obras añadir `extraImages` (reutilizando assets existentes) para activar Estado 2.
+### 2. Añadir post de Chillida en Ignia Learn
+Nuevo artículo en `src/data/aprendeArticles.ts` con la misma estructura, longitud y calidad de los existentes (~8 min de lectura, secciones h2 + párrafos, referencias externas a instituciones/museos para SEO).
 
-### 3. Visor real Three.js reutilizable
-- Nuevo `src/components/ignia/GlbViewer.tsx`: `Canvas` + `useGLTF(url)` + `OrbitControls` (autoRotate off por defecto, on al primer interact), `Suspense` con spinner. Acepta `url: string`.
+- **slug:** `chillida-espacio-hierro-vacio`
+- **imagen:** reutilizar `@/assets/artist-eduardo-chillida-real.jpg` (ya presente en el proyecto, la misma que usaba la sección eliminada).
+- **fecha:** 2026-07-10, **autor:** "Ignia Editorial"
+- **tag ES:** "Maestros de la escultura" / **EN:** "Sculpture masters"
+- **título ES:** "Eduardo Chillida: el escultor que dio forma al vacío"
+- **título EN:** "Eduardo Chillida: the sculptor who gave form to emptiness"
+- **featuredWorks / featuredArtists:** relacionados con hierro/acero/espacio del catálogo actual (a elegir entre los slugs ya existentes en `igniaWorks` — p. ej. piezas de Helena Vázquez, Marcos Iriarte, Carmen Aldea que trabajan volumen y metal).
 
-### 4. Visor de obra con 3 estados — `src/pages/ObraDetalle.tsx`
-- Detectar estado:
-  - Estado 1: solo `image` → render limpio centrado.
-  - Estado 2: `extraImages.length >= 1` → galería con thumbnails, flechas hover, crossfade 200ms, contador "X fotos · Navega por los ángulos".
-  - Estado 3: `glbUrl` → tabs `[Fotos] [Vista 3D]` si también hay fotos extra; si solo glb sin extras, abre directamente 3D con fallback a la foto principal.
-- Sin transformaciones CSS 3D sobre fotos.
+**Estructura de contenido (ES y EN, paralelas):**
+1. Intro: por qué Chillida sigue siendo el referente del "espacio como material".
+2. h2 *Del hierro forjado de Hernani al Peine del Viento* — biografía material.
+3. h2 *El vacío como escultura* — su idea del "hueco" y diálogo con Heidegger (*Die Kunst und der Raum*).
+4. h2 *Chillida Leku: caminar la obra* — el museo-bosque de Hernani como manifiesto (con enlace a chillidaleku.com).
+5. h2 *Obra pública que redefinió ciudades* — Peine del Viento (San Sebastián), Elogio del Horizonte (Gijón), Berlín, París (Guggenheim Bilbao, Reina Sofía como colecciones de referencia).
+6. h2 *Materiales: hierro, acero corten, hormigón, alabastro* — cómo cada material sostiene una idea distinta.
+7. h2 *Lo que Chillida enseña al coleccionista contemporáneo* — leer volumen, escala, gravedad; entrenar el ojo en Chillida Leku, Museo Reina Sofía, Fundación Botín.
+8. Cierre: la vigencia de su vocabulario en la escultura española actual.
 
-### 5. Cards del catálogo — `src/components/ignia/Coleccion.tsx`
-- Botón overlay condicional:
-  - `glbUrl` → "VER EN 3D" (abre modal con `GlbViewer`).
-  - solo `extraImages` → "VER ÁNGULOS" (link a `/obra/:slug`).
-  - nada → card limpia, sin botón.
+Enlaces externos incluidos en el cuerpo (dentro del texto, para SEO — instituciones citadas): Museo Chillida Leku, Museo Reina Sofía, Guggenheim Bilbao, Fundación Botín, ensayo *Die Kunst und der Raum* de Heidegger.
 
-### 6. Validación restaurada en `src/pages/Publicar.tsx`
-- Volver a `step1Valid` (todos los campos obligatorios + descripción ≥ 80) y `step2Valid` (`fotoPrincipal` requerida).
-- Mantener artista fijado a "Cristina Iglesias" y campo oculto.
+### 3. Verificación
+- `bun run build` para confirmar que no queda import roto tras borrar `Inspiracion.tsx`.
 
-### 7. Flujo "Añadir vista 3D" — nuevo `src/pages/AddView3d.tsx`
-- Ruta `/dashboard/obras/:id/3d`.
-- Paso A: subida múltiple 20–40 fotos con contador y botón "Continuar" gateado.
-- Paso B: barra de progreso simulada + toggle email + permite cerrar (estado persistido en `localStorage`).
-- Paso C: éxito con `GlbViewer` cargando un `.glb` demo (Michelle) → "Publicar vista 3D" marca la obra con `glbUrl` en el store; o estado de error con reintento.
-- En `Dashboard` (Mis obras): añadir botón "Añadir vista 3D" si la obra no tiene `glbUrl`, indicador "Vista 3D activa" si la tiene.
-
-## Detalles técnicos
-- Three Fiber ya instalado (`@react-three/fiber@^8`, `@react-three/drei@^9`).
-- `useGLTF.preload` para las URLs demo.
-- `GlbViewer` con `Suspense` fallback = spinner Lucide `Loader2`.
-- Crossfade fotos: dos `<img>` absolutos con `opacity` + `transition-opacity duration-200`.
-- Mobile: thumbnails con `overflow-x-auto snap-x` (swipe nativo).
-- No se toca el backend; persistencia sigue en `localStorage` (`obrasStore`).
-
-## Fuera de alcance
-- Procesamiento real de fotogrametría (se simula como pide la spec).
-- Email real de aviso (toggle visual).
-- Blockchain real (ya simulado con SHA-256 + UUID).
+### Detalles técnicos
+- No se toca la lógica de rutas: el nuevo artículo aparece automáticamente en `/aprende` y es accesible en `/aprende/chillida-espacio-hierro-vacio` gracias a los componentes existentes (`Aprende.tsx`, `AprendeArticulo.tsx`).
+- No se añaden nuevas dependencias ni assets nuevos.

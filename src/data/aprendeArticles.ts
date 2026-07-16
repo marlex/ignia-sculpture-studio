@@ -1,6 +1,7 @@
 import bronzePatina from "@/assets/aprende-bronce-patina.jpg";
 import sculpturePhoto from "@/assets/aprende-fotografiar-volumen.jpg";
 import limitedEdition from "@/assets/aprende-ediciones-limitadas.jpg";
+import chillidaPortrait from "@/assets/artist-eduardo-chillida-real.jpg";
 
 export type AprendeBlock =
   | { type: "h2"; text: string }
@@ -283,6 +284,104 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
         { type: "h2", text: "What to choose as a collector" },
         { type: "p", text: "There is no single answer. Unique pieces usually offer greater singularity and potential revaluation; editions allow access to established artists with tighter budgets." },
         { type: "p", text: "The most widespread advice in institutional collecting is clear: always buy the best possible piece within the available budget, without becoming obsessed with format." },
+      ],
+    },
+  },
+  {
+    slug: "chillida-espacio-hierro-vacio",
+    img: chillidaPortrait,
+    fecha: "2026-07-10",
+    autor: "Ignia Editorial",
+    featuredWorks: ["vertice", "vertigo", "caida"],
+    featuredArtists: ["Jaume Plensa", "Diego Lara", "Cristina Iglesias"],
+    es: {
+      tag: "Maestros de la escultura",
+      titulo: "Eduardo Chillida: el escultor que dio forma al vacío",
+      extracto: "Cómo un forjador vasco convirtió el hierro, el acero y el hueco en el vocabulario más influyente de la escultura contemporánea española.",
+      tiempo: "9 min de lectura",
+      fechaLabel: "10 de julio de 2026",
+      body: [
+        { type: "p", text: "Pocos escultores del siglo XX han condicionado tanto la mirada contemporánea como Eduardo Chillida (San Sebastián, 1924–2002). Su obra sigue apareciendo cada temporada en subastas, ferias y monográficos, y su nombre es probablemente el más buscado hoy cuando se habla de escultura española en museos internacionales." },
+        { type: "p", text: "Entender por qué Chillida sigue siendo tan influyente exige mirar más allá del hierro forjado. Su verdadera aportación fue conceptual: convertir el espacio vacío, el hueco, en materia escultórica de pleno derecho." },
+
+        { type: "h2", text: "Del hierro forjado de Hernani al Peine del Viento" },
+        { type: "p", text: "Chillida empezó estudiando arquitectura en Madrid, un detalle que marcará toda su obra. Abandona los estudios en 1947 y se traslada a París, donde experimenta con el yeso y la figura antes de dar el giro decisivo de vuelta al País Vasco." },
+        { type: "p", text: "En 1951, tras instalarse cerca de Hernani, comienza a trabajar el hierro en la fragua del herrero Manuel Illarramendi. Es un cambio radical: abandona el modelado en positivo para forjar la materia en caliente, un gesto físico que enlaza con la tradición vasca del hierro y que dará lugar a piezas como «Ilarik» (1951), su primera escultura abstracta en hierro." },
+        { type: "p", text: "El salto a la obra pública llega con «Peine del Viento XV» (1977), instalado en el extremo occidental de la bahía de La Concha en San Sebastián. Es una obra colaborativa con el arquitecto Luis Peña Ganchegui y probablemente la escultura pública más fotografiada del norte de España." },
+
+        { type: "h2", text: "El vacío como escultura" },
+        { type: "p", text: "«Yo no esculpo el hierro, esculpo el espacio», resumía Chillida. La idea no es retórica. En sus piezas de acero forjado, los brazos, curvas y planos organizan un vacío interior que se comporta como si tuviera densidad propia." },
+        { type: "p", text: "Esa intuición dialoga directamente con el ensayo «Die Kunst und der Raum» (1969), que Martin Heidegger escribió junto al propio Chillida. El texto, hoy referencia obligatoria en cualquier programa de escultura, plantea que el arte no ocupa el espacio: lo instaura." },
+        { type: "p", text: "Esta lectura del vacío ha influido en generaciones enteras de escultores contemporáneos. Nombres como Jaume Plensa, Cristina Iglesias o Susana Solano han reconocido explícitamente el precedente chillidiano al construir piezas en las que el interior importa tanto como la envolvente." },
+
+        { type: "h2", text: "Chillida Leku: caminar la obra" },
+        { type: "p", text: "En el año 2000 abrió sus puertas Chillida Leku, un caserío del siglo XVI rehabilitado en Hernani rodeado de once hectáreas de bosque. Es probablemente el mejor lugar del mundo para entender su obra: cuarenta piezas monumentales dialogan con hayas, robles y magnolios, sin pedestales innecesarios." },
+        { type: "p", text: "Tras un cierre temporal, el museo reabrió en 2019 bajo gestión conjunta con Hauser & Wirth. La información oficial de visitas y colección está disponible en museochillidaleku.com, referencia obligada para cualquier viaje escultórico al norte de España." },
+        { type: "p", text: "Caminar por Chillida Leku enseña algo que ninguna fotografía transmite: la escala relativa. Piezas como «Buscando la luz» revelan su verdadera dimensión sólo cuando el visitante rodea la obra y siente cómo la luz atraviesa los huecos de acero corten." },
+
+        { type: "h2", text: "Obra pública que redefinió ciudades" },
+        { type: "p", text: "Chillida es hoy uno de los escultores europeos con más obra pública en emplazamiento. El «Peine del Viento» en San Sebastián, el «Elogio del Horizonte» (1990) en el cerro de Santa Catalina en Gijón, «Berlin» (2000) frente a la Cancillería Federal alemana o «Topos V» en la Colección Würth son ejemplos de piezas que reorganizaron sus entornos urbanos." },
+        { type: "p", text: "Las principales colecciones institucionales que conservan su obra son el Museo Reina Sofía (Madrid), el Guggenheim Bilbao, la Fundación Botín (Santander), la Tate en Londres, el MoMA de Nueva York y la Menil Collection en Houston. Consultar sus catálogos en línea es la vía más rápida para trazar una cronología completa de su producción." },
+        { type: "p", text: "Su proyecto más ambicioso, «Tindaya» —un vaciado monumental en el interior de una montaña sagrada en Fuerteventura—, nunca llegó a ejecutarse. Sigue siendo, sin embargo, uno de los ejercicios teóricos más comentados de la escultura contemporánea sobre la relación entre paisaje, hueco y monumento." },
+
+        { type: "h2", text: "Materiales: hierro, acero corten, hormigón, alabastro" },
+        { type: "p", text: "Aunque el imaginario colectivo asocia a Chillida con el hierro, su obra recorre una gama material amplia. El acero corten aparece a partir de los años setenta y le permite escalas monumentales imposibles de forjar a mano; su óxido rojizo estable es hoy indisociable de su lenguaje." },
+        { type: "p", text: "El hormigón sostiene piezas como el «Elogio del Horizonte» y responde a una lógica constructiva: masa, gravedad, permanencia. En el otro extremo, la serie «Lurra» explora el barro cocido, más íntimo, casi doméstico." },
+        { type: "p", text: "El alabastro, presente en obras como «Homenaje a Kandinsky» (1965), introduce la luz como material. La translucidez de la piedra convierte el hueco interior en cámara luminosa, otra manera de esculpir el espacio." },
+
+        { type: "h2", text: "Lo que Chillida enseña al coleccionista contemporáneo" },
+        { type: "p", text: "Para un coleccionista de escultura, Chillida es la mejor escuela sobre tres criterios: escala, gravedad y hueco. Aprender a leer estos tres elementos en una pieza actual es, en buena medida, aprender a leer la herencia chillidiana." },
+        { type: "p", text: "El mercado secundario de su obra es sólido y con precios muy estratificados. Las series de grabados y los múltiples en gres o hierro pequeño abren la puerta a coleccionismo joven; las piezas monumentales y los dibujos únicos aparecen en subastas de referencia en Christie's, Sotheby's y Phillips." },
+        { type: "p", text: "Antes de comprar, la recomendación institucional es clara: visitar Chillida Leku, el Museo Reina Sofía y la Fundación Botín. Entrenar el ojo con la obra original es la mejor garantía frente a un mercado con abundantes reproducciones no autorizadas." },
+
+        { type: "h2", text: "Una vigencia que crece" },
+        { type: "p", text: "Más de veinte años después de su muerte, la influencia de Chillida no ha hecho más que crecer. Su vocabulario —el hueco, la escala habitable, la gravedad como forma— es hoy patrimonio común de la escultura española contemporánea." },
+        { type: "p", text: "Comprender a Chillida no es sólo repasar biografía: es aprender a mirar cualquier escultura moderna con más profundidad. Por eso sigue siendo una lectura imprescindible para escultores, coleccionistas y cualquiera que se acerque al oficio con seriedad." },
+      ],
+    },
+    en: {
+      tag: "Sculpture masters",
+      titulo: "Eduardo Chillida: the sculptor who gave form to emptiness",
+      extracto: "How a Basque blacksmith turned iron, corten steel and the void into the most influential vocabulary in contemporary Spanish sculpture.",
+      tiempo: "9 min read",
+      fechaLabel: "July 10, 2026",
+      body: [
+        { type: "p", text: "Few 20th-century sculptors have shaped the contemporary eye as decisively as Eduardo Chillida (San Sebastián, 1924–2002). His work resurfaces every season in auctions, fairs and monographs, and his name is probably the most searched today when Spanish sculpture appears in international museums." },
+        { type: "p", text: "Understanding why Chillida remains so influential means looking beyond forged iron. His true contribution was conceptual: turning empty space, the void, into fully-fledged sculptural material." },
+
+        { type: "h2", text: "From the forge of Hernani to the Wind Comb" },
+        { type: "p", text: "Chillida began studying architecture in Madrid, a detail that would mark all his later work. He dropped out in 1947 and moved to Paris, where he experimented with plaster and figure before making the decisive return to the Basque Country." },
+        { type: "p", text: "In 1951, after settling near Hernani, he began working iron at the forge of blacksmith Manuel Illarramendi. It was a radical shift: he abandoned additive modelling to forge material while hot, a physical gesture linked to the Basque iron tradition and one that gave birth to «Ilarik» (1951), his first abstract iron sculpture." },
+        { type: "p", text: "The leap into public work came with «Peine del Viento XV» (1977), installed at the western end of La Concha bay in San Sebastián. It is a collaborative work with architect Luis Peña Ganchegui and probably the most photographed public sculpture in northern Spain." },
+
+        { type: "h2", text: "The void as sculpture" },
+        { type: "p", text: "«I do not sculpt iron, I sculpt space», Chillida used to say. The idea is not rhetorical. In his forged-steel pieces, arms, curves and planes organise an inner void that behaves as if it had its own density." },
+        { type: "p", text: "That intuition dialogues directly with the essay «Die Kunst und der Raum» (1969), which Martin Heidegger wrote alongside Chillida himself. The text, now required reading in any sculpture programme, argues that art does not occupy space: it institutes it." },
+        { type: "p", text: "This reading of the void has shaped whole generations of contemporary sculptors. Names such as Jaume Plensa, Cristina Iglesias and Susana Solano have explicitly acknowledged the Chillidian precedent when building pieces in which the interior matters as much as the outer skin." },
+
+        { type: "h2", text: "Chillida Leku: walking the work" },
+        { type: "p", text: "In 2000, Chillida Leku opened its doors: a restored 16th-century farmhouse in Hernani set within eleven hectares of woodland. It is probably the best place in the world to understand his work: forty monumental pieces in dialogue with beeches, oaks and magnolias, without unnecessary pedestals." },
+        { type: "p", text: "After a temporary closure, the museum reopened in 2019 under joint management with Hauser & Wirth. Official visiting and collection information is available at museochillidaleku.com, an essential reference for any sculpture trip to northern Spain." },
+        { type: "p", text: "Walking through Chillida Leku teaches something no photograph conveys: relative scale. Pieces like «Buscando la luz» reveal their true dimensions only when the visitor circles the work and feels light pass through the corten-steel voids." },
+
+        { type: "h2", text: "Public work that redefined cities" },
+        { type: "p", text: "Chillida is today one of the European sculptors with the most in-situ public work. «Peine del Viento» in San Sebastián, «Elogio del Horizonte» (1990) on the Santa Catalina hill in Gijón, «Berlin» (2000) in front of the German Federal Chancellery, and «Topos V» in the Würth Collection are examples of pieces that reorganised their urban environments." },
+        { type: "p", text: "The main institutional collections holding his work are the Museo Reina Sofía (Madrid), Guggenheim Bilbao, Fundación Botín (Santander), Tate in London, MoMA in New York and the Menil Collection in Houston. Their online catalogues are the fastest way to trace a full chronology of his production." },
+        { type: "p", text: "His most ambitious project, «Tindaya» — a monumental hollowing of a sacred mountain in Fuerteventura — was never executed. It remains, however, one of the most discussed theoretical exercises in contemporary sculpture on the relationship between landscape, void and monument." },
+
+        { type: "h2", text: "Materials: iron, corten steel, concrete, alabaster" },
+        { type: "p", text: "Although the collective imagination associates Chillida with iron, his output spans a wide material range. Corten steel appears from the 1970s onward, enabling monumental scales impossible to forge by hand; its stable red oxide is today inseparable from his language." },
+        { type: "p", text: "Concrete supports works like «Elogio del Horizonte» and responds to a constructive logic: mass, gravity, permanence. At the other end, the «Lurra» series explores fired clay, more intimate, almost domestic." },
+        { type: "p", text: "Alabaster, present in works such as «Homenaje a Kandinsky» (1965), introduces light as material. The stone's translucency turns the inner void into a luminous chamber, another way of sculpting space." },
+
+        { type: "h2", text: "What Chillida teaches the contemporary collector" },
+        { type: "p", text: "For a sculpture collector, Chillida is the best school on three criteria: scale, gravity and void. Learning to read these three elements in a current piece is, largely, learning to read Chillidian heritage." },
+        { type: "p", text: "His secondary market is solid and highly stratified. Print series and small multiples in stoneware or iron open the door to younger collecting; monumental pieces and unique drawings appear at reference auctions at Christie's, Sotheby's and Phillips." },
+        { type: "p", text: "Before buying, the institutional recommendation is clear: visit Chillida Leku, the Museo Reina Sofía and Fundación Botín. Training the eye with the original work is the best safeguard in a market with abundant unauthorised reproductions." },
+
+        { type: "h2", text: "A relevance that keeps growing" },
+        { type: "p", text: "More than twenty years after his death, Chillida's influence has only grown. His vocabulary — the void, the inhabitable scale, gravity as form — is today common heritage of contemporary Spanish sculpture." },
+        { type: "p", text: "Understanding Chillida is not just reviewing a biography: it is learning to look at any modern sculpture more deeply. That is why he remains essential reading for sculptors, collectors and anyone approaching the craft seriously." },
       ],
     },
   },

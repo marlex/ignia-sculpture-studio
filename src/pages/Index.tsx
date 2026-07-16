@@ -11,7 +11,7 @@ import { Reviews } from "@/components/ignia/home/Reviews";
 import { Aprende } from "@/components/ignia/Aprende";
 
 import { SectionSeparator } from "@/components/ignia/home/SectionSeparator";
-import { Inspiracion } from "@/components/ignia/Inspiracion";
+
 import { Splash } from "@/components/ignia/home/Splash";
 import { useFadeUp } from "@/hooks/useFadeUp";
 import { useLang } from "@/i18n/LanguageContext";
@@ -95,7 +95,6 @@ const Index = () => {
       </div>
       <SectionSeparator title={t.s2.title} subtitle={t.s2.subtitle} cta={t.s2.cta} />
       <Colectores />
-      <Inspiracion />
       <Aprende />
       <SectionSeparator title={t.s3.title} subtitle={t.s3.subtitle} cta={t.s3.cta} />
       <Footer />
