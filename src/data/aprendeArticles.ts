@@ -10,6 +10,7 @@ export type AprendeBlock =
 export interface AprendeArticle {
   slug: string;
   img: string;
+  imgPosition?: string; // tailwind object-position class, defaults to object-bottom
   fecha: string;
   autor: string;
   featuredWorks: string[]; // work slugs
