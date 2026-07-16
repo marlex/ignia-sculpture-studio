@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
-import { getAprendeArticleBySlug } from "@/data/aprendeArticles";
+import { APRENDE_ARTICLES, getAprendeArticleBySlug } from "@/data/aprendeArticles";
 import { WorksConversionBlock, ArtistsConversionBlock } from "@/components/ignia/ConversionBlocks";
 import NotFound from "@/pages/NotFound";
 
@@ -32,6 +32,8 @@ const AprendeArticuloPage = () => {
         worksCta: "Ver toda la colección →",
         artistsTitle: "Conoce a los escultores",
         artistsCta: "Ver todos los escultores →",
+        readMoreTitle: "Seguir leyendo",
+        relatedList: "Listado de artículos relacionados",
       }
     : {
         by: "By",
@@ -40,6 +42,8 @@ const AprendeArticuloPage = () => {
         worksCta: "See the full collection →",
         artistsTitle: "Meet the sculptors",
         artistsCta: "See all sculptors →",
+        readMoreTitle: "Keep reading",
+        relatedList: "Related articles list",
       };
 
   const content = article ? article[lang] : null;
@@ -100,6 +104,37 @@ const AprendeArticuloPage = () => {
           <Link to="/aprende" className="link-arrow">{t.back}</Link>
         </div>
       </article>
+
+      <section className="bg-surface px-6 md:px-12 py-16 md:py-20" aria-labelledby="aprende-related-title">
+        <h2 id="aprende-related-title" className="font-display font-semibold text-[clamp(24px,2.8vw,34px)] tracking-[-0.02em] text-ink mb-8 max-w-[1280px] mx-auto">{t.readMoreTitle}</h2>
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 max-w-[1280px] mx-auto" aria-label={t.relatedList}>
+          {APRENDE_ARTICLES.filter((a) => a.slug !== slug).map((a) => {
+            const c = a[lang];
+            return (
+              <li key={a.slug} className="h-full">
+                <Link to={`/aprende/${a.slug}`} className="group flex flex-col h-full gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4">
+                  <div className="flex flex-col flex-1">
+                    <div className="font-body text-[14px] font-normal text-muted-line uppercase tracking-[0.14em] mb-2">{c.tag}</div>
+                    <h3 className="font-display font-semibold text-[clamp(22px,2.6vw,32px)] tracking-[-0.02em] text-ink mb-2 leading-tight">{c.titulo}</h3>
+                    <p className="font-body text-[16px] font-normal text-gray mb-3 leading-snug">{c.extracto}</p>
+                    <div className="font-body text-[16px] font-normal text-gray">{c.tiempo}</div>
+                  </div>
+                  <div className="w-full overflow-hidden bg-secondary aspect-[16/9]">
+                    <img
+                      src={a.img}
+                      alt={c.titulo}
+                      loading="lazy"
+                      width={1600}
+                      height={1000}
+                      className="w-full h-full object-cover object-bottom transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
 
       <WorksConversionBlock
         slugs={article.featuredWorks}
