@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
-import { getAprendeArticleBySlug } from "@/data/aprendeArticles";
+import { APRENDE_ARTICLES, getAprendeArticleBySlug } from "@/data/aprendeArticles";
 import { WorksConversionBlock, ArtistsConversionBlock } from "@/components/ignia/ConversionBlocks";
 import NotFound from "@/pages/NotFound";
 
