@@ -38,7 +38,7 @@ export const Aprende = ({ showHeader = true }: AprendeProps) => {
                     loading="lazy"
                     width={1600}
                     height={1000}
-                    className="w-full h-full object-cover object-bottom transition-transform duration-500 group-hover:scale-[1.03]"
+                    className={`w-full h-full object-cover ${a.imgPosition ?? "object-bottom"} transition-transform duration-500 group-hover:scale-[1.03]`}
                   />
                 </div>
               </a>
