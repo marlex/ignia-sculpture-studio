@@ -19,19 +19,19 @@ export const Aprende = ({ showHeader = true }: AprendeProps) => {
           <a href="/aprende" className="link-arrow">{t.more}</a>
         </div>
       )}
-      <ul className="flex flex-col gap-12 md:gap-14" aria-label={t.list}>
+      <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10" aria-label={t.list}>
         {APRENDE_ARTICLES.map((a) => {
           const c = a[lang];
           return (
             <li key={a.slug}>
-              <a href={`/aprende/${a.slug}`} className="group flex flex-col md:flex-row gap-6 md:gap-8 items-start md:items-stretch focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4">
-                <div className="md:w-[38%] flex flex-col justify-center md:justify-end order-2 md:order-1">
+              <a href={`/aprende/${a.slug}`} className="group flex flex-col gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4">
+                <div className="flex flex-col">
                   <div className="font-body text-[14px] font-normal text-muted-line uppercase tracking-[0.14em] mb-2">{c.tag}</div>
                   <h3 className="font-display font-semibold text-[clamp(22px,2.6vw,32px)] tracking-[-0.02em] text-ink mb-2 leading-tight">{c.titulo}</h3>
                   <p className="font-body text-[16px] font-normal text-gray mb-3 leading-snug">{c.extracto}</p>
                   <div className="font-body text-[16px] font-normal text-gray">{c.tiempo}</div>
                 </div>
-                <div className="md:w-[62%] overflow-hidden bg-secondary aspect-[21/9] order-1 md:order-2">
+                <div className="w-full overflow-hidden bg-secondary aspect-[16/9]">
                   <img
                     src={a.img}
                     alt={c.titulo}
