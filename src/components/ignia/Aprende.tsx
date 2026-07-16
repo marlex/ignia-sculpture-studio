@@ -24,8 +24,8 @@ export const Aprende = ({ showHeader = true }: AprendeProps) => {
           const c = a[lang];
           return (
             <li key={a.slug}>
-              <a href={`/aprende/${a.slug}`} className="group flex flex-col gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4">
-                <div className="flex flex-col">
+              <a href={`/aprende/${a.slug}`} className="group flex flex-col h-full gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4">
+                <div className="flex flex-col flex-1">
                   <div className="font-body text-[14px] font-normal text-muted-line uppercase tracking-[0.14em] mb-2">{c.tag}</div>
                   <h3 className="font-display font-semibold text-[clamp(22px,2.6vw,32px)] tracking-[-0.02em] text-ink mb-2 leading-tight">{c.titulo}</h3>
                   <p className="font-body text-[16px] font-normal text-gray mb-3 leading-snug">{c.extracto}</p>
@@ -38,7 +38,7 @@ export const Aprende = ({ showHeader = true }: AprendeProps) => {
                     loading="lazy"
                     width={1600}
                     height={1000}
-                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+                    className="w-full h-full object-cover object-bottom transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 </div>
               </a>
