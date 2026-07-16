@@ -299,7 +299,7 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
     es: {
       tag: "Maestros de la escultura",
       titulo: "Eduardo Chillida: el escultor que dio forma al vacío",
-      extracto: "Cómo un forjador vasco convirtió el hierro, el acero y el hueco en el vocabulario más influyente de la escultura contemporánea española.",
+      extracto: "El escultor vasco que convirtió el hierro y el vacío en lenguaje universal.",
       tiempo: "9 min de lectura",
       fechaLabel: "10 de julio de 2026",
       body: [
