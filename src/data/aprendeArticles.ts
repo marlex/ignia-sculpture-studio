@@ -1,6 +1,7 @@
 import bronzePatina from "@/assets/aprende-bronce-patina.jpg";
 import sculpturePhoto from "@/assets/aprende-fotografiar-volumen.jpg";
 import limitedEdition from "@/assets/aprende-ediciones-limitadas.jpg";
+import chillidaPortrait from "@/assets/artist-eduardo-chillida-real.jpg";
 
 export type AprendeBlock =
   | { type: "h2"; text: string }
