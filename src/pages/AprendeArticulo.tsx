@@ -32,6 +32,8 @@ const AprendeArticuloPage = () => {
         worksCta: "Ver toda la colección →",
         artistsTitle: "Conoce a los escultores",
         artistsCta: "Ver todos los escultores →",
+        readMoreTitle: "Seguir leyendo",
+        relatedList: "Listado de artículos relacionados",
       }
     : {
         by: "By",
@@ -40,6 +42,8 @@ const AprendeArticuloPage = () => {
         worksCta: "See the full collection →",
         artistsTitle: "Meet the sculptors",
         artistsCta: "See all sculptors →",
+        readMoreTitle: "Keep reading",
+        relatedList: "Related articles list",
       };
 
   const content = article ? article[lang] : null;
