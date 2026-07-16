@@ -291,7 +291,7 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
   {
     slug: "chillida-espacio-hierro-vacio",
     img: chillidaPortrait,
-    imgPosition: "object-top",
+    imgPosition: "object-[center_-70px]",
     fecha: "2026-07-10",
     autor: "Ignia Editorial",
     featuredWorks: ["vertice", "vertigo", "caida"],
@@ -299,7 +299,7 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
     es: {
       tag: "Maestros de la escultura",
       titulo: "Eduardo Chillida: el escultor que dio forma al vacío",
-      extracto: "Cómo un forjador vasco convirtió el hierro, el acero y el hueco en el vocabulario más influyente de la escultura contemporánea española.",
+      extracto: "El escultor vasco que convirtió el hierro y el vacío en lenguaje universal.",
       tiempo: "9 min de lectura",
       fechaLabel: "10 de julio de 2026",
       body: [
@@ -344,7 +344,7 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
     en: {
       tag: "Sculpture masters",
       titulo: "Eduardo Chillida: the sculptor who gave form to emptiness",
-      extracto: "How a Basque blacksmith turned iron, corten steel and the void into the most influential vocabulary in contemporary Spanish sculpture.",
+      extracto: "The Basque sculptor who turned iron and the void into a universal language.",
       tiempo: "9 min read",
       fechaLabel: "July 10, 2026",
       body: [
