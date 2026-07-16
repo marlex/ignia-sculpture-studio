@@ -291,6 +291,7 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
   {
     slug: "chillida-espacio-hierro-vacio",
     img: chillidaPortrait,
+    imgPosition: "object-top",
     fecha: "2026-07-10",
     autor: "Ignia Editorial",
     featuredWorks: ["vertice", "vertigo", "caida"],
