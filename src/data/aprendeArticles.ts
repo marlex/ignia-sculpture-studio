@@ -10,6 +10,7 @@ export type AprendeBlock =
 export interface AprendeArticle {
   slug: string;
   img: string;
+  imgPosition?: string; // tailwind object-position class, defaults to object-bottom
   fecha: string;
   autor: string;
   featuredWorks: string[]; // work slugs
@@ -290,6 +291,7 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
   {
     slug: "chillida-espacio-hierro-vacio",
     img: chillidaPortrait,
+    imgPosition: "object-top",
     fecha: "2026-07-10",
     autor: "Ignia Editorial",
     featuredWorks: ["vertice", "vertigo", "caida"],
