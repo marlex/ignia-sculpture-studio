@@ -4,7 +4,7 @@ import heroManos from "@/assets/hero-manos.jpg.asset.json";
 import heroMetal from "@/assets/hero-metal.jpg.asset.json";
 import heroMarmol from "@/assets/hero-marmol.jpg.asset.json";
 
-const heroImages = [heroMarmol.url, heroManos.url, heroMetal.url];
+const heroImages = [heroMetal.url, heroMarmol.url, heroManos.url];
 const SLIDE_MS = 5500;
 
 export const HeroFull = () => {
