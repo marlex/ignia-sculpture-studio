@@ -560,6 +560,11 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
       )}
 
       <Footer />
+      <PurchaseModal
+        open={buyOpen}
+        onClose={() => setBuyOpen(false)}
+        obra={o ? { id: (o as any).id, slug: o.slug, title: o.title, artist: o.artist, material: o.material, year: o.year as any, price: o.price, image: o.image } : null}
+      />
     </main>
   );
 };
