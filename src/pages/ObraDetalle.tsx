@@ -443,7 +443,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
             </div>
 
             <div className="flex gap-3">
-              <button onClick={() => window.dispatchEvent(new CustomEvent("ignia:open-invite", { detail: { defaultProfile: "collector" } }))} className="flex-1 bg-transparent text-ink border border-ink font-body text-[16px] tracking-[0.16em] uppercase py-5 hover:opacity-65 transition-opacity">{t.buy}</button>
+              <button onClick={() => setBuyOpen(true)} className="flex-1 font-body text-[16px] tracking-[0.16em] uppercase py-5 transition-colors" style={{ background: "#000000", color: "#FFFFFF", border: "1px solid #000000" }} onMouseEnter={(e) => { e.currentTarget.style.background = "#222222"; e.currentTarget.style.borderColor = "#222222"; }} onMouseLeave={(e) => { e.currentTarget.style.background = "#000000"; e.currentTarget.style.borderColor = "#000000"; }}>{t.buy}</button>
               <button
                 onClick={() => setChatOpen(true)}
                 aria-label={t.talk}
