@@ -53,6 +53,17 @@ const ObraDetalle = () => {
   const [shipOpen, setShipOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
   const [priceInfoOpen, setPriceInfoOpen] = useState(false);
+  const [buyOpen, setBuyOpen] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get("buy") === "1") {
+      setBuyOpen(true);
+      const next = new URLSearchParams(searchParams);
+      next.delete("buy");
+      setSearchParams(next, { replace: true });
+    }
+  }, [searchParams, setSearchParams]);
 
   useEffect(() => { setIdx(0); }, [slug]);
 
