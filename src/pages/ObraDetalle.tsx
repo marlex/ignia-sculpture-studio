@@ -1,5 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useSearchParams } from "react-router-dom";
+import { PurchaseModal } from "@/components/ignia/PurchaseModal";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 const GlbViewer = lazy(() => import("@/components/ignia/GlbViewer").then(m => ({ default: m.GlbViewer })));
@@ -16,7 +17,7 @@ const T = {
     authP: "Cada obra de Ignia incluye un certificado de autenticidad emitido en blockchain. Es público, verificable desde cualquier parte del mundo y viaja con la pieza en futuras reventas.",
     tokenId: "Token ID", chain: "Cadena", signed: "Firmado por", edition: "Edición",
     cert: "Ver certificado público →",
-    buy: "Adquirir", talk: "Hablar con Ignia",
+    buy: "Comprar", talk: "Hablar con Ignia",
     photos: "Fotos", view3d: "Vista 3D",
     counter: (n: number) => `${n} fotos · Navega por los ángulos`,
   },
@@ -26,7 +27,7 @@ const T = {
     authP: "Every Ignia work includes a certificate of authenticity issued on blockchain. It is public, verifiable worldwide and travels with the piece in future resales.",
     tokenId: "Token ID", chain: "Chain", signed: "Signed by", edition: "Edition",
     cert: "View public certificate →",
-    buy: "Acquire", talk: "Talk to Ignia",
+    buy: "Buy", talk: "Talk to Ignia",
     photos: "Photos", view3d: "3D view",
     counter: (n: number) => `${n} photos · Browse angles`,
   },
@@ -52,6 +53,17 @@ const ObraDetalle = () => {
   const [shipOpen, setShipOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
   const [priceInfoOpen, setPriceInfoOpen] = useState(false);
+  const [buyOpen, setBuyOpen] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get("buy") === "1") {
+      setBuyOpen(true);
+      const next = new URLSearchParams(searchParams);
+      next.delete("buy");
+      setSearchParams(next, { replace: true });
+    }
+  }, [searchParams, setSearchParams]);
 
   useEffect(() => { setIdx(0); }, [slug]);
 
@@ -431,7 +443,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
             </div>
 
             <div className="flex gap-3">
-              <button onClick={() => window.dispatchEvent(new CustomEvent("ignia:open-invite", { detail: { defaultProfile: "collector" } }))} className="flex-1 bg-transparent text-ink border border-ink font-body text-[16px] tracking-[0.16em] uppercase py-5 hover:opacity-65 transition-opacity">{t.buy}</button>
+              <button onClick={() => setBuyOpen(true)} className="flex-1 font-body text-[16px] tracking-[0.16em] uppercase py-5 transition-colors" style={{ background: "#000000", color: "#FFFFFF", border: "1px solid #000000" }} onMouseEnter={(e) => { e.currentTarget.style.background = "#222222"; e.currentTarget.style.borderColor = "#222222"; }} onMouseLeave={(e) => { e.currentTarget.style.background = "#000000"; e.currentTarget.style.borderColor = "#000000"; }}>{t.buy}</button>
               <button
                 onClick={() => setChatOpen(true)}
                 aria-label={t.talk}
@@ -548,6 +560,11 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
       )}
 
       <Footer />
+      <PurchaseModal
+        open={buyOpen}
+        onClose={() => setBuyOpen(false)}
+        obra={o ? { id: (o as any).id, slug: o.slug, title: o.title, artist: o.artist, material: o.material, year: o.year as any, price: o.price, image: o.image } : null}
+      />
     </main>
   );
 };
