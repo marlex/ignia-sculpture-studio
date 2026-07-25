@@ -12,7 +12,7 @@ import { Aprende } from "@/components/ignia/Aprende";
 
 import { SectionSeparator } from "@/components/ignia/home/SectionSeparator";
 
-import { Splash } from "@/components/ignia/home/Splash";
+
 import { useFadeUp } from "@/hooks/useFadeUp";
 import { useLang } from "@/i18n/LanguageContext";
 
@@ -74,7 +74,6 @@ const Index = () => {
 
   return (
     <main className="pt-14" style={{ background: "#FFFFFF" }}>
-      <Splash />
       <Header />
       <HeroFull />
       <div ref={fadeTicker}>
