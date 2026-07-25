@@ -14,7 +14,7 @@ export const Aprende = ({ showHeader = true }: AprendeProps) => {
   return (
     <section className="bg-surface px-6 md:px-12 py-16 md:py-20" aria-labelledby={showHeader ? "ignia-aprende-title" : undefined}>
       {showHeader && (
-        <div className="flex items-end justify-between mb-8">
+        <div className="flex items-center justify-between mb-8">
           <h2 id="ignia-aprende-title" className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.title}</h2>
           <a href="/aprende" className="link-arrow">{t.more}</a>
         </div>

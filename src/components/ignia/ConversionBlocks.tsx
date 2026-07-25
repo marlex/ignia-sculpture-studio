@@ -17,7 +17,7 @@ export const WorksConversionBlock = ({ slugs, lang, heading, cta }: WorksProps) 
 
   return (
     <section className="bg-surface px-6 md:px-12 py-16 md:py-20" aria-labelledby="conv-works">
-      <div className="flex items-end justify-between mb-8 max-w-[1280px] mx-auto">
+      <div className="flex items-center justify-between mb-8 max-w-[1280px] mx-auto">
         <h2 id="conv-works" className="font-display font-semibold text-[clamp(24px,2.8vw,34px)] tracking-[-0.02em] text-ink">{heading}</h2>
         <Link to={cta.to} className="link-arrow">{cta.label}</Link>
       </div>
@@ -62,7 +62,7 @@ export const ArtistsConversionBlock = ({ names, lang, heading, cta }: ArtistsPro
 
   return (
     <section className="bg-white px-6 md:px-12 py-16 md:py-20" aria-labelledby="conv-artists">
-      <div className="flex items-end justify-between mb-8 max-w-[1280px] mx-auto">
+      <div className="flex items-center justify-between mb-8 max-w-[1280px] mx-auto">
         <h2 id="conv-artists" className="font-display font-semibold text-[clamp(24px,2.8vw,34px)] tracking-[-0.02em] text-ink">{heading}</h2>
         <Link to={cta.to} className="link-arrow">{cta.label}</Link>
       </div>
