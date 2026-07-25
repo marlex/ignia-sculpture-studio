@@ -21,7 +21,11 @@ const techniqueOf = (material: string): string => material.split(" ")[0];
 
 type FilterKey = "price" | "material" | "technique";
 
-export const Coleccion = () => {
+interface ColeccionProps {
+  showHeader?: boolean;
+}
+
+export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
   const lang = useLang();
   const allWorks = getCatalogueWorks(lang);
 
@@ -35,6 +39,7 @@ export const Coleccion = () => {
 
   const t = lang === "es" ? {
     h: "Colección",
+    all: "Ver todos →",
     worksLabel: "obras",
     search: "Buscar artista, obra, material…",
     priceAsc: "Precio: menor a mayor",
@@ -52,6 +57,7 @@ export const Coleccion = () => {
     hint: "Arrastra para rotar · Scroll para zoom",
   } : {
     h: "Collection",
+    all: "View all →",
     worksLabel: "works",
     search: "Search artist, work, material…",
     priceAsc: "Price: low to high",
@@ -136,6 +142,12 @@ export const Coleccion = () => {
 
   return (
     <section className="bg-white px-6 md:px-12 py-6 sm:py-10 md:py-[60px]">
+      {showHeader && (
+        <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
+          <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.h}</h2>
+          <Link to="/coleccion" className="link-arrow">{t.all}</Link>
+        </div>
+      )}
 
       {/* MOBILE: full-width search */}
       <div className="sm:hidden mb-3">

@@ -75,7 +75,11 @@ const INSPIRATION = {
   ],
 };
 
-export const Artistas = () => {
+interface ArtistasProps {
+  showHeader?: boolean;
+}
+
+export const Artistas = ({ showHeader = false }: ArtistasProps) => {
   const lang = useLang();
   const { featured, secundarios } = IGNIA_ARTISTS[lang];
   const inspiration = INSPIRATION[lang];
@@ -93,6 +97,12 @@ export const Artistas = () => {
   return (
     <>
       <section className="px-6 md:px-12 py-[60px]" style={{ background: "#f5f5f5" }}>
+        {showHeader && (
+          <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
+            <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.label}</h2>
+            <Link to="/escultores" className="link-arrow">{t.all}</Link>
+          </div>
+        )}
 
         <article className="grid grid-cols-1 md:grid-cols-[65%_35%] gap-8 md:gap-14 items-center mb-16">
           <Link to={`/perfil/escultor/${slugify(featured.nombre)}`} aria-label={featured.nombre} className="block aspect-square md:aspect-[16/9] overflow-hidden bg-secondary group">

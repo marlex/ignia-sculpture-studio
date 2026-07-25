@@ -82,12 +82,12 @@ const Index = () => {
 
       <div ref={coleccionRef}>
         <div ref={fadeCol}>
-          <Coleccion />
+          <Coleccion showHeader />
         </div>
       </div>
       <SectionSeparator title={t.s1.title} subtitle={t.s1.subtitle} cta={t.s1.cta} />
       <div ref={fadeArt}>
-        <Artistas />
+        <Artistas showHeader />
       </div>
       <div ref={fadeReviews}>
         <Reviews />
