@@ -1,5 +1,6 @@
 import bronzePatina from "@/assets/aprende-bronce-patina.jpg";
-import sculpturePhoto from "@/assets/aprende-fotografiar-volumen.jpg";
+import sculpturePhotoAsset from "@/assets/aprende-fotografiar-volumen-new.jpg.asset.json";
+const sculpturePhoto = sculpturePhotoAsset.url;
 import limitedEdition from "@/assets/aprende-ediciones-limitadas.jpg";
 import chillidaPortrait from "@/assets/artist-eduardo-chillida-real.jpg";
 
