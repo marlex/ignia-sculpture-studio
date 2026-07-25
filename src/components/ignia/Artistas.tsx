@@ -7,7 +7,8 @@ import barcelo from "@/assets/artist-miquel-barcelo-real.jpg";
 import chillida from "@/assets/artist-eduardo-chillida-real.jpg";
 import ulmukAsset from "@/assets/ada-la-cadena-taller.png.asset.json";
 import helenaPortrait from "@/assets/artist-helena-vazquez-new.png.asset.json";
-import luciaPortrait from "@/assets/artist-lucia-pardo.jpg";
+import luciaPortraitAsset from "@/assets/artist-lucia-pardo-new.jpg.asset.json";
+const luciaPortrait = luciaPortraitAsset.url;
 import pabloPortrait from "@/assets/artist-pablo-reyes.jpg";
 import tomasPortrait from "@/assets/artist-tomas-vigo.jpg";
 
