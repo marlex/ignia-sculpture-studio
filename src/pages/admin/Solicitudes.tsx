@@ -121,6 +121,7 @@ export default function Solicitudes() {
     try {
       const { error } = await supabase.from("applications").update({ status: newStatus }).eq("id", app.id);
       if (error) throw error;
+      const appLang = (app.language === "en" ? "en" : "es") as "es" | "en";
       if (newStatus === "accepted") {
         const { data: session } = await supabase.auth.getSession();
         const res = await fetch(
@@ -138,6 +139,17 @@ export default function Solicitudes() {
         const json = await res.json();
         if (!res.ok) throw new Error(json?.error || t.inviteFail);
         setMsg(t.inviteOk);
+      } else if (newStatus === "waitlist" || newStatus === "rejected") {
+        const templateName = newStatus === "waitlist" ? "application-waitlist" : "application-rejected";
+        const { error: mailErr } = await supabase.functions.invoke("send-transactional-email", {
+          body: {
+            templateName,
+            recipientEmail: app.email,
+            idempotencyKey: `${templateName}-${app.id}`,
+            templateData: { name: app.name, lang: appLang },
+          },
+        });
+        if (mailErr) throw mailErr;
       }
       await loadData();
     } catch (err: any) {
