@@ -599,24 +599,52 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
               </div>
               <button onClick={() => setChatOpen(false)} className="text-gray hover:opacity-65 transition-opacity font-body text-[28px] leading-none w-11 h-11 flex items-center justify-center">×</button>
             </header>
-            <div className="flex-1 overflow-y-auto p-5 space-y-3">
-              <div className="bg-secondary px-4 py-3 font-body text-[14px] text-ink max-w-[85%]">
-                Hola, soy Ignia. ¿En qué puedo ayudarte con <strong>{o.title}</strong>?
+            <div ref={chatScrollRef} className="flex-1 overflow-y-auto p-5 space-y-3">
+              <div className="bg-secondary px-4 py-3 font-body text-[14px] text-ink max-w-[85%] whitespace-pre-wrap">
+                {greeting}
               </div>
+              {chatMessages.map((m, i) => (
+                <div
+                  key={i}
+                  className={
+                    m.role === "user"
+                      ? "bg-ink text-white px-4 py-3 font-body text-[14px] max-w-[85%] ml-auto whitespace-pre-wrap"
+                      : "bg-secondary px-4 py-3 font-body text-[14px] text-ink max-w-[85%] whitespace-pre-wrap"
+                  }
+                >
+                  {m.content}
+                </div>
+              ))}
+              {chatSending && (
+                <div className="bg-secondary px-4 py-3 font-body text-[14px] text-gray max-w-[85%]">
+                  {lang === "es" ? "Escribiendo…" : "Typing…"}
+                </div>
+              )}
+              {chatError && (
+                <div className="px-4 py-2 font-body text-[13px] text-red-600">{chatError}</div>
+              )}
             </div>
             <form
-              onSubmit={(e) => { e.preventDefault(); }}
+              onSubmit={sendChat}
               className="border-t border-border p-3 flex gap-2"
             >
               <input
                 type="text"
-                placeholder="Escribe tu mensaje…"
-                className="flex-1 border border-border px-3 py-2.5 font-body text-[14px] outline-none focus:border-ink"
+                value={chatInput}
+                onChange={(e) => setChatInput(e.target.value)}
+                disabled={chatSending}
+                placeholder={lang === "es" ? "Escribe tu mensaje…" : "Type your message…"}
+                className="flex-1 border border-border px-3 py-2.5 font-body text-[14px] outline-none focus:border-ink disabled:opacity-60"
               />
-              <button type="submit" className="bg-transparent text-ink border border-ink font-body text-[12px] uppercase tracking-[0.14em] px-4 hover:opacity-65 transition-opacity">
-                Enviar
+              <button
+                type="submit"
+                disabled={chatSending || !chatInput.trim()}
+                className="bg-transparent text-ink border border-ink font-body text-[12px] uppercase tracking-[0.14em] px-4 hover:opacity-65 transition-opacity disabled:opacity-40"
+              >
+                {lang === "es" ? "Enviar" : "Send"}
               </button>
             </form>
+
           </div>
         </div>
       )}
