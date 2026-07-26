@@ -591,7 +591,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
 
 
       {chatOpen && (
-        <div className="fixed inset-0 z-[200] bg-black/50 flex items-end md:items-center md:justify-end" onClick={() => setChatOpen(false)}>
+        <div key={lang} className="fixed inset-0 z-[200] bg-black/50 flex items-end md:items-center md:justify-end" onClick={() => setChatOpen(false)}>
           <div
             className="w-full md:w-[420px] h-[80vh] md:h-full bg-white flex flex-col"
             onClick={(e) => e.stopPropagation()}
@@ -621,7 +621,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
               ))}
               {chatSending && (
                 <div className="bg-secondary px-4 py-3 font-body text-[14px] text-gray max-w-[85%]">
-                  {lang === "es" ? "Escribiendo…" : "Typing…"}
+                  {t.chatTyping}
                 </div>
               )}
               {chatError && (
@@ -637,7 +637,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
                 disabled={chatSending}
-                placeholder={lang === "es" ? "Escribe tu mensaje…" : "Type your message…"}
+                placeholder={t.chatPlaceholder}
                 className="flex-1 border border-border px-3 py-2.5 font-body text-[14px] outline-none focus:border-ink disabled:opacity-60"
               />
               <button
@@ -645,13 +645,14 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
                 disabled={chatSending || !chatInput.trim()}
                 className="bg-transparent text-ink border border-ink font-body text-[12px] uppercase tracking-[0.14em] px-4 hover:opacity-65 transition-opacity disabled:opacity-40"
               >
-                {lang === "es" ? "Enviar" : "Send"}
+                {t.chatSend}
               </button>
             </form>
 
           </div>
         </div>
       )}
+
 
       <Footer />
       <PurchaseModal
