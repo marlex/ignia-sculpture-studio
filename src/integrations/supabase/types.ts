@@ -80,6 +80,59 @@ export type Database = {
         }
         Relationships: []
       }
+      artworks: {
+        Row: {
+          artist_id: string
+          created_at: string
+          description: string | null
+          dimensions: string | null
+          id: string
+          image_url: string | null
+          medium: string | null
+          price: number | null
+          status: Database["public"]["Enums"]["artwork_status"]
+          title: string
+          updated_at: string
+          year: number | null
+        }
+        Insert: {
+          artist_id: string
+          created_at?: string
+          description?: string | null
+          dimensions?: string | null
+          id?: string
+          image_url?: string | null
+          medium?: string | null
+          price?: number | null
+          status?: Database["public"]["Enums"]["artwork_status"]
+          title: string
+          updated_at?: string
+          year?: number | null
+        }
+        Update: {
+          artist_id?: string
+          created_at?: string
+          description?: string | null
+          dimensions?: string | null
+          id?: string
+          image_url?: string | null
+          medium?: string | null
+          price?: number | null
+          status?: Database["public"]["Enums"]["artwork_status"]
+          title?: string
+          updated_at?: string
+          year?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "artworks_artist_id_fkey"
+            columns: ["artist_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       email_logs: {
         Row: {
           application_id: string | null
@@ -295,6 +348,7 @@ export type Database = {
         | "3d_activated"
         | "favorited"
         | "inquiry"
+      artwork_status: "pendiente" | "aprobada" | "rechazada"
       gender_option:
         | "female"
         | "male"
@@ -435,6 +489,7 @@ export const Constants = {
         "favorited",
         "inquiry",
       ],
+      artwork_status: ["pendiente", "aprobada", "rechazada"],
       gender_option: [
         "female",
         "male",
