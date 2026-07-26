@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { useParams, Link, useSearchParams } from "react-router-dom";
 import { PurchaseModal } from "@/components/ignia/PurchaseModal";
 import { Header } from "@/components/ignia/Header";
@@ -9,6 +9,7 @@ import { getWorkBySlug, WORKS } from "@/data/igniaWorks";
 import { ChevronLeft, ChevronRight, MessageCircle, Link2, Mail, ChevronDown, Info } from "lucide-react";
 import { BIOS } from "@/pages/PerfilEscultor";
 import { artistSlug } from "@/lib/artistSlug";
+import { supabase } from "@/integrations/supabase/client";
 
 const T = {
   es: {
