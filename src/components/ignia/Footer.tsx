@@ -166,7 +166,7 @@ export const Footer = () => {
       </div>
       </div>
 
-      <div className="-mx-6 md:-mx-12 px-6 md:px-12 py-6 bg-secondary flex justify-between flex-wrap gap-x-8 gap-y-3 items-center mt-auto">
+      <div className="-mx-6 md:-mx-12 px-6 md:px-12 py-6 bg-secondary flex justify-between flex-wrap gap-x-8 gap-y-3 items-center mt-auto mb-10">
         <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
           <Link to="/legal/terminos" className="font-body text-[13px] font-normal text-ink hover:opacity-65 transition-opacity tracking-[0.14em] uppercase">
             {lang === "es" ? "Términos y Condiciones" : "Terms & Conditions"}
