@@ -36,7 +36,7 @@ const EMAIL_TEMPLATES: Record<string, React.ComponentType<any>> = {
 }
 
 // Configuration
-const SITE_NAME = "ignia-sculpture-studio"
+const SITE_NAME = "Ignia Gallery"
 const SENDER_DOMAIN = "notify.igniagallery.com"
 const ROOT_DOMAIN = "igniagallery.com"
 const FROM_DOMAIN = "notify.igniagallery.com" // Domain shown in From address (may be root or sender subdomain)
