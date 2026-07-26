@@ -107,11 +107,7 @@ const ObraDetalle = () => {
       if (!reply) throw new Error("empty reply");
       setChatMessages((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch (err) {
-      setChatError(
-        lang === "es"
-          ? "No se pudo enviar el mensaje. Inténtalo de nuevo."
-          : "Couldn't send the message. Please try again.",
-      );
+      setChatError(t.chatError);
     } finally {
       setChatSending(false);
     }
