@@ -20,8 +20,8 @@
     html { font-size: 16px; }
 
     body {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 400;
       color: var(--grey-800);
       background: var(--white);
       line-height: 1.7;
@@ -40,7 +40,7 @@
     }
 
     .wordmark {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 15px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -48,31 +48,31 @@
       text-decoration: none;
       display: block;
       margin-bottom: 32px;
+      font-weight: 700;
     }
 
     h1 {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(28px, 4vw, 40px);
       line-height: 1.1;
       color: var(--black);
       margin-bottom: 12px;
-      font-weight: 400;
+      font-weight: 700;
     }
 
     .meta {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 400;
       font-size: 13px;
       color: var(--grey-600);
       letter-spacing: 0.02em;
     }
 
     h2 {
-      font-family: 'DM Serif Display', serif;
-      font-weight: 400;
-      font-size: 17px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: -0.02em;
       color: var(--black);
       margin-top: 64px;
       margin-bottom: 20px;
@@ -82,134 +82,43 @@
 
     h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 16px;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.02em;
       color: var(--black);
       margin-top: 36px;
       margin-bottom: 12px;
     }
 
     p {
-      font-size: 15px;
+      font-family: 'Manrope', sans-serif;
+      font-size: 16px;
       margin-bottom: 16px;
       color: var(--grey-800);
     }
 
     .intro {
+      font-family: 'Manrope', sans-serif;
       font-size: 17px;
       line-height: 1.65;
       margin-bottom: 0;
       margin-top: 8px;
     }
 
-    .zones {
-      margin: 28px 0;
-      border: 1px solid var(--grey-300);
-    }
-
-    .zone {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      border-bottom: 1px solid var(--grey-300);
-    }
-
-    .zone:last-child {
-      border-bottom: none;
-    }
-
-    .zone-label {
-      padding: 18px 20px;
+    .summary-block {
       background: var(--grey-100);
-      border-right: 1px solid var(--grey-300);
-      display: flex;
-      align-items: flex-start;
-    }
-
-    .zone-label span {
-      font-family: 'DM Serif Display', serif;
-      font-weight: 400;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--black);
-    }
-
-    .zone-content {
-      padding: 18px 20px;
-    }
-
-    .zone-content p {
-      margin: 0;
-      font-size: 14px;
-    }
-
-    .zone-content .zone-name {
-      font-weight: 400;
-      color: var(--black);
-      margin-bottom: 4px;
-      font-size: 14px;
-    }
-
-    .zone-content .zone-detail {
-      color: var(--grey-600);
-      font-size: 13px;
-    }
-
-    .highlight-block {
-      background: var(--grey-100);
+      border-left: 2px solid var(--black);
       padding: 24px 28px;
       margin: 28px 0;
-      border-left: 2px solid var(--black);
     }
 
-    .highlight-block p {
+    .summary-block p {
       margin: 0;
-      font-size: 15px;
+      font-size: 16px;
     }
 
-    .highlight-block p + p {
+    .summary-block p + p {
       margin-top: 10px;
-    }
-
-    .return-block {
-      border: 1px solid var(--grey-300);
-      padding: 28px;
-      margin: 24px 0;
-    }
-
-    .return-block h3 {
-      margin-top: 0;
-      font-family: 'DM Serif Display', serif;
-      font-weight: 400;
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .return-block p {
-      margin-bottom: 10px;
-      font-size: 14px;
-    }
-
-    .return-block p:last-child {
-      margin-bottom: 0;
-    }
-
-    .liability-block {
-      background: var(--grey-100);
-      border-left: 2px solid var(--black);
-      padding: 20px 24px;
-      margin: 28px 0;
-    }
-
-    .liability-block p {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    .liability-block p:last-child {
-      margin-bottom: 0;
     }
 
     .page-footer {
@@ -226,17 +135,9 @@
 
     @media (max-width: 768px) {
       .page-header { padding: 28px 0 24px; margin-bottom: 40px; }
-      h2 { margin-top: 48px; }
-      .zone { grid-template-columns: 90px 1fr; }
-      .zone-label { padding: 14px 12px; }
-      .zone-content { padding: 14px 16px; }
+      h2 { margin-top: 48px; font-size: 24px; }
+      h3 { font-size: 20px; }
     }
-  /* Match site typography */
-  body { font-family: 'Manrope', sans-serif; font-weight: 400; }
-  h1, h2, h3, .wordmark, .level-block strong, .data-block strong, .right-item strong, .return-block h3, .zone-label span { font-family: 'Cormorant Garamond', serif; font-weight: 700; }
-  h1, h3 { letter-spacing: -0.02em; }
-  .meta { font-family: 'Manrope', sans-serif; }
-  p { color: #444; }
   </style>
 </head>
 <body>
@@ -245,93 +146,52 @@
     <div class="container">
       <a class="wordmark" href="/">Ignia Gallery</a>
       <h1>Shipping and Returns Policy</h1>
-      <p class="meta">Last updated: June 2026</p>
+      <p class="meta">Last updated: July 2026</p>
     </div>
   </div>
 
   <div class="container">
 
-    <p class="intro">When you confirm a purchase on Ignia, we take care of coordinating everything that happens afterwards. We manage the collection of the work from the artist's studio, its packaging with specialized materials and the transport to your door through our logistics partners specialized in art. You do not have to manage anything.</p>
+    <p class="intro">This page explains, in clear terms, how shipping works for a work purchased on Ignia and what your return rights are. It complements the provisions set out in the Terms and Conditions of Use (sections 3.4 and 4.1 to 4.4), which shall prevail in case of discrepancy.</p>
 
     <h2>Shipping</h2>
 
-    <h3>How it works</h3>
-    <p>Ignia coordinates the collection, packaging and transport of each work through its logistics partners specialized in art, regardless of the size, weight or material of the sculpture. The artist does not manage packaging or shipping under any circumstances.</p>
-    <p>Each work arrives with the blockchain authenticity certificate, the technical data sheet of the piece and the conservation instructions, with a uniform presentation that meets the Ignia standard.</p>
-    <p>Ignia acts as the transport organizer, coordinating the contracting of logistics services with specialized operators. The physical performance of the transport and the coverage of the transit insurance are the responsibility of the contracted logistics partners and insurers, under the terms of their respective contracts and policies. In the event of an incident, Ignia facilitates the claim management, but liability for damages caused during transport lies with the corresponding operator and insurer.</p>
+    <p>Ignia coordinates the collection of the work from the artist's studio or home, its packaging, and its transport to the address you provide. You do not have to manage any shipping procedure: we take care of contracting the shipping service and the corresponding insurance, and we show you the cost before confirming the purchase.</p>
 
-    <h3>Cost transparency</h3>
-    <p>Before confirming the purchase you will see the price of the work, the cost of shipping and insurance broken down, and the total. The shipping cost is calculated automatically based on the destination and the characteristics of the work. No surprises or hidden costs.</p>
+    <p>The cost is calculated according to the size, weight, and fragility of the work: for standard-size and weight pieces, the amount is obtained through courier comparators such as Packlink PRO, which consult the rates of carriers such as Correos, SEUR, or GLS in real time. For large, heavy, or particularly fragile sculptures, shipping is quoted through ARTA, a specialized art logistics platform that works with specific carriers for artwork packaging, crating, and transport; in these cases, while we do not yet have automatic quoting integrated into the platform, we confirm the exact cost within a maximum of 24 hours before you complete payment.</p>
 
-    <h3>Delivery zones and indicative timeframes</h3>
+    <p>We are in the launch phase and do not yet have stable agreements with specialized art logistics operators beyond these quoting platforms. In the meantime, we always contract insurance coverage proportional to the declared value of the work, either through the carrier or a specific policy: we never ship a work without insurance coverage.</p>
 
-    <div class="zones">
-      <div class="zone">
-        <div class="zone-label"><span>Green Zone</span></div>
-        <div class="zone-content">
-          <p class="zone-name">Mainland Spain, Portugal, France, Germany, Italy, Belgium, Netherlands</p>
-          <p class="zone-detail">Indicative timeframe: 5 to 14 working days.</p>
-        </div>
-      </div>
-      <div class="zone">
-        <div class="zone-label"><span>Orange Zone</span></div>
-        <div class="zone-content">
-          <p class="zone-name">United Kingdom, Switzerland, Middle East, United States, Canada, Mexico</p>
-          <p class="zone-detail">Indicative timeframe: 10 to 21 working days. Ignia manages the coordination of customs procedures through its logistics partners. You do not have to do anything.</p>
-        </div>
-      </div>
-      <div class="zone">
-        <div class="zone-label"><span>Red Zone</span></div>
-        <div class="zone-content">
-          <p class="zone-name">Asia, Australia, South America and destinations with cultural export restrictions</p>
-          <p class="zone-detail">Variable timeframe. Ignia will contact you before activating the shipment to confirm the process and applicable conditions.</p>
-        </div>
-      </div>
-      <div class="zone">
-        <div class="zone-label"><span>Custom quote</span></div>
-        <div class="zone-content">
-          <p class="zone-name">Large-format works, exceptional weight or value above €30,000</p>
-          <p class="zone-detail">Personalized quote within a maximum of 24 hours after purchase.</p>
-        </div>
-      </div>
+    <p>The estimated delivery time depends on the origin, destination, dimensions of the work, and the transport service used in each case, and is shown to you before payment. It does not constitute a guarantee of delivery on an exact date, unless expressly confirmed in your order. We will publish reference delivery times by destination as we consolidate shipping volume.</p>
+
+    <p>For shipments outside the European Union, the destination customs may require payment of import duties or import VAT, which are not included in the price shown on the platform and are the responsibility of the buyer.</p>
+
+    <h2>Returns for damaged or non-conforming works</h2>
+
+    <p>If the work arrives damaged or does not match the published description, you have 14 calendar days from receipt to notify us at hello@igniagallery.com, attaching photographs of the condition of the work and the packaging. Ignia will refund the full amount paid, including the original shipping cost, within a maximum of 14 days from confirmation of the incident. The collection and return cost are managed and borne by Ignia.</p>
+
+    <h2>Return due to change of mind (right of withdrawal)</h2>
+
+    <p>If you purchase as a consumer, you have the right to withdraw from the purchase within 14 calendar days from receipt of the work, without needing to provide any reason, unless it is a work made to a personal commission (which is expressly indicated on the work's page).</p>
+
+    <p>In this case, Ignia will refund the price of the work, but not the original shipping cost. The cost of the return is borne by you, although we coordinate the collection to make the process easier. The refund is made within a maximum of 14 days from when we receive and verify the condition of the work.</p>
+
+    <p>Returns are not accepted for works installed, modified, or damaged after receipt due to a cause attributable to you, nor for works made to a personal commission.</p>
+
+    <h2>Summary of timeframes</h2>
+
+    <div class="summary-block">
+      <p>Notification of damage or non-conformity: 14 calendar days from receipt.</p>
+      <p>Exercise of the right of withdrawal: 14 calendar days from receipt.</p>
+      <p>Refund after confirming the incident or receiving the return: maximum 14 days.</p>
     </div>
 
-    <p>Timeframes are indicative and may be affected by external factors beyond Ignia's control, such as weather conditions, holiday periods, customs delays or unforeseen circumstances in transport. Ignia will keep the buyer informed of the shipment status to the extent that the logistics partners provide such information.</p>
+    <h2>Questions about your shipment?</h2>
 
-    <h3>Transit insurance</h3>
-    <p>All works travel with all-risk transit insurance, contracted by Ignia through its specialized art insurer, covering total loss, damage and theft during the door-to-door journey. The coverage is based on the declared value of the work.</p>
-    <p>In the event of an incident, Ignia facilitates the claim management with the insurer. The resolution of the claim and the payment of compensation correspond to the contracted insurer, in accordance with the terms of the policy. The buyer does not have to carry out any procedure directly.</p>
-
-    <h3>International shipments and customs</h3>
-    <p>For shipments outside the European Union, Ignia coordinates customs procedures through its logistics partners. Original works of art generally benefit from reduced or zero tariff rates in the main markets, although the customs conditions in force at the time of shipment may vary. Any applicable customs costs according to the destination are included in the shipping calculation shown before confirming the purchase, to the extent that such costs are foreseeable. Ignia does not assume liability for delays or additional customs costs derived from regulations of the destination country that were not foreseeable at the time of purchase.</p>
-
-    <h2>Returns</h2>
-
-    <div class="return-block">
-      <h3>Damaged work or work that does not match the description</h3>
-      <p>If the work arrives in a condition different from that described in its product file or has been damaged during transport, you have 14 calendar days from receipt to notify us at hola@igniagallery.com or from your customer area, attaching photographs of the condition of the work and the packaging. It is important to keep the original packaging to facilitate the assessment of the incident.</p>
-      <p>Ignia coordinates the return fully at its own expense. You will receive a full refund of the amount paid (price of the work plus original shipping cost) within a maximum of 14 days from confirmation of the incident, using the same payment method used for the purchase, in accordance with Article 107.1 of Royal Legislative Decree 1/2007.</p>
-    </div>
-
-    <div class="return-block">
-      <h3>Change of mind (right of withdrawal)</h3>
-      <p>You have the right to return the work within 14 calendar days from receipt without needing to give any explanation, in accordance with Article 102 of Royal Legislative Decree 1/2007 and Directive 2011/83/EU. The cost of the return is borne by you, although Ignia coordinates the collection through its logistics partners to facilitate the process.</p>
-      <p>You will receive a refund of the price of the work (not the original shipping cost, in accordance with Article 107.2 TRLGDCU) within a maximum of 14 days from when we receive the work and verify that it is in the same condition in which it was sent.</p>
-    </div>
-
-    <h3>General conditions</h3>
-    <p>Returns are not accepted for works installed, modified or damaged after receipt due to the buyer's fault. Custom-made works are not subject to the right of withdrawal in accordance with Article 103.c) of Royal Legislative Decree 1/2007 and are expressly identified in their product file.</p>
-
-    <div class="liability-block">
-      <p>Ignia acts as an intermediation platform and transport organizer. Its liability in the shipping process is limited to the diligent coordination of the logistics partners and the insurance coverage. Damages caused during transport by causes attributable to the logistics operator or the insurer will be managed through the mechanisms provided for in their respective contracts and policies, without Ignia assuming direct liability for such damages beyond its obligation to facilitate the claim management.</p>
-    </div>
-
-    <div class="highlight-block">
-      <p>To start any return, write to us at hola@igniagallery.com or contact us from your customer area. We will guide you through the process.</p>
-    </div>
+    <p>Write to us at hello@igniagallery.com indicating your order number. We will respond with the specific information about your shipment or return.</p>
 
     <div class="page-footer">
-      <p>Ignia Gallery · hola@igniagallery.com · Madrid, Spain</p>
+      <p>Ignia Gallery · hello@igniagallery.com · Madrid, Spain</p>
     </div>
 
   </div>

@@ -20,8 +20,8 @@
     html { font-size: 16px; }
 
     body {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 400;
       color: var(--grey-800);
       background: var(--white);
       line-height: 1.7;
@@ -40,7 +40,7 @@
     }
 
     .wordmark {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 15px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -48,31 +48,31 @@
       text-decoration: none;
       display: block;
       margin-bottom: 32px;
+      font-weight: 700;
     }
 
     h1 {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(28px, 4vw, 40px);
       line-height: 1.1;
       color: var(--black);
       margin-bottom: 12px;
-      font-weight: 400;
+      font-weight: 700;
     }
 
     .meta {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 400;
       font-size: 13px;
       color: var(--grey-600);
       letter-spacing: 0.02em;
     }
 
     h2 {
-      font-family: 'DM Serif Display', serif;
-      font-weight: 400;
-      font-size: 17px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: -0.02em;
       color: var(--black);
       margin-top: 64px;
       margin-bottom: 20px;
@@ -82,134 +82,43 @@
 
     h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 16px;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.02em;
       color: var(--black);
       margin-top: 36px;
       margin-bottom: 12px;
     }
 
     p {
-      font-size: 15px;
+      font-family: 'Manrope', sans-serif;
+      font-size: 16px;
       margin-bottom: 16px;
       color: var(--grey-800);
     }
 
     .intro {
+      font-family: 'Manrope', sans-serif;
       font-size: 17px;
       line-height: 1.65;
       margin-bottom: 0;
       margin-top: 8px;
     }
 
-    .zones {
-      margin: 28px 0;
-      border: 1px solid var(--grey-300);
-    }
-
-    .zone {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      border-bottom: 1px solid var(--grey-300);
-    }
-
-    .zone:last-child {
-      border-bottom: none;
-    }
-
-    .zone-label {
-      padding: 18px 20px;
+    .summary-block {
       background: var(--grey-100);
-      border-right: 1px solid var(--grey-300);
-      display: flex;
-      align-items: flex-start;
-    }
-
-    .zone-label span {
-      font-family: 'DM Serif Display', serif;
-      font-weight: 400;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--black);
-    }
-
-    .zone-content {
-      padding: 18px 20px;
-    }
-
-    .zone-content p {
-      margin: 0;
-      font-size: 14px;
-    }
-
-    .zone-content .zone-name {
-      font-weight: 400;
-      color: var(--black);
-      margin-bottom: 4px;
-      font-size: 14px;
-    }
-
-    .zone-content .zone-detail {
-      color: var(--grey-600);
-      font-size: 13px;
-    }
-
-    .highlight-block {
-      background: var(--grey-100);
+      border-left: 2px solid var(--black);
       padding: 24px 28px;
       margin: 28px 0;
-      border-left: 2px solid var(--black);
     }
 
-    .highlight-block p {
+    .summary-block p {
       margin: 0;
-      font-size: 15px;
+      font-size: 16px;
     }
 
-    .highlight-block p + p {
+    .summary-block p + p {
       margin-top: 10px;
-    }
-
-    .return-block {
-      border: 1px solid var(--grey-300);
-      padding: 28px;
-      margin: 24px 0;
-    }
-
-    .return-block h3 {
-      margin-top: 0;
-      font-family: 'DM Serif Display', serif;
-      font-weight: 400;
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .return-block p {
-      margin-bottom: 10px;
-      font-size: 14px;
-    }
-
-    .return-block p:last-child {
-      margin-bottom: 0;
-    }
-
-    .liability-block {
-      background: var(--grey-100);
-      border-left: 2px solid var(--black);
-      padding: 20px 24px;
-      margin: 28px 0;
-    }
-
-    .liability-block p {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    .liability-block p:last-child {
-      margin-bottom: 0;
     }
 
     .page-footer {
@@ -226,17 +135,9 @@
 
     @media (max-width: 768px) {
       .page-header { padding: 28px 0 24px; margin-bottom: 40px; }
-      h2 { margin-top: 48px; }
-      .zone { grid-template-columns: 90px 1fr; }
-      .zone-label { padding: 14px 12px; }
-      .zone-content { padding: 14px 16px; }
+      h2 { margin-top: 48px; font-size: 24px; }
+      h3 { font-size: 20px; }
     }
-  /* Match site typography */
-  body { font-family: 'Manrope', sans-serif; font-weight: 400; }
-  h1, h2, h3, .wordmark, .level-block strong, .data-block strong, .right-item strong, .return-block h3, .zone-label span { font-family: 'Cormorant Garamond', serif; font-weight: 700; }
-  h1, h3 { letter-spacing: -0.02em; }
-  .meta { font-family: 'Manrope', sans-serif; }
-  p { color: #444; }
   </style>
 </head>
 <body>
@@ -245,90 +146,49 @@
     <div class="container">
       <a class="wordmark" href="/">Ignia Gallery</a>
       <h1>Política de Envíos y Devoluciones</h1>
-      <p class="meta">Última actualización: junio de 2026</p>
+      <p class="meta">Última actualización: julio de 2026</p>
     </div>
   </div>
 
   <div class="container">
 
-    <p class="intro">Cuando confirmas una compra en Ignia, nos encargamos de coordinar todo lo que ocurre después. Gestionamos la recogida de la obra en el taller del artista, su embalaje con materiales especializados y el transporte hasta tu puerta a través de nuestros partners logísticos especializados en arte. No tienes que gestionar nada.</p>
+    <p class="intro">Esta página explica, en términos claros, cómo funciona el envío de una obra comprada en Ignia y cuáles son tus derechos de devolución. Complementa lo establecido en los Términos y Condiciones de Uso (apartados 3.4 y 4.1 a 4.4), que prevalecen en caso de discrepancia.</p>
 
     <h2>Envíos</h2>
 
-    <h3>Cómo funciona</h3>
-    <p>Ignia coordina la recogida, el embalaje y el transporte de cada obra a través de sus partners logísticos especializados en arte, independientemente del tamaño, el peso o el material de la escultura. El artista no gestiona el embalaje ni el envío en ningún caso.</p>
-    <p>Cada obra llega con el certificado de autenticidad en blockchain, la ficha técnica de la pieza y las instrucciones de conservación, con una presentación uniforme que responde al estándar de Ignia.</p>
-    <p>Ignia actúa como organizadora del transporte, coordinando la contratación de los servicios logísticos con los operadores especializados. La ejecución material del transporte y las coberturas del seguro de tránsito son responsabilidad de los partners logísticos y aseguradoras contratados, en los términos de sus respectivos contratos y pólizas. En caso de siniestro, Ignia facilita la gestión de la reclamación, pero la responsabilidad por daños producidos durante el transporte recae sobre el operador y el asegurador correspondiente.</p>
+    <p>Ignia coordina la recogida de la obra en el taller o domicilio del artista, su embalaje y su transporte hasta la dirección que indiques. No tienes que gestionar ningún trámite de transporte: nosotros nos encargamos de contratar el servicio de envío y el seguro correspondiente, y te mostramos el coste antes de confirmar la compra.</p>
 
-    <h3>Transparencia de costes</h3>
-    <p>Antes de confirmar la compra verás el precio de la obra, el coste de envío y seguro desglosados, y el total. El coste de envío se calcula automáticamente en función del destino y las características de la obra. Sin sorpresas ni costes ocultos.</p>
+    <p>El coste se calcula según el tamaño, el peso y la fragilidad de la obra: para piezas de tamaño y peso estándar, el importe se obtiene a través de comparadores de mensajería como Packlink PRO, que consultan en tiempo real las tarifas de transportistas como Correos, SEUR o GLS. Para esculturas grandes, pesadas o especialmente frágiles, el envío se cotiza a través de ARTA, una plataforma especializada en logística de arte que trabaja con transportistas específicos para embalaje, crating y transporte de obra de arte; en estos casos, mientras no tengamos la cotización automática integrada en la plataforma, te confirmamos el coste exacto en un plazo máximo de 24 horas antes de que completes el pago.</p>
 
-    <h3>Zonas de entrega y plazos orientativos</h3>
+    <p>Estamos en fase de lanzamiento y aún no contamos con acuerdos estables con operadores logísticos especializados en arte más allá de estas plataformas de cotización. Mientras tanto, siempre contratamos una cobertura de seguro proporcional al valor declarado de la obra, ya sea a través del transportista o de una póliza específica: nunca enviamos una obra sin cobertura de seguro.</p>
 
-    <div class="zones">
-      <div class="zone">
-        <div class="zone-label"><span>Zona Verde</span></div>
-        <div class="zone-content">
-          <p class="zone-name">España peninsular, Portugal, Francia, Alemania, Italia, Bélgica, Países Bajos</p>
-          <p class="zone-detail">Plazo orientativo: 5 a 14 días hábiles.</p>
-        </div>
-      </div>
-      <div class="zone">
-        <div class="zone-label"><span>Zona Naranja</span></div>
-        <div class="zone-content">
-          <p class="zone-name">Reino Unido, Suiza, Oriente Medio, Estados Unidos, Canadá, México</p>
-          <p class="zone-detail">Plazo orientativo: 10 a 21 días hábiles. Ignia gestiona la coordinación de los trámites aduaneros a través de sus partners logísticos. No tienes que hacer nada.</p>
-        </div>
-      </div>
-      <div class="zone">
-        <div class="zone-label"><span>Zona Roja</span></div>
-        <div class="zone-content">
-          <p class="zone-name">Asia, Australia, América del Sur y destinos con restricciones de exportación cultural</p>
-          <p class="zone-detail">Plazo variable. Ignia te contactará antes de activar el envío para confirmar el proceso y las condiciones aplicables.</p>
-        </div>
-      </div>
-      <div class="zone">
-        <div class="zone-label"><span>A medida</span></div>
-        <div class="zone-content">
-          <p class="zone-name">Obras de gran formato, peso excepcional o valor superior a 30.000 €</p>
-          <p class="zone-detail">Cotización personalizada en un plazo máximo de 24 horas tras la compra.</p>
-        </div>
-      </div>
+    <p>El plazo de entrega estimado depende del origen, el destino, las dimensiones de la obra y el servicio de transporte utilizado en cada caso, y se te muestra antes de pagar. No constituye una garantía de entrega en una fecha exacta, salvo que se confirme expresamente en tu pedido. Iremos publicando plazos de referencia por destino a medida que consolidemos volumen de envíos.</p>
+
+    <p>Para envíos fuera de la Unión Europea, es posible que la aduana de destino exija el pago de aranceles de importación o IVA de importación, que no están incluidos en el precio mostrado en la plataforma y son responsabilidad del comprador.</p>
+
+    <h2>Devoluciones por obra dañada o no conforme</h2>
+
+    <p>Si la obra llega dañada o no corresponde a la descripción publicada, tienes 14 días naturales desde la recepción para notificarlo a hola@igniagallery.com adjuntando fotografías del estado de la obra y del embalaje. Ignia te reembolsa el importe total pagado, incluyendo el envío original, en un plazo máximo de 14 días desde la confirmación de la incidencia. La recogida y el coste de la devolución los gestiona y asume Ignia.</p>
+
+    <h2>Devolución por cambio de opinión (derecho de desistimiento)</h2>
+
+    <p>Si compras como consumidor, tienes derecho a desistir de la compra en un plazo de 14 días naturales desde la recepción de la obra, sin necesidad de justificación, salvo que se trate de una obra realizada por encargo personalizado (lo que se indica expresamente en la ficha de la obra).</p>
+
+    <p>En este caso, Ignia te reembolsa el precio de la obra, pero no el coste del envío original. El coste de la devolución corre a tu cargo, aunque coordinamos la recogida para facilitarte el proceso. El reembolso se realiza en un plazo máximo de 14 días desde que recibimos y verificamos el estado de la obra.</p>
+
+    <p>No se aceptan devoluciones de obras instaladas, modificadas o dañadas tras la recepción por una causa que te sea imputable, ni de obras por encargo personalizado.</p>
+
+    <h2>Resumen de plazos</h2>
+
+    <div class="summary-block">
+      <p>Notificación de daño o no conformidad: 14 días naturales desde la recepción.</p>
+      <p>Ejercicio del derecho de desistimiento: 14 días naturales desde la recepción.</p>
+      <p>Reembolso tras confirmar la incidencia o recibir la devolución: máximo 14 días.</p>
     </div>
 
-    <p>Los plazos son orientativos y pueden verse afectados por factores externos ajenos al control de Ignia, como condiciones climáticas, periodos festivos, demoras aduaneras o circunstancias imprevisibles en el transporte. Ignia mantendrá al comprador informado del estado del envío en la medida en que los partners logísticos faciliten dicha información.</p>
+    <h2>¿Dudas sobre tu envío?</h2>
 
-    <h3>Seguro de tránsito</h3>
-    <p>Todas las obras viajan con seguro de tránsito de tipo todo riesgo, contratado por Ignia a través de su aseguradora especializada en arte, que cubre pérdida total, daño y robo durante el trayecto de puerta a puerta. La cobertura se realiza sobre el valor declarado de la obra.</p>
-    <p>En caso de incidencia, Ignia facilita la gestión de la reclamación frente a la aseguradora. La resolución de la reclamación y el pago de la indemnización corresponden a la aseguradora contratada, conforme a los términos de la póliza. El comprador no tiene que realizar ningún trámite directamente.</p>
-
-    <h3>Envíos internacionales y aduanas</h3>
-    <p>Para envíos fuera de la Unión Europea, Ignia coordina los trámites aduaneros a través de sus partners logísticos. Las obras de arte originales se benefician en general de tipos arancelarios reducidos o exenciones en los principales mercados, aunque las condiciones arancelarias vigentes en el momento del envío pueden variar. Cualquier coste aduanero aplicable según el destino se incluye en el cálculo de envío mostrado antes de confirmar la compra, en la medida en que dichos costes sean previsibles. Ignia no asume responsabilidad por demoras o costes aduaneros adicionales derivados de regulaciones del país de destino no previsibles en el momento de la compra.</p>
-
-    <h2>Devoluciones</h2>
-
-    <div class="return-block">
-      <h3>Obra dañada o que no corresponde a lo descrito</h3>
-      <p>Si la obra llega en condiciones distintas a las descritas en su ficha de producto o ha sufrido daños durante el transporte, tienes 14 días naturales desde la recepción para notificárnoslo en hola@igniagallery.com o desde tu área de cliente, adjuntando fotografías del estado de la obra y del embalaje. Es importante conservar el embalaje original para facilitar la valoración del siniestro.</p>
-      <p>Ignia coordina el retorno íntegramente a su cargo. Recibirás el reembolso completo del importe pagado (precio de la obra más coste de envío original) en un plazo máximo de 14 días desde la confirmación de la incidencia, mediante el mismo método de pago utilizado en la compra, de conformidad con el artículo 107.1 del Real Decreto Legislativo 1/2007.</p>
-    </div>
-
-    <div class="return-block">
-      <h3>Cambio de opinión (derecho de desistimiento)</h3>
-      <p>Tienes derecho a devolver la obra en un plazo de 14 días naturales desde la recepción sin necesidad de dar ninguna explicación, de conformidad con el artículo 102 del Real Decreto Legislativo 1/2007 y la Directiva 2011/83/UE. El coste del retorno corre a tu cargo, aunque Ignia coordina la recogida a través de sus partners logísticos para facilitarte el proceso.</p>
-      <p>Recibirás el reembolso del precio de la obra (no del coste de envío original, conforme al artículo 107.2 TRLGDCU) en un plazo máximo de 14 días desde que recibamos la obra y verifiquemos que se encuentra en el mismo estado en que fue enviada.</p>
-    </div>
-
-    <h3>Condiciones generales</h3>
-    <p>No se aceptan devoluciones de obras instaladas, modificadas o dañadas tras la recepción por causa imputable al comprador. Las obras realizadas por encargo personalizado no tienen derecho de desistimiento de conformidad con el artículo 103.c) del Real Decreto Legislativo 1/2007 y se identifican de forma expresa en su ficha de producto.</p>
-
-    <div class="liability-block">
-      <p>Ignia actúa como plataforma de intermediación y organizadora del transporte. Su responsabilidad en el proceso de envío se limita a la diligente coordinación de los partners logísticos y de la cobertura de seguro. Los daños producidos durante el transporte por causas imputables al operador logístico o al asegurador se gestionarán a través de los mecanismos previstos en sus respectivos contratos y pólizas, sin que Ignia asuma responsabilidad directa por dichos daños más allá de su obligación de facilitarte la gestión de la reclamación.</p>
-    </div>
-
-    <div class="highlight-block">
-      <p>Para iniciar cualquier devolución, escríbenos a hola@igniagallery.com o contacta con nosotros desde tu área de cliente. Te acompañamos en el proceso.</p>
-    </div>
+    <p>Escríbenos a hola@igniagallery.com indicando tu número de pedido. Te responderemos con la información concreta de tu envío o devolución.</p>
 
     <div class="page-footer">
       <p>Ignia Gallery · hola@igniagallery.com · Madrid, España</p>
