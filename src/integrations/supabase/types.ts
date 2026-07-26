@@ -71,6 +71,41 @@ export type Database = {
         }
         Relationships: []
       }
+      email_logs: {
+        Row: {
+          application_id: string | null
+          email_type: string
+          error_message: string | null
+          id: string
+          sent_at: string
+          status: string
+        }
+        Insert: {
+          application_id?: string | null
+          email_type: string
+          error_message?: string | null
+          id?: string
+          sent_at?: string
+          status: string
+        }
+        Update: {
+          application_id?: string | null
+          email_type?: string
+          error_message?: string | null
+          id?: string
+          sent_at?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "email_logs_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "applications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       email_send_log: {
         Row: {
           created_at: string
