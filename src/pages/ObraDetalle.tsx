@@ -59,9 +59,7 @@ const ObraDetalle = () => {
   const [idx, setIdx] = useState(0);
   const [chatOpen, setChatOpen] = useState(false);
   type ChatMsg = { role: "user" | "assistant"; content: string };
-  const greeting = lang === "es"
-    ? `Hola, soy Ignia. ¿En qué puedo ayudarte con ${o?.title ?? ""}?`
-    : `Hi, I'm Ignia. How can I help you with ${o?.title ?? ""}?`;
+  const greeting = t.chatGreeting(o?.title ?? "");
   const [chatMessages, setChatMessages] = useState<ChatMsg[]>([]);
   const [chatInput, setChatInput] = useState("");
   const [chatSending, setChatSending] = useState(false);
