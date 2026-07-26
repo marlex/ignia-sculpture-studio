@@ -6,36 +6,36 @@ import { useLang, useSetLang, type Lang } from "@/i18n/LanguageContext";
 import { useAuth } from "@/auth/AuthContext";
 import { SHOW_PUBLIC_AUTH } from "@/config/featureFlags";
 
-// Left nav (desktop): Sculptors, Community, Ignia Gallery
+// Left nav (desktop): Sculptors, Community, Learn, Ignia Gallery
 const NAV_LEFT = {
   es: [
     { label: "Escultores", to: "/escultores" },
     { label: "Comunidad", to: "/editorial" },
+    { label: "Aprende", to: "/aprende" },
     { label: "Ignia Gallery", to: "/ignia-gallery" },
   ],
   en: [
     { label: "Sculptors", to: "/escultores" },
     { label: "Community", to: "/editorial" },
+    { label: "Learn", to: "/aprende" },
     { label: "Ignia Gallery", to: "/ignia-gallery" },
   ],
 };
 
-// Right nav (desktop): Collection, Learn
+// Right nav (desktop): Collection
 const NAV_RIGHT = {
   es: [
     { label: "Colección", to: "/coleccion" },
-    { label: "Aprende", to: "/aprende" },
   ],
   en: [
     { label: "Collection", to: "/coleccion" },
-    { label: "Learn", to: "/aprende" },
   ],
 };
 
 // Full nav order for mobile drawer
 const NAV_ALL = {
-  es: [NAV_LEFT.es[0], NAV_RIGHT.es[0], NAV_RIGHT.es[1], NAV_LEFT.es[1], NAV_LEFT.es[2]],
-  en: [NAV_LEFT.en[0], NAV_RIGHT.en[0], NAV_RIGHT.en[1], NAV_LEFT.en[1], NAV_LEFT.en[2]],
+  es: [NAV_LEFT.es[0], NAV_RIGHT.es[0], NAV_LEFT.es[1], NAV_LEFT.es[2], NAV_LEFT.es[3]],
+  en: [NAV_LEFT.en[0], NAV_RIGHT.en[0], NAV_LEFT.en[1], NAV_LEFT.en[2], NAV_LEFT.en[3]],
 };
 
 export const Header = () => {
