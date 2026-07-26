@@ -48,6 +48,67 @@ const ObraDetalle = () => {
   const [mode, setMode] = useState<"photos" | "3d">("photos");
   const [idx, setIdx] = useState(0);
   const [chatOpen, setChatOpen] = useState(false);
+  type ChatMsg = { role: "user" | "assistant"; content: string };
+  const greeting = lang === "es"
+    ? `Hola, soy Ignia. ¿En qué puedo ayudarte con ${o?.title ?? ""}?`
+    : `Hi, I'm Ignia. How can I help you with ${o?.title ?? ""}?`;
+  const [chatMessages, setChatMessages] = useState<ChatMsg[]>([]);
+  const [chatInput, setChatInput] = useState("");
+  const [chatSending, setChatSending] = useState(false);
+  const [chatError, setChatError] = useState<string | null>(null);
+  const chatScrollRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const el = chatScrollRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [chatMessages, chatSending, chatOpen]);
+
+  async function sendChat(e: React.FormEvent) {
+    e.preventDefault();
+    const text = chatInput.trim();
+    if (!text || chatSending) return;
+    const history = chatMessages.map((m) => ({ role: m.role, content: m.content }));
+    const nextUser: ChatMsg = { role: "user", content: text };
+    setChatMessages((prev) => [...prev, nextUser]);
+    setChatInput("");
+    setChatSending(true);
+    setChatError(null);
+    try {
+      const { data, error } = await supabase.functions.invoke("ignia-sales-assistant", {
+        body: {
+          message: text,
+          history,
+          context: {
+            page: typeof window !== "undefined" ? window.location.pathname : undefined,
+            locale: lang,
+            product: o
+              ? {
+                  title: o.title,
+                  artist: o.artist,
+                  material: o.material,
+                  year: o.year as any,
+                  price: o.price,
+                  description: o.description,
+                }
+              : null,
+          },
+        },
+      });
+      if (error) throw error;
+      const reply = (data as any)?.reply as string | undefined;
+      if (!reply) throw new Error("empty reply");
+      setChatMessages((prev) => [...prev, { role: "assistant", content: reply }]);
+    } catch (err) {
+      setChatError(
+        lang === "es"
+          ? "No se pudo enviar el mensaje. Inténtalo de nuevo."
+          : "Couldn't send the message. Please try again.",
+      );
+    } finally {
+      setChatSending(false);
+    }
+  }
+
   const [copied, setCopied] = useState(false);
   const [specsOpen, setSpecsOpen] = useState(false);
   
