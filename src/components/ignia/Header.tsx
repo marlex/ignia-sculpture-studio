@@ -64,8 +64,9 @@ export const Header = () => {
 
   const isJoinSculptors = location.pathname === "/join/escultores" || location.pathname === "/join/sculptors";
   const t = lang === "es"
-    ? { publish: isJoinSculptors ? "Solicitar acceso" : "Únete a Ignia", joinMobile: "ÚNETE", signin: "Entrar", signout: "Salir", dashboard: "Mi panel" }
-    : { publish: isJoinSculptors ? "Request access" : "Join Ignia", joinMobile: "JOIN", signin: "Sign in", signout: "Sign out", dashboard: "Dashboard" };
+    ? { publish: isJoinSculptors ? "Solicitar acceso" : "Únete a Ignia", joinMobile: "ÚNETE", login: "Login", signin: "Entrar", signout: "Salir", dashboard: "Mi panel" }
+    : { publish: isJoinSculptors ? "Request access" : "Join Ignia", joinMobile: "JOIN", login: "Login", signin: "Sign in", signout: "Sign out", dashboard: "Dashboard" };
+
 
 
   return (
