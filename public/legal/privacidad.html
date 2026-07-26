@@ -4,43 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Política de Privacidad — Ignia Gallery</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Manrope:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --black: #000000;
+      --black: #121212;
       --white: #FFFFFF;
       --grey-100: #F5F5F5;
       --grey-300: #CCCCCC;
       --grey-600: #666666;
-      --grey-800: #1A1A1A;
+      --text: #444444;
     }
-
     html { font-size: 16px; }
-
     body {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      color: var(--grey-800);
+      font-family: 'Manrope', sans-serif;
+      font-weight: 400;
+      color: var(--text);
       background: var(--white);
       line-height: 1.7;
+      font-size: 16px;
     }
-
-    .page-header {
-      border-bottom: 1px solid var(--grey-300);
-      padding: 40px 0 32px;
-      margin-bottom: 64px;
-    }
-
-    .container {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
+    .container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+    .page-header { border-bottom: 1px solid var(--grey-300); padding: 40px 0 32px; margin-bottom: 64px; }
     .wordmark {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
       font-size: 15px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -49,261 +37,119 @@
       display: block;
       margin-bottom: 32px;
     }
-
     h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(28px, 4vw, 40px);
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 40px;
       line-height: 1.1;
+      letter-spacing: -0.02em;
       color: var(--black);
       margin-bottom: 12px;
-      font-weight: 400;
     }
-
-    .meta {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: 13px;
-      color: var(--grey-600);
-      letter-spacing: 0.02em;
-    }
-
-    .notice {
-      background: var(--grey-100);
-      padding: 20px 24px;
-      margin-bottom: 56px;
-      border-left: 2px solid var(--black);
-    }
-
-    .notice p {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--grey-800);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .notice p + p {
-      margin-top: 8px;
-    }
-
     h2 {
-      font-family: 'DM Serif Display', serif;
-      font-weight: 400;
-      font-size: 17px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 34px;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
       color: var(--black);
-      margin-top: 56px;
+      margin-top: 64px;
       margin-bottom: 20px;
-      padding-bottom: 10px;
+      padding-bottom: 12px;
       border-bottom: 1px solid var(--grey-300);
     }
-
     h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 16px;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
       color: var(--black);
-      margin-top: 32px;
-      margin-bottom: 12px;
-    }
-
-    p {
-      font-size: 15px;
+      margin-top: 40px;
       margin-bottom: 16px;
-      color: var(--grey-800);
     }
-
-    .data-block {
-      border-left: 1px solid var(--grey-300);
-      padding: 16px 20px;
-      margin: 16px 0;
-    }
-
-    .data-block strong {
-      font-family: 'DM Serif Display', serif;
-      font-weight: 400;
-      font-size: 13px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 6px;
-      color: var(--black);
-    }
-
-    .data-block p {
-      margin: 0;
-      font-size: 14px;
-    }
-
-    .rights-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--grey-300);
-      border: 1px solid var(--grey-300);
-      margin: 20px 0;
-    }
-
-    .right-item {
-      background: var(--white);
-      padding: 16px 18px;
-    }
-
-    .right-item strong {
-      font-family: 'DM Serif Display', serif;
-      font-weight: 400;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 4px;
-      color: var(--black);
-    }
-
-    .right-item p {
-      margin: 0;
-      font-size: 13px;
-      color: var(--grey-600);
-    }
-
-    .page-footer {
-      margin-top: 96px;
-      padding: 32px 0 48px;
-      border-top: 1px solid var(--grey-300);
-    }
-
-    .page-footer p {
-      font-size: 12px;
-      color: var(--grey-600);
-      margin: 0;
-    }
-
+    p { font-size: 16px; margin-bottom: 16px; color: var(--text); }
+    .meta { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 13px; color: var(--grey-600); letter-spacing: 0.02em; }
+    .page-footer { margin-top: 96px; padding: 32px 0 48px; border-top: 1px solid var(--grey-300); }
+    .page-footer p { font-size: 12px; color: var(--grey-600); margin: 0; }
     @media (max-width: 768px) {
       .page-header { padding: 28px 0 24px; margin-bottom: 40px; }
-      h2 { margin-top: 40px; }
-      .rights-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 32px; }
+      h2 { font-size: 26px; margin-top: 44px; }
+      h3 { font-size: 22px; margin-top: 32px; }
+      p { font-size: 15px; }
     }
-  /* Match site typography */
-  body { font-family: 'Manrope', sans-serif; font-weight: 400; }
-  h1, h2, h3, .wordmark, .level-block strong, .data-block strong, .right-item strong, .return-block h3, .zone-label span { font-family: 'Cormorant Garamond', serif; font-weight: 700; }
-  h1, h3 { letter-spacing: -0.02em; }
-  .meta { font-family: 'Manrope', sans-serif; }
-  p { color: #444; }
   </style>
 </head>
 <body>
-
   <div class="page-header">
     <div class="container">
       <a class="wordmark" href="/">Ignia Gallery</a>
       <h1>Política de Privacidad</h1>
-      <p class="meta">Última actualización: junio de 2026</p>
+      <p class="meta">Última actualización: julio de 2026</p>
     </div>
   </div>
 
   <div class="container">
+    <p>Esta Política de Privacidad explica cómo Ignia Gallery ("Ignia", "nosotros") recopila, utiliza, conserva y protege los datos personales de artistas, compradores y visitantes de la plataforma, en cumplimiento del Reglamento (UE) 2016/679, de 27 de abril de 2016 ("RGPD"), y de la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales ("LOPDGDD").</p>
 
-    <div class="notice">
-      <p>Responsable del tratamiento: Ignia Gallery, proyecto en proceso de constitución como sociedad en España. Responsable provisional: Mariana Bolívar García, Madrid. Contacto: privacidad@igniagallery.com.</p>
-      <p>Autoridad de control: Agencia Española de Protección de Datos (AEPD), www.aepd.es. Base normativa: Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo (RGPD) y Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD).</p>
-    </div>
+    <h2>1. Responsable del tratamiento</h2>
+    <p>El responsable del tratamiento de los datos es Mariana Bolívar García, persona física titular del proyecto Ignia Gallery, con domicilio a efectos de comunicaciones en Madrid, España. Contacto: privacidad@igniagallery.com. Los datos completos de identificación están disponibles en el Aviso Legal.</p>
 
-    <p>En Ignia Gallery tratamos la privacidad como un compromiso, no como un trámite. Esta política explica qué datos recogemos, para qué los usamos y qué derechos tienes sobre ellos, de forma clara y sin tecnicismos innecesarios.</p>
+    <h2>2. Datos que recopilamos</h2>
+    <p>Recopilamos distintas categorías de datos según tu relación con la plataforma:</p>
+    <p><strong>Visitantes:</strong> datos de navegación y uso de la plataforma (véase la Política de Cookies para el detalle de cookies y tecnologías similares).</p>
+    <p><strong>Artistas:</strong> nombre completo, correo electrónico, país, portfolio e imágenes de obra, datos bancarios para el pago de comisiones, y, en transacciones de 10.000€ o más, documentación identificativa adicional (DNI/pasaporte, NIF) conforme al apartado 10.3 de los Términos y Condiciones de Uso (normativa de prevención del blanqueo de capitales).</p>
+    <p><strong>Compradores:</strong> nombre completo, correo electrónico, dirección de entrega, datos de pago (procesados directamente por Stripe; Ignia no almacena números de tarjeta), y, en transacciones de 10.000€ o más, documentación identificativa adicional conforme al mismo apartado.</p>
+    <p><strong>Datos derivados de la actividad en la plataforma:</strong> historial de obras vistas, guardadas o compradas, interacciones con el visor 3D, y comunicaciones con el servicio de atención al cliente.</p>
 
-    <h2>1. Qué datos recogemos y para qué</h2>
+    <h2>3. Finalidades y base legal del tratamiento</h2>
+    <p>Tratamos tus datos personales para las siguientes finalidades, cada una con su base legal conforme al artículo 6.1 RGPD:</p>
+    <p>Gestionar tu cuenta, publicar obras y procesar compras: ejecución de un contrato (artículo 6.1.b RGPD).</p>
+    <p>Generar el certificado blockchain de autenticidad y transferirlo entre propietarios: ejecución de un contrato, con el tratamiento específico descrito en el apartado 4.</p>
+    <p>Gestionar la logística, el seguro de tránsito y las devoluciones: ejecución de un contrato.</p>
+    <p>Cumplir con obligaciones fiscales, de información a la Agencia Estatal de Administración Tributaria (DAC7, Ley 13/2023) y, en su caso, de prevención del blanqueo de capitales (Ley 10/2010): cumplimiento de una obligación legal (artículo 6.1.c RGPD).</p>
+    <p>Prevenir el fraude, verificar identidades en transacciones de importe elevado y proteger la seguridad de la plataforma: interés legítimo (artículo 6.1.f RGPD), ponderado frente a tus derechos e intereses.</p>
+    <p>Enviarte comunicaciones comerciales o newsletter: consentimiento (artículo 6.1.a RGPD), que puedes retirar en cualquier momento.</p>
 
-    <div class="data-block">
-      <strong>Datos de registro y cuenta</strong>
-      <p>Nombre, apellidos, correo electrónico y contraseña. Finalidad: gestionar tu acceso a la plataforma y la relación contractual. Base legal: ejecución de un contrato (Art. 6.1.b RGPD). Plazo de conservación: mientras la cuenta esté activa y 5 años adicionales por obligaciones legales aplicables.</p>
-    </div>
+    <h2>4. Certificado blockchain: tratamiento específico</h2>
+    <p>El certificado de autenticidad se genera a través de Verisart, que utiliza el protocolo OpenTimestamps sobre la red Bitcoin. Este protocolo no inscribe tus datos personales directamente en la cadena de bloques: lo que se ancla de forma permanente en la red es una huella criptográfica (hash) que, por sí sola, no permite identificarte ni reconstruir la información original. Los datos descriptivos de la obra y del artista (nombre, imágenes, ficha técnica) se almacenan en los sistemas de Verisart, fuera de la cadena de bloques, donde sí pueden ser rectificados o suprimidos conforme a los procedimientos de dicho proveedor.</p>
+    <p>Esta arquitectura es coherente con las Directrices sobre el tratamiento de datos personales mediante tecnologías blockchain aprobadas por el Comité Europeo de Protección de Datos, de las que la Agencia Española de Protección de Datos (AEPD) fue ponente, que recomiendan evitar la inscripción de datos personales en texto plano en la cadena y limitar lo anclado a huellas o compromisos criptográficos. Ignia mantiene con Verisart un contrato de encargado del tratamiento que recoge estas garantías.</p>
+    <p>Debes saber que, aunque los datos descriptivos puedan rectificarse o suprimirse de los sistemas de Verisart, la huella criptográfica correspondiente permanecerá de forma indefinida y pública en la red Bitcoin, como prueba de que esa información existió y fue declarada en una fecha determinada. Esta permanencia es una característica esencial y necesaria del servicio que aceptas al publicar una obra o al recibir un certificado como comprador.</p>
 
-    <div class="data-block">
-      <strong>Datos adicionales de artistas</strong>
-      <p>Fotografía de perfil, descripción biográfica, portfolio, datos bancarios para el pago de ventas, país de residencia y nivel editorial asignado. Finalidad: gestionar el perfil público, procesar pagos, emitir certificados blockchain y aplicar el nivel de comisión correspondiente. Base legal: ejecución de un contrato (Art. 6.1.b RGPD).</p>
-    </div>
+    <h2>5. Destinatarios de los datos</h2>
+    <p>Compartimos tus datos, únicamente en la medida necesaria, con los siguientes encargados o terceros:</p>
+    <p>Stripe, Inc., para el procesamiento de pagos.</p>
+    <p>Netlify, Inc., como proveedor de infraestructura de hosting.</p>
+    <p>Verisart, Inc., para la generación y gestión de certificados blockchain de autenticidad.</p>
+    <p>EnviArte y SIT Spain, u otros colaboradores logísticos especializados en arte, para la recogida, embalaje y transporte de las obras.</p>
+    <p>La aseguradora especializada en arte que cubre el seguro de tránsito.</p>
+    <p>La Agencia Estatal de Administración Tributaria, en cumplimiento de las obligaciones DAC7 descritas en los Términos y Condiciones de Uso.</p>
+    <p>Autoridades competentes (incluido el SEPBLAC), cuando resulte exigible conforme a la normativa de prevención del blanqueo de capitales o ante requerimiento legal.</p>
+    <p>No vendemos tus datos personales a terceros ni los utilizamos con fines distintos de los descritos en esta política.</p>
 
-    <div class="data-block">
-      <strong>Datos adicionales de compradores</strong>
-      <p>Dirección de entrega, datos de contacto y datos de pago. Los datos de tarjeta son gestionados directamente por el proveedor de pagos (Stripe) bajo estándares PCI-DSS. Ignia no almacena datos de tarjeta en ningún momento. Finalidad: gestionar la compra, la logística de envío y el servicio postventa. Base legal: ejecución de un contrato (Art. 6.1.b RGPD). Los datos de transacción se conservan durante 10 años por obligaciones fiscales y contables.</p>
-    </div>
+    <h2>6. Transferencias internacionales</h2>
+    <p>Algunos de nuestros proveedores se encuentran fuera del Espacio Económico Europeo. Stripe, Inc. y Netlify, Inc. están adheridos al Marco de Privacidad de Datos UE-EE.UU. (EU-U.S. Data Privacy Framework), reconocido como garantía adecuada de protección por la Decisión de Adecuación de la Comisión Europea de 10 de julio de 2023, lo que permite la transferencia de datos sin necesidad de garantías adicionales. Para Verisart, Inc., dada la naturaleza limitada de los datos que efectivamente cruzan la frontera conforme al apartado 4, Ignia recaba las garantías adecuadas (adhesión al citado marco o cláusulas contractuales tipo aprobadas por la Comisión Europea) en su contrato de encargado del tratamiento, y las mantiene disponibles para su consulta a petición del interesado.</p>
 
-    <div class="data-block">
-      <strong>Datos de navegación</strong>
-      <p>Dirección IP, tipo de dispositivo y navegador, páginas visitadas y tiempo de sesión. Finalidad: garantizar el funcionamiento técnico de la plataforma y analizar el uso de forma agregada para mejorar el servicio. Base legal: interés legítimo (Art. 6.1.f RGPD), ponderado frente a los derechos de los usuarios. Plazo de conservación: 13 meses.</p>
-    </div>
+    <h2>7. Plazos de conservación</h2>
+    <p>Conservamos tus datos durante la vigencia de tu cuenta y, tras su baja, durante los plazos legalmente exigibles: con carácter general, los datos vinculados a obligaciones fiscales se conservan 4 años conforme al artículo 66 de la Ley 58/2003 General Tributaria y los documentos contables 6 años conforme al artículo 30 del Código de Comercio; los datos identificativos recabados para el cumplimiento de la normativa de prevención del blanqueo de capitales se conservan 10 años conforme al artículo 25 de la Ley 10/2010; y los datos comunicados a la Agencia Tributaria conforme a la normativa DAC7 se conservan según los plazos que dicha normativa establezca. La huella criptográfica del certificado blockchain permanece de forma indefinida en la red Bitcoin, conforme a lo explicado en el apartado 4.</p>
 
-    <div class="data-block">
-      <strong>Datos analíticos de audiencia para artistas</strong>
-      <p>Datos agregados y anonimizados sobre el comportamiento de los visitantes que interactúan con las obras: país de origen, tipo de dispositivo, tiempo de visualización en el visor 3D y frecuencia de visitas. Estos datos no permiten identificar individualmente a los visitantes y se presentan siempre de forma agregada. Finalidad: ofrecer al artista información de audiencia sobre su obra para mejorar su estrategia de venta. Base legal: interés legítimo (Art. 6.1.f RGPD).</p>
-    </div>
+    <h2>8. Tus derechos</h2>
+    <p>Puedes ejercer en cualquier momento los derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad de tus datos, así como retirar tu consentimiento cuando el tratamiento se base en él, escribiendo a privacidad@igniagallery.com. Responderemos en el plazo de un mes conforme al artículo 12.3 RGPD. Los derechos de rectificación y supresión sobre los datos descriptivos de tu certificado blockchain se ejercen frente a Verisart a través de Ignia, con los límites explicados en el apartado 4 respecto de la huella criptográfica anclada en la red Bitcoin.</p>
+    <p>Si consideras que el tratamiento de tus datos no se ajusta a la normativa vigente, tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD), a través de su sede electrónica en www.aepd.es.</p>
 
-    <div class="data-block">
-      <strong>Datos asociados al certificado blockchain</strong>
-      <p>Al publicar una obra, el artista declara determinados datos (título, autoría, materiales, dimensiones, fecha) que quedan registrados de forma inmutable en la cadena de bloques a través de Verisart. Una vez registrados, estos datos no pueden modificarse ni suprimirse del registro blockchain, por la naturaleza tecnológica del sistema. El artista acepta expresamente esta característica al publicar su obra. Base legal: ejecución de un contrato (Art. 6.1.b RGPD).</p>
-    </div>
+    <h2>9. Menores de edad</h2>
+    <p>El acceso a Ignia está restringido a personas mayores de 18 años o menores con autorización de su representante legal, conforme a los Términos y Condiciones de Uso. No recopilamos conscientemente datos de menores sin dicha autorización.</p>
 
-    <div class="data-block">
-      <strong>Comunicaciones</strong>
-      <p>Los mensajes que nos envíes por correo electrónico o a través de la plataforma. Finalidad: atender consultas y reclamaciones. Base legal: interés legítimo (Art. 6.1.f RGPD). Plazo de conservación: 3 años.</p>
-    </div>
+    <h2>10. Seguridad</h2>
+    <p>Aplicamos medidas técnicas y organizativas razonables para proteger tus datos frente a accesos no autorizados, pérdida o alteración, conforme al artículo 32 RGPD. El procesamiento de pagos se realiza a través de Stripe, que cuenta con certificación PCI-DSS; Ignia no almacena en ningún momento los datos completos de tarjetas de pago.</p>
 
-    <h2>2. Durante cuánto tiempo conservamos tus datos</h2>
-    <p>Los datos de cuenta se conservan mientras mantengas una cuenta activa en Ignia y durante el período mínimo exigido por la normativa aplicable una vez que la canceles. Los datos de transacciones se conservan durante 10 años por obligaciones fiscales y contables derivadas del Código de Comercio y la normativa tributaria española. Los datos de navegación se conservan durante 13 meses. Cuando solicites la eliminación de tu cuenta, Ignia suprimirá tus datos personales en un plazo máximo de 30 días, excepto aquellos que deba conservar por obligación legal o que formen parte de un registro blockchain, cuya naturaleza tecnológica impide su modificación o supresión.</p>
-
-    <h2>3. Con quién compartimos tus datos</h2>
-    <p>Ignia comparte datos exclusivamente con los terceros necesarios para prestar el servicio, en calidad de encargados del tratamiento o responsables independientes según corresponda:</p>
-    <p>Con Stripe, para procesar transacciones de forma segura bajo estándares PCI-DSS, como responsable independiente del tratamiento de los datos de pago. Con los partners logísticos (EnviArte, SIT Spain u otros especializados en arte), el nombre completo y la dirección de entrega del comprador y la dirección de recogida del artista, exclusivamente para gestionar el envío de cada obra. Con Verisart, los datos declarados de cada obra para la emisión del certificado de autenticidad en blockchain. Con la aseguradora especializada en arte, los datos de la obra y de contacto de artista y comprador, exclusivamente en caso de siniestro durante el tránsito. Con Netlify, proveedor de infraestructura de hosting que actúa como encargado del tratamiento y no puede usar tus datos para fines propios.</p>
-    <p>Ignia no vende, alquila ni cede datos personales a terceros con fines comerciales o publicitarios. Si alguno de estos proveedores está ubicado fuera del Espacio Económico Europeo, Ignia garantiza que el tratamiento se realiza con las salvaguardas adecuadas conforme al Capítulo V del RGPD (cláusulas contractuales tipo u otros mecanismos equivalentes aprobados por la Comisión Europea).</p>
-
-    <h2>4. Tus derechos</h2>
-    <p>Puedes ejercer cualquiera de los siguientes derechos escribiendo a privacidad@igniagallery.com, indicando tu nombre completo y adjuntando copia de tu documento de identidad. Responderemos en un plazo máximo de un mes, prorrogable por dos meses adicionales en casos de especial complejidad, con notificación previa.</p>
-
-    <div class="rights-grid">
-      <div class="right-item">
-        <strong>Acceso</strong>
-        <p>Conocer qué datos tuyos tratamos y obtener una copia.</p>
-      </div>
-      <div class="right-item">
-        <strong>Rectificación</strong>
-        <p>Corregir datos inexactos o completar datos incompletos.</p>
-      </div>
-      <div class="right-item">
-        <strong>Supresión</strong>
-        <p>Solicitar la eliminación de tus datos cuando no sean necesarios para los fines para los que fueron recogidos, salvo obligación legal de conservación o datos ya registrados en blockchain.</p>
-      </div>
-      <div class="right-item">
-        <strong>Oposición</strong>
-        <p>Oponerte al tratamiento basado en interés legítimo.</p>
-      </div>
-      <div class="right-item">
-        <strong>Limitación</strong>
-        <p>Solicitar que restrinjamos el uso de tus datos en determinadas circunstancias.</p>
-      </div>
-      <div class="right-item">
-        <strong>Portabilidad</strong>
-        <p>Recibir tus datos en un formato estructurado, de uso común y lectura mecánica.</p>
-      </div>
-    </div>
-
-    <p>Si consideras que el tratamiento de tus datos no es correcto o que no hemos atendido tu solicitud de forma satisfactoria, puedes presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) en www.aepd.es.</p>
-
-    <h2>5. Cookies</h2>
-    <p>Ignia utiliza cookies técnicas estrictamente necesarias para el funcionamiento de la plataforma (gestión de sesión, preferencias de idioma, carrito de compra). Estas cookies no requieren consentimiento de conformidad con el artículo 22.2 de la LSSI-CE, interpretado a la luz de las directrices de la AEPD.</p>
-    <p>Ignia puede utilizar cookies analíticas para comprender el uso agregado de la plataforma y mejorar el servicio. En ese caso, te informaremos y solicitaremos tu consentimiento a través del banner de cookies antes de activarlas. Puedes retirar tu consentimiento en cualquier momento desde la configuración de cookies de la plataforma.</p>
-    <p>Ignia no utiliza cookies publicitarias ni comparte datos de navegación con redes de publicidad de terceros.</p>
-
-    <h2>6. Seguridad</h2>
-    <p>Todas las comunicaciones entre tu navegador y la plataforma se realizan mediante protocolo HTTPS con cifrado TLS. Los datos de pago se gestionan íntegramente a través de Stripe bajo estándares PCI-DSS, sin que Ignia almacene datos de tarjeta en ningún momento. Ignia aplica medidas técnicas y organizativas apropiadas —incluyendo control de accesos, cifrado de datos sensibles y monitorización de seguridad— para proteger tus datos contra accesos no autorizados, pérdida, alteración o destrucción accidental o ilícita, de conformidad con el artículo 32 del RGPD.</p>
-    <p>En caso de que se produzca una violación de seguridad que pueda afectar a tus datos, Ignia lo notificará a la AEPD en el plazo de 72 horas desde que tenga conocimiento de ella, y te informará a ti si dicha violación entraña un alto riesgo para tus derechos y libertades, de conformidad con los artículos 33 y 34 del RGPD.</p>
-
-    <h2>7. Cambios en esta política</h2>
-    <p>Cuando actualicemos esta política te lo comunicaremos por correo electrónico con al menos 15 días de antelación si los cambios afectan de forma relevante al tratamiento de tus datos. La versión vigente, con su fecha de última actualización, estará siempre disponible en esta misma página.</p>
+    <h2>11. Modificaciones de esta política</h2>
+    <p>Podemos actualizar esta Política de Privacidad para reflejar cambios normativos o en nuestros servicios. Los cambios relevantes se notificarán a los usuarios registrados con un mínimo de 15 días de antelación, conforme a lo previsto en los Términos y Condiciones de Uso.</p>
 
     <div class="page-footer">
       <p>Ignia Gallery · privacidad@igniagallery.com · Madrid, España</p>
     </div>
-
   </div>
 </body>
 </html>
