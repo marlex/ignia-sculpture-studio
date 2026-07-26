@@ -5,6 +5,7 @@ import { Logo } from "./Logo";
 import { useLang, useSetLang, type Lang } from "@/i18n/LanguageContext";
 import { useAuth } from "@/auth/AuthContext";
 import { SHOW_PUBLIC_AUTH } from "@/config/featureFlags";
+import { supabase } from "@/integrations/supabase/client";
 
 // Left nav (desktop): Sculptors, Community, Learn, Ignia Gallery
 const NAV_LEFT = {
@@ -62,10 +63,39 @@ export const Header = () => {
     window.dispatchEvent(new Event("ignia:open-invite"));
   };
 
+  // Detect Supabase session + admin role
+  const [sbUser, setSbUser] = useState<{ id: string; email: string | null } | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    const load = async (uid?: string) => {
+      if (!uid) { if (alive) setIsAdmin(false); return; }
+      const { data } = await supabase.from("profiles").select("role").eq("id", uid).maybeSingle();
+      if (alive) setIsAdmin(data?.role === "admin");
+    };
+    supabase.auth.getSession().then(({ data }) => {
+      const u = data.session?.user;
+      if (!alive) return;
+      setSbUser(u ? { id: u.id, email: u.email ?? null } : null);
+      load(u?.id);
+    });
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
+      const u = session?.user;
+      setSbUser(u ? { id: u.id, email: u.email ?? null } : null);
+      load(u?.id);
+    });
+    return () => { alive = false; sub.subscription.unsubscribe(); };
+  }, []);
+
+  const handleSbLogout = async () => {
+    await supabase.auth.signOut();
+    navigate("/");
+  };
+
   const isJoinSculptors = location.pathname === "/join/escultores" || location.pathname === "/join/sculptors";
   const t = lang === "es"
-    ? { publish: isJoinSculptors ? "Solicitar acceso" : "Únete a Ignia", joinMobile: "ÚNETE", login: "Login", signin: "Entrar", signout: "Salir", dashboard: "Mi panel" }
-    : { publish: isJoinSculptors ? "Request access" : "Join Ignia", joinMobile: "JOIN", login: "Login", signin: "Sign in", signout: "Sign out", dashboard: "Dashboard" };
+    ? { publish: isJoinSculptors ? "Solicitar acceso" : "Únete a Ignia", joinMobile: "ÚNETE", login: "Entrar", signin: "Entrar", signout: "Salir", dashboard: "Mi panel", adminPanel: "Panel admin" }
+    : { publish: isJoinSculptors ? "Request access" : "Join Ignia", joinMobile: "JOIN", login: "Login", signin: "Sign in", signout: "Sign out", dashboard: "Dashboard", adminPanel: "Admin panel" };
 
 
 
@@ -188,32 +218,63 @@ export const Header = () => {
               {t.signin}
             </Link>
           ))}
-          <Link
-            to="/login"
-            className="header-invite-btn hidden sm:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
-          >
-            {t.login}
-          </Link>
-          <Link
-            to="/unete-a-ignia"
-            className="header-invite-btn hidden sm:inline-flex !py-2 !px-4 text-[13px] font-medium"
-            style={{
-              background: "#121212",
-              color: "#FFFFFF",
-              border: "1px solid #121212",
-              fontFamily: "var(--f-body)",
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              transition: "opacity 0.2s",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 6,
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-          >
-            {t.publish}
-          </Link>
+          {sbUser && isAdmin ? (
+            <>
+              <Link
+                to="/admin/dashboard"
+                className="header-invite-btn hidden sm:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
+              >
+                {t.adminPanel}
+              </Link>
+              <button
+                onClick={handleSbLogout}
+                className="header-invite-btn hidden sm:inline-flex !py-2 !px-4 text-[13px] font-medium"
+                style={{
+                  background: "#121212",
+                  color: "#FFFFFF",
+                  border: "1px solid #121212",
+                  fontFamily: "var(--f-body)",
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  transition: "opacity 0.2s",
+                  cursor: "pointer",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+              >
+                {t.signout}
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="header-invite-btn hidden sm:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
+              >
+                {t.login}
+              </Link>
+              <Link
+                to="/unete-a-ignia"
+                className="header-invite-btn hidden sm:inline-flex !py-2 !px-4 text-[13px] font-medium"
+                style={{
+                  background: "#121212",
+                  color: "#FFFFFF",
+                  border: "1px solid #121212",
+                  fontFamily: "var(--f-body)",
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  transition: "opacity 0.2s",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 6,
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+              >
+                {t.publish}
+              </Link>
+            </>
+          )}
           {/* Mobile-only invitation text */}
           <Link
             to="/unete-a-ignia"
