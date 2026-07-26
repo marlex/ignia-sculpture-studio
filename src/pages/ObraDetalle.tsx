@@ -599,7 +599,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
             <header className="flex items-center justify-between px-5 h-14 border-b border-border">
               <div className="flex items-center gap-2">
                 <MessageCircle className="w-4 h-4 text-ink" />
-                <span className="font-display font-semibold text-[16px] text-ink">{t.talk}</span>
+                <span className="font-display font-semibold text-[25px] text-ink">{t.talk}</span>
               </div>
               <button onClick={() => setChatOpen(false)} className="text-gray hover:opacity-65 transition-opacity font-body text-[28px] leading-none w-11 h-11 flex items-center justify-center">×</button>
             </header>
