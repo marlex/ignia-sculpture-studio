@@ -180,6 +180,9 @@ export const Footer = () => {
           <Link to="/legal/cookies" className="font-body text-[13px] font-normal text-ink hover:opacity-65 transition-opacity tracking-[0.14em] uppercase">
             {lang === "es" ? "Política de Cookies" : "Cookie Policy"}
           </Link>
+          <Link to="/legal/accesibilidad" className="font-body text-[13px] font-normal text-ink hover:opacity-65 transition-opacity tracking-[0.14em] uppercase">
+            {lang === "es" ? "Accesibilidad" : "Accessibility"}
+          </Link>
         </div>
         <div className="flex items-center gap-5">
           <span className="font-body text-[13px] font-normal text-ink tracking-[0.14em] uppercase">© 2026 Ignia Gallery</span>
