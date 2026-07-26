@@ -79,19 +79,18 @@ export default function UneteAIgnia() {
     e.preventDefault();
     setLoading(true); setError(null);
     try {
-      const { error: dbError } = await supabase
+      const { data: inserted, error: dbError } = await supabase
         .from("applications")
-        .insert({ name, email, social: social || null, language: lang });
+        .insert({ name, email, social: social || null, language: lang })
+        .select("id")
+        .single();
       if (dbError) throw dbError;
-      // Send confirmation email in the visitor's language (best-effort)
-      supabase.functions.invoke("send-transactional-email", {
-        body: {
-          templateName: "application-received",
-          recipientEmail: email,
-          idempotencyKey: `application-received-${email.toLowerCase()}`,
-          templateData: { name, lang },
-        },
-      }).catch(() => {});
+      // Send confirmation email (best-effort, never blocks the submission)
+      if (inserted?.id) {
+        supabase.functions.invoke("send-application-email", {
+          body: { application_id: inserted.id, email_type: "confirmacion" },
+        }).catch(() => {});
+      }
       // Also notify via Formspree (best-effort, non-blocking)
       fetch("https://formspree.io/f/xgobbeyp", {
         method: "POST",
