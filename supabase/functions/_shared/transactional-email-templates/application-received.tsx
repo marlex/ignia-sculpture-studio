@@ -48,7 +48,7 @@ export const template = {
   component: Email,
   subject: (data: Props) =>
     data?.lang === 'en'
-      ? 'We received your application — Ignia'
+      ? "We've received your application — Ignia"
       : 'Hemos recibido tu solicitud — Ignia',
   displayName: 'Application received',
   previewData: { name: 'Ada', lang: 'es' },
