@@ -93,7 +93,7 @@ export const Footer = () => {
 
   return (
     <footer className="footer-section bg-white border-t-[0.5px] border-border px-6 md:px-12 pt-14 pb-0">
-      <div className="max-w-5xl lg:mx-auto">
+      <div className="max-w-5xl lg:max-w-4xl lg:mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1fr_1fr] gap-10 md:gap-6">
         {cols.map((c, i) => (
           i === 0 ? (
