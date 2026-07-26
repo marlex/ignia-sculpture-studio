@@ -63,10 +63,39 @@ export const Header = () => {
     window.dispatchEvent(new Event("ignia:open-invite"));
   };
 
+  // Detect Supabase session + admin role
+  const [sbUser, setSbUser] = useState<{ id: string; email: string | null } | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    const load = async (uid?: string) => {
+      if (!uid) { if (alive) setIsAdmin(false); return; }
+      const { data } = await supabase.from("profiles").select("role").eq("id", uid).maybeSingle();
+      if (alive) setIsAdmin(data?.role === "admin");
+    };
+    supabase.auth.getSession().then(({ data }) => {
+      const u = data.session?.user;
+      if (!alive) return;
+      setSbUser(u ? { id: u.id, email: u.email ?? null } : null);
+      load(u?.id);
+    });
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
+      const u = session?.user;
+      setSbUser(u ? { id: u.id, email: u.email ?? null } : null);
+      load(u?.id);
+    });
+    return () => { alive = false; sub.subscription.unsubscribe(); };
+  }, []);
+
+  const handleSbLogout = async () => {
+    await supabase.auth.signOut();
+    navigate("/");
+  };
+
   const isJoinSculptors = location.pathname === "/join/escultores" || location.pathname === "/join/sculptors";
   const t = lang === "es"
-    ? { publish: isJoinSculptors ? "Solicitar acceso" : "Únete a Ignia", joinMobile: "ÚNETE", login: "Login", signin: "Entrar", signout: "Salir", dashboard: "Mi panel" }
-    : { publish: isJoinSculptors ? "Request access" : "Join Ignia", joinMobile: "JOIN", login: "Login", signin: "Sign in", signout: "Sign out", dashboard: "Dashboard" };
+    ? { publish: isJoinSculptors ? "Solicitar acceso" : "Únete a Ignia", joinMobile: "ÚNETE", login: "Entrar", signin: "Entrar", signout: "Salir", dashboard: "Mi panel", adminPanel: "Panel admin" }
+    : { publish: isJoinSculptors ? "Request access" : "Join Ignia", joinMobile: "JOIN", login: "Login", signin: "Sign in", signout: "Sign out", dashboard: "Dashboard", adminPanel: "Admin panel" };
 
 
 
