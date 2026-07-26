@@ -20,6 +20,7 @@ export type Database = {
           email: string
           id: string
           language: string
+          locale: string
           name: string
           social: string | null
           status: string
@@ -30,6 +31,7 @@ export type Database = {
           email: string
           id?: string
           language?: string
+          locale?: string
           name: string
           social?: string | null
           status?: string
@@ -40,6 +42,7 @@ export type Database = {
           email?: string
           id?: string
           language?: string
+          locale?: string
           name?: string
           social?: string | null
           status?: string
