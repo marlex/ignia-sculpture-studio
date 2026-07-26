@@ -56,7 +56,7 @@ export default function AdminLayout() {
               ))}
             </nav>
           </aside>
-          <section style={{ minWidth: 0, paddingBottom: 80 }}>
+          <section style={{ minWidth: 0, minHeight: 760, paddingBottom: 80 }}>
             <Outlet />
           </section>
         </div>
