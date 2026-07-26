@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { useParams, Link, useSearchParams } from "react-router-dom";
 import { PurchaseModal } from "@/components/ignia/PurchaseModal";
 import { Header } from "@/components/ignia/Header";
@@ -9,6 +9,7 @@ import { getWorkBySlug, WORKS } from "@/data/igniaWorks";
 import { ChevronLeft, ChevronRight, MessageCircle, Link2, Mail, ChevronDown, Info } from "lucide-react";
 import { BIOS } from "@/pages/PerfilEscultor";
 import { artistSlug } from "@/lib/artistSlug";
+import { supabase } from "@/integrations/supabase/client";
 
 const T = {
   es: {
@@ -47,6 +48,67 @@ const ObraDetalle = () => {
   const [mode, setMode] = useState<"photos" | "3d">("photos");
   const [idx, setIdx] = useState(0);
   const [chatOpen, setChatOpen] = useState(false);
+  type ChatMsg = { role: "user" | "assistant"; content: string };
+  const greeting = lang === "es"
+    ? `Hola, soy Ignia. ¿En qué puedo ayudarte con ${o?.title ?? ""}?`
+    : `Hi, I'm Ignia. How can I help you with ${o?.title ?? ""}?`;
+  const [chatMessages, setChatMessages] = useState<ChatMsg[]>([]);
+  const [chatInput, setChatInput] = useState("");
+  const [chatSending, setChatSending] = useState(false);
+  const [chatError, setChatError] = useState<string | null>(null);
+  const chatScrollRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const el = chatScrollRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [chatMessages, chatSending, chatOpen]);
+
+  async function sendChat(e: React.FormEvent) {
+    e.preventDefault();
+    const text = chatInput.trim();
+    if (!text || chatSending) return;
+    const history = chatMessages.map((m) => ({ role: m.role, content: m.content }));
+    const nextUser: ChatMsg = { role: "user", content: text };
+    setChatMessages((prev) => [...prev, nextUser]);
+    setChatInput("");
+    setChatSending(true);
+    setChatError(null);
+    try {
+      const { data, error } = await supabase.functions.invoke("ignia-sales-assistant", {
+        body: {
+          message: text,
+          history,
+          context: {
+            page: typeof window !== "undefined" ? window.location.pathname : undefined,
+            locale: lang,
+            product: o
+              ? {
+                  title: o.title,
+                  artist: o.artist,
+                  material: o.material,
+                  year: o.year as any,
+                  price: o.price,
+                  description: o.description,
+                }
+              : null,
+          },
+        },
+      });
+      if (error) throw error;
+      const reply = (data as any)?.reply as string | undefined;
+      if (!reply) throw new Error("empty reply");
+      setChatMessages((prev) => [...prev, { role: "assistant", content: reply }]);
+    } catch (err) {
+      setChatError(
+        lang === "es"
+          ? "No se pudo enviar el mensaje. Inténtalo de nuevo."
+          : "Couldn't send the message. Please try again.",
+      );
+    } finally {
+      setChatSending(false);
+    }
+  }
+
   const [copied, setCopied] = useState(false);
   const [specsOpen, setSpecsOpen] = useState(false);
   
@@ -537,24 +599,52 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
               </div>
               <button onClick={() => setChatOpen(false)} className="text-gray hover:opacity-65 transition-opacity font-body text-[28px] leading-none w-11 h-11 flex items-center justify-center">×</button>
             </header>
-            <div className="flex-1 overflow-y-auto p-5 space-y-3">
-              <div className="bg-secondary px-4 py-3 font-body text-[14px] text-ink max-w-[85%]">
-                Hola, soy Ignia. ¿En qué puedo ayudarte con <strong>{o.title}</strong>?
+            <div ref={chatScrollRef} className="flex-1 overflow-y-auto p-5 space-y-3">
+              <div className="bg-secondary px-4 py-3 font-body text-[14px] text-ink max-w-[85%] whitespace-pre-wrap">
+                {greeting}
               </div>
+              {chatMessages.map((m, i) => (
+                <div
+                  key={i}
+                  className={
+                    m.role === "user"
+                      ? "bg-ink text-white px-4 py-3 font-body text-[14px] max-w-[85%] ml-auto whitespace-pre-wrap"
+                      : "bg-secondary px-4 py-3 font-body text-[14px] text-ink max-w-[85%] whitespace-pre-wrap"
+                  }
+                >
+                  {m.content}
+                </div>
+              ))}
+              {chatSending && (
+                <div className="bg-secondary px-4 py-3 font-body text-[14px] text-gray max-w-[85%]">
+                  {lang === "es" ? "Escribiendo…" : "Typing…"}
+                </div>
+              )}
+              {chatError && (
+                <div className="px-4 py-2 font-body text-[13px] text-red-600">{chatError}</div>
+              )}
             </div>
             <form
-              onSubmit={(e) => { e.preventDefault(); }}
+              onSubmit={sendChat}
               className="border-t border-border p-3 flex gap-2"
             >
               <input
                 type="text"
-                placeholder="Escribe tu mensaje…"
-                className="flex-1 border border-border px-3 py-2.5 font-body text-[14px] outline-none focus:border-ink"
+                value={chatInput}
+                onChange={(e) => setChatInput(e.target.value)}
+                disabled={chatSending}
+                placeholder={lang === "es" ? "Escribe tu mensaje…" : "Type your message…"}
+                className="flex-1 border border-border px-3 py-2.5 font-body text-[14px] outline-none focus:border-ink disabled:opacity-60"
               />
-              <button type="submit" className="bg-transparent text-ink border border-ink font-body text-[12px] uppercase tracking-[0.14em] px-4 hover:opacity-65 transition-opacity">
-                Enviar
+              <button
+                type="submit"
+                disabled={chatSending || !chatInput.trim()}
+                className="bg-transparent text-ink border border-ink font-body text-[12px] uppercase tracking-[0.14em] px-4 hover:opacity-65 transition-opacity disabled:opacity-40"
+              >
+                {lang === "es" ? "Enviar" : "Send"}
               </button>
             </form>
+
           </div>
         </div>
       )}
