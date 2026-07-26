@@ -17,9 +17,9 @@ const copy = {
     team: 'Ignia.',
   },
   en: {
-    preview: 'Your application is on the waitlist',
+    preview: 'Your Ignia application — waitlist',
     heading: 'You are on the waitlist',
-    body: (n: string) => `Hi ${n}, thank you again for your interest in Ignia. For now, we've placed your application on our waitlist. Our current cohort is limited, and we'll be in touch as soon as a spot opens for you.`,
+    body: (n: string) => `Hi ${n}, thank you again for your interest in Ignia. Right now we've added your application to our waitlist. Space is currently limited, and we'll reach out as soon as a spot opens up for you.`,
     sign: 'Warmly,',
     team: 'Ignia.',
   },
