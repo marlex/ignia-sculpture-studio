@@ -28,7 +28,12 @@ import JoinEscultores from "./pages/JoinEscultores.tsx";
 import UneteAIgnia from "./pages/UneteAIgnia.tsx";
 import RecuperarPassword from "./pages/RecuperarPassword.tsx";
 import ResetPassword from "./pages/ResetPassword.tsx";
-import AdminDashboard from "./pages/AdminDashboard.tsx";
+import AdminLayout from "./pages/admin/AdminLayout.tsx";
+import AdminOverview from "./pages/admin/Overview.tsx";
+import AdminSolicitudes from "./pages/admin/Solicitudes.tsx";
+import AdminArtistas from "./pages/admin/Artistas.tsx";
+import AdminObras from "./pages/admin/Obras.tsx";
+import AdminMetricas from "./pages/admin/Metricas.tsx";
 import { GlobalInviteModal } from "@/components/ignia/GlobalInviteModal";
 
 const queryClient = new QueryClient();
@@ -67,7 +72,13 @@ const App = () => (
               <Route path="/unete-a-ignia" element={<UneteAIgnia />} />
               <Route path="/recuperar-password" element={<RecuperarPassword />} />
               <Route path="/reset-password" element={<ResetPassword />} />
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/admin/dashboard" element={<AdminLayout />}>
+                <Route index element={<AdminOverview />} />
+                <Route path="solicitudes" element={<AdminSolicitudes />} />
+                <Route path="artistas" element={<AdminArtistas />} />
+                <Route path="obras" element={<AdminObras />} />
+                <Route path="metricas" element={<AdminMetricas />} />
+              </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
             <GlobalInviteModal />

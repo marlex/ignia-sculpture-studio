@@ -44,11 +44,36 @@ export type Database = {
         }
         Relationships: []
       }
+      artwork_events: {
+        Row: {
+          artwork_id: string
+          created_at: string
+          event_type: Database["public"]["Enums"]["artwork_event_type"]
+          id: string
+          visitor_country: string | null
+        }
+        Insert: {
+          artwork_id: string
+          created_at?: string
+          event_type: Database["public"]["Enums"]["artwork_event_type"]
+          id?: string
+          visitor_country?: string | null
+        }
+        Update: {
+          artwork_id?: string
+          created_at?: string
+          event_type?: Database["public"]["Enums"]["artwork_event_type"]
+          id?: string
+          visitor_country?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
           email: string
           founding_artist: boolean
+          gender: Database["public"]["Enums"]["gender_option"] | null
           id: string
           role: string | null
           updated_at: string
@@ -57,6 +82,7 @@ export type Database = {
           created_at?: string
           email: string
           founding_artist?: boolean
+          gender?: Database["public"]["Enums"]["gender_option"] | null
           id: string
           role?: string | null
           updated_at?: string
@@ -65,6 +91,7 @@ export type Database = {
           created_at?: string
           email?: string
           founding_artist?: boolean
+          gender?: Database["public"]["Enums"]["gender_option"] | null
           id?: string
           role?: string | null
           updated_at?: string
@@ -79,7 +106,18 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      artwork_event_type:
+        | "view"
+        | "ar_activated"
+        | "3d_activated"
+        | "favorited"
+        | "inquiry"
+      gender_option:
+        | "female"
+        | "male"
+        | "non_binary"
+        | "prefer_not_to_say"
+        | "other"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -206,6 +244,21 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      artwork_event_type: [
+        "view",
+        "ar_activated",
+        "3d_activated",
+        "favorited",
+        "inquiry",
+      ],
+      gender_option: [
+        "female",
+        "male",
+        "non_binary",
+        "prefer_not_to_say",
+        "other",
+      ],
+    },
   },
 } as const
