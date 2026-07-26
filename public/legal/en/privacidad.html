@@ -4,43 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — Ignia Gallery</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Manrope:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --black: #000000;
+      --black: #121212;
       --white: #FFFFFF;
       --grey-100: #F5F5F5;
       --grey-300: #CCCCCC;
       --grey-600: #666666;
-      --grey-800: #1A1A1A;
+      --text: #444444;
     }
-
     html { font-size: 16px; }
-
     body {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      color: var(--grey-800);
+      font-family: 'Manrope', sans-serif;
+      font-weight: 400;
+      color: var(--text);
       background: var(--white);
       line-height: 1.7;
+      font-size: 16px;
     }
-
-    .page-header {
-      border-bottom: 1px solid var(--grey-300);
-      padding: 40px 0 32px;
-      margin-bottom: 64px;
-    }
-
-    .container {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
+    .container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+    .page-header { border-bottom: 1px solid var(--grey-300); padding: 40px 0 32px; margin-bottom: 64px; }
     .wordmark {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
       font-size: 15px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -49,261 +37,119 @@
       display: block;
       margin-bottom: 32px;
     }
-
     h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(28px, 4vw, 40px);
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 40px;
       line-height: 1.1;
+      letter-spacing: -0.02em;
       color: var(--black);
       margin-bottom: 12px;
-      font-weight: 400;
     }
-
-    .meta {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: 13px;
-      color: var(--grey-600);
-      letter-spacing: 0.02em;
-    }
-
-    .notice {
-      background: var(--grey-100);
-      padding: 20px 24px;
-      margin-bottom: 56px;
-      border-left: 2px solid var(--black);
-    }
-
-    .notice p {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--grey-800);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .notice p + p {
-      margin-top: 8px;
-    }
-
     h2 {
-      font-family: 'DM Serif Display', serif;
-      font-weight: 400;
-      font-size: 17px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 34px;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
       color: var(--black);
-      margin-top: 56px;
+      margin-top: 64px;
       margin-bottom: 20px;
-      padding-bottom: 10px;
+      padding-bottom: 12px;
       border-bottom: 1px solid var(--grey-300);
     }
-
     h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 16px;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
       color: var(--black);
-      margin-top: 32px;
-      margin-bottom: 12px;
-    }
-
-    p {
-      font-size: 15px;
+      margin-top: 40px;
       margin-bottom: 16px;
-      color: var(--grey-800);
     }
-
-    .data-block {
-      border-left: 1px solid var(--grey-300);
-      padding: 16px 20px;
-      margin: 16px 0;
-    }
-
-    .data-block strong {
-      font-family: 'DM Serif Display', serif;
-      font-weight: 400;
-      font-size: 13px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 6px;
-      color: var(--black);
-    }
-
-    .data-block p {
-      margin: 0;
-      font-size: 14px;
-    }
-
-    .rights-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--grey-300);
-      border: 1px solid var(--grey-300);
-      margin: 20px 0;
-    }
-
-    .right-item {
-      background: var(--white);
-      padding: 16px 18px;
-    }
-
-    .right-item strong {
-      font-family: 'DM Serif Display', serif;
-      font-weight: 400;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 4px;
-      color: var(--black);
-    }
-
-    .right-item p {
-      margin: 0;
-      font-size: 13px;
-      color: var(--grey-600);
-    }
-
-    .page-footer {
-      margin-top: 96px;
-      padding: 32px 0 48px;
-      border-top: 1px solid var(--grey-300);
-    }
-
-    .page-footer p {
-      font-size: 12px;
-      color: var(--grey-600);
-      margin: 0;
-    }
-
+    p { font-size: 16px; margin-bottom: 16px; color: var(--text); }
+    .meta { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 13px; color: var(--grey-600); letter-spacing: 0.02em; }
+    .page-footer { margin-top: 96px; padding: 32px 0 48px; border-top: 1px solid var(--grey-300); }
+    .page-footer p { font-size: 12px; color: var(--grey-600); margin: 0; }
     @media (max-width: 768px) {
       .page-header { padding: 28px 0 24px; margin-bottom: 40px; }
-      h2 { margin-top: 40px; }
-      .rights-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 32px; }
+      h2 { font-size: 26px; margin-top: 44px; }
+      h3 { font-size: 22px; margin-top: 32px; }
+      p { font-size: 15px; }
     }
-  /* Match site typography */
-  body { font-family: 'Manrope', sans-serif; font-weight: 400; }
-  h1, h2, h3, .wordmark, .level-block strong, .data-block strong, .right-item strong, .return-block h3, .zone-label span { font-family: 'Cormorant Garamond', serif; font-weight: 700; }
-  h1, h3 { letter-spacing: -0.02em; }
-  .meta { font-family: 'Manrope', sans-serif; }
-  p { color: #444; }
   </style>
 </head>
 <body>
-
   <div class="page-header">
     <div class="container">
       <a class="wordmark" href="/">Ignia Gallery</a>
       <h1>Privacy Policy</h1>
-      <p class="meta">Last updated: June 2026</p>
+      <p class="meta">Last updated: July 2026</p>
     </div>
   </div>
 
   <div class="container">
+    <p>This Privacy Policy explains how Ignia Gallery ("Ignia", "we") collects, uses, retains and protects the personal data of artists, buyers and visitors of the platform, in compliance with Regulation (EU) 2016/679 of 27 April 2016 ("GDPR") and Spanish Organic Law 3/2018 of 5 December on the Protection of Personal Data and Guarantee of Digital Rights ("LOPDGDD").</p>
 
-    <div class="notice">
-      <p>Data controller: Ignia Gallery, a project in the process of incorporation as a company in Spain. Provisional controller: Mariana Bolívar García, Madrid. Contact: privacidad@igniagallery.com.</p>
-      <p>Supervisory authority: Spanish Data Protection Agency (AEPD), www.aepd.es. Legal basis: Regulation (EU) 2016/679 of the European Parliament and of the Council (GDPR) and Organic Law 3/2018, of 5 December, on Personal Data Protection and guarantee of digital rights (LOPDGDD).</p>
-    </div>
+    <h2>1. Data controller</h2>
+    <p>The data controller is Mariana Bolívar García, a natural person and holder of the Ignia Gallery project, with a communications address in Madrid, Spain. Contact: privacidad@igniagallery.com. Full identification details are available in the Legal Notice.</p>
 
-    <p>At Ignia Gallery we treat privacy as a commitment, not a formality. This policy explains what data we collect, what we use it for and what rights you have over it, in a clear way and without unnecessary technicalities.</p>
+    <h2>2. Data we collect</h2>
+    <p>We collect different categories of data depending on your relationship with the platform:</p>
+    <p><strong>Visitors:</strong> browsing and platform usage data (see the Cookie Policy for details on cookies and similar technologies).</p>
+    <p><strong>Artists:</strong> full name, email address, country, portfolio and artwork images, bank details for commission payments, and, for transactions of €10,000 or more, additional identification documents (ID/passport, tax number) in accordance with section 10.3 of the Terms and Conditions of Use (anti-money laundering regulations).</p>
+    <p><strong>Buyers:</strong> full name, email address, delivery address, payment data (processed directly by Stripe; Ignia does not store card numbers), and, for transactions of €10,000 or more, additional identification documents in accordance with the same section.</p>
+    <p><strong>Data derived from platform activity:</strong> history of works viewed, saved or purchased, interactions with the 3D viewer, and communications with customer support.</p>
 
-    <h2>1. What data we collect and why</h2>
+    <h2>3. Purposes and legal basis of processing</h2>
+    <p>We process your personal data for the following purposes, each with its legal basis under Article 6.1 GDPR:</p>
+    <p>Managing your account, publishing works and processing purchases: performance of a contract (Article 6.1.b GDPR).</p>
+    <p>Generating the blockchain certificate of authenticity and transferring it between owners: performance of a contract, with the specific processing described in section 4.</p>
+    <p>Managing logistics, transit insurance and returns: performance of a contract.</p>
+    <p>Complying with tax obligations, reporting to the Spanish Tax Agency (DAC7, Law 13/2023) and, where applicable, anti-money laundering (Law 10/2010): compliance with a legal obligation (Article 6.1.c GDPR).</p>
+    <p>Preventing fraud, verifying identities in high-value transactions and protecting the security of the platform: legitimate interest (Article 6.1.f GDPR), balanced against your rights and interests.</p>
+    <p>Sending you commercial communications or the newsletter: consent (Article 6.1.a GDPR), which you can withdraw at any time.</p>
 
-    <div class="data-block">
-      <strong>Account and registration data</strong>
-      <p>Name, surname, email address and password. Purpose: to manage your access to the platform and the contractual relationship. Legal basis: performance of a contract (Art. 6.1.b GDPR). Retention period: while the account is active and for an additional 5 years for applicable legal obligations.</p>
-    </div>
+    <h2>4. Blockchain certificate: specific processing</h2>
+    <p>The certificate of authenticity is generated through Verisart, which uses the OpenTimestamps protocol on the Bitcoin network. This protocol does not record your personal data directly on the blockchain: what is permanently anchored on the network is a cryptographic hash which, on its own, does not allow you to be identified or the original information to be reconstructed. The descriptive data of the artwork and artist (name, images, technical data) are stored on Verisart's systems, off-chain, where they can indeed be rectified or deleted in accordance with that provider's procedures.</p>
+    <p>This architecture is consistent with the Guidelines on the processing of personal data through blockchain technologies approved by the European Data Protection Board, for which the Spanish Data Protection Agency (AEPD) served as rapporteur, which recommend avoiding the recording of plain-text personal data on the chain and limiting on-chain anchoring to hashes or cryptographic commitments. Ignia has a data processor agreement with Verisart that reflects these safeguards.</p>
+    <p>You should be aware that, although descriptive data may be rectified or deleted from Verisart's systems, the corresponding cryptographic hash will remain indefinitely and publicly on the Bitcoin network as proof that such information existed and was declared on a given date. This permanence is an essential and necessary feature of the service that you accept when publishing a work or receiving a certificate as a buyer.</p>
 
-    <div class="data-block">
-      <strong>Additional artist data</strong>
-      <p>Profile photograph, biographical description, portfolio, bank details for payment of sales, country of residence and assigned editorial level. Purpose: to manage the public profile, process payments, issue blockchain certificates and apply the corresponding commission level. Legal basis: performance of a contract (Art. 6.1.b GDPR).</p>
-    </div>
+    <h2>5. Recipients of the data</h2>
+    <p>We share your data, only to the extent necessary, with the following processors or third parties:</p>
+    <p>Stripe, Inc., for payment processing.</p>
+    <p>Netlify, Inc., as hosting infrastructure provider.</p>
+    <p>Verisart, Inc., for the generation and management of blockchain certificates of authenticity.</p>
+    <p>EnviArte and SIT Spain, or other logistics partners specialised in art, for the collection, packaging and transport of works.</p>
+    <p>The art-specialist insurer that covers transit insurance.</p>
+    <p>The Spanish Tax Agency, in compliance with the DAC7 obligations described in the Terms and Conditions of Use.</p>
+    <p>Competent authorities (including SEPBLAC), where required under anti-money laundering regulations or upon legal request.</p>
+    <p>We do not sell your personal data to third parties nor use it for purposes other than those described in this policy.</p>
 
-    <div class="data-block">
-      <strong>Additional buyer data</strong>
-      <p>Delivery address, contact details and payment data. Card data is managed directly by the payment provider (Stripe) under PCI-DSS standards. Ignia does not store card data at any time. Purpose: to manage the purchase, the shipping logistics and after-sales service. Legal basis: performance of a contract (Art. 6.1.b GDPR). Transaction data is retained for 10 years for tax and accounting obligations.</p>
-    </div>
+    <h2>6. International transfers</h2>
+    <p>Some of our providers are located outside the European Economic Area. Stripe, Inc. and Netlify, Inc. are certified under the EU-U.S. Data Privacy Framework, recognised as providing an adequate level of protection by the European Commission's Adequacy Decision of 10 July 2023, allowing data transfers without additional safeguards. For Verisart, Inc., given the limited nature of the data that actually crosses the border pursuant to section 4, Ignia obtains the appropriate safeguards (adherence to the aforementioned framework or Standard Contractual Clauses approved by the European Commission) in its data processor agreement, and keeps them available for consultation at the request of the data subject.</p>
 
-    <div class="data-block">
-      <strong>Browsing data</strong>
-      <p>IP address, device and browser type, pages visited and session duration. Purpose: to ensure the technical operation of the platform and to analyse use in an aggregated way to improve the service. Legal basis: legitimate interest (Art. 6.1.f GDPR), balanced against users' rights. Retention period: 13 months.</p>
-    </div>
+    <h2>7. Retention periods</h2>
+    <p>We retain your data during the term of your account and, after its cancellation, for the periods legally required: as a general rule, data linked to tax obligations is retained for 4 years pursuant to Article 66 of Law 58/2003 (General Tax Law) and accounting documents for 6 years pursuant to Article 30 of the Commercial Code; identification data collected for compliance with anti-money laundering regulations is retained for 10 years pursuant to Article 25 of Law 10/2010; and data reported to the Tax Agency under DAC7 is retained for the periods established by that regulation. The cryptographic hash of the blockchain certificate remains indefinitely on the Bitcoin network, as explained in section 4.</p>
 
-    <div class="data-block">
-      <strong>Audience analytics data for artists</strong>
-      <p>Aggregated and anonymized data about the behaviour of visitors who interact with the works: country of origin, device type, time spent in the 3D viewer and visit frequency. This data does not allow individual visitors to be identified and is always presented in an aggregated form. Purpose: to offer the artist audience information about their work to improve their sales strategy. Legal basis: legitimate interest (Art. 6.1.f GDPR).</p>
-    </div>
+    <h2>8. Your rights</h2>
+    <p>You may exercise at any time the rights of access, rectification, erasure, objection, restriction of processing and portability of your data, as well as withdraw your consent where processing is based on it, by writing to privacidad@igniagallery.com. We will respond within one month in accordance with Article 12.3 GDPR. The rights of rectification and erasure over the descriptive data of your blockchain certificate are exercised against Verisart through Ignia, with the limits explained in section 4 regarding the cryptographic hash anchored on the Bitcoin network.</p>
+    <p>If you consider that the processing of your data does not comply with the applicable regulations, you have the right to file a complaint with the Spanish Data Protection Agency (AEPD), through its electronic office at www.aepd.es.</p>
 
-    <div class="data-block">
-      <strong>Data associated with the blockchain certificate</strong>
-      <p>When publishing a work, the artist declares certain data (title, authorship, materials, dimensions, date) that are immutably recorded on the blockchain through Verisart. Once recorded, these data cannot be modified or deleted from the blockchain record due to the technological nature of the system. The artist expressly accepts this characteristic when publishing their work. Legal basis: performance of a contract (Art. 6.1.b GDPR).</p>
-    </div>
+    <h2>9. Minors</h2>
+    <p>Access to Ignia is restricted to persons over 18 years of age or minors with authorisation from their legal representative, in accordance with the Terms and Conditions of Use. We do not knowingly collect data from minors without such authorisation.</p>
 
-    <div class="data-block">
-      <strong>Communications</strong>
-      <p>Messages you send us by email or through the platform. Purpose: to attend to queries and complaints. Legal basis: legitimate interest (Art. 6.1.f GDPR). Retention period: 3 years.</p>
-    </div>
+    <h2>10. Security</h2>
+    <p>We apply reasonable technical and organisational measures to protect your data against unauthorised access, loss or alteration, in accordance with Article 32 GDPR. Payment processing is carried out through Stripe, which is PCI-DSS certified; Ignia does not at any time store full payment card data.</p>
 
-    <h2>2. How long we keep your data</h2>
-    <p>Account data is kept while you maintain an active account on Ignia and for the minimum period required by applicable legislation once you cancel it. Transaction data is kept for 10 years for tax and accounting obligations derived from the Spanish Commercial Code and tax legislation. Browsing data is kept for 13 months. When you request deletion of your account, Ignia will delete your personal data within a maximum period of 30 days, except for data that must be kept by legal obligation or that forms part of a blockchain record, whose technological nature prevents its modification or deletion.</p>
-
-    <h2>3. Who we share your data with</h2>
-    <p>Ignia shares data exclusively with the third parties necessary to provide the service, as data processors or independent controllers as appropriate:</p>
-    <p>With Stripe, to process transactions securely under PCI-DSS standards, as an independent controller of payment data. With logistics partners (EnviArte, SIT Spain or other art specialists), the buyer's full name and delivery address and the artist's collection address, exclusively to manage the shipping of each work. With Verisart, the declared data of each work for the issuance of the blockchain authenticity certificate. With the specialized art insurer, the work data and contact details of artist and buyer, exclusively in the event of a claim during transit. With Netlify, the hosting infrastructure provider acting as a data processor and unable to use your data for its own purposes.</p>
-    <p>Ignia does not sell, rent or transfer personal data to third parties for commercial or advertising purposes. If any of these providers is located outside the European Economic Area, Ignia ensures that the processing is carried out with appropriate safeguards in accordance with Chapter V of the GDPR (standard contractual clauses or other equivalent mechanisms approved by the European Commission).</p>
-
-    <h2>4. Your rights</h2>
-    <p>You may exercise any of the following rights by writing to privacidad@igniagallery.com, stating your full name and attaching a copy of your identification document. We will respond within a maximum period of one month, extendable by two additional months in cases of special complexity, with prior notification.</p>
-
-    <div class="rights-grid">
-      <div class="right-item">
-        <strong>Access</strong>
-        <p>Know what data of yours we process and obtain a copy.</p>
-      </div>
-      <div class="right-item">
-        <strong>Rectification</strong>
-        <p>Correct inaccurate data or complete incomplete data.</p>
-      </div>
-      <div class="right-item">
-        <strong>Erasure</strong>
-        <p>Request the deletion of your data when it is no longer necessary for the purposes for which it was collected, except for legal retention obligations or data already recorded on the blockchain.</p>
-      </div>
-      <div class="right-item">
-        <strong>Objection</strong>
-        <p>Object to processing based on legitimate interest.</p>
-      </div>
-      <div class="right-item">
-        <strong>Restriction</strong>
-        <p>Request that we restrict the use of your data in certain circumstances.</p>
-      </div>
-      <div class="right-item">
-        <strong>Portability</strong>
-        <p>Receive your data in a structured, commonly used and machine-readable format.</p>
-      </div>
-    </div>
-
-    <p>If you consider that the processing of your data is not correct or that we have not dealt with your request satisfactorily, you may file a complaint with the Spanish Data Protection Agency (AEPD) at www.aepd.es.</p>
-
-    <h2>5. Cookies</h2>
-    <p>Ignia uses strictly necessary technical cookies for the operation of the platform (session management, language preferences, shopping cart). These cookies do not require consent in accordance with Article 22.2 of the LSSI-CE, interpreted in light of the AEPD guidelines.</p>
-    <p>Ignia may use analytics cookies to understand aggregated use of the platform and improve the service. In that case, we will inform you and request your consent through the cookie banner before activating them. You may withdraw your consent at any time from the platform's cookie settings.</p>
-    <p>Ignia does not use advertising cookies or share browsing data with third-party advertising networks.</p>
-
-    <h2>6. Security</h2>
-    <p>All communications between your browser and the platform are carried out using the HTTPS protocol with TLS encryption. Payment data is managed entirely through Stripe under PCI-DSS standards, without Ignia storing card data at any time. Ignia applies appropriate technical and organizational measures —including access control, encryption of sensitive data and security monitoring— to protect your data against unauthorized access, loss, accidental or unlawful alteration or destruction, in accordance with Article 32 of the GDPR.</p>
-    <p>In the event of a security breach that may affect your data, Ignia will notify the AEPD within 72 hours of becoming aware of it, and will inform you if such breach entails a high risk for your rights and freedoms, in accordance with Articles 33 and 34 of the GDPR.</p>
-
-    <h2>7. Changes to this policy</h2>
-    <p>When we update this policy we will notify you by email at least 15 days in advance if the changes significantly affect the processing of your data. The current version, with its date of last update, will always be available on this same page.</p>
+    <h2>11. Changes to this policy</h2>
+    <p>We may update this Privacy Policy to reflect regulatory changes or changes in our services. Relevant changes will be notified to registered users with a minimum of 15 days' notice, as provided for in the Terms and Conditions of Use.</p>
 
     <div class="page-footer">
       <p>Ignia Gallery · privacidad@igniagallery.com · Madrid, Spain</p>
     </div>
-
   </div>
 </body>
 </html>
