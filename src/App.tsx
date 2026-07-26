@@ -72,7 +72,13 @@ const App = () => (
               <Route path="/unete-a-ignia" element={<UneteAIgnia />} />
               <Route path="/recuperar-password" element={<RecuperarPassword />} />
               <Route path="/reset-password" element={<ResetPassword />} />
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/admin/dashboard" element={<AdminLayout />}>
+                <Route index element={<AdminOverview />} />
+                <Route path="solicitudes" element={<AdminSolicitudes />} />
+                <Route path="artistas" element={<AdminArtistas />} />
+                <Route path="obras" element={<AdminObras />} />
+                <Route path="metricas" element={<AdminMetricas />} />
+              </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
             <GlobalInviteModal />
