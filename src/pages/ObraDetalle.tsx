@@ -26,6 +26,8 @@ const T = {
     chatSend: "Enviar",
     chatTyping: "Escribiendo…",
     chatError: "No se pudo enviar el mensaje. Inténtalo de nuevo.",
+    chatAskContact: "Para poder acompañarte con una propuesta personalizada, ¿podrías compartirme tu nombre y un email o teléfono de contacto? Un asesor de Ignia se pondrá en contacto contigo a la mayor brevedad.",
+    chatThanks: "Gracias. He compartido tus datos con nuestro equipo — un asesor de Ignia se pondrá en contacto contigo muy pronto.",
   },
   en: {
     back: "← Back to the collection",
@@ -41,6 +43,8 @@ const T = {
     chatSend: "Send",
     chatTyping: "Typing…",
     chatError: "Couldn't send the message. Please try again.",
+    chatAskContact: "So we can follow up with a personalised proposal, could you share your name and an email or phone number? An Ignia advisor will be in touch shortly.",
+    chatThanks: "Thank you. I've passed your details to our team — an Ignia advisor will be in touch with you very soon.",
   },
 };
 
