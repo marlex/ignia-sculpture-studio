@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
+import { supabase } from "@/integrations/supabase/client";
 
 const inputStyle: React.CSSProperties = {
   width: "100%",
