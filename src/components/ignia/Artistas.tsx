@@ -100,7 +100,7 @@ export const Artistas = ({ showHeader = false }: ArtistasProps) => {
         {showHeader && (
           <div className="flex items-center justify-between mb-10 flex-wrap gap-4">
             <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] max-md:text-[30px] tracking-[-0.02em] text-ink">{t.label}</h2>
-            <Link to="/escultores" className="link-arrow max-md:hidden">{t.all}</Link>
+            <Link to="/escultores" className="link-arrow">{t.all}</Link>
           </div>
         )}
 

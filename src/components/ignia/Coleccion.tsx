@@ -145,7 +145,7 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
       {showHeader && (
         <div className="flex items-center justify-between mb-10 flex-wrap gap-4">
           <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] max-md:text-[30px] tracking-[-0.02em] text-ink">{t.h}</h2>
-          <Link to="/coleccion" className="link-arrow max-md:hidden">{t.all}</Link>
+          <Link to="/coleccion" className="link-arrow">{t.all}</Link>
         </div>
       )}
 

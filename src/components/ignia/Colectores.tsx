@@ -77,7 +77,7 @@ export const Colectores = () => {
     <section className="px-6 md:px-12 py-[60px]" style={{ background: "#f5f5f5" }}>
       <div className="flex items-center justify-between mb-10 flex-wrap gap-4">
         <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] max-md:text-[30px] tracking-[-0.02em] text-ink">{t.h}</h2>
-        <a href="#" className="link-arrow max-md:hidden">{t.all}</a>
+        <a href="#" className="link-arrow">{t.all}</a>
       </div>
 
       <article className="grid grid-cols-1 md:grid-cols-[65%_35%] gap-8 md:gap-14 items-center mb-16">

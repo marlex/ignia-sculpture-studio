@@ -16,7 +16,7 @@ export const Aprende = ({ showHeader = true }: AprendeProps) => {
       {showHeader && (
         <div className="flex items-center justify-between mb-8">
           <h2 id="ignia-aprende-title" className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] max-md:text-[30px] tracking-[-0.02em] text-ink">{t.title}</h2>
-          <a href="/aprende" className="link-arrow max-md:hidden">{t.more}</a>
+          <a href="/aprende" className="link-arrow">{t.more}</a>
         </div>
       )}
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10" aria-label={t.list}>
