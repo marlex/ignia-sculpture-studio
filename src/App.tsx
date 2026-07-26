@@ -27,6 +27,7 @@ import Legal from "./pages/Legal.tsx";
 import JoinEscultores from "./pages/JoinEscultores.tsx";
 import UneteAIgnia from "./pages/UneteAIgnia.tsx";
 import RecuperarPassword from "./pages/RecuperarPassword.tsx";
+import ResetPassword from "./pages/ResetPassword.tsx";
 import { GlobalInviteModal } from "@/components/ignia/GlobalInviteModal";
 
 const queryClient = new QueryClient();
@@ -64,6 +65,7 @@ const App = () => (
               <Route path="/join/sculptors" element={<JoinEscultores />} />
               <Route path="/unete-a-ignia" element={<UneteAIgnia />} />
               <Route path="/recuperar-password" element={<RecuperarPassword />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <GlobalInviteModal />

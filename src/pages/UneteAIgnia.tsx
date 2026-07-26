@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
+import { supabase } from "@/integrations/supabase/client";
 
 const inputStyle: React.CSSProperties = {
   width: "100%",
@@ -78,19 +79,22 @@ export default function UneteAIgnia() {
     e.preventDefault();
     setLoading(true); setError(null);
     try {
-      const res = await fetch("https://formspree.io/f/xgobbeyp", {
+      const { error: dbError } = await supabase
+        .from("applications")
+        .insert({ name, email, social: social || null });
+      if (dbError) throw dbError;
+      // Also notify via Formspree (best-effort, non-blocking)
+      fetch("https://formspree.io/f/xgobbeyp", {
         method: "POST",
         headers: { Accept: "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify({
-          profile_type: "Solicitud de acceso",
-          source: "unete-a-ignia",
-          nombre: name, email, social,
-        }),
-      });
-      if (res.ok) setSubmitted(true);
-      else { const j = await res.json().catch(() => ({})); setError(j.error || t.errMsg); }
-    } catch { setError(t.errMsg); }
-    finally { setLoading(false); }
+        body: JSON.stringify({ profile_type: "Solicitud de acceso", source: "unete-a-ignia", nombre: name, email, social }),
+      }).catch(() => {});
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err?.message || t.errMsg);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

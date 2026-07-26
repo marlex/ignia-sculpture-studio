@@ -14,13 +14,69 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      applications: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          name: string
+          social: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          social?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          social?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string
+          founding_artist: boolean
+          id: string
+          role: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          founding_artist?: boolean
+          id: string
+          role?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          founding_artist?: boolean
+          id?: string
+          role?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: { Args: { _role: string; _user_id: string }; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
