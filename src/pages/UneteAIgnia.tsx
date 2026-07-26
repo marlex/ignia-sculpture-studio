@@ -101,24 +101,26 @@ export default function UneteAIgnia() {
     <div style={{ background: "#FFFFFF", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <Header />
       <main style={{ flex: 1, paddingTop: 56 }}>
-        <section style={{ maxWidth: 560, margin: "0 auto", padding: "80px 24px 120px" }}>
-          <h1 style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontWeight: 600,
-            color: "#121212",
-            fontSize: "clamp(32px, 4vw, 44px)",
-            lineHeight: 1.1,
-            letterSpacing: "-0.02em",
-            margin: "0 0 16px",
-          }}>{t.title}</h1>
-          <p style={{
-            fontFamily: "Manrope, sans-serif",
-            fontWeight: 400,
-            color: "#666666",
-            fontSize: 16,
-            lineHeight: 1.6,
-            marginBottom: 48,
-          }}>{t.subtitle}</p>
+        <section style={{ maxWidth: 560, margin: "0 auto", padding: "120px 24px 160px" }}>
+          <div style={{ textAlign: "center" }}>
+            <h1 style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontWeight: 600,
+              color: "#121212",
+              fontSize: "clamp(32px, 4vw, 44px)",
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              margin: "0 0 16px",
+            }}>{t.title}</h1>
+            <p style={{
+              fontFamily: "Manrope, sans-serif",
+              fontWeight: 400,
+              color: "#666666",
+              fontSize: 16,
+              lineHeight: 1.6,
+              marginBottom: 48,
+            }}>{t.subtitle}</p>
+          </div>
 
           {submitted ? (
             <div>
