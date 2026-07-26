@@ -144,7 +144,7 @@ export const Artistas = ({ showHeader = false }: ArtistasProps) => {
         </div>
 
         {showHeader && (
-          <div className="md:hidden mt-8">
+          <div className="md:hidden mt-8 flex justify-end">
             <Link to="/escultores" className="link-arrow">{t.all}</Link>
           </div>
         )}

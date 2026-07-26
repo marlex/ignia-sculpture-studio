@@ -119,7 +119,7 @@ export const Colectores = () => {
         </div>
       </div>
 
-      <div className="md:hidden mt-8">
+      <div className="md:hidden mt-8 flex justify-end">
         <a href="#" className="link-arrow">{t.all}</a>
       </div>
     </section>

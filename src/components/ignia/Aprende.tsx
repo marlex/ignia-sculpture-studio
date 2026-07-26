@@ -47,7 +47,7 @@ export const Aprende = ({ showHeader = true }: AprendeProps) => {
         })}
       </ul>
       {showHeader && (
-        <div className="md:hidden mt-8">
+        <div className="md:hidden mt-8 flex justify-end">
           <a href="/aprende" className="link-arrow">{t.more}</a>
         </div>
       )}

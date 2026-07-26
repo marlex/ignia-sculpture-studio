@@ -389,7 +389,7 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-normal tr
       </div>
 
       {showHeader && (
-        <div className="md:hidden mt-8">
+        <div className="md:hidden mt-8 flex justify-end">
           <Link to="/coleccion" className="link-arrow">{t.all}</Link>
         </div>
       )}
