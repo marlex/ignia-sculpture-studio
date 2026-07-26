@@ -26,6 +26,8 @@ const T = {
     chatSend: "Enviar",
     chatTyping: "Escribiendo…",
     chatError: "No se pudo enviar el mensaje. Inténtalo de nuevo.",
+    chatAskContact: "Para poder acompañarte con una propuesta personalizada, ¿podrías compartirme tu nombre y un email o teléfono de contacto? Un asesor de Ignia se pondrá en contacto contigo a la mayor brevedad.",
+    chatThanks: "Gracias. He compartido tus datos con nuestro equipo — un asesor de Ignia se pondrá en contacto contigo muy pronto.",
   },
   en: {
     back: "← Back to the collection",
@@ -41,6 +43,8 @@ const T = {
     chatSend: "Send",
     chatTyping: "Typing…",
     chatError: "Couldn't send the message. Please try again.",
+    chatAskContact: "So we can follow up with a personalised proposal, could you share your name and an email or phone number? An Ignia advisor will be in touch shortly.",
+    chatThanks: "Thank you. I've passed your details to our team — an Ignia advisor will be in touch with you very soon.",
   },
 };
 
@@ -65,11 +69,26 @@ const ObraDetalle = () => {
   const [chatSending, setChatSending] = useState(false);
   const [chatError, setChatError] = useState<string | null>(null);
   const chatScrollRef = useRef<HTMLDivElement | null>(null);
+  const [awaitingContact, setAwaitingContact] = useState(false);
+  const [notified, setNotified] = useState(false);
 
   useEffect(() => {
     const el = chatScrollRef.current;
     if (el) el.scrollTop = el.scrollHeight;
   }, [chatMessages, chatSending, chatOpen]);
+
+  function extractContact(messages: ChatMsg[]) {
+    const userText = messages.filter((m) => m.role === "user").map((m) => m.content).join("\n");
+    const emailMatch = userText.match(/[\w.+-]+@[\w-]+\.[\w.-]+/);
+    const phoneMatch = userText.match(/(\+?\d[\d\s\-().]{6,}\d)/);
+    const email = emailMatch?.[0];
+    const phone = phoneMatch?.[0]?.trim();
+    // Best-effort name: first "Me llamo X" / "My name is X" / "Soy X" / "I'm X"
+    const nameRe = /(?:me llamo|mi nombre es|soy|my name is|i am|i'm)\s+([A-ZÁÉÍÓÚÑ][\wÀ-ÿ'’\-]+(?:\s+[A-ZÁÉÍÓÚÑ][\wÀ-ÿ'’\-]+){0,2})/i;
+    const nameMatch = userText.match(nameRe);
+    const name = nameMatch?.[1]?.trim();
+    return { name, email, phone, hasContact: Boolean(email || phone) };
+  }
 
   async function sendChat(e: React.FormEvent) {
     e.preventDefault();
@@ -77,7 +96,8 @@ const ObraDetalle = () => {
     if (!text || chatSending) return;
     const history = chatMessages.map((m) => ({ role: m.role, content: m.content }));
     const nextUser: ChatMsg = { role: "user", content: text };
-    setChatMessages((prev) => [...prev, nextUser]);
+    const conversationAfterUser: ChatMsg[] = [...chatMessages, nextUser];
+    setChatMessages(conversationAfterUser);
     setChatInput("");
     setChatSending(true);
     setChatError(null);
@@ -104,8 +124,50 @@ const ObraDetalle = () => {
       });
       if (error) throw error;
       const reply = (data as any)?.reply as string | undefined;
+      const escalate = Boolean((data as any)?.escalate);
       if (!reply) throw new Error("empty reply");
-      setChatMessages((prev) => [...prev, { role: "assistant", content: reply }]);
+      const withAssistant: ChatMsg[] = [...conversationAfterUser, { role: "assistant", content: reply }];
+      setChatMessages(withAssistant);
+
+      if (!notified) {
+        const contact = extractContact(withAssistant);
+        if (escalate || awaitingContact) {
+          if (contact.hasContact) {
+            const productCtx = o
+              ? {
+                  title: o.title,
+                  artist: o.artist,
+                  material: o.material,
+                  year: o.year as any,
+                  price: o.price,
+                }
+              : null;
+            try {
+              await supabase.functions.invoke("notify-escalation", {
+                body: {
+                  contact,
+                  history: withAssistant,
+                  lastUserMessage: text,
+                  lastAssistantReply: reply,
+                  context: {
+                    page: typeof window !== "undefined" ? window.location.pathname : undefined,
+                    locale: lang,
+                    product: productCtx,
+                  },
+                },
+              });
+              setNotified(true);
+              setAwaitingContact(false);
+              setChatMessages((prev) => [...prev, { role: "assistant", content: t.chatThanks }]);
+            } catch (notifyErr) {
+              console.error("notify-escalation failed", notifyErr);
+            }
+          } else if (!awaitingContact) {
+            setAwaitingContact(true);
+            setChatMessages((prev) => [...prev, { role: "assistant", content: t.chatAskContact }]);
+          }
+        }
+      }
     } catch (err) {
       setChatError(t.chatError);
     } finally {
