@@ -3,7 +3,7 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
-import { useAuth } from "@/auth/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
 
 const inputStyle: React.CSSProperties = {
   width: "100%",
@@ -33,12 +33,14 @@ const labelStyle: React.CSSProperties = {
 export default function Login() {
   const lang = useLang();
   const navigate = useNavigate();
-  const { login } = useAuth();
   const [params] = useSearchParams();
   const redirect = params.get("redirect") || "";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [info, setInfo] = useState<string | null>(null);
 
   const t = lang === "es" ? {
     title: "Iniciar sesión",
@@ -48,8 +50,11 @@ export default function Login() {
     remember: "Recuérdame",
     forgot: "¿Olvidaste tu contraseña?",
     submit: "Login",
+    sending: "Entrando…",
     noAccount: "¿No tienes cuenta?",
     create: "Crear cuenta",
+    invalid: "Email o contraseña incorrectos.",
+    notActive: "Tu cuenta aún no está activa.",
   } : {
     title: "Sign in",
     subtitle: "Access your Ignia Gallery account.",
@@ -58,14 +63,37 @@ export default function Login() {
     remember: "Remember me",
     forgot: "Forgot your password?",
     submit: "Login",
+    sending: "Signing in…",
     noAccount: "Don't have an account?",
     create: "Create account",
+    invalid: "Invalid email or password.",
+    notActive: "Your account is not active yet.",
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    login({ email: email || "user@ignia.gallery", name: "Ignia", role: "coleccionista" });
-    navigate(redirect || "/perfil/coleccionista");
+    setLoading(true); setError(null); setInfo(null);
+    try {
+      const { data, error: signErr } = await supabase.auth.signInWithPassword({ email, password });
+      if (signErr || !data.user) { setError(t.invalid); return; }
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", data.user.id)
+        .maybeSingle();
+      const role = profile?.role;
+      if (role === "admin") {
+        navigate("/admin/dashboard");
+      } else if (!role) {
+        setInfo(t.notActive);
+      } else {
+        navigate(redirect || "/");
+      }
+    } catch (err: any) {
+      setError(err?.message || t.invalid);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
