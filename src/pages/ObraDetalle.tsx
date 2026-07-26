@@ -129,45 +129,43 @@ const ObraDetalle = () => {
       const withAssistant: ChatMsg[] = [...conversationAfterUser, { role: "assistant", content: reply }];
       setChatMessages(withAssistant);
 
-      if (!notified) {
-        const contact = extractContact(withAssistant);
-        if (escalate || awaitingContact) {
-          if (contact.hasContact) {
-            const productCtx = o
-              ? {
-                  title: o.title,
-                  artist: o.artist,
-                  material: o.material,
-                  year: o.year as any,
-                  price: o.price,
-                }
-              : null;
-            try {
-              await supabase.functions.invoke("notify-escalation", {
-                body: {
-                  contact,
-                  history: withAssistant,
-                  lastUserMessage: text,
-                  lastAssistantReply: reply,
-                  context: {
-                    page: typeof window !== "undefined" ? window.location.pathname : undefined,
-                    locale: lang,
-                    product: productCtx,
-                  },
-                },
-              });
-              setNotified(true);
-              setAwaitingContact(false);
-              setChatMessages((prev) => [...prev, { role: "assistant", content: t.chatThanks }]);
-            } catch (notifyErr) {
-              console.error("notify-escalation failed", notifyErr);
-            }
-          } else if (!awaitingContact) {
-            setAwaitingContact(true);
-            setChatMessages((prev) => [...prev, { role: "assistant", content: t.chatAskContact }]);
+      const productCtx = o
+        ? {
+            title: o.title,
+            artist: o.artist,
+            material: o.material,
+            year: o.year as any,
+            price: o.price,
           }
-        }
+        : null;
+      const contact = extractContact(withAssistant);
+
+      // Notify owner on EVERY visitor message (fire-and-forget)
+      supabase.functions
+        .invoke("notify-escalation", {
+          body: {
+            contact: contact.hasContact ? contact : undefined,
+            history: withAssistant,
+            lastUserMessage: text,
+            lastAssistantReply: reply,
+            context: {
+              page: typeof window !== "undefined" ? window.location.pathname : undefined,
+              locale: lang,
+              product: productCtx,
+            },
+          },
+        })
+        .catch((notifyErr) => console.error("notify-escalation failed", notifyErr));
+
+      // If escalation and contact captured this turn, thank the visitor (once)
+      if ((escalate || awaitingContact) && contact.hasContact && !notified) {
+        setNotified(true);
+        setAwaitingContact(false);
+        setChatMessages((prev) => [...prev, { role: "assistant", content: t.chatThanks }]);
+      } else if (escalate && !contact.hasContact) {
+        setAwaitingContact(true);
       }
+
     } catch (err) {
       setChatError(t.chatError);
     } finally {
