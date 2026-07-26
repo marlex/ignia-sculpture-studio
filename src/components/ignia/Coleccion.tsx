@@ -144,8 +144,8 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
     <section className="bg-white px-6 md:px-12 py-6 sm:py-10 md:py-[60px]">
       {showHeader && (
         <div className="flex items-center justify-between mb-10 flex-wrap gap-4">
-          <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink">{t.h}</h2>
-          <Link to="/coleccion" className="link-arrow">{t.all}</Link>
+          <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] max-md:text-[30px] tracking-[-0.02em] text-ink">{t.h}</h2>
+          <Link to="/coleccion" className="link-arrow max-md:hidden">{t.all}</Link>
         </div>
       )}
 
@@ -257,7 +257,7 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
               />
             </Link>
             <div className="flex flex-col justify-end md:col-span-1">
-              <h3 className="font-display font-semibold text-[30px] md:text-[clamp(36px,4vw,52px)] leading-[1.05] text-ink mb-0.5 md:mb-2"><Link to={`/obra/${featured.slug}`} className="hover:underline underline-offset-4">{featured.title}</Link></h3>
+              <h3 className="font-display font-semibold text-[25px] md:text-[clamp(36px,4vw,52px)] leading-[1.05] text-ink mb-0.5 md:mb-2"><Link to={`/obra/${featured.slug}`} className="hover:underline underline-offset-4">{featured.title}</Link></h3>
               <Link to={`/perfil/escultor/${artistSlug(featured.artist)}`} className="font-body text-[18px] font-normal text-gray mb-1.5 hover:opacity-65 transition-opacity w-fit">{featured.artist}</Link>
               <div className="font-body text-[13px] font-normal text-muted-line uppercase tracking-[0.14em] mb-3">{featured.material}</div>
               <div className="flex items-center gap-1.5 mb-5 font-body text-[12px] font-normal text-muted-line">
@@ -325,7 +325,7 @@ className="font-body text-[12px] font-normal tracking-[0.22em] uppercase border 
                 <img src={o.image} alt={o.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
               </Link>
               <div className="px-0 pt-2 pb-3 sm:pt-3 sm:pb-5">
-                <h3 className="font-display font-semibold text-[28px] text-ink mb-0.5 sm:mb-1"><Link to={`/obra/${o.slug}`} className="hover:underline underline-offset-4">{o.title}</Link></h3>
+                <h3 className="font-display font-semibold text-[28px] max-md:text-[25px] text-ink mb-0.5 sm:mb-1"><Link to={`/obra/${o.slug}`} className="hover:underline underline-offset-4">{o.title}</Link></h3>
                 <Link to={`/perfil/escultor/${artistSlug(o.artist)}`} className="block font-body text-[16px] sm:text-[16px] font-normal text-gray mb-0.5 sm:mb-1.5 hover:opacity-65 transition-opacity w-fit">{o.artist}</Link>
                 <div className="font-body text-[11px] sm:text-[12px] font-normal text-muted-line uppercase tracking-[0.14em] mb-1 sm:mb-2">{o.material}</div>
                 <div className="flex items-center gap-1.5 mb-1.5 sm:mb-3 font-body text-[11px] font-normal text-muted-line normal-case tracking-normal">
@@ -387,6 +387,14 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-normal tr
           );
         })}
       </div>
+
+      {showHeader && (
+        <div className="md:hidden mt-8">
+          <Link to="/coleccion" className="link-arrow">{t.all}</Link>
+        </div>
+      )}
+
+
 
       {/* MOBILE: bottom sheet for filters */}
       <Sheet open={activeFilter !== null} onOpenChange={(o) => { if (!o) setActiveFilter(null); }}>
