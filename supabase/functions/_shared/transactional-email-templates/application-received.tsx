@@ -17,9 +17,9 @@ const copy = {
     team: 'Ignia.',
   },
   en: {
-    preview: 'We received your application',
-    heading: 'We received your application',
-    body: (n: string) => `Hi ${n}, thank you for wanting to be part of Ignia. We've received your application and are reviewing it carefully. We'll be in touch shortly with next steps.`,
+    preview: "We've received your application",
+    heading: "We've received your application",
+    body: (n: string) => `Hi ${n}, thank you for wanting to be part of Ignia. We've received your application and are reviewing it carefully. We'll be in touch soon with next steps.`,
     sign: 'Warmly,',
     team: 'Ignia.',
   },
@@ -48,7 +48,7 @@ export const template = {
   component: Email,
   subject: (data: Props) =>
     data?.lang === 'en'
-      ? 'We received your application — Ignia'
+      ? "We've received your application — Ignia"
       : 'Hemos recibido tu solicitud — Ignia',
   displayName: 'Application received',
   previewData: { name: 'Ada', lang: 'es' },

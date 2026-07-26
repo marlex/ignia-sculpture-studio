@@ -81,7 +81,7 @@ export default function UneteAIgnia() {
     try {
       const { data: inserted, error: dbError } = await supabase
         .from("applications")
-        .insert({ name, email, social: social || null, language: lang })
+        .insert({ name, email, social: social || null, language: lang, locale: lang })
         .select("id")
         .single();
       if (dbError) throw dbError;

@@ -19,7 +19,7 @@ const copy = {
   en: {
     preview: 'About your Ignia application',
     heading: 'About your application',
-    body: (n: string) => `Hi ${n}, thank you for your interest in Ignia and for the time you put into your application. After careful review, we're not able to offer you a place in the project at this moment. We deeply respect your work and wish you all the best on your path.`,
+    body: (n: string) => `Hi ${n}, thank you for your interest in Ignia and for the time you put into your application. After reviewing it carefully, we're not able to offer you a place in the project right now. We truly value your work and wish you all the best on your path.`,
     sign: 'Warmly,',
     team: 'Ignia.',
   },

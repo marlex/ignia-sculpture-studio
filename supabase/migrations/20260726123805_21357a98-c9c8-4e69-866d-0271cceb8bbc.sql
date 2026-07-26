@@ -1,0 +1,2 @@
+ALTER TABLE public.applications ADD COLUMN IF NOT EXISTS locale text NOT NULL DEFAULT 'es' CHECK (locale IN ('es','en'));
+UPDATE public.applications SET locale = COALESCE(language, 'es') WHERE locale = 'es' AND language IS NOT NULL;

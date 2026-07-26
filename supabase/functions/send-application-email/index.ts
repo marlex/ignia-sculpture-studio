@@ -33,12 +33,13 @@ Deno.serve(async (req) => {
 
     const { data: app, error: appErr } = await admin
       .from("applications")
-      .select("id, name, email, language")
+      .select("id, name, email, language, locale")
       .eq("id", application_id)
       .maybeSingle();
     if (appErr || !app) throw new Error(appErr?.message || "Application not found");
 
-    const lang = (app.language === "en" ? "en" : "es") as "es" | "en";
+    const chosen = (app as any).locale ?? app.language;
+    const lang = (chosen === "en" ? "en" : "es") as "es" | "en";
     const templateName = TEMPLATE_MAP[email_type];
 
     const { error: sendErr } = await admin.functions.invoke("send-transactional-email", {
