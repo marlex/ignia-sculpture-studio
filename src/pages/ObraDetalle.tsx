@@ -21,6 +21,11 @@ const T = {
     buy: "Comprar", talk: "Hablar con Ignia",
     photos: "Fotos", view3d: "Vista 3D",
     counter: (n: number) => `${n} fotos · Navega por los ángulos`,
+    chatGreeting: (title: string) => `Hola, soy Ignia. ¿En qué puedo ayudarte con ${title}?`,
+    chatPlaceholder: "Escribe tu mensaje…",
+    chatSend: "Enviar",
+    chatTyping: "Escribiendo…",
+    chatError: "No se pudo enviar el mensaje. Inténtalo de nuevo.",
   },
   en: {
     back: "← Back to the collection",
@@ -31,6 +36,11 @@ const T = {
     buy: "Buy", talk: "Talk to Ignia",
     photos: "Photos", view3d: "3D view",
     counter: (n: number) => `${n} photos · Browse angles`,
+    chatGreeting: (title: string) => `Hi, I'm Ignia. How can I help you with ${title}?`,
+    chatPlaceholder: "Type your message…",
+    chatSend: "Send",
+    chatTyping: "Typing…",
+    chatError: "Couldn't send the message. Please try again.",
   },
 };
 
