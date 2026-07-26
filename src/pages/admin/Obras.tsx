@@ -117,7 +117,7 @@ export default function Obras() {
     setLoading(true);
     const { data: profs } = await supabase
       .from("profiles")
-      .select("id, full_name, email, role, founding_artist")
+      .select("id, email, role, founding_artist")
       .eq("role", "artist");
     const profList = (profs as Profile[]) || [];
     const eligible = profList.filter((p) => p.founding_artist === true);
@@ -224,7 +224,7 @@ export default function Obras() {
                       <span>{a.title}</span>
                     </div>
                   </td>
-                  <td style={cellStyle}>{artist?.full_name || artist?.email || "—"}</td>
+                  <td style={cellStyle}>{artist?.email || "—"}</td>
                   <td style={cellStyle}>{a.year ?? "—"}</td>
                   <td style={cellStyle}>{a.price != null ? `€${a.price}` : "—"}</td>
                   <td style={cellStyle}><span style={badge(a.status)}>{t.tabs[a.status]}</span></td>
