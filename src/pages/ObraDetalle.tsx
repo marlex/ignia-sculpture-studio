@@ -21,6 +21,11 @@ const T = {
     buy: "Comprar", talk: "Hablar con Ignia",
     photos: "Fotos", view3d: "Vista 3D",
     counter: (n: number) => `${n} fotos · Navega por los ángulos`,
+    chatGreeting: (title: string) => `Hola, soy Ignia. ¿En qué puedo ayudarte con ${title}?`,
+    chatPlaceholder: "Escribe tu mensaje…",
+    chatSend: "Enviar",
+    chatTyping: "Escribiendo…",
+    chatError: "No se pudo enviar el mensaje. Inténtalo de nuevo.",
   },
   en: {
     back: "← Back to the collection",
@@ -31,6 +36,11 @@ const T = {
     buy: "Buy", talk: "Talk to Ignia",
     photos: "Photos", view3d: "3D view",
     counter: (n: number) => `${n} photos · Browse angles`,
+    chatGreeting: (title: string) => `Hi, I'm Ignia. How can I help you with ${title}?`,
+    chatPlaceholder: "Type your message…",
+    chatSend: "Send",
+    chatTyping: "Typing…",
+    chatError: "Couldn't send the message. Please try again.",
   },
 };
 
@@ -49,9 +59,7 @@ const ObraDetalle = () => {
   const [idx, setIdx] = useState(0);
   const [chatOpen, setChatOpen] = useState(false);
   type ChatMsg = { role: "user" | "assistant"; content: string };
-  const greeting = lang === "es"
-    ? `Hola, soy Ignia. ¿En qué puedo ayudarte con ${o?.title ?? ""}?`
-    : `Hi, I'm Ignia. How can I help you with ${o?.title ?? ""}?`;
+  const greeting = t.chatGreeting(o?.title ?? "");
   const [chatMessages, setChatMessages] = useState<ChatMsg[]>([]);
   const [chatInput, setChatInput] = useState("");
   const [chatSending, setChatSending] = useState(false);
@@ -99,11 +107,7 @@ const ObraDetalle = () => {
       if (!reply) throw new Error("empty reply");
       setChatMessages((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch (err) {
-      setChatError(
-        lang === "es"
-          ? "No se pudo enviar el mensaje. Inténtalo de nuevo."
-          : "Couldn't send the message. Please try again.",
-      );
+      setChatError(t.chatError);
     } finally {
       setChatSending(false);
     }
@@ -587,7 +591,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
 
 
       {chatOpen && (
-        <div className="fixed inset-0 z-[200] bg-black/50 flex items-end md:items-center md:justify-end" onClick={() => setChatOpen(false)}>
+        <div key={lang} className="fixed inset-0 z-[200] bg-black/50 flex items-end md:items-center md:justify-end" onClick={() => setChatOpen(false)}>
           <div
             className="w-full md:w-[420px] h-[80vh] md:h-full bg-white flex flex-col"
             onClick={(e) => e.stopPropagation()}
@@ -617,7 +621,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
               ))}
               {chatSending && (
                 <div className="bg-secondary px-4 py-3 font-body text-[14px] text-gray max-w-[85%]">
-                  {lang === "es" ? "Escribiendo…" : "Typing…"}
+                  {t.chatTyping}
                 </div>
               )}
               {chatError && (
@@ -633,7 +637,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
                 disabled={chatSending}
-                placeholder={lang === "es" ? "Escribe tu mensaje…" : "Type your message…"}
+                placeholder={t.chatPlaceholder}
                 className="flex-1 border border-border px-3 py-2.5 font-body text-[14px] outline-none focus:border-ink disabled:opacity-60"
               />
               <button
@@ -641,13 +645,14 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
                 disabled={chatSending || !chatInput.trim()}
                 className="bg-transparent text-ink border border-ink font-body text-[12px] uppercase tracking-[0.14em] px-4 hover:opacity-65 transition-opacity disabled:opacity-40"
               >
-                {lang === "es" ? "Enviar" : "Send"}
+                {t.chatSend}
               </button>
             </form>
 
           </div>
         </div>
       )}
+
 
       <Footer />
       <PurchaseModal
