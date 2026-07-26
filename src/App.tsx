@@ -27,6 +27,7 @@ import Legal from "./pages/Legal.tsx";
 import JoinEscultores from "./pages/JoinEscultores.tsx";
 import UneteAIgnia from "./pages/UneteAIgnia.tsx";
 import RecuperarPassword from "./pages/RecuperarPassword.tsx";
+import ResetPassword from "./pages/ResetPassword.tsx";
 import { GlobalInviteModal } from "@/components/ignia/GlobalInviteModal";
 
 const queryClient = new QueryClient();
