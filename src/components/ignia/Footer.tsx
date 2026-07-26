@@ -92,7 +92,7 @@ export const Footer = () => {
 
 
   return (
-    <footer className="footer-section bg-white border-t-[0.5px] border-border px-6 md:px-12 pt-14 pb-0">
+    <footer className="footer-section bg-white border-t-[0.5px] border-border px-6 md:px-12 pt-14 pb-0 flex flex-col min-h-[calc(100vh-3.5rem)]">
       <div className="max-w-5xl lg:mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1fr_1fr] gap-10 md:gap-6">
         {cols.map((c, i) => (
@@ -135,7 +135,7 @@ export const Footer = () => {
         ))}
       </div>
 
-      <div className="mt-20 pt-10 pb-12 border-t border-border">
+      <div className="mt-20 pt-10 pb-[88px] border-t border-border">
         <div className="font-body text-[14px] font-normal text-muted-line uppercase tracking-[0.14em] mb-5">Connect</div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:max-w-[520px] gap-x-6 gap-y-4 items-center">
           <a href="https://www.instagram.com/igniagallery/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex items-center gap-3 text-ink hover:opacity-65 transition-opacity duration-200">
@@ -166,7 +166,7 @@ export const Footer = () => {
       </div>
       </div>
 
-      <div className="-mx-6 md:-mx-12 px-6 md:px-12 py-6 bg-secondary flex justify-between flex-wrap gap-x-8 gap-y-3 items-center">
+      <div className="-mx-6 md:-mx-12 px-6 md:px-12 py-6 bg-secondary flex justify-between flex-wrap gap-x-8 gap-y-3 items-center mt-auto">
         <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
           <Link to="/legal/terminos" className="font-body text-[13px] font-normal text-ink hover:opacity-65 transition-opacity tracking-[0.14em] uppercase">
             {lang === "es" ? "Términos y Condiciones" : "Terms & Conditions"}
