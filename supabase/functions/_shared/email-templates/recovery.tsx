@@ -9,9 +9,13 @@ import {
   Head,
   Heading,
   Html,
+  Img,
   Preview,
   Text,
 } from 'npm:@react-email/components@0.0.22'
+
+const LOGO_URL = 'https://www.igniagallery.com/__l5e/assets-v1/385f9d6b-55e3-48bb-9684-0634e0588929/ignia-logo.png'
+
 
 interface RecoveryEmailProps {
   siteName: string
@@ -24,7 +28,9 @@ export const RecoveryEmail = ({ confirmationUrl }: RecoveryEmailProps) => (
     <Preview>Reset your Ignia password</Preview>
     <Body style={main}>
       <Container style={container}>
+        <Img src={LOGO_URL} alt="Ignia Gallery" width="120" height="53" style={logo} />
         <Heading style={h1}>Reset your password</Heading>
+
         <Text style={text}>
           We received a request to reset your Ignia password. Click the button below to choose a new one.
         </Text>
@@ -47,6 +53,7 @@ const main: React.CSSProperties = {
   color: '#121212',
 }
 const container: React.CSSProperties = { padding: '48px 40px', maxWidth: '560px' }
+const logo: React.CSSProperties = { display: 'block', margin: '0 0 32px' }
 const h1: React.CSSProperties = {
   fontFamily: "'Cormorant Garamond', Georgia, serif",
   fontWeight: 600,

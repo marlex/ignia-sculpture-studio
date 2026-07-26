@@ -9,9 +9,13 @@ import {
   Head,
   Heading,
   Html,
+  Img,
   Preview,
   Text,
 } from 'npm:@react-email/components@0.0.22'
+
+const LOGO_URL = 'https://www.igniagallery.com/__l5e/assets-v1/385f9d6b-55e3-48bb-9684-0634e0588929/ignia-logo.png'
+
 
 interface EmailChangeEmailProps {
   siteName: string
@@ -31,7 +35,9 @@ export const EmailChangeEmail = ({
     <Preview>Confirm your email change for Ignia</Preview>
     <Body style={main}>
       <Container style={container}>
+        <Img src={LOGO_URL} alt="Ignia Gallery" width="120" height="53" style={logo} />
         <Heading style={h1}>Confirm your email change</Heading>
+
         <Text style={text}>
           You requested to change your Ignia email address from {oldEmail} to {newEmail}.
         </Text>
@@ -54,6 +60,7 @@ const main: React.CSSProperties = {
   color: '#121212',
 }
 const container: React.CSSProperties = { padding: '48px 40px', maxWidth: '560px' }
+const logo: React.CSSProperties = { display: 'block', margin: '0 0 32px' }
 const h1: React.CSSProperties = {
   fontFamily: "'Cormorant Garamond', Georgia, serif",
   fontWeight: 600,
