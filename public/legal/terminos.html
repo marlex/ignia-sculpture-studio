@@ -4,43 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Términos y Condiciones — Ignia Gallery</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Manrope:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --black: #000000;
+      --black: #121212;
       --white: #FFFFFF;
       --grey-100: #F5F5F5;
       --grey-300: #CCCCCC;
       --grey-600: #666666;
-      --grey-800: #1A1A1A;
+      --text: #444444;
     }
-
     html { font-size: 16px; }
-
     body {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      color: var(--grey-800);
+      font-family: 'Manrope', sans-serif;
+      font-weight: 400;
+      color: var(--text);
       background: var(--white);
       line-height: 1.7;
+      font-size: 16px;
     }
-
-    .page-header {
-      border-bottom: 1px solid var(--grey-300);
-      padding: 40px 0 32px;
-      margin-bottom: 64px;
-    }
-
-    .container {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
+    .container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+    .page-header { border-bottom: 1px solid var(--grey-300); padding: 40px 0 32px; margin-bottom: 64px; }
     .wordmark {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
       font-size: 15px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -49,148 +37,83 @@
       display: block;
       margin-bottom: 32px;
     }
-
     h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(28px, 4vw, 40px);
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 40px;
       line-height: 1.1;
+      letter-spacing: -0.02em;
       color: var(--black);
       margin-bottom: 12px;
-      font-weight: 400;
     }
-
-    .meta {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: 13px;
-      color: var(--grey-600);
-      letter-spacing: 0.02em;
-    }
-
-    .notice {
-      background: var(--grey-100);
-      padding: 20px 24px;
-      margin-bottom: 56px;
-      border-left: 2px solid var(--black);
-    }
-
-    .notice p {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--grey-800);
-      line-height: 1.6;
-    }
-
     h2 {
-      font-family: 'DM Serif Display', serif;
-      font-weight: 400;
-      font-size: 17px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 34px;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
       color: var(--black);
-      margin-top: 56px;
+      margin-top: 64px;
       margin-bottom: 20px;
-      padding-bottom: 10px;
+      padding-bottom: 12px;
       border-bottom: 1px solid var(--grey-300);
     }
-
     h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 16px;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
       color: var(--black);
-      margin-top: 32px;
-      margin-bottom: 12px;
-      letter-spacing: 0.01em;
-    }
-
-    p {
-      font-size: 15px;
+      margin-top: 40px;
       margin-bottom: 16px;
-      color: var(--grey-800);
     }
-
-    .level-block {
-      border-left: 1px solid var(--grey-300);
-      padding: 16px 20px;
-      margin: 16px 0;
-    }
-
+    p { font-size: 16px; margin-bottom: 16px; color: var(--text); }
+    .meta { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 13px; color: var(--grey-600); letter-spacing: 0.02em; }
+    .notice { background: var(--grey-100); padding: 20px 24px; margin-bottom: 56px; border-left: 2px solid var(--black); }
+    .notice p { font-size: 14px; color: var(--black); line-height: 1.6; margin-bottom: 10px; }
+    .notice p:last-child { margin-bottom: 0; }
+    .level-block { border-left: 1px solid var(--grey-300); padding: 16px 20px; margin: 20px 0; }
     .level-block strong {
-      font-family: 'DM Serif Display', serif;
-      font-weight: 400;
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 20px;
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       color: var(--black);
+      letter-spacing: -0.01em;
     }
-
-    .level-block p {
-      margin: 0;
-      font-size: 14px;
-    }
-
-    .disclaimer-block {
-      background: var(--grey-100);
-      border-left: 2px solid var(--black);
-      padding: 20px 24px;
-      margin: 24px 0;
-    }
-
-    .disclaimer-block p {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    .disclaimer-block p:last-child {
-      margin-bottom: 0;
-    }
-
-    .page-footer {
-      margin-top: 96px;
-      padding: 32px 0 48px;
-      border-top: 1px solid var(--grey-300);
-    }
-
-    .page-footer p {
-      font-size: 12px;
-      color: var(--grey-600);
-      margin: 0;
-    }
-
+    .level-block p { margin: 0; font-size: 15px; }
+    .page-footer { margin-top: 96px; padding: 32px 0 48px; border-top: 1px solid var(--grey-300); }
+    .page-footer p { font-size: 12px; color: var(--grey-600); margin: 0; }
     @media (max-width: 768px) {
       .page-header { padding: 28px 0 24px; margin-bottom: 40px; }
-      h2 { margin-top: 40px; }
+      h1 { font-size: 32px; }
+      h2 { font-size: 26px; margin-top: 44px; }
+      h3 { font-size: 22px; margin-top: 32px; }
+      p { font-size: 15px; }
     }
-  /* Match site typography */
-  body { font-family: 'Manrope', sans-serif; font-weight: 400; }
-  h1, h2, h3, .wordmark, .level-block strong, .data-block strong, .right-item strong, .return-block h3, .zone-label span { font-family: 'Cormorant Garamond', serif; font-weight: 700; }
-  h1, h3 { letter-spacing: -0.02em; }
-  .meta { font-family: 'Manrope', sans-serif; }
-  p { color: #444; }
   </style>
 </head>
 <body>
-
   <div class="page-header">
     <div class="container">
       <a class="wordmark" href="/">Ignia Gallery</a>
       <h1>Términos y Condiciones de Uso</h1>
-      <p class="meta">Última actualización: junio de 2026</p>
+      <p class="meta">Última actualización: julio de 2026 — versión revisada</p>
     </div>
   </div>
 
   <div class="container">
-
     <div class="notice">
-      <p>Ignia Gallery es un proyecto empresarial actualmente en proceso de constitución como sociedad en España. Los presentes términos tienen validez como condiciones de uso de la plataforma desde la fecha de su publicación y serán actualizados con los datos registrales completos en el momento de la constitución formal. Mientras tanto, la responsable del proyecto a todos los efectos es Mariana Bolívar García, con domicilio a efectos de comunicaciones en Madrid, España. Contacto: legal@igniagallery.com.</p>
+      <p>Ignia Gallery ("Ignia" o "la plataforma") es un proyecto empresarial en proceso de constitución como sociedad de responsabilidad limitada en España. Hasta la fecha de su inscripción en el Registro Mercantil, Ignia opera como sociedad en formación, en el sentido de los artículos 36 a 38 del Real Decreto Legislativo 1/2010, de 2 de julio, por el que se aprueba el texto refundido de la Ley de Sociedades de Capital (LSC).</p>
+      <p>Todos los actos, contratos y obligaciones asumidos a través de la plataforma se celebran en nombre y por cuenta de Ignia Gallery, sociedad en formación, representada por su fundadora, Mariana Bolívar García. Una vez inscrita la sociedad, ésta asumirá, en los términos del artículo 38 LSC, los actos y contratos celebrados con anterioridad a su inscripción, liberando a quienes los hubieran celebrado en su nombre.</p>
+      <p>Mientras dicha asunción no se produzca, la responsable del proyecto a todos los efectos legales es Mariana Bolívar García, con domicilio a efectos de comunicaciones en Madrid, España. Contacto: legal@igniagallery.com.</p>
     </div>
 
     <h2>1. Objeto y naturaleza de la plataforma</h2>
-    <p>Ignia Gallery (en adelante "Ignia" o "la plataforma") es una plataforma digital de intermediación que conecta a artistas escultores con coleccionistas, empresas e instituciones culturales de todo el mundo. Ignia actúa exclusivamente como intermediario técnico en el sentido del artículo 14 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), y no es propietaria de las obras publicadas, ni agente ni representante de los artistas.</p>
-    <p>En consecuencia, y de conformidad con el Reglamento (UE) 2022/2065 del Parlamento Europeo y del Consejo, de 19 de octubre de 2022, relativo a un mercado único de servicios digitales (Reglamento de Servicios Digitales o "DSA"), Ignia no asume responsabilidad editorial por los contenidos publicados por los artistas, siempre que actúe diligentemente ante las notificaciones de contenido ilícito que reciba a través de los mecanismos habilitados al efecto.</p>
+    <p>Ignia Gallery es una plataforma digital de intermediación que conecta a artistas escultores con coleccionistas, empresas e instituciones culturales de todo el mundo. Ignia actúa exclusivamente como prestador de servicios de alojamiento de datos en el sentido del artículo 16 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), y del artículo 6 del Reglamento (UE) 2022/2065 del Parlamento Europeo y del Consejo, de 19 de octubre de 2022, relativo a un mercado único de servicios digitales ("DSA"). Ignia no es propietaria de las obras publicadas, ni agente ni representante de los artistas.</p>
+    <p>En consecuencia, Ignia no asume responsabilidad editorial por los contenidos publicados por los artistas, siempre que actúe diligentemente ante las notificaciones de contenido ilícito que reciba a través del mecanismo previsto en el artículo 16 DSA (véase apartado 7).</p>
     <p>El acceso y uso de la plataforma implica la aceptación plena de los presentes términos.</p>
 
     <h2>2. Registro y cuentas de usuario</h2>
@@ -203,17 +126,17 @@
     <p>La relación entre Ignia y el artista es exclusivamente la propia de una plataforma de intermediación y su usuario. Ignia no actúa como agente, representante, apoderado ni mandatario del artista. El artista conserva en todo momento la plena titularidad y control sobre su obra y los precios que fija para su comercialización.</p>
 
     <h3>3.2 Publicación de obras y responsabilidad exclusiva del artista</h3>
-    <p>El artista que publica una obra en Ignia declara, garantiza y acepta que:</p>
-    <p>Es el autor original de la obra o cuenta con autorización expresa, documentada y vigente del titular de los derechos de propiedad intelectual para comercializarla en los términos previstos en estos términos. La obra no está sujeta a reclamaciones de terceros, litigios activos, embargos, gravámenes ni limitaciones de disposición de ninguna clase. Toda la información proporcionada en la ficha de obra —materiales, dimensiones, técnica, año, autoría, precio y cualquier otro dato— es veraz, exacta y completa.</p>
+    <p>El artista que publica una obra en Ignia declara, garantiza y acepta que: es el autor original de la obra o cuenta con autorización expresa, documentada y vigente del titular de los derechos de propiedad intelectual para comercializarla en los términos previstos en estos términos; la obra no está sujeta a reclamaciones de terceros, litigios activos, embargos, gravámenes ni limitaciones de disposición de ninguna clase; y toda la información proporcionada en la ficha de obra —materiales, dimensiones, técnica, año, autoría, precio y cualquier otro dato— es veraz, exacta y completa.</p>
     <p>El artista es el único y exclusivo responsable del contenido que publica, de su veracidad y de su conformidad con la normativa vigente, en particular con el Real Decreto Legislativo 1/1996, de 12 de abril, por el que se aprueba el Texto Refundido de la Ley de Propiedad Intelectual (TRLPI). Ignia no realiza verificación independiente de la autenticidad, autoría, características, estado ni valoración de las obras publicadas.</p>
     <p>El certificado blockchain generado al publicar una obra registra de forma inmutable la información declarada por el artista, con su identidad verificada y la fecha de publicación. Dicho certificado opera como registro notarial digital: acredita que el artista realizó esa declaración en esa fecha, pero no constituye garantía de autenticidad, originalidad ni exactitud de los datos declarados por parte de Ignia. La responsabilidad sobre el contenido declarado recae exclusivamente en quien lo genera, conforme a los principios generales del ordenamiento jurídico español.</p>
+    <p>El artista se obliga a mantener indemne a Ignia frente a cualquier reclamación, sanción, coste o daño —incluidos honorarios de defensa jurídica razonables— que se derive de la falta de veracidad de las declaraciones anteriores o de la infracción de derechos de terceros por el contenido publicado. Esta obligación de indemnidad se entiende sin perjuicio de las propias obligaciones de actuación diligente de Ignia ante notificaciones de contenido ilícito conforme al apartado 7.</p>
 
     <h3>3.3 Comisiones y niveles editoriales</h3>
     <p>Ignia aplica una comisión sobre el precio de venta de cada obra en función del nivel editorial asignado al artista dentro de la plataforma. El nivel lo determina Ignia con criterios objetivos, públicos y verificables, aplicados de forma uniforme a todos los artistas independientemente de su género, origen geográfico o trayectoria comercial previa.</p>
 
     <div class="level-block">
       <strong>Emerging — 18%</strong>
-      <p>Artistas en las primeras fases de su trayectoria pública. No se requiere historial de exposiciones ni ventas previas. El criterio de entrada es obra producida con consistencia y calidad editorial suficiente para estar en Ignia. Los artistas fundadores de la plataforma tienen garantizado acceso permanente y gratuito a todas las herramientas del nivel superior sin condiciones ni fecha de caducidad, como reconocimiento estructural a quienes construyeron Ignia desde el principio.</p>
+      <p>Artistas en las primeras fases de su trayectoria pública. No se requiere historial de exposiciones ni ventas previas. El criterio de entrada es obra producida con consistencia y calidad editorial suficiente para estar en Ignia. Los artistas fundadores de la plataforma tienen garantizado acceso permanente y gratuito a todas las herramientas del nivel superior sin condiciones ni fecha de caducidad, como reconocimiento estructural a quienes construyeron Ignia desde el principio. Este beneficio es personal e intransferible, y podrá ser revocado por Ignia en caso de fraude, incumplimiento grave de estos términos o uso abusivo de la plataforma por parte del artista.</p>
     </div>
 
     <div class="level-block">
@@ -226,7 +149,9 @@
       <p>Artistas con trayectoria consolidada y reconocimiento sectorial. Deben cumplir al menos tres de los siguientes criterios: representación activa por una galería, obra en colecciones institucionales o museos, participación en ferias internacionales de referencia, precio de obra en mercado secundario documentado, o cobertura editorial en medios de arte de alcance nacional o internacional.</p>
     </div>
 
-    <p>El nivel puede actualizarse a medida que la trayectoria del artista evoluciona, previa solicitud motivada del artista o por revisión periódica de Ignia. Los criterios de asignación y actualización de nivel son públicos y están disponibles en la plataforma en todo momento. El pago al artista se realiza en los 14 días naturales siguientes a la confirmación de entrega de la obra al comprador. En caso de devolución por desistimiento del comprador, Ignia no retiene comisión sobre esa transacción.</p>
+    <p>El nivel puede actualizarse a medida que la trayectoria del artista evoluciona, previa solicitud motivada del artista o por revisión periódica de Ignia. Los criterios de asignación y actualización de nivel son públicos y están disponibles en la plataforma en todo momento.</p>
+    <p>El pago al artista se realiza en los 14 días naturales siguientes a la confirmación de entrega de la obra al comprador. En caso de devolución por desistimiento del comprador, Ignia no retiene comisión sobre esa transacción.</p>
+    <p>Ignia podrá retener el pago, total o parcialmente, mientras se encuentre en curso una disputa, reclamación, sospecha razonable de fraude o un procedimiento de contracargo (chargeback) iniciado por la entidad de pago del comprador, hasta la resolución de la incidencia. Si el pago ya hubiera sido liberado al artista y posteriormente se produjera un contracargo, una anulación del pago por la entidad emisora o se confirmara un fraude, Ignia podrá reclamar al artista la devolución de las cantidades indebidamente percibidas o compensarlas con pagos futuros que le correspondan por otras ventas.</p>
     <p>El artista que suscriba el plan opcional Ignia Pro (9,90 €/mes) accede a herramientas avanzadas de analítica de audiencia, posicionamiento preferente, hasta 20 obras activas simultáneas y acceso prioritario a nuevas funcionalidades. El plan Pro no modifica el nivel editorial ni la comisión aplicable, que viene determinada exclusivamente por el nivel asignado según los criterios anteriores.</p>
 
     <h3>3.4 Logística y envío</h3>
@@ -236,12 +161,13 @@
     <p>Ignia coordina la contratación de los servicios logísticos y de seguros y actúa como organizadora del transporte. Una vez que Ignia ha cumplido su obligación de coordinación y contratación con los partners especializados, la responsabilidad derivada de la ejecución material del transporte, el embalaje y las coberturas de seguro recae sobre dichos partners, en los términos de sus respectivos contratos y pólizas. En caso de siniestro, Ignia facilita la gestión de la reclamación frente al proveedor de seguros, pero no responde directamente de los daños que sean atribuibles a la actuación de los operadores logísticos o aseguradoras.</p>
 
     <h3>3.5 Criterios editoriales y moderación de contenidos</h3>
-    <p>Ignia puede rechazar o retirar obras que no cumplan los estándares de calidad editorial de la plataforma, que contengan información incorrecta o incompleta, o que infrinjan derechos de terceros o la normativa vigente. En caso de retirada, Ignia comunicará los motivos al artista con un plazo razonable para subsanarlos cuando la naturaleza de la infracción lo permita. En los supuestos de contenido manifiestamente ilícito, la retirada puede ser inmediata.</p>
+    <p>Ignia puede rechazar o retirar obras que no cumplan los estándares de calidad editorial de la plataforma, que contengan información incorrecta o incompleta, o que infrinjan derechos de terceros o la normativa vigente. En caso de retirada, Ignia comunicará al artista los motivos de la decisión, conforme al artículo 17 del DSA, con un plazo razonable para subsanarlos cuando la naturaleza de la infracción lo permita. En los supuestos de contenido manifiestamente ilícito, la retirada puede ser inmediata y sin plazo previo de subsanación.</p>
 
     <h2>4. Condiciones para compradores</h2>
 
     <h3>4.1 Proceso de compra</h3>
-    <p>Antes de confirmar la compra, el comprador verá de forma clara y desglosada el precio de la obra con IVA incluido, el coste de envío y seguro de tránsito según su destino, el importe total, el plazo de entrega estimado y las condiciones del derecho de desistimiento. La compra se confirma con el pago. En ese momento Ignia genera automáticamente el certificado blockchain de autenticidad y activa la logística de recogida y envío.</p>
+    <p>Antes de confirmar la compra, el comprador verá de forma clara y desglosada el precio de la obra con IVA incluido, el coste de envío y seguro de tránsito según su destino, el importe total, el plazo de entrega estimado y las condiciones del derecho de desistimiento, incluyendo si el coste de la devolución correrá a su cargo. La compra se confirma con el pago. En ese momento Ignia genera automáticamente el certificado blockchain de autenticidad y activa la logística de recogida y envío.</p>
+    <p>Para envíos con destino fuera de la Unión Europea, el comprador es responsable de los aranceles de importación, IVA de importación u otros gravámenes aduaneros que la aduana del país de destino pueda exigir, que no están incluidos en el precio mostrado en la plataforma. Ignia informará de esta circunstancia antes de la confirmación de la compra, de conformidad con el deber de información sobre gastos adicionales del artículo 97 TRLGDCU y del artículo 6.1 de la Directiva 2011/83/UE.</p>
 
     <h3>4.2 Derecho de desistimiento</h3>
     <p>De conformidad con el artículo 102 del Real Decreto Legislativo 1/2007, de 16 de noviembre, por el que se aprueba el Texto Refundido de la Ley General para la Defensa de los Consumidores y Usuarios (TRLGDCU), y con la Directiva 2011/83/UE sobre los derechos de los consumidores, el comprador que actúe como consumidor tiene derecho a desistir de la compra en un plazo de 14 días naturales desde la recepción física de la obra, sin necesidad de justificación.</p>
@@ -253,36 +179,59 @@
     <p>No se aceptan devoluciones de obras instaladas, modificadas o dañadas tras la recepción por causa imputable al comprador, ni de obras por encargo personalizado.</p>
 
     <h3>4.4 Garantías y responsabilidad por el contenido de las obras</h3>
-    <p>Las obras se describen con la información declarada por sus autores. Ignia, en su condición de plataforma de intermediación técnica, no realiza verificación independiente de la autenticidad, autoría, materiales, técnica, dimensiones ni ninguna otra característica de las obras publicadas.</p>
-    <p>En caso de disputa sobre la autenticidad o las características de una obra, la responsabilidad recae sobre el artista que la publicó, de conformidad con lo establecido en el apartado 3.2 de estos términos y con el régimen de responsabilidad aplicable a los intermediarios de servicios de la sociedad de la información previsto en la LSSI-CE y en el DSA. Ignia facilitará al comprador la documentación blockchain disponible y los datos de contacto del artista para el ejercicio de las acciones que le correspondan.</p>
+    <p>Las obras se describen con la información declarada por sus autores. Ignia, en su condición de prestador de alojamiento de datos, no realiza verificación independiente de la autenticidad, autoría, materiales, técnica, dimensiones ni ninguna otra característica de las obras publicadas.</p>
+    <p>En caso de disputa sobre la autenticidad o las características de una obra, la responsabilidad recae sobre el artista que la publicó, de conformidad con lo establecido en el apartado 3.2 de estos términos y con el régimen de responsabilidad aplicable a los prestadores de servicios de alojamiento de datos previsto en el artículo 16 LSSI-CE y en el artículo 6 del DSA. Ignia facilitará al comprador la documentación blockchain disponible y los datos de contacto del artista para el ejercicio de las acciones que le correspondan.</p>
     <p>Lo anterior se entiende sin perjuicio de los derechos que la normativa de protección de consumidores reconoce al comprador frente al artista en su condición de vendedor.</p>
+
+    <h3>4.5 Transparencia sobre la relación entre Ignia, el artista y el comprador</h3>
+    <p>De conformidad con el artículo 6 bis de la Directiva 2011/83/UE, introducido por la Directiva (UE) 2019/2161 ("Directiva Ómnibus") y transpuesto al TRLGDCU, Ignia informa de lo siguiente antes de que el comprador quede vinculado por el contrato: el artista que publica y vende la obra actúa como vendedor profesional a los efectos del contrato de compraventa, siendo de aplicación la normativa de protección de consumidores en su relación con el comprador; el orden de visualización de las obras en la plataforma depende principalmente del nivel editorial del artista (apartado 3.3), la fecha de publicación y la relevancia respecto a los criterios de búsqueda utilizados, sin que medie pago por posicionamiento destacado; y la distribución de responsabilidades entre Ignia y el artista respecto del contrato de compraventa es la descrita en estos términos, correspondiendo a Ignia la intermediación, el procesamiento del pago y la logística, y al artista la exactitud de la información de la obra y las garantías propias del vendedor.</p>
 
     <h2>5. Limitación de responsabilidad de Ignia</h2>
     <p>Ignia no será responsable, en ningún caso y dentro de los límites permitidos por el ordenamiento jurídico español y europeo, de:</p>
     <p>Los daños o perjuicios derivados de información falsa, inexacta o incompleta publicada por los artistas, en aplicación del régimen de exención de responsabilidad de los prestadores de servicios de alojamiento de datos previsto en el artículo 16 LSSI-CE y en el artículo 6 del DSA, siempre que Ignia actúe diligentemente ante las notificaciones de contenido ilícito recibidas.</p>
-    <p>Las interrupciones, errores o fallos técnicos de la plataforma debidos a causas de fuerza mayor, ataques informáticos o incidencias en la infraestructura de terceros proveedores.</p>
+    <p>Las interrupciones, errores o fallos técnicos de la plataforma debidos a causas de fuerza mayor, entendiendo por tales, entre otras, catástrofes naturales, guerras, pandemias, huelgas, ciberataques, o fallos de infraestructura de proveedores tecnológicos o de pago ajenos al control razonable de Ignia.</p>
     <p>Los daños producidos durante el transporte de las obras, una vez que Ignia ha cumplido su obligación de coordinación y contratación de los servicios logísticos y de seguro con sus partners especializados.</p>
     <p>Las actuaciones de los artistas que incumplan las obligaciones establecidas en estos términos y en la normativa vigente.</p>
-    <p>En todo caso, la responsabilidad total de Ignia frente a cualquier reclamación no podrá superar el importe abonado por el comprador en la transacción objeto de la reclamación.</p>
+    <p>En todo caso, la responsabilidad total de Ignia frente a cualquier reclamación derivada de una transacción no podrá superar el importe abonado por el comprador en dicha transacción o, si la reclamación es formulada por un artista, el importe de la comisión percibida por Ignia en la transacción objeto de la reclamación. Esta limitación no será de aplicación a los daños causados por dolo o negligencia grave de Ignia, ni afectará a los derechos que la normativa de protección de consumidores reconoce con carácter irrenunciable.</p>
+    <p>Ignia podrá ceder o transmitir su posición contractual, así como los derechos y obligaciones derivados de estos términos, a la sociedad mercantil en constitución (Ignia Gallery) una vez inscrita en el Registro Mercantil, o a cualquier entidad que la suceda por fusión, escisión o transformación, sin que ello requiera el consentimiento previo del usuario, quien será informado de dicha cesión. El usuario no podrá ceder su posición contractual sin consentimiento previo y expreso de Ignia.</p>
 
     <h2>6. Propiedad intelectual</h2>
     <p>El contenido de la plataforma —diseño, textos, marca, código e imágenes propias de Ignia— es propiedad de Ignia o de sus licenciantes y está protegido por la normativa de propiedad intelectual e industrial. Queda prohibida su reproducción o uso comercial sin autorización expresa.</p>
     <p>Las obras publicadas son propiedad intelectual de sus autores en los términos del TRLPI. La venta transfiere la propiedad física de la obra, no los derechos de autor ni ningún otro derecho de explotación, salvo acuerdo expreso y documentado entre artista y comprador.</p>
+    <p>El artista concede a Ignia una licencia no exclusiva, gratuita, mundial y por el tiempo en que la obra permanezca publicada en la plataforma, para reproducir, comunicar públicamente y utilizar las imágenes, descripciones y demás contenidos asociados a su obra con fines de promoción de la obra y de la plataforma, incluyendo su uso en catálogos, redes sociales y materiales de comunicación de Ignia. Esta licencia no transmite ni afecta a la titularidad de los derechos de autor sobre la obra, que permanecen en todo momento en el artista.</p>
 
     <h2>7. Mecanismo de notificación de contenido ilícito</h2>
     <p>De conformidad con los artículos 16 y 17 del DSA, Ignia pone a disposición de cualquier persona un mecanismo de notificación de contenido que considere ilícito, falso o que infrinja derechos de terceros, accesible a través del formulario de la plataforma o mediante comunicación a legal@igniagallery.com. Ignia actuará con diligencia ante cada notificación recibida, evaluando su contenido y adoptando las medidas que procedan en cada caso.</p>
 
     <h2>8. Modificación de los términos</h2>
-    <p>Los cambios en estos términos serán notificados a los usuarios registrados con un mínimo de 15 días de antelación. El uso continuado de la plataforma tras la notificación implica la aceptación de los nuevos términos.</p>
+    <p>Los cambios en estos términos serán notificados a los usuarios registrados con un mínimo de 15 días de antelación. El uso continuado de la plataforma tras la notificación implica la aceptación de los nuevos términos. Las modificaciones no tendrán efecto retroactivo sobre los pedidos o publicaciones ya confirmados con anterioridad a su entrada en vigor, que se regirán por los términos vigentes en el momento de su confirmación.</p>
 
-    <h2>9. Legislación aplicable y resolución de conflictos</h2>
+    <h2>9. Disposiciones generales</h2>
+    <p>Si cualquier cláusula de estos términos fuera declarada nula o inaplicable por resolución firme de autoridad competente, dicha nulidad no afectará a la validez del resto de disposiciones, que continuarán siendo plenamente eficaces.</p>
+    <p>El hecho de que Ignia no exija en un momento dado el cumplimiento estricto de alguna de las obligaciones aquí recogidas no constituirá una renuncia a exigir su cumplimiento en el futuro.</p>
+
+    <h2>10. Fiscalidad, prevención del blanqueo de capitales y cumplimiento internacional</h2>
+
+    <h3>10.1 Impuesto sobre el Valor Añadido</h3>
+    <p>Los precios mostrados en la plataforma incluyen el Impuesto sobre el Valor Añadido (IVA) u otros impuestos indirectos equivalentes aplicables, calculados conforme a la normativa vigente. Con carácter general, las entregas de obras de arte originales realizadas directamente por su autor tributan al tipo reducido del 10%, de conformidad con el artículo 91.Uno.4 de la Ley 37/1992, de 28 de diciembre, del Impuesto sobre el Valor Añadido; en otro caso resultará de aplicación el tipo general u otro régimen especial que corresponda, incluido, en su caso, el régimen especial de bienes usados, objetos de arte, antigüedades y objetos de colección de los artículos 135 a 139 de dicha Ley.</p>
+    <p>Cuando la normativa del IVA aplicable a plataformas digitales así lo exija —en particular, el artículo 14 bis de la Directiva 2006/112/CE del Consejo y sus normas de desarrollo y transposición— Ignia podrá actuar como proveedor presunto ("deemed supplier") a efectos del IVA en determinadas operaciones, en cuyo caso repercutirá, recaudará y liquidará el impuesto correspondiente en nombre propio, ajustando el precio final mostrado al comprador en consecuencia.</p>
+
+    <h3>10.2 Obligaciones de información sobre vendedores (DAC7)</h3>
+    <p>En su condición de operador de plataforma digital que facilita la venta de bienes, Ignia está sujeta a las obligaciones de información establecidas en la Directiva (UE) 2021/514 del Consejo ("DAC7"), transpuesta al ordenamiento español mediante la Ley 13/2023, de 24 de mayo, de modificación de la Ley 58/2003 General Tributaria, y desarrollada por el Real Decreto 117/2024 y la Orden HAC/72/2024. En virtud de dicha normativa, Ignia debe recabar de cada artista información identificativa (nombre completo o razón social, domicilio, NIF o número de identificación fiscal equivalente, y datos de la cuenta de pago) y comunicarla anualmente a la Agencia Estatal de Administración Tributaria mediante el modelo 238, salvo que el artista califique como "vendedor excluido" por realizar menos de 30 operaciones y percibir un importe total inferior a 2.000 euros en el año natural. El artista se obliga a proporcionar dicha información de forma veraz y a mantenerla actualizada, y acepta que Ignia la comunique a la administración tributaria competente en cumplimiento de esta obligación legal.</p>
+
+    <h3>10.3 Prevención del blanqueo de capitales</h3>
+    <p>De conformidad con el artículo 2.1 de la Ley 10/2010, de 28 de abril, de prevención del blanqueo de capitales y de la financiación del terrorismo, quienes comercien profesionalmente con objetos de arte o actúen como intermediarios en dicho comercio tienen la consideración de sujetos obligados cuando el importe de una operación o de una serie de operaciones vinculadas sea igual o superior a 10.000 euros, umbral que coincide con el fijado por el artículo 2, apartado 1, punto 3, letra i), de la Directiva (UE) 2015/849, en la redacción dada por la Directiva (UE) 2018/843. En consecuencia, Ignia podrá requerir al comprador y al artista, con carácter previo o durante la tramitación de una transacción de dicho importe o superior, documentación identificativa adicional y, en su caso, información sobre el origen de los fondos, pudiendo suspender o rechazar la operación mientras dicha verificación no se complete.</p>
+
+    <h3>10.4 Alcance internacional de estos términos</h3>
+    <p>Ignia opera con artistas y compradores de distintas jurisdicciones. Para los compradores con residencia habitual en un Estado miembro de la Unión Europea, el artículo 6 del Reglamento (CE) nº 593/2008 ("Roma I") garantiza la aplicación de las normas imperativas de protección del consumidor de su país de residencia, y los artículos 17 a 19 del Reglamento (UE) nº 1215/2012 ("Bruselas I bis") les reconocen el derecho a litigar ante los tribunales de su propio domicilio, con independencia de la cláusula de sumisión del apartado 11. Para compradores o artistas domiciliados fuera de la Unión Europea, estos términos no excluyen la aplicación de las normas imperativas de protección del consumidor que, en su caso, resulten obligatorias conforme a la legislación de su país de residencia.</p>
+
+    <h2>11. Legislación aplicable y resolución de conflictos</h2>
     <p>Los presentes términos se rigen por la legislación española. Para las controversias en las que intervenga un consumidor, será de aplicación la normativa de protección de consumidores vigente, y el consumidor podrá acudir a los juzgados y tribunales del lugar de su domicilio. Para las controversias entre profesionales, las partes se someten a los juzgados y tribunales de Madrid.</p>
     <p>Los consumidores de la Unión Europea pueden acceder a la plataforma europea de resolución alternativa de litigios en línea en ec.europa.eu/consumers/odr.</p>
 
     <div class="page-footer">
       <p>Ignia Gallery · legal@igniagallery.com · Madrid, España</p>
     </div>
-
   </div>
 </body>
 </html>
