@@ -9,6 +9,7 @@ type Application = {
   social: string | null;
   status: string;
   created_at: string;
+  language?: string | null;
 };
 
 type Profile = {
