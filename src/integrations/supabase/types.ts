@@ -18,6 +18,8 @@ export type Database = {
         Row: {
           created_at: string
           email: string
+          estado_confirmado_en: string | null
+          estado_final: boolean
           id: string
           language: string
           locale: string
@@ -29,6 +31,8 @@ export type Database = {
         Insert: {
           created_at?: string
           email: string
+          estado_confirmado_en?: string | null
+          estado_final?: boolean
           id?: string
           language?: string
           locale?: string
@@ -40,6 +44,8 @@ export type Database = {
         Update: {
           created_at?: string
           email?: string
+          estado_confirmado_en?: string | null
+          estado_final?: boolean
           id?: string
           language?: string
           locale?: string
