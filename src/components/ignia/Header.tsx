@@ -288,21 +288,35 @@ export const Header = () => {
               {item.label}
             </Link>
           ))}
-          <button
-            type="button"
-            onClick={() => { setMobileOpen(false); openInvite(); }}
+          <Link
+            to="/unete-a-ignia"
+            onClick={() => setMobileOpen(false)}
             style={{
               fontFamily: "'Cormorant Garamond', serif",
               fontWeight: 400,
               fontSize: 32,
               color: "#FFFFFF",
-              background: "transparent",
-              border: "none",
-              cursor: "pointer",
+              textAlign: "center",
+              textDecoration: "none",
             }}
           >
             {t.publish}
-          </button>
+          </Link>
+          <Link
+            to="/login"
+            onClick={() => setMobileOpen(false)}
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontWeight: 400,
+              fontSize: 26,
+              color: "rgba(255,255,255,0.7)",
+              textAlign: "center",
+              textDecoration: "none",
+            }}
+          >
+            {t.login}
+          </Link>
+
           {/* Language switch inside mobile drawer */}
           <div style={{ display: "flex", gap: 18, marginTop: 12 }}>
             {LANGS.map((l) => {
