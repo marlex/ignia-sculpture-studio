@@ -18,26 +18,21 @@ interface RecoveryEmailProps {
   confirmationUrl: string
 }
 
-export const RecoveryEmail = ({
-  siteName,
-  confirmationUrl,
-}: RecoveryEmailProps) => (
+export const RecoveryEmail = ({ confirmationUrl }: RecoveryEmailProps) => (
   <Html lang="en" dir="ltr">
     <Head />
-    <Preview>Reset your password for {siteName}</Preview>
+    <Preview>Reset your Ignia password</Preview>
     <Body style={main}>
       <Container style={container}>
         <Heading style={h1}>Reset your password</Heading>
         <Text style={text}>
-          We received a request to reset your password for {siteName}. Click
-          the button below to choose a new password.
+          We received a request to reset your Ignia password. Click the button below to choose a new one.
         </Text>
         <Button style={button} href={confirmationUrl}>
-          Reset Password
+          Reset password
         </Button>
         <Text style={footer}>
-          If you didn't request a password reset, you can safely ignore this
-          email. Your password will not be changed.
+          If you didn't request a password reset, you can safely ignore this email.
         </Text>
       </Container>
     </Body>
@@ -46,26 +41,38 @@ export const RecoveryEmail = ({
 
 export default RecoveryEmail
 
-const main = { backgroundColor: '#ffffff', fontFamily: 'Arial, sans-serif' }
-const container = { padding: '20px 25px' }
-const h1 = {
-  fontSize: '22px',
-  fontWeight: 'bold' as const,
-  color: '#000000',
-  margin: '0 0 20px',
+const main: React.CSSProperties = {
+  backgroundColor: '#ffffff',
+  fontFamily: "'Manrope', Arial, sans-serif",
+  color: '#121212',
 }
-const text = {
-  fontSize: '14px',
-  color: '#55575d',
-  lineHeight: '1.5',
-  margin: '0 0 25px',
+const container: React.CSSProperties = { padding: '48px 40px', maxWidth: '560px' }
+const h1: React.CSSProperties = {
+  fontFamily: "'Cormorant Garamond', Georgia, serif",
+  fontWeight: 600,
+  fontSize: '28px',
+  lineHeight: 1.2,
+  color: '#121212',
+  margin: '0 0 24px',
 }
-const button = {
-  backgroundColor: '#000000',
+const text: React.CSSProperties = {
+  fontSize: '16px',
+  lineHeight: 1.6,
+  color: '#121212',
+  margin: '0 0 16px',
+  fontWeight: 400,
+}
+const button: React.CSSProperties = {
+  backgroundColor: '#121212',
   color: '#ffffff',
-  fontSize: '14px',
-  borderRadius: '8px',
-  padding: '12px 20px',
+  fontSize: '13px',
+  fontWeight: 500,
+  letterSpacing: '0.05em',
+  textTransform: 'uppercase',
+  borderRadius: '2px',
+  padding: '14px 24px',
   textDecoration: 'none',
+  display: 'inline-block',
+  margin: '8px 0 24px',
 }
-const footer = { fontSize: '12px', color: '#999999', margin: '30px 0 0' }
+const footer: React.CSSProperties = { fontSize: '13px', color: '#6b6b6b', margin: '24px 0 0' }

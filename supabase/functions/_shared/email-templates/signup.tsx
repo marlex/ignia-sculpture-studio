@@ -29,26 +29,22 @@ export const SignupEmail = ({
 }: SignupEmailProps) => (
   <Html lang="en" dir="ltr">
     <Head />
-    <Preview>Confirm your email for {siteName}</Preview>
+    <Preview>Confirm your email for Ignia</Preview>
     <Body style={main}>
       <Container style={container}>
         <Heading style={h1}>Confirm your email</Heading>
         <Text style={text}>
-          Thanks for signing up for{' '}
+          Thanks for joining{' '}
           <Link href={siteUrl} style={link}>
-            <strong>{siteName}</strong>
+            Ignia
           </Link>
-          !
+          .
         </Text>
         <Text style={text}>
-          Please confirm your email address (
-          <Link href={`mailto:${recipient}`} style={link}>
-            {recipient}
-          </Link>
-          ) by clicking the button below:
+          Please confirm your email address ({recipient}) by clicking the button below:
         </Text>
         <Button style={button} href={confirmationUrl}>
-          Verify Email
+          Confirm email
         </Button>
         <Text style={footer}>
           If you didn't create an account, you can safely ignore this email.
@@ -60,27 +56,39 @@ export const SignupEmail = ({
 
 export default SignupEmail
 
-const main = { backgroundColor: '#ffffff', fontFamily: 'Arial, sans-serif' }
-const container = { padding: '20px 25px' }
-const h1 = {
-  fontSize: '22px',
-  fontWeight: 'bold' as const,
-  color: '#000000',
-  margin: '0 0 20px',
+const main: React.CSSProperties = {
+  backgroundColor: '#ffffff',
+  fontFamily: "'Manrope', Arial, sans-serif",
+  color: '#121212',
 }
-const text = {
-  fontSize: '14px',
-  color: '#55575d',
-  lineHeight: '1.5',
-  margin: '0 0 25px',
+const container: React.CSSProperties = { padding: '48px 40px', maxWidth: '560px' }
+const h1: React.CSSProperties = {
+  fontFamily: "'Cormorant Garamond', Georgia, serif",
+  fontWeight: 600,
+  fontSize: '28px',
+  lineHeight: 1.2,
+  color: '#121212',
+  margin: '0 0 24px',
 }
-const link = { color: 'inherit', textDecoration: 'underline' }
-const button = {
-  backgroundColor: '#000000',
+const text: React.CSSProperties = {
+  fontSize: '16px',
+  lineHeight: 1.6,
+  color: '#121212',
+  margin: '0 0 16px',
+  fontWeight: 400,
+}
+const link: React.CSSProperties = { color: '#121212', textDecoration: 'underline' }
+const button: React.CSSProperties = {
+  backgroundColor: '#121212',
   color: '#ffffff',
-  fontSize: '14px',
-  borderRadius: '8px',
-  padding: '12px 20px',
+  fontSize: '13px',
+  fontWeight: 500,
+  letterSpacing: '0.05em',
+  textTransform: 'uppercase',
+  borderRadius: '2px',
+  padding: '14px 24px',
   textDecoration: 'none',
+  display: 'inline-block',
+  margin: '8px 0 24px',
 }
-const footer = { fontSize: '12px', color: '#999999', margin: '30px 0 0' }
+const footer: React.CSSProperties = { fontSize: '13px', color: '#6b6b6b', margin: '24px 0 0' }

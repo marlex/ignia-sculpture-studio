@@ -19,15 +19,14 @@ interface ReauthenticationEmailProps {
 export const ReauthenticationEmail = ({ token }: ReauthenticationEmailProps) => (
   <Html lang="en" dir="ltr">
     <Head />
-    <Preview>Your verification code</Preview>
+    <Preview>Your Ignia verification code</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Heading style={h1}>Confirm reauthentication</Heading>
-        <Text style={text}>Use the code below to confirm your identity:</Text>
+        <Heading style={h1}>Confirm your identity</Heading>
+        <Text style={text}>Use the code below to confirm this action:</Text>
         <Text style={codeStyle}>{token}</Text>
         <Text style={footer}>
-          This code will expire shortly. If you didn't request this, you can
-          safely ignore this email.
+          This code will expire shortly. If you didn't request this, you can safely ignore this email.
         </Text>
       </Container>
     </Body>
@@ -36,25 +35,33 @@ export const ReauthenticationEmail = ({ token }: ReauthenticationEmailProps) => 
 
 export default ReauthenticationEmail
 
-const main = { backgroundColor: '#ffffff', fontFamily: 'Arial, sans-serif' }
-const container = { padding: '20px 25px' }
-const h1 = {
-  fontSize: '22px',
-  fontWeight: 'bold' as const,
-  color: '#000000',
-  margin: '0 0 20px',
+const main: React.CSSProperties = {
+  backgroundColor: '#ffffff',
+  fontFamily: "'Manrope', Arial, sans-serif",
+  color: '#121212',
 }
-const text = {
-  fontSize: '14px',
-  color: '#55575d',
-  lineHeight: '1.5',
-  margin: '0 0 25px',
+const container: React.CSSProperties = { padding: '48px 40px', maxWidth: '560px' }
+const h1: React.CSSProperties = {
+  fontFamily: "'Cormorant Garamond', Georgia, serif",
+  fontWeight: 600,
+  fontSize: '28px',
+  lineHeight: 1.2,
+  color: '#121212',
+  margin: '0 0 24px',
 }
-const codeStyle = {
+const text: React.CSSProperties = {
+  fontSize: '16px',
+  lineHeight: 1.6,
+  color: '#121212',
+  margin: '0 0 16px',
+  fontWeight: 400,
+}
+const codeStyle: React.CSSProperties = {
   fontFamily: 'Courier, monospace',
-  fontSize: '22px',
-  fontWeight: 'bold' as const,
-  color: '#000000',
-  margin: '0 0 30px',
+  fontSize: '28px',
+  fontWeight: 600,
+  color: '#121212',
+  letterSpacing: '0.15em',
+  margin: '8px 0 24px',
 }
-const footer = { fontSize: '12px', color: '#999999', margin: '30px 0 0' }
+const footer: React.CSSProperties = { fontSize: '13px', color: '#6b6b6b', margin: '24px 0 0' }

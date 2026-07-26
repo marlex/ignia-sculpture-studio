@@ -9,17 +9,12 @@ import {
   Head,
   Heading,
   Html,
-  Link,
   Preview,
   Text,
 } from 'npm:@react-email/components@0.0.22'
 
 interface EmailChangeEmailProps {
   siteName: string
-  // oldEmail is the user's current address (HookData.OldEmail). For the
-  // NEW-recipient half of a secure email_change fanout, `email` equals the
-  // recipient (NEW), so the "from" line must render oldEmail to read
-  // "from OLD to NEW" instead of "from NEW to NEW".
   oldEmail: string
   email: string
   newEmail: string
@@ -27,37 +22,24 @@ interface EmailChangeEmailProps {
 }
 
 export const EmailChangeEmail = ({
-  siteName,
   oldEmail,
   newEmail,
   confirmationUrl,
 }: EmailChangeEmailProps) => (
   <Html lang="en" dir="ltr">
     <Head />
-    <Preview>Confirm your email change for {siteName}</Preview>
+    <Preview>Confirm your email change for Ignia</Preview>
     <Body style={main}>
       <Container style={container}>
         <Heading style={h1}>Confirm your email change</Heading>
         <Text style={text}>
-          You requested to change your email address for {siteName} from{' '}
-          <Link href={`mailto:${oldEmail}`} style={link}>
-            {oldEmail}
-          </Link>{' '}
-          to{' '}
-          <Link href={`mailto:${newEmail}`} style={link}>
-            {newEmail}
-          </Link>
-          .
-        </Text>
-        <Text style={text}>
-          Click the button below to confirm this change:
+          You requested to change your Ignia email address from {oldEmail} to {newEmail}.
         </Text>
         <Button style={button} href={confirmationUrl}>
-          Confirm Email Change
+          Confirm email change
         </Button>
         <Text style={footer}>
-          If you didn't request this change, please secure your account
-          immediately.
+          If you didn't request this change, please secure your account immediately.
         </Text>
       </Container>
     </Body>
@@ -66,27 +48,38 @@ export const EmailChangeEmail = ({
 
 export default EmailChangeEmail
 
-const main = { backgroundColor: '#ffffff', fontFamily: 'Arial, sans-serif' }
-const container = { padding: '20px 25px' }
-const h1 = {
-  fontSize: '22px',
-  fontWeight: 'bold' as const,
-  color: '#000000',
-  margin: '0 0 20px',
+const main: React.CSSProperties = {
+  backgroundColor: '#ffffff',
+  fontFamily: "'Manrope', Arial, sans-serif",
+  color: '#121212',
 }
-const text = {
-  fontSize: '14px',
-  color: '#55575d',
-  lineHeight: '1.5',
-  margin: '0 0 25px',
+const container: React.CSSProperties = { padding: '48px 40px', maxWidth: '560px' }
+const h1: React.CSSProperties = {
+  fontFamily: "'Cormorant Garamond', Georgia, serif",
+  fontWeight: 600,
+  fontSize: '28px',
+  lineHeight: 1.2,
+  color: '#121212',
+  margin: '0 0 24px',
 }
-const link = { color: 'inherit', textDecoration: 'underline' }
-const button = {
-  backgroundColor: '#000000',
+const text: React.CSSProperties = {
+  fontSize: '16px',
+  lineHeight: 1.6,
+  color: '#121212',
+  margin: '0 0 16px',
+  fontWeight: 400,
+}
+const button: React.CSSProperties = {
+  backgroundColor: '#121212',
   color: '#ffffff',
-  fontSize: '14px',
-  borderRadius: '8px',
-  padding: '12px 20px',
+  fontSize: '13px',
+  fontWeight: 500,
+  letterSpacing: '0.05em',
+  textTransform: 'uppercase',
+  borderRadius: '2px',
+  padding: '14px 24px',
   textDecoration: 'none',
+  display: 'inline-block',
+  margin: '8px 0 24px',
 }
-const footer = { fontSize: '12px', color: '#999999', margin: '30px 0 0' }
+const footer: React.CSSProperties = { fontSize: '13px', color: '#6b6b6b', margin: '24px 0 0' }

@@ -9,7 +9,6 @@ import {
   Head,
   Heading,
   Html,
-  Link,
   Preview,
   Text,
 } from 'npm:@react-email/components@0.0.22'
@@ -20,31 +19,21 @@ interface InviteEmailProps {
   confirmationUrl: string
 }
 
-export const InviteEmail = ({
-  siteName,
-  siteUrl,
-  confirmationUrl,
-}: InviteEmailProps) => (
+export const InviteEmail = ({ confirmationUrl }: InviteEmailProps) => (
   <Html lang="en" dir="ltr">
     <Head />
-    <Preview>You've been invited to join {siteName}</Preview>
+    <Preview>You've been invited to Ignia</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Heading style={h1}>You've been invited</Heading>
+        <Heading style={h1}>Welcome to Ignia</Heading>
         <Text style={text}>
-          You've been invited to join{' '}
-          <Link href={siteUrl} style={link}>
-            <strong>{siteName}</strong>
-          </Link>
-          . Click the button below to accept the invitation and create your
-          account.
+          You've been invited to join Ignia. Click the button below to accept your invitation and set your password.
         </Text>
         <Button style={button} href={confirmationUrl}>
-          Accept Invitation
+          Accept invitation
         </Button>
         <Text style={footer}>
-          If you weren't expecting this invitation, you can safely ignore this
-          email.
+          If you weren't expecting this invitation, you can safely ignore this email.
         </Text>
       </Container>
     </Body>
@@ -53,27 +42,38 @@ export const InviteEmail = ({
 
 export default InviteEmail
 
-const main = { backgroundColor: '#ffffff', fontFamily: 'Arial, sans-serif' }
-const container = { padding: '20px 25px' }
-const h1 = {
-  fontSize: '22px',
-  fontWeight: 'bold' as const,
-  color: '#000000',
-  margin: '0 0 20px',
+const main: React.CSSProperties = {
+  backgroundColor: '#ffffff',
+  fontFamily: "'Manrope', Arial, sans-serif",
+  color: '#121212',
 }
-const text = {
-  fontSize: '14px',
-  color: '#55575d',
-  lineHeight: '1.5',
-  margin: '0 0 25px',
+const container: React.CSSProperties = { padding: '48px 40px', maxWidth: '560px' }
+const h1: React.CSSProperties = {
+  fontFamily: "'Cormorant Garamond', Georgia, serif",
+  fontWeight: 600,
+  fontSize: '28px',
+  lineHeight: 1.2,
+  color: '#121212',
+  margin: '0 0 24px',
 }
-const link = { color: 'inherit', textDecoration: 'underline' }
-const button = {
-  backgroundColor: '#000000',
+const text: React.CSSProperties = {
+  fontSize: '16px',
+  lineHeight: 1.6,
+  color: '#121212',
+  margin: '0 0 16px',
+  fontWeight: 400,
+}
+const button: React.CSSProperties = {
+  backgroundColor: '#121212',
   color: '#ffffff',
-  fontSize: '14px',
-  borderRadius: '8px',
-  padding: '12px 20px',
+  fontSize: '13px',
+  fontWeight: 500,
+  letterSpacing: '0.05em',
+  textTransform: 'uppercase',
+  borderRadius: '2px',
+  padding: '14px 24px',
   textDecoration: 'none',
+  display: 'inline-block',
+  margin: '8px 0 24px',
 }
-const footer = { fontSize: '12px', color: '#999999', margin: '30px 0 0' }
+const footer: React.CSSProperties = { fontSize: '13px', color: '#6b6b6b', margin: '24px 0 0' }
