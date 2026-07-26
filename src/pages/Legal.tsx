@@ -8,6 +8,7 @@ const SLUGS: Record<string, { es: string; en: string }> = {
   "terminos": { es: "/legal/terminos.html", en: "/legal/en/terminos.html" },
   "privacidad": { es: "/legal/privacidad.html", en: "/legal/en/privacidad.html" },
   "envios-y-devoluciones": { es: "/legal/envios-y-devoluciones.html", en: "/legal/en/envios-y-devoluciones.html" },
+  "cookies": { es: "/legal/cookies.html", en: "/legal/en/cookies.html" },
 };
 
 export default function Legal() {

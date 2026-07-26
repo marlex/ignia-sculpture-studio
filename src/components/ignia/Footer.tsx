@@ -177,6 +177,9 @@ export const Footer = () => {
           <Link to="/legal/envios-y-devoluciones" className="font-body text-[13px] font-normal text-ink hover:opacity-65 transition-opacity tracking-[0.14em] uppercase">
             {lang === "es" ? "Envíos y Devoluciones" : "Shipping & Returns"}
           </Link>
+          <Link to="/legal/cookies" className="font-body text-[13px] font-normal text-ink hover:opacity-65 transition-opacity tracking-[0.14em] uppercase">
+            {lang === "es" ? "Política de Cookies" : "Cookie Policy"}
+          </Link>
         </div>
         <div className="flex items-center gap-5">
           <span className="font-body text-[13px] font-normal text-ink tracking-[0.14em] uppercase">© 2026 Ignia Gallery</span>
