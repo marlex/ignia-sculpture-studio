@@ -34,28 +34,45 @@ export default function RecuperarPassword() {
   const lang = useLang();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const t = lang === "es" ? {
     title: "Recuperar contraseña",
     subtitle: "Introduce tu email y te enviaremos un enlace para restablecer tu contraseña.",
     email: "Email",
     submit: "Enviar enlace",
+    sending: "Enviando…",
     okTitle: "Revisa tu correo",
     okMsg: "Si existe una cuenta con ese email, recibirás un enlace para restablecer tu contraseña.",
     back: "Volver a login",
+    errMsg: "No se pudo enviar el enlace. Inténtalo de nuevo.",
   } : {
     title: "Reset password",
     subtitle: "Enter your email and we'll send you a link to reset your password.",
     email: "Email",
     submit: "Send link",
+    sending: "Sending…",
     okTitle: "Check your email",
     okMsg: "If an account exists with that email, you'll receive a link to reset your password.",
     back: "Back to login",
+    errMsg: "Could not send the link. Please try again.",
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true); setError(null);
+    try {
+      const { error: err } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/reset-password`,
+      });
+      if (err) throw err;
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err?.message || t.errMsg);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
