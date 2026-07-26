@@ -116,8 +116,10 @@ export default function RecuperarPassword() {
                 <label style={labelStyle} htmlFor="email">{t.email}</label>
                 <input id="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} style={inputStyle} />
               </div>
+              {error && <p style={{ color: "#b00020", fontFamily: "Manrope, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
               <button
                 type="submit"
+                disabled={loading}
                 style={{
                   width: "100%",
                   padding: "16px 24px",
@@ -129,13 +131,12 @@ export default function RecuperarPassword() {
                   fontSize: 13,
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
-                  cursor: "pointer",
+                  cursor: loading ? "default" : "pointer",
+                  opacity: loading ? 0.6 : 1,
                   transition: "opacity 0.2s",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
               >
-                {t.submit}
+                {loading ? t.sending : t.submit}
               </button>
 
               <p style={{
