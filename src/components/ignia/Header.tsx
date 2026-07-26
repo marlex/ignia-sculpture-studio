@@ -5,6 +5,7 @@ import { Logo } from "./Logo";
 import { useLang, useSetLang, type Lang } from "@/i18n/LanguageContext";
 import { useAuth } from "@/auth/AuthContext";
 import { SHOW_PUBLIC_AUTH } from "@/config/featureFlags";
+import { supabase } from "@/integrations/supabase/client";
 
 // Left nav (desktop): Sculptors, Community, Learn, Ignia Gallery
 const NAV_LEFT = {
