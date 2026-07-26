@@ -64,8 +64,9 @@ export const Header = () => {
 
   const isJoinSculptors = location.pathname === "/join/escultores" || location.pathname === "/join/sculptors";
   const t = lang === "es"
-    ? { publish: isJoinSculptors ? "Solicitar acceso" : "Únete a Ignia", joinMobile: "ÚNETE", signin: "Entrar", signout: "Salir", dashboard: "Mi panel" }
-    : { publish: isJoinSculptors ? "Request access" : "Join Ignia", joinMobile: "JOIN", signin: "Sign in", signout: "Sign out", dashboard: "Dashboard" };
+    ? { publish: isJoinSculptors ? "Solicitar acceso" : "Únete a Ignia", joinMobile: "ÚNETE", login: "Login", signin: "Entrar", signout: "Salir", dashboard: "Mi panel" }
+    : { publish: isJoinSculptors ? "Request access" : "Join Ignia", joinMobile: "JOIN", login: "Login", signin: "Sign in", signout: "Sign out", dashboard: "Dashboard" };
+
 
 
   return (
@@ -187,17 +188,35 @@ export const Header = () => {
               {t.signin}
             </Link>
           ))}
-          <button
-            type="button"
-            onClick={openInvite}
+          <Link
+            to="/login"
             className="header-invite-btn hidden sm:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
           >
+            {t.login}
+          </Link>
+          <Link
+            to="/unete-a-ignia"
+            className="header-invite-btn hidden sm:inline-flex !py-2 !px-4 text-[13px] font-medium"
+            style={{
+              background: "#121212",
+              color: "#FFFFFF",
+              border: "1px solid #121212",
+              fontFamily: "var(--f-body)",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              transition: "opacity 0.2s",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+          >
             {t.publish}
-          </button>
+          </Link>
           {/* Mobile-only invitation text */}
-          <button
-            type="button"
-            onClick={openInvite}
+          <Link
+            to="/unete-a-ignia"
             aria-label={t.publish}
             className="header-invite-icon-mobile font-body text-[13px] font-medium tracking-[0.18em] uppercase text-ink"
             style={{
@@ -209,10 +228,12 @@ export const Header = () => {
               padding: "0 2px",
               cursor: "pointer",
               color: "#121212",
+              textDecoration: "none",
             }}
           >
             {t.joinMobile}
-          </button>
+          </Link>
+
         </div>
       </div>
 
@@ -267,21 +288,35 @@ export const Header = () => {
               {item.label}
             </Link>
           ))}
-          <button
-            type="button"
-            onClick={() => { setMobileOpen(false); openInvite(); }}
+          <Link
+            to="/unete-a-ignia"
+            onClick={() => setMobileOpen(false)}
             style={{
               fontFamily: "'Cormorant Garamond', serif",
               fontWeight: 400,
               fontSize: 32,
               color: "#FFFFFF",
-              background: "transparent",
-              border: "none",
-              cursor: "pointer",
+              textAlign: "center",
+              textDecoration: "none",
             }}
           >
             {t.publish}
-          </button>
+          </Link>
+          <Link
+            to="/login"
+            onClick={() => setMobileOpen(false)}
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontWeight: 400,
+              fontSize: 26,
+              color: "rgba(255,255,255,0.7)",
+              textAlign: "center",
+              textDecoration: "none",
+            }}
+          >
+            {t.login}
+          </Link>
+
           {/* Language switch inside mobile drawer */}
           <div style={{ display: "flex", gap: 18, marginTop: 12 }}>
             {LANGS.map((l) => {

@@ -1,88 +1,160 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { Logo } from "@/components/ignia/Logo";
+import { Header } from "@/components/ignia/Header";
+import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
 import { useAuth } from "@/auth/AuthContext";
 
-type Role = "escultor" | "coleccionista";
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  background: "transparent",
+  border: "none",
+  borderBottom: "1px solid #121212",
+  outline: "none",
+  fontFamily: "Manrope, sans-serif",
+  fontWeight: 400,
+  color: "#121212",
+  fontSize: 16,
+  padding: "0 0 8px",
+  borderRadius: 0,
+};
+
+const labelStyle: React.CSSProperties = {
+  display: "block",
+  fontFamily: "Manrope, sans-serif",
+  fontWeight: 500,
+  textTransform: "uppercase",
+  letterSpacing: "0.14em",
+  fontSize: 14,
+  color: "#121212",
+  marginBottom: 12,
+};
 
 export default function Login() {
-  const [role, setRole] = useState<Role>("escultor");
-  const navigate = useNavigate();
   const lang = useLang();
+  const navigate = useNavigate();
   const { login } = useAuth();
   const [params] = useSearchParams();
   const redirect = params.get("redirect") || "";
-  const emailRef = useRef<HTMLInputElement>(null);
-  const nameRef = useRef<HTMLInputElement>(null);
-  const emailSignupRef = useRef<HTMLInputElement>(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(true);
 
   const t = lang === "es" ? {
-    enter: "Entrar", access: "Accede con invitación",
-    email: "Email", emailPh: "tu@email.com",
-    pass: "Contraseña", passPh: "••••••••",
-    btnIn: "Entrar ↗",
-    or: "o crea una cuenta",
-    register: "Registro", join: "Únete a Ignia",
-    iam: (r: Role) => `Soy ${r === "escultor" ? "escultor" : "coleccionista"}`,
-    fSculptor: { name: "Nombre artístico", namePh: "Ej. Helena Vázquez", disc: "Disciplina principal", discPh: "Bronce, mármol, acero, piedra...", city: "Ciudad / taller", cityPh: "Toledo, España", bio: "Bio breve", bioPh: "Cuéntanos sobre tu obra escultórica (máx. 280 caracteres)" },
-    fCollector: { name: "Nombre completo", namePh: "Ej. María García", interests: "Intereses escultóricos", interestsPh: "Figurativo, abstracto, gran formato...", budget: "Rango de presupuesto", budgetPh: "2.000 € – 20.000 €" },
-    btnReg: "Crear cuenta ↗",
-    exit: "Salir",
+    title: "Iniciar sesión",
+    subtitle: "Accede a tu cuenta de Ignia Gallery.",
+    email: "Email",
+    password: "Contraseña",
+    remember: "Recuérdame",
+    forgot: "¿Olvidaste tu contraseña?",
+    submit: "Login",
+    noAccount: "¿No tienes cuenta?",
+    create: "Crear cuenta",
   } : {
-    enter: "Sign in", access: "Access Ignia",
-    email: "Email", emailPh: "you@email.com",
-    pass: "Password", passPh: "••••••••",
-    btnIn: "Sign in ↗",
-    or: "or create an account",
-    register: "Sign up", join: "Join Ignia",
-    iam: (r: Role) => `I'm a ${r === "escultor" ? "sculptor" : "collector"}`,
-    fSculptor: { name: "Artist name", namePh: "e.g. Helena Vázquez", disc: "Main discipline", discPh: "Bronze, marble, steel, stone...", city: "City / studio", cityPh: "Toledo, Spain", bio: "Short bio", bioPh: "Tell us about your sculptural work (max. 280 characters)" },
-    fCollector: { name: "Full name", namePh: "e.g. María García", interests: "Sculptural interests", interestsPh: "Figurative, abstract, large format...", budget: "Budget range", budgetPh: "€2,000 – €20,000" },
-    btnReg: "Create account ↗",
-    exit: "Exit",
+    title: "Sign in",
+    subtitle: "Access your Ignia Gallery account.",
+    email: "Email",
+    password: "Password",
+    remember: "Remember me",
+    forgot: "Forgot your password?",
+    submit: "Login",
+    noAccount: "Don't have an account?",
+    create: "Create account",
   };
 
-  const goToProfile = (e: React.FormEvent, r: Role, signup = false) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const email = (signup ? emailSignupRef.current?.value : emailRef.current?.value) || "user@ignia.gallery";
-    const name = nameRef.current?.value || (r === "escultor" ? "Artista" : "Coleccionista");
-    login({ email, name, role: r });
-    if (redirect) navigate(redirect);
-    else navigate(r === "escultor" ? "/dashboard" : "/perfil/coleccionista");
+    login({ email: email || "user@ignia.gallery", name: "Ignia", role: "coleccionista" });
+    navigate(redirect || "/perfil/coleccionista");
   };
 
   return (
-    <main className="min-h-screen bg-white">
-      <header className="h-14 border-b border-border flex items-center px-6 md:px-12">
-        <Link to="/" aria-label="Ignia Gallery"><Logo /></Link>
-      </header>
+    <div style={{ background: "#FFFFFF", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <Header />
+      <main style={{ flex: 1, paddingTop: 56 }}>
+        <section style={{ maxWidth: 460, margin: "0 auto", padding: "80px 24px 120px" }}>
+          <h1 style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontWeight: 600,
+            color: "#121212",
+            fontSize: "clamp(32px, 4vw, 44px)",
+            lineHeight: 1.1,
+            letterSpacing: "-0.02em",
+            margin: "0 0 16px",
+          }}>{t.title}</h1>
+          <p style={{
+            fontFamily: "Manrope, sans-serif",
+            fontWeight: 400,
+            color: "#666666",
+            fontSize: 16,
+            lineHeight: 1.6,
+            marginBottom: 48,
+          }}>{t.subtitle}</p>
 
-      <section className="max-w-[560px] mx-auto px-6 py-16 md:py-20">
-        <div className="eyebrow mb-3">{t.enter}</div>
-        <h1 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-8 leading-tight">{t.access}</h1>
+          <form onSubmit={handleSubmit}>
+            <div style={{ marginBottom: 28 }}>
+              <label style={labelStyle} htmlFor="email">{t.email}</label>
+              <input id="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} style={inputStyle} />
+            </div>
+            <div style={{ marginBottom: 24 }}>
+              <label style={labelStyle} htmlFor="password">{t.password}</label>
+              <input id="password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} style={inputStyle} />
+            </div>
 
-        <form onSubmit={(e) => goToProfile(e, role)} className="space-y-5">
-          <Field label={t.email} type="email" placeholder={t.emailPh} inputRef={emailRef} />
-          <Field label={t.pass} type="password" placeholder={t.passPh} />
-          <button type="submit" className="btn-primary w-full justify-center !py-3.5">{t.btnIn}</button>
-        </form>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 40, flexWrap: "wrap", gap: 12 }}>
+              <label style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: 14, color: "#121212" }}>
+                <input
+                  type="checkbox"
+                  checked={remember}
+                  onChange={(e) => setRemember(e.target.checked)}
+                  style={{ width: 16, height: 16, accentColor: "#121212", margin: 0 }}
+                />
+                {t.remember}
+              </label>
+              <Link to="/recuperar-password" style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: 14, color: "#121212", textDecoration: "underline" }}>
+                {t.forgot}
+              </Link>
+            </div>
 
-      </section>
-    </main>
+            <button
+              type="submit"
+              style={{
+                width: "100%",
+                padding: "16px 24px",
+                background: "#121212",
+                color: "#FFFFFF",
+                border: "1px solid #121212",
+                fontFamily: "Manrope, sans-serif",
+                fontWeight: 500,
+                fontSize: 13,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                cursor: "pointer",
+                transition: "opacity 0.2s",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+            >
+              {t.submit}
+            </button>
+
+            <p style={{
+              marginTop: 32,
+              fontFamily: "Manrope, sans-serif",
+              fontWeight: 400,
+              fontSize: 14,
+              color: "#666666",
+              textAlign: "center",
+            }}>
+              {t.noAccount}{" "}
+              <Link to="/unete-a-ignia" style={{ color: "#121212", textDecoration: "underline" }}>
+                {t.create}
+              </Link>
+            </p>
+          </form>
+        </section>
+      </main>
+      <Footer />
+    </div>
   );
 }
-
-const Field = ({ label, type = "text", placeholder, inputRef }: { label: string; type?: string; placeholder?: string; inputRef?: React.RefObject<HTMLInputElement> }) => (
-  <label className="block">
-    <span className="block font-body text-[14px] font-normal uppercase tracking-[0.18em] text-muted-line mb-2">{label}</span>
-    <input ref={inputRef} type={type} placeholder={placeholder} className="w-full bg-transparent border-0 border-b border-border focus:border-ink outline-none py-2.5 font-body text-[16px] text-ink placeholder:text-muted-line/60" />
-  </label>
-);
-
-const FieldArea = ({ label, placeholder }: { label: string; placeholder?: string }) => (
-  <label className="block">
-    <span className="block font-body text-[14px] font-normal uppercase tracking-[0.18em] text-muted-line mb-2">{label}</span>
-    <textarea rows={3} placeholder={placeholder} className="w-full bg-transparent border border-border focus:border-ink outline-none p-3 font-body text-[16px] text-ink placeholder:text-muted-line/60 resize-none" />
-  </label>
-);
