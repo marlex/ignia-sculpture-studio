@@ -93,7 +93,8 @@ export const Footer = () => {
 
   return (
     <footer className="footer-section bg-white border-t-[0.5px] border-border px-6 md:px-12 pt-14 pb-0">
-      <div className="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1fr_1fr] gap-10 md:gap-6">
+      <div className="max-w-5xl lg:mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1fr_1fr] gap-10 md:gap-6">
         {cols.map((c, i) => (
           i === 0 ? (
             <div key={c.label}>
@@ -162,6 +163,7 @@ export const Footer = () => {
             <span className="font-body text-[14px] font-normal tracking-[0.14em] uppercase">YouTube</span>
           </a>
         </div>
+      </div>
       </div>
 
       <div className="-mx-6 md:-mx-12 px-6 md:px-12 py-6 bg-secondary flex justify-between flex-wrap gap-x-8 gap-y-3 items-center">
