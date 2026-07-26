@@ -28,6 +28,7 @@ import JoinEscultores from "./pages/JoinEscultores.tsx";
 import UneteAIgnia from "./pages/UneteAIgnia.tsx";
 import RecuperarPassword from "./pages/RecuperarPassword.tsx";
 import ResetPassword from "./pages/ResetPassword.tsx";
+import Unsubscribe from "./pages/Unsubscribe.tsx";
 import AdminLayout from "./pages/admin/AdminLayout.tsx";
 import AdminOverview from "./pages/admin/Overview.tsx";
 import AdminSolicitudes from "./pages/admin/Solicitudes.tsx";
@@ -72,6 +73,7 @@ const App = () => (
               <Route path="/unete-a-ignia" element={<UneteAIgnia />} />
               <Route path="/recuperar-password" element={<RecuperarPassword />} />
               <Route path="/reset-password" element={<ResetPassword />} />
+              <Route path="/unsubscribe" element={<Unsubscribe />} />
               <Route path="/admin/dashboard" element={<AdminLayout />}>
                 <Route index element={<AdminOverview />} />
                 <Route path="solicitudes" element={<AdminSolicitudes />} />
