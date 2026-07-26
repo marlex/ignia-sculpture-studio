@@ -65,6 +65,7 @@ const App = () => (
               <Route path="/join/sculptors" element={<JoinEscultores />} />
               <Route path="/unete-a-ignia" element={<UneteAIgnia />} />
               <Route path="/recuperar-password" element={<RecuperarPassword />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <GlobalInviteModal />
