@@ -36,6 +36,7 @@ import AdminArtistas from "./pages/admin/Artistas.tsx";
 import AdminObras from "./pages/admin/Obras.tsx";
 import AdminMetricas from "./pages/admin/Metricas.tsx";
 import { GlobalInviteModal } from "@/components/ignia/GlobalInviteModal";
+import { ScrollToTop } from "@/components/ignia/ScrollToTop";
 
 const queryClient = new QueryClient();
 
