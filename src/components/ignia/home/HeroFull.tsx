@@ -21,13 +21,13 @@ export const HeroFull = () => {
   const t = lang === "es"
     ? {
         title: "El mundo de la escultura, de cerca.",
-        body: "La primera galería global dedicada exclusivamente a la escultura. Compra, vende y descubre obras de gran valor, con visualización 3D, certificados de autenticidad en blockchain y comisiones justas.",
-        cta: "Descubre La Colección",
+        body: "Descubre y compra esculturas originales en la plataforma global especializada en escultura. Explora cada obra en 3D, conoce a su artista y visualízala en tu propio espacio.",
+        cta: "Explorar esculturas",
       }
     : {
         title: "The sculpture world, up close.",
-        body: "The first global sculpture gallery dedicated exclusively to sculpture. Buy, sell and discover high-value works, with 3D visualization, blockchain authenticity certificates and fair commissions.",
-        cta: "Discover The Collection",
+        body: "Discover and buy original sculptures on the global platform specialized in sculpture. Explore each work in 3D, meet its artist, and visualize it in your own space.",
+        cta: "Explore sculptures",
       };
 
   return (
