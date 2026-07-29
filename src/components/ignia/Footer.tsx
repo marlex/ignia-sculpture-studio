@@ -25,7 +25,7 @@ const COLS = {
     {
       label: "Escultura",
       links: [
-        { label: "Colección", to: "/coleccion" },
+        { label: "Esculturas", to: "/coleccion" },
         { label: "Escultores", to: "/escultores" },
       ],
     },
@@ -54,7 +54,7 @@ const COLS = {
     {
       label: "Sculpture",
       links: [
-        { label: "The Collection", to: "/coleccion" },
+        { label: "Sculptures", to: "/coleccion" },
         { label: "Sculptors", to: "/escultores" },
       ],
     },

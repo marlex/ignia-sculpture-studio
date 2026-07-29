@@ -23,13 +23,13 @@ const NAV_LEFT = {
   ],
 };
 
-// Right nav (desktop): Collection
+// Right nav (desktop): Sculptures
 const NAV_RIGHT = {
   es: [
-    { label: "Colección", to: "/coleccion" },
+    { label: "Esculturas", to: "/coleccion" },
   ],
   en: [
-    { label: "Collection", to: "/coleccion" },
+    { label: "Sculptures", to: "/coleccion" },
   ],
 };
 
