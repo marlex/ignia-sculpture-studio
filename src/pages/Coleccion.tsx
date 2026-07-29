@@ -6,8 +6,8 @@ import { useLang } from "@/i18n/LanguageContext";
 const ColeccionPage = () => {
   const lang = useLang();
   const t = lang === "es"
-    ? { eyebrow: "Catálogo", h: "Colección", sub: "Esculturas seleccionadas en bronce, mármol, acero corten, madera, cerámica, alabastro y vidrio." }
-    : { eyebrow: "Catalogue", h: "Collection", sub: "Selected sculptures in bronze, marble, corten steel, wood, ceramic, alabaster and glass." };
+    ? { eyebrow: "Catálogo", h: "Esculturas", sub: "Esculturas seleccionadas en bronce, mármol, acero corten, madera, cerámica, alabastro y vidrio." }
+    : { eyebrow: "Catalogue", h: "Sculptures", sub: "Selected sculptures in bronze, marble, corten steel, wood, ceramic, alabaster and glass." };
   return (
     <main className="pt-14">
       <Header />

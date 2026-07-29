@@ -38,7 +38,7 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
   const [activeFilter, setActiveFilter] = useState<FilterKey | null>(null);
 
   const t = lang === "es" ? {
-    h: "Colección",
+    h: "Esculturas",
     all: "Ver todos →",
     worksLabel: "obras",
     search: "Buscar artista, obra, material…",
@@ -56,7 +56,7 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
     close: "Cerrar",
     hint: "Arrastra para rotar · Scroll para zoom",
   } : {
-    h: "Collection",
+    h: "Sculptures",
     all: "View all →",
     worksLabel: "works",
     search: "Search artist, work, material…",
