@@ -10,6 +10,7 @@ import { ChevronLeft, ChevronRight, MessageCircle, Link2, Mail, ChevronDown, Inf
 import { BIOS } from "@/pages/PerfilEscultor";
 import { artistSlug } from "@/lib/artistSlug";
 import { supabase } from "@/integrations/supabase/client";
+import { Seo } from "@/components/Seo";
 
 const T = {
   es: {
@@ -193,42 +194,10 @@ const ObraDetalle = () => {
 
   useEffect(() => { setIdx(0); }, [slug]);
 
-  useEffect(() => {
-    if (!o) return;
-    const title = `${o.title} — ${o.artist} · Ignia Gallery`;
-    const rawDesc = (o.description || "").replace(/\s+/g, " ").trim();
-    const shortDesc = rawDesc.length > 140 ? rawDesc.slice(0, 137) + "…" : rawDesc;
-    const description = lang === "es"
-      ? `${shortDesc} ${o.material}, ${o.year}. ${o.price}.`
-      : `${shortDesc} ${o.material}, ${o.year}. ${o.price}.`;
-    const SITE_BASE = "https://igniagallery.com";
-    const rawImage = o.image || "";
-    const ogImage = rawImage.startsWith("http")
-      ? rawImage
-      : `${SITE_BASE}${rawImage.startsWith("/") ? "" : "/"}${rawImage}`;
-    document.title = title;
-    const setMeta = (sel: string, content: string) => {
-      let el = document.querySelector(sel) as HTMLMetaElement | null;
-      if (!el) {
-        el = document.createElement("meta");
-        const nameMatch = sel.match(/\[name="([^"]+)"\]/);
-        const propMatch = sel.match(/\[property="([^"]+)"\]/);
-        if (nameMatch) el.setAttribute("name", nameMatch[1]);
-        if (propMatch) el.setAttribute("property", propMatch[1]);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-    setMeta('meta[name="description"]', description);
-    setMeta('meta[property="og:title"]', title);
-    setMeta('meta[property="og:description"]', description);
-    setMeta('meta[name="twitter:title"]', title);
-    setMeta('meta[name="twitter:description"]', description);
-    setMeta('meta[property="og:image"]', ogImage);
-    setMeta('meta[property="og:image:width"]', "1200");
-    setMeta('meta[property="og:image:height"]', "630");
-    setMeta('meta[name="twitter:image"]', ogImage);
-  }, [slug, lang, o]);
+  const seoTitle = o ? `${o.title} — ${o.artist} · Ignia Gallery` : "";
+  const seoDescription = o
+    ? `${(o.description || "").replace(/\s+/g, " ").trim().slice(0, 137)} ${o.material}, ${o.year}. ${o.price}.`
+    : "";
 
 
   const next = () => setIdx((idx + 1) % photos.length);
@@ -236,6 +205,7 @@ const ObraDetalle = () => {
 
   return (
     <main className="pt-14 bg-white">
+      <Seo title={seoTitle} description={seoDescription} path={`/obra/${slug}`} image={o?.image} type="article" />
       <Header />
 
       <section className="px-6 md:px-12 pt-10 pb-20 md:pb-14">

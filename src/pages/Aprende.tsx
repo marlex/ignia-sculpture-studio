@@ -2,6 +2,7 @@ import { Header } from "@/components/ignia/Header";
 import { Aprende as AprendeSection } from "@/components/ignia/Aprende";
 import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
+import { Seo } from "@/components/Seo";
 
 const AprendePage = () => {
   const lang = useLang();
@@ -11,6 +12,7 @@ const AprendePage = () => {
 
   return (
     <main className="pt-14">
+      <Seo title={"Learn Sculpture — Materials, Process & Market | Ignia Gallery"} description={"Guides to understanding sculpture: materials, techniques, conservation, patinas and how the sculpture market really works."} path="/aprende" />
       <Header />
       <section className="px-6 md:px-12 pt-16 pb-4 bg-white">
         <div className="eyebrow mb-3">{t.eyebrow}</div>

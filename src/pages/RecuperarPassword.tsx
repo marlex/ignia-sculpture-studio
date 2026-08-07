@@ -4,6 +4,7 @@ import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
+import { Seo } from "@/components/Seo";
 
 const inputStyle: React.CSSProperties = {
   width: "100%",
@@ -77,6 +78,7 @@ export default function RecuperarPassword() {
 
   return (
     <div style={{ background: "#FFFFFF", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <Seo title={"Reset Your Password | Ignia Gallery"} description={"Recover access to your Ignia Gallery account."} path="/recuperar-password" noindex />
       <Header />
       <main style={{ flex: 1, paddingTop: 56 }}>
         <section style={{ maxWidth: 460, margin: "0 auto", padding: "120px 24px 160px" }}>

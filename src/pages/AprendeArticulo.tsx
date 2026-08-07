@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
@@ -6,18 +5,9 @@ import { useLang } from "@/i18n/LanguageContext";
 import { APRENDE_ARTICLES, getAprendeArticleBySlug } from "@/data/aprendeArticles";
 import { WorksConversionBlock, ArtistsConversionBlock } from "@/components/ignia/ConversionBlocks";
 import NotFound from "@/pages/NotFound";
+import { Seo } from "@/components/Seo";
 
 const SITE_BASE = "https://igniagallery.com";
-
-const upsertMeta = (key: "name" | "property", value: string, content: string) => {
-  let el = document.head.querySelector<HTMLMetaElement>(`meta[${key}="${value}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute(key, value);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-};
 
 const AprendeArticuloPage = () => {
   const { slug = "" } = useParams();
@@ -53,21 +43,11 @@ const AprendeArticuloPage = () => {
   const url = `${SITE_BASE}/aprende/${slug}`;
   const image = article ? (article.img.startsWith("http") ? article.img : `${SITE_BASE}${article.img}`) : "";
 
-  useEffect(() => {
-    if (!content) return;
-    document.title = title;
-    upsertMeta("name", "description", description);
-    upsertMeta("property", "og:title", title);
-    upsertMeta("property", "og:description", description);
-    upsertMeta("property", "og:image", image);
-    upsertMeta("property", "og:url", url);
-    upsertMeta("property", "og:type", "article");
-  }, [title, description, image, url, content]);
-
   if (!article || !content) return <NotFound />;
 
   return (
     <main className="pt-14">
+      <Seo title={title} description={description} path={`/aprende/${slug}`} image={image} type="article" />
       <Header />
       <article className="px-6 md:px-12 pt-16 pb-12 bg-white max-w-[820px] mx-auto">
         <div className="eyebrow mb-3">{content.tag}</div>

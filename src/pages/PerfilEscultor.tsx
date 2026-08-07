@@ -22,6 +22,7 @@ import tomasPortrait from "@/assets/artist-tomas-vigo.jpg";
 import { useLang } from "@/i18n/LanguageContext";
 import { WORKS } from "@/data/igniaWorks";
 import { artistSlug } from "@/lib/artistSlug";
+import { Seo } from "@/components/Seo";
 
 type Bio = {
   nombre: string;
@@ -173,25 +174,12 @@ export default function PerfilEscultor() {
   const bioText = lang === "es" ? bio.bioEs : bio.bioEn;
   const esp = lang === "es" ? bio.espEs : bio.espEn;
 
-  useEffect(() => {
-    const sculptorLabel = lang === "es" ? "Escultor" : "Sculptor";
-    const title = `${bio.nombre} — ${sculptorLabel} · Ignia Gallery`;
-    const raw = (bioText || "").replace(/\s+/g, " ").trim();
-    const description = raw.length > 150 ? raw.slice(0, 147) + "…" : raw;
-    document.title = title;
-    const setMeta = (sel: string, content: string) => {
-      const el = document.querySelector(sel) as HTMLMetaElement | null;
-      if (el) el.setAttribute("content", content);
-    };
-    setMeta('meta[name="description"]', description);
-    setMeta('meta[property="og:title"]', title);
-    setMeta('meta[property="og:description"]', description);
-    setMeta('meta[name="twitter:title"]', title);
-    setMeta('meta[name="twitter:description"]', description);
-  }, [slug, lang, bio.nombre, bioText]);
+  const seoTitle = `${bio.nombre} — Sculptor · Ignia Gallery`;
+  const seoDescription = ((bioText || "").replace(/\s+/g, " ").trim()).slice(0, 155);
 
   return (
     <main className="min-h-screen bg-white pt-14">
+      <Seo title={seoTitle} description={seoDescription} path={`/perfil/escultor/${slug ?? ""}`} image={bio.retrato} />
       <Header />
 
       <section className="px-6 md:px-12 py-16 max-w-[1280px] mx-auto">
