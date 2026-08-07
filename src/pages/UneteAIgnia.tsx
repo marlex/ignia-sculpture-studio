@@ -4,6 +4,7 @@ import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
+import { Seo } from "@/components/Seo";
 
 const inputStyle: React.CSSProperties = {
   width: "100%",
@@ -107,6 +108,7 @@ export default function UneteAIgnia() {
 
   return (
     <div style={{ background: "#FFFFFF", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <Seo title={"Join Ignia Gallery — Artists & Collectors"} description={"Apply to join Ignia Gallery as a sculptor or collector and get access to 3D listings, blockchain certificates and a global sculpture audience."} path="/unete-a-ignia" />
       <Header />
       <main style={{ flex: 1, paddingTop: 56 }}>
         <section style={{ maxWidth: 560, margin: "0 auto", padding: "120px 24px 160px" }}>

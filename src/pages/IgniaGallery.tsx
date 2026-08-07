@@ -2,6 +2,7 @@ import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import studio from "@/assets/hero-bg-studio.jpg";
 import { useLang } from "@/i18n/LanguageContext";
+import { Seo } from "@/components/Seo";
 
 const T = {
   es: {
@@ -83,6 +84,7 @@ const IgniaGalleryPage = () => {
   const t = T[lang];
   return (
     <main className="pt-14">
+      <Seo title={"About Ignia Gallery — The Home of Sculpture"} description={"The story behind Ignia Gallery: a platform built exclusively for sculpture, with 3D viewing, blockchain authenticity and fair commissions for artists."} path="/ignia-gallery" />
       <Header />
 
       <section className="relative h-[58vh] min-h-[400px] overflow-hidden">

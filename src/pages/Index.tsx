@@ -15,6 +15,7 @@ import { SectionSeparator } from "@/components/ignia/home/SectionSeparator";
 
 import { useFadeUp } from "@/hooks/useFadeUp";
 import { useLang } from "@/i18n/LanguageContext";
+import { Seo } from "@/components/Seo";
 
 const SEPARATORS = {
   es: {
@@ -74,6 +75,7 @@ const Index = () => {
 
   return (
     <main className="pt-14" style={{ background: "#FFFFFF" }}>
+      <Seo title={"Ignia Gallery — Buy Original Sculpture Online"} description={"The global gallery dedicated exclusively to sculpture. Discover original works in 3D, meet the artists and view each piece in your own space."} path="/" />
       <Header />
       <HeroFull />
       <div ref={fadeTicker}>
