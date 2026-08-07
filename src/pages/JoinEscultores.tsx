@@ -3,6 +3,7 @@ import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 
 import { useLang } from "@/i18n/LanguageContext";
+import { Seo } from "@/components/Seo";
 import heroSculptors from "@/assets/hero-sculptors.jpg.asset.json";
 import heroMarmol from "@/assets/hero-marmol.jpg.asset.json";
 import heroMetal from "@/assets/hero-metal.jpg.asset.json";
@@ -63,20 +64,6 @@ const JoinEscultores = () => {
   const [error, setError] = useState<string | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  useEffect(() => {
-    const prevTitle = document.title;
-    document.title = "Sell Sculpture Online | Fair Commission for Sculptors — Ignia";
-    const meta = document.querySelector('meta[name="description"]');
-    const prevDesc = meta?.getAttribute("content") ?? "";
-    meta?.setAttribute(
-      "content",
-      "Join the only global gallery built exclusively for sculptors. Keep 82–88% of every sale — we handle logistics, insurance, and authentication.",
-    );
-    return () => {
-      document.title = prevTitle;
-      if (meta) meta.setAttribute("content", prevDesc);
-    };
-  }, []);
 
   useEffect(() => {
     const open = () => setInviteOpen(true);
@@ -215,6 +202,7 @@ const JoinEscultores = () => {
 
   return (
     <div style={{ background: "#FFFFFF" }}>
+      <Seo title={"Sell Sculpture Online — Fair Commissions for Sculptors | Ignia"} description={"Join the only global gallery built exclusively for sculptors. Keep 82-88% of every sale while we handle 3D, logistics, insurance and authentication."} path="/join/escultores" />
       <Header />
 
       {/* 1. HERO */}
