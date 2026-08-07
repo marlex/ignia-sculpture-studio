@@ -64,10 +64,13 @@ export default function Legal() {
     };
   }, [src]);
 
+  const seo = slug ? LEGAL_SEO[slug] : undefined;
+
   if (!src) return <Navigate to="/" replace />;
 
   return (
     <div className="min-h-screen bg-white">
+      {seo && <Seo title={seo.title} description={seo.description} path={`/legal/${slug}`} />}
       <Header />
       <main>
         <iframe
