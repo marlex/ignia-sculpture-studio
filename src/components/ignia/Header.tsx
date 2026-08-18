@@ -10,13 +10,13 @@ import { supabase } from "@/integrations/supabase/client";
 // Left nav (desktop): Sculptors, Community, Learn, Ignia Gallery
 const NAV_LEFT = {
   es: [
-    { label: "Escultores", to: "/escultores" },
+    { label: "Escultores", to: "/join/escultores" },
     { label: "Comunidad", to: "/editorial" },
     { label: "Aprende", to: "/aprende" },
     { label: "Ignia Gallery", to: "/ignia-gallery" },
   ],
   en: [
-    { label: "Sculptors", to: "/escultores" },
+    { label: "Sculptors", to: "/join/sculptors" },
     { label: "Community", to: "/editorial" },
     { label: "Learn", to: "/aprende" },
     { label: "Ignia Gallery", to: "/ignia-gallery" },
