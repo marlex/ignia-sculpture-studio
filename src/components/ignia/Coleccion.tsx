@@ -32,7 +32,7 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
   const [open3d, setOpen3d] = useState<number | null>(null);
   const [openFeatured3d, setOpenFeatured3d] = useState(false);
   const [query, setQuery] = useState("");
-  const [priceSort, setPriceSort] = useState<"asc" | "desc">("asc");
+  const [priceSort, setPriceSort] = useState<"curated" | "asc" | "desc">("curated");
   const [material, setMaterial] = useState<string>("");
   const [technique, setTechnique] = useState<string>("");
   const [activeFilter, setActiveFilter] = useState<FilterKey | null>(null);
@@ -42,6 +42,7 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
     all: "Ver todos →",
     worksLabel: "obras",
     search: "Buscar artista, obra, material…",
+    curated: "Orden destacado",
     priceAsc: "Precio: menor a mayor",
     priceDesc: "Precio: mayor a menor",
     materialAll: "Todos los materiales",
@@ -60,6 +61,7 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
     all: "View all →",
     worksLabel: "works",
     search: "Search artist, work, material…",
+    curated: "Featured order",
     priceAsc: "Price: low to high",
     priceDesc: "Price: high to low",
     materialAll: "All materials",
@@ -85,6 +87,7 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
   );
 
   const sorted = useMemo(() => {
+    if (priceSort === "curated") return allWorks;
     const arr = [...allWorks].sort((a, b) => {
       const diff = parsePrice(a.price) - parsePrice(b.price);
       return priceSort === "asc" ? diff : -diff;
@@ -107,7 +110,7 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
 
   const totalCount = allWorks.length;
 
-  const FEATURED_SLUG = "ulmuk-vase";
+  const FEATURED_SLUG = "arco";
   const featured = filtered.find(w => w.slug === FEATURED_SLUG) ?? filtered[0];
   const gridWorks = filtered.filter(w => w.slug !== featured?.slug);
 
@@ -129,7 +132,7 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
 
   // Active chip indicator
   const chipActive = (key: FilterKey) => {
-    if (key === "price") return priceSort !== "asc";
+    if (key === "price") return priceSort !== "curated";
     if (key === "material") return !!material;
     if (key === "technique") return !!technique;
     return false;
@@ -212,10 +215,11 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
             <>
               <select
                 value={priceSort}
-                onChange={(e) => setPriceSort(e.target.value as "asc" | "desc")}
+                onChange={(e) => setPriceSort(e.target.value as "curated" | "asc" | "desc")}
                 className="border-[0.5px] border-ink bg-white font-body text-[14px] font-normal pl-3.5 py-2.5 outline-none focus:border-ink transition-colors"
                 style={selectStyle}
               >
+                <option value="curated">{t.curated}</option>
                 <option value="asc">{t.priceAsc}</option>
                 <option value="desc">{t.priceDesc}</option>
               </select>
