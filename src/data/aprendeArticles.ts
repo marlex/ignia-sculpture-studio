@@ -123,7 +123,7 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
     img: sculpturePhoto,
     fecha: "2026-05-05",
     autor: "Marcos Iriarte",
-    featuredWorks: ["pliegue-iii", "raiz", "quietud-alabastro"],
+    featuredWorks: ["pliegue-iii", "nervadura", "quietud-alabastro"],
     featuredArtists: ["Alba Costa", "Sofía Méndez", "Inés Ferrer"],
     es: {
       tag: "Para escultores",
@@ -217,7 +217,7 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
     img: limitedEdition,
     fecha: "2026-04-18",
     autor: "Inés Ferrer",
-    featuredWorks: ["vinculo", "luz-interior", "origen"],
+    featuredWorks: ["vinculo", "combustion", "cuerpo-fosil"],
     featuredArtists: ["Tomás Vigo", "Lucía Pardo", "Ana Ruiz"],
     es: {
       tag: "Editorial",
