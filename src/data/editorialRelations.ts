@@ -16,7 +16,7 @@ export const EDITORIAL_RELATIONS: Record<
     relatedArticles: ["bronce-contemporaneo", "coleccionar-escultura-hoy"],
   },
   "coleccionar-escultura-hoy": {
-    relatedWorks: ["vinculo", "pliegue-iii", "luz-interior"],
+    relatedWorks: ["vinculo", "pliegue-iii", "combustion"],
     relatedArticles: ["bronce-contemporaneo", "acero-corten-paisaje"],
   },
 };
