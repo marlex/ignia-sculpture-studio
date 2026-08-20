@@ -1,112 +1,34 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLang } from "@/i18n/LanguageContext";
 
 type Props = { open: boolean; onClose: () => void; defaultProfile?: "collector" | "artist" };
-type Profile = "artista" | "coleccionista" | "empresa";
 
-export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
+export const InviteModal = ({ open, onClose }: Props) => {
   const lang = useLang();
-  const [profile, setProfile] = useState<Profile | null>(null);
-  const [bio, setBio] = useState("");
-  const [message, setMessage] = useState("");
-  const [interests, setInterests] = useState<string[]>([]);
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
   const t = lang === "es"
     ? {
         title: "Únete a Ignia",
-        subtitleArtista: "30 plazas. Comisión Pro permanente del 15%. Sin cuotas, sin exclusividad.",
-        subtitleColeccionista: "Acceso anticipado a una nueva forma de coleccionar escultura.",
-        subtitleEmpresa: "Hablemos sobre tu proyecto u organización.",
         whoTitle: "¿Quién eres?",
         roleArtista: "Soy escultor/a",
         roleColeccionista: "Soy coleccionista",
         roleEmpresa: "Soy galería o empresa",
         roleArtistaSub: "Sé descubierto por coleccionistas",
         roleColeccionistaSub: "Encuentra obras que no encontrarás en otro sitio",
-        roleEmpresaSub: "Encarga, adquiere o colabora",
-        back: "← Cambiar",
-        name: "Nombre completo",
-        org: "Nombre de la organización",
-        email: "Email",
-        country: "País",
-        countryPlaceholder: "Selecciona...",
-        social: "Instagram o web",
-        socialOpt: "Instagram o web (opcional)",
-        contact: "Persona de contacto",
-        material: "Materiales principales",
-        materialOptions: ["Piedra", "Madera", "Metal", "Cerámica", "Resina", "Textil", "Técnica mixta", "Otro"],
-        works: "Obras disponibles (aprox.)",
-        worksOptions: ["1–3", "4–10", "11–20", "Más de 20"],
-        bioLabel: "Cuéntanos tu práctica",
-        interestsLabel: "Intereses de colección",
-        interestsOptions: ["Escultura figurativa", "Abstracta", "Contemporánea", "Clásica/histórica", "Arte público/gran escala"],
-        budgetCol: "Rango que sueles considerar (opcional)",
-        budgetColOptions: ["Menos de 1.500€", "1.500–5.000€", "5.000–15.000€", "Más de 15.000€", "Prefiero no decirlo"],
-        howKnow: "Cómo conociste Ignia (opcional)",
-        howKnowOptions: ["Instagram", "Recomendación", "Búsqueda en Google", "Otro"],
-        collabType: "Tipo de colaboración",
-        collabOptions: ["Exposición o evento", "Compra corporativa", "Patrocinio", "Alianza institucional/museística", "Otro"],
-        budgetEmp: "Presupuesto orientativo",
-        budgetEmpOptions: ["A definir", "Hasta 10.000€", "10.000–50.000€", "Más de 50.000€"],
-        msgLabel: "Mensaje breve",
-        submit: "Unirme a Ignia",
-        sending: "Enviando…",
-        successTitle: "Solicitud recibida.",
-        successMsg: "Revisamos cada solicitud personalmente y te contactamos en 48 horas.",
+        roleEmpresaSub: "Hablemos sobre tu proyecto u organización",
         close: "Cerrar",
-        errMsg: "Hubo un error al enviar. Inténtalo de nuevo.",
       }
     : {
         title: "Join Ignia",
-        subtitleArtista: "30 spots. Permanent 15% Pro commission. No fees, no exclusivity.",
-        subtitleColeccionista: "Early access to a new way of collecting sculpture.",
-        subtitleEmpresa: "Let's talk about your project or organization.",
         whoTitle: "Who are you?",
         roleArtista: "I'm a sculptor",
         roleColeccionista: "I'm a collector",
         roleEmpresa: "I'm a gallery or company",
         roleArtistaSub: "Get discovered by collectors",
         roleColeccionistaSub: "Find works you won't find elsewhere",
-        roleEmpresaSub: "Source, commission or collaborate",
-        back: "← Change",
-        name: "Full name",
-        org: "Organization name",
-        email: "Email",
-        country: "Country",
-        countryPlaceholder: "Select...",
-        social: "Instagram or website",
-        socialOpt: "Instagram or website (optional)",
-        contact: "Contact person",
-        material: "Main materials",
-        materialOptions: ["Stone", "Wood", "Metal", "Ceramics", "Resin", "Textile", "Mixed media", "Other"],
-        works: "Available works (approx.)",
-        worksOptions: ["1–3", "4–10", "11–20", "More than 20"],
-        bioLabel: "Tell us about your practice",
-        interestsLabel: "Collection interests",
-        interestsOptions: ["Figurative sculpture", "Abstract", "Contemporary", "Classical/historical", "Public/large-scale art"],
-        budgetCol: "Range you usually consider (optional)",
-        budgetColOptions: ["Less than €1,500", "€1,500–5,000", "€5,000–15,000", "More than €15,000", "Prefer not to say"],
-        howKnow: "How did you hear about Ignia (optional)",
-        howKnowOptions: ["Instagram", "Referral", "Google search", "Other"],
-        collabType: "Type of collaboration",
-        collabOptions: ["Exhibition or event", "Corporate purchase", "Sponsorship", "Institutional/museum partnership", "Other"],
-        budgetEmp: "Indicative budget",
-        budgetEmpOptions: ["To be defined", "Up to €10,000", "€10,000–50,000", "More than €50,000"],
-        msgLabel: "Brief message",
-        submit: "Join Ignia",
-        sending: "Sending…",
-        successTitle: "Request received.",
-        successMsg: "We review every request personally and will contact you within 48 hours.",
+        roleEmpresaSub: "Let's talk about your project or organization",
         close: "Close",
-        errMsg: "There was an error sending. Please try again.",
       };
-
-  const countryOptions = lang === "es"
-    ? ["Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Esuatini", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guinea", "Guinea-Bisáu", "Guinea Ecuatorial", "Guyana", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Palestina", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República del Congo", "República Democrática del Congo", "República Dominicana", "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Suazilandia", "Sudáfrica", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Vaticano", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue"]
-    : ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"];
 
   useEffect(() => {
     if (!open) return;
@@ -119,114 +41,7 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
     };
   }, [open, onClose]);
 
-  useEffect(() => {
-    if (!open) {
-      setSubmitted(false); setBio(""); setMessage(""); setInterests([]);
-      setError(null); setProfile(null);
-    }
-  }, [open]);
-
-  useEffect(() => {
-    if (open && defaultProfile === "collector") {
-      setProfile("coleccionista");
-    } else if (open && defaultProfile === "artist") {
-      setProfile("artista");
-    }
-  }, [open, defaultProfile]);
-
   if (!open) return null;
-
-  const endpoint = "https://formspree.io/f/xgobbeyp";
-
-  const profileLabel = (p: Profile) =>
-    p === "artista" ? "Artista" : p === "coleccionista" ? "Coleccionista" : "Empresa";
-
-  const toggleInterest = (val: string) => {
-    setInterests((cur) => cur.includes(val) ? cur.filter(v => v !== val) : [...cur, val]);
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!profile) return;
-    setLoading(true);
-    setError(null);
-    try {
-      const form = e.currentTarget;
-      const get = (name: string) =>
-        (form.elements.namedItem(name) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | null)?.value ?? "";
-
-      let data: Record<string, unknown> = { profile_type: profileLabel(profile) };
-
-      if (profile === "artista") {
-        data = {
-          ...data,
-          nombre: get("nombre"),
-          email: get("email"),
-          pais: get("pais"),
-          social: get("social"),
-          material: get("material"),
-          obras: get("obras"),
-          bio: get("bio"),
-        };
-      } else if (profile === "coleccionista") {
-        data = {
-          ...data,
-          nombre: get("nombre"),
-          email: get("email"),
-          pais: get("pais"),
-          social: get("social"),
-          intereses: interests.join(", "),
-          presupuesto: get("presupuesto"),
-          conocio: get("conocio"),
-        };
-      } else {
-        data = {
-          ...data,
-          organizacion: get("organizacion"),
-          email: get("email"),
-          pais: get("pais"),
-          contacto: get("contacto"),
-          tipo_colaboracion: get("tipo_colaboracion"),
-          presupuesto: get("presupuesto"),
-          mensaje: get("mensaje"),
-        };
-      }
-
-      const res = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Accept": "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (res.ok) {
-        setSubmitted(true);
-      } else {
-        const result = await res.json().catch(() => ({}));
-        setError(result.error || t.errMsg);
-      }
-    } catch {
-      setError(t.errMsg);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const textInputs = (fields: { l: string; n: string; type?: string }[]) =>
-    fields.map((f) => (
-      <div key={f.n} className="invite-field">
-        <label className="invite-label" htmlFor={f.n}>{f.l}</label>
-        <input id={f.n} name={f.n} type={f.type || "text"} className="invite-input" />
-      </div>
-    ));
-
-  const selectField = (id: string, label: string, options: string[], placeholder?: string) => (
-    <div className="invite-field">
-      <label className="invite-label" htmlFor={id}>{label}</label>
-      <select id={id} name={id} className="invite-input" defaultValue={placeholder ? "" : undefined} required={!!placeholder}>
-        {placeholder && <option value="" disabled>{placeholder}</option>}
-        {options.map(o => <option key={o} value={o}>{o}</option>)}
-      </select>
-    </div>
-  );
 
   return (
     <div
@@ -236,18 +51,10 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
       <style>{`
         @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
         @keyframes modalIn { from { opacity:0; transform: translateY(16px) } to { opacity:1; transform:translateY(0) } }
-        .invite-input { width:100%; background:transparent; border:none; border-bottom:1px solid #121212; outline:none; font-family:Manrope,sans-serif; font-weight:400; color:#121212; font-size:16px; padding:0 0 8px; border-radius:0; }
-        .invite-input:focus { border-bottom-color:#121212; }
-        .invite-label { display:block; font-family:Manrope,sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:0.14em; font-size:14px; color:#121212; margin-bottom:12px; }
-        .invite-field { margin-bottom:28px; }
-        .role-btn { display:block; width:100%; text-align:left; padding:20px 24px; background:#FFFFFF; border:1px solid #121212; color:#121212; font-family:Manrope,sans-serif; font-weight:400; font-size:16px; letter-spacing:0.04em; cursor:pointer; transition: background 200ms, color 200ms; margin-bottom:12px; }
+        .role-btn { display:block; width:100%; text-align:left; padding:20px 24px; background:#FFFFFF; border:1px solid #121212; color:#121212; font-family:Manrope,sans-serif; font-weight:400; font-size:16px; letter-spacing:0.04em; cursor:pointer; transition: background 200ms, color 200ms; margin-bottom:12px; text-decoration:none; }
         .role-btn:hover { background:#121212; color:#FFFFFF; }
         .role-sub { display:block; font-size:13px; font-weight:400; color:#666666; margin-top:4px; transition: color 200ms; }
         .role-btn:hover .role-sub { color:#AAAAAA; }
-        .chip { display:inline-block; padding:8px 14px; margin:0 8px 8px 0; border:1px solid #121212; background:#FFFFFF; color:#121212; font-family:Manrope,sans-serif; font-weight:400; font-size:13px; cursor:pointer; transition: background 200ms, color 200ms; }
-        .chip.active { background:#121212; color:#FFFFFF; }
-        .back-btn { background:transparent; border:none; padding:0; margin-bottom:20px; cursor:pointer; font-family:Manrope,sans-serif; font-weight:400; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#666666; }
-        .back-btn:hover { color:#121212; }
       `}</style>
       <div
         onClick={(e) => e.stopPropagation()}
@@ -259,136 +66,15 @@ export const InviteModal = ({ open, onClose, defaultProfile }: Props) => {
           style={{ position: "absolute", top: 12, right: 16, background: "transparent", border: "none", cursor: "pointer", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 32, lineHeight: 1, width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center" }}
         >×</button>
 
-        {submitted ? (
-          <div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 24, marginBottom: 16 }}>
-              {t.successTitle}
-            </h2>
-            <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>
-              {t.successMsg}
-            </p>
-          </div>
-        ) : (
-          <>
-            <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-7">
-              {defaultProfile === "collector" ? "Adquirir esta obra" : t.title}
-            </h2>
+        <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-7">
+          {t.title}
+        </h2>
 
-            {!profile ? (
-              <div>
-                <a className="role-btn" href={lang === "es" ? "/join/escultores" : "/join/sculptors"} style={{ textDecoration: "none" }}>{t.roleArtista}<span className="role-sub">{t.roleArtistaSub}</span></a>
-                <a className="role-btn" href={lang === "es" ? "/join/coleccionistas" : "/join/collectors"} style={{ textDecoration: "none" }}>{t.roleColeccionista}<span className="role-sub">{t.roleColeccionistaSub}</span></a>
-                <button type="button" className="role-btn" onClick={() => setProfile("empresa")}>{t.roleEmpresa}<span className="role-sub">{t.roleEmpresaSub}</span></button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit}>
-                {defaultProfile !== "collector" && (
-                  <button type="button" className="back-btn" onClick={() => setProfile(null)}>
-                    {t.back} · {profile === "artista" ? t.roleArtista : profile === "coleccionista" ? t.roleColeccionista : t.roleEmpresa}
-                  </button>
-                )}
-
-                {profile && (
-                  <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.5, marginBottom: 36 }}>
-                    {profile === "artista" ? t.subtitleArtista : profile === "coleccionista" ? t.subtitleColeccionista : t.subtitleEmpresa}
-                  </p>
-                )}
-
-                {profile === "artista" && (
-                  <>
-                    {textInputs([
-                      { l: t.name, n: "nombre" },
-                      { l: t.email, n: "email", type: "email" },
-                      { l: t.country, n: "pais" },
-                      { l: t.social, n: "social" },
-                    ])}
-                    {selectField("material", t.material, t.materialOptions)}
-                    {selectField("obras", t.works, t.worksOptions)}
-                    <div className="invite-field">
-                      <label className="invite-label" htmlFor="bio">{t.bioLabel}</label>
-                      <textarea
-                        id="bio" name="bio" maxLength={300} rows={3}
-                        value={bio} onChange={(e) => setBio(e.target.value)}
-                        className="invite-input" style={{ resize: "vertical", minHeight: 80 }}
-                      />
-                      <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 12, marginTop: 6 }}>
-                        {bio.length}/300
-                      </div>
-                    </div>
-                  </>
-                )}
-
-                {profile === "coleccionista" && (
-                  <>
-                    {textInputs([
-                      { l: t.name, n: "nombre" },
-                      { l: t.email, n: "email", type: "email" },
-                    ])}
-                    {selectField("pais", t.country, countryOptions, t.countryPlaceholder)}
-                    <div className="invite-field">
-                      <label className="invite-label">{t.interestsLabel}</label>
-                      <div>
-                        {t.interestsOptions.map((opt) => (
-                          <span
-                            key={opt}
-                            className={`chip${interests.includes(opt) ? " active" : ""}`}
-                            onClick={() => toggleInterest(opt)}
-                            role="button"
-                            tabIndex={0}
-                            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleInterest(opt); } }}
-                          >{opt}</span>
-                        ))}
-                      </div>
-                    </div>
-                    {textInputs([{ l: t.socialOpt, n: "social" }])}
-                    {selectField("presupuesto", t.budgetCol, t.budgetColOptions)}
-                    {selectField("conocio", t.howKnow, t.howKnowOptions)}
-                  </>
-                )}
-
-                {profile === "empresa" && (
-                  <>
-                    {textInputs([
-                      { l: t.org, n: "organizacion" },
-                      { l: t.email, n: "email", type: "email" },
-                      { l: t.country, n: "pais" },
-                      { l: t.contact, n: "contacto" },
-                    ])}
-                    {selectField("tipo_colaboracion", t.collabType, t.collabOptions)}
-                    {selectField("presupuesto", t.budgetEmp, t.budgetEmpOptions)}
-                    <div className="invite-field">
-                      <label className="invite-label" htmlFor="mensaje">{t.msgLabel}</label>
-                      <textarea
-                        id="mensaje" name="mensaje" maxLength={300} rows={3}
-                        value={message} onChange={(e) => setMessage(e.target.value)}
-                        className="invite-input" style={{ resize: "vertical", minHeight: 80 }}
-                      />
-                      <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 12, marginTop: 6 }}>
-                        {message.length}/300
-                      </div>
-                    </div>
-                  </>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="font-body"
-                  style={{ width: "100%", background: "#000000", color: "#FFFFFF", fontWeight: 400, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 14, padding: "18px 36px", border: "1px solid #000000", borderRadius: 0, cursor: "pointer", transition: "opacity 250ms" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.6")}
-                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-                >
-                  {loading ? t.sending : t.submit}
-                </button>
-                {error && (
-                  <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#b91c1c", fontSize: 13, marginTop: 16, textAlign: "center" }}>
-                    {error}
-                  </p>
-                )}
-              </form>
-            )}
-          </>
-        )}
+        <div>
+          <a className="role-btn" href={lang === "es" ? "/join/escultores" : "/join/sculptors"}>{t.roleArtista}<span className="role-sub">{t.roleArtistaSub}</span></a>
+          <a className="role-btn" href={lang === "es" ? "/join/coleccionistas" : "/join/collectors"}>{t.roleColeccionista}<span className="role-sub">{t.roleColeccionistaSub}</span></a>
+          <a className="role-btn" href={lang === "es" ? "/join/galerias" : "/join/galleries"}>{t.roleEmpresa}<span className="role-sub">{t.roleEmpresaSub}</span></a>
+        </div>
       </div>
     </div>
   );
