@@ -29,6 +29,7 @@ import JoinColeccionistas from "./pages/JoinColeccionistas.tsx";
 import JoinGalerias from "./pages/JoinGalerias.tsx";
 import JoinCuradores from "./pages/JoinCuradores.tsx";
 import JoinAdvisors from "./pages/JoinAdvisors.tsx";
+import Guidance from "./pages/Guidance.tsx";
 import UneteAIgnia from "./pages/UneteAIgnia.tsx";
 import RecuperarPassword from "./pages/RecuperarPassword.tsx";
 import ResetPassword from "./pages/ResetPassword.tsx";
