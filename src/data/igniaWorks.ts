@@ -15,7 +15,7 @@ const obra2 = obraPliegueAsset.url;
 const obra4 = obraRaizAsset.url;
 const obra5 = obraOrigenAsset.url;
 const obraDespertar = obraDespertarAsset.url;
-const obra7 = obraQuietudAsset.url;
+const obra7 = obraQuietudAsset;
 const obraEfusion = obraEfusionAsset.url;
 import arco from "@/assets/obra-arco-new.jpg";
 import obraSudarioAsset from "@/assets/obra-sudario.jpeg.asset.json";
