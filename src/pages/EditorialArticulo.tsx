@@ -18,8 +18,8 @@ const EditorialArticuloPage = () => {
   const t = lang === "es"
     ? {
         by: "Por",
-        back: "← Volver a Comunidad",
-        worksTitle: "Obras relacionadas",
+        back: "← Volver a Ignia aprende",
+        worksTitle: "Explora la colección",
         worksCta: "Ver toda la colección →",
         artistsTitle: "Conoce a los escultores",
         artistsCta: "Ver todos los escultores →",
@@ -28,8 +28,8 @@ const EditorialArticuloPage = () => {
       }
     : {
         by: "By",
-        back: "← Back to Community",
-        worksTitle: "Related works",
+        back: "← Back to Ignia learn",
+        worksTitle: "Explore the collection",
         worksCta: "See the full collection →",
         artistsTitle: "Meet the sculptors",
         artistsCta: "See all sculptors →",
