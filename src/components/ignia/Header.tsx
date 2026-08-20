@@ -353,20 +353,23 @@ export const Header = () => {
               {item.label}
             </Link>
           ))}
-          <Link
-            to="/unete-a-ignia"
-            onClick={() => setMobileOpen(false)}
+          <button
+            type="button"
+            onClick={() => { setMobileOpen(false); openInvite(); }}
             style={{
               fontFamily: "'Cormorant Garamond', serif",
               fontWeight: 400,
               fontSize: 32,
               color: "#FFFFFF",
               textAlign: "center",
-              textDecoration: "none",
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
             }}
           >
             {t.publish}
-          </Link>
+          </button>
+
           <Link
             to="/login"
             onClick={() => setMobileOpen(false)}
