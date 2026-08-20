@@ -20,7 +20,7 @@ export const Aprende = ({ showHeader = true }: AprendeProps) => {
         </div>
       )}
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10" aria-label={t.list}>
-        {APRENDE_ARTICLES.map((a) => {
+        {APRENDE_ARTICLES.slice(0, 2).map((a) => {
           const c = a[lang];
           return (
             <li key={a.slug}>
