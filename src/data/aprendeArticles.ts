@@ -41,6 +41,7 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
   {
     slug: "invertir-escultura-mercado",
     img: investingSculpture,
+    imgPosition: "object-top",
     fecha: "2026-08-20",
     autor: "Ignia Editorial",
     featuredWorks: ["pliegue-iii", "arco", "quietud-alabastro"],
