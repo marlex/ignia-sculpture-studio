@@ -8,8 +8,8 @@ import { Seo } from "@/components/Seo";
 const EditorialPage = () => {
   const lang = useLang();
   const t = lang === "es"
-    ? { eyebrow: "Conocimiento del oficio", h: "Ignia aprende", sub: "Guías para entender la escultura: materiales, procesos, conservación y mercado.", by: "Por" }
-    : { eyebrow: "Craft knowledge", h: "Ignia learn", sub: "Guides to understand sculpture: materials, processes, conservation and market.", by: "By" };
+    ? { eyebrow: "Ensayos y entrevistas", h: "Comunidad", sub: "Textos sobre escultura, oficio y mercado, escritos para coleccionistas y artistas.", by: "Por" }
+    : { eyebrow: "Essays & interviews", h: "Community", sub: "Essays, reports and interviews on sculpture, the craft and its market, written for collectors and artists alike.", by: "By" };
 
   return (
     <main className="pt-14">
@@ -21,20 +21,22 @@ const EditorialPage = () => {
         <p className="font-body text-[16px] font-normal text-gray max-w-[640px] mt-4">{t.sub}</p>
       </section>
 
-      <section className="bg-surface px-6 md:px-12 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
+      <section className="bg-surface px-6 md:px-12 py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
           {EDITORIAL_ARTICLES.map(a => {
             const c = a[lang];
             return (
               <article key={a.slug} className="group">
-                <Link to={`/editorial/${a.slug}`} className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4">
-                  <div className="aspect-[16/10] overflow-hidden bg-secondary mb-5">
-                    <img src={a.img} alt={c.titulo} loading="lazy" className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
+                <Link to={`/editorial/${a.slug}`} className="group flex flex-col h-full gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4">
+                  <div className="flex flex-col flex-1">
+                    <div className="font-body text-[14px] font-normal text-muted-line uppercase tracking-[0.14em] mb-2">{c.seccion}</div>
+                    <h2 className="font-display font-semibold text-[clamp(22px,2.6vw,32px)] max-md:text-[25px] tracking-[-0.02em] text-ink mb-2 leading-tight">{c.titulo}</h2>
+                    <p className="font-body text-[16px] font-normal text-gray mb-3 leading-snug">{c.extracto}</p>
+                    <div className="font-body text-[16px] font-normal text-gray">{t.by} {a.autor}</div>
                   </div>
-                  <div className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line mb-3">{c.seccion}</div>
-                  <h2 className="font-display font-semibold text-[clamp(20px,2vw,26px)] tracking-[-0.02em] text-ink leading-tight mb-3">{c.titulo}</h2>
-                  <p className="font-body text-[16px] font-normal text-gray leading-relaxed mb-3">{c.extracto}</p>
-                  <div className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line">{t.by} {a.autor}</div>
+                  <div className="w-full overflow-hidden bg-secondary aspect-[16/9]">
+                    <img src={a.img} alt={c.titulo} loading="lazy" className="w-full h-full object-cover object-bottom transition-transform duration-[700ms] group-hover:scale-[1.03]" />
+                  </div>
                 </Link>
               </article>
             );
