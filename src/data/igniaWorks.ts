@@ -20,6 +20,8 @@ import obraNervadura from "@/assets/obra-nervadura.jpg";
 import obraSudarioAsset from "@/assets/obra-sudario.jpeg.asset.json";
 const obraCuerpoFosil = obraSudarioAsset.url;
 import obraEfusionAsset from "@/assets/obra-efusion.jpg.asset.json";
+import obraMantoAsset from "@/assets/obra-manto.jpg.asset.json";
+const obraManto = obraMantoAsset.url;
 import caida from "@/assets/perfil-escultura-caida.jpg";
 import ecoOndas from "@/assets/perfil-escultura-eco.jpg";
 import latido from "@/assets/perfil-escultura-latido.jpg";
