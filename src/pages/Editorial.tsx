@@ -27,16 +27,14 @@ const EditorialPage = () => {
             const c = a[lang];
             return (
               <article key={a.slug} className="group">
-                <Link to={`/editorial/${a.slug}`} className="group flex flex-col h-full gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4">
-                  <div className="flex flex-col flex-1">
-                    <div className="font-body text-[14px] font-normal text-muted-line uppercase tracking-[0.14em] mb-2">{c.seccion}</div>
-                    <h2 className="font-display font-semibold text-[clamp(22px,2.6vw,32px)] max-md:text-[25px] tracking-[-0.02em] text-ink mb-2 leading-tight">{c.titulo}</h2>
-                    <p className="font-body text-[16px] font-normal text-gray mb-3 leading-snug">{c.extracto}</p>
-                    <div className="font-body text-[16px] font-normal text-gray">{t.by} {a.autor}</div>
+                <Link to={`/editorial/${a.slug}`} className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4">
+                  <div className="aspect-[16/10] overflow-hidden bg-secondary mb-5">
+                    <img src={a.img} alt={c.titulo} loading="lazy" className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03]" />
                   </div>
-                  <div className="w-full overflow-hidden bg-secondary aspect-[16/9]">
-                    <img src={a.img} alt={c.titulo} loading="lazy" className="w-full h-full object-cover object-bottom transition-transform duration-[700ms] group-hover:scale-[1.03]" />
-                  </div>
+                  <div className="font-body text-[14px] font-normal text-muted-line uppercase tracking-[0.14em] mb-2">{c.seccion}</div>
+                  <h2 className="font-display font-semibold text-[clamp(22px,2.6vw,32px)] max-md:text-[25px] tracking-[-0.02em] text-ink mb-2 leading-tight">{c.titulo}</h2>
+                  <p className="font-body text-[16px] font-normal text-gray mb-3 leading-snug">{c.extracto}</p>
+                  <div className="font-body text-[16px] font-normal text-gray">{t.by} {a.autor}</div>
                 </Link>
               </article>
             );
