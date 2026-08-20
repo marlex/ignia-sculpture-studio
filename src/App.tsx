@@ -28,6 +28,7 @@ import JoinEscultores from "./pages/JoinEscultores.tsx";
 import JoinColeccionistas from "./pages/JoinColeccionistas.tsx";
 import JoinGalerias from "./pages/JoinGalerias.tsx";
 import JoinCuradores from "./pages/JoinCuradores.tsx";
+import JoinAdvisors from "./pages/JoinAdvisors.tsx";
 import UneteAIgnia from "./pages/UneteAIgnia.tsx";
 import RecuperarPassword from "./pages/RecuperarPassword.tsx";
 import ResetPassword from "./pages/ResetPassword.tsx";
@@ -81,6 +82,7 @@ const App = () => (
               <Route path="/join/galleries" element={<JoinGalerias />} />
               <Route path="/join/curadores" element={<JoinCuradores />} />
               <Route path="/join/curators" element={<JoinCuradores />} />
+              <Route path="/join/advisors" element={<JoinAdvisors />} />
               <Route path="/unete-a-ignia" element={<UneteAIgnia />} />
               <Route path="/recuperar-password" element={<RecuperarPassword />} />
               <Route path="/reset-password" element={<ResetPassword />} />
