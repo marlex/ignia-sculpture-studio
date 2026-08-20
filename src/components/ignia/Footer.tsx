@@ -185,7 +185,7 @@ export const Footer = () => {
           </Link>
         </div>
         <div className="flex items-center gap-5">
-          <span className="font-body text-[13px] font-normal text-ink tracking-[0.14em] uppercase">© 2026 Ignia Gallery</span>
+          <span className="font-body text-[13px] font-normal text-ink tracking-[0.14em] uppercase">© 2026 Ignia Institution</span>
           <span className="font-body text-[13px] font-normal tracking-[0.14em] uppercase" style={{ color: "#444" }}>{status}</span>
         </div>
       </div>
