@@ -71,7 +71,6 @@ export const Colectores = () => {
     ? { h: "Coleccionistas", all: "Ver todos →", featured: "Coleccionistas destacados", view: "Ver coleccionista →" }
     : { h: "Collectors", all: "View all →", featured: "Featured collectors", view: "View collector →" };
 
-  const principal = data.principal;
 
   return (
     <section className="px-6 md:px-12 py-[60px]" style={{ background: "#f5f5f5" }}>
