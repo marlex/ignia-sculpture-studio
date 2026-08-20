@@ -446,3 +446,6 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
     },
   },
 ];
+
+export const getAprendeArticleBySlug = (slug: string) =>
+  APRENDE_ARTICLES.find((a) => a.slug === slug);
