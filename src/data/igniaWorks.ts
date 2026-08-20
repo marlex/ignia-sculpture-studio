@@ -16,7 +16,6 @@ const obra5 = obraOrigenAsset.url;
 const obra7 = obraQuietudAsset.url;
 const obraEfusion = obraEfusionAsset.url;
 import arco from "@/assets/obra-arco-new.jpg";
-import obraNervadura from "@/assets/obra-nervadura.jpg";
 import obraSudarioAsset from "@/assets/obra-sudario.jpeg.asset.json";
 const obraCuerpoFosil = obraSudarioAsset.url;
 import obraEfusionAsset from "@/assets/obra-efusion.jpg.asset.json";
