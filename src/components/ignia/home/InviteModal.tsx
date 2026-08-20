@@ -82,6 +82,8 @@ export const InviteModal = ({ open, onClose }: Props) => {
           <a className="role-btn" href={lang === "es" ? "/join/escultores" : "/join/sculptors"}>{t.roleArtista}<span className="role-sub">{t.roleArtistaSub}</span></a>
           <a className="role-btn" href={lang === "es" ? "/join/coleccionistas" : "/join/collectors"}>{t.roleColeccionista}<span className="role-sub">{t.roleColeccionistaSub}</span></a>
           <a className="role-btn" href={lang === "es" ? "/join/galerias" : "/join/galleries"}>{t.roleEmpresa}<span className="role-sub">{t.roleEmpresaSub}</span></a>
+          <a className="role-btn" href={lang === "es" ? "/join/curadores" : "/join/curators"}>{t.roleCurador}<span className="role-sub">{t.roleCuradorSub}</span></a>
+          <a className="role-btn" href={lang === "es" ? "/join/advisors" : "/join/advisors"}>{t.roleAdvisor}<span className="role-sub">{t.roleAdvisorSub}</span></a>
         </div>
       </div>
     </div>
