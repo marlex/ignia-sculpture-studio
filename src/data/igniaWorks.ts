@@ -10,21 +10,11 @@ import obraDespertarAsset from "@/assets/obra-despertar.jpg.asset.json";
 import obra6 from "@/assets/obra-eco.jpg";
 import obraQuietudAsset from "@/assets/obra-quietud-new-v2.jpg";
 import obra8 from "@/assets/obra-luz-interior.jpg";
-
-const obra2 = obraPliegueAsset.url;
-const obra4 = obraRaizAsset.url;
-const obra5 = obraOrigenAsset.url;
-const obraDespertar = obraDespertarAsset.url;
-const obra7 = obraQuietudAsset;
-const obraEfusion = obraEfusionV2Asset.url;
-const obraEfusionDetail = obraEfusionAsset.url;
 import arco from "@/assets/obra-arco-new.jpg";
 import obraSudarioAsset from "@/assets/obra-sudario.jpeg.asset.json";
-const obraCuerpoFosil = obraSudarioAsset.url;
-import obraEfusionAsset from "@/assets/obra-efusion.jpg.asset.json";
-import obraEfusionV2Asset from "@/assets/obra-efusion-v2.jpg.asset.json";
+import obraEfusionV3 from "@/assets/obra-efusion-v3.jpg";
+import obraEfusionDetailV3 from "@/assets/obra-efusion-detail-v3.jpg";
 import obraMantoAsset from "@/assets/obra-manto.jpg.asset.json";
-const obraManto = obraMantoAsset.url;
 import caida from "@/assets/perfil-escultura-caida.jpg";
 import ecoOndas from "@/assets/perfil-escultura-eco.jpg";
 import latido from "@/assets/perfil-escultura-latido.jpg";
@@ -44,15 +34,26 @@ import mujerNino1 from "@/assets/mujer-y-nino-1.jpg";
 import mujerNino2 from "@/assets/mujer-y-nino-2.jpg";
 import mujerNino3 from "@/assets/mujer-y-nino-3.jpg";
 import triadaGalleryAsset from "@/assets/triada-olimpias-gallery.png.asset.json";
-const triadaGallery = triadaGalleryAsset.url;
 import ulmukMainAsset from "@/assets/ulmuk-vase-main.jpeg.asset.json";
 import ulmuk2Asset from "@/assets/ulmuk-vase-2.jpeg.asset.json";
 import ulmuk3Asset from "@/assets/ulmuk-vase-3.jpeg.asset.json";
 import ulmuk4Asset from "@/assets/ulmuk-vase-4.jpeg.asset.json";
+
+const obra2 = obraPliegueAsset.url;
+const obra4 = obraRaizAsset.url;
+const obra5 = obraOrigenAsset.url;
+const obraDespertar = obraDespertarAsset.url;
+const obra7 = obraQuietudAsset;
+const obraCuerpoFosil = obraSudarioAsset.url;
+const obraEfusion = obraEfusionV3;
+const obraEfusionDetail = obraEfusionDetailV3;
+const obraManto = obraMantoAsset.url;
+const triadaGallery = triadaGalleryAsset.url;
 const ulmukMain = ulmukMainAsset.url;
 const ulmuk2 = ulmuk2Asset.url;
 const ulmuk3 = ulmuk3Asset.url;
 const ulmuk4 = ulmuk4Asset.url;
+
 
 export type WorkModelKey =
   | "hero-flight"
