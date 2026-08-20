@@ -4,7 +4,7 @@ import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
 import { EDITORIAL_ARTICLES, getArticleBySlug } from "@/data/editorialArticles";
 import { EDITORIAL_RELATIONS } from "@/data/editorialRelations";
-import { WorksConversionBlock, RelatedArticlesBlock } from "@/components/ignia/ConversionBlocks";
+import { WorksConversionBlock, ArtistsConversionBlock } from "@/components/ignia/ConversionBlocks";
 import NotFound from "@/pages/NotFound";
 import { Seo } from "@/components/Seo";
 
@@ -21,14 +21,20 @@ const EditorialArticuloPage = () => {
         back: "← Volver a Comunidad",
         worksTitle: "Obras relacionadas",
         worksCta: "Ver toda la colección →",
+        artistsTitle: "Conoce a los escultores",
+        artistsCta: "Ver todos los escultores →",
         readMoreTitle: "Seguir leyendo",
+        relatedList: "Listado de artículos relacionados",
       }
     : {
         by: "By",
         back: "← Back to Community",
         worksTitle: "Related works",
         worksCta: "See the full collection →",
+        artistsTitle: "Meet the sculptors",
+        artistsCta: "See all sculptors →",
         readMoreTitle: "Keep reading",
+        relatedList: "Related articles list",
       };
 
   const content = article ? article[lang] : null;
@@ -40,18 +46,7 @@ const EditorialArticuloPage = () => {
 
   if (!article || !content) return <NotFound />;
 
-  const relations = EDITORIAL_RELATIONS[slug] ?? { relatedWorks: [], relatedArticles: [] };
-
-  const relatedArticles = relations.relatedArticles
-    .map((s) => EDITORIAL_ARTICLES.find((a) => a.slug === s))
-    .filter((a): a is (typeof EDITORIAL_ARTICLES)[number] => Boolean(a))
-    .map((a) => ({
-      slug: a.slug,
-      img: a.img,
-      titulo: a[lang].titulo,
-      seccion: a[lang].seccion,
-      autor: a.autor,
-    }));
+  const relations = EDITORIAL_RELATIONS[slug] ?? { relatedWorks: [], relatedArticles: [], featuredArtists: [] };
 
   return (
     <main className="pt-14">
@@ -93,19 +88,49 @@ const EditorialArticuloPage = () => {
         </div>
       </article>
 
-      {relations.relatedWorks.length > 0 && (
-        <WorksConversionBlock
-          slugs={relations.relatedWorks}
-          lang={lang}
-          heading={t.worksTitle}
-          cta={{ label: t.worksCta, to: "/coleccion" }}
-        />
-      )}
+      <section className="bg-surface px-6 md:px-12 py-16 md:py-20" aria-labelledby="editorial-related-title">
+        <h2 id="editorial-related-title" className="font-display font-semibold text-[clamp(24px,2.8vw,34px)] tracking-[-0.02em] text-ink mb-8 max-w-[1280px] mx-auto">{t.readMoreTitle}</h2>
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 max-w-[1280px] mx-auto" aria-label={t.relatedList}>
+          {EDITORIAL_ARTICLES.filter((a) => a.slug !== slug).map((a) => {
+            const c = a[lang];
+            return (
+              <li key={a.slug} className="h-full">
+                <Link to={`/editorial/${a.slug}`} className="group flex flex-col h-full gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4">
+                  <div className="flex flex-col flex-1">
+                    <div className="font-body text-[14px] font-normal text-muted-line uppercase tracking-[0.14em] mb-2">{c.seccion}</div>
+                    <h3 className="font-display font-semibold text-[clamp(22px,2.6vw,32px)] tracking-[-0.02em] text-ink mb-2 leading-tight">{c.titulo}</h3>
+                    <p className="font-body text-[16px] font-normal text-gray mb-3 leading-snug">{c.extracto}</p>
+                    <div className="font-body text-[16px] font-normal text-gray">{article.autor}</div>
+                  </div>
+                  <div className="w-full overflow-hidden bg-secondary aspect-[16/9]">
+                    <img
+                      src={a.img}
+                      alt={c.titulo}
+                      loading="lazy"
+                      width={1600}
+                      height={1000}
+                      className="w-full h-full object-cover object-bottom transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
 
-      <RelatedArticlesBlock
-        articles={relatedArticles}
-        heading={t.readMoreTitle}
-        basePath="/editorial"
+      <WorksConversionBlock
+        slugs={relations.relatedWorks}
+        lang={lang}
+        heading={t.worksTitle}
+        cta={{ label: t.worksCta, to: "/coleccion" }}
+      />
+
+      <ArtistsConversionBlock
+        names={relations.featuredArtists}
+        lang={lang}
+        heading={t.artistsTitle}
+        cta={{ label: t.artistsCta, to: "/escultores" }}
       />
 
       <Footer />
