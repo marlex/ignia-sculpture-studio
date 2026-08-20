@@ -73,6 +73,10 @@ const AprendeArticuloPage = () => {
               <h2 key={i} className="font-display font-semibold text-[clamp(22px,2.6vw,30px)] tracking-[-0.02em] text-ink leading-tight mt-4">
                 {b.text}
               </h2>
+            ) : b.type === "link" ? (
+              <Link key={i} to={b.to} className="link-arrow">
+                {b.label}
+              </Link>
             ) : (
               <p key={i} className="font-body text-[17px] font-normal text-ink leading-relaxed">
                 {b.text}
