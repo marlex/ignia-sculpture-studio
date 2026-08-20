@@ -25,6 +25,7 @@ import AddView3d from "./pages/AddView3d.tsx";
 import ObraAnalytics from "./pages/ObraAnalytics.tsx";
 import Legal from "./pages/Legal.tsx";
 import JoinEscultores from "./pages/JoinEscultores.tsx";
+import JoinColeccionistas from "./pages/JoinColeccionistas.tsx";
 import UneteAIgnia from "./pages/UneteAIgnia.tsx";
 import RecuperarPassword from "./pages/RecuperarPassword.tsx";
 import ResetPassword from "./pages/ResetPassword.tsx";
@@ -72,6 +73,8 @@ const App = () => (
               <Route path="/legal/:slug" element={<Legal />} />
               <Route path="/join/escultores" element={<JoinEscultores />} />
               <Route path="/join/sculptors" element={<JoinEscultores />} />
+              <Route path="/join/coleccionistas" element={<JoinColeccionistas />} />
+              <Route path="/join/collectors" element={<JoinColeccionistas />} />
               <Route path="/unete-a-ignia" element={<UneteAIgnia />} />
               <Route path="/recuperar-password" element={<RecuperarPassword />} />
               <Route path="/reset-password" element={<ResetPassword />} />
