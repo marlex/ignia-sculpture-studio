@@ -217,7 +217,7 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
     img: limitedEdition,
     fecha: "2026-04-18",
     autor: "Inés Ferrer",
-    featuredWorks: ["vinculo", "combustion", "cuerpo-fosil"],
+    featuredWorks: ["vinculo", "efusion", "cuerpo-fosil"],
     featuredArtists: ["Tomás Vigo", "Lucía Pardo", "Ana Ruiz"],
     es: {
       tag: "Editorial",
