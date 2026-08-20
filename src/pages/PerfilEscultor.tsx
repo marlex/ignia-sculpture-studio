@@ -114,8 +114,8 @@ export const BIOS: Record<string, Bio> = {
   },
   "tomas-vigo": {
     nombre: "Tomás Vigo", retrato: tomasPortrait,
-    bioEs: "Vigo, España. Vidrio soplado en horno propio. Su serie Combustión atrapa el vidrio incandescente dentro de estructuras de hierro oxidado.",
-    bioEn: "Vigo, Spain. Glass blown in his own furnace. His Inner light series captures amber colour as a warm core within the volume.",
+    bioEs: "Vigo, España. Vidrio soplado en horno propio. Su serie Efusión atrapa el vidrio incandescente en estructuras de hierro oxidado.",
+    bioEn: "Vigo, Spain. Glass blown in his own furnace. His Effusion series traps incandescent glass within oxidised iron structures.",
     espEs: "Vidrio soplado", espEn: "Blown glass",
   },
   "ana-ruiz": {
