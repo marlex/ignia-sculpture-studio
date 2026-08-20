@@ -3,11 +3,13 @@ const bronzePatina = bronzePatinaAsset.url;
 import sculpturePhotoAsset from "@/assets/aprende-fotografiar-volumen-new.jpg.asset.json";
 const sculpturePhoto = sculpturePhotoAsset.url;
 import limitedEdition from "@/assets/aprende-ediciones-limitadas.jpg";
+import investingSculpture from "@/assets/aprende-investing-sculpture.jpg";
 import chillidaPortrait from "@/assets/artist-eduardo-chillida-real.jpg";
 
 export type AprendeBlock =
   | { type: "h2"; text: string }
-  | { type: "p"; text: string };
+  | { type: "p"; text: string }
+  | { type: "link"; label: string; to: string };
 
 export interface AprendeArticle {
   slug: string;
@@ -386,6 +388,60 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
         { type: "h2", text: "A relevance that keeps growing" },
         { type: "p", text: "More than twenty years after his death, Chillida's influence has only grown. His vocabulary — the void, the inhabitable scale, gravity as form — is today common heritage of contemporary Spanish sculpture." },
         { type: "p", text: "Understanding Chillida is not just reviewing a biography: it is learning to look at any modern sculpture more deeply. That is why he remains essential reading for sculptors, collectors and anyone approaching the craft seriously." },
+      ],
+    },
+  },
+  {
+    slug: "invertir-escultura-mercado",
+    img: investingSculpture,
+    fecha: "2026-08-20",
+    autor: "Ignia Editorial",
+    featuredWorks: ["pliegue-iii", "arco", "quietud-alabastro"],
+    featuredArtists: ["Alba Costa", "Helena Vázquez", "Inés Ferrer"],
+    es: {
+      tag: "Para coleccionistas",
+      titulo: "Invertir en escultura: la categoría artística que el mercado aún no ha tasado",
+      extracto: "Por qué la escultura sigue al margen de los índices del mercado del arte y por qué eso es una oportunidad.",
+      tiempo: "6 min de lectura",
+      fechaLabel: "20 de agosto de 2026",
+      body: [
+        { type: "p", text: "Cuando se habla de coleccionar arte con visión de largo plazo, la conversación suele centrarse casi siempre en la pintura. Los índices de mercado, los informes anuales, las conversaciones entre patrimonios: todo gira en torno al lienzo. La escultura queda casi siempre fuera de esa conversación. No porque valga menos. Sino porque nadie se ha tomado el tiempo de contar su historia como corresponde." },
+        { type: "p", text: "En Ignia creemos que esa omisión es, en sí misma, una oportunidad." },
+
+        { type: "h2", text: "Un mercado que se contrae, no que desaparece" },
+        { type: "p", text: "El Art Basel & UBS Global Art Market Report 2025 registró una caída del 12% en las ventas globales de arte, hasta unos 57.500 millones de dólares en 2024, tras una disminución del 4% en 2023. Un mercado en contracción no es un mercado agonizante: es un mercado que se vuelve más selectivo, donde el juicio importa más que el impulso." },
+        { type: "p", text: "El Deloitte Art & Finance Report estimaba en 2023 que el patrimonio de ultra alta renta invertido en arte y coleccionables rondaba los 2,17 billones de dólares en 2022, con proyección de alcanzar los 2,86 billones en 2026. El arte sigue ocupando un lugar creciente en la forma de pensar la riqueza." },
+
+        { type: "h2", text: "Qué sostiene el valor de una escultura" },
+        { type: "p", text: "A diferencia de un cuadro, el valor de una escultura se vincula a factores verificables: la trayectoria del artista, la procedencia documentada, el estado y la técnica —la pátina de un bronce, el corte de un mármol— y, sobre todo, la autenticidad certificada. Ahí es donde la mayoría de plataformas fallan." },
+        { type: "p", text: "Cada obra en Ignia lleva un certificado de autenticidad respaldado por blockchain a través de Verisart: cuando llegue el momento de vender, el comprador podrá verificar su origen sin depender de tu palabra, ni de la nuestra." },
+
+        { type: "h2", text: "Un ejemplo concreto" },
+        { type: "p", text: "Pliegue III, de Alba Costa —mármol, € 12.500— es exactamente eso: una pieza única, con procedencia documentada y un certificado verificable desde el primer día." },
+        { type: "link", label: "Ver la obra →", to: "/obra/pliegue-iii" },
+      ],
+    },
+    en: {
+      tag: "For collectors",
+      titulo: "Investing in Sculpture: The Art Category the Market Hasn't Priced In Yet",
+      extracto: "Why sculpture remains outside art-market indices — and why that is an opportunity.",
+      tiempo: "6 min read",
+      fechaLabel: "August 20, 2026",
+      body: [
+        { type: "p", text: "When people talk about collecting art with the long term in mind, the conversation is almost always about painting. Market indices, annual reports, wealth conversations — it all centers on canvas. Sculpture is almost always left out of that conversation. Not because it's worth less. Because no one has taken the time to tell its story properly." },
+        { type: "p", text: "At Ignia, we believe that omission is itself an opportunity." },
+
+        { type: "h2", text: "A market that's contracting, not disappearing" },
+        { type: "p", text: "The Art Basel & UBS Global Art Market Report 2025 recorded a 12% drop in global art sales, to an estimated $57.5 billion in 2024, following a 4% decline in 2023. A contracting market isn't a dying market — it's a market becoming more selective, where judgment matters more than momentum." },
+        { type: "p", text: "The Deloitte Art & Finance Report estimated in 2023 that ultra-high-net-worth wealth held in art and collectibles was around $2.17 trillion in 2022, projected to reach $2.86 trillion by 2026 — art continues to play a growing role in how wealth is thought about." },
+
+        { type: "h2", text: "What sustains the value of a sculpture" },
+        { type: "p", text: "Unlike a painting, its value is tied to verifiable factors: the artist's trajectory, documented provenance, condition and technique — the patina on a bronze, the carving of a marble — and, above all, certified authenticity. This is where most platforms fall short." },
+        { type: "p", text: "Every work on Ignia carries a blockchain-backed certificate of authenticity through Verisart: when the time comes to sell, the buyer can verify its origin without relying on your word, or ours." },
+
+        { type: "h2", text: "A concrete example" },
+        { type: "p", text: "Pliegue III, by Alba Costa — marble, €12,500 — is exactly this: a unique piece, with documented provenance and a verifiable certificate from day one." },
+        { type: "link", label: "View the work →", to: "/obra/pliegue-iii" },
       ],
     },
   },
