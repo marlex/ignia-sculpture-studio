@@ -13,9 +13,13 @@ export const InviteModal = ({ open, onClose }: Props) => {
         roleArtista: "Soy escultor/a",
         roleColeccionista: "Soy coleccionista",
         roleEmpresa: "Soy galería o empresa",
+        roleCurador: "Soy curador/a",
+        roleAdvisor: "Soy art advisor",
         roleArtistaSub: "Sé descubierto por coleccionistas",
         roleColeccionistaSub: "Encuentra obras que no encontrarás en otro sitio",
         roleEmpresaSub: "Hablemos sobre tu proyecto u organización",
+        roleCuradorSub: "Ofrece asesoría y valoración a escultores",
+        roleAdvisorSub: "Guía a coleccionistas y escultores en el mercado",
         close: "Cerrar",
       }
     : {
@@ -24,9 +28,13 @@ export const InviteModal = ({ open, onClose }: Props) => {
         roleArtista: "I'm a sculptor",
         roleColeccionista: "I'm a collector",
         roleEmpresa: "I'm a gallery or company",
+        roleCurador: "I'm a curator",
+        roleAdvisor: "I'm an art advisor",
         roleArtistaSub: "Get discovered by collectors",
         roleColeccionistaSub: "Find works you won't find elsewhere",
         roleEmpresaSub: "Let's talk about your project or organization",
+        roleCuradorSub: "Offer advice and valuation to sculptors",
+        roleAdvisorSub: "Guide collectors and sculptors in the market",
         close: "Close",
       };
 
@@ -74,6 +82,8 @@ export const InviteModal = ({ open, onClose }: Props) => {
           <a className="role-btn" href={lang === "es" ? "/join/escultores" : "/join/sculptors"}>{t.roleArtista}<span className="role-sub">{t.roleArtistaSub}</span></a>
           <a className="role-btn" href={lang === "es" ? "/join/coleccionistas" : "/join/collectors"}>{t.roleColeccionista}<span className="role-sub">{t.roleColeccionistaSub}</span></a>
           <a className="role-btn" href={lang === "es" ? "/join/galerias" : "/join/galleries"}>{t.roleEmpresa}<span className="role-sub">{t.roleEmpresaSub}</span></a>
+          <a className="role-btn" href={lang === "es" ? "/join/curadores" : "/join/curators"}>{t.roleCurador}<span className="role-sub">{t.roleCuradorSub}</span></a>
+          <a className="role-btn" href={lang === "es" ? "/join/advisors" : "/join/advisors"}>{t.roleAdvisor}<span className="role-sub">{t.roleAdvisorSub}</span></a>
         </div>
       </div>
     </div>
