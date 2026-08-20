@@ -8,14 +8,14 @@ import obraRaizAsset from "@/assets/obra-raiz-new.jpg.asset.json";
 import obraOrigenAsset from "@/assets/obra-origen-new.jpg.asset.json";
 import obraDespertarAsset from "@/assets/obra-despertar.jpg.asset.json";
 import obra6 from "@/assets/obra-eco.jpg";
-import obraQuietudAsset from "@/assets/obra-quietud-new.webp.asset.json";
+import obraQuietudAsset from "@/assets/obra-quietud-new-v2.jpg";
 import obra8 from "@/assets/obra-luz-interior.jpg";
 
 const obra2 = obraPliegueAsset.url;
 const obra4 = obraRaizAsset.url;
 const obra5 = obraOrigenAsset.url;
 const obraDespertar = obraDespertarAsset.url;
-const obra7 = obraQuietudAsset.url;
+const obra7 = obraQuietudAsset;
 const obraEfusion = obraEfusionAsset.url;
 import arco from "@/assets/obra-arco-new.jpg";
 import obraSudarioAsset from "@/assets/obra-sudario.jpeg.asset.json";
