@@ -80,24 +80,6 @@ export const Colectores = () => {
         <a href="#" className="link-arrow">{t.all}</a>
       </div>
 
-      <article className="grid grid-cols-1 md:grid-cols-[65%_35%] gap-8 md:gap-14 items-center mb-16">
-        <Link to={`/coleccionista/${slug(principal.nombre)}`} aria-label={principal.nombre} className="block aspect-[16/9] overflow-hidden bg-secondary group">
-          <img src={principal.foto} alt={principal.nombre} loading="lazy" width={1600} height={900} className="w-full h-full object-cover object-[center_35%] transition-transform duration-[700ms] group-hover:scale-[1.02]" />
-        </Link>
-        <div>
-          <Link to={`/coleccionista/${slug(principal.nombre)}`} className="block group">
-            <h3 className="font-display text-[28px] max-md:text-[25px] font-semibold text-ink mb-4 leading-tight">
-              {principal.nombre}
-            </h3>
-            <p className="font-body text-[16px] font-normal text-gray leading-relaxed mb-6">{principal.extracto}</p>
-            <div className="font-body text-[13px] font-normal text-muted-line uppercase tracking-[0.14em] mb-6">
-              {principal.ubicacion} · {principal.foco}
-            </div>
-            <span className="link-arrow">{t.view}</span>
-          </Link>
-        </div>
-      </article>
-
       <div className="border-t border-border pt-10">
         <div className="font-body text-[12px] font-normal text-muted-line uppercase tracking-[0.18em] mb-6">{t.featured}</div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
