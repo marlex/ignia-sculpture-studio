@@ -8,8 +8,8 @@ import { Seo } from "@/components/Seo";
 const EditorialPage = () => {
   const lang = useLang();
   const t = lang === "es"
-    ? { eyebrow: "Conocimiento del oficio", h: "Ignia aprende", sub: "Guías para entender la escultura: materiales, procesos, conservación y mercado.", by: "Por" }
-    : { eyebrow: "Craft knowledge", h: "Ignia learn", sub: "Guides to understand sculpture: materials, processes, conservation and market.", by: "By" };
+    ? { eyebrow: "Ensayos y entrevistas", h: "Comunidad", sub: "Textos sobre escultura, oficio y mercado, escritos para coleccionistas y artistas.", by: "Por" }
+    : { eyebrow: "Essays & interviews", h: "Community", sub: "Essays, reports and interviews on sculpture, the craft and its market, written for collectors and artists alike.", by: "By" };
 
   return (
     <main className="pt-14">
