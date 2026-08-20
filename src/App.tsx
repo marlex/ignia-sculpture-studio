@@ -73,6 +73,8 @@ const App = () => (
               <Route path="/legal/:slug" element={<Legal />} />
               <Route path="/join/escultores" element={<JoinEscultores />} />
               <Route path="/join/sculptors" element={<JoinEscultores />} />
+              <Route path="/join/coleccionistas" element={<JoinColeccionistas />} />
+              <Route path="/join/collectors" element={<JoinColeccionistas />} />
               <Route path="/unete-a-ignia" element={<UneteAIgnia />} />
               <Route path="/recuperar-password" element={<RecuperarPassword />} />
               <Route path="/reset-password" element={<ResetPassword />} />
