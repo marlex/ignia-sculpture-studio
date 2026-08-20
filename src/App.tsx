@@ -25,6 +25,7 @@ import AddView3d from "./pages/AddView3d.tsx";
 import ObraAnalytics from "./pages/ObraAnalytics.tsx";
 import Legal from "./pages/Legal.tsx";
 import JoinEscultores from "./pages/JoinEscultores.tsx";
+import JoinColeccionistas from "./pages/JoinColeccionistas.tsx";
 import UneteAIgnia from "./pages/UneteAIgnia.tsx";
 import RecuperarPassword from "./pages/RecuperarPassword.tsx";
 import ResetPassword from "./pages/ResetPassword.tsx";
