@@ -253,8 +253,9 @@ export const Header = () => {
               >
                 {t.login}
               </Link>
-              <Link
-                to="/unete-a-ignia"
+              <button
+                type="button"
+                onClick={openInvite}
                 className="header-invite-btn hidden sm:inline-flex !py-2 !px-4 text-[13px] font-medium"
                 style={{
                   background: "#121212",
@@ -267,17 +268,19 @@ export const Header = () => {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: 6,
+                  cursor: "pointer",
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
                 onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
               >
                 {t.publish}
-              </Link>
+              </button>
             </>
           )}
           {/* Mobile-only invitation text */}
-          <Link
-            to="/unete-a-ignia"
+          <button
+            type="button"
+            onClick={openInvite}
             aria-label={t.publish}
             className="header-invite-icon-mobile font-body text-[13px] font-medium tracking-[0.18em] uppercase text-ink"
             style={{
@@ -293,7 +296,8 @@ export const Header = () => {
             }}
           >
             {t.joinMobile}
-          </Link>
+          </button>
+
 
         </div>
       </div>
