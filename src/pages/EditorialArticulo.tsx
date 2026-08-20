@@ -91,7 +91,7 @@ const EditorialArticuloPage = () => {
       <section className="bg-surface px-6 md:px-12 py-16 md:py-20" aria-labelledby="editorial-related-title">
         <h2 id="editorial-related-title" className="font-display font-semibold text-[clamp(24px,2.8vw,34px)] tracking-[-0.02em] text-ink mb-8 max-w-[1280px] mx-auto">{t.readMoreTitle}</h2>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 max-w-[1280px] mx-auto" aria-label={t.relatedList}>
-          {EDITORIAL_ARTICLES.filter((a) => a.slug !== slug).map((a) => {
+          {EDITORIAL_ARTICLES.filter((a) => a.slug !== slug).slice(0, 2).map((a) => {
             const c = a[lang];
             return (
               <li key={a.slug} className="h-full">
