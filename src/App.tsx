@@ -79,6 +79,8 @@ const App = () => (
               <Route path="/join/collectors" element={<JoinColeccionistas />} />
               <Route path="/join/galerias" element={<JoinGalerias />} />
               <Route path="/join/galleries" element={<JoinGalerias />} />
+              <Route path="/join/curadores" element={<JoinCuradores />} />
+              <Route path="/join/curators" element={<JoinCuradores />} />
               <Route path="/unete-a-ignia" element={<UneteAIgnia />} />
               <Route path="/recuperar-password" element={<RecuperarPassword />} />
               <Route path="/reset-password" element={<ResetPassword />} />
