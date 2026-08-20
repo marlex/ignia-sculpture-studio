@@ -19,8 +19,6 @@ const obra7 = obraQuietudAsset;
 import arco from "@/assets/obra-arco-new.jpg";
 import obraSudarioAsset from "@/assets/obra-sudario.jpeg.asset.json";
 const obraCuerpoFosil = obraSudarioAsset.url;
-import obraEfusionAsset from "@/assets/obra-efusion.jpg.asset.json";
-import obraEfusionV2Asset from "@/assets/obra-efusion-v2.jpg.asset.json";
 import obraEfusionV3 from "@/assets/obra-efusion-v3.jpg";
 import obraEfusionDetailV3 from "@/assets/obra-efusion-detail-v3.jpg";
 import obraMantoAsset from "@/assets/obra-manto.jpg.asset.json";
