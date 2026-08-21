@@ -13,13 +13,13 @@ const NAV_LEFT = {
     { label: "Escultores", to: "/join/escultores" },
     { label: "Comunidad", to: "/editorial" },
     { label: "Aprende", to: "/aprende" },
-    { label: "Ignia Gallery", to: "/ignia-gallery" },
+    { label: "Sobre Ignia", to: "/ignia-gallery" },
   ],
   en: [
     { label: "Sculptors", to: "/join/sculptors" },
     { label: "Community", to: "/editorial" },
     { label: "Learn", to: "/aprende" },
-    { label: "Ignia Gallery", to: "/ignia-gallery" },
+    { label: "About Ignia", to: "/ignia-gallery" },
   ],
 };
 
