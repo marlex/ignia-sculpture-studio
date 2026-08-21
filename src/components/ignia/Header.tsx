@@ -173,7 +173,7 @@ export const Header = () => {
         }
         .ignia-header { transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1); }
       `}</style>
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center w-full gap-4">
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center w-full gap-9">
         {/* LEFT: desktop nav + mobile hamburger */}
         <div className="col-start-1 flex items-center gap-9 justify-start">
           <button
@@ -209,17 +209,15 @@ export const Header = () => {
         </Link>
 
         {/* RIGHT: desktop cluster + mobile invite icon */}
-        <div className="header-right-cluster col-start-3 flex items-center justify-end gap-4">
-          <div className="hidden md:flex items-center gap-9">
-            <nav className="header-nav-links flex items-center gap-9">
-              {rightItems.map(renderNavItem)}
-            </nav>
-            <div className="header-lang">
-              <LangDropdown lang={lang} setLang={setLang} />
-            </div>
+        <div className="header-right-cluster col-start-3 flex items-center justify-end gap-9">
+          <nav className="header-nav-links hidden md:flex items-center gap-9">
+            {rightItems.map(renderNavItem)}
+          </nav>
+          <div className="header-lang hidden md:flex">
+            <LangDropdown lang={lang} setLang={setLang} />
           </div>
           {SHOW_PUBLIC_AUTH && (user ? (
-            <div className="header-user-links hidden md:flex items-center gap-3">
+            <div className="header-user-links hidden md:flex items-center gap-9">
               <Link to="/dashboard" className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
                 {t.dashboard}
               </Link>
