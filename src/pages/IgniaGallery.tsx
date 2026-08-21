@@ -190,7 +190,39 @@ const IconAR = () => (
   </svg>
 );
 
+function OfferRow({ title, desc, count, last }: { title: string; desc: string; count?: number; last?: boolean }) {
+  const { ref, seen } = useInView<HTMLDivElement>();
+  const [n, setN] = useState(0);
+
+  useEffect(() => {
+    if (!seen || !count) return;
+    const start = performance.now();
+    let raf = 0;
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - start) / 1500);
+      setN(Math.round(count * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [seen, count]);
+
+  return (
+    <div ref={ref} className={`of-row group py-8 md:py-11 ${seen ? "of-in" : ""}`}>
+      <span className="of-rule" aria-hidden />
+      <div className="of-title-wrap">
+        <h3 className="of-title">{count ? `${n}%` : title}</h3>
+        <span className="of-curtain" aria-hidden />
+        <span className="of-underline" aria-hidden />
+      </div>
+      <p className="of-desc">{desc}</p>
+      {last && <span className="of-rule of-rule-last" aria-hidden />}
+    </div>
+  );
+}
+
 const AboutPage = () => {
+
   const lang = useLang();
   const t = T[lang];
   const offers = useInView<HTMLDivElement>();
