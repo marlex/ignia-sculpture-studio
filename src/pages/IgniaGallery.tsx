@@ -13,7 +13,7 @@ const T = {
     h: <>Encender lo que nadie<br />podía ver todavía.</>,
     cite: "“Behind every great piece of sculpture is an unseen mountain of sacrifice, discipline, and commitment.”",
     behindEy: "BEHIND IGNIA",
-    behindH: "Un equipo que cree en la escultura tanto como ustedes.",
+    behindH: "Porque creemos y sentimos la escultura.",
     behindP:
       "Somos escultores, diseñadores, curadores, coleccionistas, advisors y desarrolladores, un equipo multidisciplinar, que trabaja la escultura desde dentro y desde fuera del taller. Queremos darle a esta disciplina el lugar que merece: la misma calidad curatorial de cualquier galería de referencia, con la apertura global que le faltaba para ser vista.",
     offerEy: "QUÉ TE OFRECEMOS",
@@ -47,7 +47,7 @@ const T = {
     h: <>Igniting what no one<br />could yet see.</>,
     cite: "“Behind every great piece of sculpture is an unseen mountain of sacrifice, discipline, and commitment.”",
     behindEy: "BEHIND IGNIA",
-    behindH: "A team that believes in sculpture as much as you do.",
+    behindH: "Because we believe in and feel sculpture.",
     behindP:
       "We are sculptors, designers, curators, collectors, advisors and developers — a multidisciplinary team that works with sculpture from inside and outside the studio. We want to give this discipline the place it deserves: the curatorial quality of any leading gallery, with the global openness it was missing to be seen.",
     offerEy: "WHAT WE OFFER",
