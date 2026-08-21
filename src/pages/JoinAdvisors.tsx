@@ -3,6 +3,7 @@ import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
 import { Seo } from "@/components/Seo";
+import { CrossSellBlock } from "@/components/ignia/CrossSellBlock";
 import { WORKS } from "@/data/igniaWorks";
 
 const OUTLINE_BTN_DARK: React.CSSProperties = {
@@ -362,6 +363,9 @@ const JoinAdvisors = () => {
           )}
         </div>
       </section>
+
+      {/* CROSS-SELL */}
+      <CrossSellBlock exclude={["advisors"]} />
 
       {/* 5. FAQ */}
       <section style={{ padding: "120px 24px 160px", background: "#FFFFFF" }}>

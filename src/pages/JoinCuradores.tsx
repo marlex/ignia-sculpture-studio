@@ -3,6 +3,7 @@ import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
 import { Seo } from "@/components/Seo";
+import { CrossSellBlock } from "@/components/ignia/CrossSellBlock";
 import imgMarmol from "@/assets/curador-marmol.jpg";
 import imgBronce from "@/assets/curador-bronce.jpg";
 import imgTalla from "@/assets/curador-talla.jpg";
@@ -370,6 +371,9 @@ const JoinCuradores = () => {
           )}
         </div>
       </section>
+
+      {/* CROSS-SELL */}
+      <CrossSellBlock exclude={["curators"]} />
 
       {/* 5. FAQ */}
       <section style={{ padding: "120px 24px 160px", background: "#FFFFFF" }}>
