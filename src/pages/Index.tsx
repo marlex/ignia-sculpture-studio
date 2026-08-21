@@ -2,7 +2,6 @@ import { useRef, useEffect } from "react";
 import { Header } from "@/components/ignia/Header";
 import { Coleccion } from "@/components/ignia/Coleccion";
 import { Artistas } from "@/components/ignia/Artistas";
-import { Colectores } from "@/components/ignia/Colectores";
 import { Footer } from "@/components/ignia/Footer";
 import { HeroFull } from "@/components/ignia/home/HeroFull";
 import { Ticker } from "@/components/ignia/home/Ticker";
