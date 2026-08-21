@@ -372,21 +372,6 @@ export const Header = () => {
               </Link>
             );
           })}
-          <Link
-            to="/login"
-            onClick={() => setMobileOpen(false)}
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontWeight: 400,
-              fontSize: 26,
-              color: "rgba(255,255,255,0.7)",
-              textAlign: "center",
-              textDecoration: "none",
-            }}
-          >
-            {t.login}
-          </Link>
-
           {/* Language switch inside mobile drawer */}
           <div style={{ display: "flex", gap: 18, marginTop: 12 }}>
             {LANGS.map((l) => {
@@ -414,6 +399,21 @@ export const Header = () => {
               );
             })}
           </div>
+          <Link
+            to="/login"
+            onClick={() => setMobileOpen(false)}
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontWeight: 400,
+              fontSize: 26,
+              color: "rgba(255,255,255,0.7)",
+              textAlign: "center",
+              textDecoration: "none",
+            }}
+          >
+            {t.login}
+          </Link>
+
         </div>,
         document.body
       )}
