@@ -1,6 +1,6 @@
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
-import studio from "@/assets/hero-bg-studio.jpg";
+import studio from "@/assets/hero-bg-studio.jpg.asset.json";
 import { useLang } from "@/i18n/LanguageContext";
 import { Seo } from "@/components/Seo";
 import { useEffect, useRef, useState } from "react";
