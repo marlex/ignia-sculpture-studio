@@ -7,36 +7,42 @@ import { useAuth } from "@/auth/AuthContext";
 import { SHOW_PUBLIC_AUTH } from "@/config/featureFlags";
 import { supabase } from "@/integrations/supabase/client";
 
-// Left nav (desktop): Sculptors, Community, Learn, Sobre Ignia
-const NAV_LEFT = {
+type NavItem = { label: string; to?: string; action?: "partners" };
+
+// Left nav (desktop): Sculptors, Guidance, Learn, Sobre Ignia
+const NAV_LEFT: Record<"es" | "en", NavItem[]> = {
   es: [
     { label: "Escultores", to: "/join/escultores" },
-    { label: "Comunidad", to: "/editorial" },
+    { label: "Guidance", to: "/guidance" },
     { label: "Aprende", to: "/aprende" },
     { label: "Sobre Ignia", to: "/ignia-gallery" },
   ],
   en: [
     { label: "Sculptors", to: "/join/sculptors" },
-    { label: "Community", to: "/editorial" },
+    { label: "Guidance", to: "/guidance" },
     { label: "Learn", to: "/aprende" },
     { label: "Sobre Ignia", to: "/ignia-gallery" },
   ],
 };
 
-// Right nav (desktop): Sculptures
-const NAV_RIGHT = {
+// Right nav (desktop): Sculptures, Community, Partnerships
+const NAV_RIGHT: Record<"es" | "en", NavItem[]> = {
   es: [
     { label: "Esculturas", to: "/coleccion" },
+    { label: "Comunidad", to: "/editorial" },
+    { label: "Partnerships", action: "partners" },
   ],
   en: [
     { label: "Sculptures", to: "/coleccion" },
+    { label: "Community", to: "/editorial" },
+    { label: "Partnerships", action: "partners" },
   ],
 };
 
 // Full nav order for mobile drawer
-const NAV_ALL = {
-  es: [NAV_LEFT.es[0], NAV_RIGHT.es[0], NAV_LEFT.es[1], NAV_LEFT.es[2], NAV_LEFT.es[3]],
-  en: [NAV_LEFT.en[0], NAV_RIGHT.en[0], NAV_LEFT.en[1], NAV_LEFT.en[2], NAV_LEFT.en[3]],
+const NAV_ALL: Record<"es" | "en", NavItem[]> = {
+  es: [...NAV_LEFT.es, ...NAV_RIGHT.es],
+  en: [...NAV_LEFT.en, ...NAV_RIGHT.en],
 };
 
 export const Header = () => {
