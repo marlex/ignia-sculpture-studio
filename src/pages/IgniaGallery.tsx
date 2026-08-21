@@ -255,26 +255,12 @@ const AboutPage = () => {
           <h2 className="font-display font-semibold text-[clamp(32px,4vw,54px)] tracking-[-0.02em] leading-[1.08] text-ink mb-14 md:mb-20">
             {t.offerH}
           </h2>
-          <div
-            ref={offers.ref}
-            className={`max-w-[760px] mx-auto text-left space-y-0 ${offers.seen ? "ab-in" : ""}`}
-          >
-            {t.offers.map((line, i) => {
-              const [head, rest] = line.split(" — ");
-              return (
-                <div
-                  key={line}
-                  className="ab-card py-6 md:py-8 border-t border-[#121212]/10"
-                  style={{ transitionDelay: `${i * 80}ms` }}
-                >
-                  <p className="font-body text-[16px] md:text-[18px] font-normal leading-[1.7]" style={{ color: "#121212" }}>
-                    <span className="font-semibold">{head}</span>
-                    {rest && <span> — {rest}</span>}
-                  </p>
-                </div>
-              );
-            })}
+          <div className="max-w-[760px] mx-auto text-left">
+            {t.offers.map((o, i) => (
+              <OfferRow key={o.t} title={o.t} desc={o.d} count={(o as { count?: number }).count} last={i === t.offers.length - 1} />
+            ))}
           </div>
+
         </div>
       </section>
 
