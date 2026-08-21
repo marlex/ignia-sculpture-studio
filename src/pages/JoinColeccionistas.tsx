@@ -63,7 +63,11 @@ const JoinColeccionistas = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   useEffect(() => {
-    const open = () => setInviteOpen(true);
+    const open = (e: Event) => {
+      const detail = (e as CustomEvent<{ source?: string }>).detail;
+      if (detail?.source === "header") return; // header always opens the global profiles modal
+      setInviteOpen(true);
+    };
     window.addEventListener("ignia:open-invite", open);
     return () => window.removeEventListener("ignia:open-invite", open);
   }, []);
