@@ -69,6 +69,22 @@ export const Header = () => {
     window.dispatchEvent(new Event("ignia:open-invite"));
   };
 
+  const openPartners = () => {
+    window.dispatchEvent(new CustomEvent("ignia:open-invite", { detail: { variant: "partners" } }));
+  };
+
+  const navLinkClass = "font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity";
+  const renderNavItem = (item: NavItem) =>
+    item.action === "partners" ? (
+      <button key={item.label} type="button" onClick={openPartners} className={navLinkClass}>
+        {item.label}
+      </button>
+    ) : (
+      <Link key={item.label} to={item.to!} className={navLinkClass}>
+        {item.label}
+      </Link>
+    );
+
   // Detect Supabase session + admin role
   const [sbUser, setSbUser] = useState<{ id: string; email: string | null } | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -181,11 +197,7 @@ export const Header = () => {
             <span style={{ width: 18, height: 1, background: "#121212", display: "block" }} />
           </button>
           <nav className="header-nav-links hidden md:flex items-center gap-9">
-            {leftItems.map(item => (
-              <Link key={item.label} to={item.to} className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
-                {item.label}
-              </Link>
-            ))}
+            {leftItems.map(renderNavItem)}
           </nav>
         </div>
 
@@ -200,11 +212,7 @@ export const Header = () => {
         <div className="header-right-cluster col-start-3 flex items-center justify-end gap-4">
           <div className="hidden md:flex items-center gap-9">
             <nav className="header-nav-links flex items-center gap-9">
-              {rightItems.map(item => (
-                <Link key={item.label} to={item.to} className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
-                  {item.label}
-                </Link>
-              ))}
+              {rightItems.map(renderNavItem)}
             </nav>
             <div className="header-lang">
               <LangDropdown lang={lang} setLang={setLang} />
@@ -342,40 +350,28 @@ export const Header = () => {
           >
             ×
           </button>
-          {allItems.map((item) => (
-            <Link
-              key={item.label}
-              to={item.to}
-              onClick={() => setMobileOpen(false)}
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontWeight: 400,
-                fontSize: 32,
-                color: "#FFFFFF",
-                textAlign: "center",
-                textDecoration: "none",
-              }}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <button
-            type="button"
-            onClick={() => { setMobileOpen(false); openInvite(); }}
-            style={{
+          {allItems.map((item) => {
+            const style = {
               fontFamily: "'Cormorant Garamond', serif",
               fontWeight: 400,
               fontSize: 32,
               color: "#FFFFFF",
-              textAlign: "center",
+              textAlign: "center" as const,
+              textDecoration: "none",
               background: "transparent",
               border: "none",
               cursor: "pointer",
-            }}
-          >
-            {t.publish}
-          </button>
-
+            };
+            return item.action === "partners" ? (
+              <button key={item.label} type="button" onClick={() => { setMobileOpen(false); openPartners(); }} style={style}>
+                {item.label}
+              </button>
+            ) : (
+              <Link key={item.label} to={item.to!} onClick={() => setMobileOpen(false)} style={style}>
+                {item.label}
+              </Link>
+            );
+          })}
           <Link
             to="/login"
             onClick={() => setMobileOpen(false)}
