@@ -250,12 +250,9 @@ const AboutPage = () => {
       <section className="px-6 md:px-12 py-24 md:py-32" style={{ backgroundColor: "#F5F5F5" }}>
         <div className="max-w-[900px] mx-auto text-center">
           <div className="eyebrow mb-4">{t.offerEy}</div>
-          <h2 className="font-display font-semibold text-[clamp(32px,4vw,54px)] tracking-[-0.02em] leading-[1.08] text-ink mb-6">
+          <h2 className="font-display font-semibold text-[clamp(32px,4vw,54px)] tracking-[-0.02em] leading-[1.08] text-ink mb-14 md:mb-20">
             {t.offerH}
           </h2>
-          <p className="font-body text-[17px] md:text-[18px] font-normal leading-relaxed max-w-[680px] mx-auto mb-16 md:mb-20" style={{ color: "#121212" }}>
-            {t.offerSub}
-          </p>
           <div
             ref={offers.ref}
             className={`max-w-[760px] mx-auto text-left space-y-0 ${offers.seen ? "ab-in" : ""}`}
