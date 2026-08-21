@@ -7,36 +7,42 @@ import { useAuth } from "@/auth/AuthContext";
 import { SHOW_PUBLIC_AUTH } from "@/config/featureFlags";
 import { supabase } from "@/integrations/supabase/client";
 
-// Left nav (desktop): Sculptors, Community, Learn, Sobre Ignia
-const NAV_LEFT = {
+type NavItem = { label: string; to?: string; action?: "partners" };
+
+// Left nav (desktop): Sculptors, Guidance, Learn, Sobre Ignia
+const NAV_LEFT: Record<"es" | "en", NavItem[]> = {
   es: [
     { label: "Escultores", to: "/join/escultores" },
-    { label: "Comunidad", to: "/editorial" },
+    { label: "Guidance", to: "/guidance" },
     { label: "Aprende", to: "/aprende" },
     { label: "Sobre Ignia", to: "/ignia-gallery" },
   ],
   en: [
     { label: "Sculptors", to: "/join/sculptors" },
-    { label: "Community", to: "/editorial" },
+    { label: "Guidance", to: "/guidance" },
     { label: "Learn", to: "/aprende" },
     { label: "Sobre Ignia", to: "/ignia-gallery" },
   ],
 };
 
-// Right nav (desktop): Sculptures
-const NAV_RIGHT = {
+// Right nav (desktop): Sculptures, Community, Partnerships
+const NAV_RIGHT: Record<"es" | "en", NavItem[]> = {
   es: [
     { label: "Esculturas", to: "/coleccion" },
+    { label: "Comunidad", to: "/editorial" },
+    { label: "Partnerships", action: "partners" },
   ],
   en: [
     { label: "Sculptures", to: "/coleccion" },
+    { label: "Community", to: "/editorial" },
+    { label: "Partnerships", action: "partners" },
   ],
 };
 
 // Full nav order for mobile drawer
-const NAV_ALL = {
-  es: [NAV_LEFT.es[0], NAV_RIGHT.es[0], NAV_LEFT.es[1], NAV_LEFT.es[2], NAV_LEFT.es[3]],
-  en: [NAV_LEFT.en[0], NAV_RIGHT.en[0], NAV_LEFT.en[1], NAV_LEFT.en[2], NAV_LEFT.en[3]],
+const NAV_ALL: Record<"es" | "en", NavItem[]> = {
+  es: [...NAV_LEFT.es, ...NAV_RIGHT.es],
+  en: [...NAV_LEFT.en, ...NAV_RIGHT.en],
 };
 
 export const Header = () => {
@@ -62,6 +68,22 @@ export const Header = () => {
   const openInvite = () => {
     window.dispatchEvent(new Event("ignia:open-invite"));
   };
+
+  const openPartners = () => {
+    window.dispatchEvent(new CustomEvent("ignia:open-invite", { detail: { variant: "partners" } }));
+  };
+
+  const navLinkClass = "font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity";
+  const renderNavItem = (item: NavItem) =>
+    item.action === "partners" ? (
+      <button key={item.label} type="button" onClick={openPartners} className={navLinkClass}>
+        {item.label}
+      </button>
+    ) : (
+      <Link key={item.label} to={item.to!} className={navLinkClass}>
+        {item.label}
+      </Link>
+    );
 
   // Detect Supabase session + admin role
   const [sbUser, setSbUser] = useState<{ id: string; email: string | null } | null>(null);
@@ -175,11 +197,7 @@ export const Header = () => {
             <span style={{ width: 18, height: 1, background: "#121212", display: "block" }} />
           </button>
           <nav className="header-nav-links hidden md:flex items-center gap-9">
-            {leftItems.map(item => (
-              <Link key={item.label} to={item.to} className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
-                {item.label}
-              </Link>
-            ))}
+            {leftItems.map(renderNavItem)}
           </nav>
         </div>
 
@@ -194,11 +212,7 @@ export const Header = () => {
         <div className="header-right-cluster col-start-3 flex items-center justify-end gap-4">
           <div className="hidden md:flex items-center gap-9">
             <nav className="header-nav-links flex items-center gap-9">
-              {rightItems.map(item => (
-                <Link key={item.label} to={item.to} className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
-                  {item.label}
-                </Link>
-              ))}
+              {rightItems.map(renderNavItem)}
             </nav>
             <div className="header-lang">
               <LangDropdown lang={lang} setLang={setLang} />
@@ -336,55 +350,28 @@ export const Header = () => {
           >
             ×
           </button>
-          {allItems.map((item) => (
-            <Link
-              key={item.label}
-              to={item.to}
-              onClick={() => setMobileOpen(false)}
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontWeight: 400,
-                fontSize: 32,
-                color: "#FFFFFF",
-                textAlign: "center",
-                textDecoration: "none",
-              }}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <button
-            type="button"
-            onClick={() => { setMobileOpen(false); openInvite(); }}
-            style={{
+          {allItems.map((item) => {
+            const style = {
               fontFamily: "'Cormorant Garamond', serif",
               fontWeight: 400,
               fontSize: 32,
               color: "#FFFFFF",
-              textAlign: "center",
+              textAlign: "center" as const,
+              textDecoration: "none",
               background: "transparent",
               border: "none",
               cursor: "pointer",
-            }}
-          >
-            {t.publish}
-          </button>
-
-          <Link
-            to="/login"
-            onClick={() => setMobileOpen(false)}
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontWeight: 400,
-              fontSize: 26,
-              color: "rgba(255,255,255,0.7)",
-              textAlign: "center",
-              textDecoration: "none",
-            }}
-          >
-            {t.login}
-          </Link>
-
+            };
+            return item.action === "partners" ? (
+              <button key={item.label} type="button" onClick={() => { setMobileOpen(false); openPartners(); }} style={style}>
+                {item.label}
+              </button>
+            ) : (
+              <Link key={item.label} to={item.to!} onClick={() => setMobileOpen(false)} style={style}>
+                {item.label}
+              </Link>
+            );
+          })}
           {/* Language switch inside mobile drawer */}
           <div style={{ display: "flex", gap: 18, marginTop: 12 }}>
             {LANGS.map((l) => {
@@ -412,6 +399,21 @@ export const Header = () => {
               );
             })}
           </div>
+          <Link
+            to="/login"
+            onClick={() => setMobileOpen(false)}
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontWeight: 400,
+              fontSize: 26,
+              color: "rgba(255,255,255,0.7)",
+              textAlign: "center",
+              textDecoration: "none",
+            }}
+          >
+            {t.login}
+          </Link>
+
         </div>,
         document.body
       )}

@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useLang } from "@/i18n/LanguageContext";
 
-type Props = { open: boolean; onClose: () => void; defaultProfile?: "collector" | "artist" };
+type Props = { open: boolean; onClose: () => void; defaultProfile?: "collector" | "artist"; variant?: "default" | "partners" };
 
-export const InviteModal = ({ open, onClose }: Props) => {
+export const InviteModal = ({ open, onClose, variant = "default" }: Props) => {
   const lang = useLang();
 
   const t = lang === "es"
@@ -79,11 +79,22 @@ export const InviteModal = ({ open, onClose }: Props) => {
         </h2>
 
         <div>
-          <a className="role-btn" href={lang === "es" ? "/join/escultores" : "/join/sculptors"}>{t.roleArtista}<span className="role-sub">{t.roleArtistaSub}</span></a>
-          <a className="role-btn" href={lang === "es" ? "/join/coleccionistas" : "/join/collectors"}>{t.roleColeccionista}<span className="role-sub">{t.roleColeccionistaSub}</span></a>
-          <a className="role-btn" href={lang === "es" ? "/join/galerias" : "/join/galleries"}>{t.roleEmpresa}<span className="role-sub">{t.roleEmpresaSub}</span></a>
-          <a className="role-btn" href={lang === "es" ? "/join/curadores" : "/join/curators"}>{t.roleCurador}<span className="role-sub">{t.roleCuradorSub}</span></a>
-          <a className="role-btn" href={lang === "es" ? "/join/advisors" : "/join/advisors"}>{t.roleAdvisor}<span className="role-sub">{t.roleAdvisorSub}</span></a>
+          {(variant === "partners"
+            ? ["empresa", "curador", "advisor", "artista", "coleccionista"]
+            : ["artista", "coleccionista", "empresa", "curador", "advisor"]
+          ).map((k) => {
+            const map: Record<string, { href: string; label: string; sub: string }> = {
+              artista: { href: lang === "es" ? "/join/escultores" : "/join/sculptors", label: t.roleArtista, sub: t.roleArtistaSub },
+              coleccionista: { href: lang === "es" ? "/join/coleccionistas" : "/join/collectors", label: t.roleColeccionista, sub: t.roleColeccionistaSub },
+              empresa: { href: lang === "es" ? "/join/galerias" : "/join/galleries", label: t.roleEmpresa, sub: t.roleEmpresaSub },
+              curador: { href: lang === "es" ? "/join/curadores" : "/join/curators", label: t.roleCurador, sub: t.roleCuradorSub },
+              advisor: { href: "/join/advisors", label: t.roleAdvisor, sub: t.roleAdvisorSub },
+            };
+            const item = map[k];
+            return (
+              <a key={k} className="role-btn" href={item.href}>{item.label}<span className="role-sub">{item.sub}</span></a>
+            );
+          })}
         </div>
       </div>
     </div>
