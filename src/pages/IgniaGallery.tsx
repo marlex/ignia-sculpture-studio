@@ -242,7 +242,21 @@ const AboutPage = () => {
       <Header />
 
       <style>{`
+        .of-row { position: relative; }
+        .of-rule { position:absolute; top:0; left:0; height:1px; width:0; background: rgba(18,18,18,0.16); transition: width 900ms cubic-bezier(0.16,1,0.3,1); }
+        .of-rule-last { top:auto; bottom:0; }
+        .of-in .of-rule, .of-in > .of-rule { width:100%; }
+        .of-title-wrap { position: relative; display: inline-block; overflow: hidden; }
+        .of-title { font-family:'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: clamp(34px, 5.2vw, 62px); line-height: 1.05; letter-spacing:-0.02em; color:#121212; margin:0; }
+        .of-curtain { position:absolute; inset:0; background:#F5F5F5; transform: translateX(0); transition: transform 900ms cubic-bezier(0.76,0,0.24,1) 120ms; }
+        .of-in .of-curtain { transform: translateX(101%); }
+        .of-underline { position:absolute; left:0; bottom:2px; height:1px; width:100%; background:#121212; transform: scaleX(0); transform-origin: left center; transition: transform 420ms cubic-bezier(0.16,1,0.3,1); }
+        @media (hover:hover) { .of-row:hover .of-underline { transform: scaleX(1); } }
+        .of-desc { font-family: var(--f-body); font-size: 15px; line-height:1.7; color:#6b6b6b; margin: 14px 0 0; opacity:0; transform: translateY(8px); transition: opacity 600ms ease-out 900ms, transform 600ms ease-out 900ms; }
+        .of-in .of-desc { opacity:1; transform: none; }
+        @media (prefers-reduced-motion: reduce) { .of-curtain { display:none } .of-desc { opacity:1 !important; transform:none !important } .of-rule { width:100% !important } }
         .ab-card { opacity:0; transform: translateY(24px); transition: opacity 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1); }
+
         .ab-in .ab-card { opacity:1; transform: translateY(0); }
         .ab-ico-spin { animation: ab-spin 2s ease-in-out 1 both; transform-origin: 50% 50%; }
         @keyframes ab-spin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
