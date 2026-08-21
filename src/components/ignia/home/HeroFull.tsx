@@ -20,7 +20,7 @@ export const HeroFull = () => {
   const lang = useLang();
   const t = lang === "es"
     ? {
-        title: "Come Closer. Reimagine Sculpture",
+        title: "Acércate. Reimagina la escultura.",
         body: "Descubre y compra esculturas originales en la plataforma global especializada en escultura. Explora cada obra en 3D, conoce a su artista y visualízala en tu propio espacio.",
         cta: "Explorar esculturas",
       }
