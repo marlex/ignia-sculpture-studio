@@ -21,12 +21,12 @@ export const HeroFull = () => {
   const t = lang === "es"
     ? {
         title: "Acércate. Reimagina la escultura.",
-        body: "Descubre y compra esculturas originales en la plataforma global especializada en escultura. Explora cada obra en 3D, conoce a su artista y visualízala en tu propio espacio.",
+        body: "Descubre, experimenta y colecciona escultura contemporánea de artistas y galerías de todo el mundo. Explora cada obra en 3D, obtén su certificado de autenticidad y visualízala en tu propio espacio.",
         cta: "Explorar esculturas",
       }
     : {
         title: "Come Closer. Reimagine Sculpture",
-        body: "Discover and buy original sculptures on the global platform specialized in sculpture. Explore each work in 3D, meet its artist, and visualize it in your own space.",
+        body: "Discover, experience and collect contemporary sculpture from artists and galleries around the world. Explore each work in 3D, receive its certificate of authenticity, and see it in your own space.",
         cta: "Explore sculptures",
       };
 
