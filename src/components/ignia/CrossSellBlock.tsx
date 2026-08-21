@@ -52,11 +52,11 @@ export const CrossSellBlock = ({ exclude }: { exclude: AudienceKey[] }) => {
             <Link
               key={a.key}
               to={a.to}
-              className="block border border-white/20 bg-[#121212] p-6 hover:bg-white hover:text-[#121212] transition-colors group"
+              className="block border border-white/20 bg-[#121212] p-6 text-white hover:bg-white hover:text-[#121212] transition-colors group"
               style={{ borderRadius: 0 }}
             >
               <h3
-                className="mb-2"
+                className="mb-2 group-hover:text-[#121212] transition-colors"
                 style={{
                   fontFamily: "'Cormorant Garamond', serif",
                   fontWeight: 600,
@@ -67,11 +67,8 @@ export const CrossSellBlock = ({ exclude }: { exclude: AudienceKey[] }) => {
                 {a.t}
               </h3>
               <p
-                className="font-body text-[15px] font-normal group-hover:text-[#666666] transition-colors"
-                style={{
-                  color: "rgba(255,255,255,0.65)",
-                  lineHeight: 1.6,
-                }}
+                className="font-body text-[15px] font-normal text-white/65 group-hover:text-[#666666] transition-colors"
+                style={{ lineHeight: 1.6 }}
               >
                 {a.s}
               </p>
