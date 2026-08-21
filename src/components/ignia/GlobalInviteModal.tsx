@@ -12,9 +12,7 @@ export const GlobalInviteModal = () => {
     const handleOpen = (e: Event) => {
       const detail = (e as CustomEvent<{ defaultProfile?: "collector" | "artist"; variant?: "default" | "partners" }>).detail;
       const v = detail?.variant ?? "default";
-      // These join pages have their own application modal; keep it untouched (except Partnerships).
-      const PAGES_WITH_OWN_MODAL = ["/join/escultores", "/join/coleccionistas"];
-      if (v !== "partners" && PAGES_WITH_OWN_MODAL.some((p) => location.pathname.startsWith(p))) return;
+
       setDefaultProfile(detail?.defaultProfile);
       setVariant(v);
       setOpen(true);
