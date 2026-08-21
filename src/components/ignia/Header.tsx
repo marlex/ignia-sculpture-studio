@@ -371,7 +371,7 @@ export const Header = () => {
             );
           })}
           {/* Language switch inside mobile drawer */}
-          <div style={{ display: "flex", gap: 18, marginTop: 12 }}>
+          <div style={{ display: "flex", gap: 18 }}>
             {LANGS.map((l) => {
               const active = l.code === lang;
               return (
