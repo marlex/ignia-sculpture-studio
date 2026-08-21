@@ -231,65 +231,67 @@ export const Header = () => {
               {t.signin}
             </Link>
           ))}
-          {sbUser && isAdmin ? (
-            <>
-              <Link
-                to="/admin/dashboard"
-                className="header-invite-btn hidden xl:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
-              >
-                {t.adminPanel}
-              </Link>
-              <button
-                onClick={handleSbLogout}
-                className="header-invite-btn hidden xl:inline-flex !py-2 !px-4 text-[13px] font-medium"
-                style={{
-                  background: "#121212",
-                  color: "#FFFFFF",
-                  border: "1px solid #121212",
-                  fontFamily: "var(--f-body)",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  transition: "opacity 0.2s",
-                  cursor: "pointer",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-              >
-                {t.signout}
-              </button>
-            </>
-          ) : (
-            <>
-              <Link
-                to="/login"
-                className="header-invite-btn hidden xl:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
-              >
-                {t.login}
-              </Link>
-              <button
-                type="button"
-                onClick={openInvite}
-                className="header-invite-btn hidden xl:inline-flex !py-2 !px-4 text-[13px] font-medium"
-                style={{
-                  background: "#121212",
-                  color: "#FFFFFF",
-                  border: "1px solid #121212",
-                  fontFamily: "var(--f-body)",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  transition: "opacity 0.2s",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 6,
-                  cursor: "pointer",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-              >
-                {t.publish}
-              </button>
-            </>
-          )}
+          <div className="hidden xl:flex items-center gap-3">
+            {sbUser && isAdmin ? (
+              <>
+                <Link
+                  to="/admin/dashboard"
+                  className="header-invite-btn inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
+                >
+                  {t.adminPanel}
+                </Link>
+                <button
+                  onClick={handleSbLogout}
+                  className="header-invite-btn inline-flex !py-2 !px-4 text-[13px] font-medium"
+                  style={{
+                    background: "#121212",
+                    color: "#FFFFFF",
+                    border: "1px solid #121212",
+                    fontFamily: "var(--f-body)",
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                    transition: "opacity 0.2s",
+                    cursor: "pointer",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+                >
+                  {t.signout}
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="header-invite-btn inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
+                >
+                  {t.login}
+                </Link>
+                <button
+                  type="button"
+                  onClick={openInvite}
+                  className="header-invite-btn inline-flex !py-2 !px-4 text-[13px] font-medium"
+                  style={{
+                    background: "#121212",
+                    color: "#FFFFFF",
+                    border: "1px solid #121212",
+                    fontFamily: "var(--f-body)",
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                    transition: "opacity 0.2s",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    cursor: "pointer",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+                >
+                  {t.publish}
+                </button>
+              </>
+            )}
+          </div>
           {/* Mobile-only invitation text */}
           <button
             type="button"
