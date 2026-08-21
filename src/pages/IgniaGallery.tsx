@@ -60,7 +60,7 @@ const T = {
       "Specialised logistics, door to door.",
       "Augmented reality — see it in your own space, from your phone.",
     ],
-    bannerH: "Ignia — from the Latin ignis, fire.",
+    bannerH: "From the Latin ignis, fire.",
     bannerP: "What ignites what no one could yet see.",
     audEy: "A place for every perspective",
     aud: [
