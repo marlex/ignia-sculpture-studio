@@ -94,8 +94,6 @@ const Index = () => {
         <Reviews />
       </div>
       <SectionSeparator title={t.s2.title} subtitle={t.s2.subtitle} cta={t.s2.cta} />
-      <Colectores />
-      <Aprende />
       <SectionSeparator title={t.s3.title} subtitle={t.s3.subtitle} cta={t.s3.cta} />
       <Footer />
     </main>
