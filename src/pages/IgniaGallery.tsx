@@ -225,7 +225,7 @@ const AboutPage = () => {
 
   const lang = useLang();
   const t = T[lang];
-  const offers = useInView<HTMLDivElement>();
+  
   const aud = useInView<HTMLDivElement>();
 
   const icons = [Icon3D, IconSeal, IconScale, IconGlobe, null, IconBox, IconAR];
