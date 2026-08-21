@@ -195,7 +195,7 @@ export const Hero = () => {
           <div className="font-body text-[11px] font-normal tracking-[0.22em] uppercase text-gray mb-2">
             {o.artist}
           </div>
-          <h1 className="leading-[1.05] tracking-[0.01em] mb-2 text-ink" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(32px, 3.4vw, 46px)" }}>
+          <h1 className="leading-[1.05] tracking-[0.01em] mb-2 text-ink" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 500, fontSize: "clamp(32px, 3.4vw, 46px)" }}>
             {o.title}
           </h1>
           <div className="font-body text-[13px] font-normal tracking-wide text-gray mb-2.5">
@@ -240,7 +240,7 @@ export const Hero = () => {
           </div>
           <h1
             className="text-ink"
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: 26, lineHeight: 1.1, letterSpacing: "0.01em", margin: 0, marginBottom: 6 }}
+            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 500, fontSize: 26, lineHeight: 1.1, letterSpacing: "0.01em", margin: 0, marginBottom: 6 }}
           >
             {o.title}
           </h1>

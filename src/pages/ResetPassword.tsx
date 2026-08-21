@@ -115,7 +115,7 @@ export default function ResetPassword() {
         <section style={{ maxWidth: 460, margin: "0 auto", padding: "80px 24px 120px" }}>
           <h1 style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontWeight: 600,
+            fontWeight: 500,
             color: "#121212",
             fontSize: "clamp(32px, 4vw, 44px)",
             lineHeight: 1.1,

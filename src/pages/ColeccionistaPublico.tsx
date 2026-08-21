@@ -170,7 +170,7 @@ export default function ColeccionistaPublico() {
       <main className="min-h-screen bg-white">
         <Header />
         <section className="px-6 md:px-12 py-24 max-w-[1280px] mx-auto">
-          <h1 className="font-display font-semibold text-3xl text-ink mb-4">
+          <h1 className="font-display font-medium text-3xl text-ink mb-4">
             {lang === "es" ? "Coleccionista no encontrado" : "Collector not found"}
           </h1>
           <Link to="/" className="link-arrow">{lang === "es" ? "Volver al inicio →" : "Back to home →"}</Link>
@@ -202,7 +202,7 @@ export default function ColeccionistaPublico() {
           </div>
           <div>
             <div className="eyebrow mb-3">{c.eyebrow}</div>
-            <h1 className="font-display font-semibold text-[clamp(32px,4.4vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-4">
+            <h1 className="font-display font-medium text-[clamp(32px,4.4vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-4">
               {c.nombre}
             </h1>
             <div className="font-body text-[13px] font-normal text-muted-line uppercase tracking-[0.14em] mb-8">

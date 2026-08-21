@@ -189,7 +189,7 @@ export default function PerfilEscultor() {
           </div>
           <div>
             <div className="eyebrow mb-3">{t.eyebrow}</div>
-            <h1 className="font-display font-semibold text-[clamp(36px,5vw,64px)] tracking-[-0.02em] text-ink mb-2 leading-[1.05]">{bio.nombre}</h1>
+            <h1 className="font-display font-medium text-[clamp(36px,5vw,64px)] tracking-[-0.02em] text-ink mb-2 leading-[1.05]">{bio.nombre}</h1>
             <div className="font-body text-[14px] uppercase tracking-[0.14em] text-muted-line mb-5">{esp}</div>
             <div className="font-body text-[16px] font-normal text-gray max-w-[640px] mb-10 space-y-4">
               {bioText.split(/\n\n+/).map((p, i) => <p key={i}>{p}</p>)}

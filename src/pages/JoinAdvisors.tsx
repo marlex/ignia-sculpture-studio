@@ -239,7 +239,7 @@ const JoinAdvisors = () => {
         >
           <h1 style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontWeight: 600,
+            fontWeight: 500,
             color: "#121212",
             fontSize: "clamp(40px, 6vw, 72px)",
             lineHeight: 1.05,
