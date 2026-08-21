@@ -23,7 +23,7 @@ const T = {
       { t: "Certificado Blockchain", d: "Autenticidad verificable, para siempre." },
       { t: "Precio Justo", d: "Fijado por criterio experto." },
       { t: "Alcance Global", d: "Coleccionistas en todo el mundo, desde el día uno." },
-      { t: "85%", d: "De cada venta, para el escultor.", count: 85 },
+      { t: "Precios y comisiones justas", d: "El 85% de cada venta, para el escultor." },
       { t: "Logística Especializada", d: "Puerta a puerta." },
       { t: "Realidad Aumentada", d: "Visualízala en tu propio espacio, desde el móvil." },
     ],
