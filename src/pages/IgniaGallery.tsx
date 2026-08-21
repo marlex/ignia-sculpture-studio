@@ -1,5 +1,6 @@
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
+import { Logo } from "@/components/ignia/Logo";
 import studio from "@/assets/hero-bg-studio.jpg.asset.json";
 import { useLang } from "@/i18n/LanguageContext";
 import { Seo } from "@/components/Seo";
@@ -273,18 +274,10 @@ const AboutPage = () => {
       <section className="relative bg-white px-6 md:px-12 py-28 md:py-36 text-center overflow-hidden">
         <span
           className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
-          style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontWeight: 400,
-            fontSize: "clamp(140px, 28vw, 420px)",
-            lineHeight: 1,
-            color: "#f2f2f2",
-            zIndex: 0,
-            letterSpacing: "-0.03em",
-          }}
+          style={{ zIndex: 0 }}
           aria-hidden
         >
-          Ignia
+          <Logo fill="#f2f2f2" style={{ width: "clamp(160px, 30vw, 460px)", height: "auto" }} />
         </span>
         <div className="relative z-10">
           <p
