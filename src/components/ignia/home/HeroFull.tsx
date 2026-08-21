@@ -122,7 +122,7 @@ export const HeroFull = () => {
         className="hf-inner absolute inset-0 z-[2] flex flex-col items-center justify-center text-center px-6"
       >
         <h1 className="hf-title-el hf-anim hf-title">{t.title}</h1>
-        <p className="hf-body-el hf-anim hf-body">{t.body}</p>
+        <h2 className="hf-body-el hf-anim hf-body">{t.body}</h2>
         <div className="hf-anim hf-cta" style={{ marginTop: 32 }}>
           <button
             type="button"
