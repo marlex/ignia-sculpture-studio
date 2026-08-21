@@ -247,22 +247,28 @@ const AboutPage = () => {
       </section>
 
       {/* Qué te ofrecemos */}
-      <section className="px-6 md:px-12 py-20" style={{ backgroundColor: "#F5F5F5" }}>
-        <div className="max-w-[1180px] mx-auto">
+      <section className="px-6 md:px-12 py-24 md:py-32" style={{ backgroundColor: "#F5F5F5" }}>
+        <div className="max-w-[900px] mx-auto text-center">
           <div className="eyebrow mb-4">{t.offerEy}</div>
-          <h2 className="font-display font-semibold text-[clamp(26px,3vw,40px)] tracking-[-0.02em] text-ink leading-[1.1] mb-12">{t.offerH}</h2>
+          <h2 className="font-display font-semibold text-[clamp(32px,4vw,54px)] tracking-[-0.02em] leading-[1.08] text-ink mb-14 md:mb-20">
+            {t.offerH}
+          </h2>
           <div
             ref={offers.ref}
-            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10 ${offers.seen ? "ab-in" : ""}`}
+            className={`max-w-[760px] mx-auto text-left space-y-0 ${offers.seen ? "ab-in" : ""}`}
           >
             {t.offers.map((line, i) => {
-              const IconCmp = icons[i];
+              const [head, rest] = line.split(" — ");
               return (
-                <div key={line} className="ab-card" style={{ transitionDelay: `${i * 110}ms` }}>
-                  <div className="mb-4" style={{ height: 40 }}>
-                    {IconCmp ? <IconCmp /> : <IconCounter run={offers.seen} />}
-                  </div>
-                  <p className="font-body text-[16px] font-normal leading-relaxed" style={{ color: "#121212" }}>{line}</p>
+                <div
+                  key={line}
+                  className="ab-card py-6 md:py-8 border-t border-[#121212]/10"
+                  style={{ transitionDelay: `${i * 80}ms` }}
+                >
+                  <p className="font-body text-[16px] md:text-[18px] font-normal leading-[1.7]" style={{ color: "#121212" }}>
+                    <span className="font-semibold">{head}</span>
+                    {rest && <span> — {rest}</span>}
+                  </p>
                 </div>
               );
             })}
