@@ -126,7 +126,7 @@ export const Header = () => {
       className={`ignia-header fixed top-0 left-0 right-0 z-[100] h-14 bg-white/95 backdrop-blur border-b border-border flex items-center px-6 md:px-12 ${scrolled ? "is-scrolled" : ""}`}
     >
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 1023px) {
           .header-nav-links { display: none !important; }
           .header-user-links { display: none !important; }
           .header-invite-btn { display: none !important; }
@@ -134,7 +134,7 @@ export const Header = () => {
           .header-lang { display: none !important; }
           .header-gallery-link { display: none !important; }
           .header-right-cluster { justify-content: flex-end !important; }
-          /* Floating semi-transparent pill on scroll (mobile only) */
+          /* Floating semi-transparent pill on scroll (mobile + tablet) */
           .ignia-header.is-scrolled {
             top: 12px !important;
             left: 12px !important;
@@ -151,7 +151,7 @@ export const Header = () => {
             transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1) !important;
           }
         }
-        @media (min-width: 769px) {
+        @media (min-width: 1024px) {
           .header-hamburger,
           .header-invite-icon-mobile { display: none !important; }
           /* Floating semi-transparent pill on scroll (desktop) */
