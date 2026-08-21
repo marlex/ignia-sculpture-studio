@@ -58,7 +58,7 @@ const T = {
       { t: "Blockchain Certificate", d: "Verifiable authenticity, forever." },
       { t: "Fair Pricing", d: "Set by expert criteria." },
       { t: "Global Reach", d: "Collectors worldwide, from day one." },
-      { t: "85%", d: "Of every sale, for the sculptor.", count: 85 },
+      { t: "Fair prices and commissions", d: "85% of every sale, for the sculptor." },
       { t: "Specialized Logistics", d: "Door to door." },
       { t: "Augmented Reality", d: "See it in your own space, from your phone." },
     ],
