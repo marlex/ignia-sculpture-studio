@@ -318,13 +318,15 @@ const Guidance = () => {
             fontFamily: "'Cormorant Garamond', serif",
             fontWeight: 600,
             color: "#FFFFFF",
-            fontSize: "clamp(72px, 16.5vw, 260px)",
-            lineHeight: 0.85,
-            letterSpacing: "-0.04em",
+            fontSize: "clamp(42px, 8.5vw, 118px)",
+            lineHeight: 1.0,
+            letterSpacing: "-0.03em",
             margin: 0,
-            whiteSpace: "nowrap",
             textAlign: "center",
-            userSelect: "none",
+            padding: "0 24px",
+            textWrap: "balance",
+            overflowWrap: "break-word",
+            maxWidth: "100%",
           }}
         >
           {t.wallStatement}
