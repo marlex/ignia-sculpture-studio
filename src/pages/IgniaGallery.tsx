@@ -19,14 +19,15 @@ const T = {
     offerEy: "QUÉ TE OFRECEMOS",
     offerH: "Todo lo que la escultura necesitaba, en un solo lugar.",
     offers: [
-      "Visualización 3D — gírala, acércate, entiéndela antes de comprar.",
-      "Certificado blockchain — autenticidad verificable, para siempre.",
-      "Precio justo, fijado por criterio experto.",
-      "Alcance global — coleccionistas en todo el mundo, desde el día uno.",
-      "Hasta el 85% de cada venta, para el escultor.",
-      "Logística especializada, puerta a puerta.",
-      "Realidad aumentada — visualízala en tu propio espacio, desde el móvil.",
+      { t: "Visualización 3D", d: "Gírala, acércate, entiéndela antes de comprar." },
+      { t: "Certificado Blockchain", d: "Autenticidad verificable, para siempre." },
+      { t: "Precio Justo", d: "Fijado por criterio experto." },
+      { t: "Alcance Global", d: "Coleccionistas en todo el mundo, desde el día uno." },
+      { t: "85%", d: "De cada venta, para el escultor.", count: 85 },
+      { t: "Logística Especializada", d: "Puerta a puerta." },
+      { t: "Realidad Aumentada", d: "Visualízala en tu propio espacio, desde el móvil." },
     ],
+
     bannerH: "Del latín ignis, fuego.",
     bannerP: "Lo que enciende lo que nadie veía todavía.",
     audEy: "Un lugar para cada perspectiva",
@@ -53,14 +54,15 @@ const T = {
     offerEy: "WHAT WE OFFER",
     offerH: "Everything sculpture needed, in one place.",
     offers: [
-      "3D viewing — rotate it, zoom in, understand it before buying.",
-      "Blockchain certificate — verifiable authenticity, forever.",
-      "Fair pricing, set by expert criteria.",
-      "Global reach — collectors worldwide, from day one.",
-      "Up to 85% of every sale, for the sculptor.",
-      "Specialised logistics, door to door.",
-      "Augmented reality — see it in your own space, from your phone.",
+      { t: "3D Viewing", d: "Rotate it, zoom in, understand it before buying." },
+      { t: "Blockchain Certificate", d: "Verifiable authenticity, forever." },
+      { t: "Fair Pricing", d: "Set by expert criteria." },
+      { t: "Global Reach", d: "Collectors worldwide, from day one." },
+      { t: "85%", d: "Of every sale, for the sculptor.", count: 85 },
+      { t: "Specialized Logistics", d: "Door to door." },
+      { t: "Augmented Reality", d: "See it in your own space, from your phone." },
     ],
+
     bannerH: "From the Latin ignis, fire.",
     bannerP: "What ignites what no one could yet see.",
     audEy: "A place for every perspective",
@@ -188,10 +190,42 @@ const IconAR = () => (
   </svg>
 );
 
+function OfferRow({ title, desc, count, last }: { title: string; desc: string; count?: number; last?: boolean }) {
+  const { ref, seen } = useInView<HTMLDivElement>();
+  const [n, setN] = useState(0);
+
+  useEffect(() => {
+    if (!seen || !count) return;
+    const start = performance.now();
+    let raf = 0;
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - start) / 1500);
+      setN(Math.round(count * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [seen, count]);
+
+  return (
+    <div ref={ref} className={`of-row group py-8 md:py-11 ${seen ? "of-in" : ""}`}>
+      <span className="of-rule" aria-hidden />
+      <div className="of-title-wrap">
+        <h3 className="of-title">{count ? `${n}%` : title}</h3>
+        <span className="of-curtain" aria-hidden />
+        <span className="of-underline" aria-hidden />
+      </div>
+      <p className="of-desc">{desc}</p>
+      {last && <span className="of-rule of-rule-last" aria-hidden />}
+    </div>
+  );
+}
+
 const AboutPage = () => {
+
   const lang = useLang();
   const t = T[lang];
-  const offers = useInView<HTMLDivElement>();
+  
   const aud = useInView<HTMLDivElement>();
 
   const icons = [Icon3D, IconSeal, IconScale, IconGlobe, null, IconBox, IconAR];
@@ -208,7 +242,21 @@ const AboutPage = () => {
       <Header />
 
       <style>{`
+        .of-row { position: relative; }
+        .of-rule { position:absolute; top:0; left:0; height:1px; width:0; background: rgba(18,18,18,0.16); transition: width 900ms cubic-bezier(0.16,1,0.3,1); }
+        .of-rule-last { top:auto; bottom:0; }
+        .of-in .of-rule, .of-in > .of-rule { width:100%; }
+        .of-title-wrap { position: relative; display: inline-block; overflow: hidden; }
+        .of-title { font-family:'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: clamp(34px, 5.2vw, 62px); line-height: 1.05; letter-spacing:-0.02em; color:#121212; margin:0; }
+        .of-curtain { position:absolute; inset:0; background:#F5F5F5; transform: translateX(0); transition: transform 900ms cubic-bezier(0.76,0,0.24,1) 120ms; }
+        .of-in .of-curtain { transform: translateX(101%); }
+        .of-underline { position:absolute; left:0; bottom:2px; height:1px; width:100%; background:#121212; transform: scaleX(0); transform-origin: left center; transition: transform 420ms cubic-bezier(0.16,1,0.3,1); }
+        @media (hover:hover) { .of-row:hover .of-underline { transform: scaleX(1); } }
+        .of-desc { font-family: var(--f-body); font-size: 15px; line-height:1.7; color:#6b6b6b; margin: 14px 0 0; opacity:0; transform: translateY(8px); transition: opacity 600ms ease-out 900ms, transform 600ms ease-out 900ms; }
+        .of-in .of-desc { opacity:1; transform: none; }
+        @media (prefers-reduced-motion: reduce) { .of-curtain { display:none } .of-desc { opacity:1 !important; transform:none !important } .of-rule { width:100% !important } }
         .ab-card { opacity:0; transform: translateY(24px); transition: opacity 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1); }
+
         .ab-in .ab-card { opacity:1; transform: translateY(0); }
         .ab-ico-spin { animation: ab-spin 2s ease-in-out 1 both; transform-origin: 50% 50%; }
         @keyframes ab-spin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
@@ -253,26 +301,12 @@ const AboutPage = () => {
           <h2 className="font-display font-semibold text-[clamp(32px,4vw,54px)] tracking-[-0.02em] leading-[1.08] text-ink mb-14 md:mb-20">
             {t.offerH}
           </h2>
-          <div
-            ref={offers.ref}
-            className={`max-w-[760px] mx-auto text-left space-y-0 ${offers.seen ? "ab-in" : ""}`}
-          >
-            {t.offers.map((line, i) => {
-              const [head, rest] = line.split(" — ");
-              return (
-                <div
-                  key={line}
-                  className="ab-card py-6 md:py-8 border-t border-[#121212]/10"
-                  style={{ transitionDelay: `${i * 80}ms` }}
-                >
-                  <p className="font-body text-[16px] md:text-[18px] font-normal leading-[1.7]" style={{ color: "#121212" }}>
-                    <span className="font-semibold">{head}</span>
-                    {rest && <span> — {rest}</span>}
-                  </p>
-                </div>
-              );
-            })}
+          <div className="max-w-[760px] mx-auto text-left">
+            {t.offers.map((o, i) => (
+              <OfferRow key={o.t} title={o.t} desc={o.d} count={(o as { count?: number }).count} last={i === t.offers.length - 1} />
+            ))}
           </div>
+
         </div>
       </section>
 
