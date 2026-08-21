@@ -16,7 +16,7 @@ const AprendePage = () => {
       <Header />
       <section className="px-6 md:px-12 pt-16 pb-10 bg-white">
         <div className="eyebrow mb-3">{t.eyebrow}</div>
-        <h1 className="font-display font-semibold text-[clamp(36px,5vw,64px)] tracking-[-0.02em] text-ink leading-[1.05]">{t.h}</h1>
+        <h1 className="font-display font-medium text-[clamp(36px,5vw,64px)] tracking-[-0.02em] text-ink leading-[1.05]">{t.h}</h1>
         <p className="font-body text-[16px] font-normal text-gray max-w-[640px] mt-4">{t.sub}</p>
       </section>
       <AprendeSection showHeader={false} />

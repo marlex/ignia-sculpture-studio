@@ -162,7 +162,7 @@ export default function Obras() {
   return (
     <div>
       <h1 style={{
-        fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212",
+        fontFamily: "'Cormorant Garamond', serif", fontWeight: 500, color: "#121212",
         fontSize: "clamp(28px, 3.4vw, 40px)", lineHeight: 1.1, letterSpacing: "-0.02em",
         margin: "0 0 8px",
       }}>{t.title}</h1>

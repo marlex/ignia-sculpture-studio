@@ -240,7 +240,7 @@ const Guidance = () => {
           <h1
             style={{
               fontFamily: "'Cormorant Garamond', serif",
-              fontWeight: 600,
+              fontWeight: 500,
               color: "#FFFFFF",
               fontSize: "clamp(64px, 12vw, 160px)",
               lineHeight: 0.9,

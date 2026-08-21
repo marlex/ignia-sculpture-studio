@@ -129,7 +129,7 @@ export default function ObraAnalytics() {
           </div>
           <div>
             <div className="eyebrow mb-2">Analítica de obra</div>
-            <h1 className="font-display font-semibold text-[clamp(32px,4vw,52px)] tracking-[-0.02em] text-ink leading-[1.05] mb-2">{obra.titulo}</h1>
+            <h1 className="font-display font-medium text-[clamp(32px,4vw,52px)] tracking-[-0.02em] text-ink leading-[1.05] mb-2">{obra.titulo}</h1>
             <div className="font-body text-[14px] text-gray">{obra.anyo} · {obra.tecnica}</div>
           </div>
         </div>

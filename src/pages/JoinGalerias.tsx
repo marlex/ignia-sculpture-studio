@@ -207,7 +207,7 @@ const JoinGalerias = () => {
         >
           <h1 style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontWeight: 600,
+            fontWeight: 500,
             color: "#121212",
             fontSize: "clamp(44px, 6.4vw, 96px)",
             lineHeight: 1.02,

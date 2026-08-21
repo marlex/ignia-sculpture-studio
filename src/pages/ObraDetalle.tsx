@@ -296,7 +296,7 @@ const ObraDetalle = () => {
 
           <div>
             <div className="eyebrow mb-3"><Link to="/coleccion" className="hover:opacity-65 transition-opacity">{t.back}</Link></div>
-            <h1 className="font-display font-semibold text-[clamp(32px,4vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-3">{o.title}</h1>
+            <h1 className="font-display font-medium text-[clamp(32px,4vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-3">{o.title}</h1>
             <div className="font-body text-[16px] font-normal text-gray mb-6">
               <Link to={`/perfil/escultor/${o.artist.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} className="underline-offset-4 hover:underline">{o.artist}</Link> · {o.material} · {o.year} · {o.edition}
             </div>

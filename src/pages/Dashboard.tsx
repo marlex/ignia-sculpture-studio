@@ -56,7 +56,7 @@ export default function Dashboard() {
         </aside>
 
         <section style={{ padding: "56px 56px 80px" }}>
-          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 48 }}>
+          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 48 }}>
             Bienvenida, Helena.
           </h1>
 

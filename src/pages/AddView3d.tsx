@@ -64,7 +64,7 @@ export default function AddView3d() {
 
       <section className="max-w-[880px] mx-auto px-6 py-10 md:py-14">
         <div className="eyebrow mb-2">Añadir vista 3D</div>
-        <h1 className="font-display font-semibold text-[clamp(26px,3vw,38px)] tracking-[-0.02em] text-ink mb-2 leading-tight">
+        <h1 className="font-display font-medium text-[clamp(26px,3vw,38px)] tracking-[-0.02em] text-ink mb-2 leading-tight">
           {obra.titulo}
         </h1>
         <p className="font-body text-[14px] text-gray mb-10">Genera la vista 3D de tu escultura a partir de fotografías.</p>

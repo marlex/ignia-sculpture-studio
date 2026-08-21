@@ -115,7 +115,7 @@ export default function UneteAIgnia() {
           <div style={{ textAlign: "center" }}>
             <h1 style={{
               fontFamily: "'Cormorant Garamond', serif",
-              fontWeight: 600,
+              fontWeight: 500,
               color: "#121212",
               fontSize: "clamp(32px, 4vw, 44px)",
               lineHeight: 1.1,
