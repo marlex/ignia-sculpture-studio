@@ -66,8 +66,9 @@ export const Header = () => {
   }, []);
 
   const openInvite = () => {
-    window.dispatchEvent(new Event("ignia:open-invite"));
+    window.dispatchEvent(new CustomEvent("ignia:open-invite", { detail: { source: "header" } }));
   };
+
 
   const openPartners = () => {
     window.dispatchEvent(new CustomEvent("ignia:open-invite", { detail: { variant: "partners" } }));
