@@ -210,12 +210,14 @@ function OfferRow({ title, desc, count, last }: { title: string; desc: string; c
   return (
     <div ref={ref} className={`of-row group py-8 md:py-11 ${seen ? "of-in" : ""}`}>
       <span className="of-rule" aria-hidden />
-      <div className="of-title-wrap">
-        <h3 className="of-title">{count ? `${n}%` : title}</h3>
-        <span className="of-curtain" aria-hidden />
-        <span className="of-underline" aria-hidden />
+      <div className="of-content">
+        <div className="of-title-wrap">
+          <h3 className="of-title">{count ? `${n}%` : title}</h3>
+          <span className="of-curtain" aria-hidden />
+        </div>
+        <span className="of-sep" aria-hidden> · </span>
+        <p className="of-desc">{desc}</p>
       </div>
-      <p className="of-desc">{desc}</p>
       {last && <span className="of-rule of-rule-last" aria-hidden />}
     </div>
   );
