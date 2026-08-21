@@ -9,37 +9,37 @@ import { supabase } from "@/integrations/supabase/client";
 
 type NavItem = { label: string; to?: string; action?: "partners" };
 
-// Left nav (desktop): Sculptors, Guidance, Learn, Sobre Ignia
+// Left nav (desktop): Sculptors, Guidance, Community, Learn, Sobre Ignia
 const NAV_LEFT: Record<"es" | "en", NavItem[]> = {
   es: [
     { label: "Escultores", to: "/join/escultores" },
     { label: "Guidance", to: "/guidance" },
+    { label: "Comunidad", to: "/editorial" },
     { label: "Aprende", to: "/aprende" },
     { label: "Sobre Ignia", to: "/ignia-gallery" },
   ],
   en: [
     { label: "Sculptors", to: "/join/sculptors" },
     { label: "Guidance", to: "/guidance" },
+    { label: "Community", to: "/editorial" },
     { label: "Learn", to: "/aprende" },
     { label: "Sobre Ignia", to: "/ignia-gallery" },
   ],
 };
 
-// Right nav (desktop): Sculptures, Community, Partnerships
+// Right nav (desktop): Sculptures, Partnerships
 const NAV_RIGHT: Record<"es" | "en", NavItem[]> = {
   es: [
     { label: "Esculturas", to: "/coleccion" },
-    { label: "Comunidad", to: "/editorial" },
     { label: "Partnerships", action: "partners" },
   ],
   en: [
     { label: "Sculptures", to: "/coleccion" },
-    { label: "Community", to: "/editorial" },
     { label: "Partnerships", action: "partners" },
   ],
 };
 
-// Full nav order for mobile drawer
+// Full nav order for mobile drawer (left + right)
 const NAV_ALL: Record<"es" | "en", NavItem[]> = {
   es: [...NAV_LEFT.es, ...NAV_RIGHT.es],
   en: [...NAV_LEFT.en, ...NAV_RIGHT.en],
