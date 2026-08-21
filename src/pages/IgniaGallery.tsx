@@ -1,5 +1,6 @@
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
+import { Logo } from "@/components/ignia/Logo";
 import studio from "@/assets/hero-bg-studio.jpg.asset.json";
 import { useLang } from "@/i18n/LanguageContext";
 import { Seo } from "@/components/Seo";
