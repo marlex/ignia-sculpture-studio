@@ -26,7 +26,7 @@ const T = {
       "Logística especializada, puerta a puerta.",
       "Realidad aumentada — visualízala en tu propio espacio, desde el móvil.",
     ],
-    bannerH: "Ignia — del latín ignis, fuego.",
+    bannerH: "Del latín ignis, fuego.",
     bannerP: "Lo que enciende lo que nadie veía todavía.",
     audEy: "Un lugar para cada perspectiva",
     aud: [
