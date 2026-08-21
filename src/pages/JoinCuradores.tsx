@@ -264,13 +264,12 @@ const JoinCuradores = () => {
       <section
         style={{
           background: "#FFFFFF",
-          minHeight: "92vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           position: "relative",
           overflow: "hidden",
-          padding: "clamp(80px, 10vw, 160px) 24px",
+          padding: "clamp(64px, 10vw, 120px) 24px",
         }}
       >
         <div
