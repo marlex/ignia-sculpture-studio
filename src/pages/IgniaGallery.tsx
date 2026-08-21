@@ -344,47 +344,6 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Contacto */}
-      <section className="bg-white px-6 md:px-12 py-20">
-        <div className="max-w-[1080px] mx-auto">
-          <div className="eyebrow mb-3">{t.contactEy}</div>
-          <ul className="font-body text-[16px] font-normal text-gray leading-relaxed space-y-1">
-            <li>
-              Instagram:{" "}
-              <a href="https://www.instagram.com/igniagallery/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:opacity-65 transition-opacity">
-                @igniagallery
-              </a>
-            </li>
-            <li>
-              LinkedIn:{" "}
-              <a href="https://www.linkedin.com/company/ignia-gallery/about/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:opacity-65 transition-opacity">
-                Ignia Gallery
-              </a>
-            </li>
-          </ul>
-          <button
-            type="button"
-            onClick={openInvite}
-            className="mt-8"
-            style={{
-              fontFamily: "Manrope, sans-serif",
-              fontWeight: 500,
-              fontSize: 13,
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              padding: "16px 32px",
-              background: "#121212",
-              color: "#FFFFFF",
-              border: "1px solid #121212",
-              borderRadius: 0,
-              cursor: "pointer",
-            }}
-          >
-            {t.join}
-          </button>
-        </div>
-      </section>
-
       <Footer />
     </main>
   );
