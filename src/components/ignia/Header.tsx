@@ -196,7 +196,7 @@ export const Header = () => {
             <span style={{ width: 18, height: 1, background: "#121212", display: "block" }} />
             <span style={{ width: 18, height: 1, background: "#121212", display: "block" }} />
           </button>
-          <nav className="header-nav-links hidden md:flex items-center gap-9">
+          <nav className="header-nav-links hidden lg:flex items-center gap-9">
             {leftItems.map(renderNavItem)}
           </nav>
         </div>
@@ -210,14 +210,14 @@ export const Header = () => {
 
         {/* RIGHT: desktop cluster + mobile invite icon */}
         <div className="header-right-cluster col-start-3 flex items-center justify-end gap-9">
-          <nav className="header-nav-links hidden md:flex items-center gap-9">
+          <nav className="header-nav-links hidden lg:flex items-center gap-9">
             {rightItems.map(renderNavItem)}
           </nav>
-          <div className="header-lang hidden md:flex">
+          <div className="header-lang hidden lg:flex">
             <LangDropdown lang={lang} setLang={setLang} />
           </div>
           {SHOW_PUBLIC_AUTH && (user ? (
-            <div className="header-user-links hidden md:flex items-center gap-9">
+            <div className="header-user-links hidden lg:flex items-center gap-9">
               <Link to="/dashboard" className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
                 {t.dashboard}
               </Link>
@@ -234,13 +234,13 @@ export const Header = () => {
             <>
               <Link
                 to="/admin/dashboard"
-                className="header-invite-btn hidden sm:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
+                className="header-invite-btn hidden lg:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
               >
                 {t.adminPanel}
               </Link>
               <button
                 onClick={handleSbLogout}
-                className="header-invite-btn hidden sm:inline-flex !py-2 !px-4 text-[13px] font-medium"
+                className="header-invite-btn hidden lg:inline-flex !py-2 !px-4 text-[13px] font-medium"
                 style={{
                   background: "#121212",
                   color: "#FFFFFF",
@@ -261,14 +261,14 @@ export const Header = () => {
             <>
               <Link
                 to="/login"
-                className="header-invite-btn hidden sm:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
+                className="header-invite-btn hidden lg:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
               >
                 {t.login}
               </Link>
               <button
                 type="button"
                 onClick={openInvite}
-                className="header-invite-btn hidden sm:inline-flex !py-2 !px-4 text-[13px] font-medium"
+                className="header-invite-btn hidden lg:inline-flex !py-2 !px-4 text-[13px] font-medium"
                 style={{
                   background: "#121212",
                   color: "#FFFFFF",
