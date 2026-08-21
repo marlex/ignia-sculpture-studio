@@ -247,11 +247,9 @@ const AboutPage = () => {
         .of-rule-last { top:auto; bottom:0; }
         .of-in .of-rule, .of-in > .of-rule { width:100%; }
         .of-title-wrap { position: relative; display: inline-block; overflow: hidden; }
-        .of-title { font-family:'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: clamp(34px, 5.2vw, 62px); line-height: 1.05; letter-spacing:-0.02em; color:#121212; margin:0; }
+        .of-title { font-family:'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: clamp(28px, 3.2vw, 32px); line-height: 1.05; letter-spacing:-0.02em; color:#121212; margin:0; }
         .of-curtain { position:absolute; inset:0; background:#F5F5F5; transform: translateX(0); transition: transform 900ms cubic-bezier(0.76,0,0.24,1) 120ms; }
         .of-in .of-curtain { transform: translateX(101%); }
-        .of-underline { position:absolute; left:0; bottom:2px; height:1px; width:100%; background:#121212; transform: scaleX(0); transform-origin: left center; transition: transform 420ms cubic-bezier(0.16,1,0.3,1); }
-        @media (hover:hover) { .of-row:hover .of-underline { transform: scaleX(1); } }
         .of-desc { font-family: var(--f-body); font-size: 17px; line-height: 1.625; color: hsl(var(--gray)); margin: 14px 0 0; opacity:0; transform: translateY(8px); transition: opacity 600ms ease-out 900ms, transform 600ms ease-out 900ms; }
         .of-in .of-desc { opacity:1; transform: none; }
         @media (prefers-reduced-motion: reduce) { .of-curtain { display:none } .of-desc { opacity:1 !important; transform:none !important } .of-rule { width:100% !important } }
