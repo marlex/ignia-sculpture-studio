@@ -126,7 +126,7 @@ export const Header = () => {
       className={`ignia-header fixed top-0 left-0 right-0 z-[100] h-14 bg-white/95 backdrop-blur border-b border-border flex items-center px-6 md:px-12 ${scrolled ? "is-scrolled" : ""}`}
     >
       <style>{`
-        @media (max-width: 1023px) {
+        @media (max-width: 1279px) {
           .header-nav-links { display: none !important; }
           .header-user-links { display: none !important; }
           .header-invite-btn { display: none !important; }
@@ -151,7 +151,7 @@ export const Header = () => {
             transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1) !important;
           }
         }
-        @media (min-width: 1024px) {
+        @media (min-width: 1280px) {
           .header-hamburger,
           .header-invite-icon-mobile { display: none !important; }
           /* Floating semi-transparent pill on scroll (desktop) */
@@ -196,7 +196,7 @@ export const Header = () => {
             <span style={{ width: 18, height: 1, background: "#121212", display: "block" }} />
             <span style={{ width: 18, height: 1, background: "#121212", display: "block" }} />
           </button>
-          <nav className="header-nav-links hidden lg:flex items-center gap-9">
+          <nav className="header-nav-links hidden xl:flex items-center gap-9">
             {leftItems.map(renderNavItem)}
           </nav>
         </div>
@@ -210,14 +210,14 @@ export const Header = () => {
 
         {/* RIGHT: desktop cluster + mobile invite icon */}
         <div className="header-right-cluster col-start-3 flex items-center justify-end gap-9">
-          <nav className="header-nav-links hidden lg:flex items-center gap-9">
+          <nav className="header-nav-links hidden xl:flex items-center gap-9">
             {rightItems.map(renderNavItem)}
           </nav>
-          <div className="header-lang hidden lg:flex">
+          <div className="header-lang hidden xl:flex">
             <LangDropdown lang={lang} setLang={setLang} />
           </div>
           {SHOW_PUBLIC_AUTH && (user ? (
-            <div className="header-user-links hidden lg:flex items-center gap-9">
+            <div className="header-user-links hidden xl:flex items-center gap-9">
               <Link to="/dashboard" className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
                 {t.dashboard}
               </Link>
@@ -234,13 +234,13 @@ export const Header = () => {
             <>
               <Link
                 to="/admin/dashboard"
-                className="header-invite-btn hidden lg:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
+                className="header-invite-btn hidden xl:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
               >
                 {t.adminPanel}
               </Link>
               <button
                 onClick={handleSbLogout}
-                className="header-invite-btn hidden lg:inline-flex !py-2 !px-4 text-[13px] font-medium"
+                className="header-invite-btn hidden xl:inline-flex !py-2 !px-4 text-[13px] font-medium"
                 style={{
                   background: "#121212",
                   color: "#FFFFFF",
@@ -261,14 +261,14 @@ export const Header = () => {
             <>
               <Link
                 to="/login"
-                className="header-invite-btn hidden lg:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
+                className="header-invite-btn hidden xl:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
               >
                 {t.login}
               </Link>
               <button
                 type="button"
                 onClick={openInvite}
-                className="header-invite-btn hidden lg:inline-flex !py-2 !px-4 text-[13px] font-medium"
+                className="header-invite-btn hidden xl:inline-flex !py-2 !px-4 text-[13px] font-medium"
                 style={{
                   background: "#121212",
                   color: "#FFFFFF",
