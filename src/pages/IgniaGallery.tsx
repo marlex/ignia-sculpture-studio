@@ -277,11 +277,7 @@ const AboutPage = () => {
           style={{ zIndex: 0 }}
           aria-hidden
         >
-          <Logo
-            fill="#f2f2f2"
-            width={Math.min(460, Math.max(160, typeof window !== 'undefined' ? window.innerWidth * 0.3 : 300))}
-            style={{ width: "clamp(160px, 30vw, 460px)", height: "auto" }}
-          />
+          <Logo fill="#f2f2f2" className="w-[clamp(160px,30vw,460px)] h-auto" />
         </span>
         <div className="relative z-10">
           <p
