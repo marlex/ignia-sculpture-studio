@@ -1,10 +1,11 @@
 interface LogoProps {
   variant?: "dark" | "light";
   width?: number;
+  fill?: string;
 }
 
-export const Logo = ({ variant = "dark", width = 94 }: LogoProps) => {
-  const fill = variant === "dark" ? "#222222" : "#FFFFFF";
+export const Logo = ({ variant = "dark", width = 94, fill: fillProp }: LogoProps) => {
+  const fill = fillProp ?? (variant === "dark" ? "#222222" : "#FFFFFF");
   const height = (width * 66) / 150;
   return (
     <svg width={width} height={height} viewBox="0 0 150 66" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ignia Gallery">
