@@ -9,8 +9,9 @@ export const GlobalInviteModal = () => {
 
   useEffect(() => {
     const handleOpen = (e: Event) => {
-      // Join pages have their own application modal; keep it untouched.
-      if (location.pathname.startsWith("/join/")) return;
+      // These join pages have their own application modal; keep it untouched.
+      const PAGES_WITH_OWN_MODAL = ["/join/escultores", "/join/coleccionistas"];
+      if (PAGES_WITH_OWN_MODAL.some((p) => location.pathname.startsWith(p))) return;
       const detail = (e as CustomEvent<{ defaultProfile?: "collector" | "artist" }>).detail;
       setDefaultProfile(detail?.defaultProfile);
       setOpen(true);
