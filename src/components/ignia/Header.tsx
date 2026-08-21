@@ -9,37 +9,37 @@ import { supabase } from "@/integrations/supabase/client";
 
 type NavItem = { label: string; to?: string; action?: "partners" };
 
-// Left nav (desktop): Sculptors, Guidance, Learn, Sobre Ignia
+// Left nav (desktop): Sculptors, Guidance, Community, Learn, Sobre Ignia
 const NAV_LEFT: Record<"es" | "en", NavItem[]> = {
   es: [
     { label: "Escultores", to: "/join/escultores" },
     { label: "Guidance", to: "/guidance" },
+    { label: "Comunidad", to: "/editorial" },
     { label: "Aprende", to: "/aprende" },
     { label: "Sobre Ignia", to: "/ignia-gallery" },
   ],
   en: [
     { label: "Sculptors", to: "/join/sculptors" },
     { label: "Guidance", to: "/guidance" },
+    { label: "Community", to: "/editorial" },
     { label: "Learn", to: "/aprende" },
     { label: "Sobre Ignia", to: "/ignia-gallery" },
   ],
 };
 
-// Right nav (desktop): Sculptures, Community, Partnerships
+// Right nav (desktop): Sculptures, Partnerships
 const NAV_RIGHT: Record<"es" | "en", NavItem[]> = {
   es: [
     { label: "Esculturas", to: "/coleccion" },
-    { label: "Comunidad", to: "/editorial" },
     { label: "Partnerships", action: "partners" },
   ],
   en: [
     { label: "Sculptures", to: "/coleccion" },
-    { label: "Community", to: "/editorial" },
     { label: "Partnerships", action: "partners" },
   ],
 };
 
-// Full nav order for mobile drawer
+// Full nav order for mobile drawer (left + right)
 const NAV_ALL: Record<"es" | "en", NavItem[]> = {
   es: [...NAV_LEFT.es, ...NAV_RIGHT.es],
   en: [...NAV_LEFT.en, ...NAV_RIGHT.en],
@@ -126,7 +126,7 @@ export const Header = () => {
       className={`ignia-header fixed top-0 left-0 right-0 z-[100] h-14 bg-white/95 backdrop-blur border-b border-border flex items-center px-6 md:px-12 ${scrolled ? "is-scrolled" : ""}`}
     >
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 1279px) {
           .header-nav-links { display: none !important; }
           .header-user-links { display: none !important; }
           .header-invite-btn { display: none !important; }
@@ -134,7 +134,7 @@ export const Header = () => {
           .header-lang { display: none !important; }
           .header-gallery-link { display: none !important; }
           .header-right-cluster { justify-content: flex-end !important; }
-          /* Floating semi-transparent pill on scroll (mobile only) */
+          /* Floating semi-transparent pill on scroll (mobile + tablet) */
           .ignia-header.is-scrolled {
             top: 12px !important;
             left: 12px !important;
@@ -151,7 +151,7 @@ export const Header = () => {
             transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1) !important;
           }
         }
-        @media (min-width: 769px) {
+        @media (min-width: 1280px) {
           .header-hamburger,
           .header-invite-icon-mobile { display: none !important; }
           /* Floating semi-transparent pill on scroll (desktop) */
@@ -173,7 +173,7 @@ export const Header = () => {
         }
         .ignia-header { transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1); }
       `}</style>
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center w-full gap-4">
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center w-full gap-9">
         {/* LEFT: desktop nav + mobile hamburger */}
         <div className="col-start-1 flex items-center gap-9 justify-start">
           <button
@@ -196,7 +196,7 @@ export const Header = () => {
             <span style={{ width: 18, height: 1, background: "#121212", display: "block" }} />
             <span style={{ width: 18, height: 1, background: "#121212", display: "block" }} />
           </button>
-          <nav className="header-nav-links hidden md:flex items-center gap-9">
+          <nav className="header-nav-links hidden xl:flex items-center gap-9">
             {leftItems.map(renderNavItem)}
           </nav>
         </div>
@@ -209,17 +209,15 @@ export const Header = () => {
         </Link>
 
         {/* RIGHT: desktop cluster + mobile invite icon */}
-        <div className="header-right-cluster col-start-3 flex items-center justify-end gap-4">
-          <div className="hidden md:flex items-center gap-9">
-            <nav className="header-nav-links flex items-center gap-9">
-              {rightItems.map(renderNavItem)}
-            </nav>
-            <div className="header-lang">
-              <LangDropdown lang={lang} setLang={setLang} />
-            </div>
+        <div className="header-right-cluster col-start-3 flex items-center justify-end gap-9">
+          <nav className="header-nav-links hidden xl:flex items-center gap-9">
+            {rightItems.map(renderNavItem)}
+          </nav>
+          <div className="header-lang hidden xl:flex">
+            <LangDropdown lang={lang} setLang={setLang} />
           </div>
           {SHOW_PUBLIC_AUTH && (user ? (
-            <div className="header-user-links hidden md:flex items-center gap-3">
+            <div className="header-user-links hidden xl:flex items-center gap-9">
               <Link to="/dashboard" className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
                 {t.dashboard}
               </Link>
@@ -236,13 +234,13 @@ export const Header = () => {
             <>
               <Link
                 to="/admin/dashboard"
-                className="header-invite-btn hidden sm:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
+                className="header-invite-btn hidden xl:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
               >
                 {t.adminPanel}
               </Link>
               <button
                 onClick={handleSbLogout}
-                className="header-invite-btn hidden sm:inline-flex !py-2 !px-4 text-[13px] font-medium"
+                className="header-invite-btn hidden xl:inline-flex !py-2 !px-4 text-[13px] font-medium"
                 style={{
                   background: "#121212",
                   color: "#FFFFFF",
@@ -263,14 +261,14 @@ export const Header = () => {
             <>
               <Link
                 to="/login"
-                className="header-invite-btn hidden sm:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
+                className="header-invite-btn hidden xl:inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
               >
                 {t.login}
               </Link>
               <button
                 type="button"
                 onClick={openInvite}
-                className="header-invite-btn hidden sm:inline-flex !py-2 !px-4 text-[13px] font-medium"
+                className="header-invite-btn hidden xl:inline-flex !py-2 !px-4 text-[13px] font-medium"
                 style={{
                   background: "#121212",
                   color: "#FFFFFF",
@@ -373,7 +371,7 @@ export const Header = () => {
             );
           })}
           {/* Language switch inside mobile drawer */}
-          <div style={{ display: "flex", gap: 18, marginTop: 12 }}>
+          <div style={{ display: "flex", gap: 18 }}>
             {LANGS.map((l) => {
               const active = l.code === lang;
               return (
