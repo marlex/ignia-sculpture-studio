@@ -226,10 +226,10 @@ const AboutPage = () => {
       `}</style>
 
       {/* Hero */}
-      <section className="relative h-[58vh] min-h-[400px] overflow-hidden">
+      <section className="relative h-[70vh] min-h-[460px] overflow-hidden">
         <img src={studio} alt="Ignia studio" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative h-full flex flex-col justify-end px-6 md:px-12 pb-12 max-w-[1280px] mx-auto">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/55 to-black/70" />
+        <div className="relative h-full flex flex-col justify-center items-center text-center px-6 md:px-12 max-w-[1280px] mx-auto">
           <div className="eyebrow text-white/80 mb-3">{t.eyebrow}</div>
           <h1 className="font-display font-semibold text-white text-[clamp(40px,6vw,76px)] tracking-[-0.02em] leading-[1.02] max-w-[900px]">{t.h}</h1>
           <p className="font-body text-[16px] md:text-[18px] font-normal text-white/85 max-w-[640px] mt-5 italic">{t.cite}</p>
