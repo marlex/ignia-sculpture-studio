@@ -264,15 +264,15 @@ const JoinAdvisors = () => {
         </div>
       </section>
 
-      {/* 2. FRANJA DE 3 VALORES — DARK */}
-      <section style={{ padding: "120px 24px", background: "#121212" }}>
+      {/* 2. FRANJA DE 3 VALORES */}
+      <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
         <div className="why-grid" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 64 }}>
           {[t.why1, t.why2, t.why3].map((item, i) => (
             <div key={i} className="why-col" style={{ position: "relative", textAlign: "center" }}>
-              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#FFFFFF", fontSize: 26, lineHeight: 1.2, margin: 0, textAlign: "center" }}>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 26, lineHeight: 1.2, margin: 0, textAlign: "center" }}>
                 {item.title}
               </h3>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "rgba(255,255,255,0.70)", fontSize: 16, lineHeight: 1.7, textAlign: "center", margin: "12px 0 0" }}>
+              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#121212", fontSize: 16, lineHeight: 1.7, textAlign: "center", margin: "12px 0 0" }}>
                 {item.text}
               </p>
             </div>
