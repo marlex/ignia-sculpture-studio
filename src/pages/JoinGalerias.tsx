@@ -3,6 +3,7 @@ import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
 import { Seo } from "@/components/Seo";
+import { CrossSellBlock } from "@/components/ignia/CrossSellBlock";
 import heroGalerias from "@/assets/hero-galerias.jpg";
 
 const OUTLINE_BTN: React.CSSProperties = {
@@ -384,6 +385,9 @@ const JoinGalerias = () => {
           )}
         </div>
       </section>
+
+      {/* CROSS-SELL */}
+      <CrossSellBlock exclude={["galleries"]} />
 
       {/* 7. FAQ */}
       <section style={{ padding: "120px 24px 160px", background: "#FAFAFA" }}>

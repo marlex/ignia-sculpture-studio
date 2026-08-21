@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
+import { CrossSellBlock } from "@/components/ignia/CrossSellBlock";
 import { useLang } from "@/i18n/LanguageContext";
 import { Seo } from "@/components/Seo";
 import heroMacro from "@/assets/guidance-hero-macro.jpg";
@@ -400,6 +401,9 @@ const Guidance = () => {
           </Link>
         </div>
       </section>
+
+      {/* CROSS-SELL */}
+      <CrossSellBlock exclude={["curators", "advisors"]} />
 
       {/* 6. EMAIL FORM */}
       <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
