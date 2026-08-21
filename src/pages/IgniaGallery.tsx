@@ -270,20 +270,47 @@ const AboutPage = () => {
       </section>
 
       {/* Banner */}
-      <section className="bg-white px-6 md:px-12 py-24 text-center">
-        <p
+      <section className="relative bg-white px-6 md:px-12 py-28 md:py-36 text-center overflow-hidden">
+        <span
+          className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
           style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontStyle: "italic",
             fontWeight: 400,
-            fontSize: "clamp(26px,3vw,38px)",
-            color: "#121212",
-            margin: 0,
+            fontSize: "clamp(140px, 28vw, 420px)",
+            lineHeight: 1,
+            color: "#f2f2f2",
+            zIndex: 0,
+            letterSpacing: "-0.03em",
           }}
+          aria-hidden
         >
-          {t.bannerH}
-        </p>
-        <p className="font-body text-[15px] font-normal text-gray mt-4">{t.bannerP}</p>
+          Ignia
+        </span>
+        <div className="relative z-10">
+          <p
+            className="font-display italic"
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontWeight: 400,
+              fontSize: "clamp(34px, 5vw, 68px)",
+              color: "#000000",
+              margin: 0,
+              lineHeight: 1.12,
+            }}
+          >
+            {t.bannerH}
+          </p>
+          <p
+            className="font-body mt-5"
+            style={{
+              fontWeight: 400,
+              fontSize: "clamp(14px, 1.4vw, 18px)",
+              color: "#121212",
+            }}
+          >
+            {t.bannerP}
+          </p>
+        </div>
       </section>
 
       {/* Un lugar para cada perspectiva */}
