@@ -252,7 +252,7 @@ const AboutPage = () => {
         .of-in .of-curtain { transform: translateX(101%); }
         .of-underline { position:absolute; left:0; bottom:2px; height:1px; width:100%; background:#121212; transform: scaleX(0); transform-origin: left center; transition: transform 420ms cubic-bezier(0.16,1,0.3,1); }
         @media (hover:hover) { .of-row:hover .of-underline { transform: scaleX(1); } }
-        .of-desc { font-family: var(--f-body); font-size: 15px; line-height:1.7; color:#6b6b6b; margin: 14px 0 0; opacity:0; transform: translateY(8px); transition: opacity 600ms ease-out 900ms, transform 600ms ease-out 900ms; }
+        .of-desc { font-family: var(--f-body); font-size: 17px; line-height: 1.625; color: hsl(var(--gray)); margin: 14px 0 0; opacity:0; transform: translateY(8px); transition: opacity 600ms ease-out 900ms, transform 600ms ease-out 900ms; }
         .of-in .of-desc { opacity:1; transform: none; }
         @media (prefers-reduced-motion: reduce) { .of-curtain { display:none } .of-desc { opacity:1 !important; transform:none !important } .of-rule { width:100% !important } }
         .ab-card { opacity:0; transform: translateY(24px); transition: opacity 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1); }
