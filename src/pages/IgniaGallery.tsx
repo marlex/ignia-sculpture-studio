@@ -210,12 +210,14 @@ function OfferRow({ title, desc, count, last }: { title: string; desc: string; c
   return (
     <div ref={ref} className={`of-row group py-8 md:py-11 ${seen ? "of-in" : ""}`}>
       <span className="of-rule" aria-hidden />
-      <div className="of-title-wrap">
-        <h3 className="of-title">{count ? `${n}%` : title}</h3>
-        <span className="of-curtain" aria-hidden />
-        <span className="of-underline" aria-hidden />
+      <div className="of-content">
+        <div className="of-title-wrap">
+          <h3 className="of-title">{count ? `${n}%` : title}</h3>
+          <span className="of-curtain" aria-hidden />
+        </div>
+        <span className="of-sep" aria-hidden> · </span>
+        <p className="of-desc">{desc}</p>
       </div>
-      <p className="of-desc">{desc}</p>
       {last && <span className="of-rule of-rule-last" aria-hidden />}
     </div>
   );
@@ -246,11 +248,13 @@ const AboutPage = () => {
         .of-rule { position:absolute; top:0; left:0; height:1px; width:0; background: rgba(18,18,18,0.16); transition: width 900ms cubic-bezier(0.16,1,0.3,1); }
         .of-rule-last { top:auto; bottom:0; }
         .of-in .of-rule, .of-in > .of-rule { width:100%; }
-        .of-title-wrap { position: relative; display: inline-block; overflow: hidden; }
-        .of-title { font-family:'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: clamp(28px, 3.2vw, 32px); line-height: 1.05; letter-spacing:-0.02em; color:#121212; margin:0; }
+        .of-title-wrap { position: relative; display: inline-block; overflow: hidden; vertical-align: baseline; }
+        .of-title { font-family:'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: clamp(28px, 3.2vw, 32px); line-height: 1.05; letter-spacing:-0.02em; color:#121212; margin:0; display:inline; }
         .of-curtain { position:absolute; inset:0; background:#F5F5F5; transform: translateX(0); transition: transform 900ms cubic-bezier(0.76,0,0.24,1) 120ms; }
         .of-in .of-curtain { transform: translateX(101%); }
-        .of-desc { font-family: var(--f-body); font-size: 17px; line-height: 1.625; color: hsl(var(--gray)); margin: 14px 0 0; opacity:0; transform: translateY(8px); transition: opacity 600ms ease-out 900ms, transform 600ms ease-out 900ms; }
+        .of-content { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.45em; }
+        .of-sep { font-family:'Cormorant Garamond', serif; font-size: clamp(28px, 3.2vw, 32px); line-height: 1.05; color:#121212; user-select:none; }
+        .of-desc { font-family: var(--f-body); font-size: 17px; line-height: 1.625; color: hsl(var(--gray)); margin: 0; opacity:0; transform: translateY(8px); transition: opacity 600ms ease-out 900ms, transform 600ms ease-out 900ms; }
         .of-in .of-desc { opacity:1; transform: none; }
         @media (prefers-reduced-motion: reduce) { .of-curtain { display:none } .of-desc { opacity:1 !important; transform:none !important } .of-rule { width:100% !important } }
         .ab-card { opacity:0; transform: translateY(24px); transition: opacity 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1); }
