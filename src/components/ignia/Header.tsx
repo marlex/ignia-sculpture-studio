@@ -115,10 +115,10 @@ export const Header = () => {
     navigate("/");
   };
 
-  const isJoinSculptors = location.pathname === "/join/escultores" || location.pathname === "/join/sculptors";
   const t = lang === "es"
-    ? { publish: isJoinSculptors ? "Solicitar acceso" : "Únete a Ignia", joinMobile: "ÚNETE", login: "Entrar", signin: "Entrar", signout: "Salir", dashboard: "Mi panel", adminPanel: "Panel admin" }
-    : { publish: isJoinSculptors ? "Request access" : "Join Ignia", joinMobile: "JOIN", login: "Login", signin: "Sign in", signout: "Sign out", dashboard: "Dashboard", adminPanel: "Admin panel" };
+    ? { publish: "Únete a Ignia", joinMobile: "ÚNETE", login: "Entrar", signin: "Entrar", signout: "Salir", dashboard: "Mi panel", adminPanel: "Panel admin" }
+    : { publish: "Join Ignia", joinMobile: "JOIN", login: "Login", signin: "Sign in", signout: "Sign out", dashboard: "Dashboard", adminPanel: "Admin panel" };
+
 
 
 
