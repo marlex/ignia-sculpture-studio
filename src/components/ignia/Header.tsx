@@ -7,7 +7,7 @@ import { useAuth } from "@/auth/AuthContext";
 import { SHOW_PUBLIC_AUTH } from "@/config/featureFlags";
 import { supabase } from "@/integrations/supabase/client";
 
-// Left nav (desktop): Sculptors, Community, Learn, Ignia Gallery
+// Left nav (desktop): Sculptors, Community, Learn, Sobre Ignia
 const NAV_LEFT = {
   es: [
     { label: "Escultores", to: "/join/escultores" },
@@ -19,7 +19,7 @@ const NAV_LEFT = {
     { label: "Sculptors", to: "/join/sculptors" },
     { label: "Community", to: "/editorial" },
     { label: "Learn", to: "/aprende" },
-    { label: "About Ignia", to: "/ignia-gallery" },
+    { label: "Sobre Ignia", to: "/ignia-gallery" },
   ],
 };
 
