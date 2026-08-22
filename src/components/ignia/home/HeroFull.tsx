@@ -114,7 +114,6 @@ export const HeroFull = () => {
       >
         <h1 className="hf-title-el hf-anim hf-title">{t.title}</h1>
         <p className="hf-subtitle-el hf-anim hf-subtitle">{t.subtitle}</p>
-        <p className="hf-authority-el hf-anim hf-authority">{t.authority}</p>
 
         <div className="hf-anim hf-cta" style={{ marginTop: 36 }}>
           <Link
