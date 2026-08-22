@@ -39,7 +39,6 @@ export const HeroFull = () => {
         .hf-anim { opacity: 0; animation: hf-rise 1.2s cubic-bezier(0.16,1,0.3,1) forwards; }
         .hf-title { animation-delay: 0.1s; }
         .hf-subtitle { animation-delay: 0.4s; }
-        .hf-authority { animation-delay: 0.55s; }
         .hf-cta { animation-delay: 0.7s; }
         .hf-link { animation-delay: 0.85s; }
         .hf-cta-btn:hover { opacity: 0.65 !important; }
@@ -63,22 +62,10 @@ export const HeroFull = () => {
           max-width: 720px;
           margin: 28px auto 0;
         }
-        .hf-authority-el {
-          font-family: Manrope, sans-serif;
-          font-weight: 400;
-          color: rgba(255,255,255,0.80);
-          font-size: 11px;
-          line-height: 1.6;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          max-width: 700px;
-          margin: 22px auto 0;
-        }
 
         @media (max-width: 768px) {
           .hf-title-el { font-size: 56px; }
           .hf-subtitle-el { font-size: 16px; max-width: 92%; }
-          .hf-authority-el { font-size: 10px; letter-spacing: 0.16em; }
         }
       `}</style>
 
