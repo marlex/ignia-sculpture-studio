@@ -70,6 +70,7 @@ const Index = () => {
   }, []);
 
   const fadeTicker = useFadeUp<HTMLDivElement>();
+  const fadeFiveWays = useFadeUp<HTMLDivElement>();
   const fadeCol = useFadeUp<HTMLDivElement>();
   const fadeArt = useFadeUp<HTMLDivElement>();
   const fadeReviews = useFadeUp<HTMLDivElement>();
@@ -81,6 +82,9 @@ const Index = () => {
       <HeroFull />
       <div ref={fadeTicker}>
         <Ticker />
+      </div>
+      <div ref={fadeFiveWays}>
+        <FiveWaysIn />
       </div>
 
       <div ref={coleccionRef}>
