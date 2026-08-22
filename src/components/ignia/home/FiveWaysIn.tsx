@@ -64,7 +64,7 @@ const CONTENT: Record<"es" | "en", { eyebrow: string; title: string; subtitle: s
     eyebrow: "LA INSTITUCIÓN",
     title: "Cinco formas de entrar. Un solo estándar.",
     subtitle:
-      "Escultores, coleccionistas, galerías, curadores y advisors — Ignia está construido como un lugar para todos ellos, sometido a los mismos criterios.",
+      "Escultores, coleccionistas, galerías, curadores y advisors. Ignia está construido como un lugar para todos ellos, sometido a los mismos criterios.",
     cards: [
       {
         key: "sculptors",
