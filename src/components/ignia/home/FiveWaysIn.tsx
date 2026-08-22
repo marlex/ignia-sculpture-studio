@@ -16,7 +16,7 @@ const CONTENT: Record<"es" | "en", { eyebrow: string; title: string; subtitle: s
     eyebrow: "THE INSTITUTION",
     title: "Five ways in. One standard.",
     subtitle:
-      "Sculptors, collectors, galleries, curators and advisors — Ignia is built as a place for all of them, held to the same criteria.",
+      "Sculptors, collectors, galleries, curators and advisors. Ignia is built as a place for all of them, held to the same criteria.",
     cards: [
       {
         key: "sculptors",
