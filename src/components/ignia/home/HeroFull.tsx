@@ -12,7 +12,7 @@ export const HeroFull = () => {
       ? {
           title: "Acércate. Reimagina la escultura.",
           subtitle:
-            "Descubre esculturas excepcionales, revisadas y presentadas con el rigor de una galería líder — y el alcance global que nunca tuvo.",
+            "Descubre, experimenta y colecciona escultura contemporánea de artistas y galerías de todo el mundo. Explora cada obra en 3D, obtén su certificado de autenticidad y visualízala en tu propio espacio.",
           authority:
             "Escultores verificados. Obras autenticadas. Envío internacional. Presentes en las ferias que importan.",
           cta: "Explorar la Colección",
@@ -22,7 +22,7 @@ export const HeroFull = () => {
       : {
           title: "Come closer. Reimagine sculpture.",
           subtitle:
-            "Discover exceptional sculptures, vetted and presented with the rigor of a leading gallery — and the global reach it never had.",
+            "Discover, experience and collect contemporary sculpture from artists and galleries around the world. Explore each work in 3D, receive its certificate of authenticity, and see it in your own space.",
           authority:
             "Verified sculptors. Authenticated works. Shipped worldwide. Present at the fairs that matter.",
           cta: "Explore the Collection",
@@ -51,11 +51,11 @@ export const HeroFull = () => {
 
         .hf-title-el {
           font-family: 'Cormorant Garamond', serif;
-          font-weight: 500;
+          font-weight: 400;
           color: #FFFFFF;
-          font-size: clamp(46px, 8.5vw, 112px);
-          line-height: 0.95;
-          letter-spacing: -0.03em;
+          font-size: clamp(40px, 6vw, 72px);
+          line-height: 1.05;
+          letter-spacing: 0.005em;
           margin: 0;
         }
         .hf-subtitle-el {
@@ -80,7 +80,7 @@ export const HeroFull = () => {
         }
 
         @media (max-width: 768px) {
-          .hf-title-el { font-size: clamp(38px, 11vw, 60px); }
+          .hf-title-el { font-size: 56px; }
           .hf-subtitle-el { font-size: 16px; max-width: 92%; }
           .hf-authority-el { font-size: 10px; letter-spacing: 0.16em; }
         }
