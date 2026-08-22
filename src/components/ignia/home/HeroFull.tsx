@@ -12,7 +12,7 @@ export const HeroFull = () => {
       ? {
           title: "Acércate. Reimagina la escultura.",
           subtitle:
-            "Descubre esculturas excepcionales, revisadas y presentadas con el rigor de una galería líder — y el alcance global que nunca tuvo.",
+            "Descubre, experimenta y colecciona escultura contemporánea de artistas y galerías de todo el mundo. Explora cada obra en 3D, obtén su certificado de autenticidad y visualízala en tu propio espacio.",
           authority:
             "Escultores verificados. Obras autenticadas. Envío internacional. Presentes en las ferias que importan.",
           cta: "Explorar la Colección",
@@ -22,7 +22,7 @@ export const HeroFull = () => {
       : {
           title: "Come closer. Reimagine sculpture.",
           subtitle:
-            "Discover exceptional sculptures, vetted and presented with the rigor of a leading gallery — and the global reach it never had.",
+            "Discover, experience and collect contemporary sculpture from artists and galleries around the world. Explore each work in 3D, receive its certificate of authenticity, and see it in your own space.",
           authority:
             "Verified sculptors. Authenticated works. Shipped worldwide. Present at the fairs that matter.",
           cta: "Explore the Collection",
