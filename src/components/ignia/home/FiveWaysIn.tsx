@@ -133,41 +133,43 @@ export const FiveWaysIn = () => {
         </header>
 
         <ul
-          className="flex gap-6 items-stretch overflow-x-auto snap-x snap-mandatory list-none p-0 m-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          className="flex flex-col items-center gap-6 list-none p-0 m-0"
           aria-label="Ignia profiles"
         >
           {t.cards.map((item) => (
-            <li key={item.key} className="snap-start shrink-0 w-[280px] md:flex-1">
+            <li key={item.key} className="w-full max-w-[640px]">
               <Link
                 to={item.to}
-                className="group flex flex-col h-full w-full border border-white/20 bg-[#121212] p-6 text-white hover:bg-white hover:text-[#121212] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4"
+                className="group flex flex-col md:flex-row md:items-center justify-between gap-5 w-full border border-white/20 bg-[#121212] p-5 md:px-6 md:py-5 text-white hover:bg-white hover:text-[#121212] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4"
                 style={{ borderRadius: 0 }}
               >
-                <Badge
-                  variant={item.status === "open" ? "secondary" : "default"}
-                  className="rounded-none mb-4 w-fit"
-                >
-                  {STATUS_LABEL[lang][item.status]}
-                </Badge>
-                <h3
-                  className="mb-2 group-hover:text-[#121212] transition-colors"
-                  style={{
-                    fontFamily: "'Cormorant Garamond', serif",
-                    fontWeight: 600,
-                    fontSize: 20,
-                    lineHeight: 1.2,
-                  }}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  className="font-body text-[15px] font-normal text-white/65 group-hover:text-[#666666] transition-colors mb-4"
-                  style={{ lineHeight: 1.6 }}
-                >
-                  {item.description}
-                </p>
+                <div className="flex flex-col items-start">
+                  <Badge
+                    variant={item.status === "open" ? "secondary" : "default"}
+                    className="rounded-none mb-2 w-fit"
+                  >
+                    {STATUS_LABEL[lang][item.status]}
+                  </Badge>
+                  <h3
+                    className="group-hover:text-[#121212] transition-colors"
+                    style={{
+                      fontFamily: "'Cormorant Garamond', serif",
+                      fontWeight: 600,
+                      fontSize: 32,
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p
+                    className="font-body text-[15px] font-normal text-white/65 group-hover:text-[#666666] transition-colors mt-1"
+                    style={{ lineHeight: 1.6 }}
+                  >
+                    {item.description}
+                  </p>
+                </div>
                 <span
-                  className="mt-auto inline-block font-body font-medium text-[13px] uppercase tracking-[0.2em] px-8 py-4 bg-transparent border border-white text-white group-hover:text-[#121212] group-hover:border-[#121212] transition-colors"
+                  className="inline-block font-body font-medium text-[13px] uppercase tracking-[0.2em] px-6 py-3 bg-transparent border border-white text-white group-hover:text-[#121212] group-hover:border-[#121212] transition-colors whitespace-nowrap"
                   style={{ textDecoration: "none" }}
                 >
                   {item.cta}
