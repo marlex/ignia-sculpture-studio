@@ -167,7 +167,7 @@ export const FiveWaysIn = () => {
                   {item.description}
                 </p>
                 <span
-                  className="mt-auto inline-block font-body font-medium text-[13px] uppercase tracking-[0.2em] px-8 py-4 bg-transparent border border-white/65 text-white group-hover:text-[#121212] group-hover:border-[#121212] transition-colors"
+                  className="mt-auto inline-block font-body font-medium text-[13px] uppercase tracking-[0.2em] px-8 py-4 bg-transparent border border-white text-white group-hover:text-[#121212] group-hover:border-[#121212] transition-colors"
                   style={{ textDecoration: "none" }}
                 >
                   {item.cta}
