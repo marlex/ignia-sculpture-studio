@@ -13,8 +13,6 @@ export const HeroFull = () => {
           title: "Acércate. Reimagina la escultura.",
           subtitle:
             "Descubre, experimenta y colecciona escultura contemporánea de artistas y galerías de todo el mundo. Explora cada obra en 3D, obtén su certificado de autenticidad y visualízala en tu propio espacio.",
-          authority:
-            "Escultores verificados. Obras autenticadas. Envío internacional. Presentes en las ferias que importan.",
           cta: "Explorar la Colección",
           link: "¿Nuevo aquí? Empieza con Guidance →",
           imgAlt: "Detalle editorial de escultura en blanco y negro",
@@ -23,8 +21,6 @@ export const HeroFull = () => {
           title: "Come closer. Reimagine sculpture.",
           subtitle:
             "Discover, experience and collect contemporary sculpture from artists and galleries around the world. Explore each work in 3D, receive its certificate of authenticity, and see it in your own space.",
-          authority:
-            "Verified sculptors. Authenticated works. Shipped worldwide. Present at the fairs that matter.",
           cta: "Explore the Collection",
           link: "New here? Start with Guidance →",
           imgAlt: "Editorial black-and-white sculpture detail",
@@ -43,7 +39,6 @@ export const HeroFull = () => {
         .hf-anim { opacity: 0; animation: hf-rise 1.2s cubic-bezier(0.16,1,0.3,1) forwards; }
         .hf-title { animation-delay: 0.1s; }
         .hf-subtitle { animation-delay: 0.4s; }
-        .hf-authority { animation-delay: 0.55s; }
         .hf-cta { animation-delay: 0.7s; }
         .hf-link { animation-delay: 0.85s; }
         .hf-cta-btn:hover { opacity: 0.65 !important; }
@@ -67,22 +62,10 @@ export const HeroFull = () => {
           max-width: 720px;
           margin: 28px auto 0;
         }
-        .hf-authority-el {
-          font-family: Manrope, sans-serif;
-          font-weight: 400;
-          color: rgba(255,255,255,0.80);
-          font-size: 11px;
-          line-height: 1.6;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          max-width: 700px;
-          margin: 22px auto 0;
-        }
 
         @media (max-width: 768px) {
           .hf-title-el { font-size: 56px; }
           .hf-subtitle-el { font-size: 16px; max-width: 92%; }
-          .hf-authority-el { font-size: 10px; letter-spacing: 0.16em; }
         }
       `}</style>
 
@@ -118,7 +101,6 @@ export const HeroFull = () => {
       >
         <h1 className="hf-title-el hf-anim hf-title">{t.title}</h1>
         <p className="hf-subtitle-el hf-anim hf-subtitle">{t.subtitle}</p>
-        <p className="hf-authority-el hf-anim hf-authority">{t.authority}</p>
 
         <div className="hf-anim hf-cta" style={{ marginTop: 36 }}>
           <Link
