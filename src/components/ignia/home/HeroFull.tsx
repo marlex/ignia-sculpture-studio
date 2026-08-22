@@ -80,7 +80,7 @@ export const HeroFull = () => {
         }
 
         @media (max-width: 768px) {
-          .hf-title-el { font-size: clamp(38px, 11vw, 60px); }
+          .hf-title-el { font-size: 56px; }
           .hf-subtitle-el { font-size: 16px; max-width: 92%; }
           .hf-authority-el { font-size: 10px; letter-spacing: 0.16em; }
         }
