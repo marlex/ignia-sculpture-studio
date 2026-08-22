@@ -51,11 +51,11 @@ export const HeroFull = () => {
 
         .hf-title-el {
           font-family: 'Cormorant Garamond', serif;
-          font-weight: 500;
+          font-weight: 400;
           color: #FFFFFF;
-          font-size: clamp(46px, 8.5vw, 112px);
-          line-height: 0.95;
-          letter-spacing: -0.03em;
+          font-size: clamp(40px, 6vw, 72px);
+          line-height: 1.05;
+          letter-spacing: 0.005em;
           margin: 0;
         }
         .hf-subtitle-el {
