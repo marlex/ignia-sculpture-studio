@@ -6,6 +6,7 @@ import { Colectores } from "@/components/ignia/Colectores";
 import { Footer } from "@/components/ignia/Footer";
 import { HeroFull } from "@/components/ignia/home/HeroFull";
 import { Ticker } from "@/components/ignia/home/Ticker";
+import { FiveWaysIn } from "@/components/ignia/home/FiveWaysIn";
 
 import { Reviews } from "@/components/ignia/home/Reviews";
 import { Aprende } from "@/components/ignia/Aprende";
@@ -69,6 +70,7 @@ const Index = () => {
   }, []);
 
   const fadeTicker = useFadeUp<HTMLDivElement>();
+  const fadeFiveWays = useFadeUp<HTMLDivElement>();
   const fadeCol = useFadeUp<HTMLDivElement>();
   const fadeArt = useFadeUp<HTMLDivElement>();
   const fadeReviews = useFadeUp<HTMLDivElement>();
@@ -80,6 +82,9 @@ const Index = () => {
       <HeroFull />
       <div ref={fadeTicker}>
         <Ticker />
+      </div>
+      <div ref={fadeFiveWays}>
+        <FiveWaysIn />
       </div>
 
       <div ref={coleccionRef}>

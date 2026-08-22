@@ -68,6 +68,8 @@ const App = () => (
               <Route path="/coleccion" element={<ColeccionPage />} />
               <Route path="/sculptures" element={<ColeccionPage />} />
               <Route path="/escultores" element={<EscultoresPage />} />
+              <Route path="/sculptors" element={<EscultoresPage />} />
+              <Route path="/galleries" element={<JoinGalerias />} />
               <Route path="/aprende" element={<AprendePage />} />
               <Route path="/aprende/:slug" element={<AprendeArticuloPage />} />
               <Route path="/editorial" element={<EditorialPage />} />
@@ -86,6 +88,8 @@ const App = () => (
               <Route path="/join/curators" element={<JoinCuradores />} />
               <Route path="/join/advisors" element={<JoinAdvisors />} />
               <Route path="/guidance" element={<Guidance />} />
+              <Route path="/guidance/curator" element={<JoinCuradores />} />
+              <Route path="/guidance/advisor" element={<JoinAdvisors />} />
               <Route path="/unete-a-ignia" element={<UneteAIgnia />} />
               <Route path="/recuperar-password" element={<RecuperarPassword />} />
               <Route path="/reset-password" element={<ResetPassword />} />
