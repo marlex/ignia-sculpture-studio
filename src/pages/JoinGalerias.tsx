@@ -71,7 +71,7 @@ const JoinGalerias = () => {
     howTitle: "Cómo funciona",
     steps: [
       { label: "Paso 1", desc: "Iniciamos la conversación." },
-      { label: "Paso 2", desc: "Revisamos su catálogo — mismos criterios para todos." },
+      { label: "Paso 2", desc: "Revisamos su catálogo, mismos criterios para todos." },
       { label: "Paso 3", desc: "Sus obras se publican con presentación de nivel museo." },
       { label: "Paso 4", desc: "Gestionamos venta, cobro y logística; ustedes reciben su parte." },
     ],
@@ -105,7 +105,7 @@ const JoinGalerias = () => {
     howTitle: "How it works",
     steps: [
       { label: "Step 1", desc: "We start the conversation." },
-      { label: "Step 2", desc: "We review your catalogue — same criteria for everyone." },
+      { label: "Step 2", desc: "We review your catalogue, same criteria for everyone." },
       { label: "Step 3", desc: "Your works are published with museum-level presentation." },
       { label: "Step 4", desc: "We handle the sale, payment and logistics; you receive your share." },
     ],
@@ -181,7 +181,7 @@ const JoinGalerias = () => {
   return (
     <div style={{ background: "#FFFFFF" }}>
       <Seo
-        title={"Galleries — Sell Sculpture with Ignia Institution"}
+        title={"Galleries, Sell Sculpture with Ignia Institution"}
         description={"Add Ignia as an extra sales channel for your gallery: no exclusivity, museum-level presentation, blockchain certification and specialised logistics."}
         path="/join/galerias"
       />

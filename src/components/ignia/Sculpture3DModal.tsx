@@ -40,7 +40,7 @@ export const Sculpture3DModal = ({ open, onClose, obraIndex, titulo, artista, ma
     : { close: "Close", hint: "Drag to rotate · Scroll to zoom", studio: "Studio", white: "White", dark: "Shadow", angles: "Angles" };
 
   return (
-    <div role="dialog" aria-modal="true" aria-label={`${titulo} — 3D`} className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex flex-col">
+    <div role="dialog" aria-modal="true" aria-label={`${titulo}, 3D`} className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex flex-col">
       <header className="flex items-center justify-between px-6 md:px-10 h-14 border-b border-white/10 text-white">
         <div className="flex items-baseline gap-3">
           <span className="font-display font-semibold text-[16px]">{titulo}</span>

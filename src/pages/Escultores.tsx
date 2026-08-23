@@ -11,7 +11,7 @@ const EscultoresPage = () => {
     : { eyebrow: "Who sculpts", h: "Sculptors", sub: "Bronze, marble and steel workshops. Conversations with those who devote their life to the craft of volume." };
   return (
     <main className="pt-14">
-      <Seo title={"Sculptors — Meet the Artists | Ignia Gallery"} description={"Discover established and emerging sculptors working in bronze, marble and steel, and explore the studios behind each original work."} path="/escultores" />
+      <Seo title={"Sculptors, Meet the Artists | Ignia Gallery"} description={"Discover established and emerging sculptors working in bronze, marble and steel, and explore the studios behind each original work."} path="/escultores" />
       <Header />
       <section className="px-6 md:px-12 pt-16 pb-4 bg-white">
         <div className="eyebrow mb-3">{t.eyebrow}</div>

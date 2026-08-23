@@ -28,7 +28,7 @@ const T = {
     chatTyping: "Escribiendo…",
     chatError: "No se pudo enviar el mensaje. Inténtalo de nuevo.",
     chatAskContact: "Para poder acompañarte con una propuesta personalizada, ¿podrías compartirme tu nombre y un email o teléfono de contacto? Un asesor de Ignia se pondrá en contacto contigo a la mayor brevedad.",
-    chatThanks: "Gracias. He compartido tus datos con nuestro equipo — un asesor de Ignia se pondrá en contacto contigo muy pronto.",
+    chatThanks: "Gracias. He compartido tus datos con nuestro equipo, un asesor de Ignia se pondrá en contacto contigo muy pronto.",
   },
   en: {
     back: "← Back to the collection",
@@ -45,7 +45,7 @@ const T = {
     chatTyping: "Typing…",
     chatError: "Couldn't send the message. Please try again.",
     chatAskContact: "So we can follow up with a personalised proposal, could you share your name and an email or phone number? An Ignia advisor will be in touch shortly.",
-    chatThanks: "Thank you. I've passed your details to our team — an Ignia advisor will be in touch with you very soon.",
+    chatThanks: "Thank you. I've passed your details to our team, an Ignia advisor will be in touch with you very soon.",
   },
 };
 
@@ -194,7 +194,7 @@ const ObraDetalle = () => {
 
   useEffect(() => { setIdx(0); }, [slug]);
 
-  const seoTitle = o ? `${o.title} — ${o.artist} · Ignia Gallery` : "";
+  const seoTitle = o ? `${o.title}, ${o.artist} · Ignia Gallery` : "";
   const seoDescription = o
     ? `${(o.description || "").replace(/\s+/g, " ").trim().slice(0, 137)} ${o.material}, ${o.year}. ${o.price}.`
     : "";
@@ -239,7 +239,7 @@ const ObraDetalle = () => {
                     <img
                       key={i}
                       src={src}
-                      alt={`${o.title} — ${i + 1}`}
+                      alt={`${o.title}, ${i + 1}`}
                       loading={i === 0 ? "eager" : "lazy"}
                       fetchPriority={i === 0 ? "high" : "low"}
                       decoding="async"
@@ -348,10 +348,10 @@ const ObraDetalle = () => {
             {(() => {
               const anyO = o as any;
               const dims = anyO.dimensions
-                ? `${anyO.dimensions.h ?? "—"} × ${anyO.dimensions.w ?? "—"} × ${anyO.dimensions.d ?? "—"} cm`
-                : "—";
-              const weight = anyO.weight ? `${anyO.weight} kg` : "—";
-              const technique = anyO.technique ?? "—";
+                ? `${anyO.dimensions.h ?? ""} × ${anyO.dimensions.w ?? ""} × ${anyO.dimensions.d ?? ""} cm`
+                : "";
+              const weight = anyO.weight ? `${anyO.weight} kg` : "";
+              const technique = anyO.technique ?? "";
               const specLabel = lang === "es" ? "Ficha técnica" : "Technical specs";
               const rows: [string, string][] = [
                 [lang === "es" ? "Dimensiones" : "Dimensions", dims],
@@ -526,7 +526,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
                 type="button"
                 onClick={() => {
                   const priceNum = String(o.price).replace(/[^\d.,]/g, "");
-                  const subject = `${o.title} — Ignia Gallery`;
+                  const subject = `${o.title}, Ignia Gallery`;
                   const body = `Te comparto esta obra de ${o.artist}:\n\n${window.location.href}\n\n${o.title}\n${o.artist} · ${o.material} · ${o.year}\n€${priceNum}`;
                   window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                 }}

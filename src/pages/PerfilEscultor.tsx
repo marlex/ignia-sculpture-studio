@@ -91,7 +91,7 @@ export const BIOS: Record<string, Bio> = {
   "ada-la-cadena": {
     nombre: "Ada La Cadena", retrato: adaRetratoAsset.url,
     bioEs: "El Arte de lo Intangible\n\nAda La Cadena (España) es una artista multidisciplinaria cuya práctica se mueve entre la pintura y la escultura cerámica con una misma obsesión: hacer visible lo que no tiene forma. Sus obras nacen de un proceso subconsciente e intuitivo, sin bocetos previos, sin certezas, en el que la materia revela lo que la mente consciente no se atreve a nombrar.\n\nEn su cerámica, esa misma búsqueda se encarna en la arcilla. Cuerpos que son objetos, objetos que son rostros, superficies que son piel. La ornamentación no es decoración, es lenguaje. Los motivos florales que recorren sus piezas no embellecen: narran, ocultan, revelan.\n\nSu trabajo ha sido exhibido en galerías de prestigio y forma parte de colecciones privadas en varios países. Cada pieza es única e irrepetible, como lo es la emoción que la origina.",
-    bioEn: "The Art of the Intangible\n\nAda La Cadena (Spain) is a multidisciplinary artist whose practice moves between painting and ceramic sculpture with a single obsession: to make visible what has no form. Her works are born from a subconscious, intuitive process — without prior sketches, without certainties — in which matter reveals what the conscious mind does not dare to name.\n\nIn her ceramics, that same search is embodied in clay. Bodies that are objects, objects that are faces, surfaces that are skin. Ornamentation is not decoration, it is language. The floral motifs that run across her pieces do not embellish: they narrate, conceal, reveal.\n\nHer work has been exhibited in prestigious galleries and is part of private collections in several countries. Each piece is unique and unrepeatable, as is the emotion that gives rise to it.",
+    bioEn: "The Art of the Intangible\n\nAda La Cadena (Spain) is a multidisciplinary artist whose practice moves between painting and ceramic sculpture with a single obsession: to make visible what has no form. Her works are born from a subconscious, intuitive process, without prior sketches, without certainties, in which matter reveals what the conscious mind does not dare to name.\n\nIn her ceramics, that same search is embodied in clay. Bodies that are objects, objects that are faces, surfaces that are skin. Ornamentation is not decoration, it is language. The floral motifs that run across her pieces do not embellish: they narrate, conceal, reveal.\n\nHer work has been exhibited in prestigious galleries and is part of private collections in several countries. Each piece is unique and unrepeatable, as is the emotion that gives rise to it.",
     espEs: "Cerámica contemporánea", espEn: "Contemporary ceramic",
   },
   "lucia-pardo": {
@@ -164,17 +164,17 @@ export default function PerfilEscultor() {
   const t = lang === "es"
     ? { publish: "Publicar obra ↗", exit: "Salir", viewObra: "Ver escultura",
         eyebrow: "Perfil de escultor",
-        stats: [["Obras publicadas", String(obras.length || 0)], ["Coleccionistas", "—"], ["Ediciones vendidas", "—"]],
+        stats: [["Obras publicadas", String(obras.length || 0)], ["Coleccionistas", ","], ["Ediciones vendidas", ","]],
         mine: "Obras en Ignia" }
     : { publish: "Submit work ↗", exit: "Sign out", viewObra: "View sculpture",
         eyebrow: "Sculptor profile",
-        stats: [["Published works", String(obras.length || 0)], ["Collectors", "—"], ["Editions sold", "—"]],
+        stats: [["Published works", String(obras.length || 0)], ["Collectors", ","], ["Editions sold", ","]],
         mine: "Works on Ignia" };
 
   const bioText = lang === "es" ? bio.bioEs : bio.bioEn;
   const esp = lang === "es" ? bio.espEs : bio.espEn;
 
-  const seoTitle = `${bio.nombre} — Sculptor · Ignia Gallery`;
+  const seoTitle = `${bio.nombre}, Sculptor · Ignia Gallery`;
   const seoDescription = ((bioText || "").replace(/\s+/g, " ").trim()).slice(0, 155);
 
   return (

@@ -206,7 +206,7 @@ const JoinEscultores = () => {
 
   return (
     <div style={{ background: "#FFFFFF" }}>
-      <Seo title={"Sell Sculpture Online — Fair Commissions for Sculptors | Ignia"} description={"Join the only global gallery built exclusively for sculptors. Keep 82-88% of every sale while we handle 3D, logistics, insurance and authentication."} path="/join/escultores" />
+      <Seo title={"Sell Sculpture Online, Fair Commissions for Sculptors | Ignia"} description={"Join the only global gallery built exclusively for sculptors. Keep 82-88% of every sale while we handle 3D, logistics, insurance and authentication."} path="/join/escultores" />
       <Header />
 
       {/* 1. HERO */}
@@ -337,7 +337,7 @@ const JoinEscultores = () => {
         </div>
       </section>
 
-      {/* 5. HUELLA PERMANENTE — imagen a sangre */}
+      {/* 5. HUELLA PERMANENTE, imagen a sangre */}
       <section style={{ background: "#FAFAFA" }}>
         <div
           className="join-bleed"
@@ -362,7 +362,7 @@ const JoinEscultores = () => {
         </div>
       </section>
 
-      {/* 6. CÓMO CUIDAMOS TU OBRA — imagen a sangre (invertido) */}
+      {/* 6. CÓMO CUIDAMOS TU OBRA, imagen a sangre (invertido) */}
       <section style={{ background: "#FFFFFF" }}>
         <div
           className="join-bleed join-bleed-rev"

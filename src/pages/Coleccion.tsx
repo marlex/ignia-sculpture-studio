@@ -11,7 +11,7 @@ const ColeccionPage = () => {
     : { eyebrow: "Catalogue", h: "Sculptures", sub: "Selected sculptures in bronze, marble, corten steel, wood, ceramic, alabaster and glass." };
   return (
     <main className="pt-14">
-      <Seo title={"Sculptures for Sale — Bronze, Marble & Steel | Ignia Gallery"} description={"Browse original sculptures in bronze, marble, corten steel, wood, ceramic, alabaster and glass, each with 3D viewing and a certificate of authenticity."} path="/coleccion" />
+      <Seo title={"Sculptures for Sale, Bronze, Marble & Steel | Ignia Gallery"} description={"Browse original sculptures in bronze, marble, corten steel, wood, ceramic, alabaster and glass, each with 3D viewing and a certificate of authenticity."} path="/coleccion" />
       <Header />
       <section className="px-6 md:px-12 pt-16 pb-4 bg-white">
         <div className="eyebrow mb-3">{t.eyebrow}</div>

@@ -138,7 +138,7 @@ export default function ObraAnalytics() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
           <Metric icon={<Eye className="w-4 h-4" />} label="Visitas totales" value={obra.visitas.toLocaleString("es-ES")} delta={obra.deltaVisitas} />
           <Metric icon={<Heart className="w-4 h-4" />} label="Veces guardada" value={obra.favoritos.toLocaleString("es-ES")} delta={obra.deltaFavoritos} />
-          <Metric icon={<Box className="w-4 h-4" />} label="Interacciones 3D" value={obra.inter3D !== null ? obra.inter3D.toLocaleString("es-ES") : "—"} />
+          <Metric icon={<Box className="w-4 h-4" />} label="Interacciones 3D" value={obra.inter3D !== null ? obra.inter3D.toLocaleString("es-ES") : ","} />
           <Metric icon={<TrendingUp className="w-4 h-4" />} label="Tasa de interés" value={`${tasaInteres} %`} sublabel="favoritos / visitas únicas" />
         </div>
 

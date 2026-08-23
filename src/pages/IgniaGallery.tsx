@@ -39,7 +39,7 @@ const T = {
       { t: "Advisors", s: "Guíen el mercado con nosotros.", to: "/join/advisors" },
     ],
     blackH:
-      "Sculptors, welcome home. Collectors, discover more. Wherever you stand in the world of sculpture — this is where you begin.",
+      "Sculptors, welcome home. Collectors, discover more. Wherever you stand in the world of sculpture, this is where you begin.",
     join: "Únete a Ignia →",
     contactEy: "Contacto",
   },
@@ -50,7 +50,7 @@ const T = {
     behindEy: "BEHIND IGNIA",
     behindH: "Because we believe in and feel sculpture.",
     behindP:
-      "We are sculptors, designers, curators, collectors, advisors and developers — a multidisciplinary team that works with sculpture from inside and outside the studio. We want to give this discipline the place it deserves: the curatorial quality of any leading gallery, with the global openness it was missing to be seen.",
+      "We are sculptors, designers, curators, collectors, advisors and developers, a multidisciplinary team that works with sculpture from inside and outside the studio. We want to give this discipline the place it deserves: the curatorial quality of any leading gallery, with the global openness it was missing to be seen.",
     offerEy: "WHAT WE OFFER",
     offerH: "Everything sculpture needed, in one place.",
     offers: [
@@ -74,7 +74,7 @@ const T = {
       { t: "Advisors", s: "Guide the market with us.", to: "/join/advisors" },
     ],
     blackH:
-      "Sculptors, welcome home. Collectors, discover more. Wherever you stand in the world of sculpture — this is where you begin.",
+      "Sculptors, welcome home. Collectors, discover more. Wherever you stand in the world of sculpture, this is where you begin.",
     join: "Join Ignia →",
     contactEy: "Contact",
   },
@@ -235,7 +235,7 @@ const AboutPage = () => {
   return (
     <main className="pt-14">
       <Seo
-        title={"About Ignia — The Digital Institution for Sculpture"}
+        title={"About Ignia, The Digital Institution for Sculpture"}
         description={
           "The team, the story and everything Ignia offers sculpture: 3D viewing, blockchain authenticity, fair pricing, global reach and specialised logistics."
         }

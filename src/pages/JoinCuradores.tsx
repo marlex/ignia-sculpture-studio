@@ -178,7 +178,7 @@ const JoinCuradores = () => {
   return (
     <div style={{ background: "#FFFFFF" }}>
       <Seo
-        title={lang === "es" ? "Curadores — Aplica a Ignia Institution" : "Curators — Apply to Ignia Institution"}
+        title={lang === "es" ? "Curadores, Aplica a Ignia Institution" : "Curators, Apply to Ignia Institution"}
         description={lang === "es" ? "Únete como curador a Ignia: sesiones privadas con escultores, agenda flexible y pago por sesión realizada." : "Join Ignia as a curator: private sessions with sculptors, flexible schedule and pay per completed session."}
         path="/join/curadores"
       />

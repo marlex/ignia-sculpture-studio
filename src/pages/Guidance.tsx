@@ -76,7 +76,7 @@ const Guidance = () => {
     steps: [
       { label: "Paso 1", desc: "Explora perfiles." },
       { label: "Paso 2", desc: "Reserva una sesión privada." },
-      { label: "Paso 3", desc: "O únete al foro — gratis, siempre." },
+      { label: "Paso 3", desc: "O únete al foro, gratis, siempre." },
     ],
     trustBody: "Curadores y advisors son aliados de Ignia. Los conocemos de cerca: su trayectoria, su forma de trabajar, el cuidado que ponen en cada pieza, y en ellos delegamos algo tan valioso como la confianza de nuestros artistas y coleccionistas.",
     openTitle: "Solicitudes abiertas",
@@ -106,7 +106,7 @@ const Guidance = () => {
     steps: [
       { label: "Step 1", desc: "Browse profiles." },
       { label: "Step 2", desc: "Book a private session." },
-      { label: "Step 3", desc: "Or join the forum — free, always." },
+      { label: "Step 3", desc: "Or join the forum, free, always." },
     ],
     trustBody: "Curators and advisors are Ignia allies. We know them closely: their trajectory, their way of working, the care they put into each piece, and in them we delegate something as valuable as the trust of our artists and collectors.",
     openTitle: "Applications open",
@@ -168,7 +168,7 @@ const Guidance = () => {
   return (
     <div style={{ background: "#FFFFFF" }}>
       <Seo
-        title={lang === "es" ? "Guidance — Curadores y advisors para escultores y coleccionistas | Ignia Institution" : "Guidance — Curators and advisors for sculptors and collectors | Ignia Institution"}
+        title={lang === "es" ? "Guidance, Curadores y advisors para escultores y coleccionistas | Ignia Institution" : "Guidance, Curators and advisors for sculptors and collectors | Ignia Institution"}
         description={lang === "es" ? "Accede a curadores y art advisors de confianza en Ignia: sesiones privadas, foro abierto y sin exclusividad institucional." : "Access trusted curators and art advisors at Ignia: private sessions, open forum, no institutional exclusivity."}
         path="/guidance"
       />
@@ -348,7 +348,7 @@ const Guidance = () => {
         </h2>
       </section>
 
-      {/* 4. HOW IT WORKS — 3 PASOS */}
+      {/* 4. HOW IT WORKS, 3 PASOS */}
       <section style={{ padding: "120px 24px", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
           <h2 style={{ ...H2_STYLE, marginBottom: 56, textAlign: "center" }}>{t.howTitle}</h2>
@@ -365,7 +365,7 @@ const Guidance = () => {
         </div>
       </section>
 
-      {/* 5. APPLICATIONS OPEN — BLOQUE NEGRO */}
+      {/* 5. APPLICATIONS OPEN, BLOQUE NEGRO */}
       <section
         style={{
           background: "#0a0a0a",

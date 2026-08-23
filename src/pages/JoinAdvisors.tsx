@@ -172,7 +172,7 @@ const JoinAdvisors = () => {
   return (
     <div style={{ background: "#FFFFFF" }}>
       <Seo
-        title={lang === "es" ? "Art Advisors — Aplica a Ignia Institution" : "Art Advisors — Apply to Ignia Institution"}
+        title={lang === "es" ? "Art Advisors, Aplica a Ignia Institution" : "Art Advisors, Apply to Ignia Institution"}
         description={lang === "es" ? "Únete como art advisor a Ignia: sesiones privadas con coleccionistas y escultores, agenda flexible y pago por sesión realizada." : "Join Ignia as an art advisor: private sessions with collectors and sculptors, flexible schedule and pay per completed session."}
         path="/join/advisors"
       />
@@ -265,7 +265,7 @@ const JoinAdvisors = () => {
         </div>
       </section>
 
-      {/* 2. FRANJA DE 3 VALORES — DARK */}
+      {/* 2. FRANJA DE 3 VALORES, DARK */}
       <section style={{ padding: "120px 24px", background: "#121212" }}>
         <div className="why-grid" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 64 }}>
           {[t.why1, t.why2, t.why3].map((item, i) => (

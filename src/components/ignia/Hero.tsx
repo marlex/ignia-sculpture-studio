@@ -187,7 +187,7 @@ export const Hero = () => {
           ))}
         </div>
 
-        {/* info desktop — purchase card */}
+        {/* info desktop, purchase card */}
         <div
           className="hero-info-desktop text-ink w-full max-w-[460px] pt-5 px-6 pb-5 backdrop-blur-md"
           style={{ background: "rgba(255,255,255,0.82)", border: "0.5px solid hsl(var(--border))" }}
@@ -230,7 +230,7 @@ export const Hero = () => {
           </div>
         </div>
 
-        {/* info mobile — purchase card (same position, updated content) */}
+        {/* info mobile, purchase card (same position, updated content) */}
         <div
           className="hero-info-mobile text-ink"
           style={{ padding: "16px 20px 20px", background: "rgba(255,255,255,0.92)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)", borderTop: "0.5px solid hsl(var(--border))" }}

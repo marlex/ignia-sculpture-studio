@@ -13,7 +13,7 @@ const EditorialPage = () => {
 
   return (
     <main className="pt-14">
-      <Seo title={"Community — Essays & Interviews on Sculpture | Ignia Gallery"} description={"Essays, reports and interviews on sculpture, the craft and its market, written for collectors and artists alike."} path="/editorial" />
+      <Seo title={"Community, Essays & Interviews on Sculpture | Ignia Gallery"} description={"Essays, reports and interviews on sculpture, the craft and its market, written for collectors and artists alike."} path="/editorial" />
       <Header />
       <section className="px-6 md:px-12 pt-16 pb-12 bg-white">
         <div className="eyebrow mb-3">{t.eyebrow}</div>
