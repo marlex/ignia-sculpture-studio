@@ -222,12 +222,12 @@ const Guidance = () => {
             pointerEvents: "none",
           }}
         />
-        {/* Overlay oscuro sutil para legibilidad */}
+        {/* Overlay oscuro para accesibilidad, contraste y legibilidad */}
         <div
           style={{
             position: "absolute",
             inset: 0,
-            background: "rgba(0,0,0,0.28)",
+            background: "rgba(0,0,0,0.52)",
             zIndex: 3,
             pointerEvents: "none",
           }}
@@ -263,7 +263,7 @@ const Guidance = () => {
             style={{
               fontFamily: "Manrope, sans-serif",
               fontWeight: 400,
-              color: "rgba(255,255,255,0.88)",
+              color: "#FFFFFF",
               fontSize: "clamp(15px, 1.6vw, 18px)",
               lineHeight: 1.7,
               maxWidth: 600,
