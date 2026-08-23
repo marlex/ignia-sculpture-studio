@@ -9,33 +9,31 @@ import { supabase } from "@/integrations/supabase/client";
 
 type NavItem = { label: string; to?: string; action?: "partners" };
 
-// Left nav (desktop): Sculptors, Guidance, Community, Learn, Sobre Ignia
+// Left nav (desktop): Sculptors, Community, Learn, Sobre Ignia
 const NAV_LEFT: Record<"es" | "en", NavItem[]> = {
   es: [
     { label: "Escultores", to: "/join/escultores" },
-    { label: "Guidance", to: "/guidance" },
     { label: "Comunidad", to: "/editorial" },
     { label: "Aprende", to: "/aprende" },
     { label: "Sobre Ignia", to: "/ignia-gallery" },
   ],
   en: [
     { label: "Sculptors", to: "/join/sculptors" },
-    { label: "Guidance", to: "/guidance" },
     { label: "Community", to: "/editorial" },
     { label: "Learn", to: "/aprende" },
     { label: "Sobre Ignia", to: "/ignia-gallery" },
   ],
 };
 
-// Right nav (desktop): Sculptures, Partnerships
+// Right nav (desktop): Sculptures, Galleries
 const NAV_RIGHT: Record<"es" | "en", NavItem[]> = {
   es: [
     { label: "Esculturas", to: "/coleccion" },
-    { label: "Partnerships", action: "partners" },
+    { label: "Galleries", to: "/galleries" },
   ],
   en: [
     { label: "Sculptures", to: "/coleccion" },
-    { label: "Partnerships", action: "partners" },
+    { label: "Galleries", to: "/galleries" },
   ],
 };
 
