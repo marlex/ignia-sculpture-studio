@@ -22,9 +22,10 @@ import { Seo } from "@/components/Seo";
 const SEPARATORS = {
   es: {
     s1: {
-      title: "El conocimiento que necesitas para decidir bien.",
-      subtitle: "Comisiones transparentes, criterios abiertos y datos reales para escultores y coleccionistas.",
-      cta: "Unirme a Ignia",
+      title: "La casa de una institución nueva, con visión moderna.",
+      subtitle: "Un lugar hecho para toda la familia de la escultura.",
+      cta: "Sobre Ignia",
+      href: "/ignia-gallery",
     },
     s2: {
       title: "Cada obra, certificada para siempre.",
@@ -39,9 +40,10 @@ const SEPARATORS = {
   },
   en: {
     s1: {
-      title: "The knowledge you need to decide well.",
-      subtitle: "Transparent commissions, open criteria and real data for sculptors and collectors.",
-      cta: "Join Ignia",
+      title: "The house of a new institution, with a modern vision.",
+      subtitle: "A place built for the whole family of sculpture.",
+      cta: "About Ignia",
+      href: "/ignia-gallery",
     },
     s2: {
       title: "Every work, certified forever.",
@@ -90,7 +92,7 @@ const Index = () => {
           <Coleccion showHeader />
         </div>
       </div>
-      <SectionSeparator title={t.s1.title} subtitle={t.s1.subtitle} cta={t.s1.cta} />
+      <SectionSeparator title={t.s1.title} subtitle={t.s1.subtitle} cta={t.s1.cta} href={t.s1.href} />
       <div ref={fadeArt}>
         <Artistas showHeader />
       </div>

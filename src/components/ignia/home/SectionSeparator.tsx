@@ -1,10 +1,31 @@
+import { Link } from "react-router-dom";
+
 interface SectionSeparatorProps {
   title: string;
   subtitle: string;
   cta?: string;
+  href?: string;
 }
 
-export const SectionSeparator = ({ title, subtitle, cta }: SectionSeparatorProps) => {
+const buttonStyle = {
+  fontFamily: "Manrope, sans-serif",
+  fontWeight: 600,
+  fontSize: 12,
+  letterSpacing: "0.2em",
+  textTransform: "uppercase",
+  padding: "16px 32px",
+  background: "transparent",
+  color: "#FFFFFF",
+  border: "1px solid #FFFFFF",
+  borderRadius: 0,
+  cursor: "pointer",
+  transition: "opacity 250ms",
+  marginTop: 8,
+  textDecoration: "none",
+  display: "inline-block",
+} as const;
+
+export const SectionSeparator = ({ title, subtitle, cta, href }: SectionSeparatorProps) => {
   return (
     <section
       style={{
@@ -46,32 +67,26 @@ export const SectionSeparator = ({ title, subtitle, cta }: SectionSeparatorProps
       >
         {subtitle}
       </p>
-      {cta && (
+      {cta && href ? (
+        <Link
+          to={href}
+          style={buttonStyle}
+          onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.65"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}
+        >
+          {cta}
+        </Link>
+      ) : cta ? (
         <button
           type="button"
           onClick={() => window.dispatchEvent(new Event("ignia:open-invite"))}
-          style={{
-            fontFamily: "Manrope, sans-serif",
-            fontWeight: 600,
-            fontSize: 12,
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            padding: "16px 32px",
-            background: "transparent",
-            color: "#FFFFFF",
-            border: "1px solid #FFFFFF",
-            borderRadius: 0,
-            cursor: "pointer",
-transition: "opacity 250ms",
-            marginTop: 8,
-          }}
-onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.65"; }}
+          style={buttonStyle}
+          onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.65"; }}
           onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}
-
         >
           {cta}
         </button>
-      )}
+      ) : null}
     </section>
   );
 };
