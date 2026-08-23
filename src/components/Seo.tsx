@@ -6,7 +6,7 @@ const DEFAULT_IMAGE = `${SITE_BASE}/og.png`;
 type SeoProps = {
   title: string;
   description: string;
-  /** Path starting with "/" — canonical is always the non-www domain */
+  /** Path starting with "/", canonical is always the non-www domain */
   path: string;
   image?: string;
   type?: "website" | "article";

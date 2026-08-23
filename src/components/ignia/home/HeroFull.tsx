@@ -69,7 +69,7 @@ export const HeroFull = () => {
         }
       `}</style>
 
-      {/* Background — single editorial black-and-white image */}
+      {/* Background, single editorial black-and-white image */}
       <div className="absolute inset-0 z-0">
         <img
           src={heroImage}

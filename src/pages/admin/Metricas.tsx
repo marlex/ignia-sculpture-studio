@@ -131,7 +131,7 @@ export default function Metricas() {
                 <td style={cellStyle}>{s.d3}</td>
                 <td style={cellStyle}>{s.fav}</td>
                 <td style={cellStyle}>{s.inq}</td>
-                <td style={cellStyle}>{s.countries.size ? Array.from(s.countries).join(", ") : "—"}</td>
+                <td style={cellStyle}>{s.countries.size ? Array.from(s.countries).join(", ") : ","}</td>
               </tr>
             ))}
           </tbody>

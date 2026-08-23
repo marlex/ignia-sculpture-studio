@@ -224,9 +224,9 @@ export default function Obras() {
                       <span>{a.title}</span>
                     </div>
                   </td>
-                  <td style={cellStyle}>{artist?.email || "—"}</td>
-                  <td style={cellStyle}>{a.year ?? "—"}</td>
-                  <td style={cellStyle}>{a.price != null ? `€${a.price}` : "—"}</td>
+                  <td style={cellStyle}>{artist?.email || ","}</td>
+                  <td style={cellStyle}>{a.year ?? ","}</td>
+                  <td style={cellStyle}>{a.price != null ? `€${a.price}` : ","}</td>
                   <td style={cellStyle}><span style={badge(a.status)}>{t.tabs[a.status]}</span></td>
                   <td style={cellStyle}>
                     {a.status === "pendiente" && (

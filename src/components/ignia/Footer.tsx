@@ -72,7 +72,7 @@ export const Footer = () => {
   const lang = useLang();
   const cols = COLS[lang];
   const tagline = "The Digital Institution for Sculpture";
-  const status = lang === "es" ? "v0.1 — Beta" : "v0.1 — Beta";
+  const status = lang === "es" ? "v0.1, Beta" : "v0.1, Beta";
   const [open, setOpen] = useState<Record<string, boolean>>({});
   const [isDesktop, setIsDesktop] = useState(false);
 

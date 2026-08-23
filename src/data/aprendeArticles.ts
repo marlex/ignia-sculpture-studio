@@ -61,34 +61,34 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
         { type: "p", text: "El Deloitte Art & Finance Report estimaba en 2023 que el patrimonio de ultra alta renta invertido en arte y coleccionables rondaba los 2,17 billones de dólares en 2022, con proyección de alcanzar los 2,86 billones en 2026. El arte sigue ocupando un lugar creciente en la forma de pensar la riqueza." },
 
         { type: "h2", text: "Qué sostiene el valor de una escultura" },
-        { type: "p", text: "A diferencia de un cuadro, el valor de una escultura se vincula a factores verificables: la trayectoria del artista, la procedencia documentada, el estado y la técnica —la pátina de un bronce, el corte de un mármol— y, sobre todo, la autenticidad certificada. Ahí es donde la mayoría de plataformas fallan." },
+        { type: "p", text: "A diferencia de un cuadro, el valor de una escultura se vincula a factores verificables: la trayectoria del artista, la procedencia documentada, el estado y la técnica ,la pátina de un bronce, el corte de un mármol, y, sobre todo, la autenticidad certificada. Ahí es donde la mayoría de plataformas fallan." },
         { type: "p", text: "Cada obra en Ignia lleva un certificado de autenticidad respaldado por blockchain a través de Verisart: cuando llegue el momento de vender, el comprador podrá verificar su origen sin depender de tu palabra, ni de la nuestra." },
 
         { type: "h2", text: "Un ejemplo concreto" },
-        { type: "p", text: "Pliegue III, de Alba Costa —mármol, € 12.500— es exactamente eso: una pieza única, con procedencia documentada y un certificado verificable desde el primer día." },
+        { type: "p", text: "Pliegue III, de Alba Costa ,mármol, € 12.500, es exactamente eso: una pieza única, con procedencia documentada y un certificado verificable desde el primer día." },
         { type: "link", label: "Ver la obra →", to: "/obra/pliegue-iii" },
       ],
     },
     en: {
       tag: "For collectors",
       titulo: "Investing in Sculpture: The Art Category the Market Hasn't Priced In Yet",
-      extracto: "Why sculpture remains outside art-market indices — and why that is an opportunity.",
+      extracto: "Why sculpture remains outside art-market indices, and why that is an opportunity.",
       tiempo: "6 min read",
       fechaLabel: "August 20, 2026",
       body: [
-        { type: "p", text: "When people talk about collecting art with the long term in mind, the conversation is almost always about painting. Market indices, annual reports, wealth conversations — it all centers on canvas. Sculpture is almost always left out of that conversation. Not because it's worth less. Because no one has taken the time to tell its story properly." },
+        { type: "p", text: "When people talk about collecting art with the long term in mind, the conversation is almost always about painting. Market indices, annual reports, wealth conversations, it all centers on canvas. Sculpture is almost always left out of that conversation. Not because it's worth less. Because no one has taken the time to tell its story properly." },
         { type: "p", text: "At Ignia, we believe that omission is itself an opportunity." },
 
         { type: "h2", text: "A market that's contracting, not disappearing" },
-        { type: "p", text: "The Art Basel & UBS Global Art Market Report 2025 recorded a 12% drop in global art sales, to an estimated $57.5 billion in 2024, following a 4% decline in 2023. A contracting market isn't a dying market — it's a market becoming more selective, where judgment matters more than momentum." },
-        { type: "p", text: "The Deloitte Art & Finance Report estimated in 2023 that ultra-high-net-worth wealth held in art and collectibles was around $2.17 trillion in 2022, projected to reach $2.86 trillion by 2026 — art continues to play a growing role in how wealth is thought about." },
+        { type: "p", text: "The Art Basel & UBS Global Art Market Report 2025 recorded a 12% drop in global art sales, to an estimated $57.5 billion in 2024, following a 4% decline in 2023. A contracting market isn't a dying market, it's a market becoming more selective, where judgment matters more than momentum." },
+        { type: "p", text: "The Deloitte Art & Finance Report estimated in 2023 that ultra-high-net-worth wealth held in art and collectibles was around $2.17 trillion in 2022, projected to reach $2.86 trillion by 2026, art continues to play a growing role in how wealth is thought about." },
 
         { type: "h2", text: "What sustains the value of a sculpture" },
-        { type: "p", text: "Unlike a painting, its value is tied to verifiable factors: the artist's trajectory, documented provenance, condition and technique — the patina on a bronze, the carving of a marble — and, above all, certified authenticity. This is where most platforms fall short." },
+        { type: "p", text: "Unlike a painting, its value is tied to verifiable factors: the artist's trajectory, documented provenance, condition and technique, the patina on a bronze, the carving of a marble, and, above all, certified authenticity. This is where most platforms fall short." },
         { type: "p", text: "Every work on Ignia carries a blockchain-backed certificate of authenticity through Verisart: when the time comes to sell, the buyer can verify its origin without relying on your word, or ours." },
 
         { type: "h2", text: "A concrete example" },
-        { type: "p", text: "Pliegue III, by Alba Costa — marble, €12,500 — is exactly this: a unique piece, with documented provenance and a verifiable certificate from day one." },
+        { type: "p", text: "Pliegue III, by Alba Costa, marble, €12,500, is exactly this: a unique piece, with documented provenance and a verifiable certificate from day one." },
         { type: "link", label: "View the work →", to: "/obra/pliegue-iii" },
       ],
     },
@@ -383,7 +383,7 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
         { type: "h2", text: "Obra pública que redefinió ciudades" },
         { type: "p", text: "Chillida es hoy uno de los escultores europeos con más obra pública en emplazamiento. El «Peine del Viento» en San Sebastián, el «Elogio del Horizonte» (1990) en el cerro de Santa Catalina en Gijón, «Berlin» (2000) frente a la Cancillería Federal alemana o «Topos V» en la Colección Würth son ejemplos de piezas que reorganizaron sus entornos urbanos." },
         { type: "p", text: "Las principales colecciones institucionales que conservan su obra son el Museo Reina Sofía (Madrid), el Guggenheim Bilbao, la Fundación Botín (Santander), la Tate en Londres, el MoMA de Nueva York y la Menil Collection en Houston. Consultar sus catálogos en línea es la vía más rápida para trazar una cronología completa de su producción." },
-        { type: "p", text: "Su proyecto más ambicioso, «Tindaya» —un vaciado monumental en el interior de una montaña sagrada en Fuerteventura—, nunca llegó a ejecutarse. Sigue siendo, sin embargo, uno de los ejercicios teóricos más comentados de la escultura contemporánea sobre la relación entre paisaje, hueco y monumento." },
+        { type: "p", text: "Su proyecto más ambicioso, «Tindaya» ,un vaciado monumental en el interior de una montaña sagrada en Fuerteventura,, nunca llegó a ejecutarse. Sigue siendo, sin embargo, uno de los ejercicios teóricos más comentados de la escultura contemporánea sobre la relación entre paisaje, hueco y monumento." },
 
         { type: "h2", text: "Materiales: hierro, acero corten, hormigón, alabastro" },
         { type: "p", text: "Aunque el imaginario colectivo asocia a Chillida con el hierro, su obra recorre una gama material amplia. El acero corten aparece a partir de los años setenta y le permite escalas monumentales imposibles de forjar a mano; su óxido rojizo estable es hoy indisociable de su lenguaje." },
@@ -396,7 +396,7 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
         { type: "p", text: "Antes de comprar, la recomendación institucional es clara: visitar Chillida Leku, el Museo Reina Sofía y la Fundación Botín. Entrenar el ojo con la obra original es la mejor garantía frente a un mercado con abundantes reproducciones no autorizadas." },
 
         { type: "h2", text: "Una vigencia que crece" },
-        { type: "p", text: "Más de veinte años después de su muerte, la influencia de Chillida no ha hecho más que crecer. Su vocabulario —el hueco, la escala habitable, la gravedad como forma— es hoy patrimonio común de la escultura española contemporánea." },
+        { type: "p", text: "Más de veinte años después de su muerte, la influencia de Chillida no ha hecho más que crecer. Su vocabulario ,el hueco, la escala habitable, la gravedad como forma, es hoy patrimonio común de la escultura española contemporánea." },
         { type: "p", text: "Comprender a Chillida no es sólo repasar biografía: es aprender a mirar cualquier escultura moderna con más profundidad. Por eso sigue siendo una lectura imprescindible para escultores, coleccionistas y cualquiera que se acerque al oficio con seriedad." },
       ],
     },
@@ -428,7 +428,7 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
         { type: "h2", text: "Public work that redefined cities" },
         { type: "p", text: "Chillida is today one of the European sculptors with the most in-situ public work. «Peine del Viento» in San Sebastián, «Elogio del Horizonte» (1990) on the Santa Catalina hill in Gijón, «Berlin» (2000) in front of the German Federal Chancellery, and «Topos V» in the Würth Collection are examples of pieces that reorganised their urban environments." },
         { type: "p", text: "The main institutional collections holding his work are the Museo Reina Sofía (Madrid), Guggenheim Bilbao, Fundación Botín (Santander), Tate in London, MoMA in New York and the Menil Collection in Houston. Their online catalogues are the fastest way to trace a full chronology of his production." },
-        { type: "p", text: "His most ambitious project, «Tindaya» — a monumental hollowing of a sacred mountain in Fuerteventura — was never executed. It remains, however, one of the most discussed theoretical exercises in contemporary sculpture on the relationship between landscape, void and monument." },
+        { type: "p", text: "His most ambitious project, «Tindaya», a monumental hollowing of a sacred mountain in Fuerteventura, was never executed. It remains, however, one of the most discussed theoretical exercises in contemporary sculpture on the relationship between landscape, void and monument." },
 
         { type: "h2", text: "Materials: iron, corten steel, concrete, alabaster" },
         { type: "p", text: "Although the collective imagination associates Chillida with iron, his output spans a wide material range. Corten steel appears from the 1970s onward, enabling monumental scales impossible to forge by hand; its stable red oxide is today inseparable from his language." },
@@ -441,7 +441,7 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
         { type: "p", text: "Before buying, the institutional recommendation is clear: visit Chillida Leku, the Museo Reina Sofía and Fundación Botín. Training the eye with the original work is the best safeguard in a market with abundant unauthorised reproductions." },
 
         { type: "h2", text: "A relevance that keeps growing" },
-        { type: "p", text: "More than twenty years after his death, Chillida's influence has only grown. His vocabulary — the void, the inhabitable scale, gravity as form — is today common heritage of contemporary Spanish sculpture." },
+        { type: "p", text: "More than twenty years after his death, Chillida's influence has only grown. His vocabulary, the void, the inhabitable scale, gravity as form, is today common heritage of contemporary Spanish sculpture." },
         { type: "p", text: "Understanding Chillida is not just reviewing a biography: it is learning to look at any modern sculpture more deeply. That is why he remains essential reading for sculptors, collectors and anyone approaching the craft seriously." },
       ],
     },

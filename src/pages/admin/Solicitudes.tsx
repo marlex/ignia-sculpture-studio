@@ -191,7 +191,7 @@ export default function Solicitudes() {
       setConfirm({ app, newStatus });
       return;
     }
-    // pending / in_review — apply immediately, no email
+    // pending / in_review, apply immediately, no email
     applyNonFinalStatus(app, newStatus);
   };
 
@@ -360,7 +360,7 @@ export default function Solicitudes() {
                 <tr key={app.id}>
                   <td style={cellStyle}>{app.name}</td>
                   <td style={cellStyle}>{app.email}</td>
-                  <td style={cellStyle}>{app.social || "—"}</td>
+                  <td style={cellStyle}>{app.social || ","}</td>
                   <td style={cellStyle}>{new Date(app.created_at).toLocaleDateString(lang === "es" ? "es-ES" : "en-US")}</td>
                   <td style={cellStyle}>
                     {isFinal ? (

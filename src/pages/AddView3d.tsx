@@ -164,7 +164,7 @@ export default function AddView3d() {
             </label>
 
             <Link to="/dashboard/obras" className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line hover:opacity-65 transition-opacity inline-block">
-              Cerrar — el procesamiento continúa en segundo plano
+              Cerrar, el procesamiento continúa en segundo plano
             </Link>
           </div>
         )}

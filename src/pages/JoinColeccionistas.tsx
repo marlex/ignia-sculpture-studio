@@ -103,7 +103,7 @@ const JoinColeccionistas = () => {
     faqs: [
       { q: "¿Cómo sé que la obra es auténtica?", a: "Certificado blockchain verificable, para siempre." },
       { q: "¿Puedo ver la obra antes de comprar?", a: "Sí, con visualización 3D en tu espacio." },
-      { q: "¿Quién fija el precio?", a: "Ignia, no el escultor — precio curado y consistente." },
+      { q: "¿Quién fija el precio?", a: "Ignia, no el escultor, precio curado y consistente." },
       { q: "¿Cómo llega la obra a mi casa?", a: "Logística especializada, seguro puerta a puerta." },
     ],
     okTitle: "Bienvenido a Ignia.",
@@ -141,7 +141,7 @@ const JoinColeccionistas = () => {
     faqs: [
       { q: "How do I know the work is authentic?", a: "Verifiable blockchain certificate, forever." },
       { q: "Can I see the work before buying?", a: "Yes, with 3D visualization in your space." },
-      { q: "Who sets the price?", a: "Ignia, not the sculptor — curated and consistent pricing." },
+      { q: "Who sets the price?", a: "Ignia, not the sculptor, curated and consistent pricing." },
       { q: "How does the work reach my home?", a: "Specialized logistics, insured door to door." },
     ],
     okTitle: "Welcome to Ignia.",
@@ -197,7 +197,7 @@ const JoinColeccionistas = () => {
 
   return (
     <div style={{ background: "#FFFFFF" }}>
-      <Seo title={"Buy Original Sculpture — Curated & Certified | Ignia"} description={"Collect original sculpture with confidence: curated selection, fair fixed pricing, 3D viewing and a blockchain certificate of authenticity, insured door to door."} path="/join/coleccionistas" />
+      <Seo title={"Buy Original Sculpture, Curated & Certified | Ignia"} description={"Collect original sculpture with confidence: curated selection, fair fixed pricing, 3D viewing and a blockchain certificate of authenticity, insured door to door."} path="/join/coleccionistas" />
       <Header />
 
       {/* 1. HERO */}
@@ -325,7 +325,7 @@ const JoinColeccionistas = () => {
         </div>
       </section>
 
-      {/* 5. CERTIFICADO — imagen a sangre */}
+      {/* 5. CERTIFICADO, imagen a sangre */}
       <section style={{ background: "#FAFAFA" }}>
         <div
           className="join-bleed"
@@ -350,7 +350,7 @@ const JoinColeccionistas = () => {
         </div>
       </section>
 
-      {/* 6. CÓMO CUIDAMOS TU COMPRA — imagen a sangre (invertido) */}
+      {/* 6. CÓMO CUIDAMOS TU COMPRA, imagen a sangre (invertido) */}
       <section style={{ background: "#FFFFFF" }}>
         <div
           className="join-bleed join-bleed-rev"

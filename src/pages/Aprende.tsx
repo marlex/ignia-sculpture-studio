@@ -12,7 +12,7 @@ const AprendePage = () => {
 
   return (
     <main className="pt-14">
-      <Seo title={"Learn Sculpture — Materials, Process & Market | Ignia Gallery"} description={"Guides to understanding sculpture: materials, techniques, conservation, patinas and how the sculpture market really works."} path="/aprende" />
+      <Seo title={"Learn Sculpture, Materials, Process & Market | Ignia Gallery"} description={"Guides to understanding sculpture: materials, techniques, conservation, patinas and how the sculpture market really works."} path="/aprende" />
       <Header />
       <section className="px-6 md:px-12 pt-16 pb-10 bg-white">
         <div className="eyebrow mb-3">{t.eyebrow}</div>
