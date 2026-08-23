@@ -276,7 +276,7 @@ const Guidance = () => {
       </section>
 
       {/* 1b. POR QUÉ EXISTE GUIDANCE */}
-      <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
+      <section style={{ padding: "120px 24px", background: "#f5f5f5" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
           <h2 style={{ ...H2_STYLE, marginBottom: 28 }}>{t.whyTitle}</h2>
           <p style={{ ...BODY_STYLE, margin: 0 }}>{t.whyBody}</p>
