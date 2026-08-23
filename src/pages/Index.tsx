@@ -92,7 +92,7 @@ const Index = () => {
           <Coleccion showHeader />
         </div>
       </div>
-      <SectionSeparator title={t.s1.title} subtitle={t.s1.subtitle} cta={t.s1.cta} />
+      <SectionSeparator title={t.s1.title} subtitle={t.s1.subtitle} cta={t.s1.cta} href={t.s1.href} />
       <div ref={fadeArt}>
         <Artistas showHeader />
       </div>
