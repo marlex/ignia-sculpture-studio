@@ -60,7 +60,7 @@ export const CrossSellBlock = ({ exclude }: { exclude: AudienceKey[] }) => {
                 style={{
                   fontFamily: "'Cormorant Garamond', serif",
                   fontWeight: 600,
-                  fontSize: 20,
+                  fontSize: 30,
                   lineHeight: 1.2,
                 }}
               >
