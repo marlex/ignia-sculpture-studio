@@ -80,7 +80,6 @@ const Guidance = () => {
     ],
     trustBody: "Curadores y advisors son aliados de Ignia. Los conocemos de cerca: su trayectoria, su forma de trabajar, el cuidado que ponen en cada pieza, y en ellos delegamos algo tan valioso como la confianza de nuestros artistas y coleccionistas.",
     openTitle: "Solicitudes abiertas",
-    openBody: "Estamos construyendo nuestra primera red de curadores y advisors.",
     openCta: "Aplica ahora.",
     applyCurator: "Aplicar como Curador",
     applyAdvisor: "Aplicar como Advisor",
@@ -111,7 +110,6 @@ const Guidance = () => {
     ],
     trustBody: "Curators and advisors are Ignia allies. We know them closely: their trajectory, their way of working, the care they put into each piece, and in them we delegate something as valuable as the trust of our artists and collectors.",
     openTitle: "Applications open",
-    openBody: "We're building our first roster of curators and advisors.",
     openCta: "Apply now.",
     applyCurator: "Apply as Curator",
     applyAdvisor: "Apply as Advisor",
@@ -407,19 +405,6 @@ const Guidance = () => {
           }}
         >
           {t.trustBody}
-        </p>
-        <p
-          style={{
-            fontFamily: "Manrope, sans-serif",
-            fontWeight: 400,
-            fontSize: 17,
-            color: "rgba(255,255,255,0.70)",
-            lineHeight: 1.7,
-            maxWidth: 560,
-            margin: 0,
-          }}
-        >
-          {t.openBody}
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center", marginTop: 16 }}>
           <Link to="/join/curadores" style={OUTLINE_BTN_LIGHT} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
