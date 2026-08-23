@@ -63,11 +63,13 @@ const Guidance = () => {
   const t = lang === "es" ? {
     title: "Guidance.",
     subtitle: "Curadores y advisors, disponibles para escultores y coleccionistas — no solo para instituciones.",
+    whyTitle: "Por qué existe Guidance",
+    whyBody: "Comprar escultura pide un ojo entrenado: el material cambia el precio, la técnica cambia el valor, y la procedencia (quién la hizo, dónde ha estado) puede cambiarlo todo. Guidance pone esa misma lectura experta al alcance de cualquier escultor o coleccionista, con el rigor de una institución y la cercanía de un aliado.",
     curatorsTitle: "Curadores",
-    curatorsBody: "Para quienes quieren una mirada entrenada sobre su obra.",
+    curatorsBody: "Antes de vender, antes de comprar, antes de decidir si una pieza vale lo que pide: un curador de Ignia la mira con el mismo criterio que aplicaría en una institución, y te dice exactamente qué ve.",
     curatorsCta: "Explorar Curadores →",
     advisorsTitle: "Advisors",
-    advisorsBody: "Para quienes quieren entender el mercado.",
+    advisorsBody: "El mercado de la escultura premia a quien sabe leerlo: pocas piezas comparables, mucho peso en el ojo de quien lo conoce. Un advisor de Ignia te da esa lectura antes de comprometer tu dinero.",
     advisorsCta: "Explorar Advisors →",
     wallStatement: "Ojos expertos sobre tu obra.",
     howTitle: "Cómo funciona",
@@ -76,6 +78,7 @@ const Guidance = () => {
       { label: "Paso 2", desc: "Reserva una sesión privada." },
       { label: "Paso 3", desc: "O únete al foro — gratis, siempre." },
     ],
+    trustBody: "Curadores y advisors son aliados de Ignia. Los conocemos de cerca: su trayectoria, su forma de trabajar, el cuidado que ponen en cada pieza, y en ellos delegamos algo tan valioso como la confianza de nuestros artistas y coleccionistas.",
     openTitle: "Solicitudes abiertas",
     openBody: "Estamos construyendo nuestra primera red de curadores y advisors. Aplica ahora.",
     applyCurator: "Aplicar como Curador",
@@ -90,11 +93,13 @@ const Guidance = () => {
   } : {
     title: "Guidance.",
     subtitle: "Curators and advisors, available to sculptors and collectors alike — not just to institutions.",
+    whyTitle: "Why Guidance exists",
+    whyBody: "Buying sculpture demands a trained eye: material changes the price, technique changes the value, and provenance (who made it, where it has been) can change everything. Guidance puts that same expert reading within reach of any sculptor or collector, with the rigor of an institution and the closeness of an ally.",
     curatorsTitle: "Curators",
-    curatorsBody: "For those who want a trained eye on their work.",
+    curatorsBody: "Before selling, before buying, before deciding if a piece is worth what it asks: an Ignia curator looks at it with the same criteria they would apply in an institution, and tells you exactly what they see.",
     curatorsCta: "Explore Curators →",
     advisorsTitle: "Advisors",
-    advisorsBody: "For those who want to understand the market.",
+    advisorsBody: "The sculpture market rewards those who know how to read it: few comparable pieces, a lot of weight in the eye of those who know it. An Ignia advisor gives you that reading before you commit your money.",
     advisorsCta: "Explore Advisors →",
     wallStatement: "Expert eyes on your work.",
     howTitle: "How it works",
@@ -103,6 +108,7 @@ const Guidance = () => {
       { label: "Step 2", desc: "Book a private session." },
       { label: "Step 3", desc: "Or join the forum — free, always." },
     ],
+    trustBody: "Curators and advisors are Ignia allies. We know them closely: their trajectory, their way of working, the care they put into each piece, and in them we delegate something as valuable as the trust of our artists and collectors.",
     openTitle: "Applications open",
     openBody: "We're building our first roster of curators and advisors. Apply now.",
     applyCurator: "Apply as Curator",
@@ -267,6 +273,14 @@ const Guidance = () => {
         </div>
       </section>
 
+      {/* 1b. POR QUÉ EXISTE GUIDANCE */}
+      <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
+        <div style={{ maxWidth: 780, margin: "0 auto" }}>
+          <h2 style={{ ...H2_STYLE, marginBottom: 28 }}>{t.whyTitle}</h2>
+          <p style={{ ...BODY_STYLE, margin: 0 }}>{t.whyBody}</p>
+        </div>
+      </section>
+
       {/* 2. DOS COLUMNAS: CURATORS / ADVISORS */}
       <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
         <div
@@ -348,6 +362,13 @@ const Guidance = () => {
               ))}
             </tbody>
           </table>
+        </div>
+      </section>
+
+      {/* 4b. ALIADOS DE IGNIA */}
+      <section style={{ padding: "0 24px 120px", background: "#FAFAFA" }}>
+        <div style={{ maxWidth: 780, margin: "0 auto" }}>
+          <p style={{ ...BODY_STYLE, margin: 0 }}>{t.trustBody}</p>
         </div>
       </section>
 
@@ -449,6 +470,11 @@ const Guidance = () => {
         @media (max-width: 768px) {
           .guidance-diptych { grid-template-columns: 1fr !important; grid-template-rows: 1fr 1fr !important; }
           .guidance-paths { grid-template-columns: 1fr !important; gap: 64px !important; }
+        }
+        a:focus-visible,
+        button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
         }
       `}</style>
     </div>
