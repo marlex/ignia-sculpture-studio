@@ -27,7 +27,7 @@ export const GalleriesBanner = () => {
         style={{ minHeight: "calc(100vh - 56px)" }}
       >
         <div
-          className="flex flex-col justify-end px-6 md:px-12"
+          className="flex flex-col justify-center px-6 md:px-12"
           style={{ paddingTop: "clamp(80px, 12vw, 180px)", paddingBottom: "clamp(64px, 9vw, 140px)" }}
         >
           <div
