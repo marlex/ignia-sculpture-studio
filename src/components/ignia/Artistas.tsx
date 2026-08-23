@@ -87,11 +87,13 @@ export const Artistas = ({ showHeader = false }: ArtistasProps) => {
     ? { label: "Escultores", all: "Ver todos →", view: "Ver artista →",
         inspiration: "Referentes que nos inspiran",
         inspirationKicker: "INSPIRACIÓN",
-        inspirationLead: "Maestros contemporáneos cuya obra marca el camino que IGNIA quiere recorrer: una escultura que dialoga con el espacio, la materia y la memoria." }
+        inspirationLead: "Maestros contemporáneos cuya obra marca el camino que IGNIA quiere recorrer: una escultura que dialoga con el espacio, la materia y la memoria.",
+        closing: "Sculptors, your work stays yours. Keep showing and selling wherever else you already do." }
     : { label: "Sculptors", all: "View all →", view: "View artist →",
         inspiration: "References that inspire us",
         inspirationKicker: "INSPIRATION",
-        inspirationLead: "Contemporary masters whose work charts the path IGNIA wants to follow: sculpture in dialogue with space, matter and memory." };
+        inspirationLead: "Contemporary masters whose work charts the path IGNIA wants to follow: sculpture in dialogue with space, matter and memory.",
+        closing: "Sculptors, your work stays yours. Keep showing and selling wherever else you already do." };
 
 
   return (
