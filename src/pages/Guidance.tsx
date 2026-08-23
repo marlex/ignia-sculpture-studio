@@ -435,7 +435,7 @@ const Guidance = () => {
       <CrossSellBlock exclude={["curators", "advisors"]} />
 
       {/* 6. EMAIL FORM */}
-      <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
+      <section style={{ padding: "120px 24px", background: "#f5f5f5" }}>
         <div style={{ maxWidth: 480, margin: "0 auto" }}>
           <h2 style={{ ...H2_STYLE, marginBottom: 48, textAlign: "center" }}>{t.emailTitle}</h2>
           {submitted ? (
