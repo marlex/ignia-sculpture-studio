@@ -7,7 +7,7 @@ import { Footer } from "@/components/ignia/Footer";
 import { HeroFull } from "@/components/ignia/home/HeroFull";
 import { Ticker } from "@/components/ignia/home/Ticker";
 import { GalleriesBanner } from "@/components/ignia/home/GalleriesBanner";
-
+import { GuidanceBanner } from "@/components/ignia/home/GuidanceBanner";
 
 import { Reviews } from "@/components/ignia/home/Reviews";
 import { Aprende } from "@/components/ignia/Aprende";
