@@ -6,6 +6,7 @@ import { Colectores } from "@/components/ignia/Colectores";
 import { Footer } from "@/components/ignia/Footer";
 import { HeroFull } from "@/components/ignia/home/HeroFull";
 import { Ticker } from "@/components/ignia/home/Ticker";
+import { GalleriesBanner } from "@/components/ignia/home/GalleriesBanner";
 
 
 import { Reviews } from "@/components/ignia/home/Reviews";
@@ -93,6 +94,7 @@ const Index = () => {
       <div ref={fadeArt}>
         <Artistas showHeader />
       </div>
+      <GalleriesBanner />
       <div ref={fadeReviews}>
         <Reviews />
       </div>
