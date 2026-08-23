@@ -94,6 +94,7 @@ const Index = () => {
       <div ref={fadeArt}>
         <Artistas showHeader />
       </div>
+      <GalleriesBanner />
       <div ref={fadeReviews}>
         <Reviews />
       </div>
