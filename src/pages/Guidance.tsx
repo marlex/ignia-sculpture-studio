@@ -381,19 +381,6 @@ const Guidance = () => {
           minHeight: "60vh",
         }}
       >
-        <p
-          style={{
-            fontFamily: "Manrope, sans-serif",
-            fontWeight: 400,
-            fontSize: 16,
-            color: "rgba(255,255,255,0.70)",
-            lineHeight: 1.7,
-            maxWidth: 640,
-            margin: 0,
-          }}
-        >
-          {t.trustBody}
-        </p>
         <h2
           style={{
             fontFamily: "'Cormorant Garamond', serif",
@@ -408,6 +395,19 @@ const Guidance = () => {
         >
           {t.openTitle}
         </h2>
+        <p
+          style={{
+            fontFamily: "Manrope, sans-serif",
+            fontWeight: 400,
+            fontSize: 16,
+            color: "rgba(255,255,255,0.70)",
+            lineHeight: 1.7,
+            maxWidth: 640,
+            margin: 0,
+          }}
+        >
+          {t.trustBody}
+        </p>
         <p
           style={{
             fontFamily: "Manrope, sans-serif",
