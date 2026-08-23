@@ -145,6 +145,10 @@ export const Artistas = ({ showHeader = false }: ArtistasProps) => {
           </div>
         </div>
 
+        <p className="font-body text-[16px] font-normal text-gray leading-relaxed mt-12 max-w-[720px]">
+          {t.closing}
+        </p>
+
         {showHeader && (
           <div className="md:hidden mt-8 flex justify-end">
             <Link to="/escultores" className="link-arrow">{t.all}</Link>
