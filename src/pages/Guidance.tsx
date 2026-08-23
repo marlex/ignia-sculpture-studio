@@ -415,6 +415,21 @@ const Guidance = () => {
         >
           {t.openBody}
         </p>
+        <p
+          style={{
+            fontFamily: "Manrope, sans-serif",
+            fontWeight: 400,
+            fontSize: 14,
+            color: "rgba(255,255,255,0.85)",
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            lineHeight: 1.6,
+            maxWidth: 560,
+            margin: 0,
+          }}
+        >
+          {t.openCta}
+        </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center", marginTop: 16 }}>
           <Link to="/join/curadores" style={OUTLINE_BTN_LIGHT} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
             {t.applyCurator}
