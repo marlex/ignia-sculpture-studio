@@ -227,7 +227,7 @@ export default function ColeccionistaPublico() {
 
             <blockquote className="border-l-2 border-ink pl-5 mb-10">
               <p className="font-display text-[20px] italic text-ink leading-snug mb-2">"{c.cita}"</p>
-              <footer className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line">, {c.citaRef}</footer>
+              <footer className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line">{c.citaRef}</footer>
             </blockquote>
 
             <div>

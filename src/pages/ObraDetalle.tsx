@@ -348,10 +348,10 @@ const ObraDetalle = () => {
             {(() => {
               const anyO = o as any;
               const dims = anyO.dimensions
-                ? `${anyO.dimensions.h ?? ","} × ${anyO.dimensions.w ?? ","} × ${anyO.dimensions.d ?? ","} cm`
-                : ",";
-              const weight = anyO.weight ? `${anyO.weight} kg` : ",";
-              const technique = anyO.technique ?? ",";
+                ? `${anyO.dimensions.h ?? ""} × ${anyO.dimensions.w ?? ""} × ${anyO.dimensions.d ?? ""} cm`
+                : "";
+              const weight = anyO.weight ? `${anyO.weight} kg` : "";
+              const technique = anyO.technique ?? "";
               const specLabel = lang === "es" ? "Ficha técnica" : "Technical specs";
               const rows: [string, string][] = [
                 [lang === "es" ? "Dimensiones" : "Dimensions", dims],
