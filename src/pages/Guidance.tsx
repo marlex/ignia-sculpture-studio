@@ -367,13 +367,6 @@ const Guidance = () => {
         </div>
       </section>
 
-      {/* 4b. ALIADOS DE IGNIA */}
-      <section style={{ padding: "0 24px 120px", background: "#FAFAFA" }}>
-        <div style={{ maxWidth: 780, margin: "0 auto" }}>
-          <p style={{ ...BODY_STYLE, margin: 0 }}>{t.trustBody}</p>
-        </div>
-      </section>
-
       {/* 5. APPLICATIONS OPEN — BLOQUE NEGRO */}
       <section
         style={{
