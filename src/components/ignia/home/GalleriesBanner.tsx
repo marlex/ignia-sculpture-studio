@@ -27,7 +27,7 @@ export const GalleriesBanner = () => {
         style={{ minHeight: "calc(100vh - 56px)" }}
       >
         <div
-          className="flex flex-col justify-end px-6 md:px-12"
+          className="flex flex-col justify-center px-6 md:px-12"
           style={{ paddingTop: "clamp(80px, 12vw, 180px)", paddingBottom: "clamp(64px, 9vw, 140px)" }}
         >
           <div
@@ -67,6 +67,31 @@ export const GalleriesBanner = () => {
               {t.cta}
             </Link>
           </div>
+
+          <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-[720px]">
+            {[t.why1, t.why2].map((item, i) => (
+              <div key={i} className="text-left">
+                <h3
+                  className="text-[#121212]"
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontWeight: 600,
+                    fontSize: 26,
+                    lineHeight: 1.2,
+                    margin: 0,
+                  }}
+                >
+                  {item.title}
+                </h3>
+                <p
+                  className="text-[#121212]/80 font-body mt-3"
+                  style={{ fontSize: 16, lineHeight: 1.7 }}
+                >
+                  {item.text}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
         <div className="relative min-h-[420px] lg:min-h-0 bg-[#0a0a0a]">
           <img
@@ -77,34 +102,6 @@ export const GalleriesBanner = () => {
             loading="lazy"
             className="absolute inset-0 w-full h-full object-cover"
           />
-        </div>
-      </div>
-
-      {/* Black stats band */}
-      <div className="bg-[#0a0a0a] px-6 md:px-12 py-[80px] md:py-[120px]">
-        <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 text-center">
-          {[t.why1, t.why2].map((item, i) => (
-            <div key={i}>
-              <h3
-                className="text-white"
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontWeight: 600,
-                  fontSize: 26,
-                  lineHeight: 1.2,
-                  margin: 0,
-                }}
-              >
-                {item.title}
-              </h3>
-              <p
-                className="text-white/80 font-body mt-3"
-                style={{ fontSize: 16, lineHeight: 1.7 }}
-              >
-                {item.text}
-              </p>
-            </div>
-          ))}
         </div>
       </div>
     </section>
