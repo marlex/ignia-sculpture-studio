@@ -367,13 +367,6 @@ const Guidance = () => {
         </div>
       </section>
 
-      {/* 4b. ALIADOS DE IGNIA */}
-      <section style={{ padding: "0 24px 120px", background: "#FAFAFA" }}>
-        <div style={{ maxWidth: 780, margin: "0 auto" }}>
-          <p style={{ ...BODY_STYLE, margin: 0 }}>{t.trustBody}</p>
-        </div>
-      </section>
-
       {/* 5. APPLICATIONS OPEN — BLOQUE NEGRO */}
       <section
         style={{
@@ -388,6 +381,19 @@ const Guidance = () => {
           minHeight: "60vh",
         }}
       >
+        <p
+          style={{
+            fontFamily: "Manrope, sans-serif",
+            fontWeight: 400,
+            fontSize: 16,
+            color: "rgba(255,255,255,0.70)",
+            lineHeight: 1.7,
+            maxWidth: 640,
+            margin: 0,
+          }}
+        >
+          {t.trustBody}
+        </p>
         <h2
           style={{
             fontFamily: "'Cormorant Garamond', serif",
@@ -414,21 +420,6 @@ const Guidance = () => {
           }}
         >
           {t.openBody}
-        </p>
-        <p
-          style={{
-            fontFamily: "Manrope, sans-serif",
-            fontWeight: 400,
-            fontSize: 14,
-            color: "rgba(255,255,255,0.85)",
-            letterSpacing: "0.14em",
-            textTransform: "uppercase",
-            lineHeight: 1.6,
-            maxWidth: 560,
-            margin: 0,
-          }}
-        >
-          {t.openCta}
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center", marginTop: 16 }}>
           <Link to="/join/curadores" style={OUTLINE_BTN_LIGHT} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
