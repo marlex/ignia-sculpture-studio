@@ -62,7 +62,7 @@ const Guidance = () => {
 
   const t = lang === "es" ? {
     title: "Guidance.",
-    subtitle: "Curadores y advisors, disponibles para escultores y coleccionistas — no solo para instituciones.",
+    subtitle: "Ignia le da a la escultura el lugar que se merece. Guidance pone esa excelencia al alcance de todos: curadores y advisors, cerca de escultores y coleccionistas.",
     whyTitle: "Por qué existe Guidance",
     whyBody: "Comprar escultura pide un ojo entrenado: el material cambia el precio, la técnica cambia el valor, y la procedencia (quién la hizo, dónde ha estado) puede cambiarlo todo. Guidance pone esa misma lectura experta al alcance de cualquier escultor o coleccionista, con el rigor de una institución y la cercanía de un aliado.",
     curatorsTitle: "Curadores",
@@ -93,7 +93,7 @@ const Guidance = () => {
     errMsg: "Hubo un error al enviar. Inténtalo de nuevo.",
   } : {
     title: "Guidance.",
-    subtitle: "Curators and advisors, available to sculptors and collectors alike — not just to institutions.",
+    subtitle: "Ignia gives sculpture the place it deserves. Guidance brings that excellence within everyone's reach: curators and advisors, close to sculptors and collectors.",
     whyTitle: "Why Guidance exists",
     whyBody: "Buying sculpture demands a trained eye: material changes the price, technique changes the value, and provenance (who made it, where it has been) can change everything. Guidance puts that same expert reading within reach of any sculptor or collector, with the rigor of an institution and the closeness of an ally.",
     curatorsTitle: "Curators",
