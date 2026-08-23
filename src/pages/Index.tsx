@@ -7,7 +7,7 @@ import { Footer } from "@/components/ignia/Footer";
 import { HeroFull } from "@/components/ignia/home/HeroFull";
 import { Ticker } from "@/components/ignia/home/Ticker";
 import { GalleriesBanner } from "@/components/ignia/home/GalleriesBanner";
-
+import { GuidanceBanner } from "@/components/ignia/home/GuidanceBanner";
 
 import { Reviews } from "@/components/ignia/home/Reviews";
 import { Aprende } from "@/components/ignia/Aprende";
@@ -100,6 +100,7 @@ const Index = () => {
       </div>
       <SectionSeparator title={t.s2.title} subtitle={t.s2.subtitle} cta={t.s2.cta} />
       <Colectores />
+      <GuidanceBanner />
       <Aprende />
       <SectionSeparator title={t.s3.title} subtitle={t.s3.subtitle} cta={t.s3.cta} />
       <Footer />
