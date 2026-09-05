@@ -72,7 +72,6 @@ export const Header = () => {
     window.dispatchEvent(new CustomEvent("ignia:open-invite", { detail: { variant: "partners" } }));
   };
 
-  const navLinkClass = "font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity";
   const renderNavItem = (item: NavItem) =>
     item.action === "partners" ? (
       <button key={item.label} type="button" onClick={openPartners} className={navLinkClass}>
@@ -120,9 +119,17 @@ export const Header = () => {
 
 
 
+  // Header is in "dark mode" at rest (transparent, light text) and switches to
+  // light mode (white frosted glass, dark text) once the user scrolls.
+  const navColor = scrolled ? "text-gray" : "text-white";
+  const navLinkClass = `font-body text-[16px] font-normal ${navColor} hover:opacity-65 transition-opacity`;
+  const logoVariant: "dark" | "light" = scrolled ? "dark" : "light";
+  const hamburgerColor = scrolled ? "#121212" : "#FFFFFF";
+  const mobileInviteColor = scrolled ? "#121212" : "#FFFFFF";
+
   return (
     <header
-      className={`ignia-header fixed top-0 left-0 right-0 z-[100] h-14 bg-white/95 backdrop-blur border-b border-border flex items-center px-6 md:px-12 ${scrolled ? "is-scrolled" : ""}`}
+      className={`ignia-header fixed top-0 left-0 right-0 z-[100] h-14 bg-transparent border-transparent flex items-center px-6 md:px-12 ${scrolled ? "is-scrolled" : ""}`}
     >
       <style>{`
         @media (max-width: 1279px) {
@@ -191,9 +198,9 @@ export const Header = () => {
               cursor: "pointer",
             }}
           >
-            <span style={{ width: 18, height: 1, background: "#121212", display: "block" }} />
-            <span style={{ width: 18, height: 1, background: "#121212", display: "block" }} />
-            <span style={{ width: 18, height: 1, background: "#121212", display: "block" }} />
+            <span style={{ width: 18, height: 1, background: hamburgerColor, display: "block" }} />
+            <span style={{ width: 18, height: 1, background: hamburgerColor, display: "block" }} />
+            <span style={{ width: 18, height: 1, background: hamburgerColor, display: "block" }} />
           </button>
           <nav className="header-nav-links hidden xl:flex items-center gap-9">
             {leftItems.map(renderNavItem)}
@@ -203,7 +210,7 @@ export const Header = () => {
         {/* CENTER: logo */}
         <Link to="/" className="col-start-2 flex items-center justify-center" aria-label="Ignia Gallery">
           <span style={{ display: "inline-block", transform: "scaleX(1.05)", transformOrigin: "center" }}>
-            <Logo />
+            <Logo variant={logoVariant} />
           </span>
         </Link>
 
@@ -213,19 +220,19 @@ export const Header = () => {
             {rightItems.map(renderNavItem)}
           </nav>
           <div className="header-lang hidden xl:flex">
-            <LangDropdown lang={lang} setLang={setLang} />
+            <LangDropdown lang={lang} setLang={setLang} variant={logoVariant} />
           </div>
           {SHOW_PUBLIC_AUTH && (user ? (
             <div className="header-user-links hidden xl:flex items-center gap-9">
-              <Link to="/dashboard" className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
+              <Link to="/dashboard" className={`font-body text-[16px] font-normal ${navColor} hover:opacity-65 transition-opacity`}>
                 {t.dashboard}
               </Link>
-              <button onClick={() => { logout(); navigate("/"); }} className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
+              <button onClick={() => { logout(); navigate("/"); }} className={`font-body text-[16px] font-normal ${navColor} hover:opacity-65 transition-opacity`}>
                 {t.signout}
               </button>
             </div>
           ) : (
-            <Link to={`/login?redirect=${encodeURIComponent(location.pathname)}`} className="header-signin-link font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
+            <Link to={`/login?redirect=${encodeURIComponent(location.pathname)}`} className={`header-signin-link font-body text-[16px] font-normal ${navColor} hover:opacity-65 transition-opacity`}>
               {t.signin}
             </Link>
           ))}
@@ -234,7 +241,7 @@ export const Header = () => {
               <>
                 <Link
                   to="/admin/dashboard"
-                  className="header-invite-btn inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
+                  className={`header-invite-btn inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium ${!scrolled ? "btn-primary-inverse" : ""}`}
                 >
                   {t.adminPanel}
                 </Link>
@@ -261,7 +268,7 @@ export const Header = () => {
               <>
                 <Link
                   to="/login"
-                  className="header-invite-btn inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
+                  className={`header-invite-btn inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium ${!scrolled ? "btn-primary-inverse" : ""}`}
                 >
                   {t.login}
                 </Link>
@@ -295,7 +302,7 @@ export const Header = () => {
             type="button"
             onClick={openInvite}
             aria-label={t.publish}
-            className="header-invite-icon-mobile font-body text-[13px] font-medium tracking-[0.18em] uppercase text-ink"
+            className="header-invite-icon-mobile font-body text-[13px] font-medium tracking-[0.18em] uppercase"
             style={{
               display: "flex",
               alignItems: "center",
@@ -304,7 +311,7 @@ export const Header = () => {
               border: "none",
               padding: "0 2px",
               cursor: "pointer",
-              color: "#121212",
+              color: mobileInviteColor,
               textDecoration: "none",
             }}
           >
@@ -425,7 +432,7 @@ const LANGS: { code: Lang; label: string }[] = [
   { code: "en", label: "EN" },
 ];
 
-const LangDropdown = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) => {
+const LangDropdown = ({ lang, setLang, variant = "dark" }: { lang: Lang; setLang: (l: Lang) => void; variant?: "dark" | "light" }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -436,6 +443,7 @@ const LangDropdown = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => voi
     return () => document.removeEventListener("mousedown", onDoc);
   }, []);
   const others = LANGS.filter((l) => l.code !== lang);
+  const triggerColor = variant === "light" ? "text-white" : "text-ink";
   return (
     <div ref={ref} className="relative font-body text-[12px] uppercase tracking-[0.14em]">
       <button
@@ -443,7 +451,7 @@ const LangDropdown = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => voi
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="flex items-center gap-1.5 text-ink font-normal hover:opacity-65 transition-opacity"
+        className={`flex items-center gap-1.5 ${triggerColor} font-normal hover:opacity-65 transition-opacity`}
       >
         {LANGS.find((l) => l.code === lang)?.label}
         <span aria-hidden className={`text-[10px] transition-transform ${open ? "rotate-180" : ""}`}>▾</span>
