@@ -72,7 +72,6 @@ export const Header = () => {
     window.dispatchEvent(new CustomEvent("ignia:open-invite", { detail: { variant: "partners" } }));
   };
 
-  const navLinkClass = "font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity";
   const renderNavItem = (item: NavItem) =>
     item.action === "partners" ? (
       <button key={item.label} type="button" onClick={openPartners} className={navLinkClass}>
