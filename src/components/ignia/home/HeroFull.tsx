@@ -29,7 +29,7 @@ export const HeroFull = () => {
   return (
     <section
       className="hero-full relative w-full overflow-hidden"
-      style={{ height: "calc(100vh - 56px)", background: "#121212" }}
+      style={{ height: "100vh", background: "#121212" }}
     >
       <style>{`
         @keyframes hf-rise {
