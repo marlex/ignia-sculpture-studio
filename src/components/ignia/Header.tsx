@@ -220,19 +220,19 @@ export const Header = () => {
             {rightItems.map(renderNavItem)}
           </nav>
           <div className="header-lang hidden xl:flex">
-            <LangDropdown lang={lang} setLang={setLang} />
+            <LangDropdown lang={lang} setLang={setLang} variant={logoVariant} />
           </div>
           {SHOW_PUBLIC_AUTH && (user ? (
             <div className="header-user-links hidden xl:flex items-center gap-9">
-              <Link to="/dashboard" className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
+              <Link to="/dashboard" className={`font-body text-[16px] font-normal ${navColor} hover:opacity-65 transition-opacity`}>
                 {t.dashboard}
               </Link>
-              <button onClick={() => { logout(); navigate("/"); }} className="font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
+              <button onClick={() => { logout(); navigate("/"); }} className={`font-body text-[16px] font-normal ${navColor} hover:opacity-65 transition-opacity`}>
                 {t.signout}
               </button>
             </div>
           ) : (
-            <Link to={`/login?redirect=${encodeURIComponent(location.pathname)}`} className="header-signin-link font-body text-[16px] font-normal text-gray hover:opacity-65 transition-opacity">
+            <Link to={`/login?redirect=${encodeURIComponent(location.pathname)}`} className={`header-signin-link font-body text-[16px] font-normal ${navColor} hover:opacity-65 transition-opacity`}>
               {t.signin}
             </Link>
           ))}
@@ -241,7 +241,7 @@ export const Header = () => {
               <>
                 <Link
                   to="/admin/dashboard"
-                  className="header-invite-btn inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
+                  className={`header-invite-btn inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium ${!scrolled ? "btn-primary-inverse" : ""}`}
                 >
                   {t.adminPanel}
                 </Link>
