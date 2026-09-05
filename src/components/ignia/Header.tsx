@@ -129,7 +129,7 @@ export const Header = () => {
 
   return (
     <header
-      className={`ignia-header fixed top-0 left-0 right-0 z-[100] h-14 bg-transparent border-transparent flex items-center pt-2 px-6 md:px-12 ${scrolled ? "is-scrolled" : ""}`}
+      className={`ignia-header fixed top-0 left-0 right-0 z-[100] bg-transparent border-transparent flex items-center pt-[30px] pb-[30px] px-6 md:px-12 ${scrolled ? "is-scrolled" : ""}`}
     >
       <style>{`
         @media (max-width: 1279px) {
