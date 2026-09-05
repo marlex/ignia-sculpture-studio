@@ -97,7 +97,7 @@ export const HeroFull = () => {
       {/* Content */}
       <div
         className="hf-inner absolute inset-0 z-[2] flex flex-col items-center justify-center text-center px-6"
-        style={{ paddingTop: 24, paddingBottom: 24 }}
+        style={{ paddingTop: 56, paddingBottom: 24 }}
       >
         <h1 className="hf-title-el hf-anim hf-title">{t.title}</h1>
         <p className="hf-subtitle-el hf-anim hf-subtitle">{t.subtitle}</p>
