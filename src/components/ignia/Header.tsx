@@ -268,7 +268,7 @@ export const Header = () => {
               <>
                 <Link
                   to="/login"
-                  className="header-invite-btn inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium"
+                  className={`header-invite-btn inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium ${!scrolled ? "btn-primary-inverse" : ""}`}
                 >
                   {t.login}
                 </Link>
