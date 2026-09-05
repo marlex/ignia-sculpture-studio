@@ -198,9 +198,9 @@ export const Header = () => {
               cursor: "pointer",
             }}
           >
-            <span style={{ width: 18, height: 1, background: "#121212", display: "block" }} />
-            <span style={{ width: 18, height: 1, background: "#121212", display: "block" }} />
-            <span style={{ width: 18, height: 1, background: "#121212", display: "block" }} />
+            <span style={{ width: 18, height: 1, background: hamburgerColor, display: "block" }} />
+            <span style={{ width: 18, height: 1, background: hamburgerColor, display: "block" }} />
+            <span style={{ width: 18, height: 1, background: hamburgerColor, display: "block" }} />
           </button>
           <nav className="header-nav-links hidden xl:flex items-center gap-9">
             {leftItems.map(renderNavItem)}
@@ -210,7 +210,7 @@ export const Header = () => {
         {/* CENTER: logo */}
         <Link to="/" className="col-start-2 flex items-center justify-center" aria-label="Ignia Gallery">
           <span style={{ display: "inline-block", transform: "scaleX(1.05)", transformOrigin: "center" }}>
-            <Logo />
+            <Logo variant={logoVariant} />
           </span>
         </Link>
 
