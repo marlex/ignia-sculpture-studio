@@ -120,9 +120,17 @@ export const Header = () => {
 
 
 
+  // Header is in "dark mode" at rest (transparent, light text) and switches to
+  // light mode (white frosted glass, dark text) once the user scrolls.
+  const navColor = scrolled ? "text-gray" : "text-white";
+  const navLinkClass = `font-body text-[16px] font-normal ${navColor} hover:opacity-65 transition-opacity`;
+  const logoVariant: "dark" | "light" = scrolled ? "dark" : "light";
+  const hamburgerColor = scrolled ? "#121212" : "#FFFFFF";
+  const mobileInviteColor = scrolled ? "#121212" : "#FFFFFF";
+
   return (
     <header
-      className={`ignia-header fixed top-0 left-0 right-0 z-[100] h-14 bg-white/95 backdrop-blur border-b border-border flex items-center px-6 md:px-12 ${scrolled ? "is-scrolled" : ""}`}
+      className={`ignia-header fixed top-0 left-0 right-0 z-[100] h-14 bg-transparent border-transparent flex items-center px-6 md:px-12 ${scrolled ? "is-scrolled" : ""}`}
     >
       <style>{`
         @media (max-width: 1279px) {
