@@ -432,7 +432,7 @@ const LANGS: { code: Lang; label: string }[] = [
   { code: "en", label: "EN" },
 ];
 
-const LangDropdown = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) => {
+const LangDropdown = ({ lang, setLang, variant = "dark" }: { lang: Lang; setLang: (l: Lang) => void; variant?: "dark" | "light" }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -443,6 +443,7 @@ const LangDropdown = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => voi
     return () => document.removeEventListener("mousedown", onDoc);
   }, []);
   const others = LANGS.filter((l) => l.code !== lang);
+  const triggerColor = variant === "light" ? "text-white" : "text-ink";
   return (
     <div ref={ref} className="relative font-body text-[12px] uppercase tracking-[0.14em]">
       <button
@@ -450,7 +451,7 @@ const LangDropdown = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => voi
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="flex items-center gap-1.5 text-ink font-normal hover:opacity-65 transition-opacity"
+        className={`flex items-center gap-1.5 ${triggerColor} font-normal hover:opacity-65 transition-opacity`}
       >
         {LANGS.find((l) => l.code === lang)?.label}
         <span aria-hidden className={`text-[10px] transition-transform ${open ? "rotate-180" : ""}`}>▾</span>
