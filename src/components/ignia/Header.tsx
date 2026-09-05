@@ -302,7 +302,7 @@ export const Header = () => {
             type="button"
             onClick={openInvite}
             aria-label={t.publish}
-            className="header-invite-icon-mobile font-body text-[13px] font-medium tracking-[0.18em] uppercase text-ink"
+            className="header-invite-icon-mobile font-body text-[13px] font-medium tracking-[0.18em] uppercase"
             style={{
               display: "flex",
               alignItems: "center",
@@ -311,7 +311,7 @@ export const Header = () => {
               border: "none",
               padding: "0 2px",
               cursor: "pointer",
-              color: "#121212",
+              color: mobileInviteColor,
               textDecoration: "none",
             }}
           >
