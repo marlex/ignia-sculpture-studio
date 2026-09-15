@@ -59,7 +59,7 @@ export const HeroSlideshow = ({ onInvite, onCollection }: Props) => {
               src={src}
               alt=""
               loading={i === 0 ? "eager" : "lazy"}
-              fetchPriority={i === 0 ? "high" : "low"}
+              fetchpriority={i === 0 ? "high" : "low"}
               decoding="async"
               className="w-full h-full object-cover"
               style={{

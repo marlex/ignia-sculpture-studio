@@ -241,7 +241,7 @@ const ObraDetalle = () => {
                       src={src}
                       alt={`${o.title}, ${i + 1}`}
                       loading={i === 0 ? "eager" : "lazy"}
-                      fetchPriority={i === 0 ? "high" : "low"}
+                      fetchpriority={i === 0 ? "high" : "low"}
                       decoding="async"
                       className="absolute inset-0 w-full h-full object-cover transition-opacity duration-200"
                       style={{ opacity: i === idx ? 1 : 0 }}

@@ -185,7 +185,7 @@ export default function PerfilEscultor() {
       <section className="px-6 md:px-12 py-16 max-w-[1280px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 items-start mb-12">
           <div className="aspect-[4/5] overflow-hidden bg-secondary">
-            <img src={bio.retrato} alt={bio.nombre} loading="eager" fetchPriority="high" decoding="async" className="w-full h-full object-cover object-[center_30%]" />
+            <img src={bio.retrato} alt={bio.nombre} loading="eager" fetchpriority="high" decoding="async" className="w-full h-full object-cover object-[center_30%]" />
           </div>
           <div>
             <div className="eyebrow mb-3">{t.eyebrow}</div>

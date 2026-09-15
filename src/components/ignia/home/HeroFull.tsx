@@ -75,7 +75,7 @@ export const HeroFull = () => {
           src={heroImage}
           alt={t.imgAlt}
           loading="eager"
-          fetchPriority="high"
+          fetchpriority="high"
           decoding="async"
           className="absolute inset-0 w-full h-full object-cover"
           style={{

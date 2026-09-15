@@ -62,7 +62,7 @@ const AprendeArticuloPage = () => {
             src={article.img}
             alt={content.titulo}
             loading="eager"
-            fetchPriority="high"
+            fetchpriority="high"
             decoding="async"
             className="w-full h-full object-cover"
           />
