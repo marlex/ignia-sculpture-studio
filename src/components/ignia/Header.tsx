@@ -54,6 +54,7 @@ export const Header = () => {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const isHome = location.pathname === "/";
 
   // Mobile floating header on scroll
   useEffect(() => {
@@ -119,13 +120,17 @@ export const Header = () => {
 
 
 
-  // Header is in "dark mode" at rest (transparent, light text) and switches to
-  // light mode (white frosted glass, dark text) once the user scrolls.
-  const navColor = scrolled ? "text-gray" : "text-white";
+  // Header is in "dark mode" (transparent, light text) only at rest on the
+  // homepage, where it sits over HeroFull's dark background. Everywhere else
+  // pages start with a light background, so the header must start in "light
+  // mode" (dark text) or it disappears against it. Scrolling still switches
+  // to the floating light-mode pill on every page.
+  const overDarkHero = isHome && !scrolled;
+  const navColor = overDarkHero ? "text-white" : "text-gray";
   const navLinkClass = `font-body text-[16px] font-normal ${navColor} hover:opacity-65 transition-opacity`;
-  const logoVariant: "dark" | "light" = scrolled ? "dark" : "light";
-  const hamburgerColor = scrolled ? "#121212" : "#FFFFFF";
-  const mobileInviteColor = scrolled ? "#121212" : "#FFFFFF";
+  const logoVariant: "dark" | "light" = overDarkHero ? "light" : "dark";
+  const hamburgerColor = overDarkHero ? "#FFFFFF" : "#121212";
+  const mobileInviteColor = overDarkHero ? "#FFFFFF" : "#121212";
 
   return (
     <header
