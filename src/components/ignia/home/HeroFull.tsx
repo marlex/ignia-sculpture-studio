@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
-import heroMarmol from "@/assets/hero-marmol.jpg.asset.json";
-
-const heroImage = heroMarmol.url;
+import heroImage from "@/assets/hero-marmol.jpg";
 
 export const HeroFull = () => {
   const lang = useLang();

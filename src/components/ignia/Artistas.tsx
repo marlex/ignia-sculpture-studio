@@ -5,16 +5,11 @@ import cristina from "@/assets/artist-cristina-iglesias-real.jpg";
 import jaume from "@/assets/artist-jaume-plensa-real.jpg";
 import barcelo from "@/assets/artist-miquel-barcelo-real.jpg";
 import chillida from "@/assets/artist-eduardo-chillida-real.jpg";
-import ulmukAsset from "@/assets/ada-la-cadena-taller.png.asset.json";
-import helenaPortrait from "@/assets/artist-helena-vazquez-new.png.asset.json";
-import luciaPortraitAsset from "@/assets/artist-lucia-pardo-new.jpg.asset.json";
-const luciaPortrait = luciaPortraitAsset.url;
-import pabloPortraitAsset from "@/assets/artist-pablo-reyes-new.jpg.asset.json";
-const pabloPortrait = pabloPortraitAsset.url;
+import ulmuk from "@/assets/ada-la-cadena-taller.png";
+import helena from "@/assets/artist-helena-vazquez-new.png";
+import luciaPortrait from "@/assets/artist-lucia-pardo-new.jpg";
+import pabloPortrait from "@/assets/artist-pablo-reyes-new.jpg";
 import tomasPortrait from "@/assets/artist-tomas-vigo.jpg";
-
-const ulmuk = ulmukAsset.url;
-const helena = helenaPortrait.url;
 
 
 const slugify = (s: string) =>

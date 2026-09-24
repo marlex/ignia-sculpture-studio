@@ -2,9 +2,9 @@ import { Link, useParams } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
-import patriziaAsset from "@/assets/collector-patrizia.webp.asset.json";
-import joannouAsset from "@/assets/collector-joannou.webp.asset.json";
-import warburgAsset from "@/assets/collector-warburg.jpg.asset.json";
+import patriziaPhoto from "@/assets/patrizia.webp";
+import joannouPhoto from "@/assets/joannou.webp";
+import warburgPhoto from "@/assets/warburg.jpg";
 
 type Bio = {
   nombre: string;
@@ -25,7 +25,7 @@ const DATA: Record<string, { es: Bio; en: Bio }> = {
       nombre: "Patrizia Sandretto Re Rebaudengo",
       ubicacion: "Turín, Italia",
       foco: "Escultura contemporánea · Instalación · Fotografía",
-      foto: patriziaAsset.url,
+      foto: patriziaPhoto,
       eyebrow: "Coleccionista · Mecenas",
       bio: [
         "Patrizia Sandretto Re Rebaudengo (Turín, 1958) empezó a coleccionar arte contemporáneo a comienzos de los noventa, en un momento en el que Italia apenas miraba a la generación emergente internacional. En 1995 fundó la Fondazione Sandretto Re Rebaudengo, primero en Guarene d'Alba y desde 2002 en su sede de Turín, diseñada por Claudio Silvestrin.",
@@ -47,7 +47,7 @@ const DATA: Record<string, { es: Bio; en: Bio }> = {
       nombre: "Patrizia Sandretto Re Rebaudengo",
       ubicacion: "Turin, Italy",
       foco: "Contemporary sculpture · Installation · Photography",
-      foto: patriziaAsset.url,
+      foto: patriziaPhoto,
       eyebrow: "Collector · Patron",
       bio: [
         "Patrizia Sandretto Re Rebaudengo (Turin, 1958) started collecting contemporary art in the early nineties, at a time when Italy was barely looking at the emerging international generation. In 1995 she founded the Fondazione Sandretto Re Rebaudengo, first in Guarene d'Alba and since 2002 in its Turin headquarters, designed by Claudio Silvestrin.",
@@ -71,7 +71,7 @@ const DATA: Record<string, { es: Bio; en: Bio }> = {
       nombre: "Dakis Joannou",
       ubicacion: "Atenas, Grecia",
       foco: "Escultura · Instalación · Contemporáneo",
-      foto: joannouAsset.url,
+      foto: joannouPhoto,
       eyebrow: "Coleccionista · Fundador DESTE",
       bio: [
         "Dakis Joannou (Nicosia, 1939) es uno de los coleccionistas más influyentes del arte contemporáneo desde finales de los ochenta. En 1983 fundó la DESTE Foundation for Contemporary Art, con sede en Atenas, dedicada a la investigación y exhibición de prácticas emergentes.",
@@ -93,7 +93,7 @@ const DATA: Record<string, { es: Bio; en: Bio }> = {
       nombre: "Dakis Joannou",
       ubicacion: "Athens, Greece",
       foco: "Sculpture · Installation · Contemporary",
-      foto: joannouAsset.url,
+      foto: joannouPhoto,
       eyebrow: "Collector · Founder of DESTE",
       bio: [
         "Dakis Joannou (Nicosia, 1939) has been one of the most influential contemporary art collectors since the late eighties. In 1983 he founded the DESTE Foundation for Contemporary Art, based in Athens, devoted to the research and exhibition of emerging practices.",
@@ -117,7 +117,7 @@ const DATA: Record<string, { es: Bio; en: Bio }> = {
       nombre: "Mei & Allan Warburg",
       ubicacion: "Sonoma, California",
       foco: "Escultura exterior · Site-specific · Gran formato",
-      foto: warburgAsset.url,
+      foto: warburgPhoto,
       eyebrow: "Coleccionistas · Donum Estate",
       bio: [
         "Mei y Allan Warburg son los fundadores de Donum Estate, una finca de 200 acres en el condado de Sonoma que combina viñedo de Pinot Noir y Chardonnay con una de las colecciones de escultura al aire libre más ambiciosas del mundo.",
@@ -139,7 +139,7 @@ const DATA: Record<string, { es: Bio; en: Bio }> = {
       nombre: "Mei & Allan Warburg",
       ubicacion: "Sonoma, California",
       foco: "Outdoor sculpture · Site-specific · Large scale",
-      foto: warburgAsset.url,
+      foto: warburgPhoto,
       eyebrow: "Collectors · Donum Estate",
       bio: [
         "Mei and Allan Warburg are the founders of Donum Estate, a 200-acre property in Sonoma County that combines Pinot Noir and Chardonnay vineyards with one of the most ambitious outdoor sculpture collections in the world.",

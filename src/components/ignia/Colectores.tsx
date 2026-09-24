@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
-import patriziaAsset from "@/assets/collector-patrizia.webp.asset.json";
-import joannouAsset from "@/assets/collector-joannou.webp.asset.json";
-import warburgAsset from "@/assets/collector-warburg.jpg.asset.json";
+import patriziaPhoto from "@/assets/patrizia.webp";
+import joannouPhoto from "@/assets/joannou.webp";
+import warburgPhoto from "@/assets/warburg.jpg";
 
-const FOTO_PRINCIPAL = patriziaAsset.url;
-const FOTO_JOANNOU = joannouAsset.url;
-const FOTO_WARBURG = warburgAsset.url;
+const FOTO_PRINCIPAL = patriziaPhoto;
+const FOTO_JOANNOU = joannouPhoto;
+const FOTO_WARBURG = warburgPhoto;
 
 const COLECCIONISTAS = {
   es: {

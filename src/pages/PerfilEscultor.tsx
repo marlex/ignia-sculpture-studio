@@ -12,12 +12,10 @@ import jaume from "@/assets/artist-jaume-plensa-real.jpg";
 import susana from "@/assets/artist-susana-solano-real.jpg";
 import barcelo from "@/assets/artist-miquel-barcelo-real.jpg";
 import chillida from "@/assets/artist-eduardo-chillida-real.jpg";
-import adaRetratoAsset from "@/assets/ada-la-cadena-retrato-2.png.asset.json";
+import adaRetrato from "@/assets/ada-la-cadena-retrato-2.png";
 import helenaPortrait from "@/assets/artist-helena-vazquez.jpg";
-import luciaPortraitAsset from "@/assets/artist-lucia-pardo-new.jpg.asset.json";
-const luciaPortrait = luciaPortraitAsset.url;
-import pabloPortraitAsset from "@/assets/artist-pablo-reyes-new.jpg.asset.json";
-const pabloPortrait = pabloPortraitAsset.url;
+import luciaPortrait from "@/assets/artist-lucia-pardo-new.jpg";
+import pabloPortrait from "@/assets/artist-pablo-reyes-new.jpg";
 import tomasPortrait from "@/assets/artist-tomas-vigo.jpg";
 import { useLang } from "@/i18n/LanguageContext";
 import { WORKS } from "@/data/igniaWorks";
@@ -89,7 +87,7 @@ export const BIOS: Record<string, Bio> = {
     espEs: "Piedra y madera", espEn: "Stone and wood",
   },
   "ada-la-cadena": {
-    nombre: "Ada La Cadena", retrato: adaRetratoAsset.url,
+    nombre: "Ada La Cadena", retrato: adaRetrato,
     bioEs: "El Arte de lo Intangible\n\nAda La Cadena (España) es una artista multidisciplinaria cuya práctica se mueve entre la pintura y la escultura cerámica con una misma obsesión: hacer visible lo que no tiene forma. Sus obras nacen de un proceso subconsciente e intuitivo, sin bocetos previos, sin certezas, en el que la materia revela lo que la mente consciente no se atreve a nombrar.\n\nEn su cerámica, esa misma búsqueda se encarna en la arcilla. Cuerpos que son objetos, objetos que son rostros, superficies que son piel. La ornamentación no es decoración, es lenguaje. Los motivos florales que recorren sus piezas no embellecen: narran, ocultan, revelan.\n\nSu trabajo ha sido exhibido en galerías de prestigio y forma parte de colecciones privadas en varios países. Cada pieza es única e irrepetible, como lo es la emoción que la origina.",
     bioEn: "The Art of the Intangible\n\nAda La Cadena (Spain) is a multidisciplinary artist whose practice moves between painting and ceramic sculpture with a single obsession: to make visible what has no form. Her works are born from a subconscious, intuitive process, without prior sketches, without certainties, in which matter reveals what the conscious mind does not dare to name.\n\nIn her ceramics, that same search is embodied in clay. Bodies that are objects, objects that are faces, surfaces that are skin. Ornamentation is not decoration, it is language. The floral motifs that run across her pieces do not embellish: they narrate, conceal, reveal.\n\nHer work has been exhibited in prestigious galleries and is part of private collections in several countries. Each piece is unique and unrepeatable, as is the emotion that gives rise to it.",
     espEs: "Cerámica contemporánea", espEn: "Contemporary ceramic",

@@ -4,9 +4,9 @@ import { Footer } from "@/components/ignia/Footer";
 
 import { useLang } from "@/i18n/LanguageContext";
 import { Seo } from "@/components/Seo";
-import heroSculptors from "@/assets/hero-sculptors.jpg.asset.json";
-import heroMarmol from "@/assets/hero-marmol.jpg.asset.json";
-import heroMetal from "@/assets/hero-metal.jpg.asset.json";
+import heroSculptors from "@/assets/hero-sculptors.jpg";
+import heroMarmol from "@/assets/hero-marmol.jpg";
+import heroMetal from "@/assets/hero-metal.jpg";
 
 const OUTLINE_BTN: React.CSSProperties = {
   fontFamily: "Manrope, sans-serif",
@@ -215,7 +215,7 @@ const JoinEscultores = () => {
         style={{ height: "calc(100vh - 56px)", background: "#222222" }}
       >
         <img
-          src={heroSculptors.url}
+          src={heroSculptors}
           alt=""
           aria-hidden
           loading="eager"
@@ -348,7 +348,7 @@ const JoinEscultores = () => {
           }}
         >
           <img
-            src={heroMarmol.url}
+            src={heroMarmol}
             alt="sculpture with permanent blockchain certificate"
             loading="lazy"
             style={{ width: "100%", height: "100%", minHeight: 480, objectFit: "cover", display: "block" }}
@@ -379,7 +379,7 @@ const JoinEscultores = () => {
             </div>
           </div>
           <img
-            src={heroMetal.url}
+            src={heroMetal}
             alt="sculpture packaging by Ignia logistics partner"
             loading="lazy"
             style={{ width: "100%", height: "100%", minHeight: 480, objectFit: "cover", display: "block" }}

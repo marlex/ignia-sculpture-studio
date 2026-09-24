@@ -1,7 +1,7 @@
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { Logo } from "@/components/ignia/Logo";
-import studio from "@/assets/hero-bg-studio.jpg.asset.json";
+import studio from "@/assets/hero-bg-studio.jpg";
 import { useLang } from "@/i18n/LanguageContext";
 import { Seo } from "@/components/Seo";
 import { useEffect, useRef, useState } from "react";
@@ -278,7 +278,7 @@ const AboutPage = () => {
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[460px] overflow-hidden">
-        <img src={studio.url} alt="Ignia studio" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
+        <img src={studio} alt="Ignia studio" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/55 to-black/70" />
         <div className="relative h-full flex flex-col justify-center items-center text-center px-6 md:px-12 max-w-[1280px] mx-auto">
           <div className="eyebrow text-white/80 mb-3">{t.eyebrow}</div>
