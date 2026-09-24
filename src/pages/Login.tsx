@@ -181,7 +181,7 @@ export default function Login() {
               textAlign: "center",
             }}>
               {t.noAccount}{" "}
-              <Link to="/unete-a-ignia" style={{ color: "#121212", textDecoration: "underline" }}>
+              <Link to="/registro" style={{ color: "#121212", textDecoration: "underline" }}>
                 {t.create}
               </Link>
             </p>

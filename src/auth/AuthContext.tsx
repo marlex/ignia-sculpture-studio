@@ -1,33 +1,77 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import type { Session, User } from "@supabase/supabase-js";
+import { supabase } from "@/integrations/supabase/client";
 
-type User = { name: string; email: string; role: "escultor" | "coleccionista" };
+type Profile = { role: string | null; founding_artist: boolean } | null;
 
 type AuthCtx = {
+  session: Session | null;
   user: User | null;
-  login: (u: User) => void;
-  logout: () => void;
+  profile: Profile;
+  loading: boolean;
+  refreshProfile: () => Promise<void>;
+  signOut: () => Promise<void>;
 };
 
-const Ctx = createContext<AuthCtx>({ user: null, login: () => {}, logout: () => {} });
-const KEY = "ignia.auth";
+const Ctx = createContext<AuthCtx>({
+  session: null,
+  user: null,
+  profile: null,
+  loading: true,
+  refreshProfile: async () => {},
+  signOut: async () => {},
+});
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
+  const [profile, setProfile] = useState<Profile>(null);
+  const [loading, setLoading] = useState(true);
+
+  const loadProfile = async (userId?: string) => {
+    if (!userId) {
+      setProfile(null);
+      return;
+    }
+    const { data } = await supabase
+      .from("profiles")
+      .select("role, founding_artist")
+      .eq("id", userId)
+      .maybeSingle();
+    setProfile(data ?? null);
+  };
+
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(KEY);
-      if (raw) setUser(JSON.parse(raw));
-    } catch {}
+    let alive = true;
+    supabase.auth.getSession().then(({ data }) => {
+      if (!alive) return;
+      setSession(data.session);
+      loadProfile(data.session?.user.id).finally(() => {
+        if (alive) setLoading(false);
+      });
+    });
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, newSession) => {
+      setSession(newSession);
+      loadProfile(newSession?.user.id);
+    });
+    return () => {
+      alive = false;
+      sub.subscription.unsubscribe();
+    };
   }, []);
-  const login = (u: User) => {
-    localStorage.setItem(KEY, JSON.stringify(u));
-    setUser(u);
+
+  const refreshProfile = async () => {
+    await loadProfile(session?.user.id);
   };
-  const logout = () => {
-    localStorage.removeItem(KEY);
-    setUser(null);
+
+  const signOut = async () => {
+    await supabase.auth.signOut();
   };
-  return <Ctx.Provider value={{ user, login, logout }}>{children}</Ctx.Provider>;
+
+  return (
+    <Ctx.Provider value={{ session, user: session?.user ?? null, profile, loading, refreshProfile, signOut }}>
+      {children}
+    </Ctx.Provider>
+  );
 };
 
 export const useAuth = () => useContext(Ctx);

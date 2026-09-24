@@ -31,6 +31,7 @@ import JoinCuradores from "./pages/JoinCuradores.tsx";
 import JoinAdvisors from "./pages/JoinAdvisors.tsx";
 import Guidance from "./pages/Guidance.tsx";
 import UneteAIgnia from "./pages/UneteAIgnia.tsx";
+import Registro from "./pages/Registro.tsx";
 import RecuperarPassword from "./pages/RecuperarPassword.tsx";
 import ResetPassword from "./pages/ResetPassword.tsx";
 import Unsubscribe from "./pages/Unsubscribe.tsx";
@@ -91,6 +92,7 @@ const App = () => (
               <Route path="/guidance/curator" element={<JoinCuradores />} />
               <Route path="/guidance/advisor" element={<JoinAdvisors />} />
               <Route path="/unete-a-ignia" element={<UneteAIgnia />} />
+              <Route path="/registro" element={<Registro />} />
               <Route path="/recuperar-password" element={<RecuperarPassword />} />
               <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="/unsubscribe" element={<Unsubscribe />} />

@@ -19,6 +19,8 @@ type Profile = {
   email: string;
   role: string | null;
   founding_artist: boolean;
+  requested_role?: string | null;
+  created_at?: string;
 };
 
 const STATUSES = [
@@ -111,6 +113,13 @@ export default function Solicitudes() {
     reopenBody: "Esto permitirá volver a cambiar el estado y podría enviar un nuevo email. ¿Continuar?",
     continue: "Continuar",
     locked: "Bloqueado",
+    pendingUsersTitle: "Usuarios pendientes",
+    pendingUsersSubtitle: "Se registraron directamente desde /registro y esperan que un admin confirme su cuenta.",
+    pendingUsersEmpty: "No hay usuarios pendientes de aprobación.",
+    requestedRole: "Quiere ser",
+    approveAsArtist: "Aprobar como artista",
+    approveAsCollector: "Aprobar como coleccionista",
+    approved: "Usuario aprobado.",
   } : {
     title: "Applications",
     counter: "Confirmed founding artists",
@@ -130,6 +139,13 @@ export default function Solicitudes() {
     reopenBody: "This will allow the status to change again and may send a new email. Continue?",
     continue: "Continue",
     locked: "Locked",
+    pendingUsersTitle: "Pending users",
+    pendingUsersSubtitle: "Signed up directly from /registro and are waiting for an admin to confirm their account.",
+    pendingUsersEmpty: "No users pending approval.",
+    requestedRole: "Wants to be",
+    approveAsArtist: "Approve as artist",
+    approveAsCollector: "Approve as collector",
+    approved: "User approved.",
   };
 
   const statusLabel = (v: string) => {
@@ -140,7 +156,7 @@ export default function Solicitudes() {
   const loadData = async () => {
     const [{ data: appsData }, { data: profData }] = await Promise.all([
       supabase.from("applications").select("*").order("created_at", { ascending: false }),
-      supabase.from("profiles").select("id, email, role, founding_artist"),
+      supabase.from("profiles").select("id, email, role, founding_artist, requested_role, created_at"),
     ]);
     setApps((appsData as Application[]) || []);
     setProfiles((profData as Profile[]) || []);
@@ -290,6 +306,25 @@ export default function Solicitudes() {
     }
   };
 
+  const pendingUsers = useMemo(
+    () => profiles.filter((p) => !p.role),
+    [profiles],
+  );
+
+  const approveUser = async (profileId: string, role: "artist" | "collector") => {
+    setBusy(profileId); setMsg(null);
+    try {
+      const { error } = await supabase.from("profiles").update({ role }).eq("id", profileId);
+      if (error) throw error;
+      setMsg(t.approved);
+      await loadData();
+    } catch (err: any) {
+      setMsg(err?.message || "Error");
+    } finally {
+      setBusy(null);
+    }
+  };
+
   const handleFoundingToggle = async (app: Application, next: boolean) => {
     setBusy(app.id); setMsg(null);
     try {
@@ -406,6 +441,53 @@ export default function Solicitudes() {
                       <option value="no">{t.no}</option>
                       <option value="yes">{t.yes}</option>
                     </select>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 style={{
+        fontFamily: "'Cormorant Garamond', serif",
+        fontWeight: 500, color: "#121212",
+        fontSize: "clamp(22px, 2.6vw, 28px)",
+        lineHeight: 1.1, letterSpacing: "-0.02em",
+        margin: "56px 0 8px",
+      }}>{t.pendingUsersTitle}</h2>
+      <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, color: "#666", marginBottom: 24 }}>
+        {t.pendingUsersSubtitle}
+      </p>
+
+      <div style={{ overflowX: "auto" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 700 }}>
+          <thead>
+            <tr>
+              <th style={thStyle}>{t.email}</th>
+              <th style={thStyle}>{t.requestedRole}</th>
+              <th style={thStyle}>{t.date}</th>
+              <th style={thStyle}></th>
+            </tr>
+          </thead>
+          <tbody>
+            {pendingUsers.length === 0 && (
+              <tr><td style={cellStyle} colSpan={4}>{t.pendingUsersEmpty}</td></tr>
+            )}
+            {pendingUsers.map((p) => {
+              const disabled = busy === p.id;
+              return (
+                <tr key={p.id}>
+                  <td style={cellStyle}>{p.email}</td>
+                  <td style={cellStyle}>{p.requested_role || "—"}</td>
+                  <td style={cellStyle}>{p.created_at ? new Date(p.created_at).toLocaleDateString(lang === "es" ? "es-ES" : "en-US") : "—"}</td>
+                  <td style={cellStyle}>
+                    <button type="button" disabled={disabled} onClick={() => approveUser(p.id, "artist")} style={smallBtn}>
+                      {t.approveAsArtist}
+                    </button>
+                    <button type="button" disabled={disabled} onClick={() => approveUser(p.id, "collector")} style={smallBtn}>
+                      {t.approveAsCollector}
+                    </button>
                   </td>
                 </tr>
               );
