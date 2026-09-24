@@ -1,5 +1,5 @@
 // Ignia Gallery — multilingual sales assistant edge function
-// Uses Lovable AI Gateway (LOVABLE_API_KEY) as the LLM provider.
+// Uses the Anthropic API (ANTHROPIC_API_KEY) as the LLM provider.
 
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 
@@ -71,10 +71,10 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const apiKey = Deno.env.get("LOVABLE_API_KEY");
+    const apiKey = Deno.env.get("ANTHROPIC_API_KEY");
     if (!apiKey) {
       return new Response(
-        JSON.stringify({ error: "LOVABLE_API_KEY is not configured" }),
+        JSON.stringify({ error: "ANTHROPIC_API_KEY is not configured" }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
@@ -103,12 +103,9 @@ Deno.serve(async (req: Request) => {
       if (parts.length) contextLines.push(`Product in view:\n- ${parts.join("\n- ")}`);
     }
 
-    const systemMessages: ChatMessage[] = [{ role: "system", content: SYSTEM_PROMPT }];
+    let systemPrompt = SYSTEM_PROMPT;
     if (contextLines.length) {
-      systemMessages.push({
-        role: "system",
-        content: `Contextual information about the visitor's current session:\n${contextLines.join("\n")}`,
-      });
+      systemPrompt += `\n\nContextual information about the visitor's current session:\n${contextLines.join("\n")}`;
     }
 
     const history: ChatMessage[] = Array.isArray(body.history)
@@ -117,36 +114,32 @@ Deno.serve(async (req: Request) => {
           .slice(-20)
       : [];
 
-    const messages: ChatMessage[] = [
-      ...systemMessages,
-      ...history,
+    const messages: { role: "user" | "assistant"; content: string }[] = [
+      ...history.map((m) => ({ role: m.role as "user" | "assistant", content: m.content })),
       { role: "user", content: body.message },
     ];
 
-    const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+    const aiRes = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Lovable-API-Key": apiKey,
+        "x-api-key": apiKey,
+        "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
-        model: "google/gemini-3.6-flash",
+        model: "claude-sonnet-5",
+        max_tokens: 1024,
+        system: systemPrompt,
         messages,
-        response_format: { type: "json_object" },
       }),
     });
 
     if (!aiRes.ok) {
       const errText = await aiRes.text();
-      const status = aiRes.status === 429 || aiRes.status === 402 ? aiRes.status : 502;
+      const status = aiRes.status === 429 ? 429 : 502;
       return new Response(
         JSON.stringify({
-          error:
-            aiRes.status === 429
-              ? "Rate limit reached. Please try again in a moment."
-              : aiRes.status === 402
-              ? "AI credits exhausted. Please add credits to continue."
-              : "Upstream AI error",
+          error: aiRes.status === 429 ? "Rate limit reached. Please try again in a moment." : "Upstream AI error",
           detail: errText.slice(0, 500),
         }),
         { status, headers: { ...corsHeaders, "Content-Type": "application/json" } },
@@ -154,7 +147,7 @@ Deno.serve(async (req: Request) => {
     }
 
     const aiJson = await aiRes.json();
-    const raw: string = aiJson?.choices?.[0]?.message?.content ?? "";
+    const raw: string = aiJson?.content?.[0]?.text ?? "";
 
     let reply = "";
     let escalate = false;

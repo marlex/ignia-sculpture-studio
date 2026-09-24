@@ -5,7 +5,6 @@ import { Logo } from "./Logo";
 import { useLang, useSetLang, type Lang } from "@/i18n/LanguageContext";
 import { useAuth } from "@/auth/AuthContext";
 import { SHOW_PUBLIC_AUTH } from "@/config/featureFlags";
-import { supabase } from "@/integrations/supabase/client";
 
 type NavItem = { label: string; to?: string; action?: "partners" };
 
@@ -49,12 +48,11 @@ export const Header = () => {
   const leftItems = NAV_LEFT[lang];
   const rightItems = NAV_RIGHT[lang];
   const allItems = NAV_ALL[lang];
-  const { user, logout } = useAuth();
+  const { user, profile, signOut } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const isHome = location.pathname === "/";
 
   // Mobile floating header on scroll
   useEffect(() => {
@@ -84,32 +82,10 @@ export const Header = () => {
       </Link>
     );
 
-  // Detect Supabase session + admin role
-  const [sbUser, setSbUser] = useState<{ id: string; email: string | null } | null>(null);
-  const [isAdmin, setIsAdmin] = useState(false);
-  useEffect(() => {
-    let alive = true;
-    const load = async (uid?: string) => {
-      if (!uid) { if (alive) setIsAdmin(false); return; }
-      const { data } = await supabase.from("profiles").select("role").eq("id", uid).maybeSingle();
-      if (alive) setIsAdmin(data?.role === "admin");
-    };
-    supabase.auth.getSession().then(({ data }) => {
-      const u = data.session?.user;
-      if (!alive) return;
-      setSbUser(u ? { id: u.id, email: u.email ?? null } : null);
-      load(u?.id);
-    });
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
-      const u = session?.user;
-      setSbUser(u ? { id: u.id, email: u.email ?? null } : null);
-      load(u?.id);
-    });
-    return () => { alive = false; sub.subscription.unsubscribe(); };
-  }, []);
+  const isAdmin = profile?.role === "admin";
 
   const handleSbLogout = async () => {
-    await supabase.auth.signOut();
+    await signOut();
     navigate("/");
   };
 
@@ -120,21 +96,20 @@ export const Header = () => {
 
 
 
-  // Header is in "dark mode" (transparent, light text) only at rest on the
-  // homepage, where it sits over HeroFull's dark background. Everywhere else
-  // pages start with a light background, so the header must start in "light
-  // mode" (dark text) or it disappears against it. Scrolling still switches
-  // to the floating light-mode pill on every page.
-  const overDarkHero = isHome && !scrolled;
-  const navColor = overDarkHero ? "text-white" : "text-gray";
+  // At rest the header always renders light text over a permanent dark
+  // scrim (independent of what page/hero sits behind it — plain white
+  // section, bright photo, or dark photo all get guaranteed contrast).
+  // Scrolling switches every page to the same frosted white pill with dark
+  // text, unchanged.
+  const navColor = scrolled ? "text-gray" : "text-white";
   const navLinkClass = `font-body text-[16px] font-normal ${navColor} hover:opacity-65 transition-opacity`;
-  const logoVariant: "dark" | "light" = overDarkHero ? "light" : "dark";
-  const hamburgerColor = overDarkHero ? "#FFFFFF" : "#121212";
-  const mobileInviteColor = overDarkHero ? "#FFFFFF" : "#121212";
+  const logoVariant: "dark" | "light" = scrolled ? "dark" : "light";
+  const hamburgerColor = scrolled ? "#121212" : "#FFFFFF";
+  const mobileInviteColor = scrolled ? "#121212" : "#FFFFFF";
 
   return (
     <header
-      className={`ignia-header fixed top-0 left-0 right-0 z-[100] bg-transparent border-transparent flex items-center pt-[30px] pb-[30px] px-6 md:px-12 ${scrolled ? "is-scrolled" : ""}`}
+      className={`ignia-header fixed top-0 left-0 right-0 z-[100] border-transparent flex items-center pt-[30px] pb-[30px] px-6 md:px-12 ${scrolled ? "is-scrolled" : ""}`}
     >
       <style>{`
         @media (max-width: 1279px) {
@@ -183,6 +158,11 @@ export const Header = () => {
           }
         }
         .ignia-header { transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1); }
+        /* Permanent scrim at rest: guarantees the white logo/nav stay legible
+           over any background — plain white section, bright photo, dark photo. */
+        .ignia-header:not(.is-scrolled) {
+          background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.22) 65%, rgba(0,0,0,0) 100%);
+        }
       `}</style>
       <div className="grid grid-cols-[1fr_auto_1fr] items-center w-full gap-9">
         {/* LEFT: desktop nav + mobile hamburger */}
@@ -232,7 +212,7 @@ export const Header = () => {
               <Link to="/dashboard" className={`font-body text-[16px] font-normal ${navColor} hover:opacity-65 transition-opacity`}>
                 {t.dashboard}
               </Link>
-              <button onClick={() => { logout(); navigate("/"); }} className={`font-body text-[16px] font-normal ${navColor} hover:opacity-65 transition-opacity`}>
+              <button onClick={() => { signOut(); navigate("/"); }} className={`font-body text-[16px] font-normal ${navColor} hover:opacity-65 transition-opacity`}>
                 {t.signout}
               </button>
             </div>
@@ -242,7 +222,7 @@ export const Header = () => {
             </Link>
           ))}
           <div className="hidden xl:flex items-center gap-3">
-            {sbUser && isAdmin ? (
+            {user && isAdmin ? (
               <>
                 <Link
                   to="/admin/dashboard"
