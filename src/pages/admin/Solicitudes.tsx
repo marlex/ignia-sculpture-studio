@@ -92,6 +92,10 @@ export default function Solicitudes() {
   const [pendingFounding, setPendingFounding] = useState<Record<string, boolean>>({});
   const [confirm, setConfirm] = useState<PendingConfirm>(null);
   const [reopenApp, setReopenApp] = useState<Application | null>(null);
+  const [inviteName, setInviteName] = useState("");
+  const [inviteEmail, setInviteEmail] = useState("");
+  const [inviteSocial, setInviteSocial] = useState("");
+  const [inviteBusy, setInviteBusy] = useState(false);
 
   const t = lang === "es" ? {
     title: "Solicitudes",
@@ -120,6 +124,13 @@ export default function Solicitudes() {
     approveAsArtist: "Aprobar como artista",
     approveAsCollector: "Aprobar como coleccionista",
     approved: "Usuario aprobado.",
+    inviteDirectTitle: "Invitar directamente",
+    inviteDirectSubtitle: "Para artistas que ya contactaste tú misma. Se les invita como artista fundador sin pasar por la revisión pública.",
+    inviteDirectName: "Nombre",
+    inviteDirectEmail: "Email",
+    inviteDirectSocial: "Instagram / Web (opcional)",
+    inviteDirectSubmit: "Enviar invitación",
+    inviteDirectSending: "Enviando…",
   } : {
     title: "Applications",
     counter: "Confirmed founding artists",
@@ -146,6 +157,13 @@ export default function Solicitudes() {
     approveAsArtist: "Approve as artist",
     approveAsCollector: "Approve as collector",
     approved: "User approved.",
+    inviteDirectTitle: "Invite directly",
+    inviteDirectSubtitle: "For artists you already contacted yourself. They're invited straight in as a founding artist, skipping public review.",
+    inviteDirectName: "Name",
+    inviteDirectEmail: "Email",
+    inviteDirectSocial: "Instagram / Website (optional)",
+    inviteDirectSubmit: "Send invitation",
+    inviteDirectSending: "Sending…",
   };
 
   const statusLabel = (v: string) => {
@@ -306,6 +324,54 @@ export default function Solicitudes() {
     }
   };
 
+  const inviteDirectly = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setInviteBusy(true); setMsg(null);
+    try {
+      const { data: inserted, error: insErr } = await supabase
+        .from("applications")
+        .insert({
+          name: inviteName,
+          email: inviteEmail,
+          social: inviteSocial || null,
+          status: "accepted",
+          estado_final: true,
+          estado_confirmado_en: new Date().toISOString(),
+        })
+        .select("id")
+        .single();
+      if (insErr) throw insErr;
+
+      const { data: session } = await supabase.auth.getSession();
+      const res = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin-approve-application`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session.session?.access_token}`,
+            apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+          },
+          body: JSON.stringify({ application_id: inserted.id, founding_artist: true }),
+        },
+      );
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        const errMsg = json?.error || `admin-approve-application HTTP ${res.status}`;
+        await logEmailFailure({ id: inserted.id } as Application, "confirmacion", errMsg);
+        throw new Error(errMsg);
+      }
+
+      setInviteName(""); setInviteEmail(""); setInviteSocial("");
+      setMsg(t.inviteOk);
+      await loadData();
+    } catch (err: any) {
+      setMsg(err?.message || t.inviteFail);
+    } finally {
+      setInviteBusy(false);
+    }
+  };
+
   const pendingUsers = useMemo(
     () => profiles.filter((p) => !p.role),
     [profiles],
@@ -365,6 +431,41 @@ export default function Solicitudes() {
           {confirmedFounding} <span style={{ color: "#666", fontWeight: 400 }}>{t.of} {FOUNDING_CAP}</span>
         </span>
         <span style={{ fontSize: 13, color: "#666" }}>· {remaining} {t.remaining}</span>
+      </div>
+
+      <div style={{ border: "1px solid #121212", padding: "24px 24px 20px", marginBottom: 40, maxWidth: 560 }}>
+        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 500, color: "#121212", fontSize: 22, margin: "0 0 6px" }}>
+          {t.inviteDirectTitle}
+        </h2>
+        <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 13, color: "#666", margin: "0 0 20px", lineHeight: 1.5 }}>
+          {t.inviteDirectSubtitle}
+        </p>
+        <form onSubmit={inviteDirectly} style={{ display: "grid", gap: 16 }}>
+          <input
+            required
+            placeholder={t.inviteDirectName}
+            value={inviteName}
+            onChange={(e) => setInviteName(e.target.value)}
+            style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, padding: "10px 12px", border: "1px solid #ccc" }}
+          />
+          <input
+            required
+            type="email"
+            placeholder={t.inviteDirectEmail}
+            value={inviteEmail}
+            onChange={(e) => setInviteEmail(e.target.value)}
+            style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, padding: "10px 12px", border: "1px solid #ccc" }}
+          />
+          <input
+            placeholder={t.inviteDirectSocial}
+            value={inviteSocial}
+            onChange={(e) => setInviteSocial(e.target.value)}
+            style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, padding: "10px 12px", border: "1px solid #ccc" }}
+          />
+          <button type="submit" disabled={inviteBusy} style={{ ...btnPrimary, justifySelf: "start" }}>
+            {inviteBusy ? t.inviteDirectSending : t.inviteDirectSubmit}
+          </button>
+        </form>
       </div>
 
       {msg && (
