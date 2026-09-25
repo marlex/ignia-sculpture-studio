@@ -8,6 +8,7 @@ type Profile = {
   origin: string | null;
   technique: string | null;
   bio: string | null;
+  social: string | null;
 } | null;
 
 type AuthCtx = {
@@ -40,7 +41,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
     const { data } = await supabase
       .from("profiles")
-      .select("role, founding_artist, origin, technique, bio")
+      .select("role, founding_artist, origin, technique, bio, social")
       .eq("id", userId)
       .maybeSingle();
     setProfile(data ?? null);

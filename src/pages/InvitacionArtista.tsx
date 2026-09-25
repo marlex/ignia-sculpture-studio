@@ -30,39 +30,55 @@ const inputStyle: React.CSSProperties = {
   borderRadius: 0,
 };
 
+type Step = "form" | "check-email";
+
 export default function InvitacionArtista() {
   const lang = useLang();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [social, setSocial] = useState("");
+  const [origin, setOrigin] = useState("");
+  const [technique, setTechnique] = useState("");
+  const [bio, setBio] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [submitted, setSubmitted] = useState(false);
+  const [step, setStep] = useState<Step>("form");
 
   const t = lang === "es"
     ? {
         title: "Has sido invitado a Ignia",
-        subtitle: "Completa tu registro para que activemos tu cuenta de artista fundador.",
+        subtitle: "Completa tu registro como artista fundador. Un admin activará tu cuenta y podrás publicar tu primera obra.",
         fName: "Nombre completo",
         fEmail: "Email",
+        fPassword: "Contraseña",
         fSocial: "Instagram, web o portfolio",
+        fOrigin: "Origen (ciudad, país)",
+        fTechnique: "Técnica o materiales principales",
+        fBio: "Biografía corta",
         submit: "Completar registro",
         sending: "Enviando…",
-        okTitle: "Registro recibido.",
-        okMsg: "En breve activaremos tu cuenta y recibirás un email para crear tu contraseña.",
+        checkEmailTitle: "Revisa tu correo.",
+        checkEmailMsg: "Confirma tu email y en breve activaremos tu cuenta. Te avisaremos cuando puedas publicar.",
         errMsg: "Hubo un error al enviar. Inténtalo de nuevo.",
+        minPassword: "La contraseña debe tener al menos 8 caracteres.",
       }
     : {
         title: "You've been invited to Ignia",
-        subtitle: "Complete your registration so we can activate your founding artist account.",
+        subtitle: "Complete your founding artist registration. An admin will activate your account and you'll be able to publish your first work.",
         fName: "Full name",
         fEmail: "Email",
+        fPassword: "Password",
         fSocial: "Instagram, website or portfolio",
+        fOrigin: "Origin (city, country)",
+        fTechnique: "Main technique or materials",
+        fBio: "Short biography",
         submit: "Complete registration",
         sending: "Sending…",
-        okTitle: "Registration received.",
-        okMsg: "We'll activate your account shortly and email you to set up your password.",
+        checkEmailTitle: "Check your email.",
+        checkEmailMsg: "Confirm your email and we'll activate your account shortly. We'll let you know once you can publish.",
         errMsg: "There was an error sending. Please try again.",
+        minPassword: "Password must be at least 8 characters.",
       };
 
   useEffect(() => {
@@ -74,16 +90,29 @@ export default function InvitacionArtista() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
+    if (password.length < 8) {
+      setError(t.minPassword);
+      return;
+    }
     setLoading(true);
     try {
-      const { error: rpcErr } = await supabase.rpc("submit_application", {
-        p_name: name,
-        p_email: email,
-        p_social: social || null,
-        p_language: lang,
+      const { error: signErr } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            name,
+            requested_role: "artist",
+            founding_artist: true,
+            origin,
+            technique,
+            bio,
+            social,
+          },
+        },
       });
-      if (rpcErr) throw rpcErr;
-      setSubmitted(true);
+      if (signErr) throw signErr;
+      setStep("check-email");
     } catch (err: any) {
       setError(err?.message || t.errMsg);
     } finally {
@@ -117,13 +146,13 @@ export default function InvitacionArtista() {
             }}>{t.subtitle}</p>
           </div>
 
-          {submitted ? (
+          {step === "check-email" ? (
             <div style={{ textAlign: "center" }}>
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 24, marginBottom: 16 }}>
-                {t.okTitle}
+                {t.checkEmailTitle}
               </h2>
               <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>
-                {t.okMsg}
+                {t.checkEmailMsg}
               </p>
             </div>
           ) : (
@@ -136,9 +165,25 @@ export default function InvitacionArtista() {
                 <label style={labelStyle} htmlFor="email">{t.fEmail}</label>
                 <input id="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} style={inputStyle} />
               </div>
-              <div style={{ marginBottom: 40 }}>
+              <div style={{ marginBottom: 28 }}>
+                <label style={labelStyle} htmlFor="password">{t.fPassword}</label>
+                <input id="password" type="password" required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} style={inputStyle} />
+              </div>
+              <div style={{ marginBottom: 28 }}>
                 <label style={labelStyle} htmlFor="social">{t.fSocial}</label>
                 <input id="social" required value={social} onChange={(e) => setSocial(e.target.value)} style={inputStyle} />
+              </div>
+              <div style={{ marginBottom: 28 }}>
+                <label style={labelStyle} htmlFor="origin">{t.fOrigin}</label>
+                <input id="origin" required value={origin} onChange={(e) => setOrigin(e.target.value)} style={inputStyle} />
+              </div>
+              <div style={{ marginBottom: 28 }}>
+                <label style={labelStyle} htmlFor="technique">{t.fTechnique}</label>
+                <input id="technique" required value={technique} onChange={(e) => setTechnique(e.target.value)} style={inputStyle} />
+              </div>
+              <div style={{ marginBottom: 40 }}>
+                <label style={labelStyle} htmlFor="bio">{t.fBio}</label>
+                <textarea id="bio" required rows={5} value={bio} onChange={(e) => setBio(e.target.value)} style={{ ...inputStyle, resize: "vertical" }} />
               </div>
 
               {error && <p style={{ color: "#b00020", fontFamily: "Manrope, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
