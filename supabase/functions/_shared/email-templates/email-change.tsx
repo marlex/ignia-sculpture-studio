@@ -14,7 +14,7 @@ import {
   Text,
 } from 'npm:@react-email/components@0.0.22'
 
-const LOGO_URL = 'https://igniainstitution.com/ignia-logo-email.svg'
+const LOGO_URL = 'https://igniainstitution.com/ignia-logo-email.png'
 
 
 interface EmailChangeEmailProps {
@@ -35,7 +35,7 @@ export const EmailChangeEmail = ({
     <Preview>Confirm your email change for Ignia</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Img src={LOGO_URL} alt="Ignia Gallery" width="120" height="53" style={logo} />
+        <Img src={LOGO_URL} alt="Ignia Gallery" width="120" height="34" style={logo} />
         <Heading style={h1}>Confirm your email change</Heading>
 
         <Text style={text}>

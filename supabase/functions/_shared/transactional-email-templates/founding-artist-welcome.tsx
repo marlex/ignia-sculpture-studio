@@ -2,7 +2,7 @@
 import * as React from 'npm:react@18.3.1'
 import { Body, Container, Head, Heading, Html, Img, Preview, Text } from 'npm:@react-email/components@0.0.22'
 
-const LOGO_URL = 'https://igniainstitution.com/ignia-logo-email.svg'
+const LOGO_URL = 'https://igniainstitution.com/ignia-logo-email.png'
 import type { TemplateEntry } from './registry.ts'
 
 interface Props {
@@ -42,7 +42,7 @@ const Email = ({ name = '', lang = 'es' }: Props) => {
       <Preview>{c.preview}</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Img src={LOGO_URL} alt="Ignia Gallery" width="120" height="53" style={logo} />
+          <Img src={LOGO_URL} alt="Ignia Gallery" width="120" height="34" style={logo} />
           <Heading style={h1}>{c.heading}</Heading>
           <Text style={text}>{c.body(greetingName)}</Text>
           <Text style={text}>{c.body2}</Text>

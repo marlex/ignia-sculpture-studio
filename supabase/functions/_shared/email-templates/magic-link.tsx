@@ -14,7 +14,7 @@ import {
   Text,
 } from 'npm:@react-email/components@0.0.22'
 
-const LOGO_URL = 'https://igniainstitution.com/ignia-logo-email.svg'
+const LOGO_URL = 'https://igniainstitution.com/ignia-logo-email.png'
 
 
 interface MagicLinkEmailProps {
@@ -28,7 +28,7 @@ export const MagicLinkEmail = ({ confirmationUrl }: MagicLinkEmailProps) => (
     <Preview>Your Ignia sign-in link</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Img src={LOGO_URL} alt="Ignia Gallery" width="120" height="53" style={logo} />
+        <Img src={LOGO_URL} alt="Ignia Gallery" width="120" height="34" style={logo} />
         <Heading style={h1}>Your sign-in link</Heading>
 
         <Text style={text}>
