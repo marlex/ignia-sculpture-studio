@@ -71,7 +71,7 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const apiKey = Deno.env.get("ANTHROPIC_API_KEY");
+    const apiKey = Deno.env.get("ANTHROPIC_API_KEY")?.trim();
     if (!apiKey) {
       return new Response(
         JSON.stringify({ error: "ANTHROPIC_API_KEY is not configured" }),

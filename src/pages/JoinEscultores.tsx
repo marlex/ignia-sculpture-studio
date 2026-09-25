@@ -3,6 +3,7 @@ import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 
 import { useLang } from "@/i18n/LanguageContext";
+import { supabase } from "@/integrations/supabase/client";
 import { Seo } from "@/components/Seo";
 import heroSculptors from "@/assets/hero-sculptors.jpg";
 import heroMarmol from "@/assets/hero-marmol.jpg";
@@ -165,7 +166,19 @@ const JoinEscultores = () => {
     e.preventDefault();
     setLoading(true); setError(null);
     try {
-      const res = await fetch("https://formspree.io/f/xgobbeyp", {
+      const { data: applicationId, error: dbError } = await supabase.rpc("submit_application", {
+        p_name: name,
+        p_email: email,
+        p_social: social || null,
+        p_language: lang,
+      });
+      if (dbError) throw dbError;
+      if (applicationId) {
+        supabase.functions.invoke("send-application-email", {
+          body: { application_id: applicationId, email_type: "confirmacion" },
+        }).catch(() => {});
+      }
+      fetch("https://formspree.io/f/xgobbeyp", {
         method: "POST",
         headers: { Accept: "application/json", "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -173,11 +186,13 @@ const JoinEscultores = () => {
           source: "join-escultores-embedded",
           nombre: name, email, social,
         }),
-      });
-      if (res.ok) { setSubmitted(true); }
-      else { const j = await res.json().catch(() => ({})); setError(j.error || t.errMsg); }
-    } catch { setError(t.errMsg); }
-    finally { setLoading(false); }
+      }).catch(() => {});
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err?.message || t.errMsg);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputStyle: React.CSSProperties = {

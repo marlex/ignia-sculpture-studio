@@ -80,16 +80,17 @@ export default function UneteAIgnia() {
     e.preventDefault();
     setLoading(true); setError(null);
     try {
-      const { data: inserted, error: dbError } = await supabase
-        .from("applications")
-        .insert({ name, email, social: social || null, language: lang, locale: lang })
-        .select("id")
-        .single();
+      const { data: applicationId, error: dbError } = await supabase.rpc("submit_application", {
+        p_name: name,
+        p_email: email,
+        p_social: social || null,
+        p_language: lang,
+      });
       if (dbError) throw dbError;
       // Send confirmation email (best-effort, never blocks the submission)
-      if (inserted?.id) {
+      if (applicationId) {
         supabase.functions.invoke("send-application-email", {
-          body: { application_id: inserted.id, email_type: "confirmacion" },
+          body: { application_id: applicationId, email_type: "confirmacion" },
         }).catch(() => {});
       }
       // Also notify via Formspree (best-effort, non-blocking)
