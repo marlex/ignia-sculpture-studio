@@ -13,6 +13,8 @@ project_id = "orolxyvqzbkpydwjvwjx"
     verify_jwt = false
   [functions.process-email-queue]
     verify_jwt = true
+  [functions.remind-artists-no-artwork]
+    verify_jwt = true
   [functions.send-application-email]
     verify_jwt = false
   [functions.send-transactional-email]

@@ -17,6 +17,7 @@ type Application = {
 type Profile = {
   id: string;
   email: string;
+  name?: string | null;
   role: string | null;
   founding_artist: boolean;
   requested_role?: string | null;
@@ -174,7 +175,7 @@ export default function Solicitudes() {
   const loadData = async () => {
     const [{ data: appsData }, { data: profData }] = await Promise.all([
       supabase.from("applications").select("*").order("created_at", { ascending: false }),
-      supabase.from("profiles").select("id, email, role, founding_artist, requested_role, created_at"),
+      supabase.from("profiles").select("id, email, name, role, founding_artist, requested_role, created_at"),
     ]);
     setApps((appsData as Application[]) || []);
     setProfiles((profData as Profile[]) || []);
@@ -382,6 +383,18 @@ export default function Solicitudes() {
     try {
       const { error } = await supabase.from("profiles").update({ role }).eq("id", profileId);
       if (error) throw error;
+      if (role === "artist") {
+        const approvedProfile = profiles.find((p) => p.id === profileId);
+        if (approvedProfile) {
+          supabase.functions.invoke("send-transactional-email", {
+            body: {
+              templateName: "founding-artist-welcome",
+              recipientEmail: approvedProfile.email,
+              templateData: { name: approvedProfile.name || "", lang },
+            },
+          }).catch(() => {});
+        }
+      }
       setMsg(t.approved);
       await loadData();
     } catch (err: any) {
@@ -565,6 +578,7 @@ export default function Solicitudes() {
         <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 700 }}>
           <thead>
             <tr>
+              <th style={thStyle}>{t.name}</th>
               <th style={thStyle}>{t.email}</th>
               <th style={thStyle}>{t.requestedRole}</th>
               <th style={thStyle}>{t.date}</th>
@@ -573,12 +587,13 @@ export default function Solicitudes() {
           </thead>
           <tbody>
             {pendingUsers.length === 0 && (
-              <tr><td style={cellStyle} colSpan={4}>{t.pendingUsersEmpty}</td></tr>
+              <tr><td style={cellStyle} colSpan={5}>{t.pendingUsersEmpty}</td></tr>
             )}
             {pendingUsers.map((p) => {
               const disabled = busy === p.id;
               return (
                 <tr key={p.id}>
+                  <td style={cellStyle}>{p.name || "—"}</td>
                   <td style={cellStyle}>{p.email}</td>
                   <td style={cellStyle}>{p.requested_role || "—"}</td>
                   <td style={cellStyle}>{p.created_at ? new Date(p.created_at).toLocaleDateString(lang === "es" ? "es-ES" : "en-US") : "—"}</td>
