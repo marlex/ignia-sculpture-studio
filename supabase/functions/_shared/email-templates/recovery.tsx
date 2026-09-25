@@ -28,7 +28,7 @@ export const RecoveryEmail = ({ confirmationUrl }: RecoveryEmailProps) => (
     <Preview>Reset your Ignia password</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Img src={LOGO_URL} alt="Ignia Gallery" width="120" height="34" style={logo} />
+        <Img src={LOGO_URL} alt="Ignia Institution" width="120" height="34" style={logo} />
         <Heading style={h1}>Reset your password</Heading>
 
         <Text style={text}>

@@ -4,7 +4,7 @@ import { createClient } from 'npm:@supabase/supabase-js@2'
 import { corsHeaders } from 'npm:@supabase/supabase-js@2/cors'
 import { TEMPLATES } from '../_shared/transactional-email-templates/registry.ts'
 
-const SITE_NAME = "Ignia Gallery"
+const SITE_NAME = "Ignia Institution"
 // SENDER_DOMAIN/FROM_DOMAIN must match the domain verified in Resend.
 const SENDER_DOMAIN = "notify.igniainstitution.com"
 const FROM_DOMAIN = "notify.igniainstitution.com"

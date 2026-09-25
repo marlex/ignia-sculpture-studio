@@ -36,7 +36,7 @@ export const SignupEmail = ({
     <Preview>Confirm your email for Ignia</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Img src={LOGO_URL} alt="Ignia Gallery" width="120" height="34" style={logo} />
+        <Img src={LOGO_URL} alt="Ignia Institution" width="120" height="34" style={logo} />
         <Heading style={h1}>Confirm your email</Heading>
 
         <Text style={text}>

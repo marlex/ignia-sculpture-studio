@@ -33,7 +33,7 @@ const EMAIL_TEMPLATES: Record<string, React.ComponentType<any>> = {
   reauthentication: ReauthenticationEmail,
 }
 
-const SITE_NAME = 'Ignia Gallery'
+const SITE_NAME = 'Ignia Institution'
 // SENDER_DOMAIN/FROM_DOMAIN must match the domain verified in Resend.
 const SENDER_DOMAIN = 'notify.igniainstitution.com'
 const ROOT_DOMAIN = 'igniainstitution.com'

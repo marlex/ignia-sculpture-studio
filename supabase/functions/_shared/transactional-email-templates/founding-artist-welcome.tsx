@@ -42,7 +42,7 @@ const Email = ({ name = '', lang = 'es' }: Props) => {
       <Preview>{c.preview}</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Img src={LOGO_URL} alt="Ignia Gallery" width="120" height="34" style={logo} />
+          <Img src={LOGO_URL} alt="Ignia Institution" width="120" height="34" style={logo} />
           <Heading style={h1}>{c.heading}</Heading>
           <Text style={text}>{c.body(greetingName)}</Text>
           <Text style={text}>{c.body2}</Text>
