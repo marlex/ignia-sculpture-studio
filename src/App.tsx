@@ -21,6 +21,7 @@ import IgniaGalleryPage from "./pages/IgniaGallery.tsx";
 import ObraDetalle from "./pages/ObraDetalle.tsx";
 import Publicar from "./pages/Publicar.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
+import PerfilArtista from "./pages/PerfilArtista.tsx";
 import AddView3d from "./pages/AddView3d.tsx";
 import ObraAnalytics from "./pages/ObraAnalytics.tsx";
 import Legal from "./pages/Legal.tsx";
@@ -59,6 +60,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/login" element={<Login />} />
               <Route path="/publicar" element={<Publicar />} />
+              <Route path="/perfil-artista" element={<PerfilArtista />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/dashboard/:section" element={<Dashboard />} />
               <Route path="/dashboard/obras/:id/3d" element={<AddView3d />} />

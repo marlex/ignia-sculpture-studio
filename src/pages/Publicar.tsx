@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "@/auth/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
 
 const fieldLabel: React.CSSProperties = {
   display: "block", fontFamily: "Manrope, sans-serif", fontWeight: 400,
@@ -22,22 +24,70 @@ const Field = ({ label, children }: { label: string; children: React.ReactNode }
 );
 
 export default function Publicar() {
+  const navigate = useNavigate();
+  const { user, profile, loading: authLoading } = useAuth();
+  const [title, setTitle] = useState("");
+  const [yearVal, setYearVal] = useState("");
+  const [medium, setMedium] = useState("");
+  const [alto, setAlto] = useState("");
+  const [ancho, setAncho] = useState("");
+  const [profundo, setProfundo] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [photo, setPhoto] = useState<File | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const endpoint = (import.meta as any).env?.VITE_FORMSPREE_WORK_ENDPOINT as string | undefined;
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (authLoading) return;
+    if (!user) { navigate("/login?redirect=/publicar"); return; }
+    if (profile?.role !== "artist") { navigate("/dashboard"); return; }
+    if (!profile.origin || !profile.technique || !profile.bio) {
+      navigate("/perfil-artista");
+    }
+  }, [authLoading, user, profile, navigate]);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!user) return;
+    setError(null);
     setLoading(true);
     try {
-      if (endpoint) {
-        const fd = new FormData(e.currentTarget);
-        await fetch(endpoint, { method: "POST", body: fd, headers: { Accept: "application/json" } });
+      let imageUrl: string | null = null;
+      if (photo) {
+        const path = `${user.id}/${crypto.randomUUID()}-${photo.name}`;
+        const { error: uploadErr } = await supabase.storage.from("artwork-images").upload(path, photo);
+        if (uploadErr) throw uploadErr;
+        imageUrl = supabase.storage.from("artwork-images").getPublicUrl(path).data.publicUrl;
       }
-    } catch {}
-    setLoading(false);
-    setSubmitted(true);
+
+      const dimensions = [alto, ancho, profundo].filter(Boolean).length
+        ? `${alto || "?"} x ${ancho || "?"} x ${profundo || "?"} cm`
+        : null;
+
+      const { error: insertErr } = await supabase.from("artworks").insert({
+        artist_id: user.id,
+        title,
+        description: description || null,
+        image_url: imageUrl,
+        price: price ? Number(price) : null,
+        year: yearVal ? Number(yearVal) : null,
+        medium: medium || null,
+        dimensions,
+      });
+      if (insertErr) throw insertErr;
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err?.message || "There was an error. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
+
+  if (authLoading || !user || profile?.role !== "artist" || !profile.origin || !profile.technique || !profile.bio) {
+    return null;
+  }
 
   return (
     <main style={{ background: "#FFFFFF", minHeight: "100vh" }}>
@@ -51,7 +101,7 @@ export default function Publicar() {
           Publicar una obra
         </h1>
         <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 17, lineHeight: 1.5, marginBottom: 56 }}>
-          Completa todos los campos. Activamos tu obra en el visor 3D en un máximo de 48 horas.
+          Completa los campos. Tu obra queda en revisión hasta que la aprobemos.
         </p>
 
         {submitted ? (
@@ -59,48 +109,37 @@ export default function Publicar() {
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 28, marginBottom: 16 }}>
               Obra recibida.
             </h2>
-            <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>
-              La activamos en el visor 3D en un máximo de 48 horas.
+            <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6, marginBottom: 32 }}>
+              Queda en revisión. Puedes ver su estado en tu panel.
             </p>
+            <Link to="/dashboard" style={{ color: "#121212", textDecoration: "underline", fontFamily: "Manrope, sans-serif" }}>
+              Ir a mi panel
+            </Link>
           </div>
         ) : (
         <form onSubmit={onSubmit}>
-          <Field label="Nombre del artista"><input name="artista" style={fieldInput} /></Field>
-          <Field label="Email"><input type="email" name="email" style={fieldInput} /></Field>
-          <Field label="Título de la obra"><input name="titulo" style={fieldInput} /></Field>
-          <Field label="Año"><input name="anio" style={fieldInput} /></Field>
-          <Field label="Materiales"><input name="materiales" style={fieldInput} /></Field>
-          <Field label="Técnica"><input name="tecnica" style={fieldInput} /></Field>
+          <Field label="Título de la obra"><input required value={title} onChange={(e) => setTitle(e.target.value)} style={fieldInput} /></Field>
+          <Field label="Año"><input value={yearVal} onChange={(e) => setYearVal(e.target.value)} style={fieldInput} /></Field>
+          <Field label="Materiales / técnica"><input value={medium} onChange={(e) => setMedium(e.target.value)} style={fieldInput} /></Field>
           <div style={fieldWrap}>
             <label style={fieldLabel}>Dimensiones (cm)</label>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 24 }}>
-              <input name="alto" placeholder="Alto" style={fieldInput} />
-              <input name="ancho" placeholder="Ancho" style={fieldInput} />
-              <input name="profundo" placeholder="Profundo" style={fieldInput} />
+              <input placeholder="Alto" value={alto} onChange={(e) => setAlto(e.target.value)} style={fieldInput} />
+              <input placeholder="Ancho" value={ancho} onChange={(e) => setAncho(e.target.value)} style={fieldInput} />
+              <input placeholder="Profundo" value={profundo} onChange={(e) => setProfundo(e.target.value)} style={fieldInput} />
             </div>
           </div>
-          <Field label="Peso (kg)"><input name="peso" style={fieldInput} /></Field>
-          <Field label="Precio (€)"><input name="precio" style={fieldInput} /></Field>
-          <Field label="Edición">
-            <select name="edicion" style={fieldInput}>
-              <option>Pieza única</option>
-              <option>Edición limitada</option>
-              <option>Edición abierta</option>
-            </select>
+          <Field label="Precio (€)"><input value={price} onChange={(e) => setPrice(e.target.value)} style={fieldInput} /></Field>
+          <Field label="Descripción"><textarea rows={4} value={description} onChange={(e) => setDescription(e.target.value)} style={{ ...fieldInput, resize: "vertical" }} /></Field>
+          <Field label="Foto principal (jpg/png)">
+            <input type="file" accept="image/jpeg,image/png" onChange={(e) => setPhoto(e.target.files?.[0] ?? null)} style={fieldInput} />
           </Field>
-          <Field label="Descripción"><textarea name="descripcion" rows={4} style={{ ...fieldInput, resize: "vertical" }} /></Field>
-          <Field label="Statement del artista (opcional)"><textarea name="statement" rows={4} style={{ ...fieldInput, resize: "vertical" }} /></Field>
-          <Field label="Foto principal (jpg/png)"><input type="file" name="foto1" accept="image/jpeg,image/png" required style={fieldInput} /></Field>
-          <Field label="Foto 2 (opcional)"><input type="file" name="foto2" accept="image/jpeg,image/png" style={fieldInput} /></Field>
-          <Field label="Foto 3 (opcional)"><input type="file" name="foto3" accept="image/jpeg,image/png" style={fieldInput} /></Field>
-          <Field label="Foto 4 (opcional)"><input type="file" name="foto4" accept="image/jpeg,image/png" style={fieldInput} /></Field>
 
+          {error && <p style={{ color: "#b00020", fontFamily: "Manrope, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
           <button
             type="submit"
             disabled={loading}
-            style={{ width: "100%", background: "transparent", color: "#121212", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 13, padding: 18, border: "1px solid #121212", borderRadius: 0, cursor: "pointer", marginTop: 24, transition: "opacity 250ms" }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.6")}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+            style={{ width: "100%", background: "transparent", color: "#121212", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 13, padding: 18, border: "1px solid #121212", borderRadius: 0, cursor: loading ? "default" : "pointer", marginTop: 24, transition: "opacity 250ms", opacity: loading ? 0.6 : 1 }}
           >
             {loading ? "Enviando…" : "Enviar obra"}
           </button>

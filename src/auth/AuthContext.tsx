@@ -2,7 +2,13 @@ import { createContext, useContext, useEffect, useState, ReactNode } from "react
 import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 
-type Profile = { role: string | null; founding_artist: boolean } | null;
+type Profile = {
+  role: string | null;
+  founding_artist: boolean;
+  origin: string | null;
+  technique: string | null;
+  bio: string | null;
+} | null;
 
 type AuthCtx = {
   session: Session | null;
@@ -34,7 +40,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
     const { data } = await supabase
       .from("profiles")
-      .select("role, founding_artist")
+      .select("role, founding_artist, origin, technique, bio")
       .eq("id", userId)
       .maybeSingle();
     setProfile(data ?? null);

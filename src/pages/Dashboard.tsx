@@ -1,38 +1,79 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "@/auth/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
 
 const NAV = ["Resumen", "Mis obras", "Analíticas", "Configuración"];
 
-const METRICS = [
-  { v: "3", l: "obras activas" },
-  { v: "847", l: "visitas únicas" },
-  { v: "12", l: "interacciones 3D esta semana" },
-  { v: "€0", l: "0 ventas" },
-];
+type Artwork = {
+  id: string;
+  title: string;
+  medium: string | null;
+  price: number | null;
+  status: "pendiente" | "aprobada" | "rechazada";
+};
 
-const OBRAS = [
-  { titulo: "Celosía menor", material: "Bronce y agua", precio: "€18.400", visitas: 312, estado: "Activa" },
-  { titulo: "Silencio en blanco", material: "Mármol de Carrara", precio: "€9.200", visitas: 287, estado: "Activa" },
-  { titulo: "Estructura abierta", material: "Acero corten", precio: "€14.700", visitas: 248, estado: "En revisión" },
-];
-
-const ACT = [
-  { f: "Hoy · 11:42", d: "Una coleccionista de Madrid examinó 'Celosía menor' en 3D durante 4 minutos." },
-  { f: "Ayer · 18:09", d: "Tu obra 'Silencio en blanco' fue añadida a favoritos por un usuario verificado." },
-  { f: "Hace 3 días", d: "Subiste 'Estructura abierta'. Está en revisión para activación 3D." },
-];
+const STATUS_LABEL: Record<Artwork["status"], string> = {
+  pendiente: "En revisión",
+  aprobada: "Activa",
+  rechazada: "Rechazada",
+};
 
 export default function Dashboard() {
+  const navigate = useNavigate();
+  const { user, profile, loading: authLoading, signOut } = useAuth();
   const [active, setActive] = useState(0);
+  const [artworks, setArtworks] = useState<Artwork[]>([]);
+  const [loadingArtworks, setLoadingArtworks] = useState(true);
+
+  useEffect(() => {
+    if (authLoading) return;
+    if (!user) { navigate("/login?redirect=/dashboard"); return; }
+    if (profile?.role !== "artist") { navigate("/"); return; }
+  }, [authLoading, user, profile, navigate]);
+
+  useEffect(() => {
+    if (!user || profile?.role !== "artist") return;
+    supabase
+      .from("artworks")
+      .select("id, title, medium, price, status")
+      .eq("artist_id", user.id)
+      .order("created_at", { ascending: false })
+      .then(({ data }) => {
+        setArtworks(data ?? []);
+        setLoadingArtworks(false);
+      });
+  }, [user, profile]);
+
+  if (authLoading || !user || profile?.role !== "artist") return null;
+
+  const profileIncomplete = !profile.origin || !profile.technique || !profile.bio;
+  const activeCount = artworks.filter((a) => a.status === "aprobada").length;
+  const pendingCount = artworks.filter((a) => a.status === "pendiente").length;
+
+  const METRICS = [
+    { v: String(activeCount), l: "obras activas" },
+    { v: String(pendingCount), l: "en revisión" },
+    { v: String(artworks.length), l: "obras totales" },
+  ];
+
   return (
     <main style={{ background: "#FFFFFF", minHeight: "100vh" }}>
       <header style={{ borderBottom: "1px solid #E5E5E5", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <Link to="/" style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 400, color: "#121212", fontSize: 20, letterSpacing: "0.12em", textDecoration: "none", textTransform: "uppercase" }}>
           IGNIA
         </Link>
-        <span style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14 }}>
-          Helena Vásquez · Artista Fundadora
-        </span>
+        <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
+          <span style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14 }}>
+            {user.email} · {profile.founding_artist ? "Artista Fundador" : "Artista"}
+          </span>
+          <button
+            onClick={async () => { await signOut(); navigate("/"); }}
+            style={{ background: "none", border: "none", color: "#121212", fontFamily: "Manrope, sans-serif", fontSize: 14, textDecoration: "underline", cursor: "pointer" }}
+          >
+            Salir
+          </button>
+        </div>
       </header>
 
       <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", minHeight: "calc(100vh - 65px)" }}>
@@ -56,11 +97,22 @@ export default function Dashboard() {
         </aside>
 
         <section style={{ padding: "56px 56px 80px" }}>
-          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 48 }}>
-            Bienvenida, Helena.
+          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 32 }}>
+            Bienvenida.
           </h1>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 56 }}>
+          {profileIncomplete && (
+            <div style={{ border: "1px solid #121212", padding: "20px 24px", marginBottom: 40, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 24 }}>
+              <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 15, color: "#121212", margin: 0 }}>
+                Completa tu perfil de artista (origen, técnica, biografía) antes de publicar tu primera obra.
+              </p>
+              <Link to="/perfil-artista" style={{ fontFamily: "Manrope, sans-serif", fontSize: 13, textTransform: "uppercase", letterSpacing: "0.1em", color: "#121212", whiteSpace: "nowrap" }}>
+                Completar →
+              </Link>
+            </div>
+          )}
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 40 }}>
             {METRICS.map((m) => (
               <div key={m.l} style={{ border: "1px solid #E5E5E5", padding: 28, borderRadius: 0 }}>
                 <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 40, lineHeight: 1 }}>{m.v}</div>
@@ -69,39 +121,51 @@ export default function Dashboard() {
             ))}
           </div>
 
-          <div style={{ marginBottom: 64 }}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
-              <thead>
-                <tr>
-                  {["Título", "Material", "Precio", "Visitas", "Estado"].map((h) => (
-                    <th key={h} style={{ textAlign: "left", fontFamily: "Manrope, sans-serif", fontWeight: 600, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "#666666", padding: "16px 8px", borderBottom: "1px solid #E5E5E5" }}>{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {OBRAS.map((o) => (
-                  <tr key={o.titulo}>
-                    {[o.titulo, o.material, o.precio, o.visitas, o.estado].map((c, i) => (
-                      <td key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: 15, color: "#121212", padding: "20px 8px", borderBottom: "1px solid #E5E5E5" }}>{c}</td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div style={{ marginBottom: 40 }}>
+            <Link
+              to={profileIncomplete ? "/perfil-artista" : "/publicar"}
+              style={{
+                display: "inline-block",
+                padding: "14px 28px",
+                background: "#121212",
+                color: "#FFFFFF",
+                fontFamily: "Manrope, sans-serif",
+                fontWeight: 500,
+                fontSize: 13,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                textDecoration: "none",
+              }}
+            >
+              Publicar una obra
+            </Link>
           </div>
 
-          <div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 22, marginBottom: 24 }}>
-              Actividad reciente
-            </h2>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-              {ACT.map((a, i) => (
-                <li key={i} style={{ padding: "20px 0", borderBottom: i < ACT.length - 1 ? "1px solid #E5E5E5" : "none" }}>
-                  <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14, marginBottom: 4 }}>{a.f}</div>
-                  <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#121212", fontSize: 15, lineHeight: 1.5 }}>{a.d}</div>
-                </li>
-              ))}
-            </ul>
+          <div style={{ marginBottom: 64 }}>
+            {loadingArtworks ? (
+              <p style={{ fontFamily: "Manrope, sans-serif", color: "#666666" }}>Cargando…</p>
+            ) : artworks.length === 0 ? (
+              <p style={{ fontFamily: "Manrope, sans-serif", color: "#666666" }}>Aún no has publicado ninguna obra.</p>
+            ) : (
+              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                <thead>
+                  <tr>
+                    {["Título", "Material", "Precio", "Estado"].map((h) => (
+                      <th key={h} style={{ textAlign: "left", fontFamily: "Manrope, sans-serif", fontWeight: 600, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "#666666", padding: "16px 8px", borderBottom: "1px solid #E5E5E5" }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {artworks.map((o) => (
+                    <tr key={o.id}>
+                      {[o.title, o.medium || "—", o.price ? `€${o.price.toLocaleString("es-ES")}` : "—", STATUS_LABEL[o.status]].map((c, i) => (
+                        <td key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: 15, color: "#121212", padding: "20px 8px", borderBottom: "1px solid #E5E5E5" }}>{c}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
           </div>
         </section>
       </div>
