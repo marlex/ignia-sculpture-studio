@@ -2,7 +2,7 @@
 import * as React from 'npm:react@18.3.1'
 import { Body, Container, Head, Heading, Html, Img, Preview, Text } from 'npm:@react-email/components@0.0.22'
 
-const LOGO_URL = 'https://www.igniagallery.com/__l5e/assets-v1/385f9d6b-55e3-48bb-9684-0634e0588929/ignia-logo.png'
+const LOGO_URL = 'https://igniainstitution.com/ignia-logo.png'
 import type { TemplateEntry } from './registry.ts'
 
 interface Props {
