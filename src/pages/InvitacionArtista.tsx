@@ -37,7 +37,9 @@ export default function InvitacionArtista() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [social, setSocial] = useState("");
+  const [instagram, setInstagram] = useState("");
+  const [website, setWebsite] = useState("");
+  const [portfolioUrl, setPortfolioUrl] = useState("");
   const [origin, setOrigin] = useState("");
   const [technique, setTechnique] = useState("");
   const [bio, setBio] = useState("");
@@ -52,7 +54,9 @@ export default function InvitacionArtista() {
         fName: "Nombre completo",
         fEmail: "Email",
         fPassword: "Contraseña",
-        fSocial: "Instagram, web o portfolio",
+        fInstagram: "Instagram (opcional)",
+        fWebsite: "Sitio web (opcional)",
+        fPortfolio: "Portfolio (opcional)",
         fOrigin: "Origen (ciudad, país)",
         fTechnique: "Técnica o materiales principales",
         fBio: "Biografía corta",
@@ -69,7 +73,9 @@ export default function InvitacionArtista() {
         fName: "Full name",
         fEmail: "Email",
         fPassword: "Password",
-        fSocial: "Instagram, website or portfolio",
+        fInstagram: "Instagram (optional)",
+        fWebsite: "Website (optional)",
+        fPortfolio: "Portfolio (optional)",
         fOrigin: "Origin (city, country)",
         fTechnique: "Main technique or materials",
         fBio: "Short biography",
@@ -107,7 +113,9 @@ export default function InvitacionArtista() {
             origin,
             technique,
             bio,
-            social,
+            instagram,
+            website,
+            portfolio_url: portfolioUrl,
           },
         },
       });
@@ -170,8 +178,16 @@ export default function InvitacionArtista() {
                 <input id="password" type="password" required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} style={inputStyle} />
               </div>
               <div style={{ marginBottom: 28 }}>
-                <label style={labelStyle} htmlFor="social">{t.fSocial}</label>
-                <input id="social" required value={social} onChange={(e) => setSocial(e.target.value)} style={inputStyle} />
+                <label style={labelStyle} htmlFor="instagram">{t.fInstagram}</label>
+                <input id="instagram" value={instagram} onChange={(e) => setInstagram(e.target.value)} style={inputStyle} />
+              </div>
+              <div style={{ marginBottom: 28 }}>
+                <label style={labelStyle} htmlFor="website">{t.fWebsite}</label>
+                <input id="website" value={website} onChange={(e) => setWebsite(e.target.value)} style={inputStyle} />
+              </div>
+              <div style={{ marginBottom: 28 }}>
+                <label style={labelStyle} htmlFor="portfolio">{t.fPortfolio}</label>
+                <input id="portfolio" value={portfolioUrl} onChange={(e) => setPortfolioUrl(e.target.value)} style={inputStyle} />
               </div>
               <div style={{ marginBottom: 28 }}>
                 <label style={labelStyle} htmlFor="origin">{t.fOrigin}</label>
