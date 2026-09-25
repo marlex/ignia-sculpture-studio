@@ -135,6 +135,25 @@ export default function Publicar() {
             <input type="file" accept="image/jpeg,image/png" onChange={(e) => setPhoto(e.target.files?.[0] ?? null)} style={fieldInput} />
           </Field>
 
+          <div style={{ ...fieldWrap, opacity: 0.45 }}>
+            <label style={fieldLabel}>
+              Modelo 3D{" "}
+              <span style={{ textTransform: "none", letterSpacing: 0, fontWeight: 400, color: "#999" }}>
+                (próximamente en octubre)
+              </span>
+            </label>
+            <input disabled placeholder="Disponible en octubre" style={{ ...fieldInput, cursor: "not-allowed" }} />
+          </div>
+          <div style={{ ...fieldWrap, opacity: 0.45 }}>
+            <label style={fieldLabel}>
+              Vista en AR{" "}
+              <span style={{ textTransform: "none", letterSpacing: 0, fontWeight: 400, color: "#999" }}>
+                (próximamente en octubre)
+              </span>
+            </label>
+            <input disabled placeholder="Disponible en octubre" style={{ ...fieldInput, cursor: "not-allowed" }} />
+          </div>
+
           {error && <p style={{ color: "#b00020", fontFamily: "Manrope, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
           <button
             type="submit"

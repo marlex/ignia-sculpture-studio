@@ -5,6 +5,8 @@ import { template as applicationRejected } from './application-rejected.tsx'
 import { template as foundingArtistWelcome } from './founding-artist-welcome.tsx'
 import { template as adminNewArtistRegistration } from './admin-new-artist-registration.tsx'
 import { template as artistUploadReminder } from './artist-upload-reminder.tsx'
+import { template as artworkReceived } from './artwork-received.tsx'
+import { template as adminNewArtwork } from './admin-new-artwork.tsx'
 
 export interface TemplateEntry {
   component: ComponentType<any>
@@ -21,4 +23,6 @@ export const TEMPLATES: Record<string, TemplateEntry> = {
   'founding-artist-welcome': foundingArtistWelcome,
   'admin-new-artist-registration': adminNewArtistRegistration,
   'artist-upload-reminder': artistUploadReminder,
+  'artwork-received': artworkReceived,
+  'admin-new-artwork': adminNewArtwork,
 }

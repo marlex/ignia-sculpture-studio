@@ -121,6 +121,33 @@ export default function Dashboard() {
             ))}
           </div>
 
+          {!profileIncomplete && (
+            <div style={{ border: "1px solid #E5E5E5", padding: "24px 28px", marginBottom: 40 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 16 }}>
+                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 20, margin: 0 }}>
+                  Mi perfil
+                </h2>
+                <Link to="/perfil-artista" style={{ fontFamily: "Manrope, sans-serif", fontSize: 13, color: "#666666" }}>
+                  Editar →
+                </Link>
+              </div>
+              <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
+                <strong>Origen:</strong> {profile.origin}
+              </p>
+              <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
+                <strong>Técnica:</strong> {profile.technique}
+              </p>
+              <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
+                <strong>Bio:</strong> {profile.bio}
+              </p>
+              {(profile.instagram || profile.website || profile.portfolio_url) && (
+                <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, color: "#666666", margin: 0 }}>
+                  {[profile.instagram, profile.website, profile.portfolio_url].filter(Boolean).join(" · ")}
+                </p>
+              )}
+            </div>
+          )}
+
           <div style={{ marginBottom: 40 }}>
             <Link
               to={profileIncomplete ? "/perfil-artista" : "/publicar"}
