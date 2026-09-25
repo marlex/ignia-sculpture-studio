@@ -54,6 +54,7 @@ export default function InvitacionArtista() {
         fName: "Nombre completo",
         fEmail: "Email",
         fPassword: "Contraseña",
+        contactTitle: "Contacto",
         fInstagram: "Instagram (opcional)",
         fWebsite: "Sitio web (opcional)",
         fPortfolio: "Portfolio (opcional)",
@@ -73,6 +74,7 @@ export default function InvitacionArtista() {
         fName: "Full name",
         fEmail: "Email",
         fPassword: "Password",
+        contactTitle: "Contact",
         fInstagram: "Instagram (optional)",
         fWebsite: "Website (optional)",
         fPortfolio: "Portfolio (optional)",
@@ -178,18 +180,6 @@ export default function InvitacionArtista() {
                 <input id="password" type="password" required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} style={inputStyle} />
               </div>
               <div style={{ marginBottom: 28 }}>
-                <label style={labelStyle} htmlFor="instagram">{t.fInstagram}</label>
-                <input id="instagram" value={instagram} onChange={(e) => setInstagram(e.target.value)} style={inputStyle} />
-              </div>
-              <div style={{ marginBottom: 28 }}>
-                <label style={labelStyle} htmlFor="website">{t.fWebsite}</label>
-                <input id="website" value={website} onChange={(e) => setWebsite(e.target.value)} style={inputStyle} />
-              </div>
-              <div style={{ marginBottom: 28 }}>
-                <label style={labelStyle} htmlFor="portfolio">{t.fPortfolio}</label>
-                <input id="portfolio" value={portfolioUrl} onChange={(e) => setPortfolioUrl(e.target.value)} style={inputStyle} />
-              </div>
-              <div style={{ marginBottom: 28 }}>
                 <label style={labelStyle} htmlFor="origin">{t.fOrigin}</label>
                 <input id="origin" required value={origin} onChange={(e) => setOrigin(e.target.value)} style={inputStyle} />
               </div>
@@ -200,6 +190,26 @@ export default function InvitacionArtista() {
               <div style={{ marginBottom: 40 }}>
                 <label style={labelStyle} htmlFor="bio">{t.fBio}</label>
                 <textarea id="bio" required rows={5} value={bio} onChange={(e) => setBio(e.target.value)} style={{ ...inputStyle, resize: "vertical" }} />
+              </div>
+
+              <h2 style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontWeight: 500,
+                color: "#121212",
+                fontSize: 20,
+                margin: "0 0 24px",
+              }}>{t.contactTitle}</h2>
+              <div style={{ marginBottom: 28 }}>
+                <label style={labelStyle} htmlFor="instagram">{t.fInstagram}</label>
+                <input id="instagram" value={instagram} onChange={(e) => setInstagram(e.target.value)} style={inputStyle} />
+              </div>
+              <div style={{ marginBottom: 28 }}>
+                <label style={labelStyle} htmlFor="website">{t.fWebsite}</label>
+                <input id="website" value={website} onChange={(e) => setWebsite(e.target.value)} style={inputStyle} />
+              </div>
+              <div style={{ marginBottom: 40 }}>
+                <label style={labelStyle} htmlFor="portfolio">{t.fPortfolio}</label>
+                <input id="portfolio" value={portfolioUrl} onChange={(e) => setPortfolioUrl(e.target.value)} style={inputStyle} />
               </div>
 
               {error && <p style={{ color: "#b00020", fontFamily: "Manrope, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
