@@ -105,16 +105,9 @@ export default function Registro() {
       const { data, error: signErr } = await supabase.auth.signUp({
         email,
         password,
-        options: { data: { name } },
+        options: { data: { name, requested_role: requestedRole } },
       });
       if (signErr) throw signErr;
-      const user = data.user;
-      if (user) {
-        const { error: profileErr } = await supabase
-          .from("profiles")
-          .insert({ id: user.id, email, requested_role: requestedRole });
-        if (profileErr) throw profileErr;
-      }
       setStep(data.session ? "pending" : "check-email");
     } catch (err: any) {
       setError(err?.message || t.errMsg);

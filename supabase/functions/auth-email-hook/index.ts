@@ -34,9 +34,10 @@ const EMAIL_TEMPLATES: Record<string, React.ComponentType<any>> = {
 }
 
 const SITE_NAME = 'Ignia Gallery'
-const SENDER_DOMAIN = 'notify.igniagallery.com'
-const ROOT_DOMAIN = 'igniagallery.com'
-const FROM_DOMAIN = 'notify.igniagallery.com'
+// SENDER_DOMAIN/FROM_DOMAIN must match the domain verified in Resend.
+const SENDER_DOMAIN = 'notify.igniainstitution.com'
+const ROOT_DOMAIN = 'igniainstitution.com'
+const FROM_DOMAIN = 'notify.igniainstitution.com'
 
 // Supabase's native "Send Email" auth hook payload shape.
 // https://supabase.com/docs/guides/auth/auth-hooks/send-email-hook
@@ -73,9 +74,13 @@ Deno.serve(async (req) => {
   const payloadText = await req.text()
   const headers = Object.fromEntries(req.headers)
 
+  // Supabase prefixes the hook secret with "v1," to version it; the
+  // standardwebhooks library expects just the raw "whsec_..." value.
+  const webhookSecret = hookSecret.replace(/^v1,/, '')
+
   let verified: SendEmailHookPayload
   try {
-    const wh = new Webhook(hookSecret)
+    const wh = new Webhook(webhookSecret)
     verified = wh.verify(payloadText, headers) as SendEmailHookPayload
   } catch (error) {
     console.error('Invalid webhook signature', { error: String(error) })
