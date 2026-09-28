@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
@@ -70,6 +70,31 @@ export default function Login() {
     invalid: "Invalid email or password.",
     notActive: "Your account is not active yet.",
   };
+
+  // A confirmation-email link logs the user in directly (no email/password
+  // step). If that lands here with a session already open, run the same
+  // role check as a manual login instead of showing a blank form.
+  useEffect(() => {
+    (async () => {
+      const { data } = await supabase.auth.getSession();
+      const user = data.session?.user;
+      if (!user) return;
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", user.id)
+        .maybeSingle();
+      const role = profile?.role;
+      if (role === "admin") {
+        navigate("/admin/dashboard");
+      } else if (!role) {
+        setInfo(t.notActive);
+      } else {
+        navigate(redirect || "/");
+      }
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
