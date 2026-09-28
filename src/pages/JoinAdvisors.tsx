@@ -67,10 +67,6 @@ const JoinAdvisors = () => {
     why1: { title: "Acceso directo a escultores y coleccionistas.", text: "Sin intermediarios institucionales." },
     why2: { title: "Agenda flexible.", text: "Ustedes definen su disponibilidad y tarifa por sesión." },
     why3: { title: "Sin exclusividad ni cuota fija.", text: "Cobran por sesión realizada, Ignia se lleva una comisión." },
-    ledgerLeftTitle: "Sin guía",
-    ledgerLeft: ["Comprar a ciegas.", "Dudar del precio.", "Perderse el mercado."],
-    ledgerRightTitle: "Con un advisor",
-    ledgerRight: ["Comprar con criterio.", "Entender el valor real.", "Ver lo que otros no ven."],
     applyTitle: "Aplicar como advisor",
     fName: "Nombre completo",
     fEmail: "Email",
@@ -97,10 +93,6 @@ const JoinAdvisors = () => {
     why1: { title: "Direct access to sculptors and collectors.", text: "No institutional intermediaries." },
     why2: { title: "Flexible schedule.", text: "You define your availability and fee per session." },
     why3: { title: "No exclusivity or fixed fee.", text: "You earn per completed session; Ignia takes a commission." },
-    ledgerLeftTitle: "Without guidance",
-    ledgerLeft: ["Buy blindly.", "Doubt the price.", "Miss the market."],
-    ledgerRightTitle: "With an advisor",
-    ledgerRight: ["Buy with criteria.", "Understand real value.", "See what others don't."],
     applyTitle: "Apply as advisor",
     fName: "Full name",
     fEmail: "Email",
@@ -204,32 +196,6 @@ const JoinAdvisors = () => {
         </div>
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(6, 1fr)",
-            gap: 0,
-            width: "100%",
-            borderBottom: "1px solid #E5E5E5",
-          }}
-        >
-          {indexWorks.map((work) => (
-            <div
-              key={`${work.slug}-price`}
-              style={{
-                padding: "12px 8px",
-                textAlign: "center",
-                fontFamily: "Manrope, sans-serif",
-                fontWeight: 400,
-                fontSize: 12,
-                color: "#666666",
-                letterSpacing: "0.02em",
-              }}
-            >
-              {work[lang].price}
-            </div>
-          ))}
-        </div>
-        <div
-          style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -278,37 +244,6 @@ const JoinAdvisors = () => {
               </p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* 3. BLOQUE LEDGER */}
-      <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 0, alignItems: "stretch" }}>
-          <div style={{ padding: "0 48px" }}>
-            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 32, lineHeight: 1.2, margin: 0, textAlign: "center" }}>
-              {t.ledgerLeftTitle}
-            </h3>
-            <ul style={{ listStyle: "none", padding: 0, margin: "32px 0 0", textAlign: "center" }}>
-              {t.ledgerLeft.map((item, i) => (
-                <li key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.7, marginBottom: 12 }}>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div style={{ width: 1, background: "#E5E5E5" }} />
-          <div style={{ padding: "0 48px" }}>
-            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 32, lineHeight: 1.2, margin: 0, textAlign: "center" }}>
-              {t.ledgerRightTitle}
-            </h3>
-            <ul style={{ listStyle: "none", padding: 0, margin: "32px 0 0", textAlign: "center" }}>
-              {t.ledgerRight.map((item, i) => (
-                <li key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#121212", fontSize: 16, lineHeight: 1.7, marginBottom: 12 }}>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </section>
 
