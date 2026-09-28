@@ -185,7 +185,7 @@ const JoinCuradores = () => {
       <Header />
 
       {/* 1. HERO HOJA DE CONTACTOS */}
-      <section style={{ background: "#FFFFFF", paddingTop: 56 }}>
+      <section style={{ background: "#FFFFFF", paddingTop: 120 }}>
         <div
           style={{
             display: "grid",

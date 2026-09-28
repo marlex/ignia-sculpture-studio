@@ -179,7 +179,7 @@ const JoinAdvisors = () => {
       <Header />
 
       {/* 1. HERO ÍNDICE */}
-      <section style={{ background: "#FFFFFF", paddingTop: 56 }}>
+      <section style={{ background: "#FFFFFF", paddingTop: 120 }}>
         <div
           style={{
             display: "grid",
