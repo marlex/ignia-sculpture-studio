@@ -75,8 +75,6 @@ const JoinGalerias = () => {
       { label: "Paso 3", desc: "Sus obras se publican con presentación de nivel museo." },
       { label: "Paso 4", desc: "Gestionamos venta, cobro y logística; ustedes reciben su parte." },
     ],
-    quote: "Cada relación con una galería es distinta. Hablemos y encontremos los términos correctos para ambos.",
-    quoteSub: "Sin comisión fija publicada. Negociamos volumen, alcance y tipo de obra caso por caso.",
     banner: "Más ojos para su colección. En el lugar correcto.",
     finalTitle: "Hablemos",
     fName: "Nombre de la galería",
@@ -109,8 +107,6 @@ const JoinGalerias = () => {
       { label: "Step 3", desc: "Your works are published with museum-level presentation." },
       { label: "Step 4", desc: "We handle the sale, payment and logistics; you receive your share." },
     ],
-    quote: "Every gallery relationship is different. Let's talk and find the right terms for both of us.",
-    quoteSub: "No fixed published commission. We negotiate volume, reach and type of work case by case.",
     banner: "More eyes on your collection. In the right place.",
     finalTitle: "Let's talk",
     fName: "Gallery name",
@@ -278,45 +274,6 @@ const JoinGalerias = () => {
               {t.cta}
             </button>
           </div>
-        </div>
-      </section>
-
-      {/* 4. BLOQUE TIPOGRÁFICO A PANTALLA COMPLETA */}
-      <section
-        style={{
-          background: "#FFFFFF",
-          minHeight: "92vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          padding: "clamp(80px, 10vw, 160px) 24px",
-        }}
-      >
-        <p style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontWeight: 600,
-          color: "#121212",
-          fontSize: "clamp(38px, 6vw, 86px)",
-          lineHeight: 1.05,
-          letterSpacing: "-0.02em",
-          margin: 0,
-          maxWidth: 1100,
-        }}>{t.quote}</p>
-        <p style={{
-          fontFamily: "Manrope, sans-serif",
-          fontWeight: 400,
-          color: "#666666",
-          fontSize: 15,
-          lineHeight: 1.7,
-          margin: "40px 0 0",
-          maxWidth: 620,
-        }}>{t.quoteSub}</p>
-        <div style={{ marginTop: 40 }}>
-          <button type="button" onClick={scrollToForm} style={OUTLINE_BTN_DARK} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
-            {t.cta}
-          </button>
         </div>
       </section>
 
