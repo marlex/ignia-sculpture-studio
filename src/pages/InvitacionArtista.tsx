@@ -70,7 +70,7 @@ export default function InvitacionArtista() {
       }
     : {
         title: "You've been invited to Ignia",
-        subtitle: "Complete your founding artist registration. An admin will activate your account and you'll be able to publish your first work.",
+        subtitle: "Complete your founding artist registration. The Ignia Team will activate your account and you'll be able to publish your first work.",
         fName: "Full name",
         fEmail: "Email",
         fPassword: "Password",
