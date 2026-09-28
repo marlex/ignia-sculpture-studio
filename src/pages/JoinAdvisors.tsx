@@ -168,7 +168,7 @@ const JoinAdvisors = () => {
         description={lang === "es" ? "Únete como art advisor a Ignia: sesiones privadas con coleccionistas y escultores, agenda flexible y pago por sesión realizada." : "Join Ignia as an art advisor: private sessions with collectors and sculptors, flexible schedule and pay per completed session."}
         path="/join/advisors"
       />
-      <Header />
+      <Header theme="light" />
 
       {/* 1. HERO ÍNDICE */}
       <section style={{ background: "#FFFFFF", paddingTop: 120 }}>

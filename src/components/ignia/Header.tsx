@@ -42,7 +42,7 @@ const NAV_ALL: Record<"es" | "en", NavItem[]> = {
   en: [...NAV_LEFT.en, ...NAV_RIGHT.en],
 };
 
-export const Header = () => {
+export const Header = ({ theme = "dark" }: { theme?: "dark" | "light" }) => {
   const lang = useLang();
   const setLang = useSetLang();
   const leftItems = NAV_LEFT[lang];
@@ -96,20 +96,22 @@ export const Header = () => {
 
 
 
-  // At rest the header always renders light text over a permanent dark
-  // scrim (independent of what page/hero sits behind it — plain white
-  // section, bright photo, or dark photo all get guaranteed contrast).
-  // Scrolling switches every page to the same frosted white pill with dark
-  // text, unchanged.
-  const navColor = scrolled ? "text-gray" : "text-white";
+  // At rest the header renders light text over a permanent dark scrim,
+  // guaranteeing contrast against photo heroes (dark or bright alike).
+  // Pages whose content directly under the header is a plain light
+  // background (no hero photo) pass theme="light" to get dark text and
+  // no scrim instead. Scrolling always switches to the same frosted
+  // white pill with dark text, regardless of theme.
+  const dark = scrolled || theme === "light";
+  const navColor = dark ? "text-gray" : "text-white";
   const navLinkClass = `font-body text-[16px] font-normal ${navColor} hover:opacity-65 transition-opacity`;
-  const logoVariant: "dark" | "light" = scrolled ? "dark" : "light";
-  const hamburgerColor = scrolled ? "#121212" : "#FFFFFF";
-  const mobileInviteColor = scrolled ? "#121212" : "#FFFFFF";
+  const logoVariant: "dark" | "light" = dark ? "dark" : "light";
+  const hamburgerColor = dark ? "#121212" : "#FFFFFF";
+  const mobileInviteColor = dark ? "#121212" : "#FFFFFF";
 
   return (
     <header
-      className={`ignia-header fixed top-0 left-0 right-0 z-[100] border-transparent flex items-center pt-[30px] pb-[30px] px-6 md:px-12 ${scrolled ? "is-scrolled" : ""}`}
+      className={`ignia-header fixed top-0 left-0 right-0 z-[100] border-transparent flex items-center pt-[30px] pb-[30px] px-6 md:px-12 ${scrolled ? "is-scrolled" : ""} ${theme === "light" ? "is-light" : ""}`}
     >
       <style>{`
         @media (max-width: 1279px) {
@@ -159,8 +161,9 @@ export const Header = () => {
         }
         .ignia-header { transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1); }
         /* Permanent scrim at rest: guarantees the white logo/nav stay legible
-           over any background — plain white section, bright photo, dark photo. */
-        .ignia-header:not(.is-scrolled) {
+           over any background — plain white section, bright photo, dark photo.
+           Skipped for theme="light" pages, which already use dark text. */
+        .ignia-header:not(.is-scrolled):not(.is-light) {
           background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.22) 65%, rgba(0,0,0,0) 100%);
         }
       `}</style>
@@ -226,7 +229,7 @@ export const Header = () => {
               <>
                 <Link
                   to="/admin/dashboard"
-                  className={`header-invite-btn inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium ${!scrolled ? "btn-primary-inverse" : ""}`}
+                  className={`header-invite-btn inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium ${!dark ? "btn-primary-inverse" : ""}`}
                 >
                   {t.adminPanel}
                 </Link>
@@ -253,7 +256,7 @@ export const Header = () => {
               <>
                 <Link
                   to="/login"
-                  className={`header-invite-btn inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium ${!scrolled ? "btn-primary-inverse" : ""}`}
+                  className={`header-invite-btn inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium ${!dark ? "btn-primary-inverse" : ""}`}
                 >
                   {t.login}
                 </Link>

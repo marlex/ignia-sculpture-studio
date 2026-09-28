@@ -182,7 +182,7 @@ const JoinCuradores = () => {
         description={lang === "es" ? "Únete como curador a Ignia: sesiones privadas con escultores, agenda flexible y pago por sesión realizada." : "Join Ignia as a curator: private sessions with sculptors, flexible schedule and pay per completed session."}
         path="/join/curadores"
       />
-      <Header />
+      <Header theme="light" />
 
       {/* 1. HERO HOJA DE CONTACTOS */}
       <section style={{ background: "#FFFFFF", paddingTop: 120 }}>
