@@ -80,7 +80,7 @@ const Index = () => {
 
   return (
     <main style={{ background: "#FFFFFF" }}>
-      <Seo title={"Ignia Gallery, Buy Original Sculpture Online"} description={"The global gallery dedicated exclusively to sculpture. Discover original works in 3D, meet the artists and view each piece in your own space."} path="/" />
+      <Seo title={"Ignia Institution — The Global Home for Sculpture"} description={"The global institution dedicated exclusively to sculpture. Discover original works in 3D, meet the artists and view each piece in your own space."} path="/" />
       <Header />
       <HeroFull />
       <div ref={fadeTicker}>

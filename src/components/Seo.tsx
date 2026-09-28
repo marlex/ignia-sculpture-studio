@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 
-const SITE_BASE = "https://igniagallery.com";
+const SITE_BASE = "https://igniainstitution.com";
 const DEFAULT_IMAGE = `${SITE_BASE}/og.png`;
 
 type SeoProps = {
