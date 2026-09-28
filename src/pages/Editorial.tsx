@@ -12,7 +12,7 @@ const EditorialPage = () => {
     : { eyebrow: "Essays & interviews", h: "Community", sub: "Essays, reports and interviews on sculpture, the craft and its market, written for collectors and artists alike.", by: "By" };
 
   return (
-    <main className="pt-14">
+    <main className="pt-24">
       <Seo title={"Community, Essays & Interviews on Sculpture | Ignia Gallery"} description={"Essays, reports and interviews on sculpture, the craft and its market, written for collectors and artists alike."} path="/editorial" />
       <Header theme="light" />
       <section className="px-6 md:px-12 pt-16 pb-12 bg-white">

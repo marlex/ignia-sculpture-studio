@@ -11,7 +11,7 @@ const AprendePage = () => {
     : { eyebrow: "Craft knowledge", h: "Ignia learn", sub: "Guides to understand sculpture: materials, processes, conservation and market." };
 
   return (
-    <main className="pt-14">
+    <main className="pt-24">
       <Seo title={"Learn Sculpture, Materials, Process & Market | Ignia Gallery"} description={"Guides to understanding sculpture: materials, techniques, conservation, patinas and how the sculpture market really works."} path="/aprende" />
       <Header theme="light" />
       <section className="px-6 md:px-12 pt-16 pb-10 bg-white">

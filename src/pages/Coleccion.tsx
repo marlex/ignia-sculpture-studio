@@ -10,7 +10,7 @@ const ColeccionPage = () => {
     ? { eyebrow: "Catálogo", h: "Esculturas", sub: "Esculturas seleccionadas en bronce, mármol, acero corten, madera, cerámica, alabastro y vidrio." }
     : { eyebrow: "Catalogue", h: "Sculptures", sub: "Selected sculptures in bronze, marble, corten steel, wood, ceramic, alabaster and glass." };
   return (
-    <main className="pt-14">
+    <main className="pt-24">
       <Seo title={"Sculptures for Sale, Bronze, Marble & Steel | Ignia Gallery"} description={"Browse original sculptures in bronze, marble, corten steel, wood, ceramic, alabaster and glass, each with 3D viewing and a certificate of authenticity."} path="/coleccion" />
       <Header theme="light" />
       <section className="px-6 md:px-12 pt-16 pb-4 bg-white">

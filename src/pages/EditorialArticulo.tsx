@@ -49,7 +49,7 @@ const EditorialArticuloPage = () => {
   const relations = EDITORIAL_RELATIONS[slug] ?? { relatedWorks: [], relatedArticles: [], featuredArtists: [] };
 
   return (
-    <main className="pt-14">
+    <main className="pt-24">
       <Seo title={title} description={description} path={`/editorial/${slug}`} image={image} type="article" />
       <Header theme="light" />
       <article className="px-6 md:px-12 pt-16 pb-12 bg-white max-w-[820px] mx-auto">
