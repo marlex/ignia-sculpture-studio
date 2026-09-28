@@ -110,7 +110,7 @@ export default function PerfilArtista() {
 
   return (
     <div style={{ background: "#FFFFFF", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      <Seo title={"Artist Profile | Ignia Gallery"} description={"Complete your Ignia Gallery artist profile."} path="/perfil-artista" />
+      <Seo title={"Artist Profile | Ignia Institution"} description={"Complete your Ignia Institution artist profile."} path="/perfil-artista" />
       <Header />
       <main style={{ flex: 1, paddingTop: 56 }}>
         <section style={{ maxWidth: 460, margin: "0 auto", padding: "120px 24px 160px" }}>

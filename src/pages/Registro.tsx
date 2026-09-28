@@ -118,7 +118,7 @@ export default function Registro() {
 
   return (
     <div style={{ background: "#FFFFFF", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      <Seo title={"Create Account | Ignia Gallery"} description={"Create your Ignia Gallery account as a sculptor or collector."} path="/registro" />
+      <Seo title={"Create Account | Ignia Institution"} description={"Create your Ignia Institution account as a sculptor or collector."} path="/registro" />
       <Header />
       <main style={{ flex: 1, paddingTop: 56 }}>
         <section style={{ maxWidth: 460, margin: "0 auto", padding: "120px 24px 160px" }}>

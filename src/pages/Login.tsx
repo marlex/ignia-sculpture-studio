@@ -99,7 +99,7 @@ export default function Login() {
 
   return (
     <div style={{ background: "#FFFFFF", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      <Seo title={"Log In | Ignia Gallery"} description={"Log in to your Ignia Gallery account to manage your works, collection and profile."} path="/login" noindex />
+      <Seo title={"Log In | Ignia Institution"} description={"Log in to your Ignia Institution account to manage your works, collection and profile."} path="/login" noindex />
       <Header />
       <main style={{ flex: 1, paddingTop: 56 }}>
         <section style={{ maxWidth: 460, margin: "0 auto", padding: "120px 24px 160px" }}>
