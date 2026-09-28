@@ -51,7 +51,7 @@ const EditorialArticuloPage = () => {
   return (
     <main className="pt-14">
       <Seo title={title} description={description} path={`/editorial/${slug}`} image={image} type="article" />
-      <Header />
+      <Header theme="light" />
       <article className="px-6 md:px-12 pt-16 pb-12 bg-white max-w-[820px] mx-auto">
         <div className="eyebrow mb-3">{content.seccion}</div>
         <h1 className="font-display font-medium text-[clamp(32px,4.5vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-6">

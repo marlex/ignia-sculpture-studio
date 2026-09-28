@@ -12,7 +12,7 @@ const ColeccionPage = () => {
   return (
     <main className="pt-14">
       <Seo title={"Sculptures for Sale, Bronze, Marble & Steel | Ignia Gallery"} description={"Browse original sculptures in bronze, marble, corten steel, wood, ceramic, alabaster and glass, each with 3D viewing and a certificate of authenticity."} path="/coleccion" />
-      <Header />
+      <Header theme="light" />
       <section className="px-6 md:px-12 pt-16 pb-4 bg-white">
         <div className="eyebrow mb-3">{t.eyebrow}</div>
         <h1 className="font-display font-medium text-[clamp(36px,5vw,64px)] tracking-[-0.02em] text-ink leading-[1.05]">{t.h}</h1>

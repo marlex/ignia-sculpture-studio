@@ -28,7 +28,7 @@ export default function AdminLayout() {
 
   return (
     <div style={{ background: "#FFFFFF", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      <Header />
+      <Header theme="light" />
       <main style={{ flex: 1, paddingTop: 80 }}>
         <div style={{ maxWidth: 1400, margin: "0 auto", padding: "24px", display: "grid", gridTemplateColumns: "220px 1fr", gap: 32 }}>
           <aside style={{ borderRight: "1px solid #eee", paddingRight: 16 }}>

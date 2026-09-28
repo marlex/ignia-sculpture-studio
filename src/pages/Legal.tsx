@@ -71,7 +71,7 @@ export default function Legal() {
   return (
     <div className="min-h-screen bg-white">
       {seo && <Seo title={seo.title} description={seo.description} path={`/legal/${slug}`} />}
-      <Header />
+      <Header theme="light" />
       <main>
         <iframe
           ref={iframeRef}

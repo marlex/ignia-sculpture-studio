@@ -178,7 +178,7 @@ export default function PerfilEscultor() {
   return (
     <main className="min-h-screen bg-white pt-14">
       <Seo title={seoTitle} description={seoDescription} path={`/perfil/escultor/${slug ?? ""}`} image={bio.retrato} />
-      <Header />
+      <Header theme="light" />
 
       <section className="px-6 md:px-12 py-16 max-w-[1280px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 items-start mb-12">
