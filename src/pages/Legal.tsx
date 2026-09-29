@@ -72,7 +72,7 @@ export default function Legal() {
     <div className="min-h-screen bg-white">
       {seo && <Seo title={seo.title} description={seo.description} path={`/legal/${slug}`} />}
       <Header theme="light" />
-      <main style={{ paddingTop: 140 }}>
+      <main style={{ paddingTop: 190 }}>
         <iframe
           ref={iframeRef}
           src={src}

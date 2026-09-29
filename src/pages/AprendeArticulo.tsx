@@ -46,7 +46,7 @@ const AprendeArticuloPage = () => {
   if (!article || !content) return <NotFound />;
 
   return (
-    <main className="pt-24">
+    <main className="pt-40">
       <Seo title={title} description={description} path={`/aprende/${slug}`} image={image} type="article" />
       <Header theme="light" />
       <article className="px-6 md:px-12 pt-16 pb-12 bg-white max-w-[820px] mx-auto">

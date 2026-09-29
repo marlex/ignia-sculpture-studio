@@ -204,7 +204,7 @@ const ObraDetalle = () => {
   const prev = () => setIdx((idx + photos.length - 1) % photos.length);
 
   return (
-    <main className="pt-24 bg-white">
+    <main className="pt-40 bg-white">
       <Seo title={seoTitle} description={seoDescription} path={`/obra/${slug}`} image={o?.image} type="article" />
       <Header theme="light" />
 

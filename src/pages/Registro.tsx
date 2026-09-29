@@ -120,7 +120,7 @@ export default function Registro() {
     <div style={{ background: "#FFFFFF", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <Seo title={"Create Account | Ignia Institution"} description={"Create your Ignia Institution account as a sculptor or collector."} path="/registro" />
       <Header theme="light" />
-      <main style={{ flex: 1, paddingTop: 140 }}>
+      <main style={{ flex: 1, paddingTop: 190 }}>
         <section style={{ maxWidth: 460, margin: "0 auto", padding: "120px 24px 160px" }}>
           <div style={{ textAlign: "center" }}>
             <h1 style={{

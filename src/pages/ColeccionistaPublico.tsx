@@ -169,7 +169,7 @@ export default function ColeccionistaPublico() {
     return (
       <main className="min-h-screen bg-white">
         <Header theme="light" />
-        <section className="px-6 md:px-12 pt-32 pb-24 max-w-[1280px] mx-auto">
+        <section className="px-6 md:px-12 pt-44 pb-24 max-w-[1280px] mx-auto">
           <h1 className="font-display font-medium text-3xl text-ink mb-4">
             {lang === "es" ? "Coleccionista no encontrado" : "Collector not found"}
           </h1>
@@ -189,7 +189,7 @@ export default function ColeccionistaPublico() {
     <main className="min-h-screen bg-white">
       <Header theme="light" />
 
-      <section className="px-6 md:px-12 pt-32 pb-8 max-w-[1280px] mx-auto">
+      <section className="px-6 md:px-12 pt-44 pb-8 max-w-[1280px] mx-auto">
         <Link to="/" className="font-body text-[12px] uppercase tracking-[0.18em] text-muted-line hover:opacity-65 transition-opacity">
           {t.back}
         </Link>

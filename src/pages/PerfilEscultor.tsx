@@ -176,7 +176,7 @@ export default function PerfilEscultor() {
   const seoDescription = ((bioText || "").replace(/\s+/g, " ").trim()).slice(0, 155);
 
   return (
-    <main className="min-h-screen bg-white pt-24">
+    <main className="min-h-screen bg-white pt-40">
       <Seo title={seoTitle} description={seoDescription} path={`/perfil/escultor/${slug ?? ""}`} image={bio.retrato} />
       <Header theme="light" />
 

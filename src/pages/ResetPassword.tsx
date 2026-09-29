@@ -111,7 +111,7 @@ export default function ResetPassword() {
   return (
     <div style={{ background: "#FFFFFF", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <Header theme="light" />
-      <main style={{ flex: 1, paddingTop: 140 }}>
+      <main style={{ flex: 1, paddingTop: 190 }}>
         <section style={{ maxWidth: 460, margin: "0 auto", padding: "80px 24px 120px" }}>
           <h1 style={{
             fontFamily: "'Cormorant Garamond', serif",
