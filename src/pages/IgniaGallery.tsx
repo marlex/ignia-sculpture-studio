@@ -233,7 +233,7 @@ const AboutPage = () => {
   const icons = [Icon3D, IconSeal, IconScale, IconGlobe, null, IconBox, IconAR];
 
   return (
-    <main className="pt-14">
+    <main>
       <Seo
         title={"About Ignia, The Digital Institution for Sculpture"}
         description={
