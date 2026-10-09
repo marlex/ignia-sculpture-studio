@@ -17,7 +17,6 @@ import { getCertificate, formatRegisteredDate } from "@/lib/certificates";
 
 const T = {
   es: {
-    back: "← Volver a la colección",
     cert: "Ver certificado público →",
     buy: "Comprar", talk: "Hablar con Ignia",
     photos: "Fotos", view3d: "Vista 3D",
@@ -31,7 +30,6 @@ const T = {
     chatThanks: "Gracias. He compartido tus datos con nuestro equipo, un asesor de Ignia se pondrá en contacto contigo muy pronto.",
   },
   en: {
-    back: "← Back to the collection",
     cert: "View public certificate →",
     buy: "Buy", talk: "Talk to Ignia",
     photos: "Photos", view3d: "3D view",
@@ -294,7 +292,6 @@ const ObraDetalle = () => {
           </div>
 
           <div>
-            <div className="eyebrow mb-3"><Link to="/coleccion" className="hover:opacity-65 transition-opacity">{t.back}</Link></div>
             <h1 className="font-display font-medium text-[clamp(32px,4vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-3">{o.title}</h1>
             <div className="font-body text-[16px] font-normal text-gray mb-6">
               <Link to={`/perfil/escultor/${o.artist.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} className="underline-offset-4 hover:underline">{o.artist}</Link> · {o.material} · {o.year} · {o.edition}
@@ -590,7 +587,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
               return (
                 <div className="mt-10 pt-8 border-t border-[#E8E8E8]">
                   <p className="font-body text-[12px] tracking-[0.18em] uppercase text-muted-line mb-4">{header}</p>
-                  <div className="flex items-center gap-3 mb-4">
+                  <Link to={`/perfil/escultor/${slug}`} className="flex items-center gap-3 mb-4 w-fit hover:opacity-80 transition-opacity">
                     {bio.retrato ? (
                       <img src={bio.retrato} alt={o.artist} loading="lazy" decoding="async" className="w-12 h-12 rounded-full object-cover" />
                     ) : (
@@ -600,7 +597,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
                       <div className="font-display font-semibold text-[28px] text-ink leading-tight">{o.artist}</div>
                       {location && <div className="font-body text-[13px] text-gray">{location}</div>}
                     </div>
-                  </div>
+                  </Link>
                   <p className="font-body text-[14px] font-normal text-gray leading-relaxed mb-4">{short}</p>
                   <Link
                     to={`/perfil/escultor/${slug}`}
@@ -622,10 +619,13 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
           .map(w => getWorkBySlug(w.slug, lang));
         if (others.length < 2) return null;
         const heading = lang === "es" ? `Más obras de ${o.artist}` : `More works by ${o.artist}`;
+        const artistProfileSlug = artistSlug(o.artist);
         return (
           <section className="px-6 md:px-12 pb-20">
             <div className="max-w-[1280px] mx-auto">
-              <h2 className="font-display font-semibold text-[clamp(22px,2.4vw,32px)] tracking-[-0.01em] text-ink mb-8">{heading}</h2>
+              <Link to={`/perfil/escultor/${artistProfileSlug}`} className="inline-block hover:opacity-80 transition-opacity mb-8">
+                <h2 className="font-display font-semibold text-[clamp(22px,2.4vw,32px)] tracking-[-0.01em] text-ink">{heading}</h2>
+              </Link>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {others.map(w => (
                   <Link key={w.slug} to={`/obra/${w.slug}`} className="group block">

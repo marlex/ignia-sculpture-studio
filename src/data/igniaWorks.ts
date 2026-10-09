@@ -68,6 +68,18 @@ type WorkCopy = {
   price: string;
   description: string;
   authenticity: string;
+  dimensions?: string; // display string, e.g. "48 x 22 x 19 cm"
+};
+
+// Real physical size, used to draw a work to scale next to a 170cm
+// figure. Optional and currently unset for every work — no dimensions
+// have been measured yet, so the scale drawing simply doesn't render
+// until real numbers are added here (see PerfilEscultor.tsx).
+type WorkScale = {
+  heightCm: number;
+  widthCm: number;
+  depthCm?: number;
+  weightKg?: number;
 };
 
 type WorkRecord = {
@@ -77,6 +89,7 @@ type WorkRecord = {
   model: WorkModelKey;
   glbUrl?: string;
   extraImages?: string[];
+  scale?: WorkScale;
   es: WorkCopy;
   en: WorkCopy;
 };

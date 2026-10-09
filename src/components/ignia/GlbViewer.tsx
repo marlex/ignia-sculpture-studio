@@ -14,6 +14,8 @@ declare global {
           "auto-rotate-delay"?: string | number;
           "rotation-per-second"?: string;
           "camera-controls"?: boolean | "";
+          "camera-orbit"?: string;
+          "field-of-view"?: string;
           "shadow-intensity"?: string | number;
           "shadow-softness"?: string | number;
           "environment-image"?: string;
@@ -36,6 +38,7 @@ function ModelViewerContent({
   minHeight,
   showAr = true,
   bgColor = "#f5f5f0",
+  cameraOrbit,
 }: {
   url: string;
   alt: string;
@@ -43,6 +46,7 @@ function ModelViewerContent({
   minHeight: string;
   showAr?: boolean;
   bgColor?: string;
+  cameraOrbit?: string;
 }) {
   return (
     <model-viewer
@@ -52,6 +56,7 @@ function ModelViewerContent({
       auto-rotate=""
       auto-rotate-delay={1500}
       rotation-per-second="15deg"
+      camera-orbit={cameraOrbit}
       shadow-intensity="2"
       shadow-softness="1"
       environment-image="legacy"
@@ -102,6 +107,7 @@ export function GlbViewer({
   enableFullscreen = true,
   bgColor = "#f5f5f0",
   onClose,
+  cameraOrbit,
 }: {
   url: string;
   alt?: string;
@@ -111,13 +117,14 @@ export function GlbViewer({
   enableFullscreen?: boolean;
   bgColor?: string;
   onClose?: () => void;
+  cameraOrbit?: string;
 }) {
   const [fs, setFs] = useState(false);
 
   return (
     <>
       <div className={`relative w-full h-full ${className}`} style={{ background: bgColor }}>
-        <ModelViewerContent url={url} alt={alt} poster={poster} minHeight={minHeight} bgColor={bgColor} />
+        <ModelViewerContent url={url} alt={alt} poster={poster} minHeight={minHeight} bgColor={bgColor} cameraOrbit={cameraOrbit} />
         {onClose ? (
           <button
             type="button"
