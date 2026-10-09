@@ -1,8 +1,11 @@
 {
   "name": "ignia-sculpture-studio",
   "compatibility_date": "2024-09-25",
+  "main": "./worker/og-worker.js",
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "single-page-application"
+    "not_found_handling": "single-page-application",
+    "binding": "ASSETS",
+    "run_worker_first": true
   }
 }
