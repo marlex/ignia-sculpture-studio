@@ -3,6 +3,16 @@
   publish = "dist"
 
 [[redirects]]
+  from = "/perfil/escultor/jaume-plensa"
+  to = "/aprende/jaume-plensa"
+  status = 301
+
+[[redirects]]
+  from = "/perfil/escultor/cristina-iglesias"
+  to = "/aprende/cristina-iglesias"
+  status = 301
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

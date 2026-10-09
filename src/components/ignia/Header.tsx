@@ -19,7 +19,7 @@ const NAV_LEFT: Record<"es" | "en", NavItem[]> = {
   en: [
     { label: "Sculptors", to: "/join/sculptors" },
     { label: "Community", to: "/editorial" },
-    { label: "Learn", to: "/aprende" },
+    { label: "Learn", to: "/learn" },
     { label: "Sobre Ignia", to: "/ignia-gallery" },
   ],
 };

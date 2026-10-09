@@ -3,9 +3,10 @@ import { APRENDE_ARTICLES } from "@/data/aprendeArticles";
 
 interface AprendeProps {
   showHeader?: boolean;
+  limit?: number;
 }
 
-export const Aprende = ({ showHeader = true }: AprendeProps) => {
+export const Aprende = ({ showHeader = true, limit }: AprendeProps) => {
   const lang = useLang();
   const t = lang === "es"
     ? { title: "Ignia aprende", more: "Ver todos →", list: "Listado de artículos de Ignia aprende" }
@@ -20,7 +21,7 @@ export const Aprende = ({ showHeader = true }: AprendeProps) => {
         </div>
       )}
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10" aria-label={t.list}>
-        {APRENDE_ARTICLES.slice(0, 2).map((a) => {
+        {(typeof limit === "number" ? APRENDE_ARTICLES.slice(0, limit) : APRENDE_ARTICLES).map((a) => {
           const c = a[lang];
           return (
             <li key={a.slug}>

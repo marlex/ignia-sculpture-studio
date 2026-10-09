@@ -9,7 +9,7 @@ export const EDITORIAL_RELATIONS: Record<
     featuredArtists: ["Helena Vázquez", "Marcos Iriarte", "Carmen Aldea"],
   },
   "acero-corten-paisaje": {
-    relatedWorks: ["vertigo", "vertice", "nexo"],
+    relatedWorks: ["vertigo", "nexo"],
     relatedArticles: ["coleccionar-escultura-hoy", "bronce-contemporaneo"],
     featuredArtists: ["Tomás Vigo", "Sofía Méndez", "Lucía Pardo"],
   },

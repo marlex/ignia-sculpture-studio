@@ -77,6 +77,8 @@ const App = () => (
               <Route path="/galleries" element={<JoinGalerias />} />
               <Route path="/aprende" element={<AprendePage />} />
               <Route path="/aprende/:slug" element={<AprendeArticuloPage />} />
+              <Route path="/learn" element={<AprendePage />} />
+              <Route path="/learn/:slug" element={<AprendeArticuloPage />} />
               <Route path="/editorial" element={<EditorialPage />} />
               <Route path="/editorial/:slug" element={<EditorialArticuloPage />} />
               <Route path="/ignia-gallery" element={<IgniaGalleryPage />} />

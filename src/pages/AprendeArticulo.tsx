@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
@@ -8,6 +9,17 @@ import NotFound from "@/pages/NotFound";
 import { Seo } from "@/components/Seo";
 
 const SITE_BASE = "https://igniagallery.com";
+
+const IMAGE_CREDIT_STYLE: CSSProperties = {
+  fontFamily: "Manrope, sans-serif",
+  fontWeight: 500,
+  fontSize: 11,
+  color: "#FFFFFF",
+  background: "rgba(0,0,0,0.55)",
+  padding: "4px 8px",
+  borderRadius: 0,
+  boxShadow: "none",
+};
 
 const AprendeArticuloPage = () => {
   const { slug = "" } = useParams();
@@ -57,15 +69,32 @@ const AprendeArticuloPage = () => {
         <div className="font-body text-[14px] uppercase tracking-[0.14em] text-muted-line mb-8">
           {t.by} {article.autor} · <time dateTime={article.fecha}>{content.fechaLabel}</time> · {content.tiempo}
         </div>
-        <div className="aspect-[16/10] overflow-hidden bg-secondary mb-10">
+        <div className="aspect-[16/10] overflow-hidden bg-secondary mb-10 relative">
           <img
             src={article.img}
-            alt={content.titulo}
+            alt={article.imageAlt ?? content.titulo}
             loading="eager"
             fetchpriority="high"
             decoding="async"
             className="w-full h-full object-cover"
           />
+          {article.imageCredit && (
+            article.imageCreditUrl ? (
+              <a
+                href={article.imageCreditUrl}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="absolute bottom-2 right-2 max-w-[40%] truncate"
+                style={IMAGE_CREDIT_STYLE}
+              >
+                {article.imageCredit}
+              </a>
+            ) : (
+              <span className="absolute bottom-2 right-2 max-w-[40%] truncate" style={IMAGE_CREDIT_STYLE}>
+                {article.imageCredit}
+              </span>
+            )
+          )}
         </div>
         <div className="flex flex-col gap-6">
           {content.body.map((b, i) =>

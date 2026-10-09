@@ -103,7 +103,7 @@ const Index = () => {
         <Reviews />
       </div>
       <GuidanceBanner />
-      <Aprende />
+      <Aprende limit={2} />
       <SectionSeparator title={t.s3.title} subtitle={t.s3.subtitle} cta={t.s3.cta} />
       <Footer />
     </main>

@@ -62,7 +62,7 @@ const COLS = {
       label: "News",
       links: [
         { label: "Community", to: "/editorial" },
-        { label: "Ignia Learn", to: "/aprende" },
+        { label: "Ignia Learn", to: "/learn" },
       ],
     },
   ],

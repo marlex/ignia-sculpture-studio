@@ -15,6 +15,8 @@ export const WorksConversionBlock = ({ slugs, lang, heading, cta }: WorksProps) 
     .map((s) => WORKS.find((w) => w.slug === s))
     .filter((w): w is (typeof WORKS)[number] => Boolean(w));
 
+  if (items.length === 0) return null;
+
   return (
     <section className="bg-surface px-6 md:px-12 py-16 md:py-20" aria-labelledby="conv-works">
       <div className="flex items-center justify-between mb-8 max-w-[1280px] mx-auto">

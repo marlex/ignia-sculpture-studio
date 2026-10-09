@@ -7,8 +7,6 @@ import umbral from "@/assets/perfil-escultura-umbral.jpg";
 import vertice from "@/assets/perfil-escultura-vertice.jpg";
 import quietud from "@/assets/perfil-escultura-quietud.jpg";
 import resto from "@/assets/perfil-escultura-resto.jpg";
-import cristina from "@/assets/artist-cristina-iglesias-real.jpg";
-import jaume from "@/assets/artist-jaume-plensa-real.jpg";
 import susana from "@/assets/artist-susana-solano-real.jpg";
 import barcelo from "@/assets/artist-miquel-barcelo-real.jpg";
 import chillida from "@/assets/artist-eduardo-chillida-real.jpg";
@@ -32,18 +30,6 @@ type Bio = {
 };
 
 export const BIOS: Record<string, Bio> = {
-  "cristina-iglesias": {
-    nombre: "Cristina Iglesias", retrato: cristina,
-    bioEs: "San Sebastián, España. Espacio, agua y bronce. Su obra une arquitectura íntima y celosías que invitan a mirar desde dentro.",
-    bioEn: "San Sebastián, Spain. Space, water and bronze. Her work joins intimate architecture and lattices that invite you to look from within.",
-    espEs: "Bronce, agua y celosía", espEn: "Bronze, water and lattice",
-  },
-  "jaume-plensa": {
-    nombre: "Jaume Plensa", retrato: jaume,
-    bioEs: "Barcelona, España. Figura, palabra y escala. Une presencia humana, silencio y escritura en piezas monumentales.",
-    bioEn: "Barcelona, Spain. Figure, word and scale. Brings together human presence, silence and writing in monumental pieces.",
-    espEs: "Figura, palabra y escala", espEn: "Figure, word and scale",
-  },
   "susana-solano": {
     nombre: "Susana Solano", retrato: susana,
     bioEs: "Barcelona, España. Metal, estructura y espacio. Aborda el metal como construcción física y mental.",

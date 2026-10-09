@@ -3,6 +3,8 @@ import sculpturePhoto from "@/assets/aprende-fotografiar-volumen-new.jpg";
 import limitedEdition from "@/assets/aprende-ediciones-limitadas.jpg";
 import investingSculpture from "@/assets/aprende-investing-sculpture.jpg";
 import chillidaPortrait from "@/assets/artist-eduardo-chillida-real.jpg";
+import jaumePlensaPortrait from "@/assets/aprende-jaume-plensa-julia.jpg";
+import cristinaIglesiasPortrait from "@/assets/aprende-cristina-iglesias-puertas-prado.jpg";
 
 export type AprendeBlock =
   | { type: "h2"; text: string }
@@ -13,6 +15,9 @@ export interface AprendeArticle {
   slug: string;
   img: string;
   imgPosition?: string; // tailwind object-position class, defaults to object-bottom
+  imageCredit?: string; // optional credit shown over the hero image, bottom-right
+  imageCreditUrl?: string; // optional link target for the credit
+  imageAlt?: string; // optional custom alt text for the hero image, defaults to the article title
   fecha: string;
   autor: string;
   featuredWorks: string[]; // work slugs
@@ -351,7 +356,7 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
     imgPosition: "object-[center_-150px]",
     fecha: "2026-07-10",
     autor: "Ignia Editorial",
-    featuredWorks: ["vertice", "vertigo", "caida"],
+    featuredWorks: ["vertigo"],
     featuredArtists: ["Jaume Plensa", "Diego Lara", "Cristina Iglesias"],
     es: {
       tag: "Maestros de la escultura",
@@ -441,6 +446,124 @@ export const APRENDE_ARTICLES: AprendeArticle[] = [
         { type: "h2", text: "A relevance that keeps growing" },
         { type: "p", text: "More than twenty years after his death, Chillida's influence has only grown. His vocabulary, the void, the inhabitable scale, gravity as form, is today common heritage of contemporary Spanish sculpture." },
         { type: "p", text: "Understanding Chillida is not just reviewing a biography: it is learning to look at any modern sculpture more deeply. That is why he remains essential reading for sculptors, collectors and anyone approaching the craft seriously." },
+      ],
+    },
+  },
+  {
+    slug: "jaume-plensa",
+    img: jaumePlensaPortrait,
+    imageCredit: "Photo: Javier Perez Montes, CC BY-SA 4.0",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:Julia_de_Jaume_Plensa_-_Plaza_de_Colon_-_Madrid_04.jpg",
+    imageAlt: "Julia, a monumental white head by Jaume Plensa in Plaza de Colón, Madrid",
+    fecha: "2026-10-09",
+    autor: "Ignia Institution",
+    featuredWorks: [],
+    featuredArtists: ["Pablo Reyes", "Alba Costa", "Inés Ferrer"],
+    es: {
+      tag: "Escultores que debes conocer",
+      titulo: "Jaume Plensa: el rostro como lugar",
+      extracto: "Barcelona, 1955. Cuatro décadas construyendo rostros monumentales que convierten el silencio en escultura.",
+      tiempo: "3 min de lectura",
+      fechaLabel: "9 de octubre de 2026",
+      body: [
+        { type: "p", text: "Nacido en Barcelona en 1955, Jaume Plensa lleva más de cuatro décadas preguntándose cómo puede una escultura contener el silencio. Su respuesta es casi siempre un rostro." },
+
+        { type: "h2", text: "La cabeza como paisaje" },
+        { type: "p", text: "Sus obras más conocidas son cabezas monumentales, a menudo de mujeres jóvenes con los ojos cerrados. Se estiran y se estrechan hasta parecer pertenecer más a un sueño que a un retrato. De pie frente a una de ellas, el espectador ralentiza el paso. Una de sus exposiciones se tituló Every Face Is a Place, y sus esculturas tratan el rostro exactamente así: como un lugar donde detenerse y mirar hacia dentro." },
+
+        { type: "h2", text: "Escultura en el espacio público" },
+        { type: "p", text: "Crown Fountain (2004), en el Millennium Park de Chicago, convirtió los rostros de los vecinos de la ciudad en una plaza donde la gente se reúne y los niños juegan en el agua. En Madrid, Julia vigila la Plaza de Colón desde 2018: una cabeza blanca de doce metros que cambia con la luz del día." },
+
+        { type: "h2", text: "Palabras que construyen un cuerpo" },
+        { type: "p", text: "Plensa también construye figuras a partir de letras. Caracteres de distintos alfabetos se unen para formar el contorno de un cuerpo sentado, dejado abierto para que los visitantes puedan entrar y ver la ciudad a través del lenguaje." },
+
+        { type: "h2", text: "Por qué importa a los coleccionistas" },
+        { type: "p", text: "Su obra muestra lo que la escultura hace y ninguna imagen puede: comparte tu espacio y pide tu tiempo. Plensa recibió el Premio Nacional de Artes Plásticas de España en 2012 y el Premio Velázquez en 2013." },
+
+        { type: "p", text: "Ignia Learn es editorial. Ignia no representa a este artista ni ofrece su obra." },
+      ],
+    },
+    en: {
+      tag: "Sculptors to know",
+      titulo: "Jaume Plensa: the Face as a Place",
+      extracto: "Barcelona, 1955. Four decades building monumental faces that turn silence into sculpture.",
+      tiempo: "3 min read",
+      fechaLabel: "October 9, 2026",
+      body: [
+        { type: "p", text: "Born in Barcelona in 1955, Jaume Plensa has spent more than four decades asking how a sculpture can hold silence. His answer is almost always a face." },
+
+        { type: "h2", text: "The head as landscape" },
+        { type: "p", text: "His best known works are monumental heads, often of young women with their eyes closed. They are stretched and narrowed until they seem to belong to a dream more than to a portrait. Standing in front of one, the viewer slows down. One of his exhibitions was titled Every Face Is a Place, and his sculptures treat a face exactly that way: as somewhere to stop and look inward." },
+
+        { type: "h2", text: "Sculpture in public space" },
+        { type: "p", text: "Crown Fountain (2004), in Chicago's Millennium Park, turned the faces of the city's residents into a square where people gather and children play in the water. In Madrid, Julia has watched over Plaza de Colón since 2018, a white head twelve metres high that changes with the light of the day." },
+
+        { type: "h2", text: "Words that make a body" },
+        { type: "p", text: "Plensa also builds figures out of letters. Characters from different alphabets are joined into the outline of a seated body, left open so that visitors can step inside and see the city through language." },
+
+        { type: "h2", text: "Why he matters to collectors" },
+        { type: "p", text: "His work shows what sculpture does that no image can: it shares your space and asks for your time. Plensa received Spain's National Prize for Fine Art in 2012 and the Velázquez Prize in 2013." },
+
+        { type: "p", text: "Ignia Learn is editorial. Ignia does not represent this artist or offer their work." },
+      ],
+    },
+  },
+  {
+    slug: "cristina-iglesias",
+    img: cristinaIglesiasPortrait,
+    imageCredit: "Photo: Jacinta Lluch Valero, CC BY-SA 2.0",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:Texturas_de_las_puertas-_Cubo_Moneo_-_Museo_Nacional_del_Prado_-_Madrid.jpg",
+    imageAlt: "Detail of the bronze doors by Cristina Iglesias at the Museo del Prado, Madrid",
+    fecha: "2026-10-09",
+    autor: "Ignia Institution",
+    featuredWorks: [],
+    featuredArtists: ["Carmen Aldea", "Tomás Vigo", "Sofía Méndez"],
+    es: {
+      tag: "Escultores que debes conocer",
+      titulo: "Cristina Iglesias: la escultura como umbral",
+      extracto: "San Sebastián, 1956. Arquitectura, agua y bronce convertidos en umbrales que se atraviesan, no se rodean.",
+      tiempo: "3 min de lectura",
+      fechaLabel: "9 de octubre de 2026",
+      body: [
+        { type: "p", text: "Nacida en San Sebastián en 1956, Cristina Iglesias construye lugares en vez de objetos. Sus esculturas no se rodean: se atraviesan." },
+
+        { type: "h2", text: "Entre la arquitectura y la naturaleza" },
+        { type: "p", text: "Su obra une bronce, acero, vidrio, alabastro y agua. Los muros se funden con la huella de hojas y raíces, y las celosías tejidas con texto filtran la luz como un enrejado. En sus manos, la línea entre un edificio y un paisaje deja de estar clara." },
+
+        { type: "h2", text: "El agua como material" },
+        { type: "p", text: "El agua recorre buena parte de su obra. Deep Fountain (2006), frente al Museo Real de Bellas Artes de Amberes, se llena y se vacía sobre un lecho de bronce fundido. Tres Aguas (2014) sigue el curso del agua por tres emplazamientos de Toledo. Hondalea (2021) talla un fondo marino de bronce dentro del faro de la isla de Santa Clara, en la bahía de su ciudad natal." },
+
+        { type: "h2", text: "Una puerta para el Prado" },
+        { type: "p", text: "En 2007 realizó las puertas de bronce para la ampliación del Museo del Prado en Madrid. Se leen como un muro de vegetación fundida, y convierten una entrada en una obra que se atraviesa." },
+
+        { type: "h2", text: "Por qué importa a los coleccionistas" },
+        { type: "p", text: "Iglesias demuestra que la escultura puede ser una experiencia del espacio tanto como un objeto, algo que se recuerda con todo el cuerpo. Recibió el Premio Nacional de Artes Plásticas de España en 1999." },
+
+        { type: "p", text: "Ignia Learn es editorial. Ignia no representa a este artista ni ofrece su obra." },
+      ],
+    },
+    en: {
+      tag: "Sculptors to know",
+      titulo: "Cristina Iglesias: Sculpture as Threshold",
+      extracto: "San Sebastián, 1956. Architecture, water and bronze turned into thresholds you walk through, not around.",
+      tiempo: "3 min read",
+      fechaLabel: "October 9, 2026",
+      body: [
+        { type: "p", text: "Born in San Sebastián in 1956, Cristina Iglesias builds places rather than objects. You do not walk around her sculptures so much as enter them." },
+
+        { type: "h2", text: "Between architecture and nature" },
+        { type: "p", text: "Her work brings together bronze, steel, glass, alabaster and water. Walls are cast with the imprint of leaves and roots, and screens woven with text filter the light like a lattice. In her hands the line between a building and a landscape stops being clear." },
+
+        { type: "h2", text: "Water as material" },
+        { type: "p", text: "Water runs through much of what she makes. Deep Fountain (2006), in front of the Royal Museum of Fine Arts in Antwerp, fills and empties over a bed of cast bronze. Tres Aguas (2014) follows the course of water through three sites in Toledo. Hondalea (2021) carves a bronze seabed inside the lighthouse of Santa Clara Island, in the bay of her home city." },
+
+        { type: "h2", text: "A door for the Prado" },
+        { type: "p", text: "In 2007 she made the bronze doors for the extension of the Museo del Prado in Madrid. They read as a wall of cast vegetation, and they turn an entrance into a work you pass through." },
+
+        { type: "h2", text: "Why she matters to collectors" },
+        { type: "p", text: "Iglesias shows that sculpture can be an experience of space as much as an object, something you remember with the whole body. She received Spain's National Award for Plastic Arts in 1999." },
+
+        { type: "p", text: "Ignia Learn is editorial. Ignia does not represent this artist or offer their work." },
       ],
     },
   },
