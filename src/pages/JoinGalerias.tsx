@@ -240,7 +240,7 @@ const JoinGalerias = () => {
       </section>
 
       {/* 2. FRANJA DE 3 VALORES */}
-      <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
+      <section style={{ padding: "120px 24px", background: "#FAFAFA" }}>
         <div className="why-grid" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 64 }}>
           {[t.why1, t.why2, t.why3].map((item, i) => (
             <div key={i} className="why-col" style={{ position: "relative", textAlign: "center" }}>
@@ -256,7 +256,7 @@ const JoinGalerias = () => {
       </section>
 
       {/* 3. CÓMO FUNCIONA */}
-      <section style={{ padding: "120px 24px", background: "#FAFAFA" }}>
+      <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
           <h2 style={{ ...H2_STYLE, marginBottom: 56, textAlign: "center" }}>{t.howTitle}</h2>
           <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: "Manrope, sans-serif", color: "#121212" }}>
