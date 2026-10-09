@@ -51,7 +51,7 @@ const AprendeArticuloPage = () => {
   const content = article ? article[lang] : null;
   const plainText = content ? content.body.filter((b) => b.type === "p").map((b) => b.text).join(" ") : "";
   const description = plainText.slice(0, 150);
-  const title = content ? `${content.titulo} · Ignia Gallery` : "";
+  const title = content ? `${content.titulo} · Ignia Institution` : "";
   const url = `${SITE_BASE}/aprende/${slug}`;
   const image = article ? (article.img.startsWith("http") ? article.img : `${SITE_BASE}${article.img}`) : "";
 

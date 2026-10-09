@@ -191,7 +191,7 @@ const ObraDetalle = () => {
 
   useEffect(() => { setIdx(0); }, [slug]);
 
-  const seoTitle = o ? `${o.title}, ${o.artist} · Ignia Gallery` : "";
+  const seoTitle = o ? `${o.title}, ${o.artist} · Ignia Institution` : "";
   const seoDescription = o
     ? `${(o.description || "").replace(/\s+/g, " ").trim().slice(0, 137)} ${o.material}, ${o.year}. ${o.price}.`
     : "";
@@ -549,7 +549,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
                 type="button"
                 onClick={() => {
                   const priceNum = String(o.price).replace(/[^\d.,]/g, "");
-                  const subject = `${o.title}, Ignia Gallery`;
+                  const subject = `${o.title}, Ignia Institution`;
                   const body = `Te comparto esta obra de ${o.artist}:\n\n${window.location.href}\n\n${o.title}\n${o.artist} · ${o.material} · ${o.year}\n€${priceNum}`;
                   window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                 }}

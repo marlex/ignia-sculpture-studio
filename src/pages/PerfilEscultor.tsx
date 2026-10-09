@@ -148,7 +148,7 @@ export default function PerfilEscultor() {
   const bioText = lang === "es" ? bio.bioEs : bio.bioEn;
   const esp = lang === "es" ? bio.espEs : bio.espEn;
 
-  const seoTitle = `${bio.nombre}, Sculptor · Ignia Gallery`;
+  const seoTitle = `${bio.nombre}, Sculptor · Ignia Institution`;
   const seoDescription = ((bioText || "").replace(/\s+/g, " ").trim()).slice(0, 155);
 
   return (
