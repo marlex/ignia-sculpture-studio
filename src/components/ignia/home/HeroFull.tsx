@@ -1,9 +1,22 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
-import heroImage from "@/assets/hero-marmol.jpg";
+import heroTorus from "@/assets/hero-slideshow-1-torus.webp";
+import heroHand from "@/assets/hero-slideshow-2-hand.webp";
+import heroMetal from "@/assets/hero-slideshow-3-metal.webp";
+import heroMarble from "@/assets/hero-slideshow-4-marble.webp";
+import heroWood from "@/assets/hero-slideshow-5-wood.webp";
+
+const BG_IMAGES = [heroTorus, heroHand, heroMetal, heroMarble, heroWood];
 
 export const HeroFull = () => {
   const lang = useLang();
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setActive((a) => (a + 1) % BG_IMAGES.length), 3200);
+    return () => clearInterval(id);
+  }, []);
 
   const t =
     lang === "es"
@@ -34,6 +47,8 @@ export const HeroFull = () => {
           0% { opacity: 0; transform: translateY(20px); }
           100% { opacity: 1; transform: translateY(0); }
         }
+        @keyframes hf-kb-a { 0%{transform:scale(1) translate(0,0)} 100%{transform:scale(1.08) translate(-16px,0)} }
+        @keyframes hf-kb-b { 0%{transform:scale(1) translate(0,0)} 100%{transform:scale(1.08) translate(0,-12px)} }
         .hf-anim { opacity: 0; animation: hf-rise 1.2s cubic-bezier(0.16,1,0.3,1) forwards; }
         .hf-title { animation-delay: 0.1s; }
         .hf-subtitle { animation-delay: 0.4s; }
@@ -67,20 +82,31 @@ export const HeroFull = () => {
         }
       `}</style>
 
-      {/* Background, single editorial black-and-white image */}
+      {/* Background, editorial black-and-white images crossfading */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={heroImage}
-          alt={t.imgAlt}
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            objectPosition: "center",
-            filter: "grayscale(100%)",
-          }}
-        />
+        {BG_IMAGES.map((src, i) => (
+          <div
+            key={i}
+            className="absolute inset-0 overflow-hidden"
+            style={{ opacity: i === active ? 1 : 0, transition: "opacity 2800ms ease-in-out" }}
+            aria-hidden={i !== active}
+          >
+            <img
+              src={src}
+              alt={i === 0 ? t.imgAlt : ""}
+              loading={i === 0 ? "eager" : "lazy"}
+              fetchpriority={i === 0 ? "high" : "low"}
+              decoding="async"
+              className="w-full h-full object-cover"
+              style={{
+                objectPosition: "center",
+                filter: "grayscale(100%)",
+                animation: `${i % 2 === 0 ? "hf-kb-a" : "hf-kb-b"} 7s linear forwards`,
+                animationPlayState: i === active ? "running" : "paused",
+              }}
+            />
+          </div>
+        ))}
       </div>
 
       {/* Dark overlay for text readability */}
