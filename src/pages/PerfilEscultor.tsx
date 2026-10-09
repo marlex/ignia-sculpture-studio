@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
-import caida from "@/assets/perfil-escultura-caida.jpg";
+import NotFound from "@/pages/NotFound";
 import eco from "@/assets/perfil-escultura-eco.jpg";
 import umbral from "@/assets/perfil-escultura-umbral.jpg";
 import vertice from "@/assets/perfil-escultura-vertice.jpg";
@@ -122,17 +122,10 @@ export const BIOS: Record<string, Bio> = {
   },
 };
 
-const DEFAULT_BIO = (nombre: string): Bio => ({
-  nombre, retrato: caida,
-  bioEs: `${nombre} forma parte de la selección Ignia. Perfil en preparación.`,
-  bioEn: `${nombre} is part of the Ignia selection. Profile in preparation.`,
-  espEs: "Escultura contemporánea", espEn: "Contemporary sculpture",
-});
-
 export default function PerfilEscultor() {
   const lang = useLang();
   const { slug = "helena-vazquez" } = useParams();
-  const bio = BIOS[slug] ?? DEFAULT_BIO(slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()));
+  const bio = BIOS[slug];
 
   const obras = WORKS
     .filter((w) => artistSlug(w.es.artist) === slug || artistSlug(w.en.artist) === slug)
@@ -154,6 +147,8 @@ export default function PerfilEscultor() {
         eyebrow: "Sculptor profile",
         stats: [["Published works", String(obras.length || 0)], ["Collectors", ","], ["Editions sold", ","]],
         mine: "Works on Ignia" };
+
+  if (!bio) return <NotFound />;
 
   const bioText = lang === "es" ? bio.bioEs : bio.bioEn;
   const esp = lang === "es" ? bio.espEs : bio.espEn;

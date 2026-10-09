@@ -3,6 +3,7 @@ import { useParams, Link, useSearchParams } from "react-router-dom";
 import { PurchaseModal } from "@/components/ignia/PurchaseModal";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
+import NotFound from "@/pages/NotFound";
 const GlbViewer = lazy(() => import("@/components/ignia/GlbViewer").then(m => ({ default: m.GlbViewer })));
 import { useLang } from "@/i18n/LanguageContext";
 import { getWorkBySlug, WORKS } from "@/data/igniaWorks";
@@ -55,9 +56,9 @@ const ObraDetalle = () => {
   const t = T[lang];
   const o = getWorkBySlug(slug, lang);
 
-  const photos = [o.image, ...(o.extraImages || [])];
+  const photos = o ? [o.image, ...(o.extraImages || [])] : [];
   const hasGallery = photos.length >= 2;
-  const has3d = !!o.glbUrl;
+  const has3d = !!o?.glbUrl;
 
   // Default mode: 3d if no extra photos, otherwise photos
   const [mode, setMode] = useState<"photos" | "3d">("photos");
@@ -202,6 +203,8 @@ const ObraDetalle = () => {
 
   const next = () => setIdx((idx + 1) % photos.length);
   const prev = () => setIdx((idx + photos.length - 1) % photos.length);
+
+  if (!o) return <NotFound />;
 
   return (
     <main className="pt-40 bg-white">
