@@ -1,7 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { Logo } from "@/components/ignia/Logo";
 import { ArrowUp, ArrowDown, Heart, Eye, Box, TrendingUp } from "lucide-react";
-import caida from "@/assets/perfil-escultura-caida.jpg";
 import eco from "@/assets/perfil-escultura-eco.jpg";
 import umbral from "@/assets/perfil-escultura-umbral.jpg";
 import vertice from "@/assets/perfil-escultura-vertice.jpg";
@@ -20,20 +19,6 @@ type ObraInfo = {
 };
 
 const OBRAS: Record<string, ObraInfo> = {
-  caida: {
-    titulo: "Caída", anyo: 2023, tecnica: "Fundición en bronce", img: caida,
-    visitas: 4280, deltaVisitas: 18, favoritos: 312, deltaFavoritos: 24, inter3D: 1450,
-    paises: [{ name: "España", visitas: 1820 }, { name: "México", visitas: 920 }, { name: "Estados Unidos", visitas: 720 }, { name: "Francia", visitas: 480 }, { name: "Argentina", visitas: 340 }],
-    edad: "35-44 años", comprador: "Coleccionista privado", canal: "Búsqueda en catálogo",
-    actividad: [
-      { t: "Guardada como favorita", cuando: "hace 2 horas" },
-      { t: "Vista en 3D desde España", cuando: "hace 5 horas" },
-      { t: "Visita desde México", cuando: "hace 1 día" },
-      { t: "Compartida por correo", cuando: "hace 2 días" },
-      { t: "Vista en 3D desde Francia", cuando: "hace 3 días" },
-    ],
-    vsMedia: 32,
-  },
   "eco-ondas": {
     titulo: "Eco", anyo: 2022, tecnica: "Construcción en acero", img: eco,
     visitas: 1820, deltaVisitas: -6, favoritos: 98, deltaFavoritos: 12, inter3D: null,
@@ -107,8 +92,8 @@ const OBRAS: Record<string, ObraInfo> = {
 };
 
 export default function ObraAnalytics() {
-  const { slug = "caida", obraSlug = "caida" } = useParams();
-  const obra = OBRAS[obraSlug] ?? OBRAS.caida;
+  const { slug = "umbral", obraSlug = "umbral" } = useParams();
+  const obra = OBRAS[obraSlug] ?? OBRAS.umbral;
   const maxPais = Math.max(...obra.paises.map((p) => p.visitas));
   const tasaInteres = ((obra.favoritos / obra.visitas) * 100).toFixed(1);
 
