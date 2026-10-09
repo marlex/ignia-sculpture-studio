@@ -7,28 +7,26 @@ export const GalleriesBanner = () => {
   const t = lang === "es" ? {
     eyebrow: "PARA GALERÍAS",
     title: "Galerías, un canal más para su colección.",
-    subtitle: "Presencia global. Términos a su medida.",
     cta: "Asociarse con Ignia",
-    why1: { title: "Su criterio, nuestro escaparate.", text: "Sus artistas se presentan con el mismo estándar curatorial que el resto de Ignia." },
-    why2: { title: "Certificación incluida.", text: "Cada obra que listan queda respaldada con certificado blockchain, sin gestión extra de su parte." },
+    why1: { title: "Su criterio, nuestro escaparate.", text: "Mismo estándar curatorial que el resto de Ignia." },
+    why2: { title: "Certificación incluida.", text: "Certificado blockchain en cada obra, sin gestión extra." },
   } : {
     eyebrow: "FOR GALLERIES",
     title: "Galleries, one more channel for your collection.",
-    subtitle: "Global presence. Terms tailored to you.",
     cta: "Partner with Ignia",
-    why1: { title: "Your criteria, our showcase.", text: "Your artists are presented with the same curatorial standard as the rest of Ignia." },
-    why2: { title: "Certification included.", text: "Every work you list is backed by a blockchain certificate, with no extra work on your side." },
+    why1: { title: "Your criteria, our showcase.", text: "Same curatorial standard as the rest of Ignia." },
+    why2: { title: "Certification included.", text: "A blockchain certificate on every work, no extra work." },
   };
 
   return (
     <section className="bg-white">
       <div
         className="grid grid-cols-1 lg:grid-cols-[55%_45%]"
-        style={{ minHeight: "calc(100vh - 56px)" }}
+        style={{ minHeight: "60vh" }}
       >
         <div
           className="flex flex-col justify-center px-6 md:px-12"
-          style={{ paddingTop: "clamp(80px, 12vw, 180px)", paddingBottom: "clamp(64px, 9vw, 140px)" }}
+          style={{ paddingTop: "clamp(64px, 8vw, 140px)", paddingBottom: "clamp(48px, 6vw, 100px)" }}
         >
           <div
             className="uppercase tracking-[0.14em] text-[12px] font-body text-gray mb-4"
@@ -49,17 +47,7 @@ export const GalleriesBanner = () => {
           >
             {t.title}
           </h2>
-          <p
-            className="font-body text-gray mt-6"
-            style={{
-              fontSize: 16,
-              lineHeight: 1.7,
-              maxWidth: 460,
-            }}
-          >
-            {t.subtitle}
-          </p>
-          <div className="mt-10">
+          <div className="mt-6">
             <Link
               to="/galleries"
               className="inline-flex items-center justify-center text-[13px] font-medium uppercase tracking-[0.18em] text-white bg-[#121212] border border-[#121212] px-8 py-4 hover:opacity-85 transition-opacity"
@@ -68,7 +56,7 @@ export const GalleriesBanner = () => {
             </Link>
           </div>
 
-          <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-[720px]">
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-[720px]">
             {[t.why1, t.why2].map((item, i) => (
               <div key={i} className="text-left">
                 <h3
