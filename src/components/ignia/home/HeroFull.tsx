@@ -7,7 +7,7 @@ import heroMetal from "@/assets/hero-slideshow-3-metal.webp";
 import heroMarble from "@/assets/hero-slideshow-4-marble.webp";
 import heroWood from "@/assets/hero-slideshow-5-wood.webp";
 
-const BG_IMAGES = [heroTorus, heroHand, heroMetal, heroMarble, heroWood];
+const BG_IMAGES = [heroMarble, heroTorus, heroHand, heroMetal, heroWood];
 
 export const HeroFull = () => {
   const lang = useLang();
