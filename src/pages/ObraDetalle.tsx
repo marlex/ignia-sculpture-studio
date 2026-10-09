@@ -12,13 +12,12 @@ import { BIOS } from "@/pages/PerfilEscultor";
 import { artistSlug } from "@/lib/artistSlug";
 import { supabase } from "@/integrations/supabase/client";
 import { Seo } from "@/components/Seo";
+import { Logo } from "@/components/ignia/Logo";
+import { getCertificate, formatRegisteredDate } from "@/lib/certificates";
 
 const T = {
   es: {
     back: "← Volver a la colección",
-    auth: "Autenticidad verificada",
-    authP: "Cada obra de Ignia incluye un certificado de autenticidad emitido en blockchain. Es público, verificable desde cualquier parte del mundo y viaja con la pieza en futuras reventas.",
-    tokenId: "Token ID", chain: "Cadena", signed: "Firmado por", edition: "Edición",
     cert: "Ver certificado público →",
     buy: "Comprar", talk: "Hablar con Ignia",
     photos: "Fotos", view3d: "Vista 3D",
@@ -33,9 +32,6 @@ const T = {
   },
   en: {
     back: "← Back to the collection",
-    auth: "Verified authenticity",
-    authP: "Every Ignia work includes a certificate of authenticity issued on blockchain. It is public, verifiable worldwide and travels with the piece in future resales.",
-    tokenId: "Token ID", chain: "Chain", signed: "Signed by", edition: "Edition",
     cert: "View public certificate →",
     buy: "Buy", talk: "Talk to Ignia",
     photos: "Photos", view3d: "3D view",
@@ -401,39 +397,63 @@ const ObraDetalle = () => {
             })()}
 
 
-            <div className="border border-border mb-6">
-              <button
-                type="button"
-                onClick={() => setAuthOpen(v => !v)}
-                aria-expanded={authOpen}
-                className="w-full flex items-center justify-between px-6 py-4 text-left"
-              >
-                <span className="font-body text-[13px] text-muted-line uppercase tracking-[0.12em]">{t.auth}</span>
-                <ChevronDown
-                  size={16}
-                  className="text-gray transition-transform duration-200"
-                  style={{ transform: authOpen ? "rotate(180deg)" : "rotate(0deg)" }}
-                />
-              </button>
-              <div
-                className="overflow-hidden transition-[max-height] duration-200 ease-out"
-                style={{ maxHeight: authOpen ? 600 : 0 }}
-              >
-                <div className="px-6 pb-5">
-                  <p className="font-body text-[14px] font-normal text-gray leading-relaxed mb-4">{t.authP}</p>
-                  <dl className="grid grid-cols-2 gap-y-2.5 gap-x-4 font-body text-[13px]">
-                    <dt className="text-muted-line uppercase tracking-[0.12em]">{t.tokenId}</dt>
-                    <dd className="text-ink font-mono">{o.authenticity}</dd>
-                    <dt className="text-muted-line uppercase tracking-[0.12em]">{t.chain}</dt>
-                    <dd className="text-ink">Polygon</dd>
-                    <dt className="text-muted-line uppercase tracking-[0.12em]">{t.signed}</dt>
-                    <dd className="text-ink">{o.artist}</dd>
-                    <dt className="text-muted-line uppercase tracking-[0.12em]">{t.edition}</dt>
-                    <dd className="text-ink">{o.edition}</dd>
-                  </dl>
+            {(() => {
+              const cert = getCertificate(o.slug);
+              return (
+                <div className="border border-border mb-6">
+                  <button
+                    type="button"
+                    onClick={() => setAuthOpen(v => !v)}
+                    aria-expanded={authOpen}
+                    className="w-full flex items-center justify-between px-6 py-4 text-left"
+                  >
+                    <span className="font-body text-[13px] text-muted-line uppercase tracking-[0.12em]">Certificate of authenticity</span>
+                    <ChevronDown
+                      size={16}
+                      className="text-gray transition-transform duration-200"
+                      style={{ transform: authOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+                    />
+                  </button>
+                  <div
+                    className="overflow-hidden transition-[max-height] duration-200 ease-out"
+                    style={{ maxHeight: authOpen ? 600 : 0 }}
+                  >
+                    <div className="px-6 pb-6">
+                      <div className="flex items-center justify-between pb-4 mb-4 border-b border-border">
+                        <h3
+                          style={{
+                            fontFamily: "'Cormorant Garamond', serif",
+                            fontWeight: 300,
+                            fontSize: 22,
+                            color: "#121212",
+                            margin: 0,
+                          }}
+                        >
+                          Certificate of authenticity
+                        </h3>
+                        <Logo width={40} />
+                      </div>
+                      <p className="font-body text-[13px] font-normal text-gray leading-relaxed mb-5">
+                        Every work at Ignia is registered under a unique certificate number that stays with the piece.
+                      </p>
+                      <dl
+                        className="grid grid-cols-2 gap-y-3 gap-x-4"
+                        style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, fontSize: 13 }}
+                      >
+                        <dt className="text-muted-line uppercase tracking-[0.12em]">Certificate No.</dt>
+                        <dd className="text-ink">{cert?.number}</dd>
+                        <dt className="text-muted-line uppercase tracking-[0.12em]">Registered</dt>
+                        <dd className="text-ink">{cert ? formatRegisteredDate(cert.registered) : ""}</dd>
+                        <dt className="text-muted-line uppercase tracking-[0.12em]">Artist</dt>
+                        <dd className="text-ink">{o.artist}</dd>
+                        <dt className="text-muted-line uppercase tracking-[0.12em]">Edition</dt>
+                        <dd className="text-ink">{o.edition}</dd>
+                      </dl>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              );
+            })()}
 
 
             {(() => {
