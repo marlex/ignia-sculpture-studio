@@ -11,13 +11,13 @@ type NavItem = { label: string; to?: string; action?: "partners" };
 // Left nav (desktop): Sculptors, Community, Learn, Sobre Ignia
 const NAV_LEFT: Record<"es" | "en", NavItem[]> = {
   es: [
-    { label: "Escultores", to: "/join/escultores" },
+    { label: "Escultores", to: "/escultores" },
     { label: "Comunidad", to: "/editorial" },
     { label: "Aprende", to: "/aprende" },
     { label: "Sobre Ignia", to: "/ignia-gallery" },
   ],
   en: [
-    { label: "Sculptors", to: "/join/sculptors" },
+    { label: "Sculptors", to: "/escultores" },
     { label: "Community", to: "/editorial" },
     { label: "Learn", to: "/learn" },
     { label: "Sobre Ignia", to: "/ignia-gallery" },
