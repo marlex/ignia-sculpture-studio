@@ -2,27 +2,19 @@ import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import NotFound from "@/pages/NotFound";
-import eco from "@/assets/perfil-escultura-eco.jpg";
-import umbral from "@/assets/perfil-escultura-umbral.jpg";
-import vertice from "@/assets/perfil-escultura-vertice.jpg";
-import quietud from "@/assets/perfil-escultura-quietud.jpg";
-import resto from "@/assets/perfil-escultura-resto.jpg";
 import susana from "@/assets/artist-susana-solano-real.jpg";
-import barcelo from "@/assets/artist-miquel-barcelo-real.jpg";
-import chillida from "@/assets/artist-eduardo-chillida-real.jpg";
 import adaRetrato from "@/assets/ada-la-cadena-retrato-2.png";
 import helenaPortrait from "@/assets/artist-helena-vazquez.jpg";
 import luciaPortrait from "@/assets/artist-lucia-pardo-new.jpg";
 import pabloPortrait from "@/assets/artist-pablo-reyes-new.jpg";
 import tomasPortrait from "@/assets/artist-tomas-vigo.jpg";
 import { useLang } from "@/i18n/LanguageContext";
-import { WORKS } from "@/data/igniaWorks";
-import { artistSlug } from "@/lib/artistSlug";
+import { getWorksForArtist } from "@/lib/artistMaterials";
 import { Seo } from "@/components/Seo";
 
 type Bio = {
   nombre: string;
-  retrato: string;
+  retrato?: string; // dedicated portrait photo; when absent, falls back to the artist's own work photo
   bioEs: string;
   bioEn: string;
   espEs: string;
@@ -43,31 +35,31 @@ export const BIOS: Record<string, Bio> = {
     espEs: "Bronce figurativo", espEn: "Figurative bronze",
   },
   "carmen-aldea": {
-    nombre: "Carmen Aldea", retrato: umbral,
+    nombre: "Carmen Aldea",
     bioEs: "Almería, España. Talla en mármol de Macael. Combina referencias clásicas y formas tríadicas que estructuran el espacio con un único bloque.",
     bioEn: "Almería, Spain. Macael marble carving. Combines classical references and triadic forms that structure space from a single block.",
     espEs: "Mármol tallado", espEn: "Carved marble",
   },
   "marcos-iriarte": {
-    nombre: "Marcos Iriarte", retrato: barcelo,
+    nombre: "Marcos Iriarte",
     bioEs: "Bilbao, España. Bronce y cerámica esmaltada. Su obra explora la confluencia de volúmenes orgánicos con superficies cálidas.",
     bioEn: "Bilbao, Spain. Bronze and glazed ceramic. His work explores the confluence of organic volumes with warm surfaces.",
     espEs: "Bronce y cerámica", espEn: "Bronze and ceramic",
   },
   "alba-costa": {
-    nombre: "Alba Costa", retrato: vertice,
+    nombre: "Alba Costa",
     bioEs: "Valencia, España. Mármol y pliegue. Trabaja la piedra como tejido: pliegues, dobleces y tensiones que humanizan el bloque mineral.",
     bioEn: "Valencia, Spain. Marble and fold. Treats stone like fabric: folds, creases and tensions that humanise the mineral block.",
     espEs: "Mármol y pliegue", espEn: "Marble and fold",
   },
   "diego-lara": {
-    nombre: "Diego Lara", retrato: eco,
+    nombre: "Diego Lara",
     bioEs: "Sevilla, España. Acero corten y vidrio rojo. Investiga la oxidación natural y la luz contenida como materiales escultóricos.",
     bioEn: "Seville, Spain. Corten steel and red glass. Investigates natural oxidation and contained light as sculptural materials.",
     espEs: "Acero corten y vidrio", espEn: "Corten steel and glass",
   },
   "sofia-mendez": {
-    nombre: "Sofía Méndez", retrato: resto,
+    nombre: "Sofía Méndez",
     bioEs: "Galicia, España. Piedra tallada y madera. Su obra parte de la raíz y el fragmento orgánico para construir piezas de presencia silenciosa.",
     bioEn: "Galicia, Spain. Carved stone and wood. Her work starts from root and organic fragment to build pieces of quiet presence.",
     espEs: "Piedra y madera", espEn: "Stone and wood",
@@ -91,7 +83,7 @@ export const BIOS: Record<string, Bio> = {
     espEs: "Bronce estilizado", espEn: "Stylised bronze",
   },
   "ines-ferrer": {
-    nombre: "Inés Ferrer", retrato: quietud,
+    nombre: "Inés Ferrer",
     bioEs: "Zaragoza, España. Alabastro tallado. Busca la quietud y la luz traslúcida en piezas pulidas a mano durante meses.",
     bioEn: "Zaragoza, Spain. Carved alabaster. Pursues stillness and translucent light in pieces hand-polished over months.",
     espEs: "Alabastro y luz", espEn: "Alabaster and light",
@@ -103,19 +95,19 @@ export const BIOS: Record<string, Bio> = {
     espEs: "Vidrio soplado", espEn: "Blown glass",
   },
   "ana-ruiz": {
-    nombre: "Ana Ruiz", retrato: vertice,
+    nombre: "Ana Ruiz",
     bioEs: "Bilbao, España. Acero pulido en formas anulares. Investiga la circulación del aire y la mirada a través del círculo abierto.",
     bioEn: "Bilbao, Spain. Polished steel in annular forms. Investigates the flow of air and gaze through the open circle.",
     espEs: "Acero pulido", espEn: "Polished steel",
   },
   "camila-soler": {
-    nombre: "Camila Soler", retrato: chillida,
+    nombre: "Camila Soler",
     bioEs: "Buenos Aires, Argentina. Bronce y latón en órbitas suspendidas. Combina astronomía y oficio metalúrgico en piezas de mediana escala.",
     bioEn: "Buenos Aires, Argentina. Bronze and brass in suspended orbits. Combines astronomy and metalwork in mid-scale pieces.",
     espEs: "Bronce y latón", espEn: "Bronze and brass",
   },
   "mateo-rivas": {
-    nombre: "Mateo Rivas", retrato: vertice,
+    nombre: "Mateo Rivas",
     bioEs: "Quito, Ecuador. Piedra verde tallada en formas mínimas. Su obra reduce el volumen a un mineral esencial, casi arquitectónico.",
     bioEn: "Quito, Ecuador. Green stone carved into minimal forms. His work reduces volume to an essential, almost architectural mineral.",
     espEs: "Piedra mineral", espEn: "Mineral stone",
@@ -127,8 +119,7 @@ export default function PerfilEscultor() {
   const { slug = "helena-vazquez" } = useParams();
   const bio = BIOS[slug];
 
-  const obras = WORKS
-    .filter((w) => artistSlug(w.es.artist) === slug || artistSlug(w.en.artist) === slug)
+  const obras = (bio ? getWorksForArtist(slug, bio.nombre) : [])
     .map((w) => ({
       slug: w.slug,
       img: w.image,
@@ -150,6 +141,10 @@ export default function PerfilEscultor() {
 
   if (!bio) return <NotFound />;
 
+  // A dedicated portrait wins; artists without one show their own work instead,
+  // never another artist's photo — keeps this in lockstep with the sculptor index.
+  const heroImage = bio.retrato ?? obras[0]?.img;
+
   const bioText = lang === "es" ? bio.bioEs : bio.bioEn;
   const esp = lang === "es" ? bio.espEs : bio.espEn;
 
@@ -158,13 +153,13 @@ export default function PerfilEscultor() {
 
   return (
     <main className="min-h-screen bg-white pt-40">
-      <Seo title={seoTitle} description={seoDescription} path={`/perfil/escultor/${slug ?? ""}`} image={bio.retrato} />
+      <Seo title={seoTitle} description={seoDescription} path={`/perfil/escultor/${slug ?? ""}`} image={heroImage} />
       <Header theme="light" />
 
       <section className="px-6 md:px-12 py-16 max-w-[1280px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 items-start mb-12">
           <div className="aspect-[4/5] overflow-hidden bg-secondary">
-            <img src={bio.retrato} alt={bio.nombre} loading="eager" fetchpriority="high" decoding="async" className="w-full h-full object-cover object-[center_30%]" />
+            <img src={heroImage} alt={bio.nombre} loading="eager" fetchpriority="high" decoding="async" className="w-full h-full object-cover object-[center_30%]" />
           </div>
           <div>
             <div className="eyebrow mb-3">{t.eyebrow}</div>
