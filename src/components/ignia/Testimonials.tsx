@@ -46,7 +46,7 @@ export const Testimonials = () => {
             >
               <p
                 style={{
-                  fontFamily: "'Manrope', sans-serif",
+                  fontFamily: "'Hanken Grotesk', sans-serif",
                   fontSize: "16px",
                   color: "#1A1A1A",
                   lineHeight: 1.7,
@@ -70,7 +70,7 @@ export const Testimonials = () => {
               </p>
               <p
                 style={{
-                  fontFamily: "'Manrope', sans-serif",
+                  fontFamily: "'Hanken Grotesk', sans-serif",
                   fontWeight: 400,
                   fontSize: "16px",
                   color: "#999999",

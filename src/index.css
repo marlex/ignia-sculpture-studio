@@ -40,8 +40,8 @@
 
     --radius: 0;
 
-    --f-display: 'Cormorant Garamond', serif;
-    --f-body: 'Manrope', sans-serif;
+    --f-display: 'Albert Sans', sans-serif;
+    --f-body: 'Hanken Grotesk', sans-serif;
     --font-titulo: var(--f-display);
     --font-cuerpo: var(--f-body);
   }
@@ -71,14 +71,14 @@
   }
 
   h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 500;
+    font-family: 'Albert Sans', sans-serif;
+    font-weight: 300;
     letter-spacing: -0.02em;
   }
 
   h2, h3, h4, h5 {
     font-family: var(--f-display);
-    font-weight: 600;
+    font-weight: 300;
     letter-spacing: -0.02em;
   }
 }

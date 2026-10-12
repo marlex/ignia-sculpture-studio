@@ -153,7 +153,7 @@ export const FiveWaysIn = () => {
                   <h3
                     className="group-hover:text-[#121212] transition-colors"
                     style={{
-                      fontFamily: "'Cormorant Garamond', serif",
+                      fontFamily: "'Albert Sans', sans-serif",
                       fontWeight: 600,
                       fontSize: 32,
                       lineHeight: 1.2,

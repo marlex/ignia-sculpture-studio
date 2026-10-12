@@ -21,7 +21,7 @@ export const ConstruidaPara = ({ onInvite }: { onInvite: () => void }) => {
     <section style={{ background: "#0a0a0a", padding: "100px 40px", borderRadius: 0 }}>
       <h2
         style={{
-          fontFamily: "'Cormorant Garamond', serif",
+          fontFamily: "'Albert Sans', sans-serif",
           fontWeight: 400,
           fontSize: 48,
           color: "#FFFFFF",
@@ -51,7 +51,7 @@ export const ConstruidaPara = ({ onInvite }: { onInvite: () => void }) => {
           >
             <div
               style={{
-                fontFamily: "'Cormorant Garamond', serif",
+                fontFamily: "'Albert Sans', sans-serif",
                 fontWeight: 400,
                 color: "#FFFFFF",
                 opacity: 0.1,
@@ -63,7 +63,7 @@ export const ConstruidaPara = ({ onInvite }: { onInvite: () => void }) => {
             </div>
             <div
               style={{
-                fontFamily: "'Cormorant Garamond', serif",
+                fontFamily: "'Albert Sans', sans-serif",
                 fontWeight: 400,
                 color: "#FFFFFF",
                 fontSize: 22,
@@ -75,7 +75,7 @@ export const ConstruidaPara = ({ onInvite }: { onInvite: () => void }) => {
             </div>
             <p
               style={{
-                fontFamily: "Manrope, sans-serif",
+                fontFamily: "Hanken Grotesk, sans-serif",
                 fontWeight: 400,
                 color: "rgba(255,255,255,0.55)",
                 fontSize: 16,
@@ -95,7 +95,7 @@ export const ConstruidaPara = ({ onInvite }: { onInvite: () => void }) => {
             background: "#0a0a0a",
             color: "#FFFFFF",
             border: "0.5px solid #FFFFFF",
-            fontFamily: "Manrope, sans-serif",
+            fontFamily: "Hanken Grotesk, sans-serif",
             fontWeight: 600,
             textTransform: "uppercase",
             letterSpacing: "0.13em",

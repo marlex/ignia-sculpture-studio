@@ -12,7 +12,7 @@ const inputStyle: React.CSSProperties = {
   border: "none",
   borderBottom: "1px solid #121212",
   outline: "none",
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontWeight: 400,
   color: "#121212",
   fontSize: 16,
@@ -22,7 +22,7 @@ const inputStyle: React.CSSProperties = {
 
 const labelStyle: React.CSSProperties = {
   display: "block",
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontWeight: 500,
   textTransform: "uppercase",
   letterSpacing: "0.14em",
@@ -115,7 +115,7 @@ export default function UneteAIgnia() {
         <section style={{ maxWidth: 560, margin: "0 auto", padding: "120px 24px 160px" }}>
           <div style={{ textAlign: "center" }}>
             <h1 style={{
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: "'Albert Sans', sans-serif",
               fontWeight: 500,
               color: "#121212",
               fontSize: "clamp(32px, 4vw, 44px)",
@@ -124,7 +124,7 @@ export default function UneteAIgnia() {
               margin: "0 0 16px",
             }}>{t.title}</h1>
             <p style={{
-              fontFamily: "Manrope, sans-serif",
+              fontFamily: "Hanken Grotesk, sans-serif",
               fontWeight: 400,
               color: "#666666",
               fontSize: 16,
@@ -135,10 +135,10 @@ export default function UneteAIgnia() {
 
           {submitted ? (
             <div>
-              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 24, marginBottom: 16 }}>
+              <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 24, marginBottom: 16 }}>
                 {t.okTitle}
               </h2>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>
+              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>
                 {t.okMsg}
               </p>
             </div>
@@ -156,7 +156,7 @@ export default function UneteAIgnia() {
                 <label style={labelStyle} htmlFor="social">{t.fSocial}</label>
                 <input id="social" value={social} onChange={(e) => setSocial(e.target.value)} style={inputStyle} />
               </div>
-              {error && <p style={{ color: "#b00020", fontFamily: "Manrope, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
+              {error && <p style={{ color: "#b00020", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
               <button
                 type="submit"
                 disabled={loading}
@@ -166,7 +166,7 @@ export default function UneteAIgnia() {
                   background: "#121212",
                   color: "#FFFFFF",
                   border: "1px solid #121212",
-                  fontFamily: "Manrope, sans-serif",
+                  fontFamily: "Hanken Grotesk, sans-serif",
                   fontWeight: 500,
                   fontSize: 13,
                   letterSpacing: "0.18em",
@@ -181,7 +181,7 @@ export default function UneteAIgnia() {
 
               <p style={{
                 marginTop: 32,
-                fontFamily: "Manrope, sans-serif",
+                fontFamily: "Hanken Grotesk, sans-serif",
                 fontWeight: 400,
                 fontSize: 14,
                 color: "#666666",

@@ -37,7 +37,7 @@ const FOUNDING_CAP = 30;
 
 const cellStyle: React.CSSProperties = {
   padding: "12px 10px",
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontSize: 14,
   fontWeight: 400,
   color: "#121212",
@@ -59,7 +59,7 @@ const thStyle: React.CSSProperties = {
 const badgeStyle: React.CSSProperties = {
   display: "inline-block",
   padding: "6px 10px",
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontSize: 12,
   fontWeight: 500,
   letterSpacing: "0.08em",
@@ -70,7 +70,7 @@ const badgeStyle: React.CSSProperties = {
 };
 
 const smallBtn: React.CSSProperties = {
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontSize: 12,
   fontWeight: 500,
   padding: "6px 10px",
@@ -425,7 +425,7 @@ export default function Solicitudes() {
   return (
     <div>
       <h1 style={{
-        fontFamily: "'Cormorant Garamond', serif",
+        fontFamily: "'Albert Sans', sans-serif",
         fontWeight: 500, color: "#121212",
         fontSize: "clamp(28px, 3.4vw, 40px)",
         lineHeight: 1.1, letterSpacing: "-0.02em",
@@ -435,7 +435,7 @@ export default function Solicitudes() {
       <div style={{
         display: "inline-flex", alignItems: "baseline", gap: 16,
         padding: "16px 20px", border: "1px solid #121212",
-        marginBottom: 32, fontFamily: "Manrope, sans-serif",
+        marginBottom: 32, fontFamily: "Hanken Grotesk, sans-serif",
       }}>
         <span style={{ fontSize: 13, letterSpacing: "0.14em", textTransform: "uppercase", color: "#666", fontWeight: 500 }}>
           {t.counter}
@@ -447,10 +447,10 @@ export default function Solicitudes() {
       </div>
 
       <div style={{ border: "1px solid #121212", padding: "24px 24px 20px", marginBottom: 40, maxWidth: 560 }}>
-        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 500, color: "#121212", fontSize: 22, margin: "0 0 6px" }}>
+        <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 22, margin: "0 0 6px" }}>
           {t.inviteDirectTitle}
         </h2>
-        <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 13, color: "#666", margin: "0 0 20px", lineHeight: 1.5 }}>
+        <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666", margin: "0 0 20px", lineHeight: 1.5 }}>
           {t.inviteDirectSubtitle}
         </p>
         <form onSubmit={inviteDirectly} style={{ display: "grid", gap: 16 }}>
@@ -459,7 +459,7 @@ export default function Solicitudes() {
             placeholder={t.inviteDirectName}
             value={inviteName}
             onChange={(e) => setInviteName(e.target.value)}
-            style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, padding: "10px 12px", border: "1px solid #ccc" }}
+            style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, padding: "10px 12px", border: "1px solid #ccc" }}
           />
           <input
             required
@@ -467,13 +467,13 @@ export default function Solicitudes() {
             placeholder={t.inviteDirectEmail}
             value={inviteEmail}
             onChange={(e) => setInviteEmail(e.target.value)}
-            style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, padding: "10px 12px", border: "1px solid #ccc" }}
+            style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, padding: "10px 12px", border: "1px solid #ccc" }}
           />
           <input
             placeholder={t.inviteDirectSocial}
             value={inviteSocial}
             onChange={(e) => setInviteSocial(e.target.value)}
-            style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, padding: "10px 12px", border: "1px solid #ccc" }}
+            style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, padding: "10px 12px", border: "1px solid #ccc" }}
           />
           <button type="submit" disabled={inviteBusy} style={{ ...btnPrimary, justifySelf: "start" }}>
             {inviteBusy ? t.inviteDirectSending : t.inviteDirectSubmit}
@@ -482,7 +482,7 @@ export default function Solicitudes() {
       </div>
 
       {msg && (
-        <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, color: "#121212", marginBottom: 16 }}>{msg}</p>
+        <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", marginBottom: 16 }}>{msg}</p>
       )}
 
       <div style={{ overflowX: "auto" }}>
@@ -530,7 +530,7 @@ export default function Solicitudes() {
                         disabled={disabled}
                         onChange={(e) => onStatusSelect(app, e.target.value)}
                         style={{
-                          fontFamily: "Manrope, sans-serif", fontSize: 14, fontWeight: 400,
+                          fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, fontWeight: 400,
                           padding: "6px 10px", border: "1px solid #121212",
                           background: "#fff", color: "#121212", minWidth: 160,
                         }}
@@ -547,7 +547,7 @@ export default function Solicitudes() {
                       disabled={disabled}
                       onChange={(e) => handleFoundingToggle(app, e.target.value === "yes")}
                       style={{
-                        fontFamily: "Manrope, sans-serif", fontSize: 14, fontWeight: 400,
+                        fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, fontWeight: 400,
                         padding: "6px 10px", border: "1px solid #121212",
                         background: "#fff", color: "#121212", minWidth: 90,
                       }}
@@ -564,13 +564,13 @@ export default function Solicitudes() {
       </div>
 
       <h2 style={{
-        fontFamily: "'Cormorant Garamond', serif",
+        fontFamily: "'Albert Sans', sans-serif",
         fontWeight: 500, color: "#121212",
         fontSize: "clamp(22px, 2.6vw, 28px)",
         lineHeight: 1.1, letterSpacing: "-0.02em",
         margin: "56px 0 8px",
       }}>{t.pendingUsersTitle}</h2>
-      <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, color: "#666", marginBottom: 24 }}>
+      <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#666", marginBottom: 24 }}>
         {t.pendingUsersSubtitle}
       </p>
 
@@ -671,24 +671,24 @@ function Modal({ children, onClose }: { children: React.ReactNode; onClose: () =
 }
 
 const modalTitle: React.CSSProperties = {
-  fontFamily: "'Cormorant Garamond', serif",
+  fontFamily: "'Albert Sans', sans-serif",
   fontWeight: 600, color: "#121212",
   fontSize: 24, lineHeight: 1.2, margin: "0 0 16px",
 };
 const modalText: React.CSSProperties = {
-  fontFamily: "Manrope, sans-serif", fontSize: 14, fontWeight: 400,
+  fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, fontWeight: 400,
   lineHeight: 1.55, color: "#121212", margin: "0 0 24px",
 };
 const modalActions: React.CSSProperties = {
   display: "flex", justifyContent: "flex-end", gap: 12,
 };
 const btnGhost: React.CSSProperties = {
-  fontFamily: "Manrope, sans-serif", fontSize: 13, fontWeight: 500,
+  fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, fontWeight: 500,
   padding: "10px 18px", border: "1px solid #121212",
   background: "#fff", color: "#121212", cursor: "pointer",
 };
 const btnPrimary: React.CSSProperties = {
-  fontFamily: "Manrope, sans-serif", fontSize: 13, fontWeight: 500,
+  fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, fontWeight: 500,
   padding: "10px 18px", border: "1px solid #121212",
   background: "#121212", color: "#fff", cursor: "pointer",
 };

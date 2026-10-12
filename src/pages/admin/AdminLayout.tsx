@@ -39,7 +39,7 @@ export default function AdminLayout() {
                   to={s.path}
                   end={s.path === "/admin/dashboard"}
                   style={({ isActive }) => ({
-                    fontFamily: "Manrope, sans-serif",
+                    fontFamily: "Hanken Grotesk, sans-serif",
                     fontSize: 13,
                     fontWeight: 500,
                     letterSpacing: "0.08em",

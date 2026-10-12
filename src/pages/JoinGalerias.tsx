@@ -7,7 +7,7 @@ import { CrossSellBlock } from "@/components/ignia/CrossSellBlock";
 import heroGalerias from "@/assets/hero-galerias.jpg";
 
 const OUTLINE_BTN: React.CSSProperties = {
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontWeight: 600,
   fontSize: 12,
   letterSpacing: "0.2em",
@@ -32,7 +32,7 @@ const hoverIn = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.op
 const hoverOut = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.opacity = "1"; };
 
 const H2_STYLE: React.CSSProperties = {
-  fontFamily: "'Cormorant Garamond', serif",
+  fontFamily: "'Albert Sans', sans-serif",
   fontWeight: 600,
   color: "#121212",
   fontSize: "clamp(28px, 3.4vw, 40px)",
@@ -42,7 +42,7 @@ const H2_STYLE: React.CSSProperties = {
 };
 
 const BODY_STYLE: React.CSSProperties = {
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontWeight: 400,
   color: "#121212",
   fontSize: 16,
@@ -156,7 +156,7 @@ const JoinGalerias = () => {
     border: "none",
     borderBottom: "1px solid #121212",
     outline: "none",
-    fontFamily: "Manrope, sans-serif",
+    fontFamily: "Hanken Grotesk, sans-serif",
     fontWeight: 400,
     color: "#121212",
     fontSize: 16,
@@ -165,7 +165,7 @@ const JoinGalerias = () => {
   };
   const labelStyle: React.CSSProperties = {
     display: "block",
-    fontFamily: "Manrope, sans-serif",
+    fontFamily: "Hanken Grotesk, sans-serif",
     fontWeight: 400,
     textTransform: "uppercase",
     letterSpacing: "0.14em",
@@ -203,7 +203,7 @@ const JoinGalerias = () => {
           }}
         >
           <h1 style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "'Albert Sans', sans-serif",
             fontWeight: 500,
             color: "#121212",
             fontSize: "clamp(44px, 6.4vw, 96px)",
@@ -213,7 +213,7 @@ const JoinGalerias = () => {
             maxWidth: 900,
           }}>{t.heroTitle}</h1>
           <p style={{
-            fontFamily: "Manrope, sans-serif",
+            fontFamily: "Hanken Grotesk, sans-serif",
             fontWeight: 400,
             color: "#666666",
             fontSize: 15,
@@ -244,10 +244,10 @@ const JoinGalerias = () => {
         <div className="why-grid" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 64 }}>
           {[t.why1, t.why2, t.why3].map((item, i) => (
             <div key={i} className="why-col" style={{ position: "relative", textAlign: "center" }}>
-              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 26, lineHeight: 1.2, margin: 0, textAlign: "center" }}>
+              <h3 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 26, lineHeight: 1.2, margin: 0, textAlign: "center" }}>
                 {item.title}
               </h3>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#121212", fontSize: 16, lineHeight: 1.7, textAlign: "center", margin: "12px 0 0" }}>
+              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#121212", fontSize: 16, lineHeight: 1.7, textAlign: "center", margin: "12px 0 0" }}>
                 {item.text}
               </p>
             </div>
@@ -259,11 +259,11 @@ const JoinGalerias = () => {
       <section style={{ padding: "120px 24px", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
           <h2 style={{ ...H2_STYLE, marginBottom: 56, textAlign: "center" }}>{t.howTitle}</h2>
-          <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: "Manrope, sans-serif", color: "#121212" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: "Hanken Grotesk, sans-serif", color: "#121212" }}>
             <tbody>
               {t.steps.map((step, i) => (
                 <tr key={i} style={{ borderTop: "1px solid #121212", borderBottom: "1px solid #121212" }}>
-                  <td style={{ padding: "24px 8px", fontWeight: 600, fontSize: 26, fontFamily: "'Cormorant Garamond', serif" }}>{step.label}</td>
+                  <td style={{ padding: "24px 8px", fontWeight: 600, fontSize: 26, fontFamily: "'Albert Sans', sans-serif" }}>{step.label}</td>
                   <td style={{ padding: "24px 8px", fontWeight: 400, fontSize: 16, textAlign: "right" }}>{step.desc}</td>
                 </tr>
               ))}
@@ -292,7 +292,7 @@ const JoinGalerias = () => {
         }}
       >
         <h2 style={{
-          fontFamily: "'Cormorant Garamond', serif",
+          fontFamily: "'Albert Sans', sans-serif",
           fontWeight: 400,
           fontSize: "clamp(36px, 4.5vw, 56px)",
           color: "rgba(255,255,255,0.92)",
@@ -309,7 +309,7 @@ const JoinGalerias = () => {
           <h2 style={{ ...H2_STYLE, marginBottom: 48, textAlign: "center" }}>{t.finalTitle}</h2>
           {submitted ? (
             <div style={{ textAlign: "center" }}>
-              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 24, marginBottom: 12 }}>{t.okTitle}</p>
+              <p style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, color: "#121212", fontSize: 24, marginBottom: 12 }}>{t.okTitle}</p>
               <p style={{ ...BODY_STYLE, fontSize: 16, color: "#666666" }}>{t.okMsg}</p>
             </div>
           ) : (
@@ -331,7 +331,7 @@ const JoinGalerias = () => {
                 <input id="jg-volumen" name="volumen" value={volume} onChange={(e) => setVolume(e.target.value)} style={inputStyle} />
               </div>
               {error && (
-                <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#B00020", fontSize: 14, marginBottom: 16 }}>{error}</p>
+                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#B00020", fontSize: 14, marginBottom: 16 }}>{error}</p>
               )}
               <div style={{ textAlign: "center" }}>
                 <button type="submit" disabled={loading} style={{ ...OUTLINE_BTN_DARK, opacity: loading ? 0.5 : 1 }} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
@@ -370,7 +370,7 @@ const JoinGalerias = () => {
                       justifyContent: "space-between",
                       alignItems: "center",
                       gap: 16,
-                      fontFamily: "Manrope, sans-serif",
+                      fontFamily: "Hanken Grotesk, sans-serif",
                       fontWeight: 400,
                       color: "#121212",
                       fontSize: 18,
@@ -379,7 +379,7 @@ const JoinGalerias = () => {
                   >
                     <span>{f.q}</span>
                     <span style={{
-                      fontFamily: "'Cormorant Garamond', serif",
+                      fontFamily: "'Albert Sans', sans-serif",
                       fontWeight: 400,
                       fontSize: 28,
                       lineHeight: 1,

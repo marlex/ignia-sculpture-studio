@@ -11,7 +11,7 @@ const inputStyle: React.CSSProperties = {
   border: "none",
   borderBottom: "1px solid #121212",
   outline: "none",
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontWeight: 400,
   color: "#121212",
   fontSize: 16,
@@ -21,7 +21,7 @@ const inputStyle: React.CSSProperties = {
 
 const labelStyle: React.CSSProperties = {
   display: "block",
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontWeight: 500,
   textTransform: "uppercase",
   letterSpacing: "0.14em",
@@ -114,7 +114,7 @@ export default function ResetPassword() {
       <main style={{ flex: 1, paddingTop: 190 }}>
         <section style={{ maxWidth: 460, margin: "0 auto", padding: "80px 24px 120px" }}>
           <h1 style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "'Albert Sans', sans-serif",
             fontWeight: 500,
             color: "#121212",
             fontSize: "clamp(32px, 4vw, 44px)",
@@ -123,7 +123,7 @@ export default function ResetPassword() {
             margin: "0 0 16px",
           }}>{t.title}</h1>
           <p style={{
-            fontFamily: "Manrope, sans-serif",
+            fontFamily: "Hanken Grotesk, sans-serif",
             fontWeight: 400,
             color: "#666666",
             fontSize: 16,
@@ -133,13 +133,13 @@ export default function ResetPassword() {
 
           {done ? (
             <div>
-              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 24, marginBottom: 16 }}>
+              <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 24, marginBottom: 16 }}>
                 {t.okTitle}
               </h2>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6, marginBottom: 32 }}>
+              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6, marginBottom: 32 }}>
                 {t.okMsg}
               </p>
-              <Link to="/login" style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: 14, color: "#121212", textDecoration: "underline" }}>
+              <Link to="/login" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, fontSize: 14, color: "#121212", textDecoration: "underline" }}>
                 {t.goLogin}
               </Link>
             </div>
@@ -153,7 +153,7 @@ export default function ResetPassword() {
                 <label style={labelStyle} htmlFor="confirm">{t.confirm}</label>
                 <input id="confirm" type="password" required value={confirm} onChange={(e) => setConfirm(e.target.value)} style={inputStyle} />
               </div>
-              {error && <p style={{ color: "#b00020", fontFamily: "Manrope, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
+              {error && <p style={{ color: "#b00020", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
               <button
                 type="submit"
                 disabled={loading || (!ready && !error)}
@@ -163,7 +163,7 @@ export default function ResetPassword() {
                   background: "#121212",
                   color: "#FFFFFF",
                   border: "1px solid #121212",
-                  fontFamily: "Manrope, sans-serif",
+                  fontFamily: "Hanken Grotesk, sans-serif",
                   fontWeight: 500,
                   fontSize: 13,
                   letterSpacing: "0.18em",

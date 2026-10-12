@@ -48,7 +48,7 @@ export const ScaleDrawing = ({ heightCm, widthCm, depthCm, weightKg, lang }: Pro
           <line x1={humanX} y1={groundY - HUMAN_HEIGHT_CM * 0.42} x2={humanX - 9} y2={groundY} />
           <line x1={humanX} y1={groundY - HUMAN_HEIGHT_CM * 0.42} x2={humanX + 9} y2={groundY} />
         </g>
-        <text x={humanX} y={groundY + 14} textAnchor="middle" fontSize={7} fill="#9a9a9a" fontFamily="Manrope, sans-serif">{t.human}</text>
+        <text x={humanX} y={groundY + 14} textAnchor="middle" fontSize={7} fill="#9a9a9a" fontFamily="Hanken Grotesk, sans-serif">{t.human}</text>
 
         {/* work silhouette, as a simple rounded block to the real height/width */}
         <rect

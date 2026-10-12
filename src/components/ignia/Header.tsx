@@ -338,7 +338,7 @@ export const Header = ({ theme = "dark" }: { theme?: "dark" | "light" }) => {
               fontSize: 28,
               lineHeight: 1,
               cursor: "pointer",
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: "'Albert Sans', sans-serif",
               fontWeight: 400,
             }}
           >
@@ -346,7 +346,7 @@ export const Header = ({ theme = "dark" }: { theme?: "dark" | "light" }) => {
           </button>
           {allItems.map((item) => {
             const style = {
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: "'Albert Sans', sans-serif",
               fontWeight: 400,
               fontSize: 32,
               color: "#FFFFFF",
@@ -376,7 +376,7 @@ export const Header = ({ theme = "dark" }: { theme?: "dark" | "light" }) => {
                   type="button"
                   onClick={() => { setLang(l.code); }}
                   style={{
-                    fontFamily: "Manrope, sans-serif",
+                    fontFamily: "Hanken Grotesk, sans-serif",
                     fontSize: 13,
                     letterSpacing: "0.14em",
                     textTransform: "uppercase",
@@ -397,7 +397,7 @@ export const Header = ({ theme = "dark" }: { theme?: "dark" | "light" }) => {
             to="/login"
             onClick={() => setMobileOpen(false)}
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: "'Albert Sans', sans-serif",
               fontWeight: 400,
               fontSize: 26,
               color: "rgba(255,255,255,0.7)",

@@ -36,7 +36,7 @@ export const GalleriesBanner = () => {
           <h2
             className="font-display text-ink"
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: "'Albert Sans', sans-serif",
               fontWeight: 500,
               fontSize: "clamp(40px, 6vw, 84px)",
               lineHeight: 1.02,
@@ -62,7 +62,7 @@ export const GalleriesBanner = () => {
                 <h3
                   className="text-[#121212]"
                   style={{
-                    fontFamily: "'Cormorant Garamond', serif",
+                    fontFamily: "'Albert Sans', sans-serif",
                     fontWeight: 600,
                     fontSize: 26,
                     lineHeight: 1.2,

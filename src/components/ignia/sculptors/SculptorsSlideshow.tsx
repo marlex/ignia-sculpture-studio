@@ -175,7 +175,7 @@ export const SculptorsSlideshow = () => {
           >
             <h2
               style={{
-                fontFamily: "'Cormorant Garamond', serif",
+                fontFamily: "'Albert Sans', sans-serif",
                 fontWeight: 300,
                 color: "#FFFFFF",
                 fontSize: "clamp(32px, 5vw, 64px)",

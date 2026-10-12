@@ -12,7 +12,7 @@ type Row = {
 
 const cellStyle: React.CSSProperties = {
   padding: "12px 10px",
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontSize: 14, color: "#121212",
   borderBottom: "1px solid #eee",
 };
@@ -25,7 +25,7 @@ const thStyle: React.CSSProperties = {
 };
 
 const btn: React.CSSProperties = {
-  fontFamily: "Manrope, sans-serif", fontSize: 13, fontWeight: 500,
+  fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, fontWeight: 500,
   letterSpacing: "0.08em", textTransform: "uppercase",
   padding: "6px 12px", border: "1px solid #121212",
   background: "#fff", color: "#121212", cursor: "pointer",
@@ -84,7 +84,7 @@ export default function Artistas() {
   return (
     <div>
       <h1 style={{
-        fontFamily: "'Cormorant Garamond', serif", fontWeight: 500, color: "#121212",
+        fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212",
         fontSize: "clamp(28px, 3.4vw, 40px)", lineHeight: 1.1, letterSpacing: "-0.02em",
         margin: "0 0 24px",
       }}>{t.title}</h1>

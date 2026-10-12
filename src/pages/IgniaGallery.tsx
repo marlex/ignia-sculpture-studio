@@ -164,7 +164,7 @@ const IconCounter = ({ run }: { run: boolean }) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        fontFamily: "'Cormorant Garamond', serif",
+        fontFamily: "'Albert Sans', sans-serif",
         fontSize: 24,
         color: "#121212",
         border: "1px solid #121212",
@@ -249,11 +249,11 @@ const AboutPage = () => {
         .of-rule-last { top:auto; bottom:0; }
         .of-in .of-rule, .of-in > .of-rule { width:100%; }
         .of-title-wrap { position: relative; display: inline-block; overflow: hidden; vertical-align: baseline; }
-        .of-title { font-family:'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: clamp(28px, 3.2vw, 32px); line-height: 1.05; letter-spacing:-0.02em; color:#121212; margin:0; display:inline; }
+        .of-title { font-family:'Albert Sans', sans-serif; font-style: italic; font-weight: 500; font-size: clamp(28px, 3.2vw, 32px); line-height: 1.05; letter-spacing:-0.02em; color:#121212; margin:0; display:inline; }
         .of-curtain { position:absolute; inset:0; background:#F5F5F5; transform: translateX(0); transition: transform 900ms cubic-bezier(0.76,0,0.24,1) 120ms; }
         .of-in .of-curtain { transform: translateX(101%); }
         .of-content { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.45em; }
-        .of-sep { font-family:'Cormorant Garamond', serif; font-size: clamp(28px, 3.2vw, 32px); line-height: 1.05; color:#121212; user-select:none; }
+        .of-sep { font-family:'Albert Sans', sans-serif; font-size: clamp(28px, 3.2vw, 32px); line-height: 1.05; color:#121212; user-select:none; }
         .of-desc { font-family: var(--f-body); font-size: 17px; line-height: 1.625; color: hsl(var(--gray)); margin: 0; opacity:0; transform: translateY(8px); transition: opacity 600ms ease-out 900ms, transform 600ms ease-out 900ms; }
         .of-in .of-desc { opacity:1; transform: none; }
         @media (prefers-reduced-motion: reduce) { .of-curtain { display:none } .of-desc { opacity:1 !important; transform:none !important } .of-rule { width:100% !important } }
@@ -325,7 +325,7 @@ const AboutPage = () => {
           <p
             className="font-display italic"
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: "'Albert Sans', sans-serif",
               fontWeight: 400,
               fontSize: "clamp(34px, 5vw, 68px)",
               color: "#000000",
@@ -373,7 +373,7 @@ const AboutPage = () => {
         <div className="max-w-[900px] mx-auto text-center">
           <h2
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: "'Albert Sans', sans-serif",
               fontWeight: 600,
               fontSize: "clamp(28px,3.6vw,46px)",
               lineHeight: 1.12,
@@ -388,7 +388,7 @@ const AboutPage = () => {
             onClick={openInvite}
             className="mt-10"
             style={{
-              fontFamily: "Manrope, sans-serif",
+              fontFamily: "Hanken Grotesk, sans-serif",
               fontWeight: 500,
               fontSize: 13,
               letterSpacing: "0.2em",

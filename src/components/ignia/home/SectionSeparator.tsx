@@ -8,7 +8,7 @@ interface SectionSeparatorProps {
 }
 
 const buttonStyle = {
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontWeight: 600,
   fontSize: 12,
   letterSpacing: "0.2em",
@@ -42,7 +42,7 @@ export const SectionSeparator = ({ title, subtitle, cta, href }: SectionSeparato
     >
       <h2
         style={{
-          fontFamily: "'Cormorant Garamond', serif",
+          fontFamily: "'Albert Sans', sans-serif",
           fontWeight: 400,
           fontSize: "clamp(36px, 4.5vw, 56px)",
           color: "rgba(255,255,255,0.92)",
@@ -56,7 +56,7 @@ export const SectionSeparator = ({ title, subtitle, cta, href }: SectionSeparato
       </h2>
       <p
         style={{
-          fontFamily: "'Manrope', sans-serif",
+          fontFamily: "'Hanken Grotesk', sans-serif",
           fontWeight: 400,
           fontSize: 19,
           lineHeight: 1.6,

@@ -24,8 +24,8 @@ const TITLE = {
   en: "Six principles that define a different\u00A0\nworld for sculpture.",
 };
 
-const CG = "'Cormorant Garamond', serif";
-const MAN = "Manrope, sans-serif";
+const CG = "'Albert Sans', sans-serif";
+const MAN = "Hanken Grotesk, sans-serif";
 
 export const SeisPrincipios = () => {
   const lang = useLang();

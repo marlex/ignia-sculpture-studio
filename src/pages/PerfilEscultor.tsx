@@ -250,7 +250,7 @@ export default function PerfilEscultor() {
           <div className="absolute inset-x-0 bottom-0 px-6 md:px-16 pb-16 md:pb-20">
             <h1
               style={{
-                fontFamily: "'Cormorant Garamond', serif",
+                fontFamily: "'Albert Sans', sans-serif",
                 fontWeight: 400,
                 fontSize: "clamp(56px, 9vw, 140px)",
                 color: "#FFFFFF",
@@ -281,7 +281,7 @@ export default function PerfilEscultor() {
             <div className="flex flex-col justify-center px-6 md:px-16 py-24 order-2 md:order-1" style={{ background: "#f7f7f5" }}>
               <h1
                 style={{
-                  fontFamily: "'Cormorant Garamond', serif",
+                  fontFamily: "'Albert Sans', sans-serif",
                   fontWeight: 400,
                   fontSize: "clamp(44px, 6vw, 88px)",
                   color: "#121212",
@@ -329,7 +329,7 @@ export default function PerfilEscultor() {
         <p
           className="max-w-[820px] mx-auto text-center"
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "'Albert Sans', sans-serif",
             fontWeight: 400,
             fontSize: "clamp(32px, 4.2vw, 52px)",
             lineHeight: 1.2,
@@ -487,7 +487,7 @@ export default function PerfilEscultor() {
           <div className={openerWork ? "" : "max-w-[560px] mx-auto text-center"}>
             <h2
               style={{
-                fontFamily: "'Cormorant Garamond', serif",
+                fontFamily: "'Albert Sans', sans-serif",
                 fontWeight: 400,
                 fontSize: "clamp(32px, 3.6vw, 52px)",
                 color: "#FFFFFF",
@@ -537,7 +537,7 @@ export default function PerfilEscultor() {
         <Link to="/join/sculptors" className="group inline-flex flex-col items-center gap-2">
           <span
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: "'Albert Sans', sans-serif",
               fontWeight: 400,
               fontSize: "clamp(18px, 2vw, 24px)",
               color: "#121212",
@@ -549,7 +549,7 @@ export default function PerfilEscultor() {
           <span className="inline-flex items-center gap-3">
             <span
               style={{
-                fontFamily: "'Cormorant Garamond', serif",
+                fontFamily: "'Albert Sans', sans-serif",
                 fontWeight: 400,
                 fontSize: "clamp(40px, 6vw, 72px)",
                 color: "#121212",

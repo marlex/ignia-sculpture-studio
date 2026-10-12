@@ -11,7 +11,7 @@ type EventRow = {
 };
 
 const cellStyle: React.CSSProperties = {
-  padding: "12px 10px", fontFamily: "Manrope, sans-serif",
+  padding: "12px 10px", fontFamily: "Hanken Grotesk, sans-serif",
   fontSize: 14, color: "#121212", borderBottom: "1px solid #eee",
 };
 const thStyle: React.CSSProperties = {
@@ -88,13 +88,13 @@ export default function Metricas() {
   return (
     <div>
       <h1 style={{
-        fontFamily: "'Cormorant Garamond', serif", fontWeight: 500, color: "#121212",
+        fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212",
         fontSize: "clamp(28px, 3.4vw, 40px)", lineHeight: 1.1, letterSpacing: "-0.02em",
         margin: "0 0 12px",
       }}>{t.title}</h1>
-      <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 13, color: "#666", margin: "0 0 24px" }}>{t.hint}</p>
+      <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666", margin: "0 0 24px" }}>{t.hint}</p>
 
-      <div style={{ marginBottom: 16, fontFamily: "Manrope, sans-serif", fontSize: 14 }}>
+      <div style={{ marginBottom: 16, fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14 }}>
         <label style={{ marginRight: 8 }}>{t.filter}:</label>
         <select
           value={selected}

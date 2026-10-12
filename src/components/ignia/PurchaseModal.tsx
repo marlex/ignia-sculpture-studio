@@ -130,15 +130,15 @@ export const PurchaseModal = ({ open, onClose, obra }: Props) => {
       <style>{`
         @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
         @keyframes modalIn { from { opacity:0; transform: translateY(16px) } to { opacity:1; transform:translateY(0) } }
-        .pm-input { width:100%; background:transparent; border:none; border-bottom:1px solid #121212; outline:none; font-family:Manrope,sans-serif; font-weight:400; color:#121212; font-size:16px; padding:0 0 8px; border-radius:0; }
-        .pm-textarea { width:100%; background:transparent; border:1px solid #121212; outline:none; font-family:Manrope,sans-serif; font-weight:400; color:#121212; font-size:15px; padding:10px 12px; border-radius:0; resize:vertical; min-height:80px; }
-        .pm-label { display:block; font-family:Manrope,sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:0.14em; font-size:12px; color:#121212; margin-bottom:8px; }
+        .pm-input { width:100%; background:transparent; border:none; border-bottom:1px solid #121212; outline:none; font-family:Hanken Grotesk, sans-serif; font-weight:400; color:#121212; font-size:16px; padding:0 0 8px; border-radius:0; }
+        .pm-textarea { width:100%; background:transparent; border:1px solid #121212; outline:none; font-family:Hanken Grotesk, sans-serif; font-weight:400; color:#121212; font-size:15px; padding:10px 12px; border-radius:0; resize:vertical; min-height:80px; }
+        .pm-label { display:block; font-family:Hanken Grotesk, sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:0.14em; font-size:12px; color:#121212; margin-bottom:8px; }
         .pm-field { margin-bottom:18px; }
-        .pm-cta { width:100%; background:#000000; color:#FFFFFF; border:1px solid #000000; font-family:Manrope,sans-serif; font-weight:500; font-size:13px; letter-spacing:0.18em; text-transform:uppercase; padding:16px 0; cursor:pointer; transition: background 200ms, border-color 200ms; }
+        .pm-cta { width:100%; background:#000000; color:#FFFFFF; border:1px solid #000000; font-family:Hanken Grotesk, sans-serif; font-weight:500; font-size:13px; letter-spacing:0.18em; text-transform:uppercase; padding:16px 0; cursor:pointer; transition: background 200ms, border-color 200ms; }
         .pm-cta:hover:not(:disabled) { background:#222222; border-color:#222222; }
         .pm-cta:focus-visible { outline:2px solid #000000; outline-offset:2px; }
         .pm-cta:disabled { opacity:0.6; cursor:not-allowed; }
-        .pm-close { position:absolute; top:10px; right:12px; background:transparent; border:none; cursor:pointer; font-family:'Cormorant Garamond',serif; font-weight:400; color:#121212; font-size:32px; line-height:1; width:44px; height:44px; display:flex; align-items:center; justify-content:center; z-index:2; }
+        .pm-close { position:absolute; top:10px; right:12px; background:transparent; border:none; cursor:pointer; font-family:'Albert Sans', sans-serif; font-weight:400; color:#121212; font-size:32px; line-height:1; width:44px; height:44px; display:flex; align-items:center; justify-content:center; z-index:2; }
         .pm-shell { background:#FFFFFF; width:100%; max-width:880px; position:relative; max-height:94vh; overflow-y:auto; animation: modalIn 300ms cubic-bezier(0.16,1,0.3,1) both; display:grid; grid-template-columns: 35fr 65fr; }
         .pm-left { padding:36px 32px; background:#F7F6F2; display:flex; flex-direction:column; gap:16px; }
         .pm-right { padding:44px 44px 36px; display:flex; flex-direction:column; }
@@ -156,28 +156,28 @@ export const PurchaseModal = ({ open, onClose, obra }: Props) => {
 
         {submitted ? (
           <div style={{ gridColumn: "1 / -1", padding: 48 }}>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 28, marginBottom: 12 }}>{t.successTitle}</h2>
-            <p style={{ fontFamily: "Manrope, sans-serif", color: "#666", fontSize: 16, lineHeight: 1.6 }}>{t.successMsg}</p>
+            <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 28, marginBottom: 12 }}>{t.successTitle}</h2>
+            <p style={{ fontFamily: "Hanken Grotesk, sans-serif", color: "#666", fontSize: 16, lineHeight: 1.6 }}>{t.successMsg}</p>
           </div>
         ) : (
           <>
             <aside className="pm-left">
               <img src={obra.image} alt={obra.title} className="pm-img" loading="lazy" />
-              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 22, lineHeight: 1.15, margin: "6px 0 0" }}>{obra.title}</h3>
-              <div style={{ fontFamily: "Manrope, sans-serif", fontSize: 13, color: "#121212", letterSpacing: "0.06em" }}>{obra.artist}</div>
+              <h3 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 22, lineHeight: 1.15, margin: "6px 0 0" }}>{obra.title}</h3>
+              <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#121212", letterSpacing: "0.06em" }}>{obra.artist}</div>
               {(obra.material || obra.year) && (
-                <div style={{ fontFamily: "Manrope, sans-serif", fontSize: 12, color: "#666" }}>
+                <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 12, color: "#666" }}>
                   {[obra.material, obra.year].filter(Boolean).join(" · ")}
                 </div>
               )}
               {obra.price && (
-                <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, fontSize: 16, color: "#121212", marginTop: 4 }}>{obra.price}</div>
+                <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 500, fontSize: 16, color: "#121212", marginTop: 4 }}>{obra.price}</div>
               )}
             </aside>
 
             <div className="pm-right">
-              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: "clamp(24px, 2.4vw, 30px)", lineHeight: 1.15, margin: "0 0 12px" }}>{t.title}</h2>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#555", fontSize: 14, lineHeight: 1.55, margin: "0 0 22px" }}>{t.intro}</p>
+              <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: "clamp(24px, 2.4vw, 30px)", lineHeight: 1.15, margin: "0 0 12px" }}>{t.title}</h2>
+              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#555", fontSize: 14, lineHeight: 1.55, margin: "0 0 22px" }}>{t.intro}</p>
 
               <form onSubmit={handleSubmit}>
                 <div className="pm-field">
@@ -200,14 +200,14 @@ export const PurchaseModal = ({ open, onClose, obra }: Props) => {
                   <textarea id="pm-mensaje" name="mensaje" rows={3} placeholder={t.messagePh} className="pm-textarea" />
                 </div>
 
-                {error && <div style={{ color: "#B00", fontFamily: "Manrope, sans-serif", fontSize: 13, marginBottom: 12 }}>{error}</div>}
+                {error && <div style={{ color: "#B00", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, marginBottom: 12 }}>{error}</div>}
 
                 <button type="submit" disabled={loading} className="pm-cta">
                   {loading ? t.sending : t.cta}
                 </button>
 
-                <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 12, color: "#555", margin: "12px 0 6px", textAlign: "center" }}>{t.below}</p>
-                <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 11, color: "#888", margin: 0, textAlign: "center" }}>{t.privacy}</p>
+                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 12, color: "#555", margin: "12px 0 6px", textAlign: "center" }}>{t.below}</p>
+                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 11, color: "#888", margin: 0, textAlign: "center" }}>{t.privacy}</p>
               </form>
             </div>
           </>

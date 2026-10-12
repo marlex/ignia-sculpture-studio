@@ -4,14 +4,14 @@ import { useAuth } from "@/auth/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 
 const fieldLabel: React.CSSProperties = {
-  display: "block", fontFamily: "Manrope, sans-serif", fontWeight: 400,
+  display: "block", fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400,
   textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 14,
   color: "#121212", marginBottom: 12,
 };
 const fieldInput: React.CSSProperties = {
   width: "100%", background: "transparent", border: "none",
   borderBottom: "1px solid #121212", outline: "none",
-  fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#121212",
+  fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#121212",
   fontSize: 16, padding: "0 0 8px", borderRadius: 0,
 };
 const fieldWrap: React.CSSProperties = { marginBottom: 28 };
@@ -97,22 +97,22 @@ export default function Publicar() {
         </Link>
       </header>
       <section style={{ maxWidth: 720, margin: "0 auto", padding: "80px 24px 120px" }}>
-        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 500, color: "#121212", fontSize: 40, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 16 }}>
+        <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 40, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 16 }}>
           Publicar una obra
         </h1>
-        <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 17, lineHeight: 1.5, marginBottom: 56 }}>
+        <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 17, lineHeight: 1.5, marginBottom: 56 }}>
           Completa los campos. Tu obra queda en revisión hasta que la aprobemos.
         </p>
 
         {submitted ? (
           <div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 28, marginBottom: 16 }}>
+            <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 28, marginBottom: 16 }}>
               Obra recibida.
             </h2>
-            <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6, marginBottom: 32 }}>
+            <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6, marginBottom: 32 }}>
               Queda en revisión. Puedes ver su estado en tu panel.
             </p>
-            <Link to="/dashboard" style={{ color: "#121212", textDecoration: "underline", fontFamily: "Manrope, sans-serif" }}>
+            <Link to="/dashboard" style={{ color: "#121212", textDecoration: "underline", fontFamily: "Hanken Grotesk, sans-serif" }}>
               Ir a mi panel
             </Link>
           </div>
@@ -154,11 +154,11 @@ export default function Publicar() {
             <input disabled placeholder="Disponible en octubre" style={{ ...fieldInput, cursor: "not-allowed" }} />
           </div>
 
-          {error && <p style={{ color: "#b00020", fontFamily: "Manrope, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
+          {error && <p style={{ color: "#b00020", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
           <button
             type="submit"
             disabled={loading}
-            style={{ width: "100%", background: "transparent", color: "#121212", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 13, padding: 18, border: "1px solid #121212", borderRadius: 0, cursor: loading ? "default" : "pointer", marginTop: 24, transition: "opacity 250ms", opacity: loading ? 0.6 : 1 }}
+            style={{ width: "100%", background: "transparent", color: "#121212", fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 13, padding: 18, border: "1px solid #121212", borderRadius: 0, cursor: loading ? "default" : "pointer", marginTop: 24, transition: "opacity 250ms", opacity: loading ? 0.6 : 1 }}
           >
             {loading ? "Enviando…" : "Enviar obra"}
           </button>

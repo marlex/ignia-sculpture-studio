@@ -40,7 +40,7 @@ export const SculptorsToKnow = () => {
                     <span
                       className="absolute bottom-2 right-2 max-w-[40%] truncate"
                       style={{
-                        fontFamily: "Manrope, sans-serif",
+                        fontFamily: "Hanken Grotesk, sans-serif",
                         fontWeight: 500,
                         fontSize: 11,
                         color: "#FFFFFF",

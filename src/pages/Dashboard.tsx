@@ -64,12 +64,12 @@ export default function Dashboard() {
           IGNIA
         </Link>
         <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-          <span style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14 }}>
+          <span style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14 }}>
             {user.email} · {profile.founding_artist ? "Artista Fundador" : "Artista"}
           </span>
           <button
             onClick={async () => { await signOut(); navigate("/"); }}
-            style={{ background: "none", border: "none", color: "#121212", fontFamily: "Manrope, sans-serif", fontSize: 14, textDecoration: "underline", cursor: "pointer" }}
+            style={{ background: "none", border: "none", color: "#121212", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, textDecoration: "underline", cursor: "pointer" }}
           >
             Salir
           </button>
@@ -85,7 +85,7 @@ export default function Dashboard() {
               style={{
                 display: "block", width: "100%", textAlign: "left",
                 padding: "14px 32px",
-                fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: 15,
+                fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, fontSize: 15,
                 color: "#121212", background: "transparent",
                 border: "none", borderLeft: active === i ? "2px solid #121212" : "2px solid transparent",
                 cursor: "pointer", borderRadius: 0,
@@ -97,16 +97,16 @@ export default function Dashboard() {
         </aside>
 
         <section style={{ padding: "56px 56px 80px" }}>
-          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 32 }}>
+          <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 32 }}>
             Bienvenida.
           </h1>
 
           {profileIncomplete && (
             <div style={{ border: "1px solid #121212", padding: "20px 24px", marginBottom: 40, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 24 }}>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 15, color: "#121212", margin: 0 }}>
+              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, color: "#121212", margin: 0 }}>
                 Completa tu perfil de artista (origen, técnica, biografía) antes de publicar tu primera obra.
               </p>
-              <Link to="/perfil-artista" style={{ fontFamily: "Manrope, sans-serif", fontSize: 13, textTransform: "uppercase", letterSpacing: "0.1em", color: "#121212", whiteSpace: "nowrap" }}>
+              <Link to="/perfil-artista" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, textTransform: "uppercase", letterSpacing: "0.1em", color: "#121212", whiteSpace: "nowrap" }}>
                 Completar →
               </Link>
             </div>
@@ -115,8 +115,8 @@ export default function Dashboard() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 40 }}>
             {METRICS.map((m) => (
               <div key={m.l} style={{ border: "1px solid #E5E5E5", padding: 28, borderRadius: 0 }}>
-                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 40, lineHeight: 1 }}>{m.v}</div>
-                <div style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14, marginTop: 12 }}>{m.l}</div>
+                <div style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, color: "#121212", fontSize: 40, lineHeight: 1 }}>{m.v}</div>
+                <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14, marginTop: 12 }}>{m.l}</div>
               </div>
             ))}
           </div>
@@ -124,24 +124,24 @@ export default function Dashboard() {
           {!profileIncomplete && (
             <div style={{ border: "1px solid #E5E5E5", padding: "24px 28px", marginBottom: 40 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 16 }}>
-                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 20, margin: 0 }}>
+                <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 20, margin: 0 }}>
                   Mi perfil
                 </h2>
-                <Link to="/perfil-artista" style={{ fontFamily: "Manrope, sans-serif", fontSize: 13, color: "#666666" }}>
+                <Link to="/perfil-artista" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666666" }}>
                   Editar →
                 </Link>
               </div>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
+              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
                 <strong>Origen:</strong> {profile.origin}
               </p>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
+              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
                 <strong>Técnica:</strong> {profile.technique}
               </p>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
+              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
                 <strong>Bio:</strong> {profile.bio}
               </p>
               {(profile.instagram || profile.website || profile.portfolio_url) && (
-                <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, color: "#666666", margin: 0 }}>
+                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#666666", margin: 0 }}>
                   {[profile.instagram, profile.website, profile.portfolio_url].filter(Boolean).join(" · ")}
                 </p>
               )}
@@ -156,7 +156,7 @@ export default function Dashboard() {
                 padding: "14px 28px",
                 background: "#121212",
                 color: "#FFFFFF",
-                fontFamily: "Manrope, sans-serif",
+                fontFamily: "Hanken Grotesk, sans-serif",
                 fontWeight: 500,
                 fontSize: 13,
                 letterSpacing: "0.14em",
@@ -170,15 +170,15 @@ export default function Dashboard() {
 
           <div style={{ marginBottom: 64 }}>
             {loadingArtworks ? (
-              <p style={{ fontFamily: "Manrope, sans-serif", color: "#666666" }}>Cargando…</p>
+              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", color: "#666666" }}>Cargando…</p>
             ) : artworks.length === 0 ? (
-              <p style={{ fontFamily: "Manrope, sans-serif", color: "#666666" }}>Aún no has publicado ninguna obra.</p>
+              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", color: "#666666" }}>Aún no has publicado ninguna obra.</p>
             ) : (
               <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
                   <tr>
                     {["Título", "Material", "Precio", "Estado"].map((h) => (
-                      <th key={h} style={{ textAlign: "left", fontFamily: "Manrope, sans-serif", fontWeight: 600, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "#666666", padding: "16px 8px", borderBottom: "1px solid #E5E5E5" }}>{h}</th>
+                      <th key={h} style={{ textAlign: "left", fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 600, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "#666666", padding: "16px 8px", borderBottom: "1px solid #E5E5E5" }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -186,7 +186,7 @@ export default function Dashboard() {
                   {artworks.map((o) => (
                     <tr key={o.id}>
                       {[o.title, o.medium || "—", o.price ? `€${o.price.toLocaleString("es-ES")}` : "—", STATUS_LABEL[o.status]].map((c, i) => (
-                        <td key={i} style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: 15, color: "#121212", padding: "20px 8px", borderBottom: "1px solid #E5E5E5" }}>{c}</td>
+                        <td key={i} style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, fontSize: 15, color: "#121212", padding: "20px 8px", borderBottom: "1px solid #E5E5E5" }}>{c}</td>
                       ))}
                     </tr>
                   ))}

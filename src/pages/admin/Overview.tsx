@@ -3,7 +3,7 @@ import { useLang } from "@/i18n/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
 
 const h1Style: React.CSSProperties = {
-  fontFamily: "'Cormorant Garamond', serif",
+  fontFamily: "'Albert Sans', sans-serif",
   fontWeight: 600,
   color: "#121212",
   fontSize: "clamp(28px, 3.4vw, 40px)",
@@ -15,7 +15,7 @@ const h1Style: React.CSSProperties = {
 const cardStyle: React.CSSProperties = {
   border: "1px solid #eee",
   padding: "20px",
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
 };
 
 const kpiLabel: React.CSSProperties = {
@@ -30,7 +30,7 @@ const kpiValue: React.CSSProperties = {
   fontSize: 32,
   fontWeight: 600,
   color: "#121212",
-  fontFamily: "'Cormorant Garamond', serif",
+  fontFamily: "'Albert Sans', sans-serif",
   marginTop: 6,
 };
 
@@ -92,7 +92,7 @@ export default function Overview() {
   return (
     <div>
       <h1 style={h1Style}>{t.title}</h1>
-      <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 14, color: "#666", margin: "0 0 24px" }}>{t.subtitle}</p>
+      <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#666", margin: "0 0 24px" }}>{t.subtitle}</p>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16, marginBottom: 32 }}>
         {items.map((k) => (
@@ -106,7 +106,7 @@ export default function Overview() {
       <button
         onClick={exportCsv}
         style={{
-          fontFamily: "Manrope, sans-serif",
+          fontFamily: "Hanken Grotesk, sans-serif",
           fontSize: 13,
           fontWeight: 500,
           letterSpacing: "0.12em",

@@ -24,7 +24,7 @@ export const SculptureIntro = () => {
       <div style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
         <h2
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "'Albert Sans', sans-serif",
             fontWeight: 400,
             fontSize: 56,
             color: "rgba(255,255,255,0.88)",
@@ -39,7 +39,7 @@ export const SculptureIntro = () => {
         </h2>
         <p
           style={{
-            fontFamily: "Manrope, sans-serif",
+            fontFamily: "Hanken Grotesk, sans-serif",
             fontWeight: 400,
             color: "rgba(255,255,255,0.8)",
             fontSize: 16,
@@ -66,7 +66,7 @@ export const SculptureIntro = () => {
             type="button"
             onClick={() => window.dispatchEvent(new Event("ignia:open-invite"))}
             style={{
-              fontFamily: "Manrope, sans-serif",
+              fontFamily: "Hanken Grotesk, sans-serif",
               fontWeight: 400,
               fontSize: 12,
               letterSpacing: "0.18em",

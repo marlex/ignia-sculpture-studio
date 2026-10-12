@@ -90,7 +90,7 @@ export const HeroSlideshow = ({ onInvite, onCollection }: Props) => {
         style={{
           top: "10vh",
           transform: "translateX(-50%)",
-          fontFamily: "'Cormorant Garamond', serif",
+          fontFamily: "'Albert Sans', sans-serif",
           fontWeight: 500,
           color: "#FFFFFF",
           fontSize: 28,
@@ -109,7 +109,7 @@ export const HeroSlideshow = ({ onInvite, onCollection }: Props) => {
       >
         <p
           style={{
-            fontFamily: "Manrope, sans-serif",
+            fontFamily: "Hanken Grotesk, sans-serif",
             fontWeight: 400,
             color: "#FFFFFF",
             opacity: 0.75,
@@ -126,7 +126,7 @@ export const HeroSlideshow = ({ onInvite, onCollection }: Props) => {
             onClick={onInvite}
             className="hero-cta-light"
             style={{
-              fontFamily: "Manrope, sans-serif",
+              fontFamily: "Hanken Grotesk, sans-serif",
               fontWeight: 600,
               fontSize: 12,
               letterSpacing: "0.2em",
@@ -145,7 +145,7 @@ export const HeroSlideshow = ({ onInvite, onCollection }: Props) => {
           <button
             onClick={onCollection}
             style={{
-              fontFamily: "Manrope, sans-serif",
+              fontFamily: "Hanken Grotesk, sans-serif",
               fontWeight: 400,
               fontSize: 12,
               letterSpacing: "0.2em",

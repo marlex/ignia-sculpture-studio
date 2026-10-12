@@ -11,7 +11,7 @@ import { Seo } from "@/components/Seo";
 const SITE_BASE = "https://igniagallery.com";
 
 const IMAGE_CREDIT_STYLE: CSSProperties = {
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontWeight: 500,
   fontSize: 11,
   color: "#FFFFFF",

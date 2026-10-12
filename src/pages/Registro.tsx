@@ -12,7 +12,7 @@ const inputStyle: React.CSSProperties = {
   border: "none",
   borderBottom: "1px solid #121212",
   outline: "none",
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontWeight: 400,
   color: "#121212",
   fontSize: 16,
@@ -22,7 +22,7 @@ const inputStyle: React.CSSProperties = {
 
 const labelStyle: React.CSSProperties = {
   display: "block",
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontWeight: 500,
   textTransform: "uppercase",
   letterSpacing: "0.14em",
@@ -124,7 +124,7 @@ export default function Registro() {
         <section style={{ maxWidth: 460, margin: "0 auto", padding: "120px 24px 160px" }}>
           <div style={{ textAlign: "center" }}>
             <h1 style={{
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: "'Albert Sans', sans-serif",
               fontWeight: 500,
               color: "#121212",
               fontSize: "clamp(32px, 4vw, 44px)",
@@ -133,7 +133,7 @@ export default function Registro() {
               margin: "0 0 16px",
             }}>{t.title}</h1>
             <p style={{
-              fontFamily: "Manrope, sans-serif",
+              fontFamily: "Hanken Grotesk, sans-serif",
               fontWeight: 400,
               color: "#666666",
               fontSize: 16,
@@ -144,10 +144,10 @@ export default function Registro() {
 
           {step === "check-email" && (
             <div>
-              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 24, marginBottom: 16 }}>
+              <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 24, marginBottom: 16 }}>
                 {t.checkEmailTitle}
               </h2>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>
+              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>
                 {t.checkEmailMsg}
               </p>
             </div>
@@ -155,10 +155,10 @@ export default function Registro() {
 
           {step === "pending" && (
             <div>
-              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 24, marginBottom: 16 }}>
+              <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 24, marginBottom: 16 }}>
                 {t.pendingTitle}
               </h2>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>
+              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>
                 {t.pendingMsg}
               </p>
             </div>
@@ -181,7 +181,7 @@ export default function Registro() {
               <div style={{ marginBottom: 40 }}>
                 <label style={labelStyle}>{t.fRole}</label>
                 <div style={{ display: "flex", gap: 24 }}>
-                  <label style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", fontFamily: "Manrope, sans-serif", fontSize: 15, color: "#121212" }}>
+                  <label style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, color: "#121212" }}>
                     <input
                       type="radio"
                       name="requestedRole"
@@ -191,7 +191,7 @@ export default function Registro() {
                     />
                     {t.roleArtist}
                   </label>
-                  <label style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", fontFamily: "Manrope, sans-serif", fontSize: 15, color: "#121212" }}>
+                  <label style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, color: "#121212" }}>
                     <input
                       type="radio"
                       name="requestedRole"
@@ -204,7 +204,7 @@ export default function Registro() {
                 </div>
               </div>
 
-              {error && <p style={{ color: "#b00020", fontFamily: "Manrope, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
+              {error && <p style={{ color: "#b00020", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
               <button
                 type="submit"
                 disabled={loading}
@@ -214,7 +214,7 @@ export default function Registro() {
                   background: "#121212",
                   color: "#FFFFFF",
                   border: "1px solid #121212",
-                  fontFamily: "Manrope, sans-serif",
+                  fontFamily: "Hanken Grotesk, sans-serif",
                   fontWeight: 500,
                   fontSize: 13,
                   letterSpacing: "0.18em",
@@ -229,7 +229,7 @@ export default function Registro() {
 
               <p style={{
                 marginTop: 32,
-                fontFamily: "Manrope, sans-serif",
+                fontFamily: "Hanken Grotesk, sans-serif",
                 fontWeight: 400,
                 fontSize: 14,
                 color: "#666666",

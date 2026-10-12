@@ -26,7 +26,7 @@ export const Ticker = () => {
           <span
             className="ticker-item"
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: "'Albert Sans', sans-serif",
               fontWeight: 400,
               color: "#121212",
               fontSize: 31,
@@ -51,7 +51,7 @@ export const Ticker = () => {
         >
           <span
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: "'Albert Sans', sans-serif",
               fontStyle: "italic",
               fontSize: 21,
               color: "rgba(17, 17, 17, 0.45)",

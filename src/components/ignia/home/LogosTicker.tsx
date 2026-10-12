@@ -15,7 +15,7 @@ export const LogosTicker = () => {
       `}</style>
       <div
         style={{
-          fontFamily: "Manrope, sans-serif",
+          fontFamily: "Hanken Grotesk, sans-serif",
           fontWeight: 400,
           textTransform: "uppercase",
           letterSpacing: "0.18em",
@@ -33,7 +33,7 @@ export const LogosTicker = () => {
             <span key={i} style={{ display: "inline-flex", alignItems: "center" }}>
               <span
                 style={{
-                  fontFamily: "Manrope, sans-serif",
+                  fontFamily: "Hanken Grotesk, sans-serif",
                   fontWeight: 600,
                   color: "#BBBBBB",
                   fontSize: 13,

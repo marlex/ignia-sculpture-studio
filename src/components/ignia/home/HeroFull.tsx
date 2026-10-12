@@ -58,7 +58,7 @@ export const HeroFull = () => {
         .hf-text-link:hover { opacity: 0.65 !important; }
 
         .hf-title-el {
-          font-family: 'Cormorant Garamond', serif;
+          font-family: 'Albert Sans', sans-serif;
           font-weight: 400;
           color: #FFFFFF;
           font-size: clamp(40px, 6vw, 72px);
@@ -67,7 +67,7 @@ export const HeroFull = () => {
           margin: 0;
         }
         .hf-subtitle-el {
-          font-family: Manrope, sans-serif;
+          font-family: Hanken Grotesk, sans-serif;
           font-weight: 400;
           color: rgba(255,255,255,0.88);
           font-size: clamp(15px, 1.7vw, 19px);
@@ -131,7 +131,7 @@ export const HeroFull = () => {
             to="/sculptures"
             className="hf-cta-btn inline-block"
             style={{
-              fontFamily: "Manrope, sans-serif",
+              fontFamily: "Hanken Grotesk, sans-serif",
               fontWeight: 500,
               fontSize: 13,
               letterSpacing: "0.2em",
@@ -155,7 +155,7 @@ export const HeroFull = () => {
             to="/guidance"
             className="hf-text-link"
             style={{
-              fontFamily: "Manrope, sans-serif",
+              fontFamily: "Hanken Grotesk, sans-serif",
               fontWeight: 400,
               fontSize: 14,
               color: "rgba(255,255,255,0.88)",

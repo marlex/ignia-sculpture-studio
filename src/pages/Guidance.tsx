@@ -9,7 +9,7 @@ import heroMacro from "@/assets/guidance-hero-macro.jpg";
 import heroOpen from "@/assets/guidance-hero-open.jpg";
 
 const OUTLINE_BTN_DARK: React.CSSProperties = {
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontWeight: 500,
   fontSize: 13,
   letterSpacing: "0.2em",
@@ -35,7 +35,7 @@ const hoverIn = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.op
 const hoverOut = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.opacity = "1"; };
 
 const H2_STYLE: React.CSSProperties = {
-  fontFamily: "'Cormorant Garamond', serif",
+  fontFamily: "'Albert Sans', sans-serif",
   fontWeight: 600,
   color: "#121212",
   fontSize: "clamp(28px, 3.4vw, 40px)",
@@ -45,7 +45,7 @@ const H2_STYLE: React.CSSProperties = {
 };
 
 const BODY_STYLE: React.CSSProperties = {
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontWeight: 400,
   color: "#121212",
   fontSize: 16,
@@ -147,7 +147,7 @@ const Guidance = () => {
     border: "none",
     borderBottom: "1px solid #121212",
     outline: "none",
-    fontFamily: "Manrope, sans-serif",
+    fontFamily: "Hanken Grotesk, sans-serif",
     fontWeight: 400,
     color: "#121212",
     fontSize: 16,
@@ -156,7 +156,7 @@ const Guidance = () => {
   };
   const labelStyle: React.CSSProperties = {
     display: "block",
-    fontFamily: "Manrope, sans-serif",
+    fontFamily: "Hanken Grotesk, sans-serif",
     fontWeight: 400,
     textTransform: "uppercase",
     letterSpacing: "0.14em",
@@ -246,7 +246,7 @@ const Guidance = () => {
         >
           <h1
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: "'Albert Sans', sans-serif",
               fontWeight: 500,
               color: "#FFFFFF",
               fontSize: "clamp(64px, 12vw, 160px)",
@@ -259,7 +259,7 @@ const Guidance = () => {
           </h1>
           <p
             style={{
-              fontFamily: "Manrope, sans-serif",
+              fontFamily: "Hanken Grotesk, sans-serif",
               fontWeight: 400,
               color: "#FFFFFF",
               fontSize: "clamp(15px, 1.6vw, 18px)",
@@ -288,10 +288,10 @@ const Guidance = () => {
           style={{ maxWidth: 1000, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }}
         >
           <div style={{ textAlign: "center" }}>
-            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 32, lineHeight: 1.15, margin: 0 }}>
+            <h3 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 32, lineHeight: 1.15, margin: 0 }}>
               {t.curatorsTitle}
             </h3>
-            <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.7, margin: "16px 0 0" }}>
+            <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.7, margin: "16px 0 0" }}>
               {t.curatorsBody}
             </p>
             <div style={{ marginTop: 32 }}>
@@ -301,10 +301,10 @@ const Guidance = () => {
             </div>
           </div>
           <div style={{ textAlign: "center" }}>
-            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 32, lineHeight: 1.15, margin: 0 }}>
+            <h3 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 32, lineHeight: 1.15, margin: 0 }}>
               {t.advisorsTitle}
             </h3>
-            <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.7, margin: "16px 0 0" }}>
+            <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.7, margin: "16px 0 0" }}>
               {t.advisorsBody}
             </p>
             <div style={{ marginTop: 32 }}>
@@ -330,7 +330,7 @@ const Guidance = () => {
       >
         <h2
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "'Albert Sans', sans-serif",
             fontWeight: 500,
             color: "#FFFFFF",
             fontSize: "clamp(42px, 8.5vw, 118px)",
@@ -352,11 +352,11 @@ const Guidance = () => {
       <section style={{ padding: "120px 24px", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
           <h2 style={{ ...H2_STYLE, marginBottom: 56, textAlign: "center" }}>{t.howTitle}</h2>
-          <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: "Manrope, sans-serif", color: "#121212" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: "Hanken Grotesk, sans-serif", color: "#121212" }}>
             <tbody>
               {t.steps.map((step, i) => (
                 <tr key={i} style={{ borderTop: "1px solid #121212", borderBottom: "1px solid #121212" }}>
-                  <td style={{ padding: "24px 8px", fontWeight: 600, fontSize: 26, fontFamily: "'Cormorant Garamond', serif" }}>{step.label}</td>
+                  <td style={{ padding: "24px 8px", fontWeight: 600, fontSize: 26, fontFamily: "'Albert Sans', sans-serif" }}>{step.label}</td>
                   <td style={{ padding: "24px 8px", fontWeight: 400, fontSize: 16, textAlign: "right" }}>{step.desc}</td>
                 </tr>
               ))}
@@ -381,7 +381,7 @@ const Guidance = () => {
       >
         <h2
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "'Albert Sans', sans-serif",
             fontWeight: 600,
             fontSize: "clamp(36px, 4.5vw, 56px)",
             color: "rgba(255,255,255,0.92)",
@@ -395,7 +395,7 @@ const Guidance = () => {
         </h2>
         <p
           style={{
-            fontFamily: "Manrope, sans-serif",
+            fontFamily: "Hanken Grotesk, sans-serif",
             fontWeight: 400,
             fontSize: 16,
             color: "rgba(255,255,255,0.70)",
@@ -425,7 +425,7 @@ const Guidance = () => {
           <h2 style={{ ...H2_STYLE, marginBottom: 48, textAlign: "center" }}>{t.emailTitle}</h2>
           {submitted ? (
             <div style={{ textAlign: "center" }}>
-              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 24, marginBottom: 12 }}>
+              <p style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, color: "#121212", fontSize: 24, marginBottom: 12 }}>
                 {t.emailOk}
               </p>
             </div>
@@ -445,7 +445,7 @@ const Guidance = () => {
                 />
               </div>
               {error && (
-                <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#B00020", fontSize: 14, marginBottom: 16 }}>{error}</p>
+                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#B00020", fontSize: 14, marginBottom: 16 }}>{error}</p>
               )}
               <div style={{ textAlign: "center" }}>
                 <button type="submit" disabled={loading} style={{ ...OUTLINE_BTN_DARK, opacity: loading ? 0.5 : 1 }} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>

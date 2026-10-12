@@ -4,7 +4,7 @@ import heroMacro from "@/assets/guidance-hero-macro.jpg";
 import heroOpen from "@/assets/guidance-hero-open.jpg";
 
 const OUTLINE_BTN_LIGHT: React.CSSProperties = {
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontWeight: 500,
   fontSize: 13,
   letterSpacing: "0.2em",
@@ -106,7 +106,7 @@ export const GuidanceBanner = () => {
       >
         <h2
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "'Albert Sans', sans-serif",
             fontWeight: 500,
             color: "#FFFFFF",
             fontSize: "clamp(48px, 8vw, 96px)",
@@ -119,7 +119,7 @@ export const GuidanceBanner = () => {
         </h2>
         <p
           style={{
-            fontFamily: "Manrope, sans-serif",
+            fontFamily: "Hanken Grotesk, sans-serif",
             fontWeight: 400,
             color: "#FFFFFF",
             fontSize: "clamp(15px, 1.6vw, 18px)",

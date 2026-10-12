@@ -37,7 +37,7 @@ export const CrossSellBlock = ({ exclude }: { exclude: AudienceKey[] }) => {
         <div
           className="mb-8"
           style={{
-            fontFamily: "Manrope, sans-serif",
+            fontFamily: "Hanken Grotesk, sans-serif",
             fontWeight: 500,
             fontSize: 12,
             letterSpacing: "0.2em",
@@ -58,7 +58,7 @@ export const CrossSellBlock = ({ exclude }: { exclude: AudienceKey[] }) => {
               <h3
                 className="mb-2 group-hover:text-[#121212] transition-colors"
                 style={{
-                  fontFamily: "'Cormorant Garamond', serif",
+                  fontFamily: "'Albert Sans', sans-serif",
                   fontWeight: 600,
                   fontSize: 30,
                   lineHeight: 1.2,

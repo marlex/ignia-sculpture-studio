@@ -82,7 +82,7 @@ function ModelViewerContent({
             right: "16px",
             background: "black",
             color: "white",
-            fontFamily: "Manrope, sans-serif",
+            fontFamily: "Hanken Grotesk, sans-serif",
             fontSize: "11px",
             padding: "8px 16px",
             border: "none",

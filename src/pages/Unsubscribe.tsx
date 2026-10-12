@@ -87,7 +87,7 @@ export default function Unsubscribe() {
       <main style={{ flex: 1, paddingTop: 190 }}>
         <section style={{ maxWidth: 560, margin: "0 auto", padding: "120px 24px 160px", textAlign: "center" }}>
           <h1 style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "'Albert Sans', sans-serif",
             fontWeight: 500,
             color: "#121212",
             fontSize: "clamp(32px, 4vw, 44px)",
@@ -96,7 +96,7 @@ export default function Unsubscribe() {
             margin: "0 0 24px",
           }}>{t.title}</h1>
           <p style={{
-            fontFamily: "Manrope, sans-serif",
+            fontFamily: "Hanken Grotesk, sans-serif",
             fontWeight: 400,
             color: "#666666",
             fontSize: 16,
@@ -113,7 +113,7 @@ export default function Unsubscribe() {
                 background: "#121212",
                 color: "#FFFFFF",
                 border: "1px solid #121212",
-                fontFamily: "Manrope, sans-serif",
+                fontFamily: "Hanken Grotesk, sans-serif",
                 fontWeight: 500,
                 fontSize: 13,
                 letterSpacing: "0.18em",

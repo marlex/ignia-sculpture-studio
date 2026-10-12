@@ -45,13 +45,13 @@ export const template = {
 
 const main: React.CSSProperties = {
   backgroundColor: '#ffffff',
-  fontFamily: "'Manrope', Arial, sans-serif",
+  fontFamily: "'Hanken Grotesk', Arial, sans-serif",
   color: '#121212',
 }
 const container: React.CSSProperties = { padding: '48px 40px', maxWidth: '560px' }
 const logo: React.CSSProperties = { display: 'block', margin: '0 0 32px' }
 const h1: React.CSSProperties = {
-  fontFamily: "'Cormorant Garamond', Georgia, serif",
+  fontFamily: "'Albert Sans', Georgia, serif",
   fontWeight: 600,
   fontSize: '24px',
   lineHeight: 1.2,

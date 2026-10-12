@@ -419,7 +419,7 @@ const ObraDetalle = () => {
                       <div className="flex items-center justify-between pb-4 mb-4 border-b border-border">
                         <h3
                           style={{
-                            fontFamily: "'Cormorant Garamond', serif",
+                            fontFamily: "'Albert Sans', sans-serif",
                             fontWeight: 300,
                             fontSize: 22,
                             color: "#121212",
@@ -435,7 +435,7 @@ const ObraDetalle = () => {
                       </p>
                       <dl
                         className="grid grid-cols-2 gap-y-3 gap-x-4"
-                        style={{ fontFamily: "Manrope, sans-serif", fontWeight: 500, fontSize: 13 }}
+                        style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 500, fontSize: 13 }}
                       >
                         <dt className="text-muted-line uppercase tracking-[0.12em]">Certificate No.</dt>
                         <dd className="text-ink">{cert?.number}</dd>

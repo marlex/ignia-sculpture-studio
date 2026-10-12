@@ -8,9 +8,9 @@ export default {
     container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
     extend: {
       fontFamily: {
-        display: ["Cormorant Garamond", "serif"],
-        body: ["Manrope", "sans-serif"],
-        sans: ["Manrope", "sans-serif"],
+        display: ["Albert Sans", "sans-serif"],
+        body: ["Hanken Grotesk", "sans-serif"],
+        sans: ["Hanken Grotesk", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

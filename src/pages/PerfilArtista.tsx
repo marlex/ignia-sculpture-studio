@@ -9,7 +9,7 @@ import { Seo } from "@/components/Seo";
 
 const labelStyle: React.CSSProperties = {
   display: "block",
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontWeight: 500,
   textTransform: "uppercase",
   letterSpacing: "0.14em",
@@ -24,7 +24,7 @@ const inputStyle: React.CSSProperties = {
   border: "none",
   borderBottom: "1px solid #121212",
   outline: "none",
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontWeight: 400,
   color: "#121212",
   fontSize: 16,
@@ -116,7 +116,7 @@ export default function PerfilArtista() {
         <section style={{ maxWidth: 460, margin: "0 auto", padding: "120px 24px 160px" }}>
           <div style={{ textAlign: "center" }}>
             <h1 style={{
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: "'Albert Sans', sans-serif",
               fontWeight: 500,
               color: "#121212",
               fontSize: "clamp(32px, 4vw, 44px)",
@@ -125,7 +125,7 @@ export default function PerfilArtista() {
               margin: "0 0 16px",
             }}>{t.title}</h1>
             <p style={{
-              fontFamily: "Manrope, sans-serif",
+              fontFamily: "Hanken Grotesk, sans-serif",
               fontWeight: 400,
               color: "#666666",
               fontSize: 16,
@@ -136,10 +136,10 @@ export default function PerfilArtista() {
 
           {saved ? (
             <div style={{ textAlign: "center" }}>
-              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, color: "#121212", fontSize: 24, marginBottom: 16 }}>
+              <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 24, marginBottom: 16 }}>
                 {t.savedTitle}
               </h2>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6, marginBottom: 32 }}>
+              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6, marginBottom: 32 }}>
                 {t.savedMsg}
               </p>
               <button
@@ -149,7 +149,7 @@ export default function PerfilArtista() {
                   background: "#121212",
                   color: "#FFFFFF",
                   border: "1px solid #121212",
-                  fontFamily: "Manrope, sans-serif",
+                  fontFamily: "Hanken Grotesk, sans-serif",
                   fontWeight: 500,
                   fontSize: 13,
                   letterSpacing: "0.18em",
@@ -175,7 +175,7 @@ export default function PerfilArtista() {
                 <textarea id="bio" required rows={5} value={bio} onChange={(e) => setBio(e.target.value)} style={{ ...inputStyle, resize: "vertical" }} />
               </div>
 
-              {error && <p style={{ color: "#b00020", fontFamily: "Manrope, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
+              {error && <p style={{ color: "#b00020", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
               <button
                 type="submit"
                 disabled={loading}
@@ -185,7 +185,7 @@ export default function PerfilArtista() {
                   background: "#121212",
                   color: "#FFFFFF",
                   border: "1px solid #121212",
-                  fontFamily: "Manrope, sans-serif",
+                  fontFamily: "Hanken Grotesk, sans-serif",
                   fontWeight: 500,
                   fontSize: 13,
                   letterSpacing: "0.18em",

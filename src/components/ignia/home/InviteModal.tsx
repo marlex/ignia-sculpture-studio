@@ -59,7 +59,7 @@ export const InviteModal = ({ open, onClose, variant = "default" }: Props) => {
       <style>{`
         @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
         @keyframes modalIn { from { opacity:0; transform: translateY(16px) } to { opacity:1; transform:translateY(0) } }
-        .role-btn { display:block; width:100%; text-align:left; padding:20px 24px; background:#FFFFFF; border:1px solid #121212; color:#121212; font-family:Manrope,sans-serif; font-weight:400; font-size:16px; letter-spacing:0.04em; cursor:pointer; transition: background 200ms, color 200ms; margin-bottom:12px; text-decoration:none; }
+        .role-btn { display:block; width:100%; text-align:left; padding:20px 24px; background:#FFFFFF; border:1px solid #121212; color:#121212; font-family:Hanken Grotesk, sans-serif; font-weight:400; font-size:16px; letter-spacing:0.04em; cursor:pointer; transition: background 200ms, color 200ms; margin-bottom:12px; text-decoration:none; }
         .role-btn:hover { background:#121212; color:#FFFFFF; }
         .role-sub { display:block; font-size:13px; font-weight:400; color:#666666; margin-top:4px; transition: color 200ms; }
         .role-btn:hover .role-sub { color:#AAAAAA; }
@@ -71,7 +71,7 @@ export const InviteModal = ({ open, onClose, variant = "default" }: Props) => {
         <button
           onClick={onClose}
           aria-label={t.close}
-          style={{ position: "absolute", top: 12, right: 16, background: "transparent", border: "none", cursor: "pointer", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "#121212", fontSize: 32, lineHeight: 1, width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center" }}
+          style={{ position: "absolute", top: 12, right: 16, background: "transparent", border: "none", cursor: "pointer", fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, color: "#121212", fontSize: 32, lineHeight: 1, width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center" }}
         >×</button>
 
         <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-7">

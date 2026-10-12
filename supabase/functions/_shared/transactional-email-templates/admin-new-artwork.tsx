@@ -36,9 +36,9 @@ export const template = {
   previewData: { artistName: 'Ada', title: 'Celosía menor' },
 } satisfies TemplateEntry
 
-const main: React.CSSProperties = { backgroundColor: '#ffffff', fontFamily: "'Manrope', Arial, sans-serif", color: '#121212' }
+const main: React.CSSProperties = { backgroundColor: '#ffffff', fontFamily: "'Hanken Grotesk', Arial, sans-serif", color: '#121212' }
 const container: React.CSSProperties = { padding: '48px 40px', maxWidth: '560px' }
 const logo: React.CSSProperties = { display: 'block', margin: '0 0 32px' }
-const h1: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 600, fontSize: '24px', lineHeight: 1.2, color: '#121212', margin: '0 0 24px' }
+const h1: React.CSSProperties = { fontFamily: "'Albert Sans', Georgia, serif", fontWeight: 600, fontSize: '24px', lineHeight: 1.2, color: '#121212', margin: '0 0 24px' }
 const text: React.CSSProperties = { fontSize: '16px', lineHeight: 1.6, color: '#121212', margin: '0 0 16px', fontWeight: 400 }
 const link: React.CSSProperties = { color: '#121212', textDecoration: 'underline' }

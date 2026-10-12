@@ -26,7 +26,7 @@ type Filter = "todas" | Status;
 
 const cellStyle: React.CSSProperties = {
   padding: "12px 10px",
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontSize: 14,
   color: "#121212",
   borderBottom: "1px solid #eee",
@@ -43,7 +43,7 @@ const thStyle: React.CSSProperties = {
   borderBottom: "1px solid #121212",
 };
 const tabBtn = (active: boolean): React.CSSProperties => ({
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontSize: 13,
   fontWeight: 500,
   letterSpacing: "0.08em",
@@ -63,7 +63,7 @@ const badge = (s: Status): React.CSSProperties => {
   return {
     display: "inline-block",
     padding: "4px 10px",
-    fontFamily: "Manrope, sans-serif",
+    fontFamily: "Hanken Grotesk, sans-serif",
     fontSize: 11,
     fontWeight: 500,
     letterSpacing: "0.1em",
@@ -162,11 +162,11 @@ export default function Obras() {
   return (
     <div>
       <h1 style={{
-        fontFamily: "'Cormorant Garamond', serif", fontWeight: 500, color: "#121212",
+        fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212",
         fontSize: "clamp(28px, 3.4vw, 40px)", lineHeight: 1.1, letterSpacing: "-0.02em",
         margin: "0 0 8px",
       }}>{t.title}</h1>
-      <p style={{ fontFamily: "Manrope, sans-serif", fontSize: 13, color: "#666", margin: "0 0 20px" }}>
+      <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666", margin: "0 0 20px" }}>
         {t.subtitle}
       </p>
 
@@ -176,7 +176,7 @@ export default function Obras() {
           padding: "6px 12px",
           background: "#FFF4D6",
           color: "#8A6D00",
-          fontFamily: "Manrope, sans-serif",
+          fontFamily: "Hanken Grotesk, sans-serif",
           fontSize: 12,
           fontWeight: 500,
           letterSpacing: "0.1em",

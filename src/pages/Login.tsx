@@ -12,7 +12,7 @@ const inputStyle: React.CSSProperties = {
   border: "none",
   borderBottom: "1px solid #121212",
   outline: "none",
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontWeight: 400,
   color: "#121212",
   fontSize: 16,
@@ -22,7 +22,7 @@ const inputStyle: React.CSSProperties = {
 
 const labelStyle: React.CSSProperties = {
   display: "block",
-  fontFamily: "Manrope, sans-serif",
+  fontFamily: "Hanken Grotesk, sans-serif",
   fontWeight: 500,
   textTransform: "uppercase",
   letterSpacing: "0.14em",
@@ -130,7 +130,7 @@ export default function Login() {
         <section style={{ maxWidth: 460, margin: "0 auto", padding: "120px 24px 160px" }}>
           <div style={{ textAlign: "center" }}>
             <h1 style={{
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: "'Albert Sans', sans-serif",
               fontWeight: 500,
               color: "#121212",
               fontSize: "clamp(32px, 4vw, 44px)",
@@ -139,7 +139,7 @@ export default function Login() {
               margin: "0 0 16px",
             }}>{t.title}</h1>
             <p style={{
-              fontFamily: "Manrope, sans-serif",
+              fontFamily: "Hanken Grotesk, sans-serif",
               fontWeight: 400,
               color: "#666666",
               fontSize: 16,
@@ -159,7 +159,7 @@ export default function Login() {
             </div>
 
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 40, flexWrap: "wrap", gap: 12 }}>
-              <label style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: 14, color: "#121212" }}>
+              <label style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, fontSize: 14, color: "#121212" }}>
                 <input
                   type="checkbox"
                   checked={remember}
@@ -168,13 +168,13 @@ export default function Login() {
                 />
                 {t.remember}
               </label>
-              <Link to="/recuperar-password" style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: 14, color: "#121212", textDecoration: "underline" }}>
+              <Link to="/recuperar-password" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, fontSize: 14, color: "#121212", textDecoration: "underline" }}>
                 {t.forgot}
               </Link>
             </div>
 
-            {error && <p style={{ color: "#b00020", fontFamily: "Manrope, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
-            {info && <p style={{ color: "#121212", fontFamily: "Manrope, sans-serif", fontSize: 14, marginBottom: 16 }}>{info}</p>}
+            {error && <p style={{ color: "#b00020", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
+            {info && <p style={{ color: "#121212", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, marginBottom: 16 }}>{info}</p>}
             <button
               type="submit"
               disabled={loading}
@@ -184,7 +184,7 @@ export default function Login() {
                 background: "#121212",
                 color: "#FFFFFF",
                 border: "1px solid #121212",
-                fontFamily: "Manrope, sans-serif",
+                fontFamily: "Hanken Grotesk, sans-serif",
                 fontWeight: 500,
                 fontSize: 13,
                 letterSpacing: "0.18em",
@@ -199,7 +199,7 @@ export default function Login() {
 
             <p style={{
               marginTop: 32,
-              fontFamily: "Manrope, sans-serif",
+              fontFamily: "Hanken Grotesk, sans-serif",
               fontWeight: 400,
               fontSize: 14,
               color: "#666666",
