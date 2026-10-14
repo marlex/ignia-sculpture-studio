@@ -31,7 +31,7 @@ export const HeroFull = () => {
       : {
           title: "Come closer. Reimagine sculpture.",
           subtitle:
-            "Discover, experience and collect sculpture from artists and galleries around the world. Explore each work in 3D, receive its certificate of authenticity, and see it in your own space.",
+            "The institution sculpture deserved. A modern vision that brings it into view: discover works from artists and galleries around the world, explore each one in 3D, collect it with its certificate of authenticity and see it in your own space.",
           cta: "Explore the Collection",
           link: "New here? Start with Guidance →",
           imgAlt: "Editorial black-and-white sculpture detail",
