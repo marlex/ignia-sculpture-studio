@@ -22,6 +22,12 @@ type Profile = {
   founding_artist: boolean;
   requested_role?: string | null;
   created_at?: string;
+  origin?: string | null;
+  technique?: string | null;
+  bio?: string | null;
+  instagram?: string | null;
+  website?: string | null;
+  portfolio_url?: string | null;
 };
 
 const STATUSES = [
@@ -93,6 +99,7 @@ export default function Solicitudes() {
   const [pendingFounding, setPendingFounding] = useState<Record<string, boolean>>({});
   const [confirm, setConfirm] = useState<PendingConfirm>(null);
   const [reopenApp, setReopenApp] = useState<Application | null>(null);
+  const [viewProfile, setViewProfile] = useState<Profile | null>(null);
   const [inviteName, setInviteName] = useState("");
   const [inviteEmail, setInviteEmail] = useState("");
   const [inviteSocial, setInviteSocial] = useState("");
@@ -132,6 +139,12 @@ export default function Solicitudes() {
     inviteDirectSocial: "Instagram / Web (opcional)",
     inviteDirectSubmit: "Enviar invitación",
     inviteDirectSending: "Enviando…",
+    viewDetails: "Ver detalles",
+    detailsTitle: "Detalles de la solicitud",
+    fOrigin: "Origen", fTechnique: "Técnica", fBio: "Biografía",
+    fInstagram: "Instagram", fWebsite: "Sitio web", fPortfolio: "Portfolio",
+    noValue: "—",
+    close: "Cerrar",
   } : {
     title: "Applications",
     counter: "Confirmed founding artists",
@@ -165,6 +178,12 @@ export default function Solicitudes() {
     inviteDirectSocial: "Instagram / Website (optional)",
     inviteDirectSubmit: "Send invitation",
     inviteDirectSending: "Sending…",
+    viewDetails: "View details",
+    detailsTitle: "Application details",
+    fOrigin: "Origin", fTechnique: "Technique", fBio: "Biography",
+    fInstagram: "Instagram", fWebsite: "Website", fPortfolio: "Portfolio",
+    noValue: "—",
+    close: "Close",
   };
 
   const statusLabel = (v: string) => {
@@ -175,7 +194,7 @@ export default function Solicitudes() {
   const loadData = async () => {
     const [{ data: appsData }, { data: profData }] = await Promise.all([
       supabase.from("applications").select("*").order("created_at", { ascending: false }),
-      supabase.from("profiles").select("id, email, name, role, founding_artist, requested_role, created_at"),
+      supabase.from("profiles").select("id, email, name, role, founding_artist, requested_role, created_at, origin, technique, bio, instagram, website, portfolio_url"),
     ]);
     setApps((appsData as Application[]) || []);
     setProfiles((profData as Profile[]) || []);
@@ -598,6 +617,9 @@ export default function Solicitudes() {
                   <td style={cellStyle}>{p.requested_role || "—"}</td>
                   <td style={cellStyle}>{p.created_at ? new Date(p.created_at).toLocaleDateString(lang === "es" ? "es-ES" : "en-US") : "—"}</td>
                   <td style={cellStyle}>
+                    <button type="button" onClick={() => setViewProfile(p)} style={smallBtn}>
+                      {t.viewDetails}
+                    </button>
                     <button type="button" disabled={disabled} onClick={() => approveUser(p.id, "artist")} style={smallBtn}>
                       {t.approveAsArtist}
                     </button>
@@ -629,6 +651,26 @@ export default function Solicitudes() {
         </Modal>
       )}
 
+      {viewProfile && (
+        <Modal onClose={() => setViewProfile(null)}>
+          <h2 style={modalTitle}>{t.detailsTitle}</h2>
+          <p style={{ ...modalText, fontWeight: 500 }}>{viewProfile.name || "—"} · {viewProfile.email}</p>
+          <div style={{ display: "grid", gap: 14, marginBottom: 24 }}>
+            <DetailRow label={t.fOrigin} value={viewProfile.origin} noValue={t.noValue} />
+            <DetailRow label={t.fTechnique} value={viewProfile.technique} noValue={t.noValue} />
+            <DetailRow label={t.fInstagram} value={viewProfile.instagram} noValue={t.noValue} />
+            <DetailRow label={t.fWebsite} value={viewProfile.website} noValue={t.noValue} />
+            <DetailRow label={t.fPortfolio} value={viewProfile.portfolio_url} noValue={t.noValue} />
+            <DetailRow label={t.fBio} value={viewProfile.bio} noValue={t.noValue} multiline />
+          </div>
+          <div style={modalActions}>
+            <button type="button" onClick={() => setViewProfile(null)} style={btnGhost}>
+              {t.close}
+            </button>
+          </div>
+        </Modal>
+      )}
+
       {reopenApp && (
         <Modal onClose={() => !busy && setReopenApp(null)}>
           <h2 style={modalTitle}>{t.reopenTitle}</h2>
@@ -643,6 +685,23 @@ export default function Solicitudes() {
           </div>
         </Modal>
       )}
+    </div>
+  );
+}
+
+function DetailRow({ label, value, noValue, multiline }: { label: string; value?: string | null; noValue: string; multiline?: boolean }) {
+  return (
+    <div>
+      <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 11, fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "#666", marginBottom: 4 }}>
+        {label}
+      </div>
+      <div style={{
+        fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212",
+        whiteSpace: multiline ? "pre-wrap" : "normal", lineHeight: 1.55,
+        maxHeight: multiline ? 240 : undefined, overflowY: multiline ? "auto" : undefined,
+      }}>
+        {value || noValue}
+      </div>
     </div>
   );
 }
