@@ -100,23 +100,27 @@ export default function ResetPassword() {
       <Header theme="light" />
       <main style={{ flex: 1, paddingTop: 140 }}>
         <section style={{ maxWidth: 460, margin: "0 auto", padding: "80px 24px 120px" }}>
-          <h1 style={{
-            fontFamily: "'Albert Sans', sans-serif",
-            fontWeight: 300,
-            color: "#121212",
-            fontSize: "clamp(32px, 4vw, 44px)",
-            lineHeight: 1.1,
-            letterSpacing: "-0.02em",
-            margin: "0 0 16px",
-          }}>{t.title}</h1>
-          <p style={{
-            fontFamily: "Hanken Grotesk, sans-serif",
-            fontWeight: 400,
-            color: "#666666",
-            fontSize: 16,
-            lineHeight: 1.6,
-            marginBottom: 48,
-          }}>{t.subtitle}</p>
+          {!done && (
+            <>
+              <h1 style={{
+                fontFamily: "'Albert Sans', sans-serif",
+                fontWeight: 300,
+                color: "#121212",
+                fontSize: "clamp(32px, 4vw, 44px)",
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+                margin: "0 0 16px",
+              }}>{t.title}</h1>
+              <p style={{
+                fontFamily: "Hanken Grotesk, sans-serif",
+                fontWeight: 400,
+                color: "#666666",
+                fontSize: 16,
+                lineHeight: 1.6,
+                marginBottom: 48,
+              }}>{t.subtitle}</p>
+            </>
+          )}
 
           {done ? (
             <div style={{ textAlign: "center" }}>
