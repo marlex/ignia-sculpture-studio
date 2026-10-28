@@ -112,7 +112,7 @@ export default function ArtistaDetalle() {
       </Link>
 
       <h1 style={{
-        fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212",
+        fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212",
         fontSize: "clamp(28px, 3.4vw, 40px)", lineHeight: 1.1, letterSpacing: "-0.02em",
         margin: "0 0 4px",
       }}>{profile.name || profile.email}</h1>
@@ -131,7 +131,7 @@ export default function ArtistaDetalle() {
         <Field label={t.bio} value={profile.bio} noValue={t.noValue} multiline />
       </div>
 
-      <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 24, margin: "0 0 16px" }}>
+      <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 24, margin: "0 0 16px" }}>
         {t.worksTitle}
       </h2>
       <div style={{ overflowX: "auto" }}>

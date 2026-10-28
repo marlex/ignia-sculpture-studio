@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 
 const h1Style: React.CSSProperties = {
   fontFamily: "'Albert Sans', sans-serif",
-  fontWeight: 600,
+  fontWeight: 300,
   color: "#121212",
   fontSize: "clamp(28px, 3.4vw, 40px)",
   lineHeight: 1.1,

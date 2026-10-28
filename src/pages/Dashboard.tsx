@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/auth/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { AppBrand } from "@/components/ignia/AppBrand";
 import { AppSidebar } from "@/components/ignia/AppSidebar";
+import { AppAccountMenu } from "@/components/ignia/AppAccountMenu";
 import { useSetLang, type Lang } from "@/i18n/LanguageContext";
 
 const NAV = ["Resumen", "Mis obras", "Analíticas", "Configuración"];
@@ -29,9 +30,7 @@ export default function Dashboard() {
   const [active, setActive] = useState(0);
   const [artworks, setArtworks] = useState<Artwork[]>([]);
   const [loadingArtworks, setLoadingArtworks] = useState(true);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [savingLang, setSavingLang] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
 
   const updateLang = async (l: Lang) => {
     if (!user || savingLang) return;
@@ -49,14 +48,6 @@ export default function Dashboard() {
   }, [authLoading, user, profile, navigate]);
 
   useEffect(() => {
-    const onDoc = (e: MouseEvent) => {
-      if (!menuRef.current?.contains(e.target as Node)) setMenuOpen(false);
-    };
-    document.addEventListener("mousedown", onDoc);
-    return () => document.removeEventListener("mousedown", onDoc);
-  }, []);
-
-  useEffect(() => {
     if (!user || profile?.role !== "artist") return;
     supabase
       .from("artworks")
@@ -72,9 +63,6 @@ export default function Dashboard() {
   if (authLoading || !user || profile?.role !== "artist") return null;
 
   const profileIncomplete = !profile.origin || !profile.technique || !profile.bio;
-  const initials = profile.name
-    ? profile.name.trim().split(/\s+/).slice(0, 2).map((w) => w[0]?.toUpperCase()).join("")
-    : (user.email?.[0] || "?").toUpperCase();
   const activeCount = artworks.filter((a) => a.status === "aprobada").length;
   const pendingCount = artworks.filter((a) => a.status === "pendiente").length;
 
@@ -97,69 +85,14 @@ export default function Dashboard() {
           >
             Ver sitio público ↗
           </a>
-          <div ref={menuRef} style={{ position: "relative" }}>
-            <button
-              onClick={() => setMenuOpen((v) => !v)}
-              aria-haspopup="true"
-              aria-expanded={menuOpen}
-              style={{ display: "flex", alignItems: "center", gap: 10, background: "none", border: "none", cursor: "pointer", padding: 0 }}
-            >
-              <div
-                aria-hidden
-                style={{
-                  width: 32, height: 32, borderRadius: "50%",
-                  background: "#121212", color: "#FFFFFF",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, letterSpacing: "-0.04em", fontSize: 13,
-                  flexShrink: 0,
-                }}
-              >
-                {initials}
-              </div>
-              <div style={{ lineHeight: 1.3, textAlign: "left" }}>
-                <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 500, color: "#121212", fontSize: 14 }}>
-                  {profile.name || user.email}
-                </div>
-                <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 12 }}>
-                  {profile.founding_artist ? "Artista Fundador" : "Artista"}
-                </div>
-              </div>
-              <span aria-hidden style={{ fontSize: 10, color: "#666666", transition: "transform 0.15s", transform: menuOpen ? "rotate(180deg)" : "none" }}>▾</span>
-            </button>
-            {menuOpen && (
-              <div
-                role="menu"
-                style={{
-                  position: "absolute", right: 0, top: "calc(100% + 10px)", minWidth: 180,
-                  background: "#FFFFFF", border: "1px solid #E5E5E5", boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
-                  zIndex: 50,
-                }}
-              >
-                <button
-                  role="menuitem"
-                  onClick={() => { setActive(3); setMenuOpen(false); }}
-                  style={{
-                    display: "block", width: "100%", textAlign: "left", padding: "12px 16px",
-                    background: "none", border: "none", cursor: "pointer",
-                    fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212",
-                  }}
-                >
-                  Configuración
-                </button>
-                <button
-                  role="menuitem"
-                  onClick={async () => { await signOut(); navigate("/"); }}
-                  style={{
-                    display: "block", width: "100%", textAlign: "left", padding: "12px 16px",
-                    background: "none", border: "none", borderTop: "1px solid #E5E5E5", cursor: "pointer",
-                    fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212",
-                  }}
-                >
-                  Cerrar sesión
-                </button>
-              </div>
-            )}
-          </div>
+          <AppAccountMenu
+            name={profile.name || user.email || ""}
+            subtitle={profile.founding_artist ? "Artista Fundador" : "Artista"}
+            items={[
+              { key: "config", label: "Configuración", onClick: () => setActive(3) },
+              { key: "signout", label: "Cerrar sesión", onClick: async () => { await signOut(); navigate("/"); } },
+            ]}
+          />
         </div>
       </header>
 
@@ -198,7 +131,7 @@ export default function Dashboard() {
               {!profileIncomplete && (
                 <div style={{ border: "1px solid #E5E5E5", padding: "24px 28px", marginBottom: 40 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 16 }}>
-                    <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, letterSpacing: "-0.04em", color: "#121212", fontSize: 20, margin: 0 }}>
+                    <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, letterSpacing: "-0.04em", color: "#121212", fontSize: 20, margin: 0 }}>
                       Mi perfil
                     </h2>
                     <Link to="/perfil-artista" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666666" }}>
@@ -325,7 +258,7 @@ export default function Dashboard() {
               </h1>
 
               <div style={{ border: "1px solid #E5E5E5", padding: "24px 28px", marginBottom: 24, maxWidth: 520 }}>
-                <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, letterSpacing: "-0.04em", color: "#121212", fontSize: 20, margin: "0 0 16px" }}>
+                <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, letterSpacing: "-0.04em", color: "#121212", fontSize: 20, margin: "0 0 16px" }}>
                   Cuenta
                 </h2>
                 <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
@@ -338,7 +271,7 @@ export default function Dashboard() {
 
               <div style={{ border: "1px solid #E5E5E5", padding: "24px 28px", marginBottom: 24, maxWidth: 520 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 16 }}>
-                  <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, letterSpacing: "-0.04em", color: "#121212", fontSize: 20, margin: 0 }}>
+                  <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, letterSpacing: "-0.04em", color: "#121212", fontSize: 20, margin: 0 }}>
                     Perfil público
                   </h2>
                   <Link to="/perfil-artista" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666666" }}>
@@ -357,7 +290,7 @@ export default function Dashboard() {
               </div>
 
               <div style={{ border: "1px solid #E5E5E5", padding: "24px 28px", marginBottom: 24, maxWidth: 520 }}>
-                <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, letterSpacing: "-0.04em", color: "#121212", fontSize: 20, margin: "0 0 16px" }}>
+                <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, letterSpacing: "-0.04em", color: "#121212", fontSize: 20, margin: "0 0 16px" }}>
                   Idioma de comunicación
                 </h2>
                 <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#666666", margin: "0 0 16px" }}>

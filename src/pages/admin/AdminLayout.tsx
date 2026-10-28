@@ -5,6 +5,7 @@ import { useAuth } from "@/auth/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { AppBrand } from "@/components/ignia/AppBrand";
 import { AppSidebar } from "@/components/ignia/AppSidebar";
+import { AppAccountMenu } from "@/components/ignia/AppAccountMenu";
 import { ADMIN_SECTIONS } from "./sections";
 
 export default function AdminLayout() {
@@ -28,7 +29,7 @@ export default function AdminLayout() {
 
   if (checking) return null;
 
-  const t = lang === "es" ? { signout: "Salir" } : { signout: "Sign out" };
+  const t = lang === "es" ? { signout: "Cerrar sesión" } : { signout: "Sign out" };
 
   return (
     <div style={{ background: "#FFFFFF", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
@@ -44,16 +45,13 @@ export default function AdminLayout() {
             {lang === "es" ? "Ver sitio público ↗" : "View public site ↗"}
           </a>
           {user && (
-            <span style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14 }}>
-              {user.email}
-            </span>
+            <AppAccountMenu
+              name={user.email || ""}
+              items={[
+                { key: "signout", label: t.signout, onClick: async () => { await signOut(); navigate("/login"); } },
+              ]}
+            />
           )}
-          <button
-            onClick={async () => { await signOut(); navigate("/login"); }}
-            style={{ background: "none", border: "none", color: "#121212", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, textDecoration: "underline", cursor: "pointer" }}
-          >
-            {t.signout}
-          </button>
         </div>
       </header>
       <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", minHeight: "calc(100vh - 65px)" }}>

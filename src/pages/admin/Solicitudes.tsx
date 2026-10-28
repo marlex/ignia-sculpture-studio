@@ -466,7 +466,7 @@ export default function Solicitudes() {
     <div>
       <h1 style={{
         fontFamily: "'Albert Sans', sans-serif",
-        fontWeight: 500, color: "#121212",
+        fontWeight: 300, color: "#121212",
         fontSize: "clamp(28px, 3.4vw, 40px)",
         lineHeight: 1.1, letterSpacing: "-0.02em",
         margin: "0 0 24px",
@@ -576,7 +576,7 @@ export default function Solicitudes() {
 
       <h2 style={{
         fontFamily: "'Albert Sans', sans-serif",
-        fontWeight: 500, color: "#121212",
+        fontWeight: 300, color: "#121212",
         fontSize: "clamp(22px, 2.6vw, 28px)",
         lineHeight: 1.1, letterSpacing: "-0.02em",
         margin: "56px 0 8px",
@@ -763,7 +763,7 @@ function Modal({ children, onClose }: { children: React.ReactNode; onClose: () =
 
 const modalTitle: React.CSSProperties = {
   fontFamily: "'Albert Sans', sans-serif",
-  fontWeight: 600, color: "#121212",
+  fontWeight: 300, color: "#121212",
   fontSize: 24, lineHeight: 1.2, margin: "0 0 16px",
 };
 const modalText: React.CSSProperties = {
