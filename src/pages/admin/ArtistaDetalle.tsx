@@ -16,6 +16,7 @@ type Profile = {
   instagram: string | null;
   website: string | null;
   portfolio_url: string | null;
+  lang: string | null;
 };
 
 type Artwork = {
@@ -47,6 +48,8 @@ export default function ArtistaDetalle() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [artworks, setArtworks] = useState<Artwork[]>([]);
   const [loading, setLoading] = useState(true);
+  const [resending, setResending] = useState(false);
+  const [resendMsg, setResendMsg] = useState<string | null>(null);
 
   const t = lang === "es" ? {
     back: "← Volver a Artistas",
@@ -59,6 +62,12 @@ export default function ArtistaDetalle() {
     worksTitle: "Obras",
     noWorks: "Sin obras todavía.",
     title: "Título", status: "Estado", price: "Precio", model: "3D",
+    resendTitle: "Reenviar email de bienvenida",
+    resendHint: "Útil si el artista recibió el email en el idioma equivocado o no le llegó.",
+    resendEs: "Reenviar en español",
+    resendEn: "Reenviar en inglés",
+    resendOk: "Email reenviado.",
+    resendFail: "No se pudo reenviar el email.",
   } : {
     back: "← Back to Artists",
     notFound: "Artist not found.",
@@ -70,29 +79,63 @@ export default function ArtistaDetalle() {
     worksTitle: "Works",
     noWorks: "No works yet.",
     title: "Title", status: "Status", price: "Price", model: "3D",
+    resendTitle: "Resend welcome email",
+    resendHint: "Useful if the artist got the email in the wrong language, or never received it.",
+    resendEs: "Resend in Spanish",
+    resendEn: "Resend in English",
+    resendOk: "Email resent.",
+    resendFail: "Could not resend the email.",
+  };
+
+  const loadProfile = async () => {
+    if (!id) return;
+    const [{ data: prof }, { data: arts }] = await Promise.all([
+      supabase
+        .from("profiles")
+        .select("id, email, name, role, founding_artist, created_at, origin, technique, bio, instagram, website, portfolio_url, lang")
+        .eq("id", id)
+        .maybeSingle(),
+      supabase
+        .from("artworks")
+        .select("id, title, status, price, image_url, model_status, created_at")
+        .eq("artist_id", id)
+        .order("created_at", { ascending: false }),
+    ]);
+    setProfile((prof as Profile) || null);
+    setArtworks((arts as Artwork[]) || []);
   };
 
   useEffect(() => {
-    if (!id) return;
     (async () => {
       setLoading(true);
-      const [{ data: prof }, { data: arts }] = await Promise.all([
-        supabase
-          .from("profiles")
-          .select("id, email, name, role, founding_artist, created_at, origin, technique, bio, instagram, website, portfolio_url")
-          .eq("id", id)
-          .maybeSingle(),
-        supabase
-          .from("artworks")
-          .select("id, title, status, price, image_url, model_status, created_at")
-          .eq("artist_id", id)
-          .order("created_at", { ascending: false }),
-      ]);
-      setProfile((prof as Profile) || null);
-      setArtworks((arts as Artwork[]) || []);
+      await loadProfile();
       setLoading(false);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
+
+  const resendWelcome = async (emailLang: "es" | "en") => {
+    if (!profile) return;
+    setResending(true); setResendMsg(null);
+    try {
+      const { error: langErr } = await supabase.from("profiles").update({ lang: emailLang }).eq("id", profile.id);
+      if (langErr) throw langErr;
+      const { error: sendErr } = await supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "founding-artist-welcome",
+          recipientEmail: profile.email,
+          templateData: { name: profile.name || "", lang: emailLang },
+        },
+      });
+      if (sendErr) throw sendErr;
+      await loadProfile();
+      setResendMsg(t.resendOk);
+    } catch {
+      setResendMsg(t.resendFail);
+    } finally {
+      setResending(false);
+    }
+  };
 
   if (loading) return null;
 
@@ -129,6 +172,52 @@ export default function ArtistaDetalle() {
         <Field label={t.website} value={profile.website} noValue={t.noValue} />
         <Field label={t.portfolio} value={profile.portfolio_url} noValue={t.noValue} />
         <Field label={t.bio} value={profile.bio} noValue={t.noValue} multiline />
+      </div>
+
+      <div style={{ border: "1px solid #E5E5E5", padding: "20px 24px", marginBottom: 48, maxWidth: 480 }}>
+        <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 18, margin: "0 0 6px" }}>
+          {t.resendTitle}
+        </h2>
+        <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666", margin: "0 0 16px", lineHeight: 1.5 }}>
+          {t.resendHint}
+        </p>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <button
+            type="button"
+            disabled={resending}
+            onClick={() => resendWelcome("es")}
+            style={{
+              fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, fontWeight: 500,
+              letterSpacing: "0.08em", textTransform: "uppercase",
+              padding: "10px 16px", border: "1px solid #121212",
+              background: profile.lang === "es" ? "#121212" : "#fff",
+              color: profile.lang === "es" ? "#fff" : "#121212",
+              cursor: resending ? "default" : "pointer", opacity: resending ? 0.6 : 1,
+            }}
+          >
+            {t.resendEs}
+          </button>
+          <button
+            type="button"
+            disabled={resending}
+            onClick={() => resendWelcome("en")}
+            style={{
+              fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, fontWeight: 500,
+              letterSpacing: "0.08em", textTransform: "uppercase",
+              padding: "10px 16px", border: "1px solid #121212",
+              background: profile.lang === "en" ? "#121212" : "#fff",
+              color: profile.lang === "en" ? "#fff" : "#121212",
+              cursor: resending ? "default" : "pointer", opacity: resending ? 0.6 : 1,
+            }}
+          >
+            {t.resendEn}
+          </button>
+        </div>
+        {resendMsg && (
+          <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#121212", marginTop: 12, marginBottom: 0 }}>
+            {resendMsg}
+          </p>
+        )}
       </div>
 
       <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 24, margin: "0 0 16px" }}>
