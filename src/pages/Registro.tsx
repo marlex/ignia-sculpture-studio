@@ -106,7 +106,7 @@ export default function Registro() {
       const { data, error: signErr } = await supabase.auth.signUp({
         email,
         password,
-        options: { data: { name, requested_role: requestedRole } },
+        options: { data: { name, requested_role: requestedRole, lang } },
       });
       if (signErr) throw signErr;
       setStep(data.session ? "pending" : "check-email");

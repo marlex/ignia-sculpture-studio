@@ -51,7 +51,7 @@ Deno.serve(async (req) => {
 
   const { data: candidates, error: candidatesError } = await supabase
     .from('profiles')
-    .select('id, email, name')
+    .select('id, email, name, lang')
     .eq('role', 'artist')
     .gte('approved_at', windowStart)
     .lte('approved_at', windowEnd)
@@ -81,7 +81,7 @@ Deno.serve(async (req) => {
       body: {
         templateName: 'artist-upload-reminder',
         recipientEmail: profile.email,
-        templateData: { name: profile.name || '', lang: 'es' },
+        templateData: { name: profile.name || '', lang: profile.lang === 'es' ? 'es' : 'en' },
       },
     })
     if (sendError) {

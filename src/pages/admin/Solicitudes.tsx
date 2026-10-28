@@ -28,6 +28,7 @@ type Profile = {
   instagram?: string | null;
   website?: string | null;
   portfolio_url?: string | null;
+  lang?: string | null;
 };
 
 const STATUSES = [
@@ -201,7 +202,7 @@ export default function Solicitudes() {
   const loadData = async () => {
     const [{ data: appsData }, { data: profData }] = await Promise.all([
       supabase.from("applications").select("*").order("created_at", { ascending: false }),
-      supabase.from("profiles").select("id, email, name, role, founding_artist, requested_role, created_at, origin, technique, bio, instagram, website, portfolio_url"),
+      supabase.from("profiles").select("id, email, name, role, founding_artist, requested_role, created_at, origin, technique, bio, instagram, website, portfolio_url, lang"),
     ]);
     setApps((appsData as Application[]) || []);
     setProfiles((profData as Profile[]) || []);
@@ -430,7 +431,7 @@ export default function Solicitudes() {
             body: {
               templateName: "founding-artist-welcome",
               recipientEmail: approvedProfile.email,
-              templateData: { name: approvedProfile.name || "", lang },
+              templateData: { name: approvedProfile.name || "", lang: approvedProfile.lang === "es" ? "es" : "en" },
             },
           }).catch(() => {});
         }

@@ -46,32 +46,32 @@ Deno.serve(async (req) => {
 
     const { data: app, error: appErr } = await admin
       .from("applications")
-      .select("id, email, name")
+      .select("id, email, name, language, locale")
       .eq("id", application_id)
       .maybeSingle();
     if (appErr || !app) {
       return new Response(JSON.stringify({ error: "application not found" }), { status: 404, headers: { ...corsHeaders, "Content-Type": "application/json" } });
     }
 
-    const origin = req.headers.get("origin") ?? "";
-    const redirectTo = origin ? `${origin}/reset-password` : undefined;
-
-    // Invite the user by email. If user already exists this will error — we treat that as OK.
+    // Create the user silently — no Supabase Auth "invite" email. The only
+    // email this artist gets is our own branded founding-artist-welcome,
+    // sent below once their profile is actually set up.
     let userId: string | null = null;
-    const { data: invited, error: inviteErr } = await admin.auth.admin.inviteUserByEmail(app.email, {
-      data: { name: app.name },
-      redirectTo,
+    const { data: created, error: createErr } = await admin.auth.admin.createUser({
+      email: app.email,
+      email_confirm: true,
+      user_metadata: { name: app.name },
     });
-    if (inviteErr) {
+    if (createErr) {
       // If already exists, look up by listing users.
       const { data: list } = await admin.auth.admin.listUsers();
       const existing = list?.users.find((u) => u.email?.toLowerCase() === app.email.toLowerCase());
       if (!existing) {
-        return new Response(JSON.stringify({ error: inviteErr.message }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+        return new Response(JSON.stringify({ error: createErr.message }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
       }
       userId = existing.id;
     } else {
-      userId = invited.user?.id ?? null;
+      userId = created.user?.id ?? null;
     }
 
     if (!userId) {
@@ -87,6 +87,18 @@ Deno.serve(async (req) => {
       );
     if (profErr) {
       return new Response(JSON.stringify({ error: profErr.message }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
+
+    const lang = (app.locale ?? app.language) === "es" ? "es" : "en";
+    const { error: emailErr } = await admin.functions.invoke("send-transactional-email", {
+      body: {
+        templateName: "founding-artist-welcome",
+        recipientEmail: app.email,
+        templateData: { name: app.name || "", lang },
+      },
+    });
+    if (emailErr) {
+      console.error("Failed to send founding-artist-welcome", { error: emailErr, application_id });
     }
 
     return new Response(JSON.stringify({ ok: true, user_id: userId }), {

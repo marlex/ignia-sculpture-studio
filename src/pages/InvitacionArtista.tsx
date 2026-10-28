@@ -122,6 +122,7 @@ export default function InvitacionArtista() {
             instagram,
             website,
             portfolio_url: portfolioUrl,
+            lang,
           },
         },
       });
