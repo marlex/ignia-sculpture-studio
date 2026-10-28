@@ -252,6 +252,33 @@ export const Header = ({ theme = "dark" }: { theme?: "dark" | "light" }) => {
                   {t.signout}
                 </button>
               </>
+            ) : user ? (
+              <>
+                <Link
+                  to="/dashboard"
+                  className={`header-invite-btn inline-flex btn-primary !py-2 !px-4 text-[13px] font-medium ${!dark ? "btn-primary-inverse" : ""}`}
+                >
+                  My Studio
+                </Link>
+                <button
+                  onClick={handleSbLogout}
+                  className="header-invite-btn inline-flex !py-2 !px-4 text-[13px] font-medium"
+                  style={{
+                    background: "#121212",
+                    color: "#FFFFFF",
+                    border: "1px solid #121212",
+                    fontFamily: "var(--f-body)",
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                    transition: "opacity 0.2s",
+                    cursor: "pointer",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+                >
+                  {t.signout}
+                </button>
+              </>
             ) : (
               <>
                 <Link
