@@ -4,6 +4,7 @@ import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
 import { Seo } from "@/components/Seo";
+import { PasswordInput } from "@/components/ignia/PasswordInput";
 
 const labelStyle: React.CSSProperties = {
   display: "block",
@@ -178,7 +179,7 @@ export default function InvitacionArtista() {
               </div>
               <div style={{ marginBottom: 28 }}>
                 <label style={labelStyle} htmlFor="password">{t.fPassword}</label>
-                <input id="password" type="password" required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} style={inputStyle} />
+                <PasswordInput id="password" required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="new-password" />
               </div>
               <div style={{ marginBottom: 28 }}>
                 <label style={labelStyle} htmlFor="origin">{t.fOrigin}</label>

@@ -5,6 +5,7 @@ import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
 import { Seo } from "@/components/Seo";
+import { PasswordInput } from "@/components/ignia/PasswordInput";
 
 const inputStyle: React.CSSProperties = {
   width: "100%",
@@ -155,7 +156,7 @@ export default function Login() {
             </div>
             <div style={{ marginBottom: 24 }}>
               <label style={labelStyle} htmlFor="password">{t.password}</label>
-              <input id="password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} style={inputStyle} />
+              <PasswordInput id="password" required value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" />
             </div>
 
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 40, flexWrap: "wrap", gap: 12 }}>

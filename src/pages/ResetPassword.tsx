@@ -4,20 +4,7 @@ import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
-
-const inputStyle: React.CSSProperties = {
-  width: "100%",
-  background: "transparent",
-  border: "none",
-  borderBottom: "1px solid #121212",
-  outline: "none",
-  fontFamily: "Hanken Grotesk, sans-serif",
-  fontWeight: 400,
-  color: "#121212",
-  fontSize: 16,
-  padding: "0 0 8px",
-  borderRadius: 0,
-};
+import { PasswordInput } from "@/components/ignia/PasswordInput";
 
 const labelStyle: React.CSSProperties = {
   display: "block",
@@ -147,11 +134,11 @@ export default function ResetPassword() {
             <form onSubmit={handleSubmit}>
               <div style={{ marginBottom: 28 }}>
                 <label style={labelStyle} htmlFor="password">{t.password}</label>
-                <input id="password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} style={inputStyle} />
+                <PasswordInput id="password" required value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="new-password" />
               </div>
               <div style={{ marginBottom: 40 }}>
                 <label style={labelStyle} htmlFor="confirm">{t.confirm}</label>
-                <input id="confirm" type="password" required value={confirm} onChange={(e) => setConfirm(e.target.value)} style={inputStyle} />
+                <PasswordInput id="confirm" required value={confirm} onChange={(e) => setConfirm(e.target.value)} autoComplete="new-password" />
               </div>
               {error && <p style={{ color: "#b00020", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
               <button
