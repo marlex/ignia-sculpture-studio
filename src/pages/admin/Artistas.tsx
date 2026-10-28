@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -35,6 +36,7 @@ export default function Artistas() {
   const lang = useLang();
   const [rows, setRows] = useState<Row[]>([]);
   const [busy, setBusy] = useState<string | null>(null);
+  const [workCounts, setWorkCounts] = useState<Record<string, number>>({});
 
   const t = lang === "es" ? {
     title: "Artistas",
@@ -68,7 +70,22 @@ export default function Artistas() {
       .select("id, email, founding_artist, created_at, role")
       .in("role", ["artist", "artist_disabled"])
       .order("created_at", { ascending: false });
-    setRows((data as Row[]) || []);
+    const list = (data as Row[]) || [];
+    setRows(list);
+
+    if (list.length > 0) {
+      const { data: works } = await supabase
+        .from("artworks")
+        .select("artist_id")
+        .in("artist_id", list.map((r) => r.id));
+      const counts: Record<string, number> = {};
+      (works || []).forEach((w: { artist_id: string }) => {
+        counts[w.artist_id] = (counts[w.artist_id] || 0) + 1;
+      });
+      setWorkCounts(counts);
+    } else {
+      setWorkCounts({});
+    }
   };
 
   useEffect(() => { load(); }, []);
@@ -109,10 +126,10 @@ export default function Artistas() {
                 <td style={cellStyle}>{r.email}</td>
                 <td style={cellStyle}>{r.founding_artist ? t.yes : t.no}</td>
                 <td style={cellStyle}>{new Date(r.created_at).toLocaleDateString(lang === "es" ? "es-ES" : "en-US")}</td>
-                <td style={cellStyle}>0</td>
+                <td style={cellStyle}>{workCounts[r.id] || 0}</td>
                 <td style={cellStyle}>
                   <div style={{ display: "flex", gap: 8 }}>
-                    <button style={btn} disabled>{t.view}</button>
+                    <Link to={`/admin/dashboard/artistas/${r.id}`} style={{ ...btn, textDecoration: "none", display: "inline-block" }}>{t.view}</Link>
                     <button style={btn} disabled={busy === r.id} onClick={() => toggleDeactivate(r)}>
                       {r.role === "artist_disabled" ? t.reactivate : t.deactivate}
                     </button>
