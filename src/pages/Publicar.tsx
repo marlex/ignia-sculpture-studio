@@ -35,6 +35,7 @@ export default function Publicar() {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [photo, setPhoto] = useState<File | null>(null);
+  const [video, setVideo] = useState<File | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -62,6 +63,14 @@ export default function Publicar() {
         imageUrl = supabase.storage.from("artwork-images").getPublicUrl(path).data.publicUrl;
       }
 
+      let videoUrl: string | null = null;
+      if (video) {
+        const path = `${user.id}/${crypto.randomUUID()}-${video.name}`;
+        const { error: uploadErr } = await supabase.storage.from("artwork-media").upload(path, video);
+        if (uploadErr) throw uploadErr;
+        videoUrl = supabase.storage.from("artwork-media").getPublicUrl(path).data.publicUrl;
+      }
+
       const dimensions = [alto, ancho, profundo].filter(Boolean).length
         ? `${alto || "?"} x ${ancho || "?"} x ${profundo || "?"} cm`
         : null;
@@ -75,6 +84,8 @@ export default function Publicar() {
         year: yearVal ? Number(yearVal) : null,
         medium: medium || null,
         dimensions,
+        video_url: videoUrl,
+        model_status: videoUrl ? "processing" : "none",
       });
       if (insertErr) throw insertErr;
       setSubmitted(true);
@@ -135,23 +146,17 @@ export default function Publicar() {
             <input type="file" accept="image/jpeg,image/png" onChange={(e) => setPhoto(e.target.files?.[0] ?? null)} style={fieldInput} />
           </Field>
 
-          <div style={{ ...fieldWrap, opacity: 0.45 }}>
+          <div style={fieldWrap}>
             <label style={fieldLabel}>
-              Modelo 3D{" "}
+              Video para 3D / AR{" "}
               <span style={{ textTransform: "none", letterSpacing: 0, fontWeight: 400, color: "#999" }}>
-                (próximamente en octubre)
+                (opcional)
               </span>
             </label>
-            <input disabled placeholder="Disponible en octubre" style={{ ...fieldInput, cursor: "not-allowed" }} />
-          </div>
-          <div style={{ ...fieldWrap, opacity: 0.45 }}>
-            <label style={fieldLabel}>
-              Vista en AR{" "}
-              <span style={{ textTransform: "none", letterSpacing: 0, fontWeight: 400, color: "#999" }}>
-                (próximamente en octubre)
-              </span>
-            </label>
-            <input disabled placeholder="Disponible en octubre" style={{ ...fieldInput, cursor: "not-allowed" }} />
+            <input type="file" accept="video/mp4,video/quicktime,video/webm" onChange={(e) => setVideo(e.target.files?.[0] ?? null)} style={fieldInput} />
+            <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#999", fontSize: 13, lineHeight: 1.5, marginTop: 10 }}>
+              Graba una vuelta completa alrededor de la pieza, con buena luz y cámara fija. Con eso preparamos el modelo 3D y la vista en AR — puede tardar unos días en estar listo.
+            </p>
           </div>
 
           {error && <p style={{ color: "#b00020", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}

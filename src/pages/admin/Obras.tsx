@@ -13,6 +13,9 @@ type Artwork = {
   status: Status;
   created_at: string;
   image_url: string | null;
+  video_url: string | null;
+  glb_url: string | null;
+  model_status: "none" | "processing" | "ready";
 };
 
 type Profile = {
@@ -133,7 +136,7 @@ export default function Obras() {
     }
     const { data: arts } = await supabase
       .from("artworks")
-      .select("id, artist_id, title, price, year, status, created_at, image_url")
+      .select("id, artist_id, title, price, year, status, created_at, image_url, video_url, glb_url, model_status")
       .in("artist_id", ids)
       .order("created_at", { ascending: false });
     setArtworks((arts as Artwork[]) || []);
@@ -156,6 +159,15 @@ export default function Obras() {
 
   const updateStatus = async (id: string, status: Status) => {
     await supabase.from("artworks").update({ status }).eq("id", id);
+    load();
+  };
+
+  const uploadGlb = async (artwork: Artwork, file: File) => {
+    const path = `${artwork.artist_id}/${artwork.id}-${crypto.randomUUID()}.glb`;
+    const { error: uploadErr } = await supabase.storage.from("artwork-media").upload(path, file);
+    if (uploadErr) { alert(uploadErr.message); return; }
+    const glbUrl = supabase.storage.from("artwork-media").getPublicUrl(path).data.publicUrl;
+    await supabase.from("artworks").update({ glb_url: glbUrl, model_status: "ready" }).eq("id", artwork.id);
     load();
   };
 
@@ -205,12 +217,13 @@ export default function Obras() {
               <th style={thStyle}>{t.year}</th>
               <th style={thStyle}>{t.price}</th>
               <th style={thStyle}>{t.status}</th>
+              <th style={thStyle}>3D</th>
               <th style={thStyle}></th>
             </tr>
           </thead>
           <tbody>
             {!loading && filtered.length === 0 && (
-              <tr><td style={cellStyle} colSpan={6}>{t.empty}</td></tr>
+              <tr><td style={cellStyle} colSpan={7}>{t.empty}</td></tr>
             )}
             {filtered.map((a) => {
               const artist = profiles[a.artist_id];
@@ -228,6 +241,30 @@ export default function Obras() {
                   <td style={cellStyle}>{a.year ?? ","}</td>
                   <td style={cellStyle}>{a.price != null ? `€${a.price}` : ","}</td>
                   <td style={cellStyle}><span style={badge(a.status)}>{t.tabs[a.status]}</span></td>
+                  <td style={cellStyle}>
+                    {a.model_status === "none" && <span style={{ color: "#999" }}>—</span>}
+                    {a.model_status === "processing" && (
+                      <div style={{ display: "flex", flexDirection: "column", gap: 6, minWidth: 160 }}>
+                        {a.video_url && (
+                          <a href={a.video_url} target="_blank" rel="noreferrer" style={{ color: "#121212", fontSize: 12, textDecoration: "underline" }}>
+                            Ver video
+                          </a>
+                        )}
+                        <input
+                          type="file"
+                          accept=".glb,model/gltf-binary"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) uploadGlb(a, file);
+                          }}
+                          style={{ fontSize: 11, maxWidth: 160 }}
+                        />
+                      </div>
+                    )}
+                    {a.model_status === "ready" && (
+                      <span style={{ color: "#1F6B2A", fontSize: 12, fontWeight: 500 }}>✓ Listo</span>
+                    )}
+                  </td>
                   <td style={cellStyle}>
                     {a.status === "pendiente" && (
                       <div style={{ display: "flex", gap: 8 }}>
