@@ -464,13 +464,18 @@ export default function Solicitudes() {
 
   return (
     <div>
-      <h1 style={{
-        fontFamily: "'Albert Sans', sans-serif",
-        fontWeight: 300, color: "#121212",
-        fontSize: "clamp(28px, 3.4vw, 40px)",
-        lineHeight: 1.1, letterSpacing: "-0.02em",
-        margin: "0 0 24px",
-      }}>{t.title}</h1>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, marginBottom: 24 }}>
+        <h1 style={{
+          fontFamily: "'Albert Sans', sans-serif",
+          fontWeight: 300, color: "#121212",
+          fontSize: "clamp(28px, 3.4vw, 40px)",
+          lineHeight: 1.1, letterSpacing: "-0.02em",
+          margin: 0,
+        }}>{t.title}</h1>
+        <button type="button" onClick={() => setInviteModalOpen(true)} style={btnPrimary}>
+          {t.inviteDirectTrigger}
+        </button>
+      </div>
 
       <div style={{
         display: "inline-flex", alignItems: "baseline", gap: 16,
@@ -484,12 +489,6 @@ export default function Solicitudes() {
           {confirmedFounding} <span style={{ color: "#666", fontWeight: 400 }}>{t.of} {FOUNDING_CAP}</span>
         </span>
         <span style={{ fontSize: 13, color: "#666" }}>· {remaining} {t.remaining}</span>
-      </div>
-
-      <div style={{ marginBottom: 40 }}>
-        <button type="button" onClick={() => setInviteModalOpen(true)} style={btnPrimary}>
-          {t.inviteDirectTrigger}
-        </button>
       </div>
 
       {msg && (

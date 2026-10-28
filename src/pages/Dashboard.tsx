@@ -104,7 +104,7 @@ export default function Dashboard() {
         <section style={{ padding: "56px 56px 80px" }}>
           {active === 0 && (
             <>
-              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.04em", marginBottom: 32 }}>
+              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.04em", marginBottom: 32 }}>
                 Hola{profile.name ? `, ${profile.name}` : ""}.
               </h1>
 
@@ -179,11 +179,10 @@ export default function Dashboard() {
 
           {active === 1 && (
             <>
-              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.04em", marginBottom: 32 }}>
-                Mis obras
-              </h1>
-
-              <div style={{ marginBottom: 40 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, marginBottom: 40 }}>
+                <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.04em", margin: 0 }}>
+                  Mis obras
+                </h1>
                 <Link
                   to={profileIncomplete ? "/perfil-artista" : "/publicar"}
                   style={{
@@ -197,6 +196,7 @@ export default function Dashboard() {
                     letterSpacing: "0.14em",
                     textTransform: "uppercase",
                     textDecoration: "none",
+                    whiteSpace: "nowrap",
                   }}
                 >
                   Publicar una obra
@@ -232,7 +232,7 @@ export default function Dashboard() {
 
           {active === 2 && (
             <>
-              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.04em", marginBottom: 32 }}>
+              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.04em", marginBottom: 32 }}>
                 Analíticas
               </h1>
 
@@ -253,7 +253,7 @@ export default function Dashboard() {
 
           {active === 3 && (
             <>
-              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.04em", marginBottom: 32 }}>
+              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.04em", marginBottom: 32 }}>
                 Configuración
               </h1>
 
