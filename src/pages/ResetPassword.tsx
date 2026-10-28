@@ -119,7 +119,7 @@ export default function ResetPassword() {
           }}>{t.subtitle}</p>
 
           {done ? (
-            <div>
+            <div style={{ textAlign: "center" }}>
               <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 24, marginBottom: 16 }}>
                 {t.okTitle}
               </h2>

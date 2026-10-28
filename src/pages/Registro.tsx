@@ -144,7 +144,7 @@ export default function Registro() {
           </div>
 
           {step === "check-email" && (
-            <div>
+            <div style={{ textAlign: "center" }}>
               <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 24, marginBottom: 16 }}>
                 {t.checkEmailTitle}
               </h2>
@@ -155,7 +155,7 @@ export default function Registro() {
           )}
 
           {step === "pending" && (
-            <div>
+            <div style={{ textAlign: "center" }}>
               <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 24, marginBottom: 16 }}>
                 {t.pendingTitle}
               </h2>
