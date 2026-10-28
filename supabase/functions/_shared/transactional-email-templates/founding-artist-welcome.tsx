@@ -21,7 +21,7 @@ const copy = {
     body:
       'Tu solicitud ha sido aprobada. Bienvenida a la primera colección de escultores de Ignia.',
     body2:
-      'Inicia sesión con el email y la contraseña que elegiste al registrarte, y sube tu primera obra:',
+      'Inicia sesión con el email y la contraseña que elegiste al registrarte en la invitación, y sube tu primera obra:',
     cta: 'Ir a mi perfil',
     forgot: '¿Olvidaste tu contraseña?',
     resetCta: 'Crea una nueva aquí',
@@ -37,7 +37,7 @@ const copy = {
     heading: (n: string) => `Welcome to Ignia Institution, ${n}`,
     greeting: (n: string) => `Hello ${n},`,
     body: "Your application has been approved. Welcome to Ignia's first collection of sculptors.",
-    body2: 'Log in with the email and password you chose when you registered, and add your first work:',
+    body2: 'Log in with the email and password you chose when you registered on the invitation, and add your first work:',
     cta: 'Go to my profile',
     forgot: 'Forgot your password?',
     resetCta: 'Set a new one here',
