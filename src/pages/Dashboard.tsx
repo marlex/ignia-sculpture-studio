@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/auth/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { Logo } from "@/components/ignia/Logo";
+import { useSetLang, type Lang } from "@/i18n/LanguageContext";
 
 const NAV = ["Resumen", "Mis obras", "Analíticas", "Configuración"];
 
@@ -22,16 +23,37 @@ const STATUS_LABEL: Record<Artwork["status"], string> = {
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const { user, profile, loading: authLoading, signOut } = useAuth();
+  const { user, profile, loading: authLoading, signOut, refreshProfile } = useAuth();
+  const setLang = useSetLang();
   const [active, setActive] = useState(0);
   const [artworks, setArtworks] = useState<Artwork[]>([]);
   const [loadingArtworks, setLoadingArtworks] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [savingLang, setSavingLang] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  const updateLang = async (l: Lang) => {
+    if (!user || savingLang) return;
+    setSavingLang(true);
+    setLang(l);
+    await supabase.from("profiles").update({ lang: l }).eq("id", user.id);
+    await refreshProfile();
+    setSavingLang(false);
+  };
 
   useEffect(() => {
     if (authLoading) return;
     if (!user) { navigate("/login?redirect=/dashboard"); return; }
     if (profile?.role !== "artist") { navigate("/"); return; }
   }, [authLoading, user, profile, navigate]);
+
+  useEffect(() => {
+    const onDoc = (e: MouseEvent) => {
+      if (!menuRef.current?.contains(e.target as Node)) setMenuOpen(false);
+    };
+    document.addEventListener("mousedown", onDoc);
+    return () => document.removeEventListener("mousedown", onDoc);
+  }, []);
 
   useEffect(() => {
     if (!user || profile?.role !== "artist") return;
@@ -49,6 +71,9 @@ export default function Dashboard() {
   if (authLoading || !user || profile?.role !== "artist") return null;
 
   const profileIncomplete = !profile.origin || !profile.technique || !profile.bio;
+  const initials = profile.name
+    ? profile.name.trim().split(/\s+/).slice(0, 2).map((w) => w[0]?.toUpperCase()).join("")
+    : (user.email?.[0] || "?").toUpperCase();
   const activeCount = artworks.filter((a) => a.status === "aprobada").length;
   const pendingCount = artworks.filter((a) => a.status === "pendiente").length;
 
@@ -63,7 +88,7 @@ export default function Dashboard() {
       <header style={{ borderBottom: "1px solid #E5E5E5", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <Link to="/dashboard" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
           <Logo variant="dark" width={72} />
-          <span style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 16, letterSpacing: "0.02em" }}>
+          <span style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 16, letterSpacing: "-0.04em" }}>
             My Studio
           </span>
         </Link>
@@ -76,15 +101,69 @@ export default function Dashboard() {
           >
             Ver sitio público ↗
           </a>
-          <span style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14 }}>
-            {user.email} · {profile.founding_artist ? "Artista Fundador" : "Artista"}
-          </span>
-          <button
-            onClick={async () => { await signOut(); navigate("/"); }}
-            style={{ background: "none", border: "none", color: "#121212", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, textDecoration: "underline", cursor: "pointer" }}
-          >
-            Salir
-          </button>
+          <div ref={menuRef} style={{ position: "relative" }}>
+            <button
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-haspopup="true"
+              aria-expanded={menuOpen}
+              style={{ display: "flex", alignItems: "center", gap: 10, background: "none", border: "none", cursor: "pointer", padding: 0 }}
+            >
+              <div
+                aria-hidden
+                style={{
+                  width: 32, height: 32, borderRadius: "50%",
+                  background: "#121212", color: "#FFFFFF",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, letterSpacing: "-0.04em", fontSize: 13,
+                  flexShrink: 0,
+                }}
+              >
+                {initials}
+              </div>
+              <div style={{ lineHeight: 1.3, textAlign: "left" }}>
+                <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 500, color: "#121212", fontSize: 14 }}>
+                  {profile.name || user.email}
+                </div>
+                <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 12 }}>
+                  {profile.founding_artist ? "Artista Fundador" : "Artista"}
+                </div>
+              </div>
+              <span aria-hidden style={{ fontSize: 10, color: "#666666", transition: "transform 0.15s", transform: menuOpen ? "rotate(180deg)" : "none" }}>▾</span>
+            </button>
+            {menuOpen && (
+              <div
+                role="menu"
+                style={{
+                  position: "absolute", right: 0, top: "calc(100% + 10px)", minWidth: 180,
+                  background: "#FFFFFF", border: "1px solid #E5E5E5", boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+                  zIndex: 50,
+                }}
+              >
+                <button
+                  role="menuitem"
+                  onClick={() => { setActive(3); setMenuOpen(false); }}
+                  style={{
+                    display: "block", width: "100%", textAlign: "left", padding: "12px 16px",
+                    background: "none", border: "none", cursor: "pointer",
+                    fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212",
+                  }}
+                >
+                  Configuración
+                </button>
+                <button
+                  role="menuitem"
+                  onClick={async () => { await signOut(); navigate("/"); }}
+                  style={{
+                    display: "block", width: "100%", textAlign: "left", padding: "12px 16px",
+                    background: "none", border: "none", borderTop: "1px solid #E5E5E5", cursor: "pointer",
+                    fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212",
+                  }}
+                >
+                  Cerrar sesión
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </header>
 
@@ -111,7 +190,7 @@ export default function Dashboard() {
         <section style={{ padding: "56px 56px 80px" }}>
           {active === 0 && (
             <>
-              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 32 }}>
+              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.04em", marginBottom: 32 }}>
                 Hola{profile.name ? `, ${profile.name}` : ""}.
               </h1>
 
@@ -129,7 +208,7 @@ export default function Dashboard() {
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 40 }}>
                 {METRICS.map((m) => (
                   <div key={m.l} style={{ border: "1px solid #E5E5E5", padding: 28, borderRadius: 0 }}>
-                    <div style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, color: "#121212", fontSize: 40, lineHeight: 1 }}>{m.v}</div>
+                    <div style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, letterSpacing: "-0.04em", color: "#121212", fontSize: 40, lineHeight: 1 }}>{m.v}</div>
                     <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14, marginTop: 12 }}>{m.l}</div>
                   </div>
                 ))}
@@ -138,7 +217,7 @@ export default function Dashboard() {
               {!profileIncomplete && (
                 <div style={{ border: "1px solid #E5E5E5", padding: "24px 28px", marginBottom: 40 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 16 }}>
-                    <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 20, margin: 0 }}>
+                    <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, letterSpacing: "-0.04em", color: "#121212", fontSize: 20, margin: 0 }}>
                       Mi perfil
                     </h2>
                     <Link to="/perfil-artista" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666666" }}>
@@ -186,7 +265,7 @@ export default function Dashboard() {
 
           {active === 1 && (
             <>
-              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 32 }}>
+              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.04em", marginBottom: 32 }}>
                 Mis obras
               </h1>
 
@@ -239,14 +318,14 @@ export default function Dashboard() {
 
           {active === 2 && (
             <>
-              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 32 }}>
+              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.04em", marginBottom: 32 }}>
                 Analíticas
               </h1>
 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 40 }}>
                 {METRICS.map((m) => (
                   <div key={m.l} style={{ border: "1px solid #E5E5E5", padding: 28, borderRadius: 0 }}>
-                    <div style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, color: "#121212", fontSize: 40, lineHeight: 1 }}>{m.v}</div>
+                    <div style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, letterSpacing: "-0.04em", color: "#121212", fontSize: 40, lineHeight: 1 }}>{m.v}</div>
                     <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14, marginTop: 12 }}>{m.l}</div>
                   </div>
                 ))}
@@ -260,12 +339,12 @@ export default function Dashboard() {
 
           {active === 3 && (
             <>
-              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 32 }}>
+              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.04em", marginBottom: 32 }}>
                 Configuración
               </h1>
 
               <div style={{ border: "1px solid #E5E5E5", padding: "24px 28px", marginBottom: 24, maxWidth: 520 }}>
-                <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 20, margin: "0 0 16px" }}>
+                <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, letterSpacing: "-0.04em", color: "#121212", fontSize: 20, margin: "0 0 16px" }}>
                   Cuenta
                 </h2>
                 <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
@@ -278,7 +357,7 @@ export default function Dashboard() {
 
               <div style={{ border: "1px solid #E5E5E5", padding: "24px 28px", marginBottom: 24, maxWidth: 520 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 16 }}>
-                  <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 20, margin: 0 }}>
+                  <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, letterSpacing: "-0.04em", color: "#121212", fontSize: 20, margin: 0 }}>
                     Perfil público
                   </h2>
                   <Link to="/perfil-artista" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666666" }}>
@@ -294,6 +373,39 @@ export default function Dashboard() {
                 <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", margin: 0 }}>
                   <strong>Bio:</strong> {profile.bio || "—"}
                 </p>
+              </div>
+
+              <div style={{ border: "1px solid #E5E5E5", padding: "24px 28px", marginBottom: 24, maxWidth: 520 }}>
+                <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, letterSpacing: "-0.04em", color: "#121212", fontSize: 20, margin: "0 0 16px" }}>
+                  Idioma de comunicación
+                </h2>
+                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#666666", margin: "0 0 16px" }}>
+                  El idioma en el que te escribimos (emails, notificaciones). Se guarda en tu cuenta.
+                </p>
+                <div style={{ display: "flex", gap: 8 }}>
+                  {([
+                    { code: "es" as const, label: "Español" },
+                    { code: "en" as const, label: "English" },
+                  ]).map((l) => (
+                    <button
+                      key={l.code}
+                      onClick={() => updateLang(l.code)}
+                      disabled={savingLang}
+                      style={{
+                        padding: "10px 18px",
+                        fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, fontWeight: 500,
+                        letterSpacing: "0.04em",
+                        background: profile.lang === l.code ? "#121212" : "#fff",
+                        color: profile.lang === l.code ? "#fff" : "#121212",
+                        border: "1px solid #121212",
+                        cursor: savingLang ? "default" : "pointer",
+                        opacity: savingLang ? 0.6 : 1,
+                      }}
+                    >
+                      {l.label}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               <Link to="/recuperar-password" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", textDecoration: "underline" }}>

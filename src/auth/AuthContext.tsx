@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
+import { useSetLang, type Lang } from "@/i18n/LanguageContext";
 
 type Profile = {
   name: string | null;
@@ -12,6 +13,7 @@ type Profile = {
   instagram: string | null;
   website: string | null;
   portfolio_url: string | null;
+  lang: Lang;
 } | null;
 
 type AuthCtx = {
@@ -36,6 +38,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<Profile>(null);
   const [loading, setLoading] = useState(true);
+  const setLang = useSetLang();
 
   const loadProfile = async (userId?: string) => {
     if (!userId) {
@@ -44,10 +47,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
     const { data } = await supabase
       .from("profiles")
-      .select("name, role, founding_artist, origin, technique, bio, instagram, website, portfolio_url")
+      .select("name, role, founding_artist, origin, technique, bio, instagram, website, portfolio_url, lang")
       .eq("id", userId)
       .maybeSingle();
     setProfile(data ?? null);
+    // A returning artist's saved language takes priority over the
+    // browser-detected / previously stored one on this device.
+    if (data?.lang) setLang(data.lang);
   };
 
   useEffect(() => {
