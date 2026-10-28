@@ -145,6 +145,8 @@ export default function Solicitudes() {
     fInstagram: "Instagram", fWebsite: "Sitio web", fPortfolio: "Portfolio",
     noValue: "—",
     close: "Cerrar",
+    copyInviteLink: "Copiar link con datos prellenados",
+    inviteLinkCopied: "Link copiado. Ya trae el nombre y el email prellenados.",
   } : {
     title: "Applications",
     counter: "Confirmed founding artists",
@@ -184,6 +186,8 @@ export default function Solicitudes() {
     fInstagram: "Instagram", fWebsite: "Website", fPortfolio: "Portfolio",
     noValue: "—",
     close: "Close",
+    copyInviteLink: "Copy pre-filled link",
+    inviteLinkCopied: "Link copied. Name and email are already filled in.",
   };
 
   const statusLabel = (v: string) => {
@@ -392,6 +396,19 @@ export default function Solicitudes() {
     }
   };
 
+  const copyInviteLink = async () => {
+    const url = new URL("/invitacion-artista", window.location.origin);
+    if (inviteName) url.searchParams.set("name", inviteName);
+    if (inviteEmail) url.searchParams.set("email", inviteEmail);
+    if (inviteSocial) url.searchParams.set("instagram", inviteSocial);
+    try {
+      await navigator.clipboard.writeText(url.toString());
+      setMsg(t.inviteLinkCopied);
+    } catch {
+      setMsg(url.toString());
+    }
+  };
+
   const pendingUsers = useMemo(
     () => profiles.filter((p) => !p.role),
     [profiles],
@@ -494,9 +511,14 @@ export default function Solicitudes() {
             onChange={(e) => setInviteSocial(e.target.value)}
             style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, padding: "10px 12px", border: "1px solid #ccc" }}
           />
-          <button type="submit" disabled={inviteBusy} style={{ ...btnPrimary, justifySelf: "start" }}>
-            {inviteBusy ? t.inviteDirectSending : t.inviteDirectSubmit}
-          </button>
+          <div style={{ display: "flex", gap: 12 }}>
+            <button type="submit" disabled={inviteBusy} style={{ ...btnPrimary, justifySelf: "start" }}>
+              {inviteBusy ? t.inviteDirectSending : t.inviteDirectSubmit}
+            </button>
+            <button type="button" onClick={copyInviteLink} style={{ ...btnGhost, justifySelf: "start" }}>
+              {t.copyInviteLink}
+            </button>
+          </div>
         </form>
       </div>
 

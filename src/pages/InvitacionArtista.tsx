@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { useLang } from "@/i18n/LanguageContext";
@@ -35,15 +36,16 @@ type Step = "form" | "check-email";
 
 export default function InvitacionArtista() {
   const lang = useLang();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [params] = useSearchParams();
+  const [name, setName] = useState(params.get("name") || "");
+  const [email, setEmail] = useState(params.get("email") || "");
   const [password, setPassword] = useState("");
-  const [instagram, setInstagram] = useState("");
-  const [website, setWebsite] = useState("");
-  const [portfolioUrl, setPortfolioUrl] = useState("");
-  const [origin, setOrigin] = useState("");
-  const [technique, setTechnique] = useState("");
-  const [bio, setBio] = useState("");
+  const [instagram, setInstagram] = useState(params.get("instagram") || "");
+  const [website, setWebsite] = useState(params.get("website") || "");
+  const [portfolioUrl, setPortfolioUrl] = useState(params.get("portfolio") || "");
+  const [origin, setOrigin] = useState(params.get("origin") || "");
+  const [technique, setTechnique] = useState(params.get("technique") || "");
+  const [bio, setBio] = useState(params.get("bio") || "");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [step, setStep] = useState<Step>("form");
