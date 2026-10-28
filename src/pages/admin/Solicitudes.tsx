@@ -139,7 +139,7 @@ export default function Solicitudes() {
     inviteDirectName: "Nombre",
     inviteDirectEmail: "Email",
     inviteDirectSocial: "Instagram / Web (opcional)",
-    inviteDirectSubmit: "Enviar invitación",
+    inviteDirectSubmit: "Enviar",
     inviteDirectSending: "Enviando…",
     viewDetails: "Ver detalles",
     detailsTitle: "Detalles de la solicitud",
@@ -147,7 +147,7 @@ export default function Solicitudes() {
     fInstagram: "Instagram", fWebsite: "Sitio web", fPortfolio: "Portfolio",
     noValue: "—",
     close: "Cerrar",
-    copyInviteLink: "Copiar link con datos prellenados",
+    copyInviteLink: "Copiar link",
     inviteLinkCopied: "Link copiado. Ya trae el nombre y el email prellenados.",
   } : {
     title: "Applications",
@@ -181,7 +181,7 @@ export default function Solicitudes() {
     inviteDirectName: "Name",
     inviteDirectEmail: "Email",
     inviteDirectSocial: "Instagram / Website (optional)",
-    inviteDirectSubmit: "Send invitation",
+    inviteDirectSubmit: "Send",
     inviteDirectSending: "Sending…",
     viewDetails: "View details",
     detailsTitle: "Application details",
@@ -189,7 +189,7 @@ export default function Solicitudes() {
     fInstagram: "Instagram", fWebsite: "Website", fPortfolio: "Portfolio",
     noValue: "—",
     close: "Close",
-    copyInviteLink: "Copy pre-filled link",
+    copyInviteLink: "Copy link",
     inviteLinkCopied: "Link copied. Name and email are already filled in.",
   };
 
@@ -752,8 +752,21 @@ function Modal({ children, onClose }: { children: React.ReactNode; onClose: () =
         style={{
           background: "#fff", maxWidth: 480, width: "100%",
           padding: "32px 28px", border: "1px solid #121212",
+          position: "relative",
         }}
       >
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Cerrar"
+          style={{
+            position: "absolute", top: 16, right: 16,
+            background: "none", border: "none", cursor: "pointer",
+            fontSize: 20, lineHeight: 1, color: "#666", padding: 4,
+          }}
+        >
+          ×
+        </button>
         {children}
       </div>
     </div>
