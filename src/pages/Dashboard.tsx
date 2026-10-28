@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/auth/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
-import { Logo } from "@/components/ignia/Logo";
+import { AppBrand } from "@/components/ignia/AppBrand";
+import { AppSidebar } from "@/components/ignia/AppSidebar";
 import { useSetLang, type Lang } from "@/i18n/LanguageContext";
 
 const NAV = ["Resumen", "Mis obras", "Analíticas", "Configuración"];
@@ -86,12 +87,7 @@ export default function Dashboard() {
   return (
     <main style={{ background: "#FFFFFF", minHeight: "100vh" }}>
       <header style={{ borderBottom: "1px solid #E5E5E5", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <Link to="/dashboard" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
-          <Logo variant="dark" width={72} />
-          <span style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 16, letterSpacing: "-0.04em" }}>
-            My Studio
-          </span>
-        </Link>
+        <AppBrand to="/dashboard" label="My Studio" />
         <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
           <a
             href="/"
@@ -168,24 +164,9 @@ export default function Dashboard() {
       </header>
 
       <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", minHeight: "calc(100vh - 65px)" }}>
-        <aside style={{ borderRight: "1px solid #E5E5E5", padding: "40px 0" }}>
-          {NAV.map((n, i) => (
-            <button
-              key={n}
-              onClick={() => setActive(i)}
-              style={{
-                display: "block", width: "100%", textAlign: "left",
-                padding: "14px 32px",
-                fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, fontSize: 15,
-                color: "#121212", background: "transparent",
-                border: "none", borderLeft: active === i ? "2px solid #121212" : "2px solid transparent",
-                cursor: "pointer", borderRadius: 0,
-              }}
-            >
-              {n}
-            </button>
-          ))}
-        </aside>
+        <AppSidebar
+          items={NAV.map((n, i) => ({ key: n, label: n, active: active === i, onClick: () => setActive(i) }))}
+        />
 
         <section style={{ padding: "56px 56px 80px" }}>
           {active === 0 && (
