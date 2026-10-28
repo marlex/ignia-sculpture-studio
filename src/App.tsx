@@ -44,6 +44,7 @@ import AdminArtistas from "./pages/admin/Artistas.tsx";
 import AdminArtistaDetalle from "./pages/admin/ArtistaDetalle.tsx";
 import AdminObras from "./pages/admin/Obras.tsx";
 import AdminMetricas from "./pages/admin/Metricas.tsx";
+import AdminConfiguracion from "./pages/admin/Configuracion.tsx";
 import { GlobalInviteModal } from "@/components/ignia/GlobalInviteModal";
 import { ScrollToTop } from "@/components/ignia/ScrollToTop";
 
@@ -110,6 +111,7 @@ const App = () => (
                 <Route path="artistas/:id" element={<AdminArtistaDetalle />} />
                 <Route path="obras" element={<AdminObras />} />
                 <Route path="metricas" element={<AdminMetricas />} />
+                <Route path="configuracion" element={<AdminConfiguracion />} />
               </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>

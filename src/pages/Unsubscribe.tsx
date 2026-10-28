@@ -84,8 +84,8 @@ export default function Unsubscribe() {
   return (
     <div style={{ background: "#FFFFFF", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <Header theme="light" />
-      <main style={{ flex: 1, paddingTop: 190 }}>
-        <section style={{ maxWidth: 560, margin: "0 auto", padding: "120px 24px 160px", textAlign: "center" }}>
+      <main style={{ flex: 1, paddingTop: 140 }}>
+        <section style={{ maxWidth: 560, margin: "0 auto", padding: "64px 24px 160px", textAlign: "center" }}>
           <h1 style={{
             fontFamily: "'Albert Sans', sans-serif",
             fontWeight: 500,

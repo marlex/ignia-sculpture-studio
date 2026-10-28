@@ -29,7 +29,7 @@ export default function AdminLayout() {
 
   if (checking) return null;
 
-  const t = lang === "es" ? { signout: "Cerrar sesión" } : { signout: "Sign out" };
+  const t = lang === "es" ? { signout: "Cerrar sesión", config: "Configuración" } : { signout: "Sign out", config: "Settings" };
 
   return (
     <div style={{ background: "#FFFFFF", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
@@ -48,6 +48,7 @@ export default function AdminLayout() {
             <AppAccountMenu
               name={user.email || ""}
               items={[
+                { key: "config", label: t.config, onClick: () => navigate("/admin/dashboard/configuracion") },
                 { key: "signout", label: t.signout, onClick: async () => { await signOut(); navigate("/login"); } },
               ]}
             />

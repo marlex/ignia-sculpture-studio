@@ -12,4 +12,5 @@ export const ADMIN_SECTIONS: AdminSection[] = [
   { key: "artistas", path: "/admin/dashboard/artistas", labelEs: "Artistas", labelEn: "Artists" },
   { key: "obras", path: "/admin/dashboard/obras", labelEs: "Obras", labelEn: "Artworks" },
   { key: "metricas", path: "/admin/dashboard/metricas", labelEs: "Métricas", labelEn: "Metrics" },
+  { key: "configuracion", path: "/admin/dashboard/configuracion", labelEs: "Configuración", labelEn: "Settings" },
 ];

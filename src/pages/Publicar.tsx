@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/auth/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
+import { AppBrand } from "@/components/ignia/AppBrand";
 
 const fieldLabel: React.CSSProperties = {
   display: "block", fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400,
@@ -40,6 +41,8 @@ export default function Publicar() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const dirty = !submitted && !!(title || yearVal || medium || alto || ancho || profundo || price || description || photo || video);
+
   useEffect(() => {
     if (authLoading) return;
     if (!user) { navigate("/login?redirect=/publicar"); return; }
@@ -48,6 +51,22 @@ export default function Publicar() {
       navigate("/perfil-artista");
     }
   }, [authLoading, user, profile, navigate]);
+
+  useEffect(() => {
+    const handler = (e: BeforeUnloadEvent) => {
+      if (!dirty) return;
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", handler);
+    return () => window.removeEventListener("beforeunload", handler);
+  }, [dirty]);
+
+  const handleBrandClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (dirty && !window.confirm("Tienes cambios sin guardar en esta obra. ¿Seguro que quieres salir?")) return;
+    navigate("/dashboard");
+  };
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -103,9 +122,7 @@ export default function Publicar() {
   return (
     <main style={{ background: "#FFFFFF", minHeight: "100vh" }}>
       <header style={{ borderBottom: "1px solid #E5E5E5", padding: "20px 40px" }}>
-        <Link to="/" style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 400, color: "#121212", fontSize: 20, letterSpacing: "0.12em", textDecoration: "none", textTransform: "uppercase" }}>
-          IGNIA
-        </Link>
+        <AppBrand to="/dashboard" label="My Studio" onClick={handleBrandClick} />
       </header>
       <section style={{ maxWidth: 720, margin: "0 auto", padding: "80px 24px 120px" }}>
         <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 40, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 16 }}>
