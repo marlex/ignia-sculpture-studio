@@ -235,7 +235,7 @@ const AboutPage = () => {
   return (
     <main>
       <Seo
-        title={"About Ignia, The Digital Institution for Sculpture"}
+        title={"About Ignia, The Global Institution for Sculpture"}
         description={
           "The team, the story and everything Ignia offers sculpture: 3D viewing, blockchain authenticity, fair pricing, global reach and specialised logistics."
         }
