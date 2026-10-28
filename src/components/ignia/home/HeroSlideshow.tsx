@@ -91,7 +91,7 @@ export const HeroSlideshow = ({ onInvite, onCollection }: Props) => {
           top: "10vh",
           transform: "translateX(-50%)",
           fontFamily: "'Albert Sans', sans-serif",
-          fontWeight: 500,
+          fontWeight: 300,
           color: "#FFFFFF",
           fontSize: 28,
           textTransform: "uppercase",

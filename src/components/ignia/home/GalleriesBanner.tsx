@@ -37,7 +37,7 @@ export const GalleriesBanner = () => {
             className="font-display text-ink"
             style={{
               fontFamily: "'Albert Sans', sans-serif",
-              fontWeight: 500,
+              fontWeight: 300,
               fontSize: "clamp(40px, 6vw, 84px)",
               lineHeight: 1.02,
               letterSpacing: "-0.02em",
@@ -63,7 +63,7 @@ export const GalleriesBanner = () => {
                   className="text-[#121212]"
                   style={{
                     fontFamily: "'Albert Sans', sans-serif",
-                    fontWeight: 600,
+                    fontWeight: 300,
                     fontSize: 26,
                     lineHeight: 1.2,
                     margin: 0,

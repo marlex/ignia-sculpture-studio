@@ -17,6 +17,7 @@ const inputStyle: React.CSSProperties = {
 };
 const btnPrimary: React.CSSProperties = {
   fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, fontWeight: 500,
+  letterSpacing: "0.08em", textTransform: "uppercase",
   padding: "10px 18px", border: "1px solid #121212",
   background: "#121212", color: "#fff", cursor: "pointer",
 };

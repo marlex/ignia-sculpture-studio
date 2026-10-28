@@ -102,7 +102,7 @@ export default function ResetPassword() {
         <section style={{ maxWidth: 460, margin: "0 auto", padding: "80px 24px 120px" }}>
           <h1 style={{
             fontFamily: "'Albert Sans', sans-serif",
-            fontWeight: 500,
+            fontWeight: 300,
             color: "#121212",
             fontSize: "clamp(32px, 4vw, 44px)",
             lineHeight: 1.1,
@@ -120,7 +120,7 @@ export default function ResetPassword() {
 
           {done ? (
             <div>
-              <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 24, marginBottom: 16 }}>
+              <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 24, marginBottom: 16 }}>
                 {t.okTitle}
               </h2>
               <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6, marginBottom: 32 }}>

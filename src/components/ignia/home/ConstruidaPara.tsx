@@ -22,7 +22,7 @@ export const ConstruidaPara = ({ onInvite }: { onInvite: () => void }) => {
       <h2
         style={{
           fontFamily: "'Albert Sans', sans-serif",
-          fontWeight: 400,
+          fontWeight: 300,
           fontSize: 48,
           color: "#FFFFFF",
           lineHeight: 1.15,
@@ -52,7 +52,7 @@ export const ConstruidaPara = ({ onInvite }: { onInvite: () => void }) => {
             <div
               style={{
                 fontFamily: "'Albert Sans', sans-serif",
-                fontWeight: 400,
+                fontWeight: 300,
                 color: "#FFFFFF",
                 opacity: 0.1,
                 fontSize: 80,
@@ -64,7 +64,7 @@ export const ConstruidaPara = ({ onInvite }: { onInvite: () => void }) => {
             <div
               style={{
                 fontFamily: "'Albert Sans', sans-serif",
-                fontWeight: 400,
+                fontWeight: 300,
                 color: "#FFFFFF",
                 fontSize: 22,
                 marginTop: 16,

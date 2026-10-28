@@ -10,7 +10,7 @@ export const AppBrand = ({ to, label, onClick }: { to: string; label: string; on
   const content = (
     <>
       <Logo variant="dark" width={58} style={{ display: "block" }} />
-      <span style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 16, letterSpacing: "-0.04em" }}>
+      <span style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 16, letterSpacing: "-0.04em" }}>
         {label}
       </span>
     </>

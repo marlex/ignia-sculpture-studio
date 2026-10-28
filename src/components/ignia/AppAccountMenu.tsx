@@ -40,7 +40,7 @@ export const AppAccountMenu = ({
             width: 32, height: 32, borderRadius: "50%",
             background: "#121212", color: "#FFFFFF",
             display: "flex", alignItems: "center", justifyContent: "center",
-            fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, fontSize: 13,
+            fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, fontSize: 13,
             flexShrink: 0,
           }}
         >

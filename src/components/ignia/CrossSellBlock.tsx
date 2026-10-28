@@ -59,7 +59,7 @@ export const CrossSellBlock = ({ exclude }: { exclude: AudienceKey[] }) => {
                 className="mb-2 group-hover:text-[#121212] transition-colors"
                 style={{
                   fontFamily: "'Albert Sans', sans-serif",
-                  fontWeight: 600,
+                  fontWeight: 300,
                   fontSize: 30,
                   lineHeight: 1.2,
                 }}

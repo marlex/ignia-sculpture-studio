@@ -326,7 +326,7 @@ const AboutPage = () => {
             className="font-display italic"
             style={{
               fontFamily: "'Albert Sans', sans-serif",
-              fontWeight: 400,
+              fontWeight: 300,
               fontSize: "clamp(34px, 5vw, 68px)",
               color: "#000000",
               margin: 0,
@@ -374,7 +374,7 @@ const AboutPage = () => {
           <h2
             style={{
               fontFamily: "'Albert Sans', sans-serif",
-              fontWeight: 600,
+              fontWeight: 300,
               fontSize: "clamp(28px,3.6vw,46px)",
               lineHeight: 1.12,
               color: "#FFFFFF",

@@ -28,7 +28,7 @@ const kpiLabel: React.CSSProperties = {
 
 const kpiValue: React.CSSProperties = {
   fontSize: 32,
-  fontWeight: 600,
+  fontWeight: 300,
   color: "#121212",
   fontFamily: "'Albert Sans', sans-serif",
   marginTop: 6,

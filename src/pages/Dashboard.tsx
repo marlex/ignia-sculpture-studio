@@ -122,7 +122,7 @@ export default function Dashboard() {
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 40 }}>
                 {METRICS.map((m) => (
                   <div key={m.l} style={{ border: "1px solid #E5E5E5", padding: 28, borderRadius: 0 }}>
-                    <div style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, letterSpacing: "-0.04em", color: "#121212", fontSize: 40, lineHeight: 1 }}>{m.v}</div>
+                    <div style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, letterSpacing: "-0.04em", color: "#121212", fontSize: 40, lineHeight: 1 }}>{m.v}</div>
                     <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14, marginTop: 12 }}>{m.l}</div>
                   </div>
                 ))}
@@ -239,7 +239,7 @@ export default function Dashboard() {
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 40 }}>
                 {METRICS.map((m) => (
                   <div key={m.l} style={{ border: "1px solid #E5E5E5", padding: 28, borderRadius: 0 }}>
-                    <div style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, letterSpacing: "-0.04em", color: "#121212", fontSize: 40, lineHeight: 1 }}>{m.v}</div>
+                    <div style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, letterSpacing: "-0.04em", color: "#121212", fontSize: 40, lineHeight: 1 }}>{m.v}</div>
                     <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14, marginTop: 12 }}>{m.l}</div>
                   </div>
                 ))}

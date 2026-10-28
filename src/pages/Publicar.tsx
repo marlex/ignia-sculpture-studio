@@ -180,7 +180,7 @@ export default function Publicar() {
           <button
             type="submit"
             disabled={loading}
-            style={{ width: "100%", background: "transparent", color: "#121212", fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 13, padding: 18, border: "1px solid #121212", borderRadius: 0, cursor: loading ? "default" : "pointer", marginTop: 24, transition: "opacity 250ms", opacity: loading ? 0.6 : 1 }}
+            style={{ width: "100%", background: "transparent", color: "#121212", fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 13, padding: 18, border: "1px solid #121212", borderRadius: 0, cursor: loading ? "default" : "pointer", marginTop: 24, transition: "opacity 250ms", opacity: loading ? 0.6 : 1 }}
           >
             {loading ? "Enviando…" : "Enviar obra"}
           </button>

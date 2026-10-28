@@ -154,7 +154,7 @@ export const FiveWaysIn = () => {
                     className="group-hover:text-[#121212] transition-colors"
                     style={{
                       fontFamily: "'Albert Sans', sans-serif",
-                      fontWeight: 600,
+                      fontWeight: 300,
                       fontSize: 32,
                       lineHeight: 1.2,
                     }}

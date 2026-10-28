@@ -251,7 +251,7 @@ export default function PerfilEscultor() {
             <h1
               style={{
                 fontFamily: "'Albert Sans', sans-serif",
-                fontWeight: 400,
+                fontWeight: 300,
                 fontSize: "clamp(56px, 9vw, 140px)",
                 color: "#FFFFFF",
                 lineHeight: 0.95,
@@ -282,7 +282,7 @@ export default function PerfilEscultor() {
               <h1
                 style={{
                   fontFamily: "'Albert Sans', sans-serif",
-                  fontWeight: 400,
+                  fontWeight: 300,
                   fontSize: "clamp(44px, 6vw, 88px)",
                   color: "#121212",
                   lineHeight: 1,
@@ -330,7 +330,7 @@ export default function PerfilEscultor() {
           className="max-w-[820px] mx-auto text-center"
           style={{
             fontFamily: "'Albert Sans', sans-serif",
-            fontWeight: 400,
+            fontWeight: 300,
             fontSize: "clamp(32px, 4.2vw, 52px)",
             lineHeight: 1.2,
             letterSpacing: "0.005em",
@@ -488,7 +488,7 @@ export default function PerfilEscultor() {
             <h2
               style={{
                 fontFamily: "'Albert Sans', sans-serif",
-                fontWeight: 400,
+                fontWeight: 300,
                 fontSize: "clamp(32px, 3.6vw, 52px)",
                 color: "#FFFFFF",
                 lineHeight: 1.1,
@@ -538,7 +538,7 @@ export default function PerfilEscultor() {
           <span
             style={{
               fontFamily: "'Albert Sans', sans-serif",
-              fontWeight: 400,
+              fontWeight: 300,
               fontSize: "clamp(18px, 2vw, 24px)",
               color: "#121212",
               letterSpacing: "0.005em",
@@ -550,7 +550,7 @@ export default function PerfilEscultor() {
             <span
               style={{
                 fontFamily: "'Albert Sans', sans-serif",
-                fontWeight: 400,
+                fontWeight: 300,
                 fontSize: "clamp(40px, 6vw, 72px)",
                 color: "#121212",
                 lineHeight: 1.05,

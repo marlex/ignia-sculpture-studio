@@ -27,7 +27,7 @@ export const Ticker = () => {
             className="ticker-item"
             style={{
               fontFamily: "'Albert Sans', sans-serif",
-              fontWeight: 400,
+              fontWeight: 300,
               color: "#121212",
               fontSize: 31,
               whiteSpace: "nowrap",

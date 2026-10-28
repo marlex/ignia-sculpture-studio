@@ -116,7 +116,7 @@ export default function UneteAIgnia() {
           <div style={{ textAlign: "center" }}>
             <h1 style={{
               fontFamily: "'Albert Sans', sans-serif",
-              fontWeight: 500,
+              fontWeight: 300,
               color: "#121212",
               fontSize: "clamp(32px, 4vw, 44px)",
               lineHeight: 1.1,
@@ -135,7 +135,7 @@ export default function UneteAIgnia() {
 
           {submitted ? (
             <div>
-              <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 24, marginBottom: 16 }}>
+              <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 24, marginBottom: 16 }}>
                 {t.okTitle}
               </h2>
               <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 16, lineHeight: 1.6 }}>

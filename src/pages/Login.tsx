@@ -132,7 +132,7 @@ export default function Login() {
           <div style={{ textAlign: "center" }}>
             <h1 style={{
               fontFamily: "'Albert Sans', sans-serif",
-              fontWeight: 500,
+              fontWeight: 300,
               color: "#121212",
               fontSize: "clamp(32px, 4vw, 44px)",
               lineHeight: 1.1,

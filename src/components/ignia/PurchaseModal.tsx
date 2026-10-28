@@ -156,14 +156,14 @@ export const PurchaseModal = ({ open, onClose, obra }: Props) => {
 
         {submitted ? (
           <div style={{ gridColumn: "1 / -1", padding: 48 }}>
-            <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 28, marginBottom: 12 }}>{t.successTitle}</h2>
+            <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 28, marginBottom: 12 }}>{t.successTitle}</h2>
             <p style={{ fontFamily: "Hanken Grotesk, sans-serif", color: "#666", fontSize: 16, lineHeight: 1.6 }}>{t.successMsg}</p>
           </div>
         ) : (
           <>
             <aside className="pm-left">
               <img src={obra.image} alt={obra.title} className="pm-img" loading="lazy" />
-              <h3 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 22, lineHeight: 1.15, margin: "6px 0 0" }}>{obra.title}</h3>
+              <h3 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 22, lineHeight: 1.15, margin: "6px 0 0" }}>{obra.title}</h3>
               <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#121212", letterSpacing: "0.06em" }}>{obra.artist}</div>
               {(obra.material || obra.year) && (
                 <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 12, color: "#666" }}>
@@ -176,7 +176,7 @@ export const PurchaseModal = ({ open, onClose, obra }: Props) => {
             </aside>
 
             <div className="pm-right">
-              <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: "clamp(24px, 2.4vw, 30px)", lineHeight: 1.15, margin: "0 0 12px" }}>{t.title}</h2>
+              <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: "clamp(24px, 2.4vw, 30px)", lineHeight: 1.15, margin: "0 0 12px" }}>{t.title}</h2>
               <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#555", fontSize: 14, lineHeight: 1.55, margin: "0 0 22px" }}>{t.intro}</p>
 
               <form onSubmit={handleSubmit}>

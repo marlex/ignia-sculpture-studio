@@ -32,7 +32,7 @@ const hoverOut = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.o
 
 const H2_STYLE: React.CSSProperties = {
   fontFamily: "'Albert Sans', sans-serif",
-  fontWeight: 600,
+  fontWeight: 300,
   color: "#121212",
   fontSize: "clamp(28px, 3.4vw, 40px)",
   lineHeight: 1.05,
@@ -219,7 +219,7 @@ const JoinCuradores = () => {
         >
           <h1 style={{
             fontFamily: "'Albert Sans', sans-serif",
-            fontWeight: 500,
+            fontWeight: 300,
             color: "#121212",
             fontSize: "clamp(40px, 6vw, 72px)",
             lineHeight: 1.05,
@@ -249,7 +249,7 @@ const JoinCuradores = () => {
         <div className="why-grid" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 64 }}>
           {[t.why1, t.why2, t.why3].map((item, i) => (
             <div key={i} className="why-col" style={{ position: "relative", textAlign: "center" }}>
-              <h3 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#FFFFFF", fontSize: 26, lineHeight: 1.2, margin: 0, textAlign: "center" }}>
+              <h3 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#FFFFFF", fontSize: 26, lineHeight: 1.2, margin: 0, textAlign: "center" }}>
                 {item.title}
               </h3>
               <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "rgba(255,255,255,0.70)", fontSize: 16, lineHeight: 1.7, textAlign: "center", margin: "12px 0 0" }}>
@@ -286,7 +286,7 @@ const JoinCuradores = () => {
           <span
             style={{
               fontFamily: "'Albert Sans', sans-serif",
-              fontWeight: 600,
+              fontWeight: 300,
               color: "#121212",
               fontSize: "clamp(120px, 22vw, 340px)",
               lineHeight: 0.85,
@@ -301,7 +301,7 @@ const JoinCuradores = () => {
         <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 780 }}>
           <p style={{
             fontFamily: "'Albert Sans', sans-serif",
-            fontWeight: 600,
+            fontWeight: 300,
             color: "#121212",
             fontSize: "clamp(38px, 6vw, 86px)",
             lineHeight: 1.05,
@@ -325,7 +325,7 @@ const JoinCuradores = () => {
           <h2 style={{ ...H2_STYLE, marginBottom: 48, textAlign: "center" }}>{t.applyTitle}</h2>
           {submitted ? (
             <div style={{ textAlign: "center" }}>
-              <p style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, color: "#121212", fontSize: 24, marginBottom: 12 }}>{t.okTitle}</p>
+              <p style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 24, marginBottom: 12 }}>{t.okTitle}</p>
               <p style={{ ...BODY_STYLE, fontSize: 16, color: "#666666" }}>{t.okMsg}</p>
             </div>
           ) : (

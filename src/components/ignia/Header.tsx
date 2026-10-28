@@ -366,7 +366,7 @@ export const Header = ({ theme = "dark" }: { theme?: "dark" | "light" }) => {
               lineHeight: 1,
               cursor: "pointer",
               fontFamily: "'Albert Sans', sans-serif",
-              fontWeight: 400,
+              fontWeight: 300,
             }}
           >
             ×
@@ -374,7 +374,7 @@ export const Header = ({ theme = "dark" }: { theme?: "dark" | "light" }) => {
           {allItems.map((item) => {
             const style = {
               fontFamily: "'Albert Sans', sans-serif",
-              fontWeight: 400,
+              fontWeight: 300,
               fontSize: 32,
               color: "#FFFFFF",
               textAlign: "center" as const,
@@ -425,7 +425,7 @@ export const Header = ({ theme = "dark" }: { theme?: "dark" | "light" }) => {
             onClick={() => setMobileOpen(false)}
             style={{
               fontFamily: "'Albert Sans', sans-serif",
-              fontWeight: 400,
+              fontWeight: 300,
               fontSize: 26,
               color: "rgba(255,255,255,0.7)",
               textAlign: "center",

@@ -14,7 +14,7 @@ export const HeroBanner = (_props: { onInvite?: () => void; onCollection?: () =>
       <span
         style={{
           fontFamily: "'Albert Sans', sans-serif",
-          fontWeight: 400,
+          fontWeight: 300,
           fontSize: "clamp(22px, 3vw, 44px)",
           color: "#FFFFFF",
           letterSpacing: "0.01em",

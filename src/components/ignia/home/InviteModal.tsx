@@ -71,7 +71,7 @@ export const InviteModal = ({ open, onClose, variant = "default" }: Props) => {
         <button
           onClick={onClose}
           aria-label={t.close}
-          style={{ position: "absolute", top: 12, right: 16, background: "transparent", border: "none", cursor: "pointer", fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, color: "#121212", fontSize: 32, lineHeight: 1, width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center" }}
+          style={{ position: "absolute", top: 12, right: 16, background: "transparent", border: "none", cursor: "pointer", fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 32, lineHeight: 1, width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center" }}
         >×</button>
 
         <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] tracking-[-0.02em] text-ink mb-7">

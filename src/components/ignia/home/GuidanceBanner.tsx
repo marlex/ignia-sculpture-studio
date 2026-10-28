@@ -107,7 +107,7 @@ export const GuidanceBanner = () => {
         <h2
           style={{
             fontFamily: "'Albert Sans', sans-serif",
-            fontWeight: 500,
+            fontWeight: 300,
             color: "#FFFFFF",
             fontSize: "clamp(48px, 8vw, 96px)",
             lineHeight: 0.95,

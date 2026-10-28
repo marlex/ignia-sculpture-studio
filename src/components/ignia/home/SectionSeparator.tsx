@@ -43,7 +43,7 @@ export const SectionSeparator = ({ title, subtitle, cta, href }: SectionSeparato
       <h2
         style={{
           fontFamily: "'Albert Sans', sans-serif",
-          fontWeight: 400,
+          fontWeight: 300,
           fontSize: "clamp(36px, 4.5vw, 56px)",
           color: "rgba(255,255,255,0.92)",
           lineHeight: 1.1,

@@ -88,7 +88,7 @@ export default function Unsubscribe() {
         <section style={{ maxWidth: 560, margin: "0 auto", padding: "64px 24px 160px", textAlign: "center" }}>
           <h1 style={{
             fontFamily: "'Albert Sans', sans-serif",
-            fontWeight: 500,
+            fontWeight: 300,
             color: "#121212",
             fontSize: "clamp(32px, 4vw, 44px)",
             lineHeight: 1.1,

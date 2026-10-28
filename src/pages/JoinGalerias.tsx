@@ -33,7 +33,7 @@ const hoverOut = (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.o
 
 const H2_STYLE: React.CSSProperties = {
   fontFamily: "'Albert Sans', sans-serif",
-  fontWeight: 600,
+  fontWeight: 300,
   color: "#121212",
   fontSize: "clamp(28px, 3.4vw, 40px)",
   lineHeight: 1.05,
@@ -204,7 +204,7 @@ const JoinGalerias = () => {
         >
           <h1 style={{
             fontFamily: "'Albert Sans', sans-serif",
-            fontWeight: 500,
+            fontWeight: 300,
             color: "#121212",
             fontSize: "clamp(44px, 6.4vw, 96px)",
             lineHeight: 1.02,
@@ -244,7 +244,7 @@ const JoinGalerias = () => {
         <div className="why-grid" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 64 }}>
           {[t.why1, t.why2, t.why3].map((item, i) => (
             <div key={i} className="why-col" style={{ position: "relative", textAlign: "center" }}>
-              <h3 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 26, lineHeight: 1.2, margin: 0, textAlign: "center" }}>
+              <h3 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 26, lineHeight: 1.2, margin: 0, textAlign: "center" }}>
                 {item.title}
               </h3>
               <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#121212", fontSize: 16, lineHeight: 1.7, textAlign: "center", margin: "12px 0 0" }}>
@@ -263,7 +263,7 @@ const JoinGalerias = () => {
             <tbody>
               {t.steps.map((step, i) => (
                 <tr key={i} style={{ borderTop: "1px solid #121212", borderBottom: "1px solid #121212" }}>
-                  <td style={{ padding: "24px 8px", fontWeight: 600, fontSize: 26, fontFamily: "'Albert Sans', sans-serif" }}>{step.label}</td>
+                  <td style={{ padding: "24px 8px", fontWeight: 300, fontSize: 26, fontFamily: "'Albert Sans', sans-serif" }}>{step.label}</td>
                   <td style={{ padding: "24px 8px", fontWeight: 400, fontSize: 16, textAlign: "right" }}>{step.desc}</td>
                 </tr>
               ))}
@@ -293,7 +293,7 @@ const JoinGalerias = () => {
       >
         <h2 style={{
           fontFamily: "'Albert Sans', sans-serif",
-          fontWeight: 400,
+          fontWeight: 300,
           fontSize: "clamp(36px, 4.5vw, 56px)",
           color: "rgba(255,255,255,0.92)",
           lineHeight: 1.1,
@@ -309,7 +309,7 @@ const JoinGalerias = () => {
           <h2 style={{ ...H2_STYLE, marginBottom: 48, textAlign: "center" }}>{t.finalTitle}</h2>
           {submitted ? (
             <div style={{ textAlign: "center" }}>
-              <p style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, color: "#121212", fontSize: 24, marginBottom: 12 }}>{t.okTitle}</p>
+              <p style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 24, marginBottom: 12 }}>{t.okTitle}</p>
               <p style={{ ...BODY_STYLE, fontSize: 16, color: "#666666" }}>{t.okMsg}</p>
             </div>
           ) : (
@@ -380,7 +380,7 @@ const JoinGalerias = () => {
                     <span>{f.q}</span>
                     <span style={{
                       fontFamily: "'Albert Sans', sans-serif",
-                      fontWeight: 400,
+                      fontWeight: 300,
                       fontSize: 28,
                       lineHeight: 1,
                       transition: "transform 250ms",
