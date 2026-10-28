@@ -106,7 +106,7 @@ export default function Dashboard() {
 
         <section style={{ padding: "56px 56px 80px" }}>
           <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 32 }}>
-            Bienvenida.
+            Hola.
           </h1>
 
           {profileIncomplete && (
