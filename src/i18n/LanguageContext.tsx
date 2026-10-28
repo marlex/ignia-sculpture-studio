@@ -16,8 +16,9 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
       const stored = window.localStorage.getItem(STORAGE_KEY);
       if (stored === "es" || stored === "en") return stored;
     } catch {}
-    const nav = typeof navigator !== "undefined" ? navigator.language : "";
-    return nav && nav.toLowerCase().startsWith("es") ? "es" : "en";
+    // Default is always English — never auto-detected from the browser's
+    // own locale. A visitor can still switch to Spanish manually.
+    return "en";
   });
 
   const setLang = (l: Lang) => {

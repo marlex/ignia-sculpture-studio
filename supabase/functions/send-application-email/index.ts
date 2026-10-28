@@ -39,7 +39,7 @@ Deno.serve(async (req) => {
     if (appErr || !app) throw new Error(appErr?.message || "Application not found");
 
     const chosen = (app as any).locale ?? app.language;
-    const lang = (chosen === "en" ? "en" : "es") as "es" | "en";
+    const lang = (chosen === "es" ? "es" : "en") as "es" | "en";
     const templateName = TEMPLATE_MAP[email_type];
 
     const { error: sendErr } = await admin.functions.invoke("send-transactional-email", {
