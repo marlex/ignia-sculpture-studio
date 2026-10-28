@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/auth/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
+import { Logo } from "@/components/ignia/Logo";
 
 const NAV = ["Resumen", "Mis obras", "Analíticas", "Configuración"];
 
@@ -60,8 +61,11 @@ export default function Dashboard() {
   return (
     <main style={{ background: "#FFFFFF", minHeight: "100vh" }}>
       <header style={{ borderBottom: "1px solid #E5E5E5", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <Link to="/dashboard" style={{ fontFamily: "'Tenor Sans', serif", fontWeight: 400, color: "#121212", fontSize: 20, letterSpacing: "0.12em", textDecoration: "none", textTransform: "uppercase" }}>
-          My Studio
+        <Link to="/dashboard" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
+          <Logo variant="dark" width={72} />
+          <span style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 16, letterSpacing: "0.02em" }}>
+            My Studio
+          </span>
         </Link>
         <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
           <a
@@ -105,103 +109,198 @@ export default function Dashboard() {
         </aside>
 
         <section style={{ padding: "56px 56px 80px" }}>
-          <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 32 }}>
-            Hola.
-          </h1>
+          {active === 0 && (
+            <>
+              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 32 }}>
+                Hola{profile.name ? `, ${profile.name}` : ""}.
+              </h1>
 
-          {profileIncomplete && (
-            <div style={{ border: "1px solid #121212", padding: "20px 24px", marginBottom: 40, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 24 }}>
-              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, color: "#121212", margin: 0 }}>
-                Completa tu perfil de artista (origen, técnica, biografía) antes de publicar tu primera obra.
-              </p>
-              <Link to="/perfil-artista" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, textTransform: "uppercase", letterSpacing: "0.1em", color: "#121212", whiteSpace: "nowrap" }}>
-                Completar →
-              </Link>
-            </div>
-          )}
+              {profileIncomplete && (
+                <div style={{ border: "1px solid #121212", padding: "20px 24px", marginBottom: 40, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 24 }}>
+                  <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, color: "#121212", margin: 0 }}>
+                    Completa tu perfil de artista (origen, técnica, biografía) antes de publicar tu primera obra.
+                  </p>
+                  <Link to="/perfil-artista" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, textTransform: "uppercase", letterSpacing: "0.1em", color: "#121212", whiteSpace: "nowrap" }}>
+                    Completar →
+                  </Link>
+                </div>
+              )}
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 40 }}>
-            {METRICS.map((m) => (
-              <div key={m.l} style={{ border: "1px solid #E5E5E5", padding: 28, borderRadius: 0 }}>
-                <div style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, color: "#121212", fontSize: 40, lineHeight: 1 }}>{m.v}</div>
-                <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14, marginTop: 12 }}>{m.l}</div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 40 }}>
+                {METRICS.map((m) => (
+                  <div key={m.l} style={{ border: "1px solid #E5E5E5", padding: 28, borderRadius: 0 }}>
+                    <div style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, color: "#121212", fontSize: 40, lineHeight: 1 }}>{m.v}</div>
+                    <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14, marginTop: 12 }}>{m.l}</div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
 
-          {!profileIncomplete && (
-            <div style={{ border: "1px solid #E5E5E5", padding: "24px 28px", marginBottom: 40 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 16 }}>
-                <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 20, margin: 0 }}>
-                  Mi perfil
-                </h2>
-                <Link to="/perfil-artista" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666666" }}>
-                  Editar →
+              {!profileIncomplete && (
+                <div style={{ border: "1px solid #E5E5E5", padding: "24px 28px", marginBottom: 40 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 16 }}>
+                    <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 20, margin: 0 }}>
+                      Mi perfil
+                    </h2>
+                    <Link to="/perfil-artista" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666666" }}>
+                      Editar →
+                    </Link>
+                  </div>
+                  <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
+                    <strong>Origen:</strong> {profile.origin}
+                  </p>
+                  <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
+                    <strong>Técnica:</strong> {profile.technique}
+                  </p>
+                  <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
+                    <strong>Bio:</strong> {profile.bio}
+                  </p>
+                  {(profile.instagram || profile.website || profile.portfolio_url) && (
+                    <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#666666", margin: 0 }}>
+                      {[profile.instagram, profile.website, profile.portfolio_url].filter(Boolean).join(" · ")}
+                    </p>
+                  )}
+                </div>
+              )}
+
+              <div>
+                <Link
+                  to={profileIncomplete ? "/perfil-artista" : "/publicar"}
+                  style={{
+                    display: "inline-block",
+                    padding: "14px 28px",
+                    background: "#121212",
+                    color: "#FFFFFF",
+                    fontFamily: "Hanken Grotesk, sans-serif",
+                    fontWeight: 500,
+                    fontSize: 13,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    textDecoration: "none",
+                  }}
+                >
+                  Publicar una obra
                 </Link>
               </div>
-              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
-                <strong>Origen:</strong> {profile.origin}
-              </p>
-              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
-                <strong>Técnica:</strong> {profile.technique}
-              </p>
-              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
-                <strong>Bio:</strong> {profile.bio}
-              </p>
-              {(profile.instagram || profile.website || profile.portfolio_url) && (
-                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#666666", margin: 0 }}>
-                  {[profile.instagram, profile.website, profile.portfolio_url].filter(Boolean).join(" · ")}
-                </p>
-              )}
-            </div>
+            </>
           )}
 
-          <div style={{ marginBottom: 40 }}>
-            <Link
-              to={profileIncomplete ? "/perfil-artista" : "/publicar"}
-              style={{
-                display: "inline-block",
-                padding: "14px 28px",
-                background: "#121212",
-                color: "#FFFFFF",
-                fontFamily: "Hanken Grotesk, sans-serif",
-                fontWeight: 500,
-                fontSize: 13,
-                letterSpacing: "0.14em",
-                textTransform: "uppercase",
-                textDecoration: "none",
-              }}
-            >
-              Publicar una obra
-            </Link>
-          </div>
+          {active === 1 && (
+            <>
+              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 32 }}>
+                Mis obras
+              </h1>
 
-          <div style={{ marginBottom: 64 }}>
-            {loadingArtworks ? (
-              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", color: "#666666" }}>Cargando…</p>
-            ) : artworks.length === 0 ? (
-              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", color: "#666666" }}>Aún no has publicado ninguna obra.</p>
-            ) : (
-              <table style={{ width: "100%", borderCollapse: "collapse" }}>
-                <thead>
-                  <tr>
-                    {["Título", "Material", "Precio", "Estado"].map((h) => (
-                      <th key={h} style={{ textAlign: "left", fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 600, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "#666666", padding: "16px 8px", borderBottom: "1px solid #E5E5E5" }}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {artworks.map((o) => (
-                    <tr key={o.id}>
-                      {[o.title, o.medium || "—", o.price ? `€${o.price.toLocaleString("es-ES")}` : "—", STATUS_LABEL[o.status]].map((c, i) => (
-                        <td key={i} style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, fontSize: 15, color: "#121212", padding: "20px 8px", borderBottom: "1px solid #E5E5E5" }}>{c}</td>
+              <div style={{ marginBottom: 40 }}>
+                <Link
+                  to={profileIncomplete ? "/perfil-artista" : "/publicar"}
+                  style={{
+                    display: "inline-block",
+                    padding: "14px 28px",
+                    background: "#121212",
+                    color: "#FFFFFF",
+                    fontFamily: "Hanken Grotesk, sans-serif",
+                    fontWeight: 500,
+                    fontSize: 13,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    textDecoration: "none",
+                  }}
+                >
+                  Publicar una obra
+                </Link>
+              </div>
+
+              {loadingArtworks ? (
+                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", color: "#666666" }}>Cargando…</p>
+              ) : artworks.length === 0 ? (
+                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", color: "#666666" }}>Aún no has publicado ninguna obra.</p>
+              ) : (
+                <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                  <thead>
+                    <tr>
+                      {["Título", "Material", "Precio", "Estado"].map((h) => (
+                        <th key={h} style={{ textAlign: "left", fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 600, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "#666666", padding: "16px 8px", borderBottom: "1px solid #E5E5E5" }}>{h}</th>
                       ))}
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-          </div>
+                  </thead>
+                  <tbody>
+                    {artworks.map((o) => (
+                      <tr key={o.id}>
+                        {[o.title, o.medium || "—", o.price ? `€${o.price.toLocaleString("es-ES")}` : "—", STATUS_LABEL[o.status]].map((c, i) => (
+                          <td key={i} style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, fontSize: 15, color: "#121212", padding: "20px 8px", borderBottom: "1px solid #E5E5E5" }}>{c}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </>
+          )}
+
+          {active === 2 && (
+            <>
+              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 32 }}>
+                Analíticas
+              </h1>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 40 }}>
+                {METRICS.map((m) => (
+                  <div key={m.l} style={{ border: "1px solid #E5E5E5", padding: 28, borderRadius: 0 }}>
+                    <div style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 400, color: "#121212", fontSize: 40, lineHeight: 1 }}>{m.v}</div>
+                    <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14, marginTop: 12 }}>{m.l}</div>
+                  </div>
+                ))}
+              </div>
+
+              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#666666" }}>
+                Las analíticas detalladas por obra (vistas, interés) estarán disponibles próximamente.
+              </p>
+            </>
+          )}
+
+          {active === 3 && (
+            <>
+              <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 500, color: "#121212", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 32 }}>
+                Configuración
+              </h1>
+
+              <div style={{ border: "1px solid #E5E5E5", padding: "24px 28px", marginBottom: 24, maxWidth: 520 }}>
+                <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 20, margin: "0 0 16px" }}>
+                  Cuenta
+                </h2>
+                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
+                  <strong>Email:</strong> {user.email}
+                </p>
+                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", margin: 0 }}>
+                  <strong>Tipo de cuenta:</strong> {profile.founding_artist ? "Artista Fundador" : "Artista"}
+                </p>
+              </div>
+
+              <div style={{ border: "1px solid #E5E5E5", padding: "24px 28px", marginBottom: 24, maxWidth: 520 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 16 }}>
+                  <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 600, color: "#121212", fontSize: 20, margin: 0 }}>
+                    Perfil público
+                  </h2>
+                  <Link to="/perfil-artista" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666666" }}>
+                    Editar →
+                  </Link>
+                </div>
+                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
+                  <strong>Origen:</strong> {profile.origin || "—"}
+                </p>
+                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", margin: "0 0 6px" }}>
+                  <strong>Técnica:</strong> {profile.technique || "—"}
+                </p>
+                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", margin: 0 }}>
+                  <strong>Bio:</strong> {profile.bio || "—"}
+                </p>
+              </div>
+
+              <Link to="/recuperar-password" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", textDecoration: "underline" }}>
+                Cambiar contraseña
+              </Link>
+            </>
+          )}
         </section>
       </div>
     </main>

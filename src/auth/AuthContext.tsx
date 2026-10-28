@@ -3,6 +3,7 @@ import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 
 type Profile = {
+  name: string | null;
   role: string | null;
   founding_artist: boolean;
   origin: string | null;
@@ -43,7 +44,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
     const { data } = await supabase
       .from("profiles")
-      .select("role, founding_artist, origin, technique, bio, instagram, website, portfolio_url")
+      .select("name, role, founding_artist, origin, technique, bio, instagram, website, portfolio_url")
       .eq("id", userId)
       .maybeSingle();
     setProfile(data ?? null);

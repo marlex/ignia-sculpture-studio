@@ -91,7 +91,7 @@ export default function Login() {
       } else if (!role) {
         setInfo(t.notActive);
       } else {
-        navigate(redirect || "/");
+        navigate(redirect || "/dashboard");
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -114,7 +114,7 @@ export default function Login() {
       } else if (!role) {
         setInfo(t.notActive);
       } else {
-        navigate(redirect || "/");
+        navigate(redirect || "/dashboard");
       }
     } catch (err: any) {
       setError(err?.message || t.invalid);
