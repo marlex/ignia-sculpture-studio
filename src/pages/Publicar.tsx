@@ -37,11 +37,14 @@ export default function Publicar() {
   const [description, setDescription] = useState("");
   const [photo, setPhoto] = useState<File | null>(null);
   const [video, setVideo] = useState<File | null>(null);
+  const [processStory, setProcessStory] = useState("");
+  const [processPhotos, setProcessPhotos] = useState<File[]>([]);
+  const [tab, setTab] = useState<"detalles" | "3d" | "proceso">("detalles");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const dirty = !submitted && !!(title || yearVal || medium || alto || ancho || profundo || price || description || photo || video);
+  const dirty = !submitted && !!(title || yearVal || medium || alto || ancho || profundo || price || description || photo || video || processStory || processPhotos.length);
 
   useEffect(() => {
     if (authLoading) return;
@@ -94,6 +97,14 @@ export default function Publicar() {
         ? `${alto || "?"} x ${ancho || "?"} x ${profundo || "?"} cm`
         : null;
 
+      const processPhotoUrls: string[] = [];
+      for (const file of processPhotos) {
+        const path = `${user.id}/${crypto.randomUUID()}-${file.name}`;
+        const { error: uploadErr } = await supabase.storage.from("artwork-images").upload(path, file);
+        if (uploadErr) throw uploadErr;
+        processPhotoUrls.push(supabase.storage.from("artwork-images").getPublicUrl(path).data.publicUrl);
+      }
+
       const { error: insertErr } = await supabase.from("artworks").insert({
         artist_id: user.id,
         title,
@@ -105,6 +116,8 @@ export default function Publicar() {
         dimensions,
         video_url: videoUrl,
         model_status: videoUrl ? "processing" : "none",
+        process_story: processStory || null,
+        process_photo_urls: processPhotoUrls,
       });
       if (insertErr) throw insertErr;
       setSubmitted(true);
@@ -121,8 +134,16 @@ export default function Publicar() {
 
   return (
     <main style={{ background: "#FFFFFF", minHeight: "100vh" }}>
-      <header style={{ borderBottom: "1px solid #E5E5E5", padding: "20px 40px" }}>
+      <header style={{ borderBottom: "1px solid #E5E5E5", padding: "20px 40px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <AppBrand to="/dashboard" label="My Studio" onClick={handleBrandClick} />
+        <button
+          type="button"
+          onClick={handleBrandClick}
+          aria-label="Cerrar"
+          style={{ background: "none", border: "none", cursor: "pointer", color: "#121212", fontSize: 24, lineHeight: 1, padding: 4 }}
+        >
+          ✕
+        </button>
       </header>
       <section style={{ maxWidth: 720, margin: "0 auto", padding: "80px 24px 120px" }}>
         <h1 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 40, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 16 }}>
@@ -146,41 +167,104 @@ export default function Publicar() {
           </div>
         ) : (
         <form onSubmit={onSubmit}>
-          <Field label="Título de la obra"><input required value={title} onChange={(e) => setTitle(e.target.value)} style={fieldInput} /></Field>
-          <Field label="Año"><input value={yearVal} onChange={(e) => setYearVal(e.target.value)} style={fieldInput} /></Field>
-          <Field label="Materiales / técnica"><input value={medium} onChange={(e) => setMedium(e.target.value)} style={fieldInput} /></Field>
-          <div style={fieldWrap}>
-            <label style={fieldLabel}>Dimensiones (cm)</label>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 24 }}>
-              <input placeholder="Alto" value={alto} onChange={(e) => setAlto(e.target.value)} style={fieldInput} />
-              <input placeholder="Ancho" value={ancho} onChange={(e) => setAncho(e.target.value)} style={fieldInput} />
-              <input placeholder="Profundo" value={profundo} onChange={(e) => setProfundo(e.target.value)} style={fieldInput} />
+          <div style={{ display: "flex", gap: 32, borderBottom: "1px solid #E5E5E5", marginBottom: 40 }}>
+            {([
+              { key: "detalles", label: "Detalles" },
+              { key: "3d", label: "3D / AR" },
+              { key: "proceso", label: "Proceso" },
+            ] as const).map((t) => (
+              <button
+                type="button"
+                key={t.key}
+                onClick={() => setTab(t.key)}
+                style={{
+                  background: "transparent", border: "none", cursor: "pointer",
+                  fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400,
+                  textTransform: "uppercase", letterSpacing: "0.1em", fontSize: 13,
+                  color: tab === t.key ? "#121212" : "#999",
+                  padding: "0 0 14px", borderBottom: tab === t.key ? "2px solid #121212" : "2px solid transparent",
+                  marginBottom: -1,
+                }}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
+
+          <div style={{ display: tab === "detalles" ? "block" : "none" }}>
+            <Field label="Título de la obra"><input required value={title} onChange={(e) => setTitle(e.target.value)} style={fieldInput} /></Field>
+            <Field label="Año"><input value={yearVal} onChange={(e) => setYearVal(e.target.value)} style={fieldInput} /></Field>
+            <Field label="Materiales / técnica"><input value={medium} onChange={(e) => setMedium(e.target.value)} style={fieldInput} /></Field>
+            <div style={fieldWrap}>
+              <label style={fieldLabel}>Dimensiones (cm)</label>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 24 }}>
+                <input placeholder="Alto" value={alto} onChange={(e) => setAlto(e.target.value)} style={fieldInput} />
+                <input placeholder="Ancho" value={ancho} onChange={(e) => setAncho(e.target.value)} style={fieldInput} />
+                <input placeholder="Profundo" value={profundo} onChange={(e) => setProfundo(e.target.value)} style={fieldInput} />
+              </div>
+            </div>
+            <Field label="Precio (€)"><input value={price} onChange={(e) => setPrice(e.target.value)} style={fieldInput} /></Field>
+            <Field label="Descripción"><textarea rows={4} value={description} onChange={(e) => setDescription(e.target.value)} style={{ ...fieldInput, resize: "vertical" }} /></Field>
+            <Field label="Foto principal (jpg/png)">
+              <input type="file" accept="image/jpeg,image/png" onChange={(e) => setPhoto(e.target.files?.[0] ?? null)} style={fieldInput} />
+            </Field>
+          </div>
+
+          <div style={{ display: tab === "3d" ? "block" : "none" }}>
+            <div style={fieldWrap}>
+              <label style={fieldLabel}>
+                Video para 3D / AR{" "}
+                <span style={{ textTransform: "none", letterSpacing: 0, fontWeight: 400, color: "#999" }}>
+                  (opcional)
+                </span>
+              </label>
+              <input type="file" accept="video/mp4,video/quicktime,video/webm" onChange={(e) => setVideo(e.target.files?.[0] ?? null)} style={fieldInput} />
+              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#999", fontSize: 13, lineHeight: 1.6, marginTop: 10 }}>
+                Graba una vuelta completa de 360° alrededor de la pieza, con movimiento lento y constante, buena luz y sin cambios bruscos de cámara. Con eso preparamos el modelo 3D y la vista en AR — puede tardar unos días en estar listo.
+              </p>
+              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#999", fontSize: 13, lineHeight: 1.6, marginTop: 10 }}>
+                Si ya tienes experiencia con apps de escaneo 3D como Polycam o Luma AI, puedes usar ese mismo vídeo ahí para generar tú mismo el archivo 3D; igualmente sube el vídeo aquí para que lo integremos.
+              </p>
             </div>
           </div>
-          <Field label="Precio (€)"><input value={price} onChange={(e) => setPrice(e.target.value)} style={fieldInput} /></Field>
-          <Field label="Descripción"><textarea rows={4} value={description} onChange={(e) => setDescription(e.target.value)} style={{ ...fieldInput, resize: "vertical" }} /></Field>
-          <Field label="Foto principal (jpg/png)">
-            <input type="file" accept="image/jpeg,image/png" onChange={(e) => setPhoto(e.target.files?.[0] ?? null)} style={fieldInput} />
-          </Field>
 
-          <div style={fieldWrap}>
-            <label style={fieldLabel}>
-              Video para 3D / AR{" "}
-              <span style={{ textTransform: "none", letterSpacing: 0, fontWeight: 400, color: "#999" }}>
-                (opcional)
-              </span>
-            </label>
-            <input type="file" accept="video/mp4,video/quicktime,video/webm" onChange={(e) => setVideo(e.target.files?.[0] ?? null)} style={fieldInput} />
-            <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#999", fontSize: 13, lineHeight: 1.5, marginTop: 10 }}>
-              Graba una vuelta completa alrededor de la pieza, con buena luz y cámara fija. Con eso preparamos el modelo 3D y la vista en AR — puede tardar unos días en estar listo.
-            </p>
+          <div style={{ display: tab === "proceso" ? "block" : "none" }}>
+            <Field label="El proceso de esta obra (opcional)">
+              <textarea
+                rows={5}
+                placeholder="Cuenta cómo surgió esta pieza, las técnicas o materiales que usaste, los retos del proceso..."
+                value={processStory}
+                onChange={(e) => setProcessStory(e.target.value)}
+                style={{ ...fieldInput, resize: "vertical" }}
+              />
+            </Field>
+            <div style={fieldWrap}>
+              <label style={fieldLabel}>
+                Fotos del proceso{" "}
+                <span style={{ textTransform: "none", letterSpacing: 0, fontWeight: 400, color: "#999" }}>
+                  (opcional, varias)
+                </span>
+              </label>
+              <input
+                type="file"
+                accept="image/jpeg,image/png"
+                multiple
+                onChange={(e) => setProcessPhotos(Array.from(e.target.files ?? []))}
+                style={fieldInput}
+              />
+              {processPhotos.length > 0 && (
+                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#999", fontSize: 13, marginTop: 10 }}>
+                  {processPhotos.length} foto{processPhotos.length > 1 ? "s" : ""} seleccionada{processPhotos.length > 1 ? "s" : ""}.
+                </p>
+              )}
+            </div>
           </div>
 
           {error && <p style={{ color: "#b00020", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
           <button
             type="submit"
             disabled={loading}
-            style={{ width: "100%", background: "transparent", color: "#121212", fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: 13, padding: 18, border: "1px solid #121212", borderRadius: 0, cursor: loading ? "default" : "pointer", marginTop: 24, transition: "opacity 250ms", opacity: loading ? 0.6 : 1 }}
+            style={{ width: "100%", background: "#121212", color: "#FFFFFF", fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.18em", fontSize: 13, padding: 18, border: "1px solid #121212", borderRadius: 0, cursor: loading ? "default" : "pointer", marginTop: 24, transition: "opacity 250ms", opacity: loading ? 0.6 : 1 }}
           >
             {loading ? "Enviando…" : "Enviar obra"}
           </button>

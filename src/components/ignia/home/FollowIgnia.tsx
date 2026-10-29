@@ -94,7 +94,7 @@ export const FollowIgnia = () => {
             cursor: "pointer",
           }}
         >
-          LinkedIn · Ignia Gallery
+          LinkedIn · Ignia Institution
         </a>
       </div>
 

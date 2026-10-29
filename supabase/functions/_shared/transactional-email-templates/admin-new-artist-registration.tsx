@@ -12,21 +12,21 @@ interface Props {
 }
 
 const Email = ({ name, email, requestedRole }: Props) => (
-  <Html lang="es" dir="ltr">
+  <Html lang="en" dir="ltr">
     <Head />
-    <Preview>Nuevo registro pendiente de aprobación</Preview>
+    <Preview>New registration pending approval</Preview>
     <Body style={main}>
       <Container style={container}>
         <Img src={LOGO_URL} alt="Ignia Institution" width="120" height="34" style={logo} />
-        <Heading style={h1}>Nuevo registro pendiente</Heading>
+        <Heading style={h1}>New registration pending</Heading>
         <Text style={text}>
-          {name || 'Alguien'} ({email}) acaba de registrarse solicitando el rol de{' '}
-          {requestedRole === 'artist' ? 'artista' : requestedRole || 'usuario'}.
+          {name || 'Someone'} ({email}) just signed up requesting the{' '}
+          {requestedRole || 'user'} role.
         </Text>
         <Text style={text}>
-          Revísalo y apruébalo en{' '}
+          Review and approve it in{' '}
           <Link href="https://igniainstitution.com/admin/dashboard/solicitudes" style={link}>
-            tu panel de Solicitudes
+            your Applications panel
           </Link>
           .
         </Text>
@@ -37,7 +37,7 @@ const Email = ({ name, email, requestedRole }: Props) => (
 
 export const template = {
   component: Email,
-  subject: 'Nuevo registro pendiente de aprobación',
+  subject: 'New registration pending approval',
   displayName: 'Admin: new artist registration',
   to: 'magbolivar@gmail.com',
   previewData: { name: 'Ada', email: 'ada@example.com', requestedRole: 'artist' },

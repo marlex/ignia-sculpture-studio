@@ -34,7 +34,7 @@ const EscultoresPage = () => {
   return (
     <main className="pt-40 bg-white">
       <Seo
-        title={"Sculptors, Meet the Artists | Ignia Gallery"}
+        title={"Sculptors, Meet the Artists | Ignia Institution"}
         description={"Discover established and emerging sculptors working in bronze, marble and steel, and explore the studios behind each original work."}
         path="/escultores"
       />

@@ -100,7 +100,7 @@ export default function ObraAnalytics() {
   return (
     <main className="min-h-screen bg-white">
       <header className="sticky top-0 z-50 h-14 bg-white border-b border-border flex items-center justify-between px-6 md:px-12">
-        <Link to="/" aria-label="Ignia Gallery"><Logo /></Link>
+        <Link to="/" aria-label="Ignia Institution"><Logo /></Link>
         <Link to={`/perfil/escultor/${slug}`} className="font-body text-[13px] text-gray hover:opacity-65 transition-opacity">Salir</Link>
       </header>
 

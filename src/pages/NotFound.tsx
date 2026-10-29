@@ -11,7 +11,7 @@ const NotFound = () => {
 
   return (
     <>
-    <Seo title={"Page Not Found | Ignia Gallery"} description={"The page you are looking for does not exist. Explore original sculptures at Ignia Gallery."} path={location.pathname} noindex />
+    <Seo title={"Page Not Found | Ignia Institution"} description={"The page you are looking for does not exist. Explore original sculptures at Ignia Institution."} path={location.pathname} noindex />
     <div className="flex min-h-screen items-center justify-center bg-muted">
       <div className="text-center">
         <h1 className="mb-4 text-4xl font-medium">404</h1>

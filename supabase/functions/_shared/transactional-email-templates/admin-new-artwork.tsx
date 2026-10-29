@@ -11,17 +11,17 @@ interface Props {
 }
 
 const Email = ({ artistName, title }: Props) => (
-  <Html lang="es" dir="ltr">
+  <Html lang="en" dir="ltr">
     <Head />
-    <Preview>Nueva obra pendiente de revisión</Preview>
+    <Preview>New artwork pending review</Preview>
     <Body style={main}>
       <Container style={container}>
         <Img src={LOGO_URL} alt="Ignia Institution" width="120" height="34" style={logo} />
-        <Heading style={h1}>Nueva obra para revisar</Heading>
-        <Text style={text}>{artistName || 'Un artista'} publicó "{title}" — está pendiente de aprobación.</Text>
+        <Heading style={h1}>New artwork to review</Heading>
+        <Text style={text}>{artistName || 'An artist'} published "{title}" — it's pending approval.</Text>
         <Text style={text}>
-          Revísala en{' '}
-          <Link href="https://igniainstitution.com/admin/dashboard/obras" style={link}>tu panel de Obras</Link>.
+          Review it in{' '}
+          <Link href="https://igniainstitution.com/admin/dashboard/obras" style={link}>your Artworks panel</Link>.
         </Text>
       </Container>
     </Body>
@@ -30,7 +30,7 @@ const Email = ({ artistName, title }: Props) => (
 
 export const template = {
   component: Email,
-  subject: 'Nueva obra pendiente de revisión',
+  subject: 'New artwork pending review',
   displayName: 'Admin: new artwork submitted',
   to: 'magbolivar@gmail.com',
   previewData: { artistName: 'Ada', title: 'Celosía menor' },

@@ -15,24 +15,24 @@ const SLUGS: Record<string, { es: string; en: string }> = {
 
 const LEGAL_SEO: Record<string, { title: string; description: string }> = {
   "terminos": {
-    title: "Terms & Conditions | Ignia Gallery",
-    description: "The terms that govern the use of Ignia Gallery, the sale of sculptures, artist plans and the responsibilities of buyers and sellers.",
+    title: "Terms & Conditions | Ignia Institution",
+    description: "The terms that govern the use of Ignia Institution, the sale of sculptures, artist plans and the responsibilities of buyers and sellers.",
   },
   "privacidad": {
-    title: "Privacy Policy | Ignia Gallery",
-    description: "How Ignia Gallery collects, uses and protects personal data of visitors, artists and buyers under the GDPR.",
+    title: "Privacy Policy | Ignia Institution",
+    description: "How Ignia Institution collects, uses and protects personal data of visitors, artists and buyers under the GDPR.",
   },
   "envios-y-devoluciones": {
-    title: "Shipping & Returns Policy | Ignia Gallery",
+    title: "Shipping & Returns Policy | Ignia Institution",
     description: "How sculptures purchased on Ignia are packed, insured and shipped worldwide, and how returns and the 14-day withdrawal period work.",
   },
   "cookies": {
-    title: "Cookie Policy | Ignia Gallery",
-    description: "Which cookies Ignia Gallery uses, what they are for and how you can manage or withdraw your consent at any time.",
+    title: "Cookie Policy | Ignia Institution",
+    description: "Which cookies Ignia Institution uses, what they are for and how you can manage or withdraw your consent at any time.",
   },
   "accesibilidad": {
-    title: "Accessibility Statement | Ignia Gallery",
-    description: "Our commitment to making Ignia Gallery usable by everyone, the standards we follow and how to report an accessibility barrier.",
+    title: "Accessibility Statement | Ignia Institution",
+    description: "Our commitment to making Ignia Institution usable by everyone, the standards we follow and how to report an accessibility barrier.",
   },
 };
 

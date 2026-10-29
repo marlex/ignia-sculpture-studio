@@ -50,8 +50,8 @@ const copy = {
   },
 }
 
-const Email = ({ name = '', lang = 'es' }: Props) => {
-  const c = copy[lang] ?? copy.es
+const Email = ({ name = '', lang = 'en' }: Props) => {
+  const c = copy[lang] ?? copy.en
   const greetingName = name || (lang === 'es' ? 'artista' : 'artist')
   return (
     <Html lang={lang} dir="ltr">

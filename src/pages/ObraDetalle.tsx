@@ -328,8 +328,8 @@ const ObraDetalle = () => {
                   </h3>
                   <p className="font-body text-[14px] font-normal text-gray leading-relaxed">
                     {lang === "es"
-                      ? "El precio incluye el certificado de autenticidad en blockchain, la gestión logística especializada y la comisión de Ignia Gallery. Sin costes ocultos."
-                      : "The price includes the blockchain certificate of authenticity, specialised logistics handling and Ignia Gallery's commission. No hidden fees."}
+                      ? "El precio incluye el certificado de autenticidad en blockchain, la gestión logística especializada y la comisión de Ignia Institution. Sin costes ocultos."
+                      : "The price includes the blockchain certificate of authenticity, specialised logistics handling and Ignia Institution's commission. No hidden fees."}
                   </p>
                 </div>
               </div>

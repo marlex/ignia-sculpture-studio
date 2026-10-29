@@ -20,7 +20,7 @@ const NAV_LEFT: Record<"es" | "en", NavItem[]> = {
     { label: "Sculptors", to: "/escultores" },
     { label: "Community", to: "/editorial" },
     { label: "Learn", to: "/learn" },
-    { label: "Sobre Ignia", to: "/ignia-gallery" },
+    { label: "About Ignia", to: "/ignia-gallery" },
   ],
 };
 
@@ -196,7 +196,7 @@ export const Header = ({ theme = "dark" }: { theme?: "dark" | "light" }) => {
         </div>
 
         {/* CENTER: logo */}
-        <Link to="/" className="col-start-2 flex items-center justify-center" aria-label="Ignia Gallery">
+        <Link to="/" className="col-start-2 flex items-center justify-center" aria-label="Ignia Institution">
           <span style={{ display: "inline-block", transform: "scaleX(1.05)", transformOrigin: "center" }}>
             <Logo variant={logoVariant} />
           </span>

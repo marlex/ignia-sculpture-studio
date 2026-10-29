@@ -43,10 +43,11 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
+  const [pendingReview, setPendingReview] = useState(false);
 
   const t = lang === "es" ? {
     title: "Iniciar sesión",
-    subtitle: "Accede a tu cuenta de Ignia Gallery.",
+    subtitle: "Accede a tu cuenta de Ignia Institution.",
     email: "Email",
     password: "Contraseña",
     remember: "Recuérdame",
@@ -56,10 +57,12 @@ export default function Login() {
     noAccount: "¿No tienes cuenta?",
     create: "Crear cuenta",
     invalid: "Email o contraseña incorrectos.",
-    notActive: "Tu cuenta aún no está activa.",
+    notActive: "Vamos a revisar tus datos. Te avisaremos en cuanto tu cuenta esté activa.",
+    pendingTitle: "Cuenta creada",
+    backHome: "Volver al inicio",
   } : {
     title: "Sign in",
-    subtitle: "Access your Ignia Gallery account.",
+    subtitle: "Access your Ignia Institution account.",
     email: "Email",
     password: "Password",
     remember: "Remember me",
@@ -69,7 +72,9 @@ export default function Login() {
     noAccount: "Don't have an account?",
     create: "Create account",
     invalid: "Invalid email or password.",
-    notActive: "Your account is not active yet.",
+    notActive: "We're reviewing your details. We'll let you know as soon as your account is active.",
+    pendingTitle: "Account created",
+    backHome: "Back to home",
   };
 
   // A confirmation-email link logs the user in directly (no email/password
@@ -89,7 +94,7 @@ export default function Login() {
       if (role === "admin") {
         navigate("/admin/dashboard");
       } else if (!role) {
-        setInfo(t.notActive);
+        setPendingReview(true);
       } else {
         navigate(redirect || "/dashboard");
       }
@@ -129,6 +134,31 @@ export default function Login() {
       <Header theme="light" />
       <main style={{ flex: 1, paddingTop: 140 }}>
         <section style={{ maxWidth: 460, margin: "0 auto", padding: "64px 24px 160px" }}>
+          {pendingReview ? (
+            <div style={{ textAlign: "center" }}>
+              <h1 style={{
+                fontFamily: "'Albert Sans', sans-serif",
+                fontWeight: 300,
+                color: "#121212",
+                fontSize: "clamp(32px, 4vw, 44px)",
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+                margin: "0 0 16px",
+              }}>{t.pendingTitle}</h1>
+              <p style={{
+                fontFamily: "Hanken Grotesk, sans-serif",
+                fontWeight: 400,
+                color: "#666666",
+                fontSize: 16,
+                lineHeight: 1.6,
+                marginBottom: 32,
+              }}>{t.notActive}</p>
+              <Link to="/" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, fontSize: 14, color: "#121212", textDecoration: "underline" }}>
+                {t.backHome}
+              </Link>
+            </div>
+          ) : (
+          <>
           <div style={{ textAlign: "center" }}>
             <h1 style={{
               fontFamily: "'Albert Sans', sans-serif",
@@ -212,6 +242,8 @@ export default function Login() {
               </Link>
             </p>
           </form>
+          </>
+          )}
         </section>
       </main>
       <Footer />

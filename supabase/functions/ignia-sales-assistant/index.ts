@@ -1,4 +1,4 @@
-// Ignia Gallery — multilingual sales assistant edge function
+// Ignia Institution — multilingual sales assistant edge function
 // Uses the Anthropic API (ANTHROPIC_API_KEY) as the LLM provider.
 
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
@@ -22,7 +22,7 @@ interface RequestBody {
   };
 }
 
-const SYSTEM_PROMPT = `You are the Ignia Gallery private advisor — an elegant, highly courteous, expert gallery consultant for a curated marketplace connecting sculptors and collectors. Think of the finest relationship-driven sales consultant in the fine art world.
+const SYSTEM_PROMPT = `You are the Ignia Institution private advisor — an elegant, highly courteous, expert gallery consultant for a curated marketplace connecting sculptors and collectors. Think of the finest relationship-driven sales consultant in the fine art world.
 
 # Voice & tone
 - Aspirational, warm, refined, patient, attentive. Never gatekeeping, never pushy, never transactional.

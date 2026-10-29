@@ -29,6 +29,13 @@ type Artwork = {
   created_at: string;
 };
 
+type EmailLog = {
+  id: string;
+  template_name: string;
+  status: string;
+  created_at: string;
+};
+
 const cellStyle: React.CSSProperties = {
   padding: "12px 10px",
   fontFamily: "Hanken Grotesk, sans-serif",
@@ -47,6 +54,7 @@ export default function ArtistaDetalle() {
   const lang = useLang();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [artworks, setArtworks] = useState<Artwork[]>([]);
+  const [emailLog, setEmailLog] = useState<EmailLog[]>([]);
   const [loading, setLoading] = useState(true);
   const [resending, setResending] = useState(false);
   const [resendMsg, setResendMsg] = useState<string | null>(null);
@@ -68,6 +76,9 @@ export default function ArtistaDetalle() {
     resendEn: "Reenviar en inglés",
     resendOk: "Email reenviado.",
     resendFail: "No se pudo reenviar el email.",
+    logTitle: "Historial de envíos",
+    logEmpty: "Sin envíos registrados todavía.",
+    logStatus: { pending: "En cola", sent: "Enviado", failed: "Falló", suppressed: "Suprimido", bounced: "Rebotado", complained: "Marcado como spam", dlq: "Falló (reintentos agotados)" } as Record<string, string>,
   } : {
     back: "← Back to Artists",
     notFound: "Artist not found.",
@@ -85,6 +96,9 @@ export default function ArtistaDetalle() {
     resendEn: "Resend in English",
     resendOk: "Email resent.",
     resendFail: "Could not resend the email.",
+    logTitle: "Send history",
+    logEmpty: "No sends recorded yet.",
+    logStatus: { pending: "Queued", sent: "Sent", failed: "Failed", suppressed: "Suppressed", bounced: "Bounced", complained: "Marked as spam", dlq: "Failed (retries exhausted)" } as Record<string, string>,
   };
 
   const loadProfile = async () => {
@@ -103,6 +117,15 @@ export default function ArtistaDetalle() {
     ]);
     setProfile((prof as Profile) || null);
     setArtworks((arts as Artwork[]) || []);
+    if (prof?.email) {
+      const { data: logs } = await supabase
+        .from("email_send_log")
+        .select("id, template_name, status, created_at")
+        .eq("recipient_email", prof.email)
+        .order("created_at", { ascending: false })
+        .limit(20);
+      setEmailLog((logs as EmailLog[]) || []);
+    }
   };
 
   useEffect(() => {
@@ -218,6 +241,28 @@ export default function ArtistaDetalle() {
             {resendMsg}
           </p>
         )}
+
+        <div style={{ borderTop: "1px solid #E5E5E5", marginTop: 20, paddingTop: 16 }}>
+          <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 11, fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "#666", marginBottom: 10 }}>
+            {t.logTitle}
+          </div>
+          {emailLog.length === 0 ? (
+            <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666", margin: 0 }}>
+              {t.logEmpty}
+            </p>
+          ) : (
+            <div style={{ display: "grid", gap: 8 }}>
+              {emailLog.map((e) => (
+                <div key={e.id} style={{ display: "flex", justifyContent: "space-between", gap: 12, fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13 }}>
+                  <span style={{ color: "#121212" }}>{e.template_name}</span>
+                  <span style={{ color: "#666", whiteSpace: "nowrap" }}>
+                    {t.logStatus[e.status] || e.status} · {new Date(e.created_at).toLocaleString(lang === "es" ? "es-ES" : "en-US", { dateStyle: "short", timeStyle: "short" })}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 24, margin: "0 0 16px" }}>

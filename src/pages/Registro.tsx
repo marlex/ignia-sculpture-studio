@@ -49,7 +49,7 @@ export default function Registro() {
   const t = lang === "es"
     ? {
         title: "Crear cuenta",
-        subtitle: "Regístrate en Ignia Gallery. Un administrador confirmará tu cuenta antes de que puedas publicar.",
+        subtitle: "Regístrate en Ignia Institution. Un administrador confirmará tu cuenta antes de que puedas publicar.",
         fName: "Nombre completo",
         fEmail: "Email",
         fPassword: "Contraseña",
@@ -69,7 +69,7 @@ export default function Registro() {
       }
     : {
         title: "Create account",
-        subtitle: "Sign up for Ignia Gallery. An admin will confirm your account before you can publish.",
+        subtitle: "Sign up for Ignia Institution. An admin will confirm your account before you can publish.",
         fName: "Full name",
         fEmail: "Email",
         fPassword: "Password",
@@ -106,7 +106,7 @@ export default function Registro() {
       const { data, error: signErr } = await supabase.auth.signUp({
         email,
         password,
-        options: { data: { name, requested_role: requestedRole, lang } },
+        options: { data: { name, requested_role: requestedRole } },
       });
       if (signErr) throw signErr;
       setStep(data.session ? "pending" : "check-email");
