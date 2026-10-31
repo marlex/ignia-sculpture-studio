@@ -6,11 +6,11 @@ import { Seo } from "@/components/Seo";
 import { useLang } from "@/i18n/LanguageContext";
 
 const SLUGS: Record<string, { es: string; en: string }> = {
-  "terminos": { es: "/legal/terminos.html", en: "/legal/en/terminos.html" },
-  "privacidad": { es: "/legal/privacidad.html", en: "/legal/en/privacidad.html" },
-  "envios-y-devoluciones": { es: "/legal/envios-y-devoluciones.html", en: "/legal/en/envios-y-devoluciones.html" },
-  "cookies": { es: "/legal/cookies.html", en: "/legal/en/cookies.html" },
-  "accesibilidad": { es: "/legal/accesibilidad.html", en: "/legal/en/accesibilidad.html" },
+  "terminos": { es: "/legal-docs/terminos.html", en: "/legal-docs/en/terminos.html" },
+  "privacidad": { es: "/legal-docs/privacidad.html", en: "/legal-docs/en/privacidad.html" },
+  "envios-y-devoluciones": { es: "/legal-docs/envios-y-devoluciones.html", en: "/legal-docs/en/envios-y-devoluciones.html" },
+  "cookies": { es: "/legal-docs/cookies.html", en: "/legal-docs/en/cookies.html" },
+  "accesibilidad": { es: "/legal-docs/accesibilidad.html", en: "/legal-docs/en/accesibilidad.html" },
 };
 
 const LEGAL_SEO: Record<string, { title: string; description: string }> = {
