@@ -18,7 +18,7 @@ export const SculptorsToKnow = () => {
     <section className="px-6 md:px-12 py-16 md:py-20 bg-surface">
       <div className="max-w-[1280px] mx-auto">
         <div className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line mb-3">{t.kicker}</div>
-        <h2 className="font-display font-semibold text-[clamp(26px,3vw,38px)] tracking-[-0.02em] text-ink mb-10">{t.heading}</h2>
+        <h2 className="font-display font-medium text-[clamp(26px,3vw,38px)] tracking-[-0.02em] text-ink mb-10">{t.heading}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
           {articles.map((a) => {
             const c = a[lang];
@@ -55,7 +55,7 @@ export const SculptorsToKnow = () => {
                   )}
                 </div>
                 <div className="font-body text-[12px] uppercase tracking-[0.14em] text-muted-line mb-2">{c.tag}</div>
-                <h3 className="font-display font-semibold text-[20px] text-ink leading-tight">{c.titulo}</h3>
+                <h3 className="font-display font-medium text-[20px] text-ink leading-tight">{c.titulo}</h3>
               </Link>
             );
           })}

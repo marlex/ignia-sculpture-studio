@@ -346,7 +346,7 @@ export default function PerfilEscultor() {
       {roundWork && (
         <section id="round" className="px-6 md:px-12 py-20 md:py-28 bg-surface">
           <div className="max-w-[1280px] mx-auto">
-            <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] max-md:text-[30px] tracking-[-0.02em] text-ink mb-10">{t.round}</h2>
+            <h2 className="font-display font-medium text-[clamp(28px,3.4vw,40px)] max-md:text-[30px] tracking-[-0.02em] text-ink mb-10">{t.round}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
               <div className="bg-white h-[488px] md:h-[520px]">
                 {roundWork.glbUrl ? (
@@ -370,7 +370,7 @@ export default function PerfilEscultor() {
                 )}
               </div>
               <div className="pt-2">
-                <h3 className="font-display font-semibold text-[28px] max-md:text-[25px] text-ink mb-1">
+                <h3 className="font-display font-medium text-[28px] max-md:text-[25px] text-ink mb-1">
                   {lang === "es" ? roundWork.es.title : roundWork.en.title}
                 </h3>
                 <div className="font-body text-[12px] font-normal text-muted-line uppercase tracking-[0.14em] mb-2">
@@ -413,7 +413,7 @@ export default function PerfilEscultor() {
       {/* 5. Works */}
       <section id="works" className="px-6 md:px-12 py-20 md:py-28">
         <div className="max-w-[1280px] mx-auto">
-          <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] max-md:text-[30px] tracking-[-0.02em] text-ink mb-12">{t.works}</h2>
+          <h2 className="font-display font-medium text-[clamp(28px,3.4vw,40px)] max-md:text-[30px] tracking-[-0.02em] text-ink mb-12">{t.works}</h2>
 
           {obras.length === 0 && <p className="font-body text-[14px] text-muted-line">{t.noWorks}</p>}
 
@@ -435,7 +435,7 @@ export default function PerfilEscultor() {
       {/* 6. About */}
       <section id="about" className="px-6 md:px-12 py-20 md:py-28 bg-surface">
         <div className="max-w-[1280px] mx-auto">
-          <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] max-md:text-[30px] tracking-[-0.02em] text-ink mb-12">{t.about}</h2>
+          <h2 className="font-display font-medium text-[clamp(28px,3.4vw,40px)] max-md:text-[30px] tracking-[-0.02em] text-ink mb-12">{t.about}</h2>
           <div className={bio.retrato ? "grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-10 md:gap-16" : "max-w-[720px] mx-auto text-center"}>
             {bio.retrato && (
               <div className="relative aspect-[4/5] overflow-hidden bg-secondary">
@@ -619,7 +619,7 @@ const WorkEntry = ({ work, lang, t, wide, onExpand }: WorkEntryProps) => {
         />
       </Link>
       <div>
-        <h3 className="font-display font-semibold text-[28px] max-md:text-[25px] text-ink mb-1">
+        <h3 className="font-display font-medium text-[28px] max-md:text-[25px] text-ink mb-1">
           <Link to={`/obra/${work.slug}`} className="hover:underline underline-offset-4">{c.title}</Link>
         </h3>
         <div className="font-body text-[12px] font-normal text-muted-line uppercase tracking-[0.14em] mb-1">

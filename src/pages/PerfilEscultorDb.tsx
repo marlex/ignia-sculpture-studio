@@ -158,7 +158,7 @@ export default function PerfilEscultorDb({ slug }: { slug: string }) {
       {roundWork && (
         <section id="round" className="px-6 md:px-12 py-20 md:py-28 bg-surface">
           <div className="max-w-[1280px] mx-auto">
-            <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] max-md:text-[30px] tracking-[-0.02em] text-ink mb-10">{t.round}</h2>
+            <h2 className="font-display font-medium text-[clamp(28px,3.4vw,40px)] max-md:text-[30px] tracking-[-0.02em] text-ink mb-10">{t.round}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
               <div className="bg-white h-[488px] md:h-[520px]">
                 {roundWork.glbUrl ? (
@@ -173,7 +173,7 @@ export default function PerfilEscultorDb({ slug }: { slug: string }) {
                 )}
               </div>
               <div className="pt-2">
-                <h3 className="font-display font-semibold text-[28px] max-md:text-[25px] text-ink mb-1">{roundWork.title}</h3>
+                <h3 className="font-display font-medium text-[28px] max-md:text-[25px] text-ink mb-1">{roundWork.title}</h3>
                 <div className="font-body text-[12px] font-normal text-muted-line uppercase tracking-[0.14em] mb-2">
                   {roundWork.year} · {roundWork.material}
                 </div>
@@ -194,7 +194,7 @@ export default function PerfilEscultorDb({ slug }: { slug: string }) {
       {/* 5. Works */}
       <section id="works" className="px-6 md:px-12 py-20 md:py-28">
         <div className="max-w-[1280px] mx-auto">
-          <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] max-md:text-[30px] tracking-[-0.02em] text-ink mb-12">{t.works}</h2>
+          <h2 className="font-display font-medium text-[clamp(28px,3.4vw,40px)] max-md:text-[30px] tracking-[-0.02em] text-ink mb-12">{t.works}</h2>
           {works.length === 0 && <p className="font-body text-[14px] text-muted-line">{t.noWorks}</p>}
           {works.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16">
@@ -207,7 +207,7 @@ export default function PerfilEscultorDb({ slug }: { slug: string }) {
                       <ExpandButton onClick={(e) => { e.preventDefault(); e.stopPropagation(); setLightbox({ src: w.image, alt: w.title }); }} />
                     </Link>
                     <div>
-                      <h3 className="font-display font-semibold text-[28px] max-md:text-[25px] text-ink mb-1">
+                      <h3 className="font-display font-medium text-[28px] max-md:text-[25px] text-ink mb-1">
                         <Link to={`/obra/${w.slug}`} className="hover:underline underline-offset-4">{w.title}</Link>
                       </h3>
                       <div className="font-body text-[12px] font-normal text-muted-line uppercase tracking-[0.14em] mb-1">
@@ -226,7 +226,7 @@ export default function PerfilEscultorDb({ slug }: { slug: string }) {
       {/* 6. About */}
       <section id="about" className="px-6 md:px-12 py-20 md:py-28 bg-surface">
         <div className="max-w-[1280px] mx-auto">
-          <h2 className="font-display font-semibold text-[clamp(28px,3.4vw,40px)] max-md:text-[30px] tracking-[-0.02em] text-ink mb-12">{t.about}</h2>
+          <h2 className="font-display font-medium text-[clamp(28px,3.4vw,40px)] max-md:text-[30px] tracking-[-0.02em] text-ink mb-12">{t.about}</h2>
           <div className="max-w-[720px] mx-auto text-center">
             {profile.bio && (
               <p className="font-body text-[16px] font-normal text-gray leading-relaxed mb-10 text-left whitespace-pre-line">

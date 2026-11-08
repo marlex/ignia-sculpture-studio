@@ -346,7 +346,7 @@ const ObraDetalle = () => {
                   >
                     ×
                   </button>
-                  <h3 className="font-display font-semibold text-[20px] text-ink mb-4">
+                  <h3 className="font-display font-medium text-[20px] text-ink mb-4">
                     {lang === "es" ? "Cómo se calcula este precio" : "How this price is calculated"}
                   </h3>
                   <p className="font-body text-[14px] font-normal text-gray leading-relaxed">
@@ -648,7 +648,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
           <section className="px-6 md:px-12 pb-20">
             <div className="max-w-[1280px] mx-auto">
               <Link to={`/perfil/escultor/${artistProfileSlug}`} className="inline-block hover:opacity-80 transition-opacity mb-8">
-                <h2 className="font-display font-semibold text-[clamp(22px,2.4vw,32px)] tracking-[-0.01em] text-ink">{heading}</h2>
+                <h2 className="font-display font-medium text-[clamp(22px,2.4vw,32px)] tracking-[-0.01em] text-ink">{heading}</h2>
               </Link>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {others.map(w => (
