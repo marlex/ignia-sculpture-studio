@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/auth/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { AppBrand } from "@/components/ignia/AppBrand";
+import { FileDropzone } from "@/components/ignia/FileDropzone";
 
 const fieldLabel: React.CSSProperties = {
   display: "block", fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400,
@@ -235,16 +236,12 @@ export default function Publicar() {
             </Field>
             <Field label="Descripción"><textarea rows={4} value={description} onChange={(e) => setDescription(e.target.value)} style={{ ...fieldInput, resize: "vertical" }} /></Field>
             <Field label="Fotos de la obra (jpg/png)">
-              <input
-                type="file"
+              <FileDropzone
                 accept="image/jpeg,image/png"
                 multiple
-                onChange={(e) => {
-                  const newFiles = Array.from(e.target.files ?? []);
-                  if (newFiles.length) setPhotos((prev) => [...prev, ...newFiles]);
-                  e.target.value = "";
-                }}
-                style={fieldInput}
+                label="Arrastra tus fotos aquí, o haz clic para elegirlas"
+                hint="Puedes seleccionar o arrastrar varias a la vez"
+                onFiles={(newFiles) => setPhotos((prev) => [...prev, ...newFiles])}
               />
               {photos.length > 0 && (
                 <>
@@ -333,17 +330,34 @@ export default function Publicar() {
                   (opcional, varias)
                 </span>
               </label>
-              <input
-                type="file"
+              <FileDropzone
                 accept="image/jpeg,image/png"
                 multiple
-                onChange={(e) => setProcessPhotos(Array.from(e.target.files ?? []))}
-                style={fieldInput}
+                label="Arrastra tus fotos aquí, o haz clic para elegirlas"
+                hint="Puedes seleccionar o arrastrar varias a la vez"
+                onFiles={(newFiles) => setProcessPhotos((prev) => [...prev, ...newFiles])}
               />
               {processPhotos.length > 0 && (
-                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#999", fontSize: 13, marginTop: 10 }}>
-                  {processPhotos.length} foto{processPhotos.length > 1 ? "s" : ""} seleccionada{processPhotos.length > 1 ? "s" : ""}.
-                </p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 12 }}>
+                  {processPhotos.map((file, i) => (
+                    <div key={i} style={{ position: "relative", width: 84, height: 84 }}>
+                      <img src={URL.createObjectURL(file)} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", border: "1px solid #ccc" }} />
+                      <button
+                        type="button"
+                        onClick={() => setProcessPhotos((prev) => prev.filter((_, idx) => idx !== i))}
+                        aria-label="Quitar foto"
+                        style={{
+                          position: "absolute", top: -8, right: -8, width: 22, height: 22, borderRadius: "50%",
+                          background: "#121212", color: "#fff", border: "1px solid #fff",
+                          fontSize: 13, lineHeight: 1, cursor: "pointer", display: "flex",
+                          alignItems: "center", justifyContent: "center", padding: 0,
+                        }}
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
+                </div>
               )}
             </div>
           </div>
