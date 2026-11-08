@@ -8,15 +8,15 @@ const cardStyle: React.CSSProperties = {
 };
 const labelStyle: React.CSSProperties = {
   display: "block", fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 500,
-  textTransform: "uppercase", letterSpacing: "0.12em", fontSize: 12, color: "#666",
+  textTransform: "uppercase", letterSpacing: "0.12em", fontSize: 15, color: "#666",
   marginBottom: 8,
 };
 const inputStyle: React.CSSProperties = {
-  width: "100%", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14,
+  width: "100%", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15,
   padding: "10px 12px", border: "1px solid #ccc", marginBottom: 16,
 };
 const btnPrimary: React.CSSProperties = {
-  fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, fontWeight: 500,
+  fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, fontWeight: 500,
   letterSpacing: "0.08em", textTransform: "uppercase",
   padding: "10px 18px", border: "1px solid #121212",
   background: "#121212", color: "#fff", cursor: "pointer",
@@ -96,7 +96,7 @@ export default function Configuracion() {
       }}>{t.title}</h1>
 
       {msg && (
-        <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", marginBottom: 16 }}>{msg}</p>
+        <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, color: "#121212", marginBottom: 16 }}>{msg}</p>
       )}
 
       <div style={cardStyle}>
@@ -104,7 +104,7 @@ export default function Configuracion() {
           {t.account}
         </h2>
         <label style={labelStyle}>{t.email}</label>
-        <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", marginBottom: 16 }}>{user?.email}</p>
+        <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, color: "#121212", marginBottom: 16 }}>{user?.email}</p>
         <label style={labelStyle}>{t.name}</label>
         <input value={name} onChange={(e) => setName(e.target.value)} style={inputStyle} />
         <button type="button" onClick={saveName} disabled={savingName} style={btnPrimary}>

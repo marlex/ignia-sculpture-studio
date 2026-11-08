@@ -30,7 +30,7 @@ type Filter = "todas" | Status;
 const cellStyle: React.CSSProperties = {
   padding: "12px 10px",
   fontFamily: "Hanken Grotesk, sans-serif",
-  fontSize: 14,
+  fontSize: 15,
   color: "#121212",
   borderBottom: "1px solid #eee",
   verticalAlign: "middle",
@@ -40,14 +40,14 @@ const thStyle: React.CSSProperties = {
   fontWeight: 500,
   textTransform: "uppercase",
   letterSpacing: "0.12em",
-  fontSize: 12,
+  fontSize: 15,
   color: "#666",
   textAlign: "left",
   borderBottom: "1px solid #121212",
 };
 const tabBtn = (active: boolean): React.CSSProperties => ({
   fontFamily: "Hanken Grotesk, sans-serif",
-  fontSize: 13,
+  fontSize: 15,
   fontWeight: 500,
   letterSpacing: "0.08em",
   textTransform: "uppercase",
@@ -67,7 +67,7 @@ const badge = (s: Status): React.CSSProperties => {
     display: "inline-block",
     padding: "4px 10px",
     fontFamily: "Hanken Grotesk, sans-serif",
-    fontSize: 11,
+    fontSize: 15,
     fontWeight: 500,
     letterSpacing: "0.1em",
     textTransform: "uppercase",
@@ -178,7 +178,7 @@ export default function Obras() {
         fontSize: "clamp(28px, 3.4vw, 40px)", lineHeight: 1.1, letterSpacing: "-0.02em",
         margin: "0 0 8px",
       }}>{t.title}</h1>
-      <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666", margin: "0 0 20px" }}>
+      <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, color: "#666", margin: "0 0 20px" }}>
         {t.subtitle}
       </p>
 
@@ -189,7 +189,7 @@ export default function Obras() {
           background: "#FFF4D6",
           color: "#8A6D00",
           fontFamily: "Hanken Grotesk, sans-serif",
-          fontSize: 12,
+          fontSize: 15,
           fontWeight: 500,
           letterSpacing: "0.1em",
           textTransform: "uppercase",
@@ -246,7 +246,7 @@ export default function Obras() {
                     {a.model_status === "processing" && (
                       <div style={{ display: "flex", flexDirection: "column", gap: 6, minWidth: 160 }}>
                         {a.video_url && (
-                          <a href={a.video_url} target="_blank" rel="noreferrer" style={{ color: "#121212", fontSize: 12, textDecoration: "underline" }}>
+                          <a href={a.video_url} target="_blank" rel="noreferrer" style={{ color: "#121212", fontSize: 15, textDecoration: "underline" }}>
                             Ver video
                           </a>
                         )}
@@ -257,12 +257,12 @@ export default function Obras() {
                             const file = e.target.files?.[0];
                             if (file) uploadGlb(a, file);
                           }}
-                          style={{ fontSize: 11, maxWidth: 160 }}
+                          style={{ fontSize: 15, maxWidth: 160 }}
                         />
                       </div>
                     )}
                     {a.model_status === "ready" && (
-                      <span style={{ color: "#1F6B2A", fontSize: 12, fontWeight: 500 }}>✓ Listo</span>
+                      <span style={{ color: "#1F6B2A", fontSize: 15, fontWeight: 500 }}>✓ Listo</span>
                     )}
                   </td>
                   <td style={cellStyle}>

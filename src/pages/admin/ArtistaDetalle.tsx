@@ -39,13 +39,13 @@ type EmailLog = {
 const cellStyle: React.CSSProperties = {
   padding: "12px 10px",
   fontFamily: "Hanken Grotesk, sans-serif",
-  fontSize: 14, color: "#121212",
+  fontSize: 15, color: "#121212",
   borderBottom: "1px solid #eee",
 };
 const thStyle: React.CSSProperties = {
   ...cellStyle,
   fontWeight: 500, textTransform: "uppercase",
-  letterSpacing: "0.12em", fontSize: 12, color: "#666",
+  letterSpacing: "0.12em", fontSize: 15, color: "#666",
   textAlign: "left", borderBottom: "1px solid #121212",
 };
 
@@ -165,7 +165,7 @@ export default function ArtistaDetalle() {
   if (!profile) {
     return (
       <div>
-        <Link to="/admin/dashboard/artistas" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212" }}>{t.back}</Link>
+        <Link to="/admin/dashboard/artistas" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, color: "#121212" }}>{t.back}</Link>
         <p style={{ fontFamily: "Hanken Grotesk, sans-serif", marginTop: 20 }}>{t.notFound}</p>
       </div>
     );
@@ -173,7 +173,7 @@ export default function ArtistaDetalle() {
 
   return (
     <div>
-      <Link to="/admin/dashboard/artistas" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", display: "inline-block", marginBottom: 24 }}>
+      <Link to="/admin/dashboard/artistas" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, color: "#121212", display: "inline-block", marginBottom: 24 }}>
         {t.back}
       </Link>
 
@@ -182,7 +182,7 @@ export default function ArtistaDetalle() {
         fontSize: "clamp(28px, 3.4vw, 40px)", lineHeight: 1.1, letterSpacing: "-0.02em",
         margin: "0 0 4px",
       }}>{profile.name || profile.email}</h1>
-      <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#666", margin: "0 0 24px" }}>
+      <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, color: "#666", margin: "0 0 24px" }}>
         {profile.email}
         {profile.founding_artist && <span> · {t.founding}</span>}
         {" · "}{t.joined} {new Date(profile.created_at).toLocaleDateString(lang === "es" ? "es-ES" : "en-US")}
@@ -201,7 +201,7 @@ export default function ArtistaDetalle() {
         <h2 style={{ fontFamily: "'Albert Sans', sans-serif", fontWeight: 300, color: "#121212", fontSize: 18, margin: "0 0 6px" }}>
           {t.resendTitle}
         </h2>
-        <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666", margin: "0 0 16px", lineHeight: 1.5 }}>
+        <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, color: "#666", margin: "0 0 16px", lineHeight: 1.5 }}>
           {t.resendHint}
         </p>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -210,7 +210,7 @@ export default function ArtistaDetalle() {
             disabled={resending}
             onClick={() => resendWelcome("es")}
             style={{
-              fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, fontWeight: 500,
+              fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, fontWeight: 500,
               letterSpacing: "0.08em", textTransform: "uppercase",
               padding: "10px 16px", border: "1px solid #121212",
               background: profile.lang === "es" ? "#121212" : "#fff",
@@ -225,7 +225,7 @@ export default function ArtistaDetalle() {
             disabled={resending}
             onClick={() => resendWelcome("en")}
             style={{
-              fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, fontWeight: 500,
+              fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, fontWeight: 500,
               letterSpacing: "0.08em", textTransform: "uppercase",
               padding: "10px 16px", border: "1px solid #121212",
               background: profile.lang === "en" ? "#121212" : "#fff",
@@ -237,23 +237,23 @@ export default function ArtistaDetalle() {
           </button>
         </div>
         {resendMsg && (
-          <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#121212", marginTop: 12, marginBottom: 0 }}>
+          <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, color: "#121212", marginTop: 12, marginBottom: 0 }}>
             {resendMsg}
           </p>
         )}
 
         <div style={{ borderTop: "1px solid #E5E5E5", marginTop: 20, paddingTop: 16 }}>
-          <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 11, fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "#666", marginBottom: 10 }}>
+          <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "#666", marginBottom: 10 }}>
             {t.logTitle}
           </div>
           {emailLog.length === 0 ? (
-            <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666", margin: 0 }}>
+            <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, color: "#666", margin: 0 }}>
               {t.logEmpty}
             </p>
           ) : (
             <div style={{ display: "grid", gap: 8 }}>
               {emailLog.map((e) => (
-                <div key={e.id} style={{ display: "flex", justifyContent: "space-between", gap: 12, fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13 }}>
+                <div key={e.id} style={{ display: "flex", justifyContent: "space-between", gap: 12, fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15 }}>
                   <span style={{ color: "#121212" }}>{e.template_name}</span>
                   <span style={{ color: "#666", whiteSpace: "nowrap" }}>
                     {t.logStatus[e.status] || e.status} · {new Date(e.created_at).toLocaleString(lang === "es" ? "es-ES" : "en-US", { dateStyle: "short", timeStyle: "short" })}
@@ -305,10 +305,10 @@ export default function ArtistaDetalle() {
 function Field({ label, value, noValue, multiline }: { label: string; value?: string | null; noValue: string; multiline?: boolean }) {
   return (
     <div>
-      <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 11, fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "#666", marginBottom: 4 }}>
+      <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "#666", marginBottom: 4 }}>
         {label}
       </div>
-      <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#121212", whiteSpace: multiline ? "pre-wrap" : "normal", lineHeight: 1.55 }}>
+      <div style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, color: "#121212", whiteSpace: multiline ? "pre-wrap" : "normal", lineHeight: 1.55 }}>
         {value || noValue}
       </div>
     </div>

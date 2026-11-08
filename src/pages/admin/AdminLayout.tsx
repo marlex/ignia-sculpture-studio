@@ -40,7 +40,7 @@ export default function AdminLayout() {
             href="/"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 14, textDecoration: "underline" }}
+            style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, color: "#666666", fontSize: 15, textDecoration: "underline" }}
           >
             {lang === "es" ? "Ver sitio público ↗" : "View public site ↗"}
           </a>

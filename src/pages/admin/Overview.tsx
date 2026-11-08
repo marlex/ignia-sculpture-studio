@@ -19,7 +19,7 @@ const cardStyle: React.CSSProperties = {
 };
 
 const kpiLabel: React.CSSProperties = {
-  fontSize: 12,
+  fontSize: 15,
   letterSpacing: "0.14em",
   textTransform: "uppercase",
   color: "#666",
@@ -92,7 +92,7 @@ export default function Overview() {
   return (
     <div>
       <h1 style={h1Style}>{t.title}</h1>
-      <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, color: "#666", margin: "0 0 24px" }}>{t.subtitle}</p>
+      <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, color: "#666", margin: "0 0 24px" }}>{t.subtitle}</p>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16, marginBottom: 32 }}>
         {items.map((k) => (
@@ -107,7 +107,7 @@ export default function Overview() {
         onClick={exportCsv}
         style={{
           fontFamily: "Hanken Grotesk, sans-serif",
-          fontSize: 13,
+          fontSize: 15,
           fontWeight: 500,
           letterSpacing: "0.12em",
           textTransform: "uppercase",

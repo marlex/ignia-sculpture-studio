@@ -14,19 +14,19 @@ type Row = {
 const cellStyle: React.CSSProperties = {
   padding: "12px 10px",
   fontFamily: "Hanken Grotesk, sans-serif",
-  fontSize: 14, color: "#121212",
+  fontSize: 15, color: "#121212",
   borderBottom: "1px solid #eee",
 };
 
 const thStyle: React.CSSProperties = {
   ...cellStyle,
   fontWeight: 500, textTransform: "uppercase",
-  letterSpacing: "0.12em", fontSize: 12, color: "#666",
+  letterSpacing: "0.12em", fontSize: 15, color: "#666",
   textAlign: "left", borderBottom: "1px solid #121212",
 };
 
 const btn: React.CSSProperties = {
-  fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, fontWeight: 500,
+  fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, fontWeight: 500,
   letterSpacing: "0.08em", textTransform: "uppercase",
   padding: "6px 12px", border: "1px solid #121212",
   background: "#fff", color: "#121212", cursor: "pointer",
