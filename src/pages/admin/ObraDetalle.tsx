@@ -17,6 +17,7 @@ type Artwork = {
   status: Status;
   created_at: string;
   image_url: string | null;
+  image_urls: string[] | null;
   video_url: string | null;
   glb_url: string | null;
   model_status: "none" | "processing" | "ready";
@@ -75,7 +76,7 @@ export default function AdminObraDetalle() {
     setLoading(true);
     const { data: art } = await supabase
       .from("artworks")
-      .select("id, artist_id, title, description, price, year, medium, dimensions, status, created_at, image_url, video_url, glb_url, model_status, process_story, process_photo_urls")
+      .select("id, artist_id, title, description, price, year, medium, dimensions, status, created_at, image_url, image_urls, video_url, glb_url, model_status, process_story, process_photo_urls")
       .eq("id", id)
       .maybeSingle();
     setArtwork((art as Artwork) || null);
@@ -134,6 +135,13 @@ export default function AdminObraDetalle() {
         <div>
           {artwork.image_url && (
             <img src={artwork.image_url} alt={artwork.title} style={{ width: "100%", height: "auto", objectFit: "cover", marginBottom: 16 }} />
+          )}
+          {artwork.image_urls && artwork.image_urls.length > 0 && (
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8, marginBottom: 16 }}>
+              {artwork.image_urls.map((url, i) => (
+                <img key={i} src={url} alt="" style={{ width: "100%", aspectRatio: "1", objectFit: "cover", objectPosition: "top" }} />
+              ))}
+            </div>
           )}
           {artwork.video_url && (
             <a href={artwork.video_url} target="_blank" rel="noreferrer" style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 15, color: "#121212", textDecoration: "underline" }}>

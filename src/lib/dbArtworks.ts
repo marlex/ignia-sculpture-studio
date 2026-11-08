@@ -48,6 +48,7 @@ type RawArtwork = {
   year: number | null;
   medium: string | null;
   image_url: string | null;
+  image_urls: string[] | null;
   glb_url: string | null;
   model_status: string | null;
   process_photo_urls: string[] | null;
@@ -62,7 +63,7 @@ const toDbWork = (a: RawArtwork, artist: DbArtistProfile | undefined, lang: Lang
     artistSlug: artistSlug(artistName),
     image: a.image_url || "",
     glbUrl: a.model_status === "ready" && a.glb_url ? a.glb_url : undefined,
-    extraImages: a.process_photo_urls && a.process_photo_urls.length > 0 ? a.process_photo_urls : undefined,
+    extraImages: a.image_urls && a.image_urls.length > 0 ? a.image_urls : undefined,
     title: a.title,
     artist: artistName,
     material: a.medium || (lang === "es" ? "Técnica mixta" : "Mixed media"),
@@ -77,7 +78,7 @@ const toDbWork = (a: RawArtwork, artist: DbArtistProfile | undefined, lang: Lang
 async function fetchApprovedWithProfiles(): Promise<{ artworks: RawArtwork[]; profiles: Record<string, DbArtistProfile> }> {
   const { data: arts } = await supabase
     .from("artworks")
-    .select("id, artist_id, title, description, price, year, medium, image_url, glb_url, model_status, process_photo_urls")
+    .select("id, artist_id, title, description, price, year, medium, image_url, image_urls, glb_url, model_status, process_photo_urls")
     .eq("status", "aprobada")
     .not("image_url", "is", null)
     .order("created_at", { ascending: false });
@@ -104,7 +105,7 @@ export async function fetchDbWorkBySlug(slug: string, lang: Lang): Promise<DbWor
   const id = slug.slice(3);
   const { data: a } = await supabase
     .from("artworks")
-    .select("id, artist_id, title, description, price, year, medium, image_url, glb_url, model_status, process_photo_urls")
+    .select("id, artist_id, title, description, price, year, medium, image_url, image_urls, glb_url, model_status, process_photo_urls")
     .eq("id", id)
     .eq("status", "aprobada")
     .maybeSingle();

@@ -35,7 +35,7 @@ export default function Publicar() {
   const [profundo, setProfundo] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const [photo, setPhoto] = useState<File | null>(null);
+  const [photos, setPhotos] = useState<File[]>([]);
   const [video, setVideo] = useState<File | null>(null);
   const [processStory, setProcessStory] = useState("");
   const [processPhotos, setProcessPhotos] = useState<File[]>([]);
@@ -44,7 +44,7 @@ export default function Publicar() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const dirty = !submitted && !!(title || yearVal || medium || alto || ancho || profundo || price || description || photo || video || processStory || processPhotos.length);
+  const dirty = !submitted && !!(title || yearVal || medium || alto || ancho || profundo || price || description || photos.length || video || processStory || processPhotos.length);
 
   useEffect(() => {
     if (authLoading) return;
@@ -77,13 +77,15 @@ export default function Publicar() {
     setError(null);
     setLoading(true);
     try {
-      let imageUrl: string | null = null;
-      if (photo) {
-        const path = `${user.id}/${crypto.randomUUID()}-${photo.name}`;
-        const { error: uploadErr } = await supabase.storage.from("artwork-images").upload(path, photo);
+      const photoUrls: string[] = [];
+      for (const file of photos) {
+        const path = `${user.id}/${crypto.randomUUID()}-${file.name}`;
+        const { error: uploadErr } = await supabase.storage.from("artwork-images").upload(path, file);
         if (uploadErr) throw uploadErr;
-        imageUrl = supabase.storage.from("artwork-images").getPublicUrl(path).data.publicUrl;
+        photoUrls.push(supabase.storage.from("artwork-images").getPublicUrl(path).data.publicUrl);
       }
+      const imageUrl = photoUrls[0] || null;
+      const extraImageUrls = photoUrls.slice(1);
 
       let videoUrl: string | null = null;
       if (video) {
@@ -110,6 +112,7 @@ export default function Publicar() {
         title,
         description: description || null,
         image_url: imageUrl,
+        image_urls: extraImageUrls,
         price: price ? Number(price) : null,
         year: yearVal ? Number(yearVal) : null,
         medium: medium || null,
@@ -205,8 +208,19 @@ export default function Publicar() {
             </div>
             <Field label="Precio (€)"><input value={price} onChange={(e) => setPrice(e.target.value)} style={fieldInput} /></Field>
             <Field label="Descripción"><textarea rows={4} value={description} onChange={(e) => setDescription(e.target.value)} style={{ ...fieldInput, resize: "vertical" }} /></Field>
-            <Field label="Foto principal (jpg/png)">
-              <input type="file" accept="image/jpeg,image/png" onChange={(e) => setPhoto(e.target.files?.[0] ?? null)} style={fieldInput} />
+            <Field label="Fotos de la obra (jpg/png)">
+              <input
+                type="file"
+                accept="image/jpeg,image/png"
+                multiple
+                onChange={(e) => setPhotos(Array.from(e.target.files ?? []))}
+                style={fieldInput}
+              />
+              {photos.length > 0 && (
+                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666", marginTop: 8 }}>
+                  {photos.length} {photos.length === 1 ? "foto seleccionada" : "fotos seleccionadas"}. La primera será la foto principal.
+                </p>
+              )}
             </Field>
           </div>
 
