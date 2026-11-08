@@ -1,6 +1,6 @@
 import { Suspense, lazy, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Maximize2, X } from "lucide-react";
+import { Maximize2, X, ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import NotFound from "@/pages/NotFound";
@@ -249,10 +249,22 @@ export default function PerfilEscultorDb({ slug }: { slug: string }) {
                 </div>
               )}
             </dl>
-            <div className="flex flex-wrap gap-4 justify-center mt-8">
-              {profile.instagram && <a href={profile.instagram} target="_blank" rel="noreferrer" className="font-body text-[14px] text-ink underline-offset-4 hover:underline">Instagram ↗</a>}
-              {profile.website && <a href={profile.website} target="_blank" rel="noreferrer" className="font-body text-[14px] text-ink underline-offset-4 hover:underline">{lang === "es" ? "Sitio web" : "Website"} ↗</a>}
-              {profile.portfolio_url && <a href={profile.portfolio_url} target="_blank" rel="noreferrer" className="font-body text-[14px] text-ink underline-offset-4 hover:underline">Portfolio ↗</a>}
+            <div className="flex flex-wrap gap-6 max-w-[480px] mx-auto mt-8">
+              {profile.instagram && (
+                <a href={profile.instagram} target="_blank" rel="noreferrer" className="link-arrow inline-flex items-center gap-1">
+                  Instagram <ArrowUpRight className="w-3 h-3" />
+                </a>
+              )}
+              {profile.website && (
+                <a href={profile.website} target="_blank" rel="noreferrer" className="link-arrow inline-flex items-center gap-1">
+                  {lang === "es" ? "Sitio web" : "Website"} <ArrowUpRight className="w-3 h-3" />
+                </a>
+              )}
+              {profile.portfolio_url && (
+                <a href={profile.portfolio_url} target="_blank" rel="noreferrer" className="link-arrow inline-flex items-center gap-1">
+                  Portfolio <ArrowUpRight className="w-3 h-3" />
+                </a>
+              )}
             </div>
           </div>
         </div>
