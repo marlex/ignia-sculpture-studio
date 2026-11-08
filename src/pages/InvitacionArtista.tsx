@@ -64,6 +64,7 @@ export default function InvitacionArtista() {
         fOrigin: "Origen (ciudad, país)",
         fTechnique: "Técnica o materiales principales",
         fBio: "Biografía corta",
+        fBioHint: "Deja una línea en blanco entre párrafos para que se vean separados en tu perfil.",
         submit: "Completar registro",
         sending: "Enviando…",
         checkEmailTitle: "Revisa tu correo.",
@@ -84,6 +85,7 @@ export default function InvitacionArtista() {
         fOrigin: "Origin (city, country)",
         fTechnique: "Main technique or materials",
         fBio: "Short biography",
+        fBioHint: "Leave a blank line between paragraphs so they show as separate paragraphs on your profile.",
         submit: "Complete registration",
         sending: "Sending…",
         checkEmailTitle: "Check your email.",
@@ -196,6 +198,7 @@ export default function InvitacionArtista() {
               <div style={{ marginBottom: 40 }}>
                 <label style={labelStyle} htmlFor="bio">{t.fBio}</label>
                 <textarea id="bio" required rows={5} value={bio} onChange={(e) => setBio(e.target.value)} style={{ ...inputStyle, resize: "vertical" }} />
+                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, fontSize: 13, color: "#999", marginTop: 8 }}>{t.fBioHint}</p>
               </div>
 
               <h2 style={{

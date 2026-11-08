@@ -50,6 +50,7 @@ export default function PerfilArtista() {
         fOrigin: "Origen (ciudad, país)",
         fTechnique: "Técnica o materiales principales",
         fBio: "Biografía corta",
+        fBioHint: "Deja una línea en blanco entre párrafos para que se vean separados en tu perfil.",
         submit: "Guardar y continuar",
         sending: "Guardando…",
         savedTitle: "Perfil guardado.",
@@ -63,6 +64,7 @@ export default function PerfilArtista() {
         fOrigin: "Origin (city, country)",
         fTechnique: "Main technique or materials",
         fBio: "Short biography",
+        fBioHint: "Leave a blank line between paragraphs so they show as separate paragraphs on your profile.",
         submit: "Save and continue",
         sending: "Saving…",
         savedTitle: "Profile saved.",
@@ -173,6 +175,7 @@ export default function PerfilArtista() {
               <div style={{ marginBottom: 40 }}>
                 <label style={labelStyle} htmlFor="bio">{t.fBio}</label>
                 <textarea id="bio" required rows={5} value={bio} onChange={(e) => setBio(e.target.value)} style={{ ...inputStyle, resize: "vertical" }} />
+                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, fontSize: 13, color: "#999", marginTop: 8 }}>{t.fBioHint}</p>
               </div>
 
               {error && <p style={{ color: "#b00020", fontFamily: "Hanken Grotesk, sans-serif", fontSize: 14, marginBottom: 16 }}>{error}</p>}
