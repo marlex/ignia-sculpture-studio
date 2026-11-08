@@ -36,6 +36,15 @@ export default function Publicar() {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [photos, setPhotos] = useState<File[]>([]);
+  const [mainPhotoIndex, setMainPhotoIndex] = useState(0);
+  const [photoPreviews, setPhotoPreviews] = useState<string[]>([]);
+
+  useEffect(() => {
+    const urls = photos.map((f) => URL.createObjectURL(f));
+    setPhotoPreviews(urls);
+    setMainPhotoIndex((i) => (i < photos.length ? i : 0));
+    return () => { urls.forEach((u) => URL.revokeObjectURL(u)); };
+  }, [photos]);
   const [video, setVideo] = useState<File | null>(null);
   const [processStory, setProcessStory] = useState("");
   const [processPhotos, setProcessPhotos] = useState<File[]>([]);
@@ -77,8 +86,12 @@ export default function Publicar() {
     setError(null);
     setLoading(true);
     try {
+      const orderedPhotos = [
+        ...(photos[mainPhotoIndex] ? [photos[mainPhotoIndex]] : []),
+        ...photos.filter((_, i) => i !== mainPhotoIndex),
+      ];
       const photoUrls: string[] = [];
-      for (const file of photos) {
+      for (const file of orderedPhotos) {
         const path = `${user.id}/${crypto.randomUUID()}-${file.name}`;
         const { error: uploadErr } = await supabase.storage.from("artwork-images").upload(path, file);
         if (uploadErr) throw uploadErr;
@@ -217,9 +230,39 @@ export default function Publicar() {
                 style={fieldInput}
               />
               {photos.length > 0 && (
-                <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666", marginTop: 8 }}>
-                  {photos.length} {photos.length === 1 ? "foto seleccionada" : "fotos seleccionadas"}. La primera será la foto principal.
-                </p>
+                <>
+                  <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666", marginTop: 8, marginBottom: 12 }}>
+                    {photos.length} {photos.length === 1 ? "foto seleccionada" : "fotos seleccionadas"}. Elige cuál usar como foto principal.
+                  </p>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+                    {photoPreviews.map((src, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        onClick={() => setMainPhotoIndex(i)}
+                        style={{
+                          position: "relative", width: 84, height: 84, padding: 0,
+                          border: i === mainPhotoIndex ? "2px solid #121212" : "1px solid #ccc",
+                          background: "none", cursor: "pointer",
+                        }}
+                        aria-label={i === mainPhotoIndex ? "Foto principal" : "Hacer foto principal"}
+                      >
+                        <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                        {i === mainPhotoIndex && (
+                          <span style={{
+                            position: "absolute", bottom: 0, left: 0, right: 0,
+                            background: "#121212", color: "#fff",
+                            fontFamily: "Hanken Grotesk, sans-serif", fontSize: 10,
+                            textTransform: "uppercase", letterSpacing: "0.08em",
+                            padding: "2px 0", textAlign: "center",
+                          }}>
+                            Principal
+                          </span>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </>
               )}
             </Field>
           </div>
