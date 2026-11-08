@@ -242,7 +242,7 @@ export default function PerfilEscultor() {
             decoding="async"
             width={1920}
             height={1080}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover object-top"
           />
           <div
             className="absolute inset-0 pointer-events-none"
@@ -307,7 +307,7 @@ export default function PerfilEscultor() {
                   decoding="async"
                   width={1200}
                   height={1500}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-cover object-top"
                 />
               )}
             </div>
@@ -357,14 +357,14 @@ export default function PerfilEscultor() {
                   <div className="grid h-full gap-2" style={{ gridTemplateColumns: `repeat(${roundPhotos.length}, 1fr)` }}>
                     {roundPhotos.map((src, i) => (
                       <div key={i} className="relative h-full overflow-hidden bg-secondary">
-                        <img src={src} alt={`${roundWork.es.title} ${i + 1}`} loading="lazy" width={400} height={533} className="w-full h-full object-cover" />
+                        <img src={src} alt={`${roundWork.es.title} ${i + 1}`} loading="lazy" width={400} height={533} className="w-full h-full object-cover object-top" />
                         <ExpandButton onClick={() => setLightbox({ src, alt: `${roundWork.es.title} ${i + 1}` })} />
                       </div>
                     ))}
                   </div>
                 ) : (
                   <div className="relative h-full overflow-hidden bg-secondary">
-                    <img src={roundPhotos[0]} alt={roundWork.es.title} loading="lazy" width={400} height={533} className="w-full h-full object-cover" />
+                    <img src={roundPhotos[0]} alt={roundWork.es.title} loading="lazy" width={400} height={533} className="w-full h-full object-cover object-top" />
                     <ExpandButton onClick={() => setLightbox({ src: roundPhotos[0], alt: roundWork.es.title })} />
                   </div>
                 )}
@@ -476,7 +476,7 @@ export default function PerfilEscultor() {
               loading="lazy"
               width={1200}
               height={1500}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top"
               style={{ minHeight: 420 }}
             />
           </div>
@@ -609,7 +609,7 @@ const WorkEntry = ({ work, lang, t, wide, onExpand }: WorkEntryProps) => {
   return (
     <article>
       <Link to={`/obra/${work.slug}`} className={`relative block overflow-hidden bg-secondary mb-5 ${wide ? "aspect-[4/5] md:aspect-[21/9]" : "aspect-[4/5]"}`}>
-        <img src={work.image} alt={c.title} loading="lazy" width={1200} height={1500} className="w-full h-full object-cover" />
+        <img src={work.image} alt={c.title} loading="lazy" width={1200} height={1500} className="w-full h-full object-cover object-top" />
         <ExpandButton
           onClick={(e) => {
             e.preventDefault();

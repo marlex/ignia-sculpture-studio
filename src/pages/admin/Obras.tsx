@@ -233,7 +233,7 @@ export default function Obras() {
                   <td style={cellStyle}>
                     <Link to={`/admin/dashboard/obras/${a.id}`} style={{ display: "flex", alignItems: "center", gap: 10, color: "#121212", textDecoration: "none" }}>
                       {a.image_url && (
-                        <img src={a.image_url} alt="" style={{ width: 40, height: 40, objectFit: "cover" }} />
+                        <img src={a.image_url} alt="" style={{ width: 40, height: 40, objectFit: "cover", objectPosition: "top" }} />
                       )}
                       <span style={{ textDecoration: "underline" }}>{a.title}</span>
                     </Link>

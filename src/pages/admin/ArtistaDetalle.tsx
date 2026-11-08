@@ -286,7 +286,7 @@ export default function ArtistaDetalle() {
               <tr key={a.id}>
                 <td style={cellStyle}>
                   <Link to={`/admin/dashboard/obras/${a.id}`} style={{ display: "flex", alignItems: "center", gap: 10, color: "#121212", textDecoration: "none" }}>
-                    {a.image_url && <img src={a.image_url} alt="" style={{ width: 36, height: 36, objectFit: "cover" }} />}
+                    {a.image_url && <img src={a.image_url} alt="" style={{ width: 36, height: 36, objectFit: "cover", objectPosition: "top" }} />}
                     <span style={{ textDecoration: "underline" }}>{a.title}</span>
                   </Link>
                 </td>

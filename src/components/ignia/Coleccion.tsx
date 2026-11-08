@@ -269,7 +269,7 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
               <img
                 src={featured.heroImage || featured.image}
                 alt={featured.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
               />
             </Link>
             <div className="flex flex-col justify-end md:col-span-1">
@@ -338,7 +338,7 @@ className="font-body text-[12px] font-normal tracking-[0.22em] uppercase border 
           return (
             <article key={o.slug} className="bg-white group">
               <Link to={`/obra/${o.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary">
-                <img src={o.image} alt={o.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                <img src={o.image} alt={o.title} loading="lazy" className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]" />
               </Link>
               <div className="px-0 pt-2 pb-3 sm:pt-3 sm:pb-5">
                 <h3 className="font-display font-semibold text-[28px] max-md:text-[25px] text-ink mb-0.5 sm:mb-1"><Link to={`/obra/${o.slug}`} className="hover:underline underline-offset-4">{o.title}</Link></h3>

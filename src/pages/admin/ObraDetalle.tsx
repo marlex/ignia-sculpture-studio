@@ -143,7 +143,7 @@ export default function AdminObraDetalle() {
           {artwork.process_photo_urls && artwork.process_photo_urls.length > 0 && (
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8, marginTop: 16 }}>
               {artwork.process_photo_urls.map((url, i) => (
-                <img key={i} src={url} alt="" style={{ width: "100%", aspectRatio: "1", objectFit: "cover" }} />
+                <img key={i} src={url} alt="" style={{ width: "100%", aspectRatio: "1", objectFit: "cover", objectPosition: "top" }} />
               ))}
             </div>
           )}

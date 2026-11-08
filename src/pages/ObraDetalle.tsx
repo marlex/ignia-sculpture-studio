@@ -254,7 +254,7 @@ const ObraDetalle = () => {
                       loading={i === 0 ? "eager" : "lazy"}
                       fetchpriority={i === 0 ? "high" : "low"}
                       decoding="async"
-                      className="absolute inset-0 w-full h-full object-cover transition-opacity duration-200"
+                      className="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-200"
                       style={{ opacity: i === idx ? 1 : 0 }}
                     />
                   ))}
@@ -294,7 +294,7 @@ const ObraDetalle = () => {
                       }`}
                       aria-label={`Ángulo ${i + 1}`}
                     >
-                      <img src={src} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                      <img src={src} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover object-top" />
                     </button>
                   ))}
                 </div>
@@ -645,7 +645,7 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
                 {others.map(w => (
                   <Link key={w.slug} to={`/obra/${w.slug}`} className="group block">
                     <div className="aspect-square bg-secondary overflow-hidden mb-3">
-                      <img src={w.image} alt={w.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+                      <img src={w.image} alt={w.title} loading="lazy" decoding="async" className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]" />
                     </div>
                     <div className="font-body text-[14px] text-ink">{w.title}</div>
                     <div className="font-body text-[14px] text-ink">{w.price}</div>

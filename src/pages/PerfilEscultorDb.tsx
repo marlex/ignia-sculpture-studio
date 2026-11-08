@@ -85,7 +85,7 @@ export default function PerfilEscultorDb({ slug }: { slug: string }) {
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover object-top"
           />
           <div
             className="absolute inset-0 pointer-events-none"
@@ -164,7 +164,7 @@ export default function PerfilEscultorDb({ slug }: { slug: string }) {
                   </Suspense>
                 ) : (
                   <div className="relative h-full overflow-hidden bg-secondary">
-                    <img src={roundWork.image} alt={roundWork.title} loading="lazy" className="w-full h-full object-cover" />
+                    <img src={roundWork.image} alt={roundWork.title} loading="lazy" className="w-full h-full object-cover object-top" />
                     <ExpandButton onClick={() => setLightbox({ src: roundWork.image, alt: roundWork.title })} />
                   </div>
                 )}
@@ -200,7 +200,7 @@ export default function PerfilEscultorDb({ slug }: { slug: string }) {
                 return (
                   <article key={w.id} className={isWide ? "md:col-span-2" : ""}>
                     <Link to={`/obra/${w.slug}`} className={`relative block overflow-hidden bg-secondary mb-5 ${isWide ? "aspect-[4/5] md:aspect-[21/9]" : "aspect-[4/5]"}`}>
-                      <img src={w.image} alt={w.title} loading="lazy" className="w-full h-full object-cover" />
+                      <img src={w.image} alt={w.title} loading="lazy" className="w-full h-full object-cover object-top" />
                       <ExpandButton onClick={(e) => { e.preventDefault(); e.stopPropagation(); setLightbox({ src: w.image, alt: w.title }); }} />
                     </Link>
                     <div>
@@ -324,7 +324,7 @@ function EnquireSection({ name, firstName, slug, openerImage, t }: {
     <section id="enquire" className="grid grid-cols-1 md:grid-cols-2">
       {openerImage && (
         <div className="order-1 md:order-1" style={{ minHeight: 420 }}>
-          <img src={openerImage} alt={name} loading="lazy" className="w-full h-full object-cover" style={{ minHeight: 420 }} />
+          <img src={openerImage} alt={name} loading="lazy" className="w-full h-full object-cover object-top" style={{ minHeight: 420 }} />
         </div>
       )}
       <div className={`order-2 md:order-2 flex flex-col justify-center px-6 md:px-16 py-24 md:py-0 ${openerImage ? "" : "col-span-2"}`} style={{ background: "#121212" }}>
