@@ -230,8 +230,8 @@ export default function PerfilEscultorDb({ slug }: { slug: string }) {
           <div className="max-w-[720px] mx-auto text-center">
             {profile.bio && (
               <div className="font-body text-[16px] font-normal text-gray leading-relaxed space-y-4 mb-10 text-left">
-                {profile.bio.split(/\n\s*\n/).filter(Boolean).map((para, i) => (
-                  <p key={i} className="whitespace-pre-line">{para.trim()}</p>
+                {profile.bio.split(/\n\s*\n/).map(clean).filter(Boolean).map((para, i) => (
+                  <p key={i}>{para}</p>
                 ))}
               </div>
             )}
