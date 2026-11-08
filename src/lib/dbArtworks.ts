@@ -117,6 +117,32 @@ export async function fetchDbWorkBySlug(slug: string, lang: Lang): Promise<DbWor
   return toDbWork(a as RawArtwork, (prof as DbArtistProfile) || undefined, lang);
 }
 
+export type DbRosterEntry = {
+  slug: string;
+  nombre: string;
+  technique: string;
+  location: string;
+  thumbnail: string;
+};
+
+export async function fetchDbSculptorRoster(): Promise<DbRosterEntry[]> {
+  const { artworks, profiles } = await fetchApprovedWithProfiles();
+  return Object.values(profiles)
+    .filter((p) => p.name)
+    .map((p) => {
+      const work = artworks.find((a) => a.artist_id === p.id && a.image_url);
+      if (!work) return null;
+      return {
+        slug: artistSlug(p.name as string),
+        nombre: p.name as string,
+        technique: p.technique || "",
+        location: p.origin || "",
+        thumbnail: work.image_url as string,
+      };
+    })
+    .filter((e): e is DbRosterEntry => e !== null);
+}
+
 export async function fetchDbArtistBySlug(slug: string, lang: Lang = "en"): Promise<{ profile: DbArtistProfile; works: DbWork[] } | undefined> {
   const { artworks, profiles } = await fetchApprovedWithProfiles();
   const match = Object.values(profiles).find((p) => p.name && artistSlug(p.name) === slug);

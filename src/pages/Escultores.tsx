@@ -1,15 +1,27 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import { Seo } from "@/components/Seo";
 import { useLang } from "@/i18n/LanguageContext";
 import { getSculptorRoster, artistSlug } from "@/components/ignia/sculptors/roster";
+import { fetchDbSculptorRoster, type DbRosterEntry } from "@/lib/dbArtworks";
 import { SculptorsSlideshow } from "@/components/ignia/sculptors/SculptorsSlideshow";
 import { SculptorsToKnow } from "@/components/ignia/sculptors/SculptorsToKnow";
 
 const EscultoresPage = () => {
   const lang = useLang();
-  const roster = getSculptorRoster(lang);
+  const [dbRoster, setDbRoster] = useState<DbRosterEntry[]>([]);
+
+  useEffect(() => {
+    let alive = true;
+    fetchDbSculptorRoster().then((entries) => { if (alive) setDbRoster(entries); });
+    return () => { alive = false; };
+  }, []);
+
+  // Artists who published through the artist dashboard lead the index,
+  // same as a newly published artwork leads the catalogue.
+  const roster = [...dbRoster, ...getSculptorRoster(lang)];
 
   const t = lang === "es"
     ? {
