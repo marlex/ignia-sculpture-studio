@@ -219,7 +219,20 @@ export default function Publicar() {
                 <input placeholder="Profundo" value={profundo} onChange={(e) => setProfundo(e.target.value)} style={fieldInput} />
               </div>
             </div>
-            <Field label="Precio (€)"><input value={price} onChange={(e) => setPrice(e.target.value)} style={fieldInput} /></Field>
+            <Field label="Precio (€)">
+              <input value={price} onChange={(e) => setPrice(e.target.value)} style={fieldInput} />
+              {Number(price) > 0 && (() => {
+                const commissionRate = profile?.founding_artist ? 0.15 : 0.18;
+                const net = Number(price) * (1 - commissionRate);
+                return (
+                  <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, fontSize: 13, color: "#666", marginTop: 8 }}>
+                    El comprador pagará €{Number(price).toLocaleString("es-ES")}. Recibirás aproximadamente{" "}
+                    <strong style={{ color: "#121212" }}>€{net.toLocaleString("es-ES", { maximumFractionDigits: 0 })}</strong>
+                    {" "}(comisión del {Math.round(commissionRate * 100)}%{profile?.founding_artist ? " como artista fundador" : ""}).
+                  </p>
+                );
+              })()}
+            </Field>
             <Field label="Descripción"><textarea rows={4} value={description} onChange={(e) => setDescription(e.target.value)} style={{ ...fieldInput, resize: "vertical" }} /></Field>
             <Field label="Fotos de la obra (jpg/png)">
               <input
