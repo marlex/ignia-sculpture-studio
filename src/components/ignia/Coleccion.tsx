@@ -42,6 +42,7 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
 
   const [open3d, setOpen3d] = useState<number | null>(null);
   const [openFeatured3d, setOpenFeatured3d] = useState(false);
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
   const [query, setQuery] = useState("");
   const [priceSort, setPriceSort] = useState<"curated" | "asc" | "desc">("curated");
   const [material, setMaterial] = useState<string>("");
@@ -271,6 +272,13 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
                 alt={featured.title}
                 className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
               />
+              <ExpandButton
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setLightbox({ src: featured.heroImage || featured.image, alt: featured.title });
+                }}
+              />
             </Link>
             <div className="flex flex-col justify-end md:col-span-1">
               <h3 className="font-display font-semibold text-[25px] md:text-[clamp(36px,4vw,52px)] leading-[1.05] text-ink mb-0.5 md:mb-2"><Link to={`/obra/${featured.slug}`} className="hover:underline underline-offset-4">{featured.title}</Link></h3>
@@ -339,6 +347,13 @@ className="font-body text-[12px] font-normal tracking-[0.22em] uppercase border 
             <article key={o.slug} className="bg-white group">
               <Link to={`/obra/${o.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-secondary">
                 <img src={o.image} alt={o.title} loading="lazy" className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]" />
+                <ExpandButton
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setLightbox({ src: o.image, alt: o.title });
+                  }}
+                />
               </Link>
               <div className="px-0 pt-2 pb-3 sm:pt-3 sm:pb-5">
                 <h3 className="font-display font-semibold text-[28px] max-md:text-[25px] text-ink mb-0.5 sm:mb-1"><Link to={`/obra/${o.slug}`} className="hover:underline underline-offset-4">{o.title}</Link></h3>
@@ -566,6 +581,31 @@ className="inline-flex items-center gap-1.5 font-body text-[12px] font-normal tr
           </div>
         </div>
       )}
+
+      {lightbox && (
+        <div className="fixed inset-0 z-[200] bg-black/95 flex items-center justify-center p-6" onClick={() => setLightbox(null)}>
+          <button
+            type="button"
+            onClick={() => setLightbox(null)}
+            aria-label={t.close}
+            className="absolute top-4 right-4 z-10 w-12 h-12 bg-white/90 border border-border flex items-center justify-center hover:opacity-65 transition-opacity"
+          >
+            <X className="w-7 h-7" />
+          </button>
+          <img src={lightbox.src} alt={lightbox.alt} className="max-w-full max-h-full object-contain" />
+        </div>
+      )}
     </section>
   );
 };
+
+const ExpandButton = ({ onClick }: { onClick: (e: React.MouseEvent) => void }) => (
+  <button
+    type="button"
+    onClick={onClick}
+    aria-label="Expand image"
+    className="absolute top-3 right-3 z-20 w-10 h-10 bg-white/90 border border-border flex items-center justify-center hover:opacity-65 transition-opacity"
+  >
+    <Maximize2 className="w-4 h-4" />
+  </button>
+);

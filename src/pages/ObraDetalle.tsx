@@ -8,7 +8,7 @@ const GlbViewer = lazy(() => import("@/components/ignia/GlbViewer").then(m => ({
 import { useLang } from "@/i18n/LanguageContext";
 import { getWorkBySlug, WORKS } from "@/data/igniaWorks";
 import { fetchDbWorkBySlug, type DbWork } from "@/lib/dbArtworks";
-import { ChevronLeft, ChevronRight, MessageCircle, Link2, Mail, ChevronDown, Info } from "lucide-react";
+import { ChevronLeft, ChevronRight, MessageCircle, Link2, Mail, ChevronDown, Info, Maximize2, X } from "lucide-react";
 import { BIOS } from "@/pages/PerfilEscultor";
 import { artistSlug } from "@/lib/artistSlug";
 import { supabase } from "@/integrations/supabase/client";
@@ -185,6 +185,7 @@ const ObraDetalle = () => {
 
   const [copied, setCopied] = useState(false);
   const [specsOpen, setSpecsOpen] = useState(false);
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
   
   const [shipOpen, setShipOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
@@ -258,6 +259,14 @@ const ObraDetalle = () => {
                       style={{ opacity: i === idx ? 1 : 0 }}
                     />
                   ))}
+                  <button
+                    type="button"
+                    onClick={() => setLightbox({ src: photos[idx], alt: `${o.title}, ${idx + 1}` })}
+                    aria-label="Expand image"
+                    className="absolute top-3 right-3 z-20 w-10 h-10 bg-white/90 border border-border flex items-center justify-center hover:opacity-65 transition-opacity"
+                  >
+                    <Maximize2 className="w-4 h-4" />
+                  </button>
                   {hasGallery && (
                     <>
                       <button
@@ -721,6 +730,20 @@ className="flex-1 flex flex-col items-center gap-1 bg-white border border-ink ro
         </div>
       )}
 
+
+      {lightbox && (
+        <div className="fixed inset-0 z-[200] bg-black/95 flex items-center justify-center p-6" onClick={() => setLightbox(null)}>
+          <button
+            type="button"
+            onClick={() => setLightbox(null)}
+            aria-label="Close"
+            className="absolute top-4 right-4 z-10 w-12 h-12 bg-white/90 border border-border flex items-center justify-center hover:opacity-65 transition-opacity"
+          >
+            <X className="w-7 h-7" />
+          </button>
+          <img src={lightbox.src} alt={lightbox.alt} className="max-w-full max-h-full object-contain" />
+        </div>
+      )}
 
       <Footer />
       <PurchaseModal
