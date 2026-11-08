@@ -121,8 +121,9 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
 
   const totalCount = allWorks.length;
 
+  const FEATURED_TITLE = "Les Fleurs du Mal";
   const FEATURED_SLUG = "arco";
-  const featured = filtered.find(w => w.slug === FEATURED_SLUG) ?? filtered[0];
+  const featured = filtered.find(w => w.title === FEATURED_TITLE) ?? filtered.find(w => w.slug === FEATURED_SLUG) ?? filtered[0];
   const gridWorks = filtered.filter(w => w.slug !== featured?.slug);
 
   const open = open3d !== null ? gridWorks[open3d] : null;
