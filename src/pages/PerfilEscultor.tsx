@@ -4,6 +4,7 @@ import { Maximize2, X } from "lucide-react";
 import { Header } from "@/components/ignia/Header";
 import { Footer } from "@/components/ignia/Footer";
 import NotFound from "@/pages/NotFound";
+import PerfilEscultorDb from "@/pages/PerfilEscultorDb";
 import susana from "@/assets/artist-susana-solano-real.jpg";
 import adaRetrato from "@/assets/ada-la-cadena-retrato-2.png";
 import helenaPortrait from "@/assets/artist-helena-vazquez.jpg";
@@ -155,7 +156,7 @@ export default function PerfilEscultor() {
 
   const obras = bio ? getWorksForArtist(slug, bio.nombre) : [];
 
-  if (!bio) return <NotFound />;
+  if (!bio) return <PerfilEscultorDb slug={slug} />;
 
   const bioText = lang === "es" ? bio.bioEs : bio.bioEn;
   const location = extractLocation(bioText);

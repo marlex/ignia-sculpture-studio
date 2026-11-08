@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
 const GlbViewer = lazy(() => import("./GlbViewer").then(m => ({ default: m.GlbViewer })));
 import { getCatalogueWorks, type LocalizedWork } from "@/data/igniaWorks";
+import { fetchApprovedDbWorks, type DbWork } from "@/lib/dbArtworks";
 import { artistSlug } from "@/lib/artistSlug";
 import { Maximize2, X, Search } from "lucide-react";
 import {
@@ -27,7 +28,15 @@ interface ColeccionProps {
 
 export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
   const lang = useLang();
-  const allWorks = getCatalogueWorks(lang);
+  const [dbWorks, setDbWorks] = useState<DbWork[]>([]);
+
+  useEffect(() => {
+    let alive = true;
+    fetchApprovedDbWorks(lang).then((works) => { if (alive) setDbWorks(works); });
+    return () => { alive = false; };
+  }, [lang]);
+
+  const allWorks = useMemo(() => [...getCatalogueWorks(lang), ...dbWorks], [lang, dbWorks]);
 
   const [open3d, setOpen3d] = useState<number | null>(null);
   const [openFeatured3d, setOpenFeatured3d] = useState(false);

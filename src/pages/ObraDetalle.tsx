@@ -7,6 +7,7 @@ import NotFound from "@/pages/NotFound";
 const GlbViewer = lazy(() => import("@/components/ignia/GlbViewer").then(m => ({ default: m.GlbViewer })));
 import { useLang } from "@/i18n/LanguageContext";
 import { getWorkBySlug, WORKS } from "@/data/igniaWorks";
+import { fetchDbWorkBySlug, type DbWork } from "@/lib/dbArtworks";
 import { ChevronLeft, ChevronRight, MessageCircle, Link2, Mail, ChevronDown, Info } from "lucide-react";
 import { BIOS } from "@/pages/PerfilEscultor";
 import { artistSlug } from "@/lib/artistSlug";
@@ -48,7 +49,20 @@ const ObraDetalle = () => {
   const { slug = "" } = useParams();
   const lang = useLang();
   const t = T[lang];
-  const o = getWorkBySlug(slug, lang);
+  const staticWork = getWorkBySlug(slug, lang);
+  const [dbWork, setDbWork] = useState<DbWork | undefined>(undefined);
+  const [dbChecked, setDbChecked] = useState(false);
+  const isDbWork = !staticWork && slug.startsWith("db-");
+
+  useEffect(() => {
+    if (staticWork || !slug.startsWith("db-")) { setDbChecked(true); return; }
+    setDbChecked(false);
+    let alive = true;
+    fetchDbWorkBySlug(slug, lang).then((w) => { if (alive) { setDbWork(w); setDbChecked(true); } });
+    return () => { alive = false; };
+  }, [slug, lang, staticWork]);
+
+  const o = staticWork || dbWork;
 
   const photos = o ? [o.image, ...(o.extraImages || [])] : [];
   const hasGallery = photos.length >= 2;
@@ -198,7 +212,7 @@ const ObraDetalle = () => {
   const next = () => setIdx((idx + 1) % photos.length);
   const prev = () => setIdx((idx + photos.length - 1) % photos.length);
 
-  if (!o) return <NotFound />;
+  if (!o) return dbChecked ? <NotFound /> : null;
 
   return (
     <main className="pt-40 bg-white">
@@ -294,7 +308,7 @@ const ObraDetalle = () => {
           <div>
             <h1 className="font-display font-medium text-[clamp(32px,4vw,56px)] tracking-[-0.02em] text-ink leading-[1.05] mb-3">{o.title}</h1>
             <div className="font-body text-[16px] font-normal text-gray mb-6">
-              <Link to={`/perfil/escultor/${o.artist.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-")}`} className="underline-offset-4 hover:underline">{o.artist}</Link> · {o.material} · {o.year} · {o.edition}
+              <Link to={`/perfil/escultor/${artistSlug(o.artist)}`} className="underline-offset-4 hover:underline">{o.artist}</Link> · {o.material} · {o.year} · {o.edition}
             </div>
             <div className="mb-8">
               <div className="font-display font-semibold text-[32px] text-ink">{o.price}</div>
@@ -396,6 +410,7 @@ const ObraDetalle = () => {
 
             {(() => {
               const cert = getCertificate(o.slug);
+              if (!cert && isDbWork) return null;
               return (
                 <div className="border border-border mb-6">
                   <button
