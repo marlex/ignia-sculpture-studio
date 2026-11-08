@@ -239,40 +239,58 @@ export default function Publicar() {
                 type="file"
                 accept="image/jpeg,image/png"
                 multiple
-                onChange={(e) => setPhotos(Array.from(e.target.files ?? []))}
+                onChange={(e) => {
+                  const newFiles = Array.from(e.target.files ?? []);
+                  if (newFiles.length) setPhotos((prev) => [...prev, ...newFiles]);
+                  e.target.value = "";
+                }}
                 style={fieldInput}
               />
               {photos.length > 0 && (
                 <>
                   <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: 13, color: "#666", marginTop: 8, marginBottom: 12 }}>
-                    {photos.length} {photos.length === 1 ? "foto seleccionada" : "fotos seleccionadas"}. Elige cuál usar como foto principal.
+                    {photos.length} {photos.length === 1 ? "foto seleccionada" : "fotos seleccionadas"}. Puedes seguir añadiendo más y elegir cuál usar como foto principal.
                   </p>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
                     {photoPreviews.map((src, i) => (
-                      <button
-                        key={i}
-                        type="button"
-                        onClick={() => setMainPhotoIndex(i)}
-                        style={{
-                          position: "relative", width: 84, height: 84, padding: 0,
-                          border: i === mainPhotoIndex ? "2px solid #121212" : "1px solid #ccc",
-                          background: "none", cursor: "pointer",
-                        }}
-                        aria-label={i === mainPhotoIndex ? "Foto principal" : "Hacer foto principal"}
-                      >
-                        <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                        {i === mainPhotoIndex && (
-                          <span style={{
-                            position: "absolute", bottom: 0, left: 0, right: 0,
-                            background: "#121212", color: "#fff",
-                            fontFamily: "Hanken Grotesk, sans-serif", fontSize: 10,
-                            textTransform: "uppercase", letterSpacing: "0.08em",
-                            padding: "2px 0", textAlign: "center",
-                          }}>
-                            Principal
-                          </span>
-                        )}
-                      </button>
+                      <div key={i} style={{ position: "relative", width: 84, height: 84 }}>
+                        <button
+                          type="button"
+                          onClick={() => setMainPhotoIndex(i)}
+                          style={{
+                            position: "relative", width: 84, height: 84, padding: 0,
+                            border: i === mainPhotoIndex ? "2px solid #121212" : "1px solid #ccc",
+                            background: "none", cursor: "pointer",
+                          }}
+                          aria-label={i === mainPhotoIndex ? "Foto principal" : "Hacer foto principal"}
+                        >
+                          <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                          {i === mainPhotoIndex && (
+                            <span style={{
+                              position: "absolute", bottom: 0, left: 0, right: 0,
+                              background: "#121212", color: "#fff",
+                              fontFamily: "Hanken Grotesk, sans-serif", fontSize: 10,
+                              textTransform: "uppercase", letterSpacing: "0.08em",
+                              padding: "2px 0", textAlign: "center",
+                            }}>
+                              Principal
+                            </span>
+                          )}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setPhotos((prev) => prev.filter((_, idx) => idx !== i))}
+                          aria-label="Quitar foto"
+                          style={{
+                            position: "absolute", top: -8, right: -8, width: 22, height: 22, borderRadius: "50%",
+                            background: "#121212", color: "#fff", border: "1px solid #fff",
+                            fontSize: 13, lineHeight: 1, cursor: "pointer", display: "flex",
+                            alignItems: "center", justifyContent: "center", padding: 0,
+                          }}
+                        >
+                          ×
+                        </button>
+                      </div>
                     ))}
                   </div>
                 </>
