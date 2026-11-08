@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -230,12 +231,12 @@ export default function Obras() {
               return (
                 <tr key={a.id}>
                   <td style={cellStyle}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <Link to={`/admin/dashboard/obras/${a.id}`} style={{ display: "flex", alignItems: "center", gap: 10, color: "#121212", textDecoration: "none" }}>
                       {a.image_url && (
                         <img src={a.image_url} alt="" style={{ width: 40, height: 40, objectFit: "cover" }} />
                       )}
-                      <span>{a.title}</span>
-                    </div>
+                      <span style={{ textDecoration: "underline" }}>{a.title}</span>
+                    </Link>
                   </td>
                   <td style={cellStyle}>{artist?.email || ","}</td>
                   <td style={cellStyle}>{a.year ?? ","}</td>

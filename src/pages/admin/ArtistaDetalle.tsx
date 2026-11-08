@@ -285,10 +285,10 @@ export default function ArtistaDetalle() {
             {artworks.map((a) => (
               <tr key={a.id}>
                 <td style={cellStyle}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <Link to={`/admin/dashboard/obras/${a.id}`} style={{ display: "flex", alignItems: "center", gap: 10, color: "#121212", textDecoration: "none" }}>
                     {a.image_url && <img src={a.image_url} alt="" style={{ width: 36, height: 36, objectFit: "cover" }} />}
-                    <span>{a.title}</span>
-                  </div>
+                    <span style={{ textDecoration: "underline" }}>{a.title}</span>
+                  </Link>
                 </td>
                 <td style={cellStyle}>{a.status}</td>
                 <td style={cellStyle}>{a.price != null ? `€${a.price}` : t.noValue}</td>

@@ -43,6 +43,7 @@ import AdminSolicitudes from "./pages/admin/Solicitudes.tsx";
 import AdminArtistas from "./pages/admin/Artistas.tsx";
 import AdminArtistaDetalle from "./pages/admin/ArtistaDetalle.tsx";
 import AdminObras from "./pages/admin/Obras.tsx";
+import AdminObraDetalle from "./pages/admin/ObraDetalle.tsx";
 import AdminMetricas from "./pages/admin/Metricas.tsx";
 import AdminConfiguracion from "./pages/admin/Configuracion.tsx";
 import { GlobalInviteModal } from "@/components/ignia/GlobalInviteModal";
@@ -110,6 +111,7 @@ const App = () => (
                 <Route path="artistas" element={<AdminArtistas />} />
                 <Route path="artistas/:id" element={<AdminArtistaDetalle />} />
                 <Route path="obras" element={<AdminObras />} />
+                <Route path="obras/:id" element={<AdminObraDetalle />} />
                 <Route path="metricas" element={<AdminMetricas />} />
                 <Route path="configuracion" element={<AdminConfiguracion />} />
               </Route>
