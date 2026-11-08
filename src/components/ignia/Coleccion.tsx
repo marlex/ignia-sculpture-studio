@@ -36,7 +36,9 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
     return () => { alive = false; };
   }, [lang]);
 
-  const allWorks = useMemo(() => [...getCatalogueWorks(lang), ...dbWorks], [lang, dbWorks]);
+  // Newly published artist works (already newest-first from the fetch)
+  // always lead the default order, ahead of the curated catalogue.
+  const allWorks = useMemo(() => [...dbWorks, ...getCatalogueWorks(lang)], [lang, dbWorks]);
 
   const [open3d, setOpen3d] = useState<number | null>(null);
   const [openFeatured3d, setOpenFeatured3d] = useState(false);
