@@ -43,7 +43,10 @@ export default function PerfilEscultorDb({ slug }: { slug: string }) {
   const firstName = name.split(" ")[0];
   const bioText = clean(profile.bio || "");
   const statement = bioText ? excerpt(bioText, 160) : null;
-  const openerWork = works[0];
+  // Same override as the home/Esculturas catalogue: a specific piece can
+  // be chosen as the artist's lead image instead of just the newest one.
+  const FEATURED_TITLES: Record<string, string> = { "eric-vanel": "Les Fleurs du Mal" };
+  const openerWork = works.find((w) => w.title === FEATURED_TITLES[slug]) ?? works[0];
   const roundWork = works.find((w) => w.glbUrl) ?? works[0];
   const useHalfPage = !openerWork;
 
