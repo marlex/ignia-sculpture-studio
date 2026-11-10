@@ -77,7 +77,7 @@ export const HeroFull = () => {
         }
 
         @media (max-width: 768px) {
-          .hf-title-el { font-size: 56px; }
+          .hf-title-el { font-size: clamp(32px, 9vw, 44px); }
           .hf-subtitle-el { font-size: 16px; max-width: 92%; }
         }
       `}</style>
