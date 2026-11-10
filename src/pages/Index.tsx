@@ -89,7 +89,7 @@ const Index = () => {
 
       <div ref={coleccionRef}>
         <div ref={fadeCol}>
-          <Coleccion showHeader />
+          <Coleccion showHeader limit={7} />
         </div>
       </div>
       <SectionSeparator title={t.s1.title} subtitle={t.s1.subtitle} cta={t.s1.cta} href={t.s1.href} />

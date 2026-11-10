@@ -24,9 +24,10 @@ type FilterKey = "price" | "material" | "technique";
 
 interface ColeccionProps {
   showHeader?: boolean;
+  limit?: number;
 }
 
-export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
+export const Coleccion = ({ showHeader = false, limit }: ColeccionProps) => {
   const lang = useLang();
   const [dbWorks, setDbWorks] = useState<DbWork[]>([]);
 
@@ -125,7 +126,10 @@ export const Coleccion = ({ showHeader = false }: ColeccionProps) => {
   const FEATURED_TITLE = "Les Fleurs du Mal";
   const FEATURED_SLUG = "arco";
   const featured = filtered.find(w => w.title === FEATURED_TITLE) ?? filtered.find(w => w.slug === FEATURED_SLUG) ?? filtered[0];
-  const gridWorks = filtered.filter(w => w.slug !== featured?.slug);
+  // On the home teaser, cap the total shown (featured + grid) at `limit`;
+  // the full /coleccion page passes no limit and shows everything.
+  const scoped = limit ? filtered.slice(0, limit) : filtered;
+  const gridWorks = scoped.filter(w => w.slug !== featured?.slug);
 
   const open = open3d !== null ? gridWorks[open3d] : null;
 
