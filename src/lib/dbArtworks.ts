@@ -33,10 +33,17 @@ export type DbArtistProfile = {
   portfolio_url: string | null;
 };
 
+// toLocaleString depends on the runtime having full ICU locale data,
+// which isn't guaranteed everywhere — it silently falls back to no
+// thousands separator at all ("8800" instead of "8.800"/"8,800").
+// The curated catalogue avoids this because its prices are hand-typed
+// strings; group digits ourselves here so it can't silently drop out.
+const groupThousands = (n: number, separator: string) =>
+  Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+
 const formatPrice = (price: number | null, lang: Lang) => {
   if (price == null) return lang === "es" ? "Precio a consultar" : "Price on request";
-  const n = Math.round(price);
-  return `€ ${n.toLocaleString(lang === "es" ? "es-ES" : "en-US")}`;
+  return `€ ${groupThousands(price, lang === "es" ? "." : ",")}`;
 };
 
 type RawArtwork = {
