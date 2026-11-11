@@ -33,13 +33,15 @@ Deno.serve(async (req) => {
 
     const { data: app, error: appErr } = await admin
       .from("applications")
-      .select("id, name, email, language, locale")
+      .select("id, name, email")
       .eq("id", application_id)
       .maybeSingle();
     if (appErr || !app) throw new Error(appErr?.message || "Application not found");
 
-    const chosen = (app as any).locale ?? app.language;
-    const lang = (chosen === "es" ? "es" : "en") as "es" | "en";
+    // Always English, same policy as every other outbound email — never
+    // inferred from a stored value that just reflects whatever UI language
+    // happened to be active when the form was submitted.
+    const lang: "es" | "en" = "en";
     const templateName = TEMPLATE_MAP[email_type];
 
     const { error: sendErr } = await admin.functions.invoke("send-transactional-email", {

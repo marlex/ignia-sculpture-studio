@@ -84,7 +84,6 @@ export default function UneteAIgnia() {
         p_name: name,
         p_email: email,
         p_social: social || null,
-        p_language: lang,
       });
       if (dbError) throw dbError;
       // Send confirmation email (best-effort, never blocks the submission)

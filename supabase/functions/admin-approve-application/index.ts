@@ -46,7 +46,7 @@ Deno.serve(async (req) => {
 
     const { data: app, error: appErr } = await admin
       .from("applications")
-      .select("id, email, name, language, locale")
+      .select("id, email, name")
       .eq("id", application_id)
       .maybeSingle();
     if (appErr || !app) {
@@ -89,12 +89,14 @@ Deno.serve(async (req) => {
       return new Response(JSON.stringify({ error: profErr.message }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });
     }
 
-    const lang = (app.locale ?? app.language) === "es" ? "es" : "en";
+    // Every new artist defaults to English, same as handle_new_user() for
+    // direct invite signups — they can switch their own language from
+    // their dashboard afterwards. Never infer it from stale UI state.
     const { error: emailErr } = await admin.functions.invoke("send-transactional-email", {
       body: {
         templateName: "founding-artist-welcome",
         recipientEmail: app.email,
-        templateData: { name: app.name || "", lang },
+        templateData: { name: app.name || "", lang: "en" },
       },
     });
     if (emailErr) {

@@ -170,7 +170,6 @@ const JoinEscultores = () => {
         p_name: name,
         p_email: email,
         p_social: social || null,
-        p_language: lang,
       });
       if (dbError) throw dbError;
       if (applicationId) {
