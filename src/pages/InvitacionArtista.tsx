@@ -136,7 +136,7 @@ export default function InvitacionArtista() {
 
   return (
     <div style={{ background: "#FFFFFF", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      <Seo title={"You're Invited | Ignia Institution"} description={"Complete your Ignia Institution artist registration."} path="/invitacion-artista" />
+      <Seo title={"You're Invited | Ignia Institution"} description={"Complete your Ignia Institution artist registration."} path="/invite-artist" />
       <Header theme="light" />
       <main style={{ flex: 1, paddingTop: 140 }}>
         <section style={{ maxWidth: 460, margin: "0 auto", padding: "64px 24px 160px" }}>

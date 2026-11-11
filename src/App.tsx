@@ -66,6 +66,7 @@ const App = () => (
               <Route path="/publicar" element={<Publicar />} />
               <Route path="/perfil-artista" element={<PerfilArtista />} />
               <Route path="/invitacion-artista" element={<InvitacionArtista />} />
+              <Route path="/invite-artist" element={<InvitacionArtista />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/dashboard/:section" element={<Dashboard />} />
               <Route path="/dashboard/obras/:id/3d" element={<AddView3d />} />

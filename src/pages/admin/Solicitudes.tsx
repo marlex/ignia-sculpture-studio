@@ -402,7 +402,7 @@ export default function Solicitudes() {
   };
 
   const copyInviteLink = async () => {
-    const url = new URL("/invitacion-artista", window.location.origin);
+    const url = new URL("/invite-artist", window.location.origin);
     if (inviteName) url.searchParams.set("name", inviteName);
     if (inviteEmail) url.searchParams.set("email", inviteEmail);
     if (inviteSocial) url.searchParams.set("instagram", inviteSocial);
