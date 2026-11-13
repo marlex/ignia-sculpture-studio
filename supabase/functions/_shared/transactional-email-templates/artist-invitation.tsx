@@ -4,10 +4,6 @@ import { Body, Button, Container, Head, Heading, Html, Img, Preview, Text } from
 import type { TemplateEntry } from './registry.ts'
 
 const LOGO_URL = 'https://igniainstitution.com/ignia-logo-email.png'
-// A real Ignia piece (Eric Vanel, "Les Fleurs du Mal") — stable Supabase
-// Storage URL, safe to reference from an email that may be opened long
-// after the site's own hashed build assets have changed.
-const HERO_IMAGE_URL = 'https://evgftbzwmlbzeuqbxynu.supabase.co/storage/v1/object/public/artwork-images/0469e3cf-9049-481d-9e34-958fb3350c38/37c015f5-3200-4142-8a47-24caa07f86f3-IMG_0781r.JPG'
 const DEFAULT_INVITE_URL = 'https://igniainstitution.com/invite-artist'
 
 interface Props {
@@ -33,7 +29,6 @@ const Email = ({ name = '', inviteUrl = DEFAULT_INVITE_URL }: Props) => {
       <Body style={main}>
         <Container style={container}>
           <Img src={LOGO_URL} alt="Ignia Institution" width="120" height="34" style={logo} />
-          <Img src={HERO_IMAGE_URL} alt="A sculpture on Ignia Institution" width="480" height="360" style={hero} />
           <Heading style={h1}>You're invited to Ignia</Heading>
           <Text style={text}>Hi {greetingName},</Text>
           <Text style={text}>
@@ -76,7 +71,6 @@ export const template = {
 const main: React.CSSProperties = { backgroundColor: '#ffffff', fontFamily: "'Hanken Grotesk', Arial, sans-serif", color: '#121212' }
 const container: React.CSSProperties = { padding: '48px 40px', maxWidth: '560px' }
 const logo: React.CSSProperties = { display: 'block', margin: '0 0 32px' }
-const hero: React.CSSProperties = { display: 'block', width: '100%', height: 'auto', margin: '0 0 32px', objectFit: 'cover' }
 const h1: React.CSSProperties = { fontFamily: "'Albert Sans', Georgia, serif", fontWeight: 600, fontSize: '28px', lineHeight: 1.2, color: '#121212', margin: '0 0 24px' }
 const text: React.CSSProperties = { fontSize: '16px', lineHeight: 1.6, color: '#121212', margin: '0 0 16px', fontWeight: 400 }
 const bulletCell: React.CSSProperties = { width: 20, verticalAlign: 'top', fontSize: '15px', color: '#121212', paddingBottom: 10 }
