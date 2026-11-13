@@ -16,7 +16,7 @@ const copy = {
     heading: 'Tu perfil está listo. ¿Publicamos tu primera obra?',
     body: (n: string) =>
       `Hola ${n}, notamos que tu cuenta de artista ya está activa pero todavía no has publicado ninguna obra.`,
-    body2: 'Cuando quieras, puedes subir tu primera pieza desde tu panel — toma solo unos minutos.',
+    body2: 'Cuando quieras, puedes subir tu primera pieza desde tu panel. Toma solo unos minutos.',
     cta: 'Publicar una obra',
     sign: 'Un saludo,',
     team: 'El equipo de Ignia',
@@ -26,7 +26,7 @@ const copy = {
     heading: "Your profile is ready. Let's publish your first work?",
     body: (n: string) =>
       `Hi ${n}, we noticed your artist account is active but you haven't published any work yet.`,
-    body2: 'Whenever you\'re ready, you can upload your first piece from your dashboard — it only takes a few minutes.',
+    body2: 'Whenever you\'re ready, you can upload your first piece from your dashboard. It only takes a few minutes.',
     cta: 'Publish a work',
     sign: 'Best,',
     team: 'The Ignia team',

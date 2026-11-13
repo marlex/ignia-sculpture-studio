@@ -32,7 +32,7 @@ const Email = ({ name = '', inviteUrl = DEFAULT_INVITE_URL }: Props) => {
           <Heading style={h1}>You're invited to Ignia</Heading>
           <Text style={text}>Hi {greetingName},</Text>
           <Text style={text}>
-            Ignia Institution is a home built entirely for sculpture — original works presented in 3D, with a
+            Ignia Institution is a home built entirely for sculpture: original works presented in 3D, with a
             blockchain certificate of authenticity, shown to collectors around the world. We'd love for your work
             to be part of our founding collection.
           </Text>
@@ -41,7 +41,7 @@ const Email = ({ name = '', inviteUrl = DEFAULT_INVITE_URL }: Props) => {
             <tbody>
               {BENEFITS.map((b, i) => (
                 <tr key={i}>
-                  <td style={bulletCell}>—</td>
+                  <td style={bulletCell}>•</td>
                   <td style={bulletText}>{b}</td>
                 </tr>
               ))}

@@ -19,7 +19,7 @@ const copy = {
     team: 'Ignia.',
   },
   en: {
-    preview: 'Your Ignia application — waitlist',
+    preview: 'Your Ignia application | waitlist',
     heading: 'You are on the waitlist',
     body: (n: string) => `Hi ${n}, thank you again for your interest in Ignia. Right now we've added your application to our waitlist. Space is currently limited, and we'll reach out as soon as a spot opens up for you.`,
     sign: 'Warmly,',
@@ -52,8 +52,8 @@ export const template = {
   component: Email,
   subject: (data: Props) =>
     data?.lang === 'en'
-      ? 'Your Ignia application — waitlist'
-      : 'Tu solicitud en Ignia — lista de espera',
+      ? 'Your Ignia application | waitlist'
+      : 'Tu solicitud en Ignia | lista de espera',
   displayName: 'Application waitlisted',
   previewData: { name: 'Ada', lang: 'es' },
 } satisfies TemplateEntry

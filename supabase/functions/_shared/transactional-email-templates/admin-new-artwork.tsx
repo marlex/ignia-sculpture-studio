@@ -18,7 +18,7 @@ const Email = ({ artistName, title }: Props) => (
       <Container style={container}>
         <Img src={LOGO_URL} alt="Ignia Institution" width="120" height="34" style={logo} />
         <Heading style={h1}>New artwork to review</Heading>
-        <Text style={text}>{artistName || 'An artist'} published "{title}" — it's pending approval.</Text>
+        <Text style={text}>{artistName || 'An artist'} published "{title}". It's pending approval.</Text>
         <Text style={text}>
           Review it in{' '}
           <Link href="https://igniainstitution.com/admin/dashboard/obras" style={link}>your Artworks panel</Link>.
