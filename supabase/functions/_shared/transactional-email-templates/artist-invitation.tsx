@@ -13,7 +13,7 @@ interface Props {
 
 const BENEFITS = [
   'Permanent free access to the Pro plan.',
-  '3D digitization of your first three works, at no cost.',
+  '3D digitization of your works, at no cost.',
   'A 15% commission for life.',
   'Your own dashboard with statistics on how your works perform.',
   'Access to the art advisors working with Ignia.',
