@@ -55,7 +55,7 @@ export const template = {
       ? 'Your Ignia application | waitlist'
       : 'Tu solicitud en Ignia | lista de espera',
   displayName: 'Application waitlisted',
-  previewData: { name: 'Ada', lang: 'es' },
+  previewData: { name: 'Ada', lang: 'en' },
 } satisfies TemplateEntry
 
 const main: React.CSSProperties = {

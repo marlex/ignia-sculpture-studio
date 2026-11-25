@@ -55,7 +55,7 @@ export const template = {
       ? 'About your Ignia application'
       : 'Sobre tu solicitud en Ignia',
   displayName: 'Application rejected',
-  previewData: { name: 'Ada', lang: 'es' },
+  previewData: { name: 'Ada', lang: 'en' },
 } satisfies TemplateEntry
 
 const main: React.CSSProperties = {

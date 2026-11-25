@@ -55,7 +55,7 @@ export const template = {
       ? "We've received your application | Ignia"
       : 'Hemos recibido tu solicitud | Ignia',
   displayName: 'Application received',
-  previewData: { name: 'Ada', lang: 'es' },
+  previewData: { name: 'Ada', lang: 'en' },
 } satisfies TemplateEntry
 
 const main: React.CSSProperties = {

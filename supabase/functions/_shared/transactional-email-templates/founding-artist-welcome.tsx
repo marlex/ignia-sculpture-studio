@@ -21,7 +21,12 @@ const copy = {
     body:
       'Tu solicitud ha sido aprobada. Bienvenida a la primera colección de escultores de Ignia.',
     body2:
-      'Inicia sesión con el email y la contraseña que elegiste al registrarte en la invitación, y sube tu primera obra:',
+      'Inicia sesión con el email y la contraseña que elegiste al registrarte en la invitación. Esto es lo que te espera:',
+    steps: [
+      'Sube varias fotos de tu escultura y la convertimos en un modelo 3D que los coleccionistas pueden girar y ver desde cualquier ángulo.',
+      'Tu perfil público en Ignia Institution y tu propio panel con estadísticas en tiempo real de quién está viendo tu obra y desde dónde.',
+      'Tú pones el precio, nosotros nos encargamos del certificado de autenticidad, la logística y el pago.',
+    ],
     cta: 'Ir a mi perfil',
     forgot: '¿Olvidaste tu contraseña?',
     resetCta: 'Crea una nueva aquí',
@@ -37,7 +42,12 @@ const copy = {
     heading: (n: string) => `Welcome to Ignia Institution, ${n}`,
     greeting: (n: string) => `Hello ${n},`,
     body: "Your application has been approved. Welcome to Ignia's first collection of sculptors.",
-    body2: 'Log in with the email and password you chose when you registered on the invitation, and add your first work:',
+    body2: "Log in with the email and password you chose when you registered on the invitation. Here's what's waiting for you:",
+    steps: [
+      'Upload several photos of your sculpture and we turn it into a 3D model collectors can rotate and view from every angle.',
+      'Your public profile on Ignia Institution and your own dashboard, with real-time stats on who is viewing your work and from where.',
+      'You set the price, we take care of the authenticity certificate, logistics and payment.',
+    ],
     cta: 'Go to my profile',
     forgot: 'Forgot your password?',
     resetCta: 'Set a new one here',
@@ -64,6 +74,16 @@ const Email = ({ name = '', lang = 'en' }: Props) => {
           <Text style={text}>{c.greeting(greetingName)}</Text>
           <Text style={text}>{c.body}</Text>
           <Text style={text}>{c.body2}</Text>
+          <table role="presentation" style={{ width: '100%', borderCollapse: 'collapse', marginBottom: 16 }}>
+            <tbody>
+              {c.steps.map((s, i) => (
+                <tr key={i}>
+                  <td style={bulletCell}>•</td>
+                  <td style={bulletText}>{s}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
           <Button href={LOGIN_URL} style={button}>{c.cta}</Button>
           <Text style={{ ...text, marginTop: 28 }}>
             {c.forgot}{' '}
@@ -87,7 +107,7 @@ export const template = {
     return data?.lang === 'en' ? `Welcome to Ignia Institution, ${n}` : `Bienvenida a Ignia Institution, ${n}`
   },
   displayName: 'Founding artist welcome',
-  previewData: { name: 'Ada', lang: 'es' },
+  previewData: { name: 'Ada', lang: 'en' },
 } satisfies TemplateEntry
 
 const main: React.CSSProperties = {
@@ -113,6 +133,8 @@ const text: React.CSSProperties = {
   fontWeight: 400,
 }
 const link: React.CSSProperties = { color: '#121212', textDecoration: 'underline' }
+const bulletCell: React.CSSProperties = { width: 20, verticalAlign: 'top', fontSize: '15px', color: '#121212', paddingBottom: 10 }
+const bulletText: React.CSSProperties = { fontSize: '15px', lineHeight: 1.5, color: '#121212', paddingBottom: 10 }
 const button: React.CSSProperties = {
   backgroundColor: '#121212',
   color: '#ffffff',

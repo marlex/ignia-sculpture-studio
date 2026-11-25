@@ -62,7 +62,7 @@ export const template = {
   subject: (data: Props) =>
     data?.lang === 'en' ? "You haven't published your first work yet" : 'Aún no has publicado tu primera obra',
   displayName: 'Artist upload reminder (24h)',
-  previewData: { name: 'Ada', lang: 'es' },
+  previewData: { name: 'Ada', lang: 'en' },
 } satisfies TemplateEntry
 
 const main: React.CSSProperties = {
