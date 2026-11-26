@@ -34,6 +34,7 @@ export default function Publicar() {
   const [alto, setAlto] = useState("");
   const [ancho, setAncho] = useState("");
   const [profundo, setProfundo] = useState("");
+  const [peso, setPeso] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [photos, setPhotos] = useState<File[]>([]);
@@ -131,6 +132,7 @@ export default function Publicar() {
         year: yearVal ? Number(yearVal) : null,
         medium: medium || null,
         dimensions,
+        weight_kg: peso ? Number(peso.replace(",", ".")) : null,
         video_url: videoUrl,
         model_status: videoUrl ? "processing" : "none",
         process_story: processStory || null,
@@ -220,6 +222,20 @@ export default function Publicar() {
                 <input placeholder="Profundo" value={profundo} onChange={(e) => setProfundo(e.target.value)} style={fieldInput} />
               </div>
             </div>
+            <Field label="Peso (kg), con base o peana">
+              <input
+                required
+                inputMode="decimal"
+                pattern="[0-9]+([.,][0-9]+)?"
+                placeholder="Ej. 12,5"
+                value={peso}
+                onChange={(e) => setPeso(e.target.value)}
+                style={fieldInput}
+              />
+              <p style={{ fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 400, fontSize: 13, color: "#666", marginTop: 8 }}>
+                Lo necesitamos para calcular el envío. Si no tienes báscula, indica una estimación.
+              </p>
+            </Field>
             <Field label="Precio (€)">
               <input value={price} onChange={(e) => setPrice(e.target.value)} style={fieldInput} />
               {Number(price) > 0 && (() => {

@@ -86,6 +86,7 @@ export type Database = {
           created_at: string
           description: string | null
           dimensions: string | null
+          weight_kg: number | null
           id: string
           image_url: string | null
           medium: string | null
@@ -100,6 +101,7 @@ export type Database = {
           created_at?: string
           description?: string | null
           dimensions?: string | null
+          weight_kg?: number | null
           id?: string
           image_url?: string | null
           medium?: string | null
@@ -114,6 +116,7 @@ export type Database = {
           created_at?: string
           description?: string | null
           dimensions?: string | null
+          weight_kg?: number | null
           id?: string
           image_url?: string | null
           medium?: string | null

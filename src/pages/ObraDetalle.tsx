@@ -366,10 +366,20 @@ const ObraDetalle = () => {
 
             {(() => {
               const anyO = o as any;
-              const dims = anyO.dimensions
-                ? `${anyO.dimensions.h ?? ""} × ${anyO.dimensions.w ?? ""} × ${anyO.dimensions.d ?? ""} cm`
-                : "";
-              const weight = anyO.weight ? `${anyO.weight} kg` : "";
+              // dimensions arrive as a display string ("61 x 27 x 47 cm") from both
+              // the admin/DB and the static catalogue; keep the {h,w,d} shape as fallback.
+              const dims = typeof anyO.dimensions === "string"
+                ? anyO.dimensions
+                : anyO.dimensions
+                  ? `${anyO.dimensions.h ?? ""} × ${anyO.dimensions.w ?? ""} × ${anyO.dimensions.d ?? ""} cm`
+                  : "";
+              // weight arrives pre-formatted as `weight` from the DB (dbArtworks.ts)
+              // or as a raw number `weightKg` from the static catalogue (igniaWorks.ts).
+              const weight = anyO.weight
+                ? `${anyO.weight} kg`
+                : anyO.weightKg != null
+                  ? `${String(anyO.weightKg).replace(".", lang === "es" ? "," : ".")} kg`
+                  : "";
               const technique = anyO.technique ?? "";
               const specLabel = lang === "es" ? "Ficha técnica" : "Technical specs";
               const rows: [string, string][] = [

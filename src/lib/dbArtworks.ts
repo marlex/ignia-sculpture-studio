@@ -20,6 +20,8 @@ export type DbWork = {
   price: string;
   description: string;
   authenticity: string;
+  dimensions?: string;
+  weight?: string;
 };
 
 export type DbArtistProfile = {
@@ -54,6 +56,8 @@ type RawArtwork = {
   price: number | null;
   year: number | null;
   medium: string | null;
+  dimensions: string | null;
+  weight_kg: number | null;
   image_url: string | null;
   image_urls: string[] | null;
   glb_url: string | null;
@@ -79,13 +83,15 @@ const toDbWork = (a: RawArtwork, artist: DbArtistProfile | undefined, lang: Lang
     price: formatPrice(a.price, lang),
     description: a.description || "",
     authenticity: `#${a.id.slice(0, 8)}`,
+    dimensions: a.dimensions?.trim() || undefined,
+    weight: a.weight_kg != null ? String(a.weight_kg).replace(".", lang === "es" ? "," : ".") : undefined,
   };
 };
 
 async function fetchApprovedWithProfiles(): Promise<{ artworks: RawArtwork[]; profiles: Record<string, DbArtistProfile> }> {
   const { data: arts } = await supabase
     .from("artworks")
-    .select("id, artist_id, title, description, price, year, medium, image_url, image_urls, glb_url, model_status, process_photo_urls")
+    .select("id, artist_id, title, description, price, year, medium, dimensions, weight_kg, image_url, image_urls, glb_url, model_status, process_photo_urls")
     .eq("status", "aprobada")
     .not("image_url", "is", null)
     .order("created_at", { ascending: false });
@@ -112,7 +118,7 @@ export async function fetchDbWorkBySlug(slug: string, lang: Lang): Promise<DbWor
   const id = slug.slice(3);
   const { data: a } = await supabase
     .from("artworks")
-    .select("id, artist_id, title, description, price, year, medium, image_url, image_urls, glb_url, model_status, process_photo_urls")
+    .select("id, artist_id, title, description, price, year, medium, dimensions, weight_kg, image_url, image_urls, glb_url, model_status, process_photo_urls")
     .eq("id", id)
     .eq("status", "aprobada")
     .maybeSingle();
