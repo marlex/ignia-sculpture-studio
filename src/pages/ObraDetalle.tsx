@@ -366,9 +366,13 @@ const ObraDetalle = () => {
 
             {(() => {
               const anyO = o as any;
-              const dims = anyO.dimensions
-                ? `${anyO.dimensions.h ?? ""} × ${anyO.dimensions.w ?? ""} × ${anyO.dimensions.d ?? ""} cm`
-                : "";
+              // dimensions arrive as a display string ("61 x 27 x 47 cm") from both
+              // the admin/DB and the static catalogue; keep the {h,w,d} shape as fallback.
+              const dims = typeof anyO.dimensions === "string"
+                ? anyO.dimensions
+                : anyO.dimensions
+                  ? `${anyO.dimensions.h ?? ""} × ${anyO.dimensions.w ?? ""} × ${anyO.dimensions.d ?? ""} cm`
+                  : "";
               const weight = anyO.weight ? `${anyO.weight} kg` : "";
               const technique = anyO.technique ?? "";
               const specLabel = lang === "es" ? "Ficha técnica" : "Technical specs";

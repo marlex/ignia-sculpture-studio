@@ -14,6 +14,7 @@ type Artwork = {
   year: number | null;
   medium: string | null;
   dimensions: string | null;
+  weight_kg: number | null;
   status: Status;
   created_at: string;
   image_url: string | null;
@@ -52,7 +53,7 @@ export default function AdminObraDetalle() {
         back: "← Volver a Obras",
         notFound: "Obra no encontrada.",
         artist: "Artista", year: "Año", price: "Precio", medium: "Materiales / técnica",
-        dimensions: "Dimensiones", status: "Estado", description: "Descripción",
+        dimensions: "Dimensiones", weight: "Peso", status: "Estado", description: "Descripción",
         process: "Proceso", noValue: "—",
         approve: "Aprobar", reject: "Rechazar",
         statusLabel: { pendiente: "Pendiente", aprobada: "Aprobada", rechazada: "Rechazada" } as Record<Status, string>,
@@ -63,7 +64,7 @@ export default function AdminObraDetalle() {
         back: "← Back to Artworks",
         notFound: "Artwork not found.",
         artist: "Artist", year: "Year", price: "Price", medium: "Materials / technique",
-        dimensions: "Dimensions", status: "Status", description: "Description",
+        dimensions: "Dimensions", weight: "Weight", status: "Status", description: "Description",
         process: "Process", noValue: "—",
         approve: "Approve", reject: "Reject",
         statusLabel: { pendiente: "Pending", aprobada: "Approved", rechazada: "Rejected" } as Record<Status, string>,
@@ -76,7 +77,7 @@ export default function AdminObraDetalle() {
     setLoading(true);
     const { data: art } = await supabase
       .from("artworks")
-      .select("id, artist_id, title, description, price, year, medium, dimensions, status, created_at, image_url, image_urls, video_url, glb_url, model_status, process_story, process_photo_urls")
+      .select("id, artist_id, title, description, price, year, medium, dimensions, weight_kg, status, created_at, image_url, image_urls, video_url, glb_url, model_status, process_story, process_photo_urls")
       .eq("id", id)
       .maybeSingle();
     setArtwork((art as Artwork) || null);
@@ -163,6 +164,7 @@ export default function AdminObraDetalle() {
           <Field label={t.price} value={artwork.price != null ? `€${artwork.price}` : null} noValue={t.noValue} />
           <Field label={t.medium} value={artwork.medium} noValue={t.noValue} />
           <Field label={t.dimensions} value={artwork.dimensions} noValue={t.noValue} />
+          <Field label={t.weight} value={artwork.weight_kg != null ? `${artwork.weight_kg} kg` : null} noValue={t.noValue} />
           <Field label={t.description} value={artwork.description} noValue={t.noValue} multiline />
           {artwork.process_story && <Field label={t.process} value={artwork.process_story} noValue={t.noValue} multiline />}
           <Field
