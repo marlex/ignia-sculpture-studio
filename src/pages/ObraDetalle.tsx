@@ -373,7 +373,13 @@ const ObraDetalle = () => {
                 : anyO.dimensions
                   ? `${anyO.dimensions.h ?? ""} × ${anyO.dimensions.w ?? ""} × ${anyO.dimensions.d ?? ""} cm`
                   : "";
-              const weight = anyO.weight ? `${anyO.weight} kg` : "";
+              // weight arrives pre-formatted as `weight` from the DB (dbArtworks.ts)
+              // or as a raw number `weightKg` from the static catalogue (igniaWorks.ts).
+              const weight = anyO.weight
+                ? `${anyO.weight} kg`
+                : anyO.weightKg != null
+                  ? `${String(anyO.weightKg).replace(".", lang === "es" ? "," : ".")} kg`
+                  : "";
               const technique = anyO.technique ?? "";
               const specLabel = lang === "es" ? "Ficha técnica" : "Technical specs";
               const rows: [string, string][] = [
